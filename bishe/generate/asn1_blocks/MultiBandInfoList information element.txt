@@ -1,0 +1,21 @@
+
+MultiBandInfoList ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator
+
+MultiBandInfoList-v9e0 ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF MultiBandInfo-v9e0
+
+MultiBandInfoList-v10j0 ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF NS-PmaxList-r10
+
+MultiBandInfoList-v10l0 ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF NS-PmaxList-v10l0
+
+MultiBandInfoList-r11 ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator-r11
+
+MultiBandInfo-v9e0 ::=		SEQUENCE {
+	freqBandIndicator-v9e0				FreqBandIndicator-v9e0		OPTIONAL	-- Need OP
+}
+
+MultiBandInfoListAerial-r18 ::=	SEQUENCE (SIZE (1..maxMultiBands)) OF MultiBandInfoAerial-r18
+
+MultiBandInfoAerial-r18 ::= SEQUENCE {
+	freqBandIndicatorAerial-r18		FreqBandIndicator-r11	OPTIONAL,		-- Cond NotSIB3
+	ns-PmaxListAerial-r18			NS-PmaxListAerial-r18	OPTIONAL		-- Need OP
+}

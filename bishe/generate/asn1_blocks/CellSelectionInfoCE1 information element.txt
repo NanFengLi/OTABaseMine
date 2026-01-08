@@ -1,0 +1,9 @@
+
+CellSelectionInfoCE1-r13 ::=		SEQUENCE {
+	q-RxLevMinCE1-r13				Q-RxLevMin,
+	q-QualMinRSRQ-CE1-r13			Q-QualMin-r9						OPTIONAL	-- Need OR
+}
+
+CellSelectionInfoCE1-v1360 ::=		SEQUENCE {
+	delta-RxLevMinCE1-v1360					INTEGER (-8..-1)
+}

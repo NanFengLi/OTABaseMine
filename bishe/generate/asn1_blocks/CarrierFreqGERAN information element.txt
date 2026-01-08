@@ -1,0 +1,5 @@
+
+CarrierFreqGERAN ::=			SEQUENCE {
+	arfcn							ARFCN-ValueGERAN,
+	bandIndicator					BandIndicatorGERAN
+}

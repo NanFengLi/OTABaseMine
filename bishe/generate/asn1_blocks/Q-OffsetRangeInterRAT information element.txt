@@ -1,0 +1,2 @@
+
+Q-OffsetRangeInterRAT ::=					INTEGER (-15..15)

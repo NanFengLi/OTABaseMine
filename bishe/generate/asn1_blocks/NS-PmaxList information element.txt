@@ -1,0 +1,20 @@
+
+NS-PmaxList-r10 ::=				SEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValue-r10
+
+NS-PmaxList-v10l0 ::=			SEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValue-v10l0
+
+NS-PmaxListAerial-r18 ::=		SEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValueAerial-r18
+
+NS-PmaxValue-r10 ::=			SEQUENCE {
+	additionalPmax-r10					P-Max							OPTIONAL,	-- Need OP
+	additionalSpectrumEmission			AdditionalSpectrumEmission
+}
+
+NS-PmaxValue-v10l0 ::=			SEQUENCE {
+	additionalSpectrumEmission-v10l0	AdditionalSpectrumEmission-v10l0	OPTIONAL	-- Need OP
+}
+
+NS-PmaxValueAerial-r18 ::=			SEQUENCE {
+	additionalPmax-r18					P-Max								OPTIONAL,	-- Need OP
+	additionalSpectrumEmission-r18		AdditionalSpectrumEmission-r18		OPTIONAL	-- Need OP
+}

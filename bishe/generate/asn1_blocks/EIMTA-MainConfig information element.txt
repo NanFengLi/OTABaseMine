@@ -1,0 +1,23 @@
+
+EIMTA-MainConfig-r12 ::=	CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		eimta-RNTI-r12				C-RNTI,
+		eimta-CommandPeriodicity-r12	ENUMERATED {sf10, sf20, sf40, sf80},
+		eimta-CommandSubframeSet-r12	BIT STRING (SIZE(10))
+	}
+}
+
+EIMTA-MainConfigServCell-r12 ::=	CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		eimta-UL-DL-ConfigIndex-r12			INTEGER (1..5),
+		eimta-HARQ-ReferenceConfig-r12		ENUMERATED {sa2, sa4, sa5},
+		mbsfn-SubframeConfigList-v1250		CHOICE {
+				release								NULL,
+				setup								SEQUENCE {
+				subframeConfigList-r12				MBSFN-SubframeConfigList
+			}
+		}
+	}
+}

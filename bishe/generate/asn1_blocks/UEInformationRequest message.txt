@@ -1,0 +1,53 @@
+
+UEInformationRequest-r9		::=				SEQUENCE {
+	rrc-TransactionIdentifier		RRC-TransactionIdentifier,
+	criticalExtensions				CHOICE {
+		c1								CHOICE {
+			ueInformationRequest-r9				UEInformationRequest-r9-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+UEInformationRequest-r9-IEs ::=		SEQUENCE {
+	rach-ReportReq-r9					BOOLEAN,
+	rlf-ReportReq-r9					BOOLEAN,
+	nonCriticalExtension				UEInformationRequest-v930-IEs		OPTIONAL
+}
+
+UEInformationRequest-v930-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				UEInformationRequest-v1020-IEs		OPTIONAL
+}
+
+UEInformationRequest-v1020-IEs ::=	SEQUENCE {
+	logMeasReportReq-r10				ENUMERATED {true}					OPTIONAL,	-- Need ON
+	nonCriticalExtension				UEInformationRequest-v1130-IEs		OPTIONAL
+}
+
+UEInformationRequest-v1130-IEs ::= SEQUENCE {
+	connEstFailReportReq-r11			ENUMERATED {true}					OPTIONAL,	-- Need ON
+	nonCriticalExtension				UEInformationRequest-v1250-IEs		OPTIONAL
+}
+
+UEInformationRequest-v1250-IEs ::= SEQUENCE {
+	mobilityHistoryReportReq-r12		ENUMERATED {true}					OPTIONAL,	-- Need ON
+	nonCriticalExtension				UEInformationRequest-v1530-IEs		OPTIONAL
+}
+
+UEInformationRequest-v1530-IEs ::= SEQUENCE {
+	idleModeMeasurementReq-r15			ENUMERATED {true}					OPTIONAL,	-- Need ON
+	flightPathInfoReq-r15				FlightPathInfoReportConfig-r15		OPTIONAL,	-- Need ON
+	nonCriticalExtension				UEInformationRequest-v1710-IEs		OPTIONAL
+}
+
+UEInformationRequest-v1710-IEs ::= SEQUENCE {
+	coarseLocationReq-r17				ENUMERATED {true}					OPTIONAL,	-- Need ON
+	nonCriticalExtension				UEInformationRequest-v1800-IEs	OPTIONAL
+}
+
+UEInformationRequest-v1800-IEs ::= SEQUENCE {
+	rach-ReportReqNR-r18				ENUMERATED {true}					OPTIONAL,	-- Need ON
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}

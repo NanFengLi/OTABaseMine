@@ -1,0 +1,3 @@
+
+TrackingAreaCode ::=				BIT STRING (SIZE (16))
+TrackingAreaCode-5GC-r15 ::=		BIT STRING (SIZE (24))

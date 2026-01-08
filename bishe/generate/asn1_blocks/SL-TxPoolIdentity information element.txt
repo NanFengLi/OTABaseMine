@@ -1,0 +1,6 @@
+
+SL-TxPoolIdentity-r12 ::=			INTEGER (1.. maxSL-TxPool-r12)
+
+SL-TxPoolIdentity-v1310 ::=		INTEGER (maxSL-TxPool-r12Plus1-r13.. maxSL-TxPool-r13)
+
+SL-V2X-TxPoolIdentity-r14 ::=		INTEGER (1.. maxSL-V2X-TxPool-r14)

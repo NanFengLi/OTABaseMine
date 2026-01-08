@@ -1,0 +1,20 @@
+
+CSFB-RegistrationParam1XRTT ::=		SEQUENCE {
+	sid									BIT STRING (SIZE (15)),
+	nid									BIT STRING (SIZE (16)),
+	multipleSID							BOOLEAN,
+	multipleNID							BOOLEAN,
+	homeReg								BOOLEAN,
+	foreignSIDReg						BOOLEAN,
+	foreignNIDReg						BOOLEAN,
+	parameterReg						BOOLEAN,
+	powerUpReg							BOOLEAN,
+	registrationPeriod					BIT STRING (SIZE (7)),
+	registrationZone					BIT STRING (SIZE (12)),
+	totalZone							BIT STRING (SIZE (3)),
+	zoneTimer							BIT STRING (SIZE (3))
+}
+
+CSFB-RegistrationParam1XRTT-v920 ::=	SEQUENCE {
+	powerDownReg-r9						ENUMERATED {true}
+}

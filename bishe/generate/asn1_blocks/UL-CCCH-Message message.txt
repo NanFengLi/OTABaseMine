@@ -1,0 +1,23 @@
+
+UL-CCCH-Message ::= SEQUENCE {
+	message					UL-CCCH-MessageType
+}
+
+UL-CCCH-MessageType ::= CHOICE {
+	c1						CHOICE {
+		rrcConnectionReestablishmentRequest		RRCConnectionReestablishmentRequest,
+		rrcConnectionRequest					RRCConnectionRequest
+	},
+	messageClassExtension	CHOICE {
+		c2						CHOICE {
+			rrcConnectionResumeRequest-r13		RRCConnectionResumeRequest-r13
+		},
+		messageClassExtensionFuture-r13	CHOICE {
+			c3						CHOICE {
+				rrcEarlyDataRequest-r15			RRCEarlyDataRequest-r15,
+				spare3	NULL, spare2	NULL, spare1	NULL
+			},
+			messageClassExtensionFuture-r15		SEQUENCE {}
+		}
+	}
+}

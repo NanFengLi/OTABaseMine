@@ -1,0 +1,12 @@
+
+BCCH-DL-SCH-Message-BR ::= SEQUENCE {
+	message					BCCH-DL-SCH-MessageType-BR-r13
+}
+
+BCCH-DL-SCH-MessageType-BR-r13 ::= CHOICE {
+	c1						CHOICE {
+		systemInformation-BR-r13				SystemInformation-BR-r13,
+		systemInformationBlockType1-BR-r13		SystemInformationBlockType1-BR-r13
+	},
+	messageClassExtension	SEQUENCE {}
+}

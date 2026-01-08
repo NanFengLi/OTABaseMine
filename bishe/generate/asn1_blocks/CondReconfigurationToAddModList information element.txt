@@ -1,0 +1,14 @@
+
+CondReconfigurationToAddModList-r16 ::= SEQUENCE (SIZE (1.. maxCondConfig-r16)) OF CondReconfigurationAddMod-r16
+
+CondReconfigurationAddMod-r16 ::= SEQUENCE {
+	condReconfigurationId-r16			CondReconfigurationId-r16,
+	triggerCondition-r16				SEQUENCE (SIZE (1..2)) OF MeasId
+													OPTIONAL,  -- Need ON
+	condReconfigurationToApply-r16	OCTET STRING (CONTAINING RRCConnectionReconfiguration)
+													OPTIONAL,-- Cond CondReconfigurationAdd
+	...,
+	[[
+	triggerConditionSN-r17			OCTET STRING	OPTIONAL -- Need ON
+	]]
+}

@@ -1,0 +1,104 @@
+
+MobilityControlInfo ::=		SEQUENCE {
+	targetPhysCellId					PhysCellId,
+	carrierFreq							CarrierFreqEUTRA					OPTIONAL,	-- Cond HO-toEUTRA2
+	carrierBandwidth					CarrierBandwidthEUTRA				OPTIONAL,	-- Cond HO-toEUTRA
+	additionalSpectrumEmission			AdditionalSpectrumEmission			OPTIONAL,	-- Cond HO-toEUTRA
+	t304								ENUMERATED {
+											ms50, ms100, ms150, ms200, ms500, ms1000,
+											ms2000, ms10000-v1310},
+	newUE-Identity						C-RNTI,
+	radioResourceConfigCommon			RadioResourceConfigCommon,
+	rach-ConfigDedicated				RACH-ConfigDedicated				OPTIONAL,	-- Need OP
+	...,
+	[[	carrierFreq-v9e0				CarrierFreqEUTRA-v9e0				OPTIONAL	-- Need ON
+	]],
+	[[	drb-ContinueROHC-r11			ENUMERATED {true}					OPTIONAL	-- Cond HO
+	]],
+	[[	mobilityControlInfoV2X-r14	MobilityControlInfoV2X-r14				OPTIONAL,	-- Need ON
+		handoverWithoutWT-Change-r14	ENUMERATED {keepLWA-Config, sendEndMarker}	OPTIONAL,	-- Cond HO
+		makeBeforeBreak-r14				ENUMERATED {true}					OPTIONAL,	-- Need OR
+		rach-Skip-r14					RACH-Skip-r14						OPTIONAL,	-- Need OR
+		sameSFN-Indication-r14			ENUMERATED {true}					OPTIONAL	-- Cond HO-SFNsynced
+	]],
+	[[
+		mib-RepetitionStatus-r14		BOOLEAN								OPTIONAL,	-- Need OR
+		schedulingInfoSIB1-BR-r14		INTEGER (0..31)						OPTIONAL	-- Cond HO-SFNsynced
+	]],
+	[[	daps-Config-r16					DAPS-Config-r16						OPTIONAL	-- Cond NotFullConfigHO
+	]],
+	[[	gnss-PositionFixDurationReporting-r18	ENUMERATED {true}		OPTIONAL	-- Need OR
+	]]
+}
+
+MobilityControlInfo-v10l0 ::=		SEQUENCE {
+	additionalSpectrumEmission-v10l0	AdditionalSpectrumEmission-v10l0	OPTIONAL	-- Need ON
+}
+
+MobilityControlInfoSCG-r12 ::=		SEQUENCE {
+	t307-r12							ENUMERATED {
+											ms50, ms100, ms150, ms200, ms500, ms1000,
+											ms2000, spare1},
+	ue-IdentitySCG-r12					C-RNTI							OPTIONAL,	-- Cond SCGEst
+	rach-ConfigDedicated-r12			RACH-ConfigDedicated			OPTIONAL,	-- Need OP
+	cipheringAlgorithmSCG-r12		CipheringAlgorithm-r12		OPTIONAL,	-- Need ON
+	...,
+	[[	makeBeforeBreakSCG-r14			ENUMERATED {true}				OPTIONAL,	-- Need OR
+		rach-SkipSCG-r14				RACH-Skip-r14					OPTIONAL	-- Need OR
+	]]
+}
+
+MobilityControlInfoV2X-r14 ::=	SEQUENCE {
+	v2x-CommTxPoolExceptional-r14		SL-CommResourcePoolV2X-r14		OPTIONAL,		-- Need OR
+	v2x-CommRxPool-r14					SL-CommRxPoolListV2X-r14		OPTIONAL,		-- Need OR
+	v2x-CommSyncConfig-r14				SL-SyncConfigListV2X-r14		OPTIONAL,		-- Need OR
+	cbr-MobilityTxConfigList-r14		SL-CBR-CommonTxConfigList-r14	OPTIONAL		-- Need OR
+}
+
+CarrierBandwidthEUTRA ::=			SEQUENCE {
+	dl-Bandwidth						ENUMERATED {
+												n6, n15, n25, n50, n75, n100, spare10,
+												spare9, spare8, spare7, spare6, spare5,
+												spare4, spare3, spare2, spare1},
+	ul-Bandwidth						ENUMERATED {
+												n6, n15, n25, n50, n75, n100, spare10,
+												spare9, spare8, spare7, spare6, spare5,
+												spare4, spare3, spare2, spare1}	OPTIONAL -- Need OP
+}
+
+CarrierFreqEUTRA ::=				SEQUENCE {
+	dl-CarrierFreq						ARFCN-ValueEUTRA,
+	ul-CarrierFreq						ARFCN-ValueEUTRA				OPTIONAL	-- Cond FDD
+}
+
+CarrierFreqEUTRA-v9e0 ::=			SEQUENCE {
+	dl-CarrierFreq-v9e0					ARFCN-ValueEUTRA-r9,
+	ul-CarrierFreq-v9e0					ARFCN-ValueEUTRA-r9			OPTIONAL	-- Cond FDD
+}
+
+DAPS-Config-r16 ::=					SEQUENCE {
+	daps-PowerCoordinationInfo-r16		DAPS-PowerCoordinationInfo-r16	OPTIONAL,	-- Need ON
+	...
+}
+
+DAPS-PowerCoordinationInfo-r16 ::=	SEQUENCE {
+	p-DAPS-Source-r16					INTEGER (1..16),
+	p-DAPS-Target-r16					INTEGER (1..16),
+	powerControlMode-r16				INTEGER (1..2)
+}
+
+RACH-Skip-r14 ::=					SEQUENCE {
+	targetTA-r14					CHOICE {
+		ta0-r14							NULL,
+		mcg-PTAG-r14						NULL,
+		scg-PTAG-r14						NULL,
+		mcg-STAG-r14					STAG-Id-r11,
+		scg-STAG-r14					STAG-Id-r11
+	},
+	ul-ConfigInfo-r14				SEQUENCE {
+		numberOfConfUL-Processes-r14			INTEGER (1..8),
+		ul-SchedInterval-r14			ENUMERATED {sf2, sf5, sf10},
+		ul-StartSubframe-r14			INTEGER (0..9),
+		ul-Grant-r14					BIT STRING (SIZE (16))
+	}																OPTIONAL	-- Need OR
+}

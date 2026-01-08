@@ -1,0 +1,73 @@
+
+SL-DiscTxPoolList-r12 ::=		SEQUENCE (SIZE (1..maxSL-TxPool-r12)) OF SL-DiscResourcePool-r12
+
+SL-DiscRxPoolList-r12 ::=		SEQUENCE (SIZE (1..maxSL-RxPool-r12)) OF SL-DiscResourcePool-r12
+
+SL-DiscResourcePool-r12 ::=		SEQUENCE	{
+	cp-Len-r12						SL-CP-Len-r12,
+	discPeriod-r12				ENUMERATED {rf32, rf64, rf128,
+											rf256, rf512, rf1024, rf16-v1310, spare},
+	numRetx-r12					INTEGER (0..3),
+	numRepetition-r12				INTEGER (1..50),
+	tf-ResourceConfig-r12			SL-TF-ResourceConfig-r12,
+	txParameters-r12				SEQUENCE {
+		txParametersGeneral-r12		SL-TxParameters-r12,
+		ue-SelectedResourceConfig-r12	SEQUENCE {
+			poolSelection-r12				CHOICE {
+				rsrpBased-r12					SL-PoolSelectionConfig-r12,
+				random-r12						NULL
+			},
+			txProbability-r12			ENUMERATED {p25, p50, p75, p100}
+		}															OPTIONAL	-- Need OR
+	}																OPTIONAL,	-- Cond Tx
+	rxParameters-r12				SEQUENCE {
+		tdd-Config-r12					TDD-Config					OPTIONAL,	-- Need OR
+		syncConfigIndex-r12			INTEGER (0..15)
+	}																OPTIONAL,	-- Need OR
+	...,
+	[[	discPeriod-v1310				CHOICE {
+			release								NULL,
+			setup								ENUMERATED {rf4, rf6, rf7, rf8,
+													rf12, rf14, rf24, rf28}
+			}														OPTIONAL,	-- Need ON
+		rxParamsAddNeighFreq-r13		CHOICE {
+			release							NULL,
+			setup							SEQUENCE {
+				physCellId-r13					PhysCellIdList-r13
+			}
+		}															OPTIONAL,	-- Need ON
+		txParamsAddNeighFreq-r13		CHOICE {
+			release							NULL,
+			setup							SEQUENCE {
+				physCellId-r13					PhysCellIdList-r13,
+				p-Max							P-Max					OPTIONAL,	-- Need OP
+				tdd-Config-r13					TDD-Config				OPTIONAL,	-- Cond TDD-OR
+				tdd-Config-v1130				TDD-Config-v1130		OPTIONAL,	-- Cond TDD-OR
+				freqInfo							SEQUENCE {
+					ul-CarrierFreq						ARFCN-ValueEUTRA	OPTIONAL,	-- Need OP
+					ul-Bandwidth						ENUMERATED {n6, n15, n25, n50, n75, n100}
+																			OPTIONAL,	-- Need OP
+				additionalSpectrumEmission			AdditionalSpectrumEmission
+				},
+				referenceSignalPower				INTEGER (-60..50),
+				syncConfigIndex-r13				INTEGER (0..15)			OPTIONAL	-- Need OR
+			}
+		}															OPTIONAL	-- Need ON
+	]],
+	[[	txParamsAddNeighFreq-v1370		CHOICE {
+			release							NULL,
+			setup							SEQUENCE {
+				freqInfo-v1370					SEQUENCE {
+					additionalSpectrumEmission-v1370		AdditionalSpectrumEmission-v10l0
+				}
+			}
+		}															OPTIONAL	-- Need ON
+	]]
+}
+
+PhysCellIdList-r13	::=		SEQUENCE (SIZE (1.. maxSL-DiscCells-r13)) OF PhysCellId
+
+SL-PoolSelectionConfig-r12 ::=		SEQUENCE {
+	threshLow-r12							RSRP-RangeSL2-r12,
+	threshHigh-r12							RSRP-RangeSL2-r12
+}

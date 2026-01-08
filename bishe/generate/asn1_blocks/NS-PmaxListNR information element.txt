@@ -1,0 +1,20 @@
+
+NS-PmaxListNR-r15 ::=				SEQUENCE (SIZE (1..8)) OF NS-PmaxValueNR-r15
+
+NS-PmaxValueNR-r15 ::=			SEQUENCE {
+	additionalPmaxNR-r15					P-MaxNR-r15					OPTIONAL,	-- Need ON
+	additionalSpectrumEmissionNR-r15		AdditionalSpectrumEmissionNR-r15
+}
+
+NS-PmaxListNR-v1760 ::=			SEQUENCE (SIZE (1..8)) OF NS-PmaxValueNR-v1760
+
+NS-PmaxValueNR-v1760 ::=			SEQUENCE {
+	additionalSpectrumEmissionNR-v1760	AdditionalSpectrumEmissionNR-v1760	OPTIONAL	-- Need OR
+}
+
+NS-PmaxListNR-Aerial-r18 ::=		SEQUENCE (SIZE (1..8)) OF NS-PmaxValueNR-Aerial-r18
+
+NS-PmaxValueNR-Aerial-r18 ::=		SEQUENCE {
+	additionalPmaxNR-r18				P-MaxNR-r15						OPTIONAL,	-- Need OP
+	additionalSpectrumEmissionNR-r18	AdditionalSpectrumEmissionNR-r18	OPTIONAL	-- Need OP
+}

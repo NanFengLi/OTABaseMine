@@ -1,0 +1,10 @@
+
+TDM-PatternConfig-r15 ::=		CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		subframeAssignment-r15		SubframeAssignment-r15,
+		harq-Offset-r15				INTEGER (0..9)
+	}
+}
+
+SubframeAssignment-r15 ::=		ENUMERATED {sa0, sa1, sa2, sa3, sa4, sa5, sa6}

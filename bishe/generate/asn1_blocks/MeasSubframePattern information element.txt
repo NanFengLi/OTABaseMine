@@ -1,0 +1,11 @@
+
+MeasSubframePattern-r10 ::= CHOICE {
+	subframePatternFDD-r10				BIT STRING (SIZE (40)),
+	subframePatternTDD-r10				CHOICE {
+		subframeConfig1-5-r10					BIT STRING (SIZE (20)),
+		subframeConfig0-r10						BIT STRING (SIZE (70)),
+		subframeConfig6-r10						BIT STRING (SIZE (60)),
+		...
+	},
+	...
+}

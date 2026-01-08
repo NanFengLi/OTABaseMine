@@ -1,0 +1,95 @@
+
+SystemInformationBlockType6 ::=		SEQUENCE {
+	carrierFreqListUTRA-FDD				CarrierFreqListUTRA-FDD			OPTIONAL,		-- Need OR
+	carrierFreqListUTRA-TDD				CarrierFreqListUTRA-TDD			OPTIONAL,		-- Need OR
+	t-ReselectionUTRA					T-Reselection,
+	t-ReselectionUTRA-SF				SpeedStateScaleFactors			OPTIONAL,		-- Need OP
+	...,
+	lateNonCriticalExtension			OCTET STRING	(CONTAINING SystemInformationBlockType6-v8h0-IEs)					OPTIONAL,
+	[[	carrierFreqListUTRA-FDD-v1250 SEQUENCE (SIZE (1..maxUTRA-FDD-Carrier)) OF
+										CarrierFreqInfoUTRA-v1250		OPTIONAL,	-- Cond UTRA-FDD
+		carrierFreqListUTRA-TDD-v1250 SEQUENCE (SIZE (1..maxUTRA-TDD-Carrier)) OF
+										CarrierFreqInfoUTRA-v1250		OPTIONAL,	-- Cond UTRA-TDD
+		carrierFreqListUTRA-FDD-Ext-r12	CarrierFreqListUTRA-FDD-Ext-r12 OPTIONAL,	-- Cond UTRA-FDD
+		carrierFreqListUTRA-TDD-Ext-r12	CarrierFreqListUTRA-TDD-Ext-r12 OPTIONAL		-- Cond UTRA-TDD
+	]]
+}
+
+SystemInformationBlockType6-v8h0-IEs ::=	SEQUENCE {
+	carrierFreqListUTRA-FDD-v8h0 SEQUENCE (SIZE (1..maxUTRA-FDD-Carrier)) OF CarrierFreqInfoUTRA-FDD-v8h0 OPTIONAL,	-- Cond UTRA-FDD
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}
+
+CarrierFreqInfoUTRA-v1250 ::=		SEQUENCE {
+	reducedMeasPerformance-r12		ENUMERATED {true}		OPTIONAL		-- Need OP
+}
+
+CarrierFreqListUTRA-FDD ::=		SEQUENCE (SIZE (1..maxUTRA-FDD-Carrier)) OF CarrierFreqUTRA-FDD
+
+CarrierFreqUTRA-FDD ::=				SEQUENCE {
+	carrierFreq							ARFCN-ValueUTRA,
+	cellReselectionPriority				CellReselectionPriority			OPTIONAL,		-- Need OP
+	threshX-High						ReselectionThreshold,
+	threshX-Low							ReselectionThreshold,
+	q-RxLevMin							INTEGER (-60..-13),
+	p-MaxUTRA							INTEGER (-50..33),
+	q-QualMin							INTEGER (-24..0),
+	...,
+	[[	threshX-Q-r9					SEQUENCE {
+			threshX-HighQ-r9				ReselectionThresholdQ-r9,
+			threshX-LowQ-r9					ReselectionThresholdQ-r9
+		}																OPTIONAL		-- Cond RSRQ
+	]]
+}
+
+CarrierFreqInfoUTRA-FDD-v8h0 ::=			SEQUENCE {
+	multiBandInfoList					SEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator-UTRA-FDD				OPTIONAL	-- Need OR
+}
+
+CarrierFreqListUTRA-FDD-Ext-r12 ::=	SEQUENCE (SIZE (1..maxUTRA-FDD-Carrier)) OF
+									CarrierFreqUTRA-FDD-Ext-r12
+
+CarrierFreqUTRA-FDD-Ext-r12 ::=				SEQUENCE {
+	carrierFreq-r12						ARFCN-ValueUTRA,
+	cellReselectionPriority-r12			CellReselectionPriority			OPTIONAL,	-- Need OP
+	threshX-High-r12					ReselectionThreshold,
+	threshX-Low-r12						ReselectionThreshold,
+	q-RxLevMin-r12						INTEGER (-60..-13),
+	p-MaxUTRA-r12						INTEGER (-50..33),
+	q-QualMin-r12						INTEGER (-24..0),
+	threshX-Q-r12						SEQUENCE {
+			threshX-HighQ-r12				ReselectionThresholdQ-r9,
+			threshX-LowQ-r12				ReselectionThresholdQ-r9
+	}																OPTIONAL,		-- Cond RSRQ
+	multiBandInfoList-r12				SEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator-UTRA-FDD				OPTIONAL,	-- Need OR
+	reducedMeasPerformance-r12			ENUMERATED {true}				OPTIONAL,	-- Need OP
+	...
+}
+
+CarrierFreqListUTRA-TDD ::=		SEQUENCE (SIZE (1..maxUTRA-TDD-Carrier)) OF CarrierFreqUTRA-TDD
+
+CarrierFreqUTRA-TDD ::=				SEQUENCE {
+	carrierFreq							ARFCN-ValueUTRA,
+	cellReselectionPriority				CellReselectionPriority			OPTIONAL,		-- Need OP
+	threshX-High						ReselectionThreshold,
+	threshX-Low							ReselectionThreshold,
+	q-RxLevMin							INTEGER (-60..-13),
+	p-MaxUTRA							INTEGER (-50..33),
+	...
+}
+
+CarrierFreqListUTRA-TDD-Ext-r12 ::=	SEQUENCE (SIZE (1..maxUTRA-TDD-Carrier)) OF
+									CarrierFreqUTRA-TDD-r12
+
+CarrierFreqUTRA-TDD-r12 ::=	SEQUENCE {
+	carrierFreq-r12						ARFCN-ValueUTRA,
+	cellReselectionPriority-r12			CellReselectionPriority			OPTIONAL,		-- Need OP
+	threshX-High-r12					ReselectionThreshold,
+	threshX-Low-r12						ReselectionThreshold,
+	q-RxLevMin-r12						INTEGER (-60..-13),
+	p-MaxUTRA-r12						INTEGER (-50..33),
+	reducedMeasPerformance-r12			ENUMERATED {true}				OPTIONAL,	-- Need OP
+	...
+}
+
+FreqBandIndicator-UTRA-FDD ::=				INTEGER (1..86)

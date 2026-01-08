@@ -1,0 +1,21 @@
+
+WLANConnectionStatusReport-r13 ::=	SEQUENCE {
+	criticalExtensions					CHOICE {
+		c1									CHOICE {
+			wlanConnectionStatusReport-r13		WLANConnectionStatusReport-r13-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+WLANConnectionStatusReport-r13-IEs ::=	SEQUENCE {
+	wlan-Status-r13					WLAN-Status-r13,
+	lateNonCriticalExtension		OCTET STRING							OPTIONAL,
+	nonCriticalExtension			WLANConnectionStatusReport-v1430-IEs	OPTIONAL
+}
+
+WLANConnectionStatusReport-v1430-IEs ::=	SEQUENCE {
+	wlan-Status-v1430				WLAN-Status-v1430,
+	nonCriticalExtension			SEQUENCE {}								OPTIONAL
+}

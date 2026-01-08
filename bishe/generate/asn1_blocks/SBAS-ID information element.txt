@@ -1,0 +1,5 @@
+
+SBAS-ID-r15 ::= SEQUENCE {
+	sbas-id-r15				ENUMERATED {waas, egnos, msas, gagan, ...},
+	...
+}

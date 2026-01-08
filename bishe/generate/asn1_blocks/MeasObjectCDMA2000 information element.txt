@@ -1,0 +1,18 @@
+
+MeasObjectCDMA2000 ::=				SEQUENCE {
+	cdma2000-Type						CDMA2000-Type,
+	carrierFreq							CarrierFreqCDMA2000,
+	searchWindowSize					INTEGER (0..15)						OPTIONAL,	-- Need ON
+	offsetFreq							Q-OffsetRangeInterRAT				DEFAULT 0,
+	cellsToRemoveList					CellIndexList						OPTIONAL,	-- Need ON
+	cellsToAddModList					CellsToAddModListCDMA2000			OPTIONAL,	-- Need ON
+	cellForWhichToReportCGI				PhysCellIdCDMA2000					OPTIONAL,	-- Need ON
+	...
+}
+
+CellsToAddModListCDMA2000 ::=		SEQUENCE (SIZE (1..maxCellMeas)) OF CellsToAddModCDMA2000
+
+CellsToAddModCDMA2000 ::=	SEQUENCE {
+	cellIndex							INTEGER (1..maxCellMeas),
+	physCellId							PhysCellIdCDMA2000
+}

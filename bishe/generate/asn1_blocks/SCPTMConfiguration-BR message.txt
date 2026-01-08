@@ -1,0 +1,15 @@
+
+SCPTMConfiguration-BR-r14 ::=	SEQUENCE {
+	sc-mtch-InfoList-r14			SC-MTCH-InfoList-BR-r14,
+	scptm-NeighbourCellList-r14		SCPTM-NeighbourCellList-r13			OPTIONAL,	-- Need OP
+	p-b-r14							INTEGER (0..3)						OPTIONAL,	-- Need OR
+	lateNonCriticalExtension		OCTET STRING						OPTIONAL,
+	nonCriticalExtension			SCPTMConfiguration-BR-v1610			OPTIONAL
+}
+
+SCPTMConfiguration-BR-v1610 ::=	SEQUENCE {
+	sc-MTCH-InfoList-MultiTB-r16	SC-MTCH-InfoList-BR-r14,
+	multiTB-Gap-r16					ENUMERATED {sf2, sf4, sf8, sf16, sf32, sf64, sf128, spare}
+																		OPTIONAL,	-- Need OR
+	nonCriticalExtension			SEQUENCE {}							OPTIONAL
+}

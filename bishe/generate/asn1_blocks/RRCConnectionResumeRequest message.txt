@@ -1,0 +1,38 @@
+
+RRCConnectionResumeRequest-r13 ::=	SEQUENCE {
+	criticalExtensions						CHOICE {
+		rrcConnectionResumeRequest-r13			RRCConnectionResumeRequest-r13-IEs,	
+		rrcConnectionResumeRequest-r15			RRCConnectionResumeRequest-5GC-r15-IEs
+	}
+}
+
+RRCConnectionResumeRequest-r13-IEs ::=		SEQUENCE {
+	resumeIdentity-r13								CHOICE {
+		resumeID-r13									ResumeIdentity-r13,
+		truncatedResumeID-r13							BIT STRING (SIZE (24))
+	},
+	shortResumeMAC-I-r13							BIT STRING (SIZE (16)),
+	resumeCause-r13									ResumeCause,
+	spare											BIT STRING (SIZE (1))
+}
+
+RRCConnectionResumeRequest-5GC-r15-IEs ::=		SEQUENCE {
+	resumeIdentity-r15								CHOICE {
+		fullI-RNTI-r15									I-RNTI-r15,
+		shortI-RNTI-r15									ShortI-RNTI-r15
+	},
+	shortResumeMAC-I-r15							BIT STRING (SIZE (16)),
+	resumeCause-r15									ResumeCause-r15,
+	spare											BIT STRING (SIZE (1))
+}
+
+ResumeCause ::=				ENUMERATED {
+								emergency, highPriorityAccess, mt-Access, mo-Signalling,
+								mo-Data, delayTolerantAccess-v1020, mo-VoiceCall-v1280,
+								mt-EDT-v1610
+}
+
+ResumeCause-r15 ::=			ENUMERATED {
+								emergency, highPriorityAccess, mt-Access, mo-Signalling,
+								mo-Data, rna-Update, mo-VoiceCall, spare1
+}

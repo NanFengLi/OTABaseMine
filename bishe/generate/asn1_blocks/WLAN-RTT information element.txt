@@ -1,0 +1,12 @@
+
+WLAN-RTT-r15 ::= SEQUENCE {
+	rttValue-r15					INTEGER (0..16777215),
+	rttUnits-r15					ENUMERATED {	microseconds,
+									hundredsofnanoseconds,
+									tensofnanoseconds,
+									nanoseconds,
+									tenthsofnanoseconds,
+									... },
+	rttAccuracy-r15				INTEGER (0..255)							OPTIONAL,
+	...
+}

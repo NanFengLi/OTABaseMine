@@ -1,0 +1,6 @@
+
+CSI-IM-ConfigId-r11 ::=					INTEGER (1..maxCSI-IM-r11)
+CSI-IM-ConfigId-r12 ::=					INTEGER (1..maxCSI-IM-r12)
+CSI-IM-ConfigId-v1250 ::=				INTEGER (maxCSI-IM-r12)
+CSI-IM-ConfigId-v1310 ::=				INTEGER (minCSI-IM-r13..maxCSI-IM-r13)
+CSI-IM-ConfigId-r13 ::=					INTEGER (1..maxCSI-IM-r13)

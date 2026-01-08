@@ -1,0 +1,53 @@
+
+RLF-TimersAndConstants-r9 ::=			CHOICE {
+	release									NULL,
+	setup									SEQUENCE {
+		t301-r9								ENUMERATED {
+												ms100, ms200, ms300, ms400, ms600, ms1000, ms1500,
+												ms2000},
+		t310-r9								ENUMERATED {
+												ms0, ms50, ms100, ms200, ms500, ms1000, ms2000},
+		n310-r9								ENUMERATED {
+												n1, n2, n3, n4, n6, n8, n10, n20},
+		t311-r9								ENUMERATED {
+												ms1000, ms3000, ms5000, ms10000, ms15000,
+												ms20000, ms30000},
+		n311-r9								ENUMERATED {
+												n1, n2, n3, n4, n5, n6, n8, n10},
+		...
+	}
+}
+
+RLF-TimersAndConstants-r13 ::=			CHOICE {
+	release									NULL,
+	setup									SEQUENCE {
+		t301-v1310								ENUMERATED {
+													ms2500, ms3000, ms3500, ms4000, ms5000,
+													ms6000, ms8000, ms10000},
+		...,
+		[[	t310-v1330							ENUMERATED {ms4000, ms6000}	OPTIONAL	-- Need ON
+		]]
+	}
+}
+
+RLF-TimersAndConstantsSCG-r12 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		t313-r12							ENUMERATED {
+												ms0, ms50, ms100, ms200, ms500, ms1000, ms2000},
+		n313-r12							ENUMERATED {
+												n1, n2, n3, n4, n6, n8, n10, n20},
+		n314-r12							ENUMERATED {
+												n1, n2, n3, n4, n5, n6, n8, n10},
+		...
+	}
+}
+
+RLF-TimersAndConstantsMCG-Failure-r16 ::=	CHOICE {
+	release									NULL,
+	setup									SEQUENCE {
+		t316-r16								ENUMERATED {ms50, ms100, ms200, ms300, ms400,
+													ms500, ms600, ms1000, ms1500, ms2000},
+		...
+	}
+}

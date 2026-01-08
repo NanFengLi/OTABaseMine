@@ -1,0 +1,12 @@
+
+SL-HoppingConfigComm-r12 ::=		SEQUENCE	{
+	hoppingParameter-r12				INTEGER (0..504),
+	numSubbands-r12						ENUMERATED {ns1, ns2, ns4},
+	rb-Offset-r12						INTEGER (0..110)
+}
+
+SL-HoppingConfigDisc-r12 ::=	SEQUENCE	{
+	a-r12									INTEGER (1..200),
+	b-r12									INTEGER (1..10),
+	c-r12									ENUMERATED {n1, n5}
+}

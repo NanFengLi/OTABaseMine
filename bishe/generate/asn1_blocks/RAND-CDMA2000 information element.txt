@@ -1,0 +1,2 @@
+
+RAND-CDMA2000 ::=						BIT STRING (SIZE (32))

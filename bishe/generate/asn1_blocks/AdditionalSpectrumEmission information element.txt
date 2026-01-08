@@ -1,0 +1,6 @@
+
+AdditionalSpectrumEmission ::=		INTEGER (1..32)
+
+AdditionalSpectrumEmission-v10l0 ::=	INTEGER (33..288)
+
+AdditionalSpectrumEmission-r18 ::=	INTEGER (1..288)

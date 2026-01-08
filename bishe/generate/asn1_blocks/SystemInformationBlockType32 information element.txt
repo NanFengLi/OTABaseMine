@@ -1,0 +1,42 @@
+
+SystemInformationBlockType32-r17 ::= SEQUENCE {
+	satelliteInfoList-r17				SatelliteInfoList-r17	OPTIONAL,	-- Need OR
+	lateNonCriticalExtension			OCTET STRING					OPTIONAL,
+	...,
+	[[	satelliteInfoList-v1800			SatelliteInfoList-v1800	OPTIONAL	-- Need OR
+	]],
+	[[	satelliteInfoList-v1830			SatelliteInfoList-v1830	OPTIONAL	-- Need OR
+	]]
+
+}
+
+SatelliteInfoList-r17 ::=	SEQUENCE (SIZE (1..maxSat-r17)) OF SatelliteInfo-r17
+
+SatelliteInfoList-v1800 ::=	SEQUENCE (SIZE (1..maxSat-r17)) OF CarrierFreqList-v1800
+
+SatelliteInfoList-v1830 ::=	SEQUENCE (SIZE (1..maxSat-r17)) OF CarrierFreqList-v1830
+
+SatelliteInfo-r17 ::=			SEQUENCE {
+	satelliteId-r17				INTEGER (0..255),
+	serviceInfo-r17				SEQUENCE {
+		tle-EphemerisParameters-r17	TLE-EphemerisParameters-r17	OPTIONAL,	-- Need OR
+		t-ServiceStart-r17				TimeOffsetUTC-r17				OPTIONAL	-- Need OR
+		},
+	footprintInfo-r17			SEQUENCE {
+		referencePoint-r17			SEQUENCE {
+			longitude-r17				INTEGER (-131072..131071),
+			latitude-r17				INTEGER (-131072..131071)
+		} OPTIONAL,	-- Need OR
+		elevationAngles-r17		SEQUENCE {
+			elevationAngleRight-r17	INTEGER (-14..14),
+			elevationAngleLeft-r17	INTEGER (-14..14)				OPTIONAL	-- Need OP
+		} OPTIONAL,	-- Need OR
+		radius-r17					INTEGER (1..256)					OPTIONAL	-- Need OR
+	}
+}
+
+CarrierFreqList-v1800 ::=		SEQUENCE (SIZE (1..maxFreq)) OF ARFCN-ValueEUTRA
+
+CarrierFreqList-v1830 ::=		SEQUENCE {
+	carrierFreqList-r18				SEQUENCE (SIZE (1..maxFreq)) OF ARFCN-ValueEUTRA-r9
+}

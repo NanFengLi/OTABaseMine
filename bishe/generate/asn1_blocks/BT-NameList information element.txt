@@ -1,0 +1,9 @@
+
+BT-NameListConfig-r15 ::=		CHOICE{
+	release						NULL,
+	setup						BT-NameList-r15
+}
+
+BT-NameList-r15 ::=			SEQUENCE (SIZE (1..maxBT-Name-r15)) OF BT-Name-r15
+
+BT-Name-r15 ::=		OCTET STRING (SIZE (1..248))

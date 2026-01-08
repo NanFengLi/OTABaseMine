@@ -1,0 +1,7 @@
+
+MeasGapSharingConfig-r14 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		measGapSharingScheme-r14				ENUMERATED {scheme00, scheme01, scheme10, scheme11}	
+	}
+}

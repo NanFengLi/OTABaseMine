@@ -1,0 +1,45 @@
+
+SystemInformationBlockType31-r17 ::= SEQUENCE {
+	servingSatelliteInfo-r17		ServingSatelliteInfo-r17,
+	lateNonCriticalExtension		OCTET STRING					OPTIONAL,
+	...,
+	[[	servingSatelliteInfo-v1820	ServingSatelliteInfo-v1820		OPTIONAL	-- Need OR
+	]],
+	[[
+	servingSatelliteInfo-v1900	ServingSatelliteInfo-v1900		OPTIONAL	-- Need OR
+	]]
+}
+
+ServingSatelliteInfo-r17 ::=	SEQUENCE {
+	ephemerisInfo-r17			CHOICE {
+		stateVectors				EphemerisStateVectors-r17,
+		orbitalParameters			EphemerisOrbitalParameters-r17
+	},
+	nta-CommonParameters-r17			SEQUENCE {
+		nta-Common-r17					INTEGER (0..8316827)		OPTIONAL,	-- Need OP
+		nta-CommonDrift-r17				INTEGER (-261935..261935)	OPTIONAL,	-- Need OP
+		nta-CommonDriftVariation-r17	INTEGER (0..29479)			OPTIONAL	-- Need OP
+	},
+	ul-SyncValidityDuration-r17		ENUMERATED {s5, s10, s15, s20, s25, s30, s35, s40,
+												s45, s50, s55, s60, s120, s180, s240, s900},
+	epochTime-r17					SEQUENCE {
+		startSFN-r17					INTEGER (0..1023),
+		startSubFrame-r17				INTEGER (0..9)
+	}																OPTIONAL,	-- Need OP
+	k-Offset-r17					INTEGER (0..1023),
+	k-Mac-r17						INTEGER (1..512)				OPTIONAL,	-- Need OP
+	...
+}
+
+ServingSatelliteInfo-v1820 ::=	SEQUENCE {
+	satelliteId-r18				SatelliteId-r18					OPTIONAL,	-- Need OR
+	referenceLocation-r18			CHOICE {
+		fixedReferenceLocation-r18			ReferenceLocation-r18,
+		movingReferenceLocation-r18			ReferenceLocation-r18
+	}															OPTIONAL,	-- Need OR
+	distanceThresh-r18				INTEGER(0..65535)			OPTIONAL	-- Need OR
+}
+
+ServingSatelliteInfo-v1900 ::=	SEQUENCE {
+	t-ModeSwitching-r19			TimeOffsetUTC-r17				OPTIONAL	-- Need OR
+}

@@ -1,0 +1,8 @@
+
+LogMeasResultListBT-r15 ::=		SEQUENCE (SIZE (1..maxBT-IdReport-r15)) OF LogMeasResultBT-r15
+
+LogMeasResultBT-r15 ::= SEQUENCE {
+	bt-Addr-r15						BIT STRING (SIZE (48)),
+	rssi-BT-r15						INTEGER (-128..127)			OPTIONAL,
+	...
+}

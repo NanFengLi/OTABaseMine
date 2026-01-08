@@ -1,0 +1,4 @@
+
+CellIndexList ::=						SEQUENCE (SIZE (1..maxCellMeas)) OF CellIndex
+
+CellIndex ::=							INTEGER (1..maxCellMeas)

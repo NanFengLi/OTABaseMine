@@ -1,0 +1,5 @@
+
+CarrierFreqCDMA2000 ::=			SEQUENCE {
+	bandClass							BandclassCDMA2000,
+	arfcn							ARFCN-ValueCDMA2000
+}

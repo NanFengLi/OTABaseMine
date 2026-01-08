@@ -1,0 +1,6 @@
+PerCC-GapIndicationList-r14 ::=	SEQUENCE (SIZE (1..maxServCell-r13)) OF PerCC-GapIndication-r14
+
+PerCC-GapIndication-r14 ::=			SEQUENCE {
+	servCellId-r14								ServCellIndex-r13,		
+	gapIndication-r14							ENUMERATED {gap, ncsg, nogap-noNcsg}
+}

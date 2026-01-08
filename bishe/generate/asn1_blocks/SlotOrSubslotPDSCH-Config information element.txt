@@ -1,0 +1,18 @@
+
+SlotOrSubslotPDSCH-Config-r15 ::= CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		altCQI-TableSTTI-r15			ENUMERATED {
+											allSubframes, csi-SubframeSet1,
+											csi-SubframeSet2, spare1}			OPTIONAL, -- Need OR
+		altCQI-Table1024QAM-STTI-r15	ENUMERATED {
+											allSubframes, csi-SubframeSet1,
+											csi-SubframeSet2, spare1}			OPTIONAL, -- Need OR
+		resourceAllocation-r15			ENUMERATED {
+							resourceAllocationType0,resourceAllocationType2}	OPTIONAL, -- Need OR
+		tbsIndexAlt-STTI-r15			ENUMERATED {a33}			OPTIONAL, -- Need OR
+		tbsIndexAlt2-STTI-r15			ENUMERATED {b33}			OPTIONAL, -- Need OR
+		tbsIndexAlt3-STTI-r15			ENUMERATED {a37}			OPTIONAL, -- Need OR
+			...
+	}
+}

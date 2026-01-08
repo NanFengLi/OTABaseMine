@@ -1,0 +1,18 @@
+
+SL-V2X-PacketDuplicationConfig-r15 ::=	SEQUENCE {
+	threshSL-Reliability-r15		SL-Reliability-r15,
+	allowedCarrierFreqConfig-r15	SL-PPPR-Dest-CarrierFreqList-r15		OPTIONAL,	-- Need OR
+	...
+}
+
+SL-PPPR-Dest-CarrierFreqList-r15 ::=	SEQUENCE (SIZE (1..maxSL-Dest-r12)) OF SL-PPPR-Dest-CarrierFreq
+
+SL-PPPR-Dest-CarrierFreq ::=	SEQUENCE {
+	destinationInfoList-r15			SL-DestinationInfoList-r12		OPTIONAL,	-- Need OR
+	allowedCarrierFreqList-r15		SL-AllowedCarrierFreqList-r15			OPTIONAL	-- Need OR
+}
+
+SL-AllowedCarrierFreqList-r15 ::=	SEQUENCE {
+	allowedCarrierFreqSet1		SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9,
+	allowedCarrierFreqSet2		SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9
+}

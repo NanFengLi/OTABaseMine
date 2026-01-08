@@ -1,0 +1,2 @@
+
+DedicatedInfoNAS ::=		OCTET STRING

@@ -1,0 +1,2 @@
+
+CondReconfigurationId-r16 ::= INTEGER (1.. maxCondConfig-r16)

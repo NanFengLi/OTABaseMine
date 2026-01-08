@@ -1,0 +1,2 @@
+
+ResumeIdentity-r13 ::=						BIT STRING (SIZE(40))

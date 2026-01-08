@@ -1,0 +1,6 @@
+
+RSRQ-Range ::=					INTEGER(0..34)
+
+RSRQ-Range-v1250 ::=			INTEGER(-30..46)
+
+RSRQ-Range-r13 ::=				INTEGER(-30..46)

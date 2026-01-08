@@ -1,0 +1,6 @@
+
+CellGlobalIdGERAN ::=					SEQUENCE {
+	plmn-Identity							PLMN-Identity,
+	locationAreaCode						BIT STRING (SIZE (16)),
+	cellIdentity						BIT STRING (SIZE (16))
+}

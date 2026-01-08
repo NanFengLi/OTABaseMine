@@ -1,0 +1,5 @@
+
+TraceReference-r10 ::=			SEQUENCE {
+	plmn-Identity-r10				PLMN-Identity,
+	traceId-r10						OCTET STRING (SIZE (3))
+}

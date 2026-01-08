@@ -1,0 +1,33 @@
+
+CounterCheckResponse ::=			SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		counterCheckResponse-r8				CounterCheckResponse-r8-IEs,
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+CounterCheckResponse-r8-IEs ::=	SEQUENCE {
+	drb-CountInfoList					DRB-CountInfoList,
+	nonCriticalExtension				CounterCheckResponse-v8a0-IEs		OPTIONAL
+}
+
+CounterCheckResponse-v8a0-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				CounterCheckResponse-v1530-IEs		OPTIONAL
+}
+
+CounterCheckResponse-v1530-IEs ::= SEQUENCE {
+	drb-CountInfoListExt-r15			DRB-CountInfoListExt-r15			OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}
+
+DRB-CountInfoList ::=			SEQUENCE (SIZE (0..maxDRB)) OF DRB-CountInfo
+
+DRB-CountInfoListExt-r15 ::=	SEQUENCE (SIZE (1..maxDRBExt-r15)) OF DRB-CountInfo
+
+DRB-CountInfo ::=	SEQUENCE {
+	drb-Identity					DRB-Identity,
+	count-Uplink					INTEGER(0..4294967295),
+	count-Downlink					INTEGER(0..4294967295)
+}

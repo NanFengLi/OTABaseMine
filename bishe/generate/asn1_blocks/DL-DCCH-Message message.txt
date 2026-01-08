@@ -1,0 +1,25 @@
+
+DL-DCCH-Message ::= SEQUENCE {
+	message					DL-DCCH-MessageType
+}
+
+DL-DCCH-MessageType ::= CHOICE {
+	c1						CHOICE {
+		csfbParametersResponseCDMA2000			CSFBParametersResponseCDMA2000,
+		dlInformationTransfer					DLInformationTransfer,
+		handoverFromEUTRAPreparationRequest		HandoverFromEUTRAPreparationRequest,
+		mobilityFromEUTRACommand				MobilityFromEUTRACommand,
+		rrcConnectionReconfiguration			RRCConnectionReconfiguration,
+		rrcConnectionRelease					RRCConnectionRelease,
+		securityModeCommand						SecurityModeCommand,
+		ueCapabilityEnquiry						UECapabilityEnquiry,
+		counterCheck							CounterCheck,
+		ueInformationRequest-r9					UEInformationRequest-r9,
+		loggedMeasurementConfiguration-r10		LoggedMeasurementConfiguration-r10,
+		rnReconfiguration-r10					RNReconfiguration-r10,
+		rrcConnectionResume-r13					RRCConnectionResume-r13,
+		dlDedicatedMessageSegment-r16			DLDedicatedMessageSegment-r16,
+		spare2 NULL, spare1 NULL
+	},
+	messageClassExtension	SEQUENCE {}
+}

@@ -1,0 +1,44 @@
+
+
+SPUCCH-Config-r15 ::= CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		spucch-Set-r15					SPUCCH-Set-r15		OPTIONAL, -- Need ON
+		twoAntennaPortActivatedSPUCCH-Format1a1b-r15	ENUMERATED {true}	OPTIONAL,	-- Need OR
+		dummy							SEQUENCE {
+			n3SPUCCH-AN-List-r15			SEQUENCE (SIZE (1..4)) OF INTEGER (0..549)
+		}
+	}
+}
+
+SPUCCH-Config-v1550 ::= CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		twoAntennaPortActivatedSPUCCH-Format3-v1550		SEQUENCE {
+			n3SPUCCH-AN-List-v1550		SEQUENCE (SIZE (1..4)) OF INTEGER (0..549)
+		}
+	}
+}
+
+SPUCCH-Set-r15 ::= SEQUENCE (SIZE (1..4)) OF SPUCCH-Elements-r15
+
+SPUCCH-Elements-r15 ::= CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		n1SubslotSPUCCH-AN-List-r15		SEQUENCE (SIZE(1..4)) OF INTEGER (0..1319) OPTIONAL, -- Need OR
+		n1SlotSPUCCH-FH-AN-List-r15		INTEGER (0..1319)		OPTIONAL, -- Need OR
+		n1SlotSPUCCH-NoFH-AN-List-r15	INTEGER (0..3959)		OPTIONAL, -- Need OR
+		n3SPUCCH-AN-List-r15			INTEGER (0..549)		OPTIONAL, -- Need OR
+		n4SPUCCHSlot-Resource-r15		SEQUENCE (SIZE(1..2)) OF N4SPUCCH-Resource-r15	OPTIONAL, -- Need OR
+		n4SPUCCHSubslot-Resource-r15	SEQUENCE (SIZE(1..2)) OF N4SPUCCH-Resource-r15	OPTIONAL, -- Need OR
+		n4maxCoderateSlotPUCCH-r15		INTEGER (0..7)			OPTIONAL, -- Need OR
+		n4maxCoderateSubslotPUCCH-r15	INTEGER (0..7)			OPTIONAL, -- Need OR
+		n4maxCoderateMultiResourceSlotPUCCH-r15	INTEGER (0..7)		OPTIONAL,	-- Need OR
+		n4maxCoderateMultiResourceSubslotPUCCH-r15	INTEGER (0..7)		OPTIONAL	-- Need OR
+	}
+}
+
+N4SPUCCH-Resource-r15 ::= SEQUENCE {
+	n4startingPRB-r15				INTEGER (0..109),
+	n4numberOfPRB-r15				INTEGER (0..7)
+}

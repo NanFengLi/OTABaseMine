@@ -1,0 +1,71 @@
+
+CB-Msg3-ConfigSIB-r19 ::=			SEQUENCE {	
+	cb-Msg3-MinRSRP-Threshold-r19		RSRP-Range							OPTIONAL,	--Need OR
+	cb-Msg3-RSRP-CE-Level-r19			RSRP-Range							OPTIONAL,	--Need OR
+	cb-Msg3-ConfigList-r19				CB-Msg3-ConfigList-r19,
+	powerRampingParameters-r19			PowerRampingParameters-r19
+}
+
+CB-Msg3-ConfigList-r19 ::=		SEQUENCE (SIZE (1.. maxCE-Level-CB-Msg3-r19)) OF CB-Msg3-Config-r19
+
+CB-Msg3-Config-r19 ::=				SEQUENCE {
+	cb-Msg3-TBS-r19							ENUMERATED {b144, b328, b408, b504, b600, b712,
+														b808, b936},
+	cb-Msg3-NumOfReplicas-r19				INTEGER(1..4),
+	cb-Msg3-TimeResource-r19		SEQUENCE {
+		pusch-Periodicity-r19					ENUMERATED {sf2, sf4, sf8, sf16, sf32, sf64, sf128,
+															sf256},
+		pusch-StartSFN-r19					INTEGER (0..1023),
+		pusch-StartSubframe-r19				INTEGER (0..9)
+	},
+	cb-Msg3-MPDCCH-Config-r19				CB-Msg3-MPDCCH-Config-r19,
+	cb-Msg3-PUCCH-Config-r19				CB-Msg3-PUCCH-Config-r19,
+	cb-Msg3-PUSCH-Config-r19				CB-Msg3-PUSCH-Config-r19,
+	cb-Msg3-TxWindow-r19			SEQUENCE {
+		windowSize-r19						ENUMERATED {n1, n2, n4, n8, n16, n32, n64,
+														n128},
+		windowPeriodicity-r19				ENUMERATED {n1, n2, n4, n8, n16, n32, n64,
+														n128}				OPTIONAL	--Need OP
+	}																		OPTIONAL,	--Need OP
+	cb-Msg3-ResponseWindow-r19				ENUMERATED {sf240, sf480, sf960,
+														sf1920, sf3840, sf5760, sf7680, sf10240},
+	cb-Msg3-MaxAttemptNum-r19				ENUMERATED {n2, n3, n4, n5, n6, n7, n8, n10} 	
+																			OPTIONAL,	--Need OP
+	...
+}
+
+CB-Msg3-MPDCCH-Config-r19 ::=		SEQUENCE {
+	mpdcch-Narrowband-r19			SEQUENCE (SIZE(1..2)) OF INTEGER (1..maxAvailNarrowBands-r13),
+	mpdcch-PRB-PairsConfig-r19		SEQUENCE{
+		numberPRB-Pairs-r19				ENUMERATED {n2, n4, n6, spare1},
+		resourceBlockAssignment-r19		BIT STRING (SIZE(4))
+	},
+	mpdcch-NumRepetition-r19		ENUMERATED {r1, r2, r4, r8, r16, r32, r64, r128, r256},
+	mpdcch-StartSF-CSS-r19			ENUMERATED {v1, v1dot5, v2, v2dot5, v4, v5, v8, v10},
+	mpdcch-Offset-CSS-r19			ENUMERATED {zero, oneEighth, oneQuarter,
+												threeEighth, oneHalf, fiveEighth,
+												threeQuarter, sevenEighth}
+}
+
+CB-Msg3-PUCCH-Config-r19 ::=		SEQUENCE {
+	n1PUCCH-AN-r19						INTEGER (0..2047)			OPTIONAL,	-- Need OR
+	pucch-NumRepetitionCE-Format1-r19	ENUMERATED {n1, n2, n4, n8} OPTIONAL	-- Need OR
+}
+
+CB-Msg3-PUSCH-Config-r19 ::=		SEQUENCE {
+	numRUs-r19							BIT STRING (SIZE(2)),
+	prb-AllocationInfoSet-r19			SEQUENCE (SIZE(1..48)) OF BIT STRING (SIZE(10)),
+	mcs-r19								BIT STRING (SIZE(4)),
+	numRepetitions-r19					BIT STRING (SIZE(3)),
+	p0-UE-PUSCH-r19						INTEGER (-8..7),
+	alpha-r19							Alpha-r12
+}
+
+PowerRampingParameters-r19 ::=			SEQUENCE {
+	powerRampingStep-r19					ENUMERATED {dB0, dB2, dB4, dB6},
+	cb-Msg3-InitialReceivedTargetPower-r19	ENUMERATED {
+											dBm-120, dBm-118, dBm-116, dBm-114, dBm-112,
+											dBm-110, dBm-108, dBm-106, dBm-104, dBm-102,
+											dBm-100, dBm-98, dBm-96, dBm-94,
+											dBm-92, dBm-90}
+}

@@ -1,0 +1,31 @@
+
+SystemInformationBlockType4 ::=		SEQUENCE {
+	intraFreqNeighCellList				IntraFreqNeighCellList		OPTIONAL,	-- Need OR
+	intraFreqExcludedCellList				IntraFreqExcludedCellList				OPTIONAL,	-- Need OR
+	csg-PhysCellIdRange					PhysCellIdRange				OPTIONAL,	-- Cond CSG
+	...,
+	lateNonCriticalExtension				OCTET STRING				OPTIONAL,
+	[[	intraFreqNeighHSDN-CellList-r15		IntraFreqNeighHSDN-CellList-r15	OPTIONAL	-- Need OR
+	]],
+	[[	rss-ConfigCarrierInfo-r16			RSS-ConfigCarrierInfo-r16		OPTIONAL,	-- Cond RSS
+		intraFreqNeighCellList-v1610		IntraFreqNeighCellList-v1610	OPTIONAL	-- Cond RSS
+	]]
+}
+
+IntraFreqNeighCellList ::=		SEQUENCE (SIZE (1..maxCellIntra)) OF IntraFreqNeighCellInfo
+
+IntraFreqNeighCellList-v1610 ::=	SEQUENCE (SIZE (1..maxCellIntra)) OF IntraFreqNeighCellInfo-v1610
+
+IntraFreqNeighHSDN-CellList-r15 ::= SEQUENCE (SIZE (1..maxCellIntra)) OF PhysCellIdRange
+
+IntraFreqNeighCellInfo ::=		SEQUENCE {
+	physCellId								PhysCellId,
+	q-OffsetCell							Q-OffsetRange,
+	...
+}
+
+IntraFreqNeighCellInfo-v1610 ::=	SEQUENCE {
+	rss-MeasPowerBias-r16				RSS-MeasPowerBias-r16
+}
+
+IntraFreqExcludedCellList ::=		SEQUENCE (SIZE (1..maxExcludedCell)) OF PhysCellIdRange

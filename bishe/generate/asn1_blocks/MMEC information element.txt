@@ -1,0 +1,2 @@
+
+MMEC ::=							BIT STRING (SIZE (8))

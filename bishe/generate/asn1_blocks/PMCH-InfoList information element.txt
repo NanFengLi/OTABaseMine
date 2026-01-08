@@ -1,0 +1,81 @@
+
+PMCH-InfoList-r9 ::=				SEQUENCE (SIZE (0..maxPMCH-PerMBSFN)) OF PMCH-Info-r9
+
+PMCH-InfoListExt-r12 ::=			SEQUENCE (SIZE (0..maxPMCH-PerMBSFN)) OF PMCH-InfoExt-r12
+
+PMCH-InfoListExt-v1900 ::=			SEQUENCE (SIZE (0..maxPMCH-PerMBSFN)) OF PMCH-InfoExt-r19
+
+PMCH-Info-r9 ::=					SEQUENCE {
+	pmch-Config-r9						PMCH-Config-r9,
+	mbms-SessionInfoList-r9			MBMS-SessionInfoList-r9,
+	...
+}
+
+PMCH-InfoExt-r19 ::=				SEQUENCE {
+	pmch-Config-r19						PMCH-Config-r12,
+	pmch-TFI-Config-r19					PMCH-TFI-Config-r19			OPTIONAL, 	-- Need OR
+	mbms-SessionInfoList-r19			MBMS-SessionInfoList-r9,
+	...
+}
+
+PMCH-InfoExt-r12 ::=				SEQUENCE {
+	pmch-Config-r12						PMCH-Config-r12,
+	mbms-SessionInfoList-r12			MBMS-SessionInfoList-r9,
+	...
+}
+
+MBMS-SessionInfoList-r9 ::=		SEQUENCE (SIZE (0..maxSessionPerPMCH)) OF MBMS-SessionInfo-r9
+
+MBMS-SessionInfo-r9 ::=			SEQUENCE {
+	tmgi-r9								TMGI-r9,
+	sessionId-r9						OCTET STRING (SIZE (1))		OPTIONAL,	-- Need OR
+	logicalChannelIdentity-r9			INTEGER (0..maxSessionPerPMCH-1),
+	...
+}
+
+PMCH-Config-r9 ::=					SEQUENCE {
+	sf-AllocEnd-r9						INTEGER (0..1535),
+	dataMCS-r9							INTEGER (0..28),
+	mch-SchedulingPeriod-r9			ENUMERATED {
+										rf8, rf16, rf32, rf64, rf128, rf256, rf512, rf1024},
+	...
+}
+
+PMCH-Config-r12 ::=					SEQUENCE {
+	sf-AllocEnd-r12						INTEGER (0..1535),
+	dataMCS-r12							CHOICE {
+		normal-r12							INTEGER (0..28),
+		higerOrder-r12						INTEGER (0..27)
+	},
+	mch-SchedulingPeriod-r12		ENUMERATED {
+										rf4, rf8, rf16, rf32, rf64, rf128, rf256, rf512, rf1024},
+	...,
+	[[	mch-SchedulingPeriod-v1430		ENUMERATED {rf1, rf2}			OPTIONAL	-- Need OR
+	]]
+}
+
+PMCH-TFI-Config-r19 ::=			SEQUENCE {
+	pmch-TimeInterleavingConfig-r19		SEQUENCE {
+		pmch-TimeInterleavingM-r19			ENUMERATED {sf4, sf8, sf16, sf32},
+		pmch-TimeInterleavingN-r19			ENUMERATED {n2, n4, n8, n16},
+		pmch-TimeInterleavingM-LastMTCH-r19	ENUMERATED {sf4, sf8, sf16, sf32}	OPTIONAL,	-- Need OR
+		pmch-TimeInterleavingN-LastMTCH-r19	ENUMERATED {n2, n4, n8, n16}			OPTIONAL,	-- Need OR
+		pmch-SoftBufferSizeParameters-r19	PMCH-SoftBufferSizeParameters-r19,
+		pmch-CyclicShiftAlpha-r19 			ENUMERATED {alpha1, alpha2, alpha3}	OPTIONAL 	-- Need OR
+	}					OPTIONAL, -- Need OR
+	pmch-FreqInterleaving-r19			ENUMERATED {enabled}						OPTIONAL, -- Need OR
+	mch-SchedulingPeriod-v1900			ENUMERATED {rf7, rf14, rf28, rf53, rf56, rf108, rf112, rf212, rf424}		OPTIONAL -- Need OR
+}
+
+PMCH-SoftBufferSizeParameters-r19 ::=	SEQUENCE {
+	refUE-CategoryDL-r19					INTEGER (4..26),
+	scalingFactorBeta-r19					ENUMERATED {one32nd, one5th, one3rd, three8th, five12th, onehalf, five8th, two3rd, five6th, one}
+}
+
+TMGI-r9 ::=						SEQUENCE {
+	plmn-Id-r9							CHOICE {
+		plmn-Index-r9						INTEGER (1..maxPLMN-r11),
+		explicitValue-r9					PLMN-Identity
+	},
+	serviceId-r9						OCTET STRING (SIZE (3))
+}

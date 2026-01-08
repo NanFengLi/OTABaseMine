@@ -1,0 +1,17 @@
+
+RCLWI-Configuration-r13 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		rclwi-Config-r13					RCLWI-Config-r13
+	}
+}
+
+RCLWI-Config-r13 ::=				SEQUENCE {
+	command								CHOICE {
+		steerToWLAN-r13						SEQUENCE {
+			mobilityConfig-r13					WLAN-Id-List-r12
+		},
+		steerToLTE-r13						NULL
+	},
+	...
+}

@@ -1,0 +1,18 @@
+
+SC-MCCH-Message-r13 ::= SEQUENCE {
+	message					SC-MCCH-MessageType-r13
+}
+
+
+SC-MCCH-MessageType-r13 ::= CHOICE {
+	c1						CHOICE {
+		scptmConfiguration-r13						SCPTMConfiguration-r13
+	},
+	messageClassExtension	CHOICE {
+		c2							CHOICE {
+			scptmConfiguration-BR-r14				SCPTMConfiguration-BR-r14,
+			spare									NULL
+		},
+		messageClassExtensionFuture-r14	SEQUENCE {}
+	}
+}

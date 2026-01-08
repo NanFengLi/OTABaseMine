@@ -1,0 +1,19 @@
+
+SL-InterFreqInfoListV2X-r14 ::=	SEQUENCE (SIZE (0..maxFreqV2X-1-r14)) OF SL-InterFreqInfoV2X-r14
+
+SL-InterFreqInfoV2X-r14 ::=		SEQUENCE {
+	plmn-IdentityList-r14				PLMN-IdentityList			OPTIONAL,		-- Need OP
+	v2x-CommCarrierFreq-r14			ARFCN-ValueEUTRA-r9,
+	sl-MaxTxPower-r14					P-Max				OPTIONAL,		-- Need OR
+	sl-Bandwidth-r14					ENUMERATED {n6, n15, n25, n50, n75, n100}	OPTIONAL,	-- Need OR
+	v2x-SchedulingPool-r14				SL-CommResourcePoolV2X-r14				OPTIONAL,	-- Need OR
+	v2x-UE-ConfigList-r14		SL-V2X-UE-ConfigList-r14	OPTIONAL,	-- Need OR
+	...,
+	[[	additionalSpectrumEmissionV2X-r14		CHOICE {
+			additionalSpectrumEmission-r14			AdditionalSpectrumEmission,
+			additionalSpectrumEmission-v1440		AdditionalSpectrumEmission-v10l0
+		}				OPTIONAL		-- Need ON
+	]],
+	[[	v2x-FreqSelectionConfigList-r15	SL-V2X-FreqSelectionConfigList-r15	OPTIONAL	--Need OR
+	]]
+}

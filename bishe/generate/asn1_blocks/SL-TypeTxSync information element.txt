@@ -1,0 +1,2 @@
+
+SL-TypeTxSync-r14 ::=		ENUMERATED {gnss, enb, ue}

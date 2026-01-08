@@ -1,0 +1,402 @@
+
+RRCConnectionReconfiguration ::=	SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		c1									CHOICE{
+			rrcConnectionReconfiguration-r8		RRCConnectionReconfiguration-r8-IEs,
+			spare7 NULL,
+			spare6 NULL, spare5 NULL, spare4 NULL,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+RRCConnectionReconfiguration-r8-IEs ::= SEQUENCE {
+	measConfig							MeasConfig						OPTIONAL,	-- Need ON
+	mobilityControlInfo					MobilityControlInfo				OPTIONAL,	-- Cond HO
+	dedicatedInfoNASList				SEQUENCE (SIZE(1..maxDRB)) OF
+											DedicatedInfoNAS			OPTIONAL,	-- Cond nonHO
+	radioResourceConfigDedicated		RadioResourceConfigDedicated	OPTIONAL, -- Cond HO-toEUTRA
+	securityConfigHO					SecurityConfigHO				OPTIONAL,	-- Cond HO-toEPC
+	nonCriticalExtension				RRCConnectionReconfiguration-v890-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v890-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING (CONTAINING RRCConnectionReconfiguration-v8m0-IEs)	OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfiguration-v920-IEs	OPTIONAL
+}
+
+-- Late non-critical extensions:
+RRCConnectionReconfiguration-v8m0-IEs ::= SEQUENCE {
+	-- Following field is only for pre REL-10 late non-critical extensions
+	lateNonCriticalExtension			OCTET STRING								OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfiguration-v10i0-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v10i0-IEs ::= SEQUENCE {
+	antennaInfoDedicatedPCell-v10i0	AntennaInfoDedicated-v10i0		OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionReconfiguration-v10l0-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v10l0-IEs ::= SEQUENCE {
+	mobilityControlInfo-v10l0			MobilityControlInfo-v10l0			OPTIONAL,
+	sCellToAddModList-v10l0			SCellToAddModList-v10l0			OPTIONAL,	-- Need ON
+	-- Following field is only for late non-critical extensions from REL-10 to REL-11
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfiguration-v12f0-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v12f0-IEs ::= SEQUENCE {
+	scg-Configuration-v12f0			SCG-Configuration-v12f0		OPTIONAL,	-- Cond nonFullConfig
+	-- Following field is only for late non-critical extensions from REL-12
+	lateNonCriticalExtension			OCTET STRING					OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfiguration-v1370-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1370-IEs ::= SEQUENCE {
+	radioResourceConfigDedicated-v1370	RadioResourceConfigDedicated-v1370	OPTIONAL, -- Need ON
+	sCellToAddModListExt-v1370			SCellToAddModListExt-v1370	OPTIONAL,	-- Need ON
+	nonCriticalExtension					RRCConnectionReconfiguration-v13c0-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v13c0-IEs ::= SEQUENCE {
+	radioResourceConfigDedicated-v13c0	RadioResourceConfigDedicated-v13c0	OPTIONAL, -- Need ON
+	sCellToAddModList-v13c0				SCellToAddModList-v13c0		OPTIONAL,	-- Need ON
+	sCellToAddModListExt-v13c0			SCellToAddModListExt-v13c0	OPTIONAL,	-- Need ON
+	scg-Configuration-v13c0				SCG-Configuration-v13c0		OPTIONAL,	-- Need ON
+	-- Following field is only for late non-critical extensions from REL-13 onwards
+	nonCriticalExtension					SEQUENCE {}					OPTIONAL
+}
+
+-- Regular non-critical extensions:
+RRCConnectionReconfiguration-v920-IEs ::= SEQUENCE {
+	otherConfig-r9						OtherConfig-r9				OPTIONAL,	-- Need ON
+	fullConfig-r9						ENUMERATED {true}			OPTIONAL,	-- Cond HO-Reestab
+	nonCriticalExtension				RRCConnectionReconfiguration-v1020-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1020-IEs ::= SEQUENCE {
+	sCellToReleaseList-r10			SCellToReleaseList-r10			OPTIONAL,	-- Need ON
+	sCellToAddModList-r10				SCellToAddModList-r10				OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionReconfiguration-v1130-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1130-IEs ::= SEQUENCE {
+	systemInformationBlockType1Dedicated-r11	OCTET STRING (CONTAINING SystemInformationBlockType1)																			OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionReconfiguration-v1250-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1250-IEs ::= SEQUENCE {
+	wlan-OffloadInfo-r12				CHOICE {
+		release								NULL,
+		setup									SEQUENCE {
+			wlan-OffloadConfigDedicated-r12		WLAN-OffloadConfig-r12,
+			t350-r12								ENUMERATED {min5, min10, min20, min30, min60,
+												min120, min180, spare1}	OPTIONAL	-- Need OR
+		}
+	}																	OPTIONAL,		-- Need ON
+	scg-Configuration-r12				SCG-Configuration-r12		OPTIONAL,	-- Cond nonFullConfig
+	sl-SyncTxControl-r12				SL-SyncTxControl-r12			OPTIONAL,	-- Need ON
+	sl-DiscConfig-r12					SL-DiscConfig-r12				OPTIONAL,	-- Need ON
+	sl-CommConfig-r12					SL-CommConfig-r12				OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionReconfiguration-v1310-IEs	OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1310-IEs ::= SEQUENCE {
+	sCellToReleaseListExt-r13			SCellToReleaseListExt-r13		OPTIONAL,	-- Need ON
+	sCellToAddModListExt-r13			SCellToAddModListExt-r13		OPTIONAL,	-- Need ON
+	lwa-Configuration-r13				LWA-Configuration-r13			OPTIONAL,	-- Need ON
+	lwip-Configuration-r13				LWIP-Configuration-r13			OPTIONAL,	-- Need ON
+	rclwi-Configuration-r13				RCLWI-Configuration-r13			OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionReconfiguration-v1430-IEs						OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1430-IEs ::= SEQUENCE {
+	sl-V2X-ConfigDedicated-r14		SL-V2X-ConfigDedicated-r14		OPTIONAL,	-- Need ON
+	sCellToAddModListExt-v1430		SCellToAddModListExt-v1430		OPTIONAL,	-- Need ON
+	perCC-GapIndicationRequest-r14	ENUMERATED{true}					OPTIONAL,	-- Need ON
+	systemInformationBlockType2Dedicated-r14	OCTET STRING (CONTAINING SystemInformationBlockType2)											OPTIONAL,	-- Cond nonHO
+	nonCriticalExtension			RRCConnectionReconfiguration-v1510-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1510-IEs ::= SEQUENCE {
+	nr-Config-r15					CHOICE {
+		release							NULL,
+		setup							SEQUENCE {
+			endc-ReleaseAndAdd-r15	BOOLEAN,
+			nr-SecondaryCellGroupConfig-r15	OCTET STRING				OPTIONAL,	-- Need ON
+			p-MaxEUTRA-r15					P-Max						OPTIONAL	-- Need ON
+		}
+	}																	OPTIONAL,	-- Need ON
+	sk-Counter-r15					INTEGER (0.. 65535)					OPTIONAL,	-- Need ON
+	nr-RadioBearerConfig1-r15		OCTET STRING						OPTIONAL,	-- Need ON
+	nr-RadioBearerConfig2-r15		OCTET STRING						OPTIONAL,	-- Need ON
+	tdm-PatternConfig-r15			TDM-PatternConfig-r15			OPTIONAL,	-- Cond FDD-PCell
+	nonCriticalExtension			RRCConnectionReconfiguration-v1530-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1530-IEs ::= SEQUENCE {
+	securityConfigHO-v1530				SecurityConfigHO-v1530			OPTIONAL,	-- Cond HO-5GC
+	sCellGroupToReleaseList-r15		SCellGroupToReleaseList-r15			OPTIONAL,	-- Need ON
+	sCellGroupToAddModList-r15		SCellGroupToAddModList-r15			OPTIONAL,	-- Need ON
+	dedicatedInfoNASList-r15		SEQUENCE (SIZE(1..maxDRB-r15)) OF
+											DedicatedInfoNAS			OPTIONAL,	-- Cond nonHO
+	p-MaxUE-FR1-r15					P-Max								OPTIONAL,	-- Need OR
+	smtc-r15						MTC-SSB-NR-r15						OPTIONAL,	-- Need OP
+	nonCriticalExtension			RRCConnectionReconfiguration-v1610-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1610-IEs ::= SEQUENCE {
+	conditionalReconfiguration-r16			ConditionalReconfiguration-r16	OPTIONAL, -- Need ON
+	daps-SourceRelease-r16					ENUMERATED{true}				OPTIONAL, -- Need ON
+	tdm-PatternConfig2-r16						TDM-PatternConfig-r15			OPTIONAL, -- Need ON
+	sl-ConfigDedicatedForNR-r16					OCTET STRING					OPTIONAL, -- Need OR
+	sl-SSB-PriorityEUTRA-r16					INTEGER (1..8)					OPTIONAL, -- Need OR
+	nonCriticalExtension			RRCConnectionReconfiguration-v1700-IEs		OPTIONAL
+}
+
+RRCConnectionReconfiguration-v1700-IEs ::= SEQUENCE {
+	systemInformationBlockType31Dedicated-r17	OCTET STRING (CONTAINING SystemInformationBlockType31-r17)																			OPTIONAL,	-- Cond NTN
+	scg-State-r17						ENUMERATED{deactivated}			OPTIONAL, -- Need OP
+	nonCriticalExtension						SEQUENCE {}						OPTIONAL
+}
+
+SL-SyncTxControl-r12 ::=			SEQUENCE {
+	networkControlledSyncTx-r12				ENUMERATED {on, off}		OPTIONAL	-- Need OP
+}
+
+PSCellToAddMod-r12 ::=				SEQUENCE {
+	sCellIndex-r12						SCellIndex-r10,
+	cellIdentification-r12				SEQUENCE {
+		physCellId-r12						PhysCellId,
+		dl-CarrierFreq-r12					ARFCN-ValueEUTRA-r9
+	}																	OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigCommonPSCell-r12		RadioResourceConfigCommonPSCell-r12	OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigDedicatedPSCell-r12	RadioResourceConfigDedicatedPSCell-r12	OPTIONAL,	-- Cond SCellAdd2
+	...,
+	[[	antennaInfoDedicatedPSCell-v1280		AntennaInfoDedicated-v10i0	OPTIONAL	-- Need ON
+	]],
+	[[	sCellIndex-r13					SCellIndex-r13	OPTIONAL		-- Need ON
+	]],
+	[[	radioResourceConfigDedicatedPSCell-v1370	RadioResourceConfigDedicatedPSCell-v1370	OPTIONAL	-- Need ON
+	]],
+	[[	radioResourceConfigDedicatedPSCell-v13c0	RadioResourceConfigDedicatedPSCell-v13c0	OPTIONAL	-- Need ON
+	]]
+}
+
+PSCellToAddMod-v12f0 ::=				SEQUENCE {
+	radioResourceConfigCommonPSCell-r12		RadioResourceConfigCommonPSCell-v12f0	OPTIONAL
+}
+
+PSCellToAddMod-v1440 ::=				SEQUENCE {
+	radioResourceConfigCommonPSCell-r14		RadioResourceConfigCommonPSCell-v1440	OPTIONAL
+}
+
+PowerCoordinationInfo-r12 ::= SEQUENCE {
+	p-MeNB-r12							INTEGER (1..16),
+	p-SeNB-r12							INTEGER (1..16),
+	powerControlMode-r12				INTEGER (1..2)
+}
+
+SCellToAddModList-r10 ::=		SEQUENCE (SIZE (1..maxSCell-r10)) OF SCellToAddMod-r10
+
+SCellToAddModList-v10l0 ::=		SEQUENCE (SIZE (1..maxSCell-r10)) OF SCellToAddMod-v10l0
+
+SCellToAddModList-v13c0 ::=		SEQUENCE (SIZE (1..maxSCell-r10)) OF SCellToAddMod-v13c0
+
+SCellToAddModList-r16 ::=		SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellToAddMod-r16
+
+SCellToAddModListExt-r13 ::=	SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellToAddModExt-r13
+
+SCellToAddModListExt-v1370 ::=	SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellToAddModExt-v1370
+
+SCellToAddModListExt-v13c0 ::=	SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellToAddMod-v13c0
+
+SCellToAddModListExt-v1430 ::=	SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellToAddModExt-v1430
+
+SCellGroupToAddModList-r15 ::=	SEQUENCE (SIZE (1..maxSCellGroups-r15)) OF SCellGroupToAddMod-r15
+
+SCellToAddMod-r10 ::=			SEQUENCE {
+	sCellIndex-r10						SCellIndex-r10,
+	cellIdentification-r10				SEQUENCE {
+		physCellId-r10						PhysCellId,
+		dl-CarrierFreq-r10					ARFCN-ValueEUTRA
+	}																OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigCommonSCell-r10		RadioResourceConfigCommonSCell-r10	OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigDedicatedSCell-r10	RadioResourceConfigDedicatedSCell-r10	OPTIONAL,	-- Cond SCellAdd2
+	...,
+	[[	dl-CarrierFreq-v1090				ARFCN-ValueEUTRA-v9e0	OPTIONAL	-- Cond EARFCN-max
+	]],
+	[[	antennaInfoDedicatedSCell-v10i0		AntennaInfoDedicated-v10i0	OPTIONAL	-- Need ON
+	]],
+	[[	srs-SwitchFromServCellIndex-r14		INTEGER (0.. 31) OPTIONAL	-- Need ON
+	]],
+	[[	sCellState-r15						ENUMERATED {activated, dormant}	OPTIONAL	-- Need ON
+	]]
+}
+
+SCellToAddMod-v10l0 ::=			SEQUENCE {
+	radioResourceConfigCommonSCell-v10l0		RadioResourceConfigCommonSCell-v10l0	OPTIONAL
+}
+
+SCellToAddMod-v13c0 ::=			SEQUENCE {
+	radioResourceConfigDedicatedSCell-v13c0	RadioResourceConfigDedicatedSCell-v13c0	OPTIONAL
+}
+
+SCellToAddMod-r16 ::=			SEQUENCE {
+	sCellIndex-r16						SCellIndex-r13,
+	cellIdentification-r16				SEQUENCE {
+		physCellId-r16						PhysCellId,
+		dl-CarrierFreq-r16					ARFCN-ValueEUTRA-r9
+	}																OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigCommonSCell-r16		RadioResourceConfigCommonSCell-r10	OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigDedicatedSCell-r16	RadioResourceConfigDedicatedSCell-r10	OPTIONAL,	-- Cond SCellAdd2
+	antennaInfoDedicatedSCell-r16		AntennaInfoDedicated-v10i0	OPTIONAL,	-- Need ON
+	srs-SwitchFromServCellIndex-r16			INTEGER (0.. 31) OPTIONAL,	-- Need ON
+	sCellState-r16							ENUMERATED {activated, dormant}	OPTIONAL,	-- Need ON
+	...
+}
+
+SCellToAddModExt-r13 ::=			SEQUENCE {
+	sCellIndex-r13						SCellIndex-r13,
+	cellIdentification-r13				SEQUENCE {
+		physCellId-r13						PhysCellId,
+		dl-CarrierFreq-r13					ARFCN-ValueEUTRA-r9
+	}																OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigCommonSCell-r13		RadioResourceConfigCommonSCell-r10	OPTIONAL,	-- Cond SCellAdd
+	radioResourceConfigDedicatedSCell-r13	RadioResourceConfigDedicatedSCell-r10	OPTIONAL,	-- Cond SCellAdd2
+	antennaInfoDedicatedSCell-r13			AntennaInfoDedicated-v10i0		OPTIONAL	-- Need ON
+}
+
+SCellToAddModExt-v1370 ::=			SEQUENCE {
+	radioResourceConfigCommonSCell-v1370		RadioResourceConfigCommonSCell-v10l0	OPTIONAL
+}
+
+SCellToAddModExt-v1430 ::=			SEQUENCE {
+	srs-SwitchFromServCellIndex-r14			INTEGER (0.. 31)			OPTIONAL,	-- Need ON
+	...,
+	[[	sCellState-r15					ENUMERATED {activated, dormant}		OPTIONAL	-- Need ON
+	]]
+}
+
+SCellGroupToAddMod-r15 ::=			SEQUENCE {
+	sCellGroupIndex-r15					SCellGroupIndex-r15,
+	sCellConfigCommon-r15				SCellConfigCommon-r15			OPTIONAL,	-- Need ON
+	sCellToReleaseList-r15				SCellToReleaseListExt-r13		OPTIONAL,	-- Need ON
+	sCellToAddModList-r15				SCellToAddModListExt-r13		OPTIONAL	-- Need ON
+}
+
+SCellToReleaseList-r10 ::=			SEQUENCE (SIZE (1..maxSCell-r10)) OF SCellIndex-r10
+
+SCellToReleaseListExt-r13 ::=			SEQUENCE (SIZE (1..maxSCell-r13)) OF SCellIndex-r13
+
+SCellGroupToReleaseList-r15 ::=			SEQUENCE (SIZE (1..maxSCellGroups-r15)) OF SCellGroupIndex-r15
+
+SCellGroupIndex-r15 ::=			INTEGER (1..maxSCellGroups-r15)
+
+SCellConfigCommon-r15 ::= SEQUENCE {
+	radioResourceConfigCommonSCell-r15		RadioResourceConfigCommonSCell-r10	OPTIONAL,	-- Need ON
+	radioResourceConfigDedicatedSCell-r15	RadioResourceConfigDedicatedSCell-r10	OPTIONAL,-- Need ON
+	antennaInfoDedicatedSCell-r15			AntennaInfoDedicated-v10i0		OPTIONAL	-- Need ON
+}
+
+SCG-Configuration-r12 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		scg-ConfigPartMCG-r12				SEQUENCE {
+			scg-Counter-r12						INTEGER (0.. 65535)			OPTIONAL,	-- Need ON
+			powerCoordinationInfo-r12			PowerCoordinationInfo-r12	OPTIONAL,	-- Need ON
+			...
+		}																OPTIONAL,	-- Need ON
+		scg-ConfigPartSCG-r12				SCG-ConfigPartSCG-r12		OPTIONAL	-- Need ON
+	}
+}
+
+SCG-Configuration-v12f0 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		scg-ConfigPartSCG-v12f0				SCG-ConfigPartSCG-v12f0		OPTIONAL	-- Need ON
+	}
+}
+
+SCG-Configuration-v13c0 ::=			CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		scg-ConfigPartSCG-v13c0				SCG-ConfigPartSCG-v13c0		OPTIONAL	-- Need ON
+	}
+}
+
+SCG-ConfigPartSCG-r12 ::=			SEQUENCE {
+	radioResourceConfigDedicatedSCG-r12	RadioResourceConfigDedicatedSCG-r12	OPTIONAL,	-- Need ON
+	sCellToReleaseListSCG-r12			SCellToReleaseList-r10		OPTIONAL,	-- Need ON
+	pSCellToAddMod-r12					PSCellToAddMod-r12			OPTIONAL,	-- Need ON
+	sCellToAddModListSCG-r12			SCellToAddModList-r10		OPTIONAL,	-- Need ON
+	mobilityControlInfoSCG-r12			MobilityControlInfoSCG-r12	OPTIONAL,	-- Need ON
+	...,
+	[[
+	sCellToReleaseListSCG-Ext-r13			SCellToReleaseListExt-r13		OPTIONAL,	-- Need ON
+	sCellToAddModListSCG-Ext-r13			SCellToAddModListExt-r13		OPTIONAL	-- Need ON
+	]],
+	[[
+	sCellToAddModListSCG-Ext-v1370		SCellToAddModListExt-v1370	OPTIONAL	-- Need ON
+	]],
+	[[
+	pSCellToAddMod-v1440				PSCellToAddMod-v1440		OPTIONAL	-- Need ON
+	]],
+	[[	sCellGroupToReleaseListSCG-r15	SCellGroupToReleaseList-r15	OPTIONAL,	-- Need ON
+		sCellGroupToAddModListSCG-r15	SCellGroupToAddModList-r15	OPTIONAL	-- Need ON
+	]],
+	[[	-- NE-DC addition for setup/ modification and release SN configured measurements
+		measConfigSN-r15				MeasConfig						OPTIONAL,	-- Need ON
+		-- NE-DC additions concerning DRBs/ SRBs are within RadioResourceConfigDedicatedSCG
+		tdm-PatternConfigNE-DC-r15		TDM-PatternConfig-r15			OPTIONAL	-- Cond FDD-PSCell
+	]],
+	[[	p-MaxEUTRA-r15					P-Max							OPTIONAL	-- Need ON
+	]]
+}
+
+SCG-ConfigPartSCG-v12f0 ::=			SEQUENCE {
+	pSCellToAddMod-v12f0				PSCellToAddMod-v12f0		OPTIONAL,	-- Need ON
+	sCellToAddModListSCG-v12f0			SCellToAddModList-v10l0		OPTIONAL	-- Need ON
+}
+
+SCG-ConfigPartSCG-v13c0 ::=			SEQUENCE {
+	sCellToAddModListSCG-v13c0			SCellToAddModList-v13c0		OPTIONAL,	-- Need ON
+	sCellToAddModListSCG-Ext-v13c0		SCellToAddModListExt-v13c0	OPTIONAL	-- Need ON
+}
+
+SecurityConfigHO ::=				SEQUENCE {
+	handoverType						CHOICE {
+		intraLTE							SEQUENCE {
+			securityAlgorithmConfig				SecurityAlgorithmConfig		OPTIONAL,	-- Cond fullConfig
+			keyChangeIndicator					BOOLEAN,
+			nextHopChainingCount				NextHopChainingCount
+		},
+		interRAT							SEQUENCE {
+			securityAlgorithmConfig				SecurityAlgorithmConfig,
+			nas-SecurityParamToEUTRA			OCTET STRING (SIZE(6))
+		}
+	},
+	...
+}
+
+SecurityConfigHO-v1530 ::=		SEQUENCE {
+	handoverType-v1530				CHOICE {
+		intra5GC							SEQUENCE {
+			securityAlgorithmConfig-r15			SecurityAlgorithmConfig		OPTIONAL,	-- Cond HO-toEUTRA
+			keyChangeIndicator-r15				BOOLEAN,
+			nextHopChainingCount-r15			NextHopChainingCount,
+			nas-Container-r15					OCTET STRING	OPTIONAL	-- Need ON
+		},
+		fivegc-ToEPC						SEQUENCE {
+			securityAlgorithmConfig-r15			SecurityAlgorithmConfig,
+			nextHopChainingCount-r15			NextHopChainingCount
+		},
+		epc-To5GC						SEQUENCE {
+			securityAlgorithmConfig-r15		SecurityAlgorithmConfig,
+			nas-Container-r15				OCTET STRING
+		}
+	},
+	...
+}

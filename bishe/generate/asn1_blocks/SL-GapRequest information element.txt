@@ -1,0 +1,7 @@
+
+SL-GapRequest-r13 ::=				SEQUENCE (SIZE (1..maxFreq)) OF SL-GapFreqInfo-r13
+
+SL-GapFreqInfo-r13 ::=				SEQUENCE {
+	carrierFreq-r13					ARFCN-ValueEUTRA-r9					OPTIONAL,
+	gapPatternList-r13				SL-GapPatternList-r13
+}

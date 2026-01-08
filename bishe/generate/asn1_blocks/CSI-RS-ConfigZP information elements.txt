@@ -1,0 +1,12 @@
+
+CSI-RS-ConfigZP-r11 ::=		SEQUENCE {
+	csi-RS-ConfigZPId-r11		CSI-RS-ConfigZPId-r11,
+	resourceConfigList-r11		BIT STRING (SIZE (16)),
+	subframeConfig-r11			INTEGER (0..154),
+	...
+}
+
+CSI-RS-ConfigZP-ApList-r14 ::=	CHOICE {
+	release							NULL,
+	setup							SEQUENCE (SIZE (1.. maxCSI-RS-ZP-r11)) OF CSI-RS-ConfigZP-r11
+}

@@ -1,0 +1,12 @@
+
+RSRP-Range ::=						INTEGER(0..97)
+
+RSRP-Range-v1360 ::=				INTEGER(-17..-1)
+
+RSRP-RangeSL-r12 ::=				INTEGER(0..13)
+
+RSRP-RangeSL2-r12 ::=				INTEGER(0..7)
+
+RSRP-RangeSL3-r12 ::=				INTEGER(0..11)
+
+RSRP-RangeSL4-r13 ::=				INTEGER(0..49)

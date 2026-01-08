@@ -1,0 +1,8 @@
+
+SystemTimeInfoCDMA2000 ::=			SEQUENCE {
+	cdma-EUTRA-Synchronisation			BOOLEAN,
+	cdma-SystemTime						CHOICE {
+		synchronousSystemTime				BIT STRING (SIZE (39)),
+		asynchronousSystemTime				BIT STRING (SIZE (49))
+	}
+}

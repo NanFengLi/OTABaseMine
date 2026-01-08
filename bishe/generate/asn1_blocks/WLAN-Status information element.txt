@@ -1,0 +1,4 @@
+
+WLAN-Status-r13 ::=		ENUMERATED {successfulAssociation, failureWlanRadioLink, failureWlanUnavailable, failureTimeout}
+
+WLAN-Status-v1430 ::=	ENUMERATED {suspended, resumed}

@@ -1,0 +1,9 @@
+
+ConditionalReconfiguration-r16 ::= SEQUENCE {
+	condReconfigurationToAddModList-r16	CondReconfigurationToAddModList-r16		OPTIONAL, -- Need ON
+	condReconfigurationToRemoveList-r16	CondReconfigurationToRemoveList-r16		OPTIONAL, -- Need ON
+	attemptCondReconf-r16				ENUMERATED {true}						OPTIONAL, -- Cond CHO
+	...
+}
+
+CondReconfigurationToRemoveList-r16 ::= SEQUENCE (SIZE (1..maxCondConfig-r16)) OF CondReconfigurationId-r16

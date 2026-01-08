@@ -1,0 +1,2 @@
+
+PhysCellId ::=						INTEGER (0..503)

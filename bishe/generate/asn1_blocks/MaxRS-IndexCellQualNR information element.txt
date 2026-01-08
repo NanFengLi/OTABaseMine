@@ -1,0 +1,2 @@
+
+MaxRS-IndexCellQualNR-r15::=				INTEGER (1..maxRS-IndexCellQual-r15)

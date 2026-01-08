@@ -1,0 +1,2 @@
+
+Q-RxLevMin ::=						INTEGER (-70..-22)

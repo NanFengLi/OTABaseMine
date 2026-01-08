@@ -1,0 +1,2 @@
+
+MobilityParametersCDMA2000 ::=			OCTET STRING

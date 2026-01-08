@@ -1,0 +1,9 @@
+
+WLAN-NameListConfig-r15 ::=		CHOICE{
+	release						NULL,
+	setup						WLAN-NameList-r15
+}
+
+WLAN-NameList-r15 ::=			SEQUENCE (SIZE (1..maxWLAN-Name-r15)) OF WLAN-Name-r15
+
+WLAN-Name-r15 ::=		OCTET STRING (SIZE (1..32))

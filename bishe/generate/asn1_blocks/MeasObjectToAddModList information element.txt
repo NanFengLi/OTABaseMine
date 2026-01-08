@@ -1,0 +1,36 @@
+
+MeasObjectToAddModList ::=			SEQUENCE (SIZE (1..maxObjectId)) OF MeasObjectToAddMod
+
+MeasObjectToAddModListExt-r13 ::=	SEQUENCE (SIZE (1..maxObjectId)) OF MeasObjectToAddModExt-r13
+
+MeasObjectToAddModList-v9e0 ::=		SEQUENCE (SIZE (1..maxObjectId)) OF MeasObjectToAddMod-v9e0
+
+MeasObjectToAddMod ::=	SEQUENCE {
+	measObjectId						MeasObjectId,
+	measObject							CHOICE {
+		measObjectEUTRA						MeasObjectEUTRA,
+		measObjectUTRA						MeasObjectUTRA,
+		measObjectGERAN						MeasObjectGERAN,
+		measObjectCDMA2000					MeasObjectCDMA2000,
+		...,
+		measObjectWLAN-r13					MeasObjectWLAN-r13,
+		measObjectNR-r15					MeasObjectNR-r15
+	}
+}
+
+MeasObjectToAddModExt-r13 ::=	SEQUENCE {
+	measObjectId-r13					MeasObjectId-v1310,
+	measObject-r13							CHOICE {
+		measObjectEUTRA-r13						MeasObjectEUTRA,
+		measObjectUTRA-r13						MeasObjectUTRA,
+		measObjectGERAN-r13						MeasObjectGERAN,
+		measObjectCDMA2000-r13					MeasObjectCDMA2000,
+		...,
+		measObjectWLAN-v1320					MeasObjectWLAN-r13,
+		measObjectNR-r15						MeasObjectNR-r15
+	}
+}
+
+MeasObjectToAddMod-v9e0 ::=	SEQUENCE {
+	measObjectEUTRA-v9e0				MeasObjectEUTRA-v9e0		OPTIONAL	-- Cond eutra
+}

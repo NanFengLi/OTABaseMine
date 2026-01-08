@@ -1,0 +1,2 @@
+
+RSSI-Range-r13 ::=						INTEGER(0..76)

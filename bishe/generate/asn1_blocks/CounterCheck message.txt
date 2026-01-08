@@ -1,0 +1,36 @@
+
+CounterCheck ::=			SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		c1									CHOICE {
+			counterCheck-r8						CounterCheck-r8-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+CounterCheck-r8-IEs ::=	SEQUENCE {
+	drb-CountMSB-InfoList				DRB-CountMSB-InfoList,
+	nonCriticalExtension				CounterCheck-v8a0-IEs				OPTIONAL
+}
+
+CounterCheck-v8a0-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				CounterCheck-v1530-IEs				OPTIONAL
+}
+
+CounterCheck-v1530-IEs ::= SEQUENCE {
+	drb-CountMSB-InfoListExt-r15		DRB-CountMSB-InfoListExt-r15		OPTIONAL,	-- Need ON
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}
+
+DRB-CountMSB-InfoList ::=		SEQUENCE (SIZE (1..maxDRB)) OF DRB-CountMSB-Info
+
+DRB-CountMSB-InfoListExt-r15 ::=	SEQUENCE (SIZE (1..maxDRBExt-r15)) OF DRB-CountMSB-Info
+
+DRB-CountMSB-Info ::=	SEQUENCE {
+	drb-Identity					DRB-Identity,
+	countMSB-Uplink					INTEGER(0..33554431),
+	countMSB-Downlink				INTEGER(0..33554431)
+}

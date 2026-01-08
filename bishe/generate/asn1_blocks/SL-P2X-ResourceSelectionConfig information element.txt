@@ -1,0 +1,5 @@
+
+SL-P2X-ResourceSelectionConfig-r14 ::=			SEQUENCE {
+	partialSensing-r14				ENUMERATED {true}				OPTIONAL,	-- Need OR
+	randomSelection-r14				ENUMERATED {true}				OPTIONAL	-- Need OR
+}

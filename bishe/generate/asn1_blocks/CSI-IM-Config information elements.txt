@@ -1,0 +1,19 @@
+
+CSI-IM-Config-r11 ::=		SEQUENCE {
+	csi-IM-ConfigId-r11			CSI-IM-ConfigId-r11,
+	resourceConfig-r11			INTEGER (0..31),
+	subframeConfig-r11			INTEGER (0..154),
+	...,
+	[[	interferenceMeasRestriction-r13		BOOLEAN		OPTIONAL	-- Need ON
+	]]
+}
+
+CSI-IM-ConfigExt-r12 ::=		SEQUENCE {
+	csi-IM-ConfigId-v1250			CSI-IM-ConfigId-v1250,
+	resourceConfig-r12			INTEGER (0..31),
+	subframeConfig-r12			INTEGER (0..154),
+	...,
+	[[	interferenceMeasRestriction-r13	BOOLEAN				OPTIONAL,	-- Need ON
+		csi-IM-ConfigId-v1310		CSI-IM-ConfigId-v1310	OPTIONAL	-- Need ON
+	]]
+}

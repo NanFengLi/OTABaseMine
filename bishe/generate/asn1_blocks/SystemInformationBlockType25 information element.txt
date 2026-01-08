@@ -1,0 +1,59 @@
+
+SystemInformationBlockType25-r15 ::=	SEQUENCE {
+	uac-BarringForCommon-r15				UAC-BarringPerCatList-r15				OPTIONAL,	-- Need OP
+	uac-BarringPerPLMN-List-r15			UAC-BarringPerPLMN-List-r15				OPTIONAL,	-- Need OP
+	uac-BarringInfoSetList-r15			UAC-BarringInfoSetList-r15,
+	uac-AC1-SelectAssistInfo-r15		CHOICE {
+		plmnCommon-r15							UAC-AC1-SelectAssistInfo-r15,
+		individualPLMNList-r15	SEQUENCE (SIZE (2..maxPLMN-r11)) OF UAC-AC1-SelectAssistInfo-r15
+		}			OPTIONAL,	-- Need OR
+	lateNonCriticalExtension				OCTET STRING								OPTIONAL,
+	...,
+	[[	ab-PerRSRP-r16					ENUMERATED {thresh0, thresh1, thresh2, thresh3}	OPTIONAL	-- Need OR
+	]],
+	[[
+		uac-AC1-SelectAssistInfo-r16 SEQUENCE (SIZE (2..maxPLMN-r11)) OF UAC-AC1-SelectAssistInfo-r16 OPTIONAL    -- Need OR
+	]],
+	[[
+		uac-BarringInfoSetList-v1700		UAC-BarringInfoSetList-v1700	OPTIONAL	-- Cond MINT
+	]]
+}
+
+UAC-BarringPerPLMN-List-r15::=	SEQUENCE (SIZE (1.. maxPLMN-r11)) OF UAC-BarringPerPLMN-r15
+
+UAC-BarringPerPLMN-r15 ::=	SEQUENCE {
+	plmn-IdentityIndex-r15		INTEGER (1.. maxPLMN-r11),
+	uac-AC-BarringListType-r15		CHOICE{
+		uac-ImplicitAC-BarringList-r15		SEQUENCE (SIZE(maxAccessCat-1-r15)) OF UAC-BarringInfoSetIndex-r15,
+		uac-ExplicitAC-BarringList-r15		UAC-BarringPerCatList-r15
+		}					OPTIONAL	-- Need OR
+}
+
+UAC-BarringPerCatList-r15 ::= SEQUENCE (SIZE (1..maxAccessCat-1-r15)) OF UAC-BarringPerCat-r15
+
+UAC-BarringPerCat-r15 ::= SEQUENCE {
+	accessCategory-r15					INTEGER (1..maxAccessCat-1-r15),
+	uac-barringInfoSetIndex-r15		UAC-BarringInfoSetIndex-r15
+}
+
+UAC-BarringInfoSetIndex-r15 ::=	INTEGER (1..maxBarringInfoSet-r15)
+UAC-BarringInfoSetList-r15 ::=		SEQUENCE (SIZE (1..maxBarringInfoSet-r15)) OF UAC-BarringInfoSet-r15
+
+UAC-BarringInfoSetList-v1700 ::=	SEQUENCE (SIZE(1..maxBarringInfoSet-r15)) OF UAC-BarringInfoSet-v1700
+
+UAC-BarringInfoSet-r15 ::= SEQUENCE {
+	uac-BarringFactor-r15		ENUMERATED {
+									p00, p05, p10, p15, p20, p25, p30, p40,
+									p50, p60, p70, p75, p80, p85, p90, p95},
+	uac-BarringTime-r15			ENUMERATED {s4, s8, s16, s32, s64, s128, s256, s512},
+	uac-BarringForAccessIdentity-r15			BIT STRING (SIZE(7))
+}
+
+UAC-BarringInfoSet-v1700 ::= SEQUENCE {
+	uac-BarringFactorForAI3-r17		ENUMERATED {p00, p05, p10, p15, p20, p25, p30, p40,
+						p50, p60, p70, p75, p80, p85, p90, p95}		OPTIONAL		-- Need OP
+}
+
+UAC-AC1-SelectAssistInfo-r15::=	ENUMERATED {a, b, c}
+
+UAC-AC1-SelectAssistInfo-r16::= ENUMERATED {a, b, c, notConfigured}

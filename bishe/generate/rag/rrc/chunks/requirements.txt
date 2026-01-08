@@ -1,0 +1,13 @@
+# RRC协议向量数据库构建所需依赖
+
+# 向量数据库 - ChromaDB
+chromadb>=0.4.0
+
+# 如果使用OpenAI的embedding（可选）
+# openai>=1.0.0
+
+# 如果使用本地embedding模型（推荐）
+sentence-transformers>=2.2.0
+
+# 数据处理
+numpy>=1.24.0

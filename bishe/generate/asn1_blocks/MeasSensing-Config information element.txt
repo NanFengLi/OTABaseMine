@@ -1,0 +1,9 @@
+
+MeasSensing-Config-r15 ::=			SEQUENCE {
+		sensingSubchannelNumber-r15		INTEGER (1..20),
+		sensingPeriodicity-r15			ENUMERATED {ms20, ms50, ms100, ms200,
+											ms300, ms400, ms500, ms600,
+											ms700, ms800, ms900, ms1000},
+		sensingReselectionCounter-r15	INTEGER (5..75),
+		sensingPriority-r15				INTEGER (1..8)
+}

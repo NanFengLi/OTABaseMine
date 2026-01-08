@@ -1,0 +1,26 @@
+
+MCGFailureInformation-r16 ::=				SEQUENCE {
+	criticalExtensions						CHOICE {
+		mcgFailureInformation					MCGFailureInformation-r16-IEs,
+		criticalExtensionsFuture				SEQUENCE {}
+	}
+}
+
+MCGFailureInformation-r16-IEs ::=			SEQUENCE {
+	failureReportMCG-r16						FailureReportMCG-r16					OPTIONAL,
+	lateNonCriticalExtension				OCTET STRING						OPTIONAL,
+	nonCriticalExtension					SEQUENCE {}							OPTIONAL
+}
+
+FailureReportMCG-r16 ::=					SEQUENCE {
+	failureType-r16								ENUMERATED {
+												t310-Expiry, randomAccessProblem,
+												rlc-MaxNumRetx, t312-Expiry, spare4,
+												spare3, spare2, spare1}			OPTIONAL,
+	measResultFreqListEUTRA-r16					MeasResultList3EUTRA-r15			OPTIONAL,
+	measResultFreqListNR-r16					MeasResultFreqListFailNR-r15		OPTIONAL,
+	measResultFreqListGERAN-r16					MeasResultList2GERAN-r10			OPTIONAL,
+	measResultFreqListUTRA-r16					MeasResultList2UTRA-r9				OPTIONAL,
+	measResultSCG-r16							OCTET STRING						OPTIONAL,
+	...
+}
