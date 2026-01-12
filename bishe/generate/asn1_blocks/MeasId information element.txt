@@ -1,4 +1,0 @@
-
-MeasId ::=							INTEGER (1..maxMeasId)
-
-MeasId-v1250 ::=					INTEGER (maxMeasId-Plus1..maxMeasId-r12)

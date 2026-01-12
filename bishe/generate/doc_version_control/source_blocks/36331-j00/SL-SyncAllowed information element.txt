@@ -1,0 +1,6 @@
+
+SL-SyncAllowed-r14 ::=		SEQUENCE {
+	gnss-Sync-r14						ENUMERATED {true}				OPTIONAL,	-- Need OR
+	enb-Sync-r14						ENUMERATED {true}				OPTIONAL,	-- Need OR
+	ue-Sync-r14							ENUMERATED {true}				OPTIONAL	-- Need OR
+}

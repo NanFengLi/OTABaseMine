@@ -1,4 +1,0 @@
-
-ReportInterval ::=					ENUMERATED {
-										ms120, ms240, ms480, ms640, ms1024, ms2048, ms5120, ms10240,
-										min1, min6, min12, min30, min60, spare3, spare2, spare1}

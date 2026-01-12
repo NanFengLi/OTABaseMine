@@ -1,2 +1,0 @@
-
-SL-NR-AnchorCarrierFreqList-r16 ::= SEQUENCE (SIZE (1..maxFreqSL-NR-r16)) OF ARFCN-ValueNR-r15

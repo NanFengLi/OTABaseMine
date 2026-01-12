@@ -1,2 +1,0 @@
-
-CSI-ProcessId-r11 ::=		INTEGER (1..maxCSI-Proc-r11)

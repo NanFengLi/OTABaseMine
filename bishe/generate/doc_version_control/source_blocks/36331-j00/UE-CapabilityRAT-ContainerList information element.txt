@@ -1,0 +1,7 @@
+
+UE-CapabilityRAT-ContainerList ::=SEQUENCE (SIZE (0..maxRAT-Capabilities)) OF UE-CapabilityRAT-Container
+
+UE-CapabilityRAT-Container ::= SEQUENCE {
+	rat-Type							RAT-Type,
+	ueCapabilityRAT-Container			OCTET STRING
+}

@@ -1,7 +1,0 @@
-
-UL-DelayValueConfig-r16 ::=			CHOICE {
-		release								NULL,
-		setup								SEQUENCE {
-			delay-DRBlist-r16						SEQUENCE (SIZE(1..maxDRB)) OF DRB-Identity
-		}
-}

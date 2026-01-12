@@ -1,0 +1,87 @@
+
+PRACH-ConfigSIB ::=				SEQUENCE {
+	rootSequenceIndex					INTEGER (0..837),
+	prach-ConfigInfo					PRACH-ConfigInfo
+}
+
+PRACH-ConfigSIB-v1310 ::=			SEQUENCE {
+	rsrp-ThresholdsPrachInfoList-r13		RSRP-ThresholdsPrachInfoList-r13,
+	mpdcch-startSF-CSS-RA-r13			CHOICE {
+		fdd-r13								ENUMERATED {v1, v1dot5, v2, v2dot5, v4, v5, v8,
+												v10},
+		tdd-r13								ENUMERATED {v1, v2, v4, v5, v8, v10, v20, spare}
+	}																		OPTIONAL,	-- Cond MP
+	prach-HoppingOffset-r13				INTEGER (0..94)						OPTIONAL,	-- Need OR
+	prach-ParametersListCE-r13			PRACH-ParametersListCE-r13
+}
+
+PRACH-ConfigSIB-v1530 ::=			SEQUENCE {
+	edt-PRACH-ParametersListCE-r15		SEQUENCE (SIZE(1..maxCE-Level-r13)) OF EDT-PRACH-ParametersCE-r15
+}
+
+PRACH-Config ::=					SEQUENCE {
+	rootSequenceIndex					INTEGER (0..837),
+	prach-ConfigInfo					PRACH-ConfigInfo					OPTIONAL	-- Need ON
+}
+
+PRACH-Config-v1310 ::=				SEQUENCE {
+	rsrp-ThresholdsPrachInfoList-r13		RSRP-ThresholdsPrachInfoList-r13		OPTIONAL,	-- Cond MP
+	mpdcch-startSF-CSS-RA-r13			CHOICE {
+		fdd-r13								ENUMERATED {v1, v1dot5, v2, v2dot5, v4, v5, v8,
+												v10},
+		tdd-r13								ENUMERATED {v1, v2, v4, v5, v8, v10, v20, spare}
+	}																		OPTIONAL,	-- Cond MP
+	prach-HoppingOffset-r13				INTEGER (0..94)						OPTIONAL,	-- Need OR
+	prach-ParametersListCE-r13			PRACH-ParametersListCE-r13			OPTIONAL,	-- Cond MP
+	initial-CE-level-r13					INTEGER (0..3)		OPTIONAL	-- Need OR
+}
+
+PRACH-Config-v1430 ::=				SEQUENCE {
+	rootSequenceIndexHighSpeed-r14				INTEGER (0..837),
+	zeroCorrelationZoneConfigHighSpeed-r14		INTEGER (0..12),
+	prach-ConfigIndexHighSpeed-r14				INTEGER (0..63),
+	prach-FreqOffsetHighSpeed-r14				INTEGER (0..94)
+}
+
+PRACH-ConfigSCell-r10 ::=				SEQUENCE {
+	prach-ConfigIndex-r10					INTEGER (0..63)
+}
+
+PRACH-ConfigInfo ::=				SEQUENCE {
+	prach-ConfigIndex					INTEGER (0..63),
+	highSpeedFlag						BOOLEAN,
+	zeroCorrelationZoneConfig			INTEGER (0..15),
+	prach-FreqOffset					INTEGER (0..94)
+}
+
+PRACH-ParametersListCE-r13 ::=	SEQUENCE (SIZE(1..maxCE-Level-r13)) OF PRACH-ParametersCE-r13
+
+PRACH-ParametersCE-r13 ::=			SEQUENCE {
+	prach-ConfigIndex-r13					INTEGER (0..63),
+	prach-FreqOffset-r13						INTEGER (0..94),
+	prach-StartingSubframe-r13				ENUMERATED {sf2, sf4, sf8, sf16, sf32, sf64, sf128,
+														sf256}				OPTIONAL,	-- Need OP
+	maxNumPreambleAttemptCE-r13
+								ENUMERATED {n3, n4, n5, n6, n7, n8, n10}	OPTIONAL,	-- Need OP
+	numRepetitionPerPreambleAttempt-r13		ENUMERATED {n1,n2,n4,n8,n16,n32,n64,n128},
+	mpdcch-NarrowbandsToMonitor-r13			SEQUENCE (SIZE(1..2)) OF
+													INTEGER (1..maxAvailNarrowBands-r13),
+	mpdcch-NumRepetition-RA-r13				ENUMERATED {r1, r2, r4, r8, r16,
+														r32, r64, r128, r256},
+	prach-HoppingConfig-r13					ENUMERATED {on,off}
+}
+
+EDT-PRACH-ParametersCE-r15 ::=		SEQUENCE {
+	edt-PRACH-ParametersCE-r15		SEQUENCE {
+		prach-ConfigIndex-r15				INTEGER (0..63),
+		prach-FreqOffset-r15					INTEGER (0..94),
+		prach-StartingSubframe-r15			ENUMERATED {sf2, sf4, sf8, sf16, sf32, sf64, sf128, sf256}			OPTIONAL,	-- Need OP
+		mpdcch-NarrowbandsToMonitor-r15		SEQUENCE (SIZE(1..2)) OF INTEGER (1..maxAvailNarrowBands-r13)
+	}	OPTIONAL -- Need OR
+}
+
+RSRP-ThresholdsPrachInfoList-r13 ::= SEQUENCE (SIZE(1..3)) OF RSRP-Range
+
+PRACH-TxDuration-r17::=			SEQUENCE {
+	prach-TxDuration-r17				ENUMERATED {n1, n2, n4, n8, n16, n32, n64, n128}
+}

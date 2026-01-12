@@ -1,0 +1,11 @@
+
+CRS-ChEstMPDCCH-ConfigCommon-r16 ::=		SEQUENCE {
+	powerRatio-r16		ENUMERATED {dB-4dot77, dB-3, dB-1dot77, dB0, dB1, dB2, dB3, dB4dot77}
+}
+
+CRS-ChEstMPDCCH-ConfigDedicated-r16 ::=		SEQUENCE {
+	powerRatio-r16				ENUMERATED {dB-4dot77, dB-3, dB-1dot77, dB0, dB1, dB2, dB3,
+											dB4dot77}	OPTIONAL, -- Cond setup
+	localizedMappingType-r16	ENUMERATED {predefined, csi-Based, reciprocityBased}
+											DEFAULT	predefined
+}

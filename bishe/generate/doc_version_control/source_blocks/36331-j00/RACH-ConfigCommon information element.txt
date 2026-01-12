@@ -1,0 +1,92 @@
+
+RACH-ConfigCommon ::=		SEQUENCE {
+	preambleInfo						SEQUENCE {
+		numberOfRA-Preambles				ENUMERATED {
+												n4, n8, n12, n16, n20, n24, n28,
+												n32, n36, n40, n44, n48, n52, n56,
+												n60, n64},
+		preamblesGroupAConfig				SEQUENCE {
+			sizeOfRA-PreamblesGroupA			ENUMERATED {
+													n4, n8, n12, n16, n20, n24, n28,
+													n32, n36, n40, n44, n48, n52, n56,
+													n60},
+			messageSizeGroupA						ENUMERATED {b56, b144, b208, b256},
+			messagePowerOffsetGroupB			ENUMERATED {
+													minusinfinity, dB0, dB5, dB8, dB10, dB12,
+													dB15, dB18},
+			...
+		}			OPTIONAL													-- Need OP
+	},
+	powerRampingParameters				PowerRampingParameters,
+	ra-SupervisionInfo					SEQUENCE {
+		preambleTransMax					PreambleTransMax,
+		ra-ResponseWindowSize				ENUMERATED {
+												sf2, sf3, sf4, sf5, sf6, sf7,
+												sf8, sf10},
+		mac-ContentionResolutionTimer		ENUMERATED {
+												sf8, sf16, sf24, sf32, sf40, sf48,
+												sf56, sf64}
+	},
+	maxHARQ-Msg3Tx						INTEGER (1..8),
+	...,
+	[[	preambleTransMax-CE-r13			PreambleTransMax					OPTIONAL,	-- Need OR
+		rach-CE-LevelInfoList-r13		RACH-CE-LevelInfoList-r13			OPTIONAL	-- Need OR
+	]],
+	[[	edt-SmallTBS-Subset-r15			ENUMERATED {true}					OPTIONAL		-- Cond EDT-OR
+	]]
+}
+
+RACH-ConfigCommon-v1250 ::=		SEQUENCE {
+	txFailParams-r12				SEQUENCE {
+		connEstFailCount-r12					ENUMERATED {n1, n2, n3, n4},
+		connEstFailOffsetValidity-r12			ENUMERATED {s30, s60, s120, s240,
+														s300, s420, s600, s900},
+		connEstFailOffset-r12					INTEGER (0..15)		OPTIONAL	-- Need OP
+	}
+}
+
+RACH-ConfigCommonSCell-r11 ::=		SEQUENCE {
+	powerRampingParameters-r11				PowerRampingParameters,
+	ra-SupervisionInfo-r11					SEQUENCE {
+		preambleTransMax-r11					PreambleTransMax
+	},
+	...
+}
+
+RACH-CE-LevelInfoList-r13 ::=	SEQUENCE (SIZE (1..maxCE-Level-r13)) OF RACH-CE-LevelInfo-r13
+
+RACH-CE-LevelInfo-r13 ::=		SEQUENCE {
+	preambleMappingInfo-r13				SEQUENCE {
+		firstPreamble-r13					INTEGER(0..63),
+		lastPreamble-r13					INTEGER(0..63)
+	},
+	ra-ResponseWindowSize-r13			ENUMERATED {sf20, sf50, sf80, sf120, sf180,
+													sf240, sf320, sf400},
+
+	mac-ContentionResolutionTimer-r13	ENUMERATED {sf80, sf100, sf120,
+													sf160, sf200, sf240, sf480, sf960},
+	rar-HoppingConfig-r13				ENUMERATED {on,off},
+	...,
+	[[	edt-Parameters-r15			SEQUENCE {
+			edt-LastPreamble-r15		INTEGER(0..63),
+			edt-SmallTBS-Enabled-r15	BOOLEAN,
+			edt-TBS-r15				ENUMERATED {b328, b408, b504, b600, b712,
+												b808, b936, b1000or456},
+			mac-ContentionResolutionTimer-r15	ENUMERATED {sf240, sf480, sf960,
+													sf1920, sf3840, sf5760, sf7680, sf10240}		OPTIONAL -- Need OP
+			}	OPTIONAL		-- Cond EDT
+	]]
+}
+
+PowerRampingParameters ::=			SEQUENCE {
+	powerRampingStep					ENUMERATED {dB0, dB2,dB4, dB6},
+	preambleInitialReceivedTargetPower	ENUMERATED {
+											dBm-120, dBm-118, dBm-116, dBm-114, dBm-112,
+											dBm-110, dBm-108, dBm-106, dBm-104, dBm-102,
+											dBm-100, dBm-98, dBm-96, dBm-94,
+											dBm-92, dBm-90}
+}
+
+PreambleTransMax ::=				ENUMERATED {
+											n3, n4, n5, n6, n7,	n8, n10, n20, n50,
+											n100, n200}

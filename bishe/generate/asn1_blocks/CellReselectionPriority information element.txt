@@ -1,2 +1,0 @@
-
-CellReselectionPriority ::=				INTEGER (0..7)

@@ -1,9 +1,0 @@
-
-EphemerisOrbitalParameters-r17 ::= SEQUENCE {
-	semiMajorAxis-r17					INTEGER (0..8589934591),
-	eccentricity-r17					INTEGER (0..1048575),
-	periapsis-r17						INTEGER (0..268435455),
-	longitude-r17						INTEGER (0..268435455),
-	inclination-r17						INTEGER (-67108864..67108863),
-	anomaly-r17							INTEGER (0..268435455)
-}

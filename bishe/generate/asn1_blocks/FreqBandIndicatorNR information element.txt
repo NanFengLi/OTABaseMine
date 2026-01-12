@@ -1,2 +1,0 @@
-
-FreqBandIndicatorNR-r15 ::=			INTEGER (1.. maxFBI-NR-r15)

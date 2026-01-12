@@ -1,0 +1,6 @@
+
+FreqBandIndicator ::=					INTEGER (1..maxFBI)
+
+FreqBandIndicator-v9e0 ::=				INTEGER (maxFBI-Plus1..maxFBI2)
+
+FreqBandIndicator-r11 ::=				INTEGER (1..maxFBI2)

@@ -1,0 +1,9 @@
+
+CellSelectionInfoCE-r13 ::=		SEQUENCE {
+	q-RxLevMinCE-r13				Q-RxLevMin,
+	q-QualMinRSRQ-CE-r13			Q-QualMin-r9						OPTIONAL	-- Need OR
+}
+
+CellSelectionInfoCE-v1530 ::=		SEQUENCE {
+	powerClass14dBm-Offset-r15			ENUMERATED {dB-6, dB-3, dB3, dB6, dB9, dB12}
+}

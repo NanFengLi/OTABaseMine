@@ -1,5 +1,0 @@
-
-PHICH-Config ::=					SEQUENCE {
-	phich-Duration						ENUMERATED {normal, extended},
-	phich-Resource						ENUMERATED {oneSixth, half, one, two}
-}

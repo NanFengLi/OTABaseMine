@@ -1,2 +1,0 @@
-
-CSG-Identity ::=					BIT STRING (SIZE (27))

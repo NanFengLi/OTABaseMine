@@ -1,5 +1,0 @@
-
-SL-TxPower-r14 ::=		CHOICE {
-	minusinfinity-r14				NULL,
-	txPower-r14						INTEGER (-41..31)
-}

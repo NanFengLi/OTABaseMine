@@ -1,0 +1,7 @@
+
+SCPTM-NeighbourCellList-r13 ::=		SEQUENCE (SIZE (1..maxNeighCell-SCPTM-r13)) OF PCI-ARFCN-r13
+
+PCI-ARFCN-r13 ::=					SEQUENCE {
+		physCellId-r13						PhysCellId,
+		carrierFreq-r13						ARFCN-ValueEUTRA-r9		OPTIONAL
+}

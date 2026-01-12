@@ -1,0 +1,2 @@
+
+PresenceAntennaPort1 ::=				BOOLEAN

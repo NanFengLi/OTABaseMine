@@ -1,0 +1,5 @@
+
+RACH-ConfigDedicated ::=		SEQUENCE {
+	ra-PreambleIndex					INTEGER (0..63),
+	ra-PRACH-MaskIndex					INTEGER (0..15)
+}

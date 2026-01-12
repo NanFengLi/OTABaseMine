@@ -1,0 +1,10 @@
+
+AntennaInfoUL-r10 ::=		SEQUENCE {
+	transmissionModeUL-r10				ENUMERATED {tm1, tm2, spare6, spare5,
+													spare4, spare3, spare2, spare1}	OPTIONAL,	-- Need OR
+	fourAntennaPortActivated-r10			ENUMERATED {setup}			OPTIONAL		-- Need OR
+}
+
+AntennaInfoUL-STTI-r15 ::=	SEQUENCE {
+	transmissionModeUL-STTI-r15			ENUMERATED {tm1, tm2}		OPTIONAL	-- Need OR
+}

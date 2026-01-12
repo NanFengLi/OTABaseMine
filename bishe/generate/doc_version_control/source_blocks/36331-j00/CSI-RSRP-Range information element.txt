@@ -1,0 +1,2 @@
+
+CSI-RSRP-Range-r12 ::=						INTEGER(0..97)

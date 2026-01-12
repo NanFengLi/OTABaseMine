@@ -1,0 +1,122 @@
+
+SL-DiscConfig-r12 ::=					SEQUENCE {
+	discTxResources-r12						CHOICE {
+		release								NULL,
+		setup								CHOICE {
+			scheduled-r12					SEQUENCE {
+				discTxConfig-r12					SL-DiscResourcePool-r12	OPTIONAL, -- Need ON
+				discTF-IndexList-r12				SL-TF-IndexPairList-r12	OPTIONAL, -- Need ON
+				discHoppingConfig-r12				SL-HoppingConfigDisc-r12
+														OPTIONAL	-- Need ON
+			},
+			ue-Selected-r12					SEQUENCE {
+				discTxPoolDedicated-r12			SEQUENCE {
+					poolToReleaseList-r12			SL-TxPoolToReleaseList-r12 OPTIONAL,	-- Need ON
+					poolToAddModList-r12			SL-DiscTxPoolToAddModList-r12 OPTIONAL	-- Need ON
+				}													OPTIONAL	-- Need ON
+			}
+		}
+	}																OPTIONAL,	-- Need ON
+	...,
+	[[	discTF-IndexList-v1260				CHOICE {
+			release								NULL,
+			setup								SEQUENCE {
+				discTF-IndexList-r12b				SL-TF-IndexPairList-r12b
+			}
+		}															OPTIONAL	-- Need ON
+	]],
+	[[	discTxResourcesPS-r13			CHOICE {
+			release								NULL,
+			setup								CHOICE {
+				scheduled-r13						SL-DiscTxConfigScheduled-r13,
+				ue-Selected-r13						SEQUENCE {
+					discTxPoolPS-Dedicated-r13			SL-DiscTxPoolDedicated-r13
+				}
+			}
+		}															OPTIONAL,	-- Need ON
+		discTxInterFreqInfo-r13			CHOICE {
+			release								NULL,
+			setup								SEQUENCE {
+				discTxCarrierFreq-r13				ARFCN-ValueEUTRA-r9			OPTIONAL,	-- Need OR
+				discTxRefCarrierDedicated-r13		SL-DiscTxRefCarrierDedicated-r13	OPTIONAL,	-- Need OR
+				discTxInfoInterFreqListAdd-r13			SL-DiscTxInfoInterFreqListAdd-r13	OPTIONAL	-- Need ON
+			}
+		}															OPTIONAL,	-- Need ON
+		gapRequestsAllowedDedicated-r13		BOOLEAN			OPTIONAL,	-- Need ON
+		discRxGapConfig-r13					CHOICE {
+			release								NULL,
+			setup								SL-GapConfig-r13
+		}															OPTIONAL,	-- Need ON
+		discTxGapConfig-r13					CHOICE {
+			release								NULL,
+			setup								SL-GapConfig-r13
+		}															OPTIONAL,	-- Need ON
+		discSysInfoToReportConfig-r13		CHOICE {
+			release								NULL,
+			setup								SL-DiscSysInfoToReportFreqList-r13
+		}															OPTIONAL	-- Need ON
+	]]
+}
+
+SL-DiscSysInfoToReportFreqList-r13 ::= SEQUENCE (SIZE (1..maxFreq)) OF ARFCN-ValueEUTRA-r9
+
+SL-DiscTxInfoInterFreqListAdd-r13 ::=	SEQUENCE {
+	discTxFreqToAddModList-r13				SEQUENCE (SIZE (1..maxFreq)) OF SL-DiscTxResourceInfoPerFreq-r13	OPTIONAL,	-- Need ON
+	discTxFreqToReleaseList-r13				SEQUENCE (SIZE (1..maxFreq)) OF ARFCN-ValueEUTRA-r9	OPTIONAL,	-- Need ON
+	...
+}
+
+SL-DiscTxResourceInfoPerFreq-r13 ::=	SEQUENCE	{
+	discTxCarrierFreq-r13					ARFCN-ValueEUTRA-r9,
+	discTxResources-r13						SL-DiscTxResource-r13	OPTIONAL,	-- Need OR
+	discTxResourcesPS-r13					SL-DiscTxResource-r13	OPTIONAL,	-- Need OR
+	discTxRefCarrierDedicated-r13			SL-DiscTxRefCarrierDedicated-r13	OPTIONAL,	-- Need OR
+	discCellSelectionInfo-r13					CellSelectionInfoNFreq-r13			OPTIONAL,	-- Need OR
+	...
+}
+
+SL-DiscTxResource-r13 ::=				CHOICE {
+	release								NULL,
+	setup								CHOICE {
+		scheduled-r13					SL-DiscTxConfigScheduled-r13,
+		ue-Selected-r13					SL-DiscTxPoolDedicated-r13
+	}
+}
+
+SL-DiscTxPoolToAddModList-r12 ::=		SEQUENCE (SIZE (1..maxSL-TxPool-r12)) OF SL-DiscTxPoolToAddMod-r12
+
+SL-DiscTxPoolToAddMod-r12 ::=		SEQUENCE	{
+	poolIdentity-r12					SL-TxPoolIdentity-r12,
+	pool-r12							SL-DiscResourcePool-r12
+}
+
+SL-DiscTxConfigScheduled-r13 ::=			SEQUENCE {
+	discTxConfig-r13					SL-DiscResourcePool-r12	OPTIONAL, -- Need ON
+	discTF-IndexList-r13				SL-TF-IndexPairList-r12b	OPTIONAL, -- Need ON
+	discHoppingConfig-r13				SL-HoppingConfigDisc-r12	OPTIONAL,-- Need ON
+	...
+}
+
+SL-DiscTxPoolDedicated-r13 ::=			SEQUENCE {
+	poolToReleaseList-r13			SL-TxPoolToReleaseList-r12 OPTIONAL,	-- Need ON
+	poolToAddModList-r13			SL-DiscTxPoolToAddModList-r12 OPTIONAL	-- Need ON
+}
+
+SL-TF-IndexPairList-r12 ::=		SEQUENCE (SIZE (1..maxSL-TF-IndexPair-r12)) OF SL-TF-IndexPair-r12
+
+SL-TF-IndexPair-r12 ::=		SEQUENCE	{
+	discSF-Index-r12					INTEGER (1.. 200)		OPTIONAL,	-- Need ON
+	discPRB-Index-r12					INTEGER (1.. 50)		OPTIONAL	-- Need ON
+}
+
+SL-TF-IndexPairList-r12b ::=		SEQUENCE (SIZE (1..maxSL-TF-IndexPair-r12)) OF SL-TF-IndexPair-r12b
+
+SL-TF-IndexPair-r12b ::=		SEQUENCE	{
+	discSF-Index-r12b					INTEGER (0..209)		OPTIONAL,	-- Need ON
+	discPRB-Index-r12b					INTEGER (0..49)			OPTIONAL	-- Need ON
+}
+
+SL-DiscTxRefCarrierDedicated-r13 ::=	CHOICE {
+	pCell								NULL,
+	sCell								SCellIndex-r10
+}

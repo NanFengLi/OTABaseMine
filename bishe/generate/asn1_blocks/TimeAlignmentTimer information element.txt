@@ -1,4 +1,0 @@
-
-TimeAlignmentTimer ::=					ENUMERATED {
-												sf500, sf750, sf1280, sf1920, sf2560, sf5120,
-												sf10240, infinity}

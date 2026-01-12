@@ -1,6 +1,0 @@
-
-MeasResultSSTD-r13 ::=						SEQUENCE {
-	sfn-OffsetResult-r13						INTEGER (0..1023),
-	frameBoundaryOffsetResult-r13				INTEGER (-5..4),
-	subframeBoundaryOffsetResult-r13			INTEGER (0..127)
-}

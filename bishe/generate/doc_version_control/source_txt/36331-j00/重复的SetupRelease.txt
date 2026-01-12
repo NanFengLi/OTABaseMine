@@ -1,0 +1,145 @@
+重复列表项：
+SetupRelease-SoundingRS-UL-ConfigDedicatedAdd-r16
+SetupRelease-UplinkPowerControlAddSRS-r16
+SetupRelease-SoundingRS-VirtualCellID-r16
+SetupRelease-WidebandPRG-r16
+
+SetupRelease-PUR-Config-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-OffsetThresholdTA-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-SR-ProhibitTimerOffset-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-EthernetHeaderCompression-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-DiscardTimerExt-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-CE-PDSCH-MultiTB-Config-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-CE-PDSCH-14HARQ-Config-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-DownlinkHARQ-FeedbackDisabledBitmap-r18 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-ResourceReservationConfigDedicatedDL-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-ResourceReservationConfigDedicatedUL-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-SoundingRS-UL-ConfigDedicatedAdd-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-UplinkPowerControlAddSRS-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-SoundingRS-VirtualCellID-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-WidebandPRG-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-PUCCH-TxDuration-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-PUSCH-TxDuration-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-SoundingRS-UL-ConfigDedicatedAdd-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-UplinkPowerControlAddSRS-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-SoundingRS-VirtualCellID-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-WidebandPRG-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-CQI-ReportPeriodicSCell-v1730 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-PUR-RSRP-ChangeThreshold-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-CE-PUSCH-MultiTB-Config-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-UplinkHARQ-Mode-r18 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-CRS-ChEstMPDCCH-ConfigDedicated-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-T-ReorderingExt-r17 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-MeasRSS-DedicatedConfig-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}
+
+SetupRelease-RMTC-ConfigNR-r16 ::= CHOICE {
+	release			NULL,
+	setup			ElementTypeParam
+}

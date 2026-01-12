@@ -1,0 +1,3 @@
+
+ServCellIndex-r10 ::=					INTEGER (0..7)
+ServCellIndex-r13 ::=				INTEGER (0..31)

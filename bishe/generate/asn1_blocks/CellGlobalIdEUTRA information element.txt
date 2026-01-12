@@ -1,5 +1,0 @@
-
-CellGlobalIdEUTRA ::=					SEQUENCE {
-	plmn-Identity							PLMN-Identity,
-	cellIdentity							CellIdentity
-}

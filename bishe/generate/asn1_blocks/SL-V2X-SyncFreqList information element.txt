@@ -1,2 +1,0 @@
-
-SL-V2X-SyncFreqList-r15 ::= SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9

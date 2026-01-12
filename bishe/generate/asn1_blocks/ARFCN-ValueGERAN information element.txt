@@ -1,2 +1,0 @@
-
-ARFCN-ValueGERAN ::=			INTEGER (0..1023)

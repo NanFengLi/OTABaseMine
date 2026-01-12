@@ -1,0 +1,17 @@
+
+MeasGapConfigPerCC-List-r14 ::=	CHOICE {
+	release						NULL,
+	setup						SEQUENCE {
+		measGapConfigToRemoveList-r14	MeasGapConfigToRemoveList-r14	OPTIONAL,	-- Need ON
+		measGapConfigToAddModList-r14	MeasGapConfigToAddModList-r14	OPTIONAL	-- Need ON
+	}
+}
+
+MeasGapConfigToRemoveList-r14 ::=	SEQUENCE (SIZE (1..maxServCell-r13)) OF ServCellIndex-r13
+
+MeasGapConfigToAddModList-r14 ::=	SEQUENCE (SIZE (1..maxServCell-r13)) OF MeasGapConfigPerCC-r14
+
+MeasGapConfigPerCC-r14 ::=	SEQUENCE {
+	servCellId-r14				ServCellIndex-r13,
+	measGapConfigCC-r14			MeasGapConfig
+}

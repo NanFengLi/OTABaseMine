@@ -1,2 +1,0 @@
-
-MBSFN-AreaId-r12 ::=					INTEGER (0..255)

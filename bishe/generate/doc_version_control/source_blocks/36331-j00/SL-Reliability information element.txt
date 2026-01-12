@@ -1,0 +1,4 @@
+
+SL-ReliabilityList-r15 ::=		SEQUENCE (SIZE (1..maxSL-Reliability-r15)) OF SL-Reliability-r15
+
+SL-Reliability-r15 ::=			INTEGER (1..8)

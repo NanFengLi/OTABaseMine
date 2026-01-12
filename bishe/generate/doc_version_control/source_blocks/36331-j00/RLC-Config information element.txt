@@ -1,0 +1,182 @@
+
+RLC-Config ::=				CHOICE {
+	am									SEQUENCE {
+		ul-AM-RLC							UL-AM-RLC,
+		dl-AM-RLC							DL-AM-RLC
+	},
+	um-Bi-Directional					SEQUENCE {
+		ul-UM-RLC							UL-UM-RLC,
+		dl-UM-RLC							DL-UM-RLC
+	},
+	um-Uni-Directional-UL				SEQUENCE {
+		ul-UM-RLC							UL-UM-RLC
+	},
+	um-Uni-Directional-DL				SEQUENCE {
+		dl-UM-RLC							DL-UM-RLC
+	},
+	...
+}
+
+RLC-Config-v1250 ::=				SEQUENCE {
+	ul-extended-RLC-LI-Field-r12			BOOLEAN,
+	dl-extended-RLC-LI-Field-r12			BOOLEAN
+}
+
+RLC-Config-v1310 ::=				SEQUENCE {
+	ul-extended-RLC-AM-SN-r13					BOOLEAN,
+	dl-extended-RLC-AM-SN-r13					BOOLEAN,
+	pollPDU-v1310								PollPDU-v1310		OPTIONAL	-- Need OR
+}
+
+RLC-Config-v1430 ::=				CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		pollByte-r14						PollByte-r14
+	}
+}
+
+RLC-Config-v1510 ::=				SEQUENCE {
+	reestablishRLC-r15				ENUMERATED {true}
+}
+
+RLC-Config-v1530 ::=				CHOICE {
+	release								NULL,
+	setup								SEQUENCE {
+		rlc-OutOfOrderDelivery-r15			ENUMERATED {true}
+	}
+}
+
+RLC-Config-v1700 ::=				SEQUENCE {
+	t-ReorderingExt-r17					SetupRelease-T-ReorderingExt-r17
+}
+
+SetupRelease-T-ReorderingExt-r17 ::= CHOICE {
+	release			NULL,
+	setup			T-ReorderingExt-r17
+}
+
+RLC-Config-r15 ::=				SEQUENCE {
+	mode-r15								CHOICE {
+		am-r15								SEQUENCE {
+			ul-AM-RLC-r15						UL-AM-RLC-r15,
+			dl-AM-RLC-r15						DL-AM-RLC-r15
+		},
+		um-Bi-Directional-r15				SEQUENCE {
+			ul-UM-RLC-r15						UL-UM-RLC,
+			dl-UM-RLC-r15						DL-UM-RLC-r15
+		},
+		um-Uni-Directional-UL-r15			SEQUENCE {
+			ul-UM-RLC-r15						UL-UM-RLC
+		},
+		um-Uni-Directional-DL-r15			SEQUENCE {
+			dl-UM-RLC-r15						DL-UM-RLC-r15
+		}
+	},
+	reestablishRLC-r15					ENUMERATED {true}				OPTIONAL,	-- Need ON
+	rlc-OutOfOrderDelivery-r15			ENUMERATED {true}				OPTIONAL,	-- Need ON
+	...
+}
+
+UL-AM-RLC ::=						SEQUENCE {
+	t-PollRetransmit					T-PollRetransmit,
+	pollPDU								PollPDU,
+	pollByte							PollByte,
+	maxRetxThreshold					ENUMERATED {
+											t1, t2, t3, t4, t6, t8, t16, t32}
+}
+
+UL-AM-RLC-r15 ::=					SEQUENCE {
+	t-PollRetransmit-r15				T-PollRetransmit,
+	pollPDU-r15							PollPDU-r15,
+	pollByte-r15						PollByte-r14,
+	maxRetxThreshold-r15				ENUMERATED {
+											t1, t2, t3, t4, t6, t8, t16, t32},
+	extended-RLC-LI-Field-r15			BOOLEAN
+}
+
+DL-AM-RLC ::=						SEQUENCE {
+	t-Reordering						T-Reordering,
+	t-StatusProhibit					T-StatusProhibit
+}
+
+DL-AM-RLC-r15 ::=					SEQUENCE {
+	t-Reordering-r15					T-Reordering,
+	t-StatusProhibit-r15				T-StatusProhibit,
+	extended-RLC-LI-Field-r15			BOOLEAN
+}
+
+UL-UM-RLC ::=						SEQUENCE {
+	sn-FieldLength						SN-FieldLength
+}
+
+DL-UM-RLC ::=						SEQUENCE {
+	sn-FieldLength						SN-FieldLength,
+	t-Reordering						T-Reordering
+}
+
+DL-UM-RLC-r15 ::=					SEQUENCE {
+	sn-FieldLength-r15					SN-FieldLength-r15,
+	t-Reordering-r15					T-Reordering
+}
+
+SN-FieldLength ::=					ENUMERATED {size5, size10}
+
+SN-FieldLength-r15 ::=				ENUMERATED {size5, size10, size16-r15}
+
+T-PollRetransmit ::=				ENUMERATED {
+										ms5, ms10, ms15, ms20, ms25, ms30, ms35,
+										ms40, ms45, ms50, ms55, ms60, ms65, ms70,
+										ms75, ms80, ms85, ms90, ms95, ms100, ms105,
+										ms110, ms115, ms120, ms125, ms130, ms135,
+										ms140, ms145, ms150, ms155, ms160, ms165,
+										ms170, ms175, ms180, ms185, ms190, ms195,
+										ms200, ms205, ms210, ms215, ms220, ms225,
+										ms230, ms235, ms240, ms245, ms250, ms300,
+										ms350, ms400, ms450, ms500, ms800-v1310,
+										ms1000-v1310, ms2000-v1310, ms4000-v1310,
+										spare5, spare4, spare3, spare2, spare1}
+
+PollPDU ::=							ENUMERATED {
+										p4, p8, p16, p32, p64, p128, p256, pInfinity}
+
+PollPDU-v1310 ::=					ENUMERATED {
+										p512, p1024, p2048, p4096, p6144, p8192, p12288, p16384}
+
+PollPDU-r15 ::=						ENUMERATED {
+										p4, p8, p16, p32, p64, p128, p256, p512, p1024,
+										p2048-r15, p4096-r15, p6144-r15, p8192-r15,
+										p12288-r15, p16384-r15, pInfinity}
+
+PollByte ::=						ENUMERATED {
+										kB25, kB50, kB75, kB100, kB125, kB250, kB375,
+										kB500, kB750, kB1000, kB1250, kB1500, kB2000,
+										kB3000, kBinfinity, spare1}
+
+PollByte-r14 ::=					ENUMERATED {
+										kB1, kB2, kB5, kB8, kB10, kB15, kB3500,
+										kB4000, kB4500, kB5000, kB5500, kB6000, kB6500,
+										kB7000, kB7500, kB8000, kB9000, kB10000, kB11000, kB12000,
+										kB13000, kB14000, kB15000, kB16000, kB17000, kB18000,
+										kB19000, kB20000, kB25000, kB30000, kB35000, kB40000}
+
+T-Reordering ::=					ENUMERATED {
+										ms0, ms5, ms10, ms15, ms20, ms25, ms30, ms35,
+										ms40, ms45, ms50, ms55, ms60, ms65, ms70,
+										ms75, ms80, ms85, ms90, ms95, ms100, ms110,
+										ms120, ms130, ms140, ms150, ms160, ms170,
+										ms180, ms190, ms200, ms1600-v1310}
+
+T-ReorderingExt-r17 ::=				ENUMERATED {ms2200, ms3200}
+
+T-StatusProhibit ::=				ENUMERATED {
+										ms0, ms5, ms10, ms15, ms20, ms25, ms30, ms35,
+										ms40, ms45, ms50, ms55, ms60, ms65, ms70,
+										ms75, ms80, ms85, ms90, ms95, ms100, ms105,
+										ms110, ms115, ms120, ms125, ms130, ms135,
+										ms140, ms145, ms150, ms155, ms160, ms165,
+										ms170, ms175, ms180, ms185, ms190, ms195,
+										ms200, ms205, ms210, ms215, ms220, ms225,
+										ms230, ms235, ms240, ms245, ms250, ms300,
+										ms350, ms400, ms450, ms500, ms800-v1310,
+										ms1000-v1310, ms1200-v1310, ms1600-v1310, ms2000-v1310, ms2400-v1310, spare2,
+										spare1}

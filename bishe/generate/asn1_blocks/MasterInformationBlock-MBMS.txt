@@ -1,9 +1,0 @@
-
-MasterInformationBlock-MBMS-r14 ::=			SEQUENCE {
-	dl-Bandwidth-MBMS-r14						ENUMERATED {
-												n6, n15, n25, n50, n75, n100},
-	systemFrameNumber-r14						BIT STRING (SIZE (6)),
-	additionalNonMBSFNSubframes-r14				INTEGER (0..3),
-	semiStaticCFI-MBMS-r16						INTEGER (0..3),
-	spare										BIT STRING (SIZE (11))
-}

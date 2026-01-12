@@ -1,0 +1,4 @@
+
+DataInactivityTimer-r14 ::=				ENUMERATED {
+											s1, s2, s3, s5, s7, s10, s15, s20, s40, s50, s60,
+											s80, s100, s120, s150, s180}

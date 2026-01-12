@@ -1,2 +1,0 @@
-
-ShortMAC-I ::=						BIT STRING (SIZE (16))

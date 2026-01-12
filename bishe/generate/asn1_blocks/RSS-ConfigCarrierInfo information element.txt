@@ -1,5 +1,0 @@
-
-RSS-ConfigCarrierInfo-r16 ::=	SEQUENCE {
-	narrowbandIndex-r16				BIT STRING (SIZE (1..maxAvailNarrowBands-1-r16)),
-	timeOffsetGranularity-r16		ENUMERATED {g1, g2, g4, g8, g16, g32, g64, g128}
-}

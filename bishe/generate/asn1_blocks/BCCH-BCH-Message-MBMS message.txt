@@ -1,6 +1,0 @@
-
-BCCH-BCH-Message-MBMS::= SEQUENCE {
-	message					BCCH-BCH-MessageType-MBMS-r14
-}
-
-BCCH-BCH-MessageType-MBMS-r14 ::=					MasterInformationBlock-MBMS-r14

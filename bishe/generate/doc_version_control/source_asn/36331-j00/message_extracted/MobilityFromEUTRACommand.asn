@@ -1,0 +1,140 @@
+MobilityFromEUTRACommand ::=		SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		c1									CHOICE{
+			mobilityFromEUTRACommand-r8			MobilityFromEUTRACommand-r8-IEs,
+			mobilityFromEUTRACommand-r9			MobilityFromEUTRACommand-r9-IEs,
+			spare2 NULL, spare1					NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+MobilityFromEUTRACommand-r8-IEs ::=	SEQUENCE {
+	cs-FallbackIndicator				BOOLEAN,
+	purpose								CHOICE{
+		handover							Handover,
+		cellChangeOrder						CellChangeOrder
+	},
+	nonCriticalExtension				MobilityFromEUTRACommand-v8a0-IEs	OPTIONAL
+}
+
+MobilityFromEUTRACommand-r9-IEs ::=	SEQUENCE {
+	cs-FallbackIndicator				BOOLEAN,
+	purpose								CHOICE{
+		handover							Handover,
+		cellChangeOrder						CellChangeOrder,
+		e-CSFB-r9							E-CSFB-r9,
+		...
+	},
+	nonCriticalExtension				MobilityFromEUTRACommand-v930-IEs	OPTIONAL
+}
+
+RRC-TransactionIdentifier ::=		INTEGER (0..3)
+
+CellChangeOrder ::=				SEQUENCE {
+	t304								ENUMERATED {
+											ms100, ms200, ms500, ms1000,
+											ms2000, ms4000, ms8000, ms10000-v1310},
+	targetRAT-Type						CHOICE {
+			geran							SEQUENCE {
+				physCellId						PhysCellIdGERAN,
+				carrierFreq						CarrierFreqGERAN,
+				networkControlOrder				BIT STRING (SIZE (2))		OPTIONAL,	-- Need OP
+				systemInformation				SI-OrPSI-GERAN				OPTIONAL	-- Need OP
+			},
+			...
+	}
+}
+
+Handover ::=						SEQUENCE {
+	targetRAT-Type						ENUMERATED {
+											utra, geran, cdma2000-1XRTT, cdma2000-HRPD,
+											nr, eutra, spare2, spare1, ...},
+	targetRAT-MessageContainer			OCTET STRING,
+	nas-SecurityParamFromEUTRA			OCTET STRING (SIZE (1))	OPTIONAL,	-- Cond UTRAGERANEPC
+	systemInformation					SI-OrPSI-GERAN				OPTIONAL	-- Cond PSHO
+}
+
+MobilityFromEUTRACommand-v8a0-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				MobilityFromEUTRACommand-v8d0-IEs	OPTIONAL
+}
+
+E-CSFB-r9 ::=						SEQUENCE {
+	messageContCDMA2000-1XRTT-r9		OCTET STRING		OPTIONAL,	-- Need ON
+	mobilityCDMA2000-HRPD-r9			ENUMERATED {
+											handover, redirection
+										}					OPTIONAL,	-- Need OP
+	messageContCDMA2000-HRPD-r9		OCTET STRING			OPTIONAL,	-- Cond concHO
+	redirectCarrierCDMA2000-HRPD-r9	CarrierFreqCDMA2000		OPTIONAL	-- Cond concRedir
+}
+
+MobilityFromEUTRACommand-v930-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				MobilityFromEUTRACommand-v960-IEs	OPTIONAL
+}
+
+CarrierFreqGERAN ::=			SEQUENCE {
+	arfcn							ARFCN-ValueGERAN,
+	bandIndicator					BandIndicatorGERAN
+}
+
+PhysCellIdGERAN ::=				SEQUENCE {
+	networkColourCode					BIT STRING (SIZE (3)),
+	baseStationColourCode				BIT STRING (SIZE (3))
+}
+
+SI-OrPSI-GERAN ::=					CHOICE {
+	si									SystemInfoListGERAN,
+	psi									SystemInfoListGERAN
+}
+
+MobilityFromEUTRACommand-v8d0-IEs ::= SEQUENCE {
+	bandIndicator						BandIndicatorGERAN			OPTIONAL,	-- Cond GERAN
+	nonCriticalExtension				SEQUENCE {}					OPTIONAL
+}
+
+CarrierFreqCDMA2000 ::=			SEQUENCE {
+	bandClass							BandclassCDMA2000,
+	arfcn							ARFCN-ValueCDMA2000
+}
+
+MobilityFromEUTRACommand-v960-IEs ::= SEQUENCE {
+	bandIndicator					BandIndicatorGERAN					OPTIONAL,	-- Cond GERAN
+	nonCriticalExtension			MobilityFromEUTRACommand-v1530-IEs	OPTIONAL
+}
+
+ARFCN-ValueGERAN ::=			INTEGER (0..1023)
+
+BandIndicatorGERAN ::=			ENUMERATED {dcs1800, pcs1900}
+
+SystemInfoListGERAN ::=				SEQUENCE (SIZE (1..maxGERAN-SI)) OF
+										OCTET STRING (SIZE (1..23))
+
+ARFCN-ValueCDMA2000 ::=			INTEGER (0..2047)
+
+BandclassCDMA2000 ::=					ENUMERATED {
+											bc0, bc1, bc2, bc3, bc4, bc5, bc6, bc7, bc8,
+											bc9, bc10, bc11, bc12, bc13, bc14, bc15, bc16,
+											bc17, bc18-v9a0, bc19-v9a0, bc20-v9a0, bc21-v9a0,
+											spare10, spare9, spare8, spare7, spare6, spare5, spare4,
+											spare3, spare2, spare1, ...}
+
+MobilityFromEUTRACommand-v1530-IEs ::= SEQUENCE {
+	smtc-r15							MTC-SSB-NR-r15				OPTIONAL,		-- Need OP
+	nonCriticalExtension				SEQUENCE {}					OPTIONAL
+}
+
+MTC-SSB-NR-r15 ::=	SEQUENCE {
+	periodicityAndOffset-r15		CHOICE {
+		sf5-r15						INTEGER (0..4),
+		sf10-r15						INTEGER (0..9),
+		sf20-r15						INTEGER (0..19),
+		sf40-r15						INTEGER (0..39),
+		sf80-r15						INTEGER (0..79),
+		sf160-r15					INTEGER (0..159)
+	},
+	ssb-Duration-r15					ENUMERATED {sf1, sf2, sf3, sf4, sf5 }
+}
+

@@ -1,2 +1,0 @@
-
-P-MaxNR-r15 ::=				INTEGER (-30..33)

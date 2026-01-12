@@ -1,0 +1,5 @@
+
+WLAN-SuspendConfig-r14 ::=	SEQUENCE {
+	wlan-SuspendResumeAllowed-r14				BOOLEAN		OPTIONAL,	-- Need ON
+	wlan-SuspendTriggersStatusReport-r14		BOOLEAN		OPTIONAL	-- Need ON
+}

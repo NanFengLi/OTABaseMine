@@ -1,0 +1,2 @@
+
+MBSFN-RSRQ-Range-r12 ::=				INTEGER(0..31)

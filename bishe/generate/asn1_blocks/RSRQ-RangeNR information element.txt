@@ -1,2 +1,0 @@
-
-RSRQ-RangeNR-r15 ::=			INTEGER (0..127)

@@ -1,0 +1,6 @@
+
+SystemInformationBlockPos-r15 ::= SEQUENCE {
+	assistanceDataSIB-Element-r15		OCTET STRING,
+	lateNonCriticalExtension			OCTET STRING							OPTIONAL,
+	...
+}

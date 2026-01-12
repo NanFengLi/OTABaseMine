@@ -1,0 +1,2 @@
+
+RS-IndexNR-r15 ::=			INTEGER (0.. maxRS-Index-1-r15)

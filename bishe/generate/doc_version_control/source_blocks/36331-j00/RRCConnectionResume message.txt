@@ -1,0 +1,61 @@
+
+RRCConnectionResume-r13 ::=		SEQUENCE {
+	rrc-TransactionIdentifier		RRC-TransactionIdentifier,
+	criticalExtensions				CHOICE {
+		c1								CHOICE {
+			rrcConnectionResume-r13			RRCConnectionResume-r13-IEs,
+			spare3							NULL,
+			spare2							NULL,
+			spare1							NULL
+		},
+		criticalExtensionsFuture		SEQUENCE {}
+	}
+}
+
+RRCConnectionResume-r13-IEs ::=		SEQUENCE {
+	radioResourceConfigDedicated-r13		RadioResourceConfigDedicated	OPTIONAL,	-- Need ON
+	nextHopChainingCount-r13				NextHopChainingCount,
+	measConfig-r13							MeasConfig						OPTIONAL,	-- Need ON
+	antennaInfoDedicatedPCell-r13			AntennaInfoDedicated-v10i0		OPTIONAL,	-- Need ON
+	drb-ContinueROHC-r13					ENUMERATED {true}				OPTIONAL,	-- Need OP
+	lateNonCriticalExtension				OCTET STRING					OPTIONAL,
+	nonCriticalExtension					RRCConnectionResume-v1430-IEs	OPTIONAL
+}
+
+RRCConnectionResume-v1430-IEs ::= SEQUENCE {
+	otherConfig-r14						OtherConfig-r9					OPTIONAL,		-- Need ON
+	nonCriticalExtension				RRCConnectionResume-v1510-IEs	OPTIONAL
+}
+
+RRCConnectionResume-v1510-IEs ::= SEQUENCE {
+	sk-Counter-r15						INTEGER (0.. 65535)				OPTIONAL,	-- Need ON
+	nr-RadioBearerConfig1-r15			OCTET STRING					OPTIONAL,	-- Need ON
+	nr-RadioBearerConfig2-r15			OCTET STRING					OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionResume-v1530-IEs	OPTIONAL
+}
+
+RRCConnectionResume-v1530-IEs ::= SEQUENCE {
+	fullConfig-r15						ENUMERATED {true}				OPTIONAL,	-- Need ON
+	nonCriticalExtension				RRCConnectionResume-v1610-IEs	OPTIONAL
+}
+
+RRCConnectionResume-v1610-IEs ::=	SEQUENCE {
+	idleModeMeasurementReq-r16			ENUMERATED {true}				OPTIONAL,	-- Need ON
+	restoreMCG-SCells-r16				ENUMERATED {true}				OPTIONAL,	-- Need ON
+	restoreSCG-r16						ENUMERATED {true}				OPTIONAL,	-- Cond EarlySec
+	sCellToAddModList-r16				SCellToAddModList-r16			OPTIONAL,	-- Cond EarlySec
+	sCellToReleaseList-r16				SCellToReleaseListExt-r13		OPTIONAL,	-- Need ON
+	sCellGroupToReleaseList-r16			SCellGroupToReleaseList-r15		OPTIONAL,	-- Need ON
+	sCellGroupToAddModList-r16			SCellGroupToAddModList-r15		OPTIONAL,	-- Cond EarlySec
+	nr-SecondaryCellGroupConfig-r16		OCTET STRING					OPTIONAL,	-- Cond RestoreSCG
+	p-MaxEUTRA-r16						P-Max							OPTIONAL,	-- Cond SCG
+	p-MaxUE-FR1-r16						P-Max							OPTIONAL,	-- Cond SCG
+	tdm-PatternConfig-r16				TDM-PatternConfig-r15			OPTIONAL,	-- Cond FDD-PCell
+	tdm-PatternConfig2-r16				TDM-PatternConfig-r15			OPTIONAL,	-- Need OR
+	nonCriticalExtension				RRCConnectionResume-v1700-IEs						OPTIONAL
+}
+
+RRCConnectionResume-v1700-IEs ::=	SEQUENCE {
+	scg-State-r17						ENUMERATED {deactivated}			OPTIONAL,	-- Need OP
+	nonCriticalExtension				SEQUENCE {}						OPTIONAL
+}

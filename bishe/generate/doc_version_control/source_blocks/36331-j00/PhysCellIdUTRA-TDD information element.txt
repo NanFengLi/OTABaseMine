@@ -1,0 +1,2 @@
+
+PhysCellIdUTRA-TDD ::=				INTEGER (0..127)

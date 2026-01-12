@@ -1,0 +1,7 @@
+
+PhysCellIdRangeUTRA-FDDList-r9::=		SEQUENCE (SIZE (1..maxPhysCellIdRange-r9)) OF PhysCellIdRangeUTRA-FDD-r9
+
+PhysCellIdRangeUTRA-FDD-r9 ::=			SEQUENCE {
+		start-r9							PhysCellIdUTRA-FDD,
+		range-r9							INTEGER (2..512)				OPTIONAL	-- Need OP
+}

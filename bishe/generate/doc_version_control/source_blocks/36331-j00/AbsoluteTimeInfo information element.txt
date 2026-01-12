@@ -1,0 +1,2 @@
+
+AbsoluteTimeInfo-r10 ::=				BIT STRING (SIZE (48))

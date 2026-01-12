@@ -1,2 +1,0 @@
-
-DedicatedInfoCDMA2000 ::=				OCTET STRING

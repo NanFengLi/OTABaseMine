@@ -1,2 +1,0 @@
-
-PUR-ConfigID-r16 ::= BIT STRING (SIZE(20))

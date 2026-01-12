@@ -1,0 +1,2 @@
+
+SL-CP-Len-r12 ::=				ENUMERATED {normal, extended}

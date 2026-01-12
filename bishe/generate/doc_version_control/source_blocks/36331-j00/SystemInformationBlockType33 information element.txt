@@ -1,0 +1,65 @@
+
+SystemInformationBlockType33-r18 ::= SEQUENCE {
+	neighSatelliteInfoList-r18	NeighSatelliteInfoList-r18			OPTIONAL,	-- Need OR
+	neighValidityDuration-r18		ENUMERATED {s5, s10, s15, s20, s25, s30, s35, s40,
+												s45, s50, s55, s60, s120, s180, s240, s900}
+																			OPTIONAL,	-- Need OP
+	lateNonCriticalExtension		OCTET STRING							OPTIONAL,
+	...,
+	[[
+	neighSatelliteInfoListNR-r19	NeighSatelliteInfoListNR-r19			OPTIONAL,	-- Need OR
+	neighSatelliteInfoList-v1900	NeighSatelliteInfoList-v1900			OPTIONAL,	-- Need OR
+	neighSatelliteInfoListNB-r19	NeighSatelliteInfoListNB-r19			OPTIONAL	-- Need OR
+	]]
+}
+
+NeighSatelliteInfoListNR-r19 ::=	SEQUENCE (SIZE(1..maxSat-r17)) OF NeighSatelliteInfoNR-r19
+
+NeighSatelliteInfoList-v1900 ::=	SEQUENCE (SIZE(1..maxSat-r17)) OF NeighSatelliteInfo-v1900
+
+NeighSatelliteInfoListNB-r19 ::=	SEQUENCE (SIZE(1..maxSat-r17)) OF NeighSatelliteInfo-r18
+
+NeighSatelliteInfoList-r18 ::=	SEQUENCE (SIZE(1..maxSat-r17)) OF NeighSatelliteInfo-r18
+
+NeighSatelliteInfo-r18 ::=	SEQUENCE {
+	satelliteId-r18				SatelliteId-r18,
+	ephemerisInfo-r18				CHOICE {
+		stateVectors-r18				EphemerisStateVectors-r17,
+		orbitalParameters-r18			EphemerisOrbitalParameters-r17
+	},
+	nta-CommonParameters-r18		SEQUENCE {
+		nta-Common-r18					INTEGER (0..8316827)		OPTIONAL,	-- Need OP
+		nta-CommonDrift-r18			INTEGER (-261935..261935)	OPTIONAL,	-- Need OP
+		nta-CommonDriftVariation-r18	INTEGER (0..29479)			OPTIONAL	-- Need OP
+	},
+	epochTime-r18					SEQUENCE {
+		startSFN-r18					INTEGER (0..1023),
+		startSubFrame-r18				INTEGER (0..9)
+	}																OPTIONAL,	-- Need OP
+	k-Mac-r18						INTEGER (1..512)				OPTIONAL,	-- Need OP
+	t-ServiceStartNeigh-r18		TimeOffsetUTC-r17				OPTIONAL	-- Need OR
+}
+
+NeighSatelliteInfoNR-r19::=	SEQUENCE {
+	satelliteId-r19				SatelliteId-r18,
+	ephemerisInfo-r19				CHOICE {
+		stateVectors-r19				EphemerisStateVectors-r17,
+		orbitalParameters-r19			EphemerisOrbitalParameters-r17
+	}																OPTIONAL,	-- Need OP
+	nta-CommonParametersNR-r19		SEQUENCE {
+		nta-CommonNR-r19				INTEGER (0.. 66485757)	OPTIONAL,	-- Need OP
+		nta-CommonDriftNR-r19			INTEGER (-257303..257303)	OPTIONAL,	-- Need OP
+		nta-CommonDriftVariationNR-r19	INTEGER (0..28949)			OPTIONAL	-- Need OP
+	},
+	epochTime-r19					SEQUENCE {
+		startSFN-r19					INTEGER (0..1023),
+		startSubFrame-r19				INTEGER (0..9)
+	}																OPTIONAL,	-- Need OP
+	k-Mac-r19						INTEGER (1..512)				OPTIONAL,	-- Need OP
+	ntn-PolarizationDL-r19			ENUMERATED {rhcp,lhcp,linear}	OPTIONAL	-- Need OR
+}
+
+NeighSatelliteInfo-v1900 ::=	SEQUENCE {
+	sf-OperationModeNeigh-r19		ENUMERATED {barred, notBarred}	OPTIONAL,	-- Need OP
+	t-ModeSwitchingNeigh-r19		TimeOffsetUTC-r17					OPTIONAL	-- Need OR
+}

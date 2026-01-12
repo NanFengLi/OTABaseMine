@@ -1,2 +1,0 @@
-
-ReportConfigId ::=					INTEGER (1..maxReportConfigId)

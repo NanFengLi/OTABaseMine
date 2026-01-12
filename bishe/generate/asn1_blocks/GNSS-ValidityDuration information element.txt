@@ -1,4 +1,0 @@
-
-GNSS-ValidityDuration-r17 ::= ENUMERATED{
-								s10, s20, s30, s40, s50, s60, min5, min10,
-								min15, min20, min25, min30, min50, min90, min120, infinity}

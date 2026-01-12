@@ -1,0 +1,24 @@
+
+MeasIdToAddModList ::=				SEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod
+
+MeasIdToAddModList-v1310 ::=		SEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod-v1310
+
+MeasIdToAddModListExt-r12 ::=		SEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddModExt-r12
+
+MeasIdToAddModListExt-v1310 ::=		SEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod-v1310
+
+MeasIdToAddMod ::=	SEQUENCE {
+	measId								MeasId,
+	measObjectId						MeasObjectId,
+	reportConfigId						ReportConfigId
+}
+
+MeasIdToAddModExt-r12 ::=	SEQUENCE {
+	measId-v1250						MeasId-v1250,
+	measObjectId-r12					MeasObjectId,
+	reportConfigId-r12					ReportConfigId
+}
+
+MeasIdToAddMod-v1310 ::=	SEQUENCE {
+	measObjectId-v1310			MeasObjectId-v1310		OPTIONAL
+}

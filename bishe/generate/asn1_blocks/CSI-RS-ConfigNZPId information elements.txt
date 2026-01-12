@@ -1,4 +1,0 @@
-
-CSI-RS-ConfigNZPId-r11 ::=					INTEGER (1..maxCSI-RS-NZP-r11)
-CSI-RS-ConfigNZPId-v1310 ::=				INTEGER (minCSI-RS-NZP-r13..maxCSI-RS-NZP-r13)
-CSI-RS-ConfigNZPId-r13 ::=					INTEGER (1..maxCSI-RS-NZP-r13)

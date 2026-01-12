@@ -1,2 +1,0 @@
-
-TimeOffsetUTC-r17 ::=		INTEGER (0..1048575)

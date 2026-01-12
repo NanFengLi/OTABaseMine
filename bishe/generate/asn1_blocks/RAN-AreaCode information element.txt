@@ -1,2 +1,0 @@
-
-RAN-AreaCode-r15 ::=					INTEGER (0..255)

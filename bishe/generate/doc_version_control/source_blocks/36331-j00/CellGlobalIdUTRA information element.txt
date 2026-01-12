@@ -1,0 +1,5 @@
+
+CellGlobalIdUTRA ::=					SEQUENCE {
+	plmn-Identity							PLMN-Identity,
+	cellIdentity							BIT STRING (SIZE (28))
+}

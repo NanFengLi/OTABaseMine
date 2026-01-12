@@ -1,0 +1,14 @@
+
+MasterInformationBlock ::=			SEQUENCE {
+	dl-Bandwidth						ENUMERATED {
+											n6, n15, n25, n50, n75, n100},
+	phich-Config						PHICH-Config,
+	systemFrameNumber					BIT STRING (SIZE (8)),
+	schedulingInfoSIB1-BR-r13			INTEGER (0..31),
+	systemInfoUnchanged-BR-r15			BOOLEAN,
+	partEARFCN-r17					CHOICE {
+		spare							BIT STRING (SIZE (2)),
+		earfcn-LSB						BIT STRING (SIZE (2))
+	},
+	spare								BIT STRING (SIZE (1))
+}

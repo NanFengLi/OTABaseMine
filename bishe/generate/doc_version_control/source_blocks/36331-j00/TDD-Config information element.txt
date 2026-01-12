@@ -1,0 +1,25 @@
+
+TDD-Config ::=						SEQUENCE {
+	subframeAssignment					ENUMERATED {
+											sa0, sa1, sa2, sa3, sa4, sa5, sa6},
+	specialSubframePatterns				ENUMERATED {
+											ssp0, ssp1, ssp2, ssp3, ssp4,ssp5, ssp6, ssp7,
+											ssp8}
+}
+
+TDD-Config-v1130 ::=				SEQUENCE {
+	specialSubframePatterns-v1130		ENUMERATED {ssp7,ssp9}
+}
+
+TDD-Config-v1430 ::=				SEQUENCE {
+	specialSubframePatterns-v1430		ENUMERATED {ssp10}
+}
+
+TDD-Config-v1450 ::=				SEQUENCE {
+	specialSubframePatterns-v1450		ENUMERATED {ssp10-CRS-LessDwPTS}
+}
+
+TDD-ConfigSL-r12 ::=		SEQUENCE {
+	subframeAssignmentSL-r12				ENUMERATED {
+											none, sa0, sa1, sa2, sa3, sa4, sa5, sa6}
+}

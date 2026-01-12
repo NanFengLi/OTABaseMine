@@ -1,0 +1,25 @@
+CSFBParametersResponseCDMA2000 ::= SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions						CHOICE {
+		csfbParametersResponseCDMA2000-r8		CSFBParametersResponseCDMA2000-r8-IEs,
+		criticalExtensionsFuture				SEQUENCE {}
+	}
+}
+
+CSFBParametersResponseCDMA2000-r8-IEs ::= SEQUENCE {
+	rand								RAND-CDMA2000,
+	mobilityParameters					MobilityParametersCDMA2000,
+	nonCriticalExtension				CSFBParametersResponseCDMA2000-v8a0-IEs	OPTIONAL
+}
+
+RRC-TransactionIdentifier ::=		INTEGER (0..3)
+
+CSFBParametersResponseCDMA2000-v8a0-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}
+
+MobilityParametersCDMA2000 ::=			OCTET STRING
+
+RAND-CDMA2000 ::=						BIT STRING (SIZE (32))
+

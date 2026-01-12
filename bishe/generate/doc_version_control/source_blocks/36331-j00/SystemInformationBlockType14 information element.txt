@@ -1,0 +1,20 @@
+
+SystemInformationBlockType14-r11 ::=	SEQUENCE {
+	eab-Param-r11							CHOICE {
+		eab-Common-r11							EAB-Config-r11,
+		eab-PerPLMN-List-r11					SEQUENCE (SIZE (1..maxPLMN-r11)) OF EAB-ConfigPLMN-r11
+	}														OPTIONAL, -- Need OR
+	lateNonCriticalExtension				OCTET STRING			OPTIONAL,
+	...,
+	[[	eab-PerRSRP-r15					ENUMERATED {thresh0, thresh1, thresh2, thresh3}	OPTIONAL	-- Need OR
+	]]
+}
+
+EAB-ConfigPLMN-r11 ::=				SEQUENCE {
+	eab-Config-r11						EAB-Config-r11				OPTIONAL -- Need OR
+}
+
+EAB-Config-r11 ::=					SEQUENCE {
+	eab-Category-r11					ENUMERATED {a, b, c},
+	eab-BarringBitmap-r11				BIT STRING (SIZE (10))
+}

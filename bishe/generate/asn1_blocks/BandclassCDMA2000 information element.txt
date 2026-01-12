@@ -1,7 +1,0 @@
-
-BandclassCDMA2000 ::=					ENUMERATED {
-											bc0, bc1, bc2, bc3, bc4, bc5, bc6, bc7, bc8,
-											bc9, bc10, bc11, bc12, bc13, bc14, bc15, bc16,
-											bc17, bc18-v9a0, bc19-v9a0, bc20-v9a0, bc21-v9a0,
-											spare10, spare9, spare8, spare7, spare6, spare5, spare4,
-											spare3, spare2, spare1, ...}

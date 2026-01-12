@@ -1,0 +1,370 @@
+
+UEInformationResponse-r9	::=		SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		c1									CHOICE {
+			ueInformationResponse-r9			UEInformationResponse-r9-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+UEInformationResponse-r9-IEs ::=		SEQUENCE {
+	rach-Report-r9							RACH-Report-r16		OPTIONAL,
+	rlf-Report-r9							RLF-Report-r9			OPTIONAL,
+	nonCriticalExtension					UEInformationResponse-v930-IEs			OPTIONAL
+}
+
+-- Late non critical extensions
+UEInformationResponse-v9e0-IEs ::= SEQUENCE {
+	rlf-Report-v9e0						RLF-Report-v9e0					OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}						OPTIONAL
+}
+
+-- Regular non critical extensions
+UEInformationResponse-v930-IEs ::=	SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING (CONTAINING UEInformationResponse-v9e0-IEs)	OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1020-IEs		OPTIONAL
+}
+
+UEInformationResponse-v1020-IEs ::= SEQUENCE {
+	logMeasReport-r10					LogMeasReport-r10					OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1130-IEs		OPTIONAL
+}
+
+UEInformationResponse-v1130-IEs ::= SEQUENCE {
+	connEstFailReport-r11				ConnEstFailReport-r11				OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1250-IEs		OPTIONAL
+}
+
+UEInformationResponse-v1250-IEs ::= SEQUENCE {
+	mobilityHistoryReport-r12			MobilityHistoryReport-r12			OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1530-IEs		OPTIONAL
+}
+
+UEInformationResponse-v1530-IEs ::= SEQUENCE {
+	measResultListIdle-r15				MeasResultListIdle-r15			OPTIONAL,
+	flightPathInfoReport-r15			FlightPathInfoReport-r15		OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1610-IEs		OPTIONAL
+}
+
+UEInformationResponse-v1610-IEs ::= SEQUENCE {
+	rach-Report-v1610					RACH-Report-v1610				OPTIONAL,
+	measResultListExtIdle-r16			MeasResultListExtIdle-r16		OPTIONAL,
+	measResultListIdleNR-r16			MeasResultListIdleNR-r16		OPTIONAL,
+	nonCriticalExtension				UEInformationResponse-v1710-IEs	OPTIONAL
+}
+
+UEInformationResponse-v1710-IEs ::= SEQUENCE {
+	coarseLocationInfo-r17				OCTET STRING					OPTIONAL,	nonCriticalExtension				UEInformationResponse-v1800-IEs	OPTIONAL
+}
+
+UEInformationResponse-v1800-IEs ::= SEQUENCE {
+	rach-ReportNR-r18					RACH-ReportNR-r18				OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}						OPTIONAL
+}
+
+RACH-Report-r16 ::=					SEQUENCE {
+	numberOfPreamblesSent-r16			NumberOfPreamblesSent-r11,
+	contentionDetected-r16				BOOLEAN
+}
+
+RACH-Report-v1610 ::=	SEQUENCE {
+	initialCEL-r16						INTEGER (0..3),
+	edt-Fallback-r16					BOOLEAN
+}
+
+RACH-ReportNR-r18 ::=	SEQUENCE {
+	rach-ReportListNR-r18				OCTET STRING,
+	cellIdListNR-r18					CellIdListNR-r18
+}
+
+CellIdListNR-r18 ::=	SEQUENCE (SIZE (1..maxCellRAReportNR-r18)) OF CellIdNR-r18
+
+CellIdNR-r18 ::=		CHOICE {
+	cellGlobalId-r18		CellGlobalIdNR-r16,
+	pci-arfcn-r18			SEQUENCE {
+		physCellId-r18			PhysCellIdNR-r15,
+		carrierFreq-r18			ARFCN-ValueNR-r15
+	}
+}
+
+RLF-Report-r9 ::=					SEQUENCE {
+	measResultLastServCell-r9			SEQUENCE {
+		rsrpResult-r9						RSRP-Range,
+		rsrqResult-r9						RSRQ-Range						OPTIONAL
+	},
+	measResultNeighCells-r9				SEQUENCE {
+		measResultListEUTRA-r9				MeasResultList2EUTRA-r9			OPTIONAL,
+		measResultListUTRA-r9				MeasResultList2UTRA-r9			OPTIONAL,
+		measResultListGERAN-r9				MeasResultListGERAN				OPTIONAL,
+		measResultsCDMA2000-r9				MeasResultList2CDMA2000-r9		OPTIONAL
+	}	OPTIONAL,
+	...,
+	[[	locationInfo-r10				LocationInfo-r10					OPTIONAL,
+		failedPCellId-r10					CHOICE {
+			cellGlobalId-r10					CellGlobalIdEUTRA,
+			pci-arfcn-r10						SEQUENCE {
+				physCellId-r10						PhysCellId,
+				carrierFreq-r10						ARFCN-ValueEUTRA
+			}
+		}																	OPTIONAL,
+		reestablishmentCellId-r10		CellGlobalIdEUTRA					OPTIONAL,
+		timeConnFailure-r10				INTEGER (0..1023)					OPTIONAL,
+		connectionFailureType-r10		ENUMERATED {rlf, hof}				OPTIONAL,
+		previousPCellId-r10				CellGlobalIdEUTRA					OPTIONAL
+	]],
+	[[	failedPCellId-v1090				SEQUENCE {
+			carrierFreq-v1090				ARFCN-ValueEUTRA-v9e0
+		}																	OPTIONAL
+	]],
+	[[	basicFields-r11					SEQUENCE {
+			c-RNTI-r11						C-RNTI,
+			rlf-Cause-r11					ENUMERATED {
+												t310-Expiry, randomAccessProblem,
+												rlc-MaxNumRetx, t312-Expiry-r12},
+			timeSinceFailure-r11			TimeSinceFailure-r11
+		}																	OPTIONAL,
+		previousUTRA-CellId-r11			SEQUENCE {
+			carrierFreq-r11					ARFCN-ValueUTRA,
+			physCellId-r11					CHOICE {
+				fdd-r11							PhysCellIdUTRA-FDD,
+				tdd-r11							PhysCellIdUTRA-TDD
+			},
+			cellGlobalId-r11				CellGlobalIdUTRA				OPTIONAL
+		}																	OPTIONAL,
+		selectedUTRA-CellId-r11			SEQUENCE {
+			carrierFreq-r11					ARFCN-ValueUTRA,
+			physCellId-r11					CHOICE {
+				fdd-r11							PhysCellIdUTRA-FDD,
+				tdd-r11							PhysCellIdUTRA-TDD
+			}
+		}																	OPTIONAL
+	]],
+	[[	failedPCellId-v1250				SEQUENCE {
+			tac-FailedPCell-r12				TrackingAreaCode
+		}																	OPTIONAL,
+		measResultLastServCell-v1250	RSRQ-Range-v1250					OPTIONAL,
+		lastServCellRSRQ-Type-r12		RSRQ-Type-r12						OPTIONAL,
+		measResultListEUTRA-v1250		MeasResultList2EUTRA-v1250			OPTIONAL
+	]],
+	[[	drb-EstablishedWithQCI-1-r13	ENUMERATED {qci1}					OPTIONAL
+	]],
+	[[	measResultLastServCell-v1360	RSRP-Range-v1360					OPTIONAL
+	]],
+	[[	logMeasResultListBT-r15			LogMeasResultListBT-r15				OPTIONAL,
+		logMeasResultListWLAN-r15		LogMeasResultListWLAN-r15			OPTIONAL
+	]],
+	[[	measResultListNR-r16			MeasResultCellListNR-r15			OPTIONAL,
+		previousNR-PCellId-r16			CellGlobalIdNR-r16					OPTIONAL,
+		failedNR-PCellId-r16			CHOICE {
+			cellGlobalId					CellGlobalIdNR-r16,
+			pci-arfcn						SEQUENCE {
+				physCellId-r16					PhysCellIdNR-r15,
+				carrierFreq-r16				ARFCN-ValueNR-r15
+			}
+		}																	OPTIONAL,
+		reconnectCellId-r16				CHOICE {
+			nrReconnectCellId				CellGlobalIdNR-r16,
+			eutraReconnectCellId			SEQUENCE {
+				cellGlobalId-r16				CellGlobalIdEUTRA,
+				trackingAreaCode-EPC-r16		TrackingAreaCode			OPTIONAL,
+				trackingAreaCode-5GC-r16		TrackingAreaCode-5GC-r15	OPTIONAL
+			}
+		}																	OPTIONAL,
+		timeUntilReconnection-r16		TimeUntilReconnection-r16			OPTIONAL
+	]],
+	[[	measResultListNR-v1640			SEQUENCE {
+			carrierFreqNR-r16				ARFCN-ValueNR-r15
+		}																	OPTIONAL,
+		measResultListExtNR-r16			MeasResultFreqListNR-r16			OPTIONAL
+	]],
+	[[
+		voiceFallbackHO-r18				ENUMERATED {true}					OPTIONAL
+	]]
+}
+
+RLF-Report-v9e0 ::=				SEQUENCE {
+	measResultListEUTRA-v9e0			MeasResultList2EUTRA-v9e0
+}
+
+MeasResultList2EUTRA-r9 ::=				SEQUENCE (SIZE (1..maxFreq)) OF MeasResult2EUTRA-r9
+
+MeasResultList2EUTRA-v9e0 ::=			SEQUENCE (SIZE (1..maxFreq)) OF MeasResult2EUTRA-v9e0
+
+MeasResultList2EUTRA-v1250 ::=			SEQUENCE (SIZE (1..maxFreq)) OF MeasResult2EUTRA-v1250
+
+MeasResult2EUTRA-r9 ::=				SEQUENCE {
+	carrierFreq-r9						ARFCN-ValueEUTRA,
+	measResultList-r9					MeasResultListEUTRA
+}
+
+MeasResult2EUTRA-v9e0 ::=			SEQUENCE {
+	carrierFreq-v9e0					ARFCN-ValueEUTRA-v9e0		OPTIONAL
+}
+
+MeasResult2EUTRA-v1250 ::=			SEQUENCE {
+	rsrq-Type-r12						RSRQ-Type-r12		OPTIONAL
+}
+
+MeasResultList2UTRA-r9 ::=			SEQUENCE (SIZE (1..maxFreq)) OF MeasResult2UTRA-r9
+
+MeasResult2UTRA-r9 ::=				SEQUENCE {
+	carrierFreq-r9						ARFCN-ValueUTRA,
+	measResultList-r9					MeasResultListUTRA
+}
+
+MeasResultList2CDMA2000-r9 ::=		SEQUENCE (SIZE (1..maxFreq)) OF MeasResult2CDMA2000-r9
+
+MeasResult2CDMA2000-r9 ::=			SEQUENCE {
+	carrierFreq-r9						CarrierFreqCDMA2000,
+	measResultList-r9					MeasResultsCDMA2000
+}
+
+LogMeasReport-r10 ::=				SEQUENCE {
+	absoluteTimeStamp-r10				AbsoluteTimeInfo-r10,
+	traceReference-r10					TraceReference-r10,
+	traceRecordingSessionRef-r10		OCTET STRING (SIZE (2)),
+	tce-Id-r10							OCTET STRING (SIZE (1)),
+	logMeasInfoList-r10					LogMeasInfoList-r10,
+	logMeasAvailable-r10				ENUMERATED {true}				OPTIONAL,
+	...,
+	[[	logMeasAvailableBT-r15			ENUMERATED {true}				OPTIONAL,
+		logMeasAvailableWLAN-r15		ENUMERATED {true}				OPTIONAL
+	]]
+}
+
+LogMeasInfoList-r10 ::=		SEQUENCE (SIZE (1..maxLogMeasReport-r10)) OF LogMeasInfo-r10
+
+LogMeasInfo-r10 ::=		SEQUENCE {
+	locationInfo-r10					LocationInfo-r10				OPTIONAL,
+	relativeTimeStamp-r10				INTEGER (0..7200),
+	servCellIdentity-r10				CellGlobalIdEUTRA,
+	measResultServCell-r10				SEQUENCE {
+		rsrpResult-r10						RSRP-Range,
+		rsrqResult-r10						RSRQ-Range
+	},
+	measResultNeighCells-r10			SEQUENCE {
+		measResultListEUTRA-r10				MeasResultList2EUTRA-r9		OPTIONAL,
+		measResultListUTRA-r10				MeasResultList2UTRA-r9		OPTIONAL,
+		measResultListGERAN-r10				MeasResultList2GERAN-r10	OPTIONAL,
+		measResultListCDMA2000-r10			MeasResultList2CDMA2000-r9	OPTIONAL
+	}	OPTIONAL,
+	...,
+	[[	measResultListEUTRA-v1090			MeasResultList2EUTRA-v9e0	OPTIONAL
+	]],
+	[[	measResultListMBSFN-r12				MeasResultListMBSFN-r12		OPTIONAL,
+		measResultServCell-v1250			RSRQ-Range-v1250			OPTIONAL,
+		servCellRSRQ-Type-r12				RSRQ-Type-r12				OPTIONAL,
+		measResultListEUTRA-v1250			MeasResultList2EUTRA-v1250	OPTIONAL
+	]],
+	[[	inDeviceCoexDetected-r13			ENUMERATED {true}			OPTIONAL
+	]],
+	[[	measResultServCell-v1360			RSRP-Range-v1360			OPTIONAL
+	]],
+	[[	logMeasResultListBT-r15				LogMeasResultListBT-r15		OPTIONAL,
+		logMeasResultListWLAN-r15			LogMeasResultListWLAN-r15	OPTIONAL
+	]],
+	[[	anyCellSelectionDetected-r15		ENUMERATED {true}			OPTIONAL
+	]],
+	[[	measResultListNR-r16				MeasResultCellListNR-r15	OPTIONAL
+	]],
+	[[	measResultListNR-v1640			SEQUENCE {
+			carrierFreqNR-r16				ARFCN-ValueNR-r15
+		}																	OPTIONAL,
+		measResultListExtNR-r16			MeasResultFreqListNR-r16		OPTIONAL
+	]],
+	[[	uncomBarPreMeasResult-r17				OCTET STRING		OPTIONAL
+	]]
+}
+
+MeasResultListMBSFN-r12 ::=			SEQUENCE (SIZE (1..maxMBSFN-Area)) OF MeasResultMBSFN-r12
+
+MeasResultMBSFN-r12 ::=			SEQUENCE {
+	mbsfn-Area-r12					SEQUENCE {
+		mbsfn-AreaId-r12				MBSFN-AreaId-r12,
+		carrierFreq-r12					ARFCN-ValueEUTRA-r9
+	},
+	rsrpResultMBSFN-r12				RSRP-Range,
+	rsrqResultMBSFN-r12				MBSFN-RSRQ-Range-r12,
+	signallingBLER-Result-r12		BLER-Result-r12					OPTIONAL,
+	dataBLER-MCH-ResultList-r12		DataBLER-MCH-ResultList-r12		OPTIONAL,
+	...
+}
+
+DataBLER-MCH-ResultList-r12 ::=		SEQUENCE (SIZE (1.. maxPMCH-PerMBSFN)) OF DataBLER-MCH-Result-r12
+
+DataBLER-MCH-Result-r12 ::=			SEQUENCE {
+	mch-Index-r12						INTEGER (1..maxPMCH-PerMBSFN),
+	dataBLER-Result-r12					BLER-Result-r12
+}
+
+BLER-Result-r12 ::=					SEQUENCE {
+	bler-r12							BLER-Range-r12,
+	blocksReceived-r12					SEQUENCE {
+		n-r12								BIT STRING (SIZE (3)),
+		m-r12								BIT STRING (SIZE (8))
+	}
+}
+
+BLER-Range-r12 ::=						INTEGER(0..31)
+
+MeasResultList2GERAN-r10 ::=			SEQUENCE (SIZE (1..maxCellListGERAN)) OF MeasResultListGERAN
+
+MeasResultFreqListNR-r16::=		SEQUENCE (SIZE (1..maxFreq-1-r16)) OF MeasResultFreqFailNR-r15
+
+ConnEstFailReport-r11 ::=				SEQUENCE {
+	failedCellId-r11					CellGlobalIdEUTRA,
+	locationInfo-r11					LocationInfo-r10					OPTIONAL,
+	measResultFailedCell-r11			SEQUENCE {
+		rsrpResult-r11						RSRP-Range,
+		rsrqResult-r11						RSRQ-Range						OPTIONAL
+	},
+	measResultNeighCells-r11			SEQUENCE {
+		measResultListEUTRA-r11				MeasResultList2EUTRA-r9			OPTIONAL,
+		measResultListUTRA-r11				MeasResultList2UTRA-r9			OPTIONAL,
+		measResultListGERAN-r11				MeasResultListGERAN				OPTIONAL,
+		measResultsCDMA2000-r11				MeasResultList2CDMA2000-r9		OPTIONAL
+	}	OPTIONAL,
+	numberOfPreamblesSent-r11			NumberOfPreamblesSent-r11,
+	contentionDetected-r11				BOOLEAN,
+	maxTxPowerReached-r11				BOOLEAN,
+	timeSinceFailure-r11				TimeSinceFailure-r11,
+	measResultListEUTRA-v1130			MeasResultList2EUTRA-v9e0			OPTIONAL,
+	...,
+	[[	measResultFailedCell-v1250		RSRQ-Range-v1250					OPTIONAL,
+		failedCellRSRQ-Type-r12			RSRQ-Type-r12						OPTIONAL,
+		measResultListEUTRA-v1250		MeasResultList2EUTRA-v1250			OPTIONAL
+	]],
+	[[	measResultFailedCell-v1360		RSRP-Range-v1360					OPTIONAL
+	]],
+	[[	logMeasResultListBT-r15			LogMeasResultListBT-r15				OPTIONAL,
+		logMeasResultListWLAN-r15		LogMeasResultListWLAN-r15			OPTIONAL
+	]],
+	[[	measResultListNR-r16			MeasResultCellListNR-r15			OPTIONAL
+	]],
+	[[	measResultListNR-v1640			SEQUENCE {
+			carrierFreqNR-r16				ARFCN-ValueNR-r15
+		}																	OPTIONAL,
+		measResultListExtNR-r16			MeasResultFreqListNR-r16		OPTIONAL
+	]]
+}
+
+NumberOfPreamblesSent-r11::=			INTEGER (1..200)
+
+TimeSinceFailure-r11 ::=				INTEGER (0..172800)
+
+TimeUntilReconnection-r16 ::=			INTEGER (0..172800)
+
+MobilityHistoryReport-r12 ::=	VisitedCellInfoList-r12
+
+FlightPathInfoReport-r15 ::=		SEQUENCE {
+	flightPath-r15	SEQUENCE (SIZE (1..maxWayPoint-r15)) OF WayPointLocation-r15	OPTIONAL,
+	dummy							SEQUENCE {}							OPTIONAL
+}
+
+WayPointLocation-r15 ::=			SEQUENCE {
+	wayPointLocation-r15						LocationInfo-r10,
+	timeStamp-r15							AbsoluteTimeInfo-r10		OPTIONAL
+}

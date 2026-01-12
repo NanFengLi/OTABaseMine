@@ -1,0 +1,14 @@
+
+TimeReferenceInfo-r15 ::=		SEQUENCE {
+	time-r15							ReferenceTime-r15,
+	uncertainty-r15						INTEGER (0..12)				OPTIONAL,	-- Need OR
+	timeInfoType-r15					ENUMERATED {localClock}		OPTIONAL,	-- Need OR
+	referenceSFN-r15					INTEGER (0..1023)			OPTIONAL	-- Cond TimeRef
+}
+
+ReferenceTime-r15 ::=			SEQUENCE {
+	refDays-r15							INTEGER (0..72999),
+	refSeconds-r15						INTEGER (0..86399),
+	refMilliSeconds-r15					INTEGER (0..999),
+	refQuarterMicroSeconds-r15			INTEGER (0..3999)
+}

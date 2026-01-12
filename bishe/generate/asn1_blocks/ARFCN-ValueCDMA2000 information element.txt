@@ -1,2 +1,0 @@
-
-ARFCN-ValueCDMA2000 ::=			INTEGER (0..2047)

@@ -1,4 +1,0 @@
-
-SL-PeriodComm-r12 ::=					ENUMERATED {sf40, sf60, sf70, sf80, sf120, sf140,
-												sf160, sf240, sf280, sf320, spare6, spare5,
-												spare4, spare3, spare2, spare}

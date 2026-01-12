@@ -1,0 +1,11 @@
+
+DMRS-Config-r11 ::=		CHOICE {
+	release						NULL,
+	setup						SEQUENCE {
+		scramblingIdentity-r11		INTEGER (0..503),
+		scramblingIdentity2-r11		INTEGER (0..503)
+	}
+}
+DMRS-Config-v1310 ::=			SEQUENCE {
+		dmrs-tableAlt-r13				ENUMERATED {true}			OPTIONAL	-- Need OR
+}

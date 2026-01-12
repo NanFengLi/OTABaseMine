@@ -1,0 +1,12 @@
+
+WLAN-CarrierInfo-r13 ::=	SEQUENCE {
+	operatingClass-r13			INTEGER (0..255)			OPTIONAL,	-- Need ON
+	countryCode-r13				ENUMERATED {unitedStates, europe, japan, global, ...}
+															OPTIONAL,	-- Need ON
+	channelNumbers-r13			WLAN-ChannelList-r13		OPTIONAL,	-- Need ON
+	...
+}
+
+WLAN-ChannelList-r13 ::=	SEQUENCE (SIZE (1..maxWLAN-Channels-r13)) OF WLAN-Channel-r13
+
+WLAN-Channel-r13 ::=	INTEGER(0..255)

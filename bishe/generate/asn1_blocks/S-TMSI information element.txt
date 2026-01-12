@@ -1,5 +1,0 @@
-
-S-TMSI ::=							SEQUENCE {
-	mmec								MMEC,
-	m-TMSI								BIT STRING (SIZE (32))
-}

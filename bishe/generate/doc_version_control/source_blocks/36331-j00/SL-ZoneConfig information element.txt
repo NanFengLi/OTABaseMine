@@ -1,0 +1,7 @@
+
+SL-ZoneConfig-r14 ::=		SEQUENCE {
+	zoneLength-r14	ENUMERATED { m5, m10, m20, m50, m100, m200, m500, spare1},
+	zoneWidth-r14	ENUMERATED { m5, m10, m20, m50, m100, m200, m500, spare1},
+	zoneIdLongiMod-r14	INTEGER (1..4),
+	zoneIdLatiMod-r14	INTEGER (1..4)
+}

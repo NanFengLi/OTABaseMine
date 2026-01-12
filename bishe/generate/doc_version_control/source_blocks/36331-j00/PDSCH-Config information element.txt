@@ -1,0 +1,138 @@
+
+PDSCH-ConfigCommon ::=		SEQUENCE {
+	referenceSignalPower				INTEGER (-60..50),
+	p-b									INTEGER (0..3)
+}
+
+PDSCH-ConfigCommon-v1310 ::=	SEQUENCE {
+	pdsch-maxNumRepetitionCEmodeA-r13	ENUMERATED {
+											r16, r32 }					OPTIONAL,	-- Need OR
+	pdsch-maxNumRepetitionCEmodeB-r13	ENUMERATED {
+											r192, r256, r384, r512, r768, r1024,
+											r1536, r2048}					OPTIONAL	-- Need OR
+}
+
+PDSCH-ConfigDedicated::=		SEQUENCE {
+	p-a									ENUMERATED {
+											dB-6, dB-4dot77, dB-3, dB-1dot77,
+											dB0, dB1, dB2, dB3}
+}
+
+PDSCH-ConfigDedicated-v1130 ::=		SEQUENCE {
+	dmrs-ConfigPDSCH-r11				DMRS-Config-r11					OPTIONAL,	-- Need ON
+	qcl-Operation						ENUMERATED {typeA, typeB}			OPTIONAL,	-- Need OR
+	re-MappingQCLConfigToReleaseList-r11	RE-MappingQCLConfigToReleaseList-r11	OPTIONAL,	-- Need ON
+	re-MappingQCLConfigToAddModList-r11		RE-MappingQCLConfigToAddModList-r11		OPTIONAL	-- Need ON
+}
+
+PDSCH-ConfigDedicated-v1280 ::=		SEQUENCE {
+	tbsIndexAlt-r12						ENUMERATED {a26, a33}				OPTIONAL	-- Need OR
+}
+
+PDSCH-ConfigDedicated-v1310 ::=		SEQUENCE {
+	dmrs-ConfigPDSCH-v1310				DMRS-Config-v1310					OPTIONAL	-- Need ON
+}
+
+PDSCH-ConfigDedicated-v1430 ::=		SEQUENCE {
+	ce-PDSCH-MaxBandwidth-r14			ENUMERATED {bw5, bw20}				OPTIONAL,	-- Need OP
+	ce-PDSCH-TenProcesses-r14			ENUMERATED {on}						OPTIONAL,	-- Need OR
+	ce-HARQ-AckBundling-r14				ENUMERATED {on}						OPTIONAL,	-- Need OR
+	ce-SchedulingEnhancement-r14		ENUMERATED {range1, range2}			OPTIONAL,	-- Need OR
+	tbsIndexAlt2-r14						ENUMERATED {b33}				OPTIONAL	-- Need OR
+}
+
+PDSCH-ConfigDedicated-v1530 ::=		SEQUENCE {
+	qcl-Operation-v1530						ENUMERATED {typeC}				OPTIONAL,	-- Need OR
+	tbs-IndexAlt3-r15							ENUMERATED {a37}			OPTIONAL,	-- Need OR
+	ce-CQI-AlternativeTableConfig-r15			ENUMERATED {on}				OPTIONAL,	-- Need OR
+	ce-PDSCH-64QAM-Config-r15					ENUMERATED {on}				OPTIONAL,	-- Need OR
+	ce-PDSCH-FlexibleStartPRB-AllocConfig-r15	ENUMERATED {on}				OPTIONAL,	-- Need OR
+	altMCS-TableScalingConfig-r15		ENUMERATED {oDot5, oDot625, oDot75, oDot875}	OPTIONAL	-- Need OR
+}
+
+PDSCH-ConfigDedicated-v1610 ::=		SEQUENCE {
+	ce-PDSCH-MultiTB-Config-r16		SetupRelease-CE-PDSCH-MultiTB-Config-r16
+}
+
+SetupRelease-CE-PDSCH-MultiTB-Config-r16 ::= CHOICE {
+	release			NULL,
+	setup			CE-PDSCH-MultiTB-Config-r16
+}
+
+PDSCH-ConfigDedicated-v1700 ::=		SEQUENCE {
+	ce-PDSCH-14HARQ-Config-r17		SetupRelease-CE-PDSCH-14HARQ-Config-r17	OPTIONAL,	-- Need ON
+	ce-PDSCH-maxTBS-r17				ENUMERATED {enabled}	OPTIONAL	-- Need OR
+}
+
+SetupRelease-CE-PDSCH-14HARQ-Config-r17 ::= CHOICE {
+	release			NULL,
+	setup			CE-PDSCH-14HARQ-Config-r17
+}
+
+PDSCH-ConfigDedicated-v1800 ::=		SEQUENCE {
+	downlinkHARQ-FeedbackDisabledBitmap-r18
+			SetupRelease-DownlinkHARQ-FeedbackDisabledBitmap-r18		OPTIONAL,	-- Need ON
+	downlinkHARQ-FeedbackDisabledDCI-r18		ENUMERATED {true}			OPTIONAL	-- Need OR
+}
+
+SetupRelease-DownlinkHARQ-FeedbackDisabledBitmap-r18 ::= CHOICE {
+	release			NULL,
+	setup			DownlinkHARQ-FeedbackDisabledBitmap-r18
+}
+
+PDSCH-ConfigDedicatedSCell-v1430 ::=		SEQUENCE {
+	tbsIndexAlt2-r14						ENUMERATED {b33}				OPTIONAL	-- Need OR
+}
+
+CE-PDSCH-MultiTB-Config-r16 ::= SEQUENCE {
+	interleaving-r16						ENUMERATED {on}		OPTIONAL,		-- Need OR
+	harq-AckBundling-r16					ENUMERATED {on}		OPTIONAL		-- Need OR
+}
+
+CE-PDSCH-14HARQ-Config-r17 ::= SEQUENCE {
+	ce-HARQ-AckDelay-r17	ENUMERATED {alt-1, alt-2e}
+}
+
+RE-MappingQCLConfigToAddModList-r11 ::=		SEQUENCE (SIZE (1..maxRE-MapQCL-r11)) OF PDSCH-RE-MappingQCL-Config-r11
+
+RE-MappingQCLConfigToReleaseList-r11 ::=	SEQUENCE (SIZE (1..maxRE-MapQCL-r11)) OF PDSCH-RE-MappingQCL-ConfigId-r11
+
+PDSCH-RE-MappingQCL-Config-r11 ::=		SEQUENCE {
+	pdsch-RE-MappingQCL-ConfigId-r11	PDSCH-RE-MappingQCL-ConfigId-r11,
+	optionalSetOfFields-r11				SEQUENCE {
+		crs-PortsCount-r11					ENUMERATED {n1, n2, n4, spare1},
+		crs-FreqShift-r11					INTEGER (0..5),
+		mbsfn-SubframeConfigList-r11		CHOICE {
+			release								NULL,
+			setup								SEQUENCE {
+				subframeConfigList					MBSFN-SubframeConfigList
+			}
+		}																	OPTIONAL,	-- Need ON
+		pdsch-Start-r11						ENUMERATED {reserved, n1, n2, n3, n4, assigned}
+	}																		OPTIONAL,	-- Need OP
+	csi-RS-ConfigZPId-r11				CSI-RS-ConfigZPId-r11,
+	qcl-CSI-RS-ConfigNZPId-r11			CSI-RS-ConfigNZPId-r11				OPTIONAL,	-- Need OR
+	...,
+	[[	mbsfn-SubframeConfigList-v1430	CHOICE {
+			release						NULL,
+			setup						SEQUENCE {
+				subframeConfigList-v1430	MBSFN-SubframeConfigList-v1430
+			}
+		}																	OPTIONAL	-- Need OP
+	]],
+	[[	codewordOneConfig-v1530				CHOICE {
+			release						NULL,
+			setup						SEQUENCE {
+				crs-PortsCount-v1530					ENUMERATED {n1, n2, n4, spare1},
+				crs-FreqShift-v1530						INTEGER (0..5),
+				mbsfn-SubframeConfigList-v1530			MBSFN-SubframeConfigList	OPTIONAL,
+				mbsfn-SubframeConfigListExt-v1530		MBSFN-SubframeConfigList-v1430 OPTIONAL,
+				pdsch-Start-v1530						ENUMERATED {reserved, n1, n2, n3, n4, assigned},
+				csi-RS-ConfigZPId-v1530					CSI-RS-ConfigZPId-r11,
+				qcl-CSI-RS-ConfigNZPId-v1530			CSI-RS-ConfigNZPId-r11	OPTIONAL
+			}
+		}																OPTIONAL	-- Cond TypeC
+	]]
+}
+
+DownlinkHARQ-FeedbackDisabledBitmap-r18 ::=		BIT STRING (SIZE(14))

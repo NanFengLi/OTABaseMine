@@ -1,0 +1,71 @@
+
+SystemInformationBlockType20-r13 ::=	SEQUENCE {
+	sc-mcch-RepetitionPeriod-r13		ENUMERATED {rf2, rf4, rf8, rf16, rf32, rf64, rf128, rf256},
+	sc-mcch-Offset-r13				INTEGER (0..10),
+	sc-mcch-FirstSubframe-r13		INTEGER (0..9),
+	sc-mcch-duration-r13			INTEGER (2..9)	OPTIONAL,
+	sc-mcch-ModificationPeriod-r13	ENUMERATED {rf2, rf4, rf8, rf16, rf32, rf64, rf128, rf256,
+										rf512, rf1024, r2048, rf4096, rf8192, rf16384, rf32768,
+												rf65536},
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	...,
+	[[	br-BCCH-Config-r14					SEQUENCE {
+			dummy								ENUMERATED {rf1},
+			dummy2								ENUMERATED {rf1},
+			mpdcch-Narrowband-SC-MCCH-r14		INTEGER (1..maxAvailNarrowBands-r13),
+			mpdcch-NumRepetition-SC-MCCH-r14	ENUMERATED {r1, r2, r4, r8, r16,
+															r32, r64, r128, r256},
+			mpdcch-StartSF-SC-MCCH-r14			CHOICE {
+				fdd-r14								ENUMERATED {v1, v1dot5, v2, v2dot5, v4,
+																v5, v8, v10},
+				tdd-r14								ENUMERATED {v1, v2, v4, v5, v8, v10, v20}
+			},
+			mpdcch-PDSCH-HoppingConfig-SC-MCCH-r14	ENUMERATED {off, ce-ModeA, ce-ModeB},
+			sc-mcch-CarrierFreq-r14				ARFCN-ValueEUTRA-r9,
+			sc-mcch-Offset-BR-r14				INTEGER (0..10),
+			sc-mcch-RepetitionPeriod-BR-r14		ENUMERATED {rf32, rf128, rf512, rf1024,
+													rf2048, rf4096, rf8192, rf16384},
+			sc-mcch-ModificationPeriod-BR-r14	ENUMERATED { rf32, rf128, rf256, rf512, rf1024,
+													rf2048, rf4096, rf8192, rf16384, rf32768,
+													rf65536, rf131072, rf262144, rf524288,
+													rf1048576}
+		}																	OPTIONAL,	-- Need OR
+		sc-mcch-SchedulingInfo-r14			SC-MCCH-SchedulingInfo-r14		OPTIONAL,	-- Need OP
+		pdsch-maxNumRepetitionCEmodeA-SC-MTCH-r14
+											ENUMERATED { r16, r32 }		OPTIONAL,	-- Need OR
+		pdsch-maxNumRepetitionCEmodeB-SC-MTCH-r14
+											ENUMERATED {
+												r192, r256, r384, r512, r768, r1024,
+												r1536, r2048}				OPTIONAL	-- Need OR
+	]],
+	[[	sc-mcch-RepetitionPeriod-v1470		ENUMERATED {rf1}				OPTIONAL,	-- Need OR
+		sc-mcch-ModificationPeriod-v1470	ENUMERATED {rf1}				OPTIONAL	-- Need OR
+	]]
+}
+
+SC-MCCH-SchedulingInfo-r14::=	SEQUENCE	{
+	onDurationTimerSCPTM-r14			ENUMERATED {psf10, psf20, psf100, psf300,
+												psf500, psf1000, psf1200, psf1600},
+	drx-InactivityTimerSCPTM-r14		ENUMERATED {psf0, psf1, psf2, psf4, psf8, psf16,
+												psf32, psf64, psf128, psf256, ps512,
+												psf1024, psf2048, psf4096, psf8192, psf16384},
+	schedulingPeriodStartOffsetSCPTM-r14	CHOICE {
+		sf10									INTEGER(0..9),
+		sf20									INTEGER(0..19),
+		sf32									INTEGER(0..31),
+		sf40									INTEGER(0..39),
+		sf64									INTEGER(0..63),
+		sf80									INTEGER(0..79),
+		sf128									INTEGER(0..127),
+		sf160									INTEGER(0..159),
+		sf256									INTEGER(0..255),
+		sf320									INTEGER(0..319),
+		sf512									INTEGER(0..511),
+		sf640									INTEGER(0..639),
+		sf1024									INTEGER(0..1023),
+		sf2048									INTEGER(0..2047),
+		sf4096									INTEGER(0..4095),
+		sf8192									INTEGER(0..8191)
+	},
+	...
+}

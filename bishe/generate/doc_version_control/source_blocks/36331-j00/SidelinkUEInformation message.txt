@@ -1,0 +1,77 @@
+
+SidelinkUEInformation-r12 ::=	SEQUENCE {
+	criticalExtensions				CHOICE {
+		c1								CHOICE {
+			sidelinkUEInformation-r12		SidelinkUEInformation-r12-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+SidelinkUEInformation-r12-IEs ::=	SEQUENCE {
+	commRxInterestedFreq-r12			ARFCN-ValueEUTRA-r9				OPTIONAL,
+	commTxResourceReq-r12				SL-CommTxResourceReq-r12		OPTIONAL,
+	discRxInterest-r12					ENUMERATED {true}				OPTIONAL,
+	discTxResourceReq-r12				INTEGER (1..63)					OPTIONAL,
+	lateNonCriticalExtension			OCTET STRING					OPTIONAL,
+	nonCriticalExtension				SidelinkUEInformation-v1310-IEs	OPTIONAL
+}
+
+SidelinkUEInformation-v1310-IEs ::=	SEQUENCE {
+	commTxResourceReqUC-r13				SL-CommTxResourceReq-r12				OPTIONAL,
+	commTxResourceInfoReqRelay-r13		SEQUENCE {
+		commTxResourceReqRelay-r13			SL-CommTxResourceReq-r12			OPTIONAL,
+		commTxResourceReqRelayUC-r13		SL-CommTxResourceReq-r12			OPTIONAL,
+		ue-Type-r13							ENUMERATED {relayUE, remoteUE}
+	}																			OPTIONAL,
+	discTxResourceReq-v1310			SEQUENCE {
+		carrierFreqDiscTx-r13			INTEGER (1..maxFreq)					OPTIONAL,
+		discTxResourceReqAddFreq-r13	SL-DiscTxResourceReqPerFreqList-r13		OPTIONAL
+	}																			OPTIONAL,
+	discTxResourceReqPS-r13			SL-DiscTxResourceReq-r13					OPTIONAL,
+	discRxGapReq-r13				SL-GapRequest-r13							OPTIONAL,
+	discTxGapReq-r13				SL-GapRequest-r13							OPTIONAL,
+	discSysInfoReportFreqList-r13	SL-DiscSysInfoReportFreqList-r13			OPTIONAL,
+	nonCriticalExtension			SidelinkUEInformation-v1430-IEs				OPTIONAL
+}
+
+SidelinkUEInformation-v1430-IEs ::=	SEQUENCE {
+	v2x-CommRxInterestedFreqList-r14	SL-V2X-CommFreqList-r14					OPTIONAL,
+	p2x-CommTxType-r14					ENUMERATED {true}						OPTIONAL,
+	v2x-CommTxResourceReq-r14			SL-V2X-CommTxFreqList-r14				OPTIONAL,
+	nonCriticalExtension				SidelinkUEInformation-v1530-IEs			OPTIONAL
+}
+
+SidelinkUEInformation-v1530-IEs ::=	SEQUENCE {
+	reliabilityInfoListSL-r15			SL-ReliabilityList-r15					OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}								OPTIONAL
+}
+
+SL-CommTxResourceReq-r12 ::=		SEQUENCE {
+	carrierFreq-r12						ARFCN-ValueEUTRA-r9						OPTIONAL,
+	destinationInfoList-r12				SL-DestinationInfoList-r12
+}
+
+SL-DiscTxResourceReqPerFreqList-r13 ::=	SEQUENCE (SIZE (1..maxFreq)) OF SL-DiscTxResourceReq-r13
+
+SL-DiscTxResourceReq-r13 ::=		SEQUENCE {
+	carrierFreqDiscTx-r13				INTEGER (1..maxFreq)					OPTIONAL,
+	discTxResourceReq-r13				INTEGER (1..63)
+}
+
+SL-DestinationInfoList-r12 ::=	SEQUENCE (SIZE (1..maxSL-Dest-r12)) OF SL-DestinationIdentity-r12
+
+SL-DestinationIdentity-r12 ::=	BIT STRING (SIZE (24))
+
+SL-DiscSysInfoReportFreqList-r13 ::=	SEQUENCE (SIZE (1.. maxSL-DiscSysInfoReportFreq-r13)) OF SL-DiscSysInfoReport-r13
+
+SL-V2X-CommFreqList-r14 ::=	SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF INTEGER (0..maxFreqV2X-1-r14)
+
+SL-V2X-CommTxFreqList-r14 ::=	SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF SL-V2X-CommTxResourceReq-r14
+
+SL-V2X-CommTxResourceReq-r14 ::=	SEQUENCE {
+	carrierFreqCommTx-r14				INTEGER (0.. maxFreqV2X-1-r14)			OPTIONAL,
+	v2x-TypeTxSync-r14					SL-TypeTxSync-r14						OPTIONAL,
+	v2x-DestinationInfoList-r14			SL-DestinationInfoList-r12				OPTIONAL
+}

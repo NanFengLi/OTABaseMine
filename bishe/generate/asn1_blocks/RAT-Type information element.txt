@@ -1,4 +1,0 @@
-
-RAT-Type ::=						ENUMERATED {
-										eutra, utra, geran-cs, geran-ps, cdma2000-1XRTT,
-										nr, eutra-nr, spare1, ...}

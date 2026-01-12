@@ -1,0 +1,2 @@
+
+NG-5G-S-TMSI-r15::=							BIT STRING (SIZE (48))

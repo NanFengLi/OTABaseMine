@@ -1,7 +1,0 @@
-
-SystemInformationBlockType29-r16 ::= SEQUENCE {
-	resourceReservationConfigCommonDL-r16	ResourceReservationConfigDL-r16	OPTIONAL,	-- Need OR
-	resourceReservationConfigCommonUL-r16	ResourceReservationConfigUL-r16	OPTIONAL,	-- Need OR
-	lateNonCriticalExtension				OCTET STRING					OPTIONAL,
-	...
-}

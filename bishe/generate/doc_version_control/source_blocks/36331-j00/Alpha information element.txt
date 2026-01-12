@@ -1,0 +1,2 @@
+
+Alpha-r12 ::= ENUMERATED {al0, al04, al05, al06, al07, al08, al09, al1}

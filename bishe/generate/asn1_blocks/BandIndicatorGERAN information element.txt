@@ -1,2 +1,0 @@
-
-BandIndicatorGERAN ::=			ENUMERATED {dcs1800, pcs1900}

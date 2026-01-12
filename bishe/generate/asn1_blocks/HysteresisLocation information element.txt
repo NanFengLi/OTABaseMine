@@ -1,2 +1,0 @@
-
-HysteresisLocation-r18 ::=			INTEGER (0..32767)

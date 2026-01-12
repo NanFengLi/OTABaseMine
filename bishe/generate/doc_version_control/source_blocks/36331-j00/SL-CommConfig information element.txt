@@ -1,0 +1,60 @@
+
+SL-CommConfig-r12 ::=				SEQUENCE	{
+	commTxResources-r12					CHOICE {
+		release								NULL,
+		setup								CHOICE {
+			scheduled-r12					SEQUENCE {
+				sl-RNTI-r12						C-RNTI,
+				mac-MainConfig-r12				MAC-MainConfigSL-r12,
+				sc-CommTxConfig-r12				SL-CommResourcePool-r12,
+				mcs-r12							INTEGER (0..28)				OPTIONAL	-- Need OP
+			},
+			ue-Selected-r12					SEQUENCE {
+				-- Pool for normal usage
+				commTxPoolNormalDedicated-r12	SEQUENCE {
+					poolToReleaseList-r12			SL-TxPoolToReleaseList-r12 OPTIONAL,	-- Need ON
+					poolToAddModList-r12			SL-CommTxPoolToAddModList-r12 OPTIONAL	-- Need ON
+				}
+			}
+		}
+	}																		OPTIONAL,	-- Need ON
+	...,
+	[[	commTxResources-v1310				CHOICE {
+			release								NULL,
+			setup								CHOICE {
+				scheduled-v1310						SEQUENCE {
+					logicalChGroupInfoList-r13			LogicalChGroupInfoList-r13,
+					multipleTx-r13						BOOLEAN
+				},
+				ue-Selected-v1310					SEQUENCE {
+					commTxPoolNormalDedicatedExt-r13	SEQUENCE {
+						poolToReleaseListExt-r13			SL-TxPoolToReleaseListExt-r13 OPTIONAL,	-- Need ON
+						poolToAddModListExt-r13				SL-CommTxPoolToAddModListExt-r13	OPTIONAL	-- Need ON
+					}
+				}
+			}
+		}																OPTIONAL,	-- Need ON
+		commTxAllowRelayDedicated-r13		BOOLEAN			OPTIONAL	-- Need ON
+	]]
+}
+
+LogicalChGroupInfoList-r13 ::=		SEQUENCE (SIZE (1..maxLCG-r13)) OF SL-PriorityList-r13
+
+SL-CommTxPoolToAddModList-r12 ::=		SEQUENCE (SIZE (1..maxSL-TxPool-r12)) OF SL-CommTxPoolToAddMod-r12
+
+SL-CommTxPoolToAddModListExt-r13 ::=	SEQUENCE (SIZE (1..maxSL-TxPool-v1310)) OF SL-CommTxPoolToAddModExt-r13
+
+SL-CommTxPoolToAddMod-r12 ::=		SEQUENCE	{
+	poolIdentity-r12					SL-TxPoolIdentity-r12,
+	pool-r12							SL-CommResourcePool-r12
+}
+
+SL-CommTxPoolToAddModExt-r13 ::=		SEQUENCE	{
+	poolIdentity-v1310					SL-TxPoolIdentity-v1310,
+	pool-r13							SL-CommResourcePool-r12
+}
+
+MAC-MainConfigSL-r12 ::=		SEQUENCE	{
+	periodic-BSR-TimerSL					PeriodicBSR-Timer-r12		OPTIONAL,	-- Need ON
+	retx-BSR-TimerSL						RetxBSR-Timer-r12
+}

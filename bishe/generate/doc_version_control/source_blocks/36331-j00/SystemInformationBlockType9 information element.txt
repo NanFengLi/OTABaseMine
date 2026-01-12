@@ -1,0 +1,6 @@
+
+SystemInformationBlockType9 ::=		SEQUENCE {
+	hnb-Name							OCTET STRING (SIZE(1..48))		OPTIONAL,	-- Need OR
+	...,
+	lateNonCriticalExtension				OCTET STRING				OPTIONAL
+}

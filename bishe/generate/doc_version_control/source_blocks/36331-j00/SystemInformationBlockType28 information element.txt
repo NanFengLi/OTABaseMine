@@ -1,0 +1,8 @@
+
+SystemInformationBlockType28-r16 ::= SEQUENCE {
+	segmentNumber-r16					INTEGER (0..63),
+	segmentType-r16						ENUMERATED {notLastSegment,lastSegment},
+	segmentContainer-r16				OCTET STRING,
+	lateNonCriticalExtension			OCTET STRING				OPTIONAL,
+	...
+}

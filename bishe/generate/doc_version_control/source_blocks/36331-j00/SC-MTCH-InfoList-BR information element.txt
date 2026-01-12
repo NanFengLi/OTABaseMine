@@ -1,0 +1,59 @@
+
+SC-MTCH-InfoList-BR-r14 ::=		SEQUENCE (SIZE (0..maxSC-MTCH-BR-r14)) OF SC-MTCH-Info-BR-r14
+
+SC-MTCH-Info-BR-r14 ::=			SEQUENCE	{
+	sc-mtch-CarrierFreq-r14					ARFCN-ValueEUTRA-r9,
+	mbmsSessionInfo-r14						MBMSSessionInfo-r13,
+	g-RNTI-r14								BIT STRING(SIZE(16)),
+	sc-mtch-schedulingInfo-r14			SC-MTCH-SchedulingInfo-BR-r14				OPTIONAL,	-- Need OP
+	sc-mtch-neighbourCell-r14				BIT STRING (SIZE(maxNeighCell-SCPTM-r13))	OPTIONAL,	-- Need OP
+	mpdcch-Narrowband-SC-MTCH-r14				INTEGER (1.. maxAvailNarrowBands-r13),
+	mpdcch-NumRepetition-SC-MTCH-r14			ENUMERATED {r1, r2, r4, r8, r16,
+															r32, r64, r128, r256},
+	mpdcch-StartSF-SC-MTCH-r14		CHOICE {
+			fdd-r14								ENUMERATED {v1, v1dot5, v2, v2dot5, v4,
+																v5, v8, v10},
+			tdd-r14								ENUMERATED {v1, v2, v4, v5, v8, v10,
+																v20}
+	},
+	mpdcch-PDSCH-HoppingConfig-SC-MTCH-r14		ENUMERATED {on, off},
+	mpdcch-PDSCH-CEmodeConfig-SC-MTCH-r14		ENUMERATED {ce-ModeA, ce-ModeB},
+	mpdcch-PDSCH-MaxBandwidth-SC-MTCH-r14		ENUMERATED {bw1dot4, bw5},
+	mpdcch-Offset-SC-MTCH-r14					ENUMERATED {zero, oneEighth, oneQuarter,
+															threeEighth, oneHalf, fiveEighth,
+															threeQuarter, sevenEighth},
+
+	p-a-r14										ENUMERATED { dB-6, dB-4dot77, dB-3,
+															dB-1dot77, dB0, dB1, dB2,
+															dB3}				OPTIONAL,--	Need OR
+	...
+}
+
+SC-MTCH-SchedulingInfo-BR-r14::=	SEQUENCE	{
+	onDurationTimerSCPTM-r14				ENUMERATED {
+												psf300, psf400, psf500, psf600,
+												psf800, psf1000, psf1200, psf1600},
+	drx-InactivityTimerSCPTM-r14			ENUMERATED {
+												psf0, psf1, psf2, psf4, psf8, psf16,
+												psf32, psf64, psf128, psf256, ps512,
+												psf1024, psf2048, psf4096, psf8192, psf16384},
+	schedulingPeriodStartOffsetSCPTM-r14	CHOICE {
+		sf10									INTEGER(0..9),
+		sf20									INTEGER(0..19),
+		sf32									INTEGER(0..31),
+		sf40									INTEGER(0..39),
+		sf64									INTEGER(0..63),
+		sf80									INTEGER(0..79),
+		sf128									INTEGER(0..127),
+		sf160									INTEGER(0..159),
+		sf256									INTEGER(0..255),
+		sf320									INTEGER(0..319),
+		sf512									INTEGER(0..511),
+		sf640									INTEGER(0..639),
+		sf1024									INTEGER(0..1023),
+		sf2048									INTEGER(0..2047),
+		sf4096									INTEGER(0..4095),
+		sf8192									INTEGER(0..8191)
+	},
+	...
+}

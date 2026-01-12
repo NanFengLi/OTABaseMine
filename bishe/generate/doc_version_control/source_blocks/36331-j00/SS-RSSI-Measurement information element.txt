@@ -1,0 +1,5 @@
+
+SS-RSSI-Measurement-r15 ::=			SEQUENCE {
+	measurementSlots-r15				BIT STRING (SIZE(1..80)),
+	endSymbol-r15						INTEGER(0..3)
+}

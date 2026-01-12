@@ -1,0 +1,36 @@
+
+SL-DiscSysInfoReport-r13 ::=	SEQUENCE {
+	plmn-IdentityList-r13			PLMN-IdentityList			OPTIONAL,
+	cellIdentity-13					CellIdentity				OPTIONAL,
+	carrierFreqInfo-13				ARFCN-ValueEUTRA-r9			OPTIONAL,
+	discRxResources-r13				SL-DiscRxPoolList-r12		OPTIONAL,
+	discTxPoolCommon-r13			SL-DiscTxPoolList-r12		OPTIONAL,
+	discTxPowerInfo-r13				SL-DiscTxPowerInfoList-r12	OPTIONAL,
+	discSyncConfig-r13				SL-SyncConfigNFreq-r13		OPTIONAL,
+	discCellSelectionInfo-r13		SEQUENCE {
+		q-RxLevMin-r13					Q-RxLevMin,
+		q-RxLevMinOffset-r13			INTEGER (1..8)			OPTIONAL
+	}															OPTIONAL,
+	cellReselectionInfo-r13			SEQUENCE {
+		q-Hyst-r13						ENUMERATED {
+												dB0, dB1, dB2, dB3, dB4, dB5, dB6, dB8, dB10,
+												dB12, dB14, dB16, dB18, dB20, dB22, dB24},
+		q-RxLevMin-r13					Q-RxLevMin,
+		t-ReselectionEUTRA-r13			T-Reselection
+	}															OPTIONAL,
+	tdd-Config-r13					TDD-Config					OPTIONAL,
+	freqInfo-r13					SEQUENCE {
+		ul-CarrierFreq-r13				ARFCN-ValueEUTRA				OPTIONAL,	
+		ul-Bandwidth-r13				ENUMERATED {n6, n15, n25, n50, n75, n100}
+																		OPTIONAL,	
+		additionalSpectrumEmission-r13	AdditionalSpectrumEmission		OPTIONAL
+	}																OPTIONAL,
+	p-Max-r13						P-Max	OPTIONAL,
+	referenceSignalPower-r13		INTEGER (-60..50)	OPTIONAL,
+	...,
+	[[
+	freqInfo-v1370					SEQUENCE {
+		additionalSpectrumEmission-v1370	AdditionalSpectrumEmission-v10l0
+	}																OPTIONAL
+	]]
+}

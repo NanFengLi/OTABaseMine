@@ -1,0 +1,23 @@
+
+MBSFN-SubframeConfig ::=			SEQUENCE {
+	radioframeAllocationPeriod			ENUMERATED {n1, n2, n4, n8, n16, n32},
+	radioframeAllocationOffset			INTEGER (0..7),
+	subframeAllocation					CHOICE {
+		oneFrame							BIT STRING (SIZE(6)),
+		fourFrames							BIT STRING (SIZE(24))
+	}
+}
+
+MBSFN-SubframeConfig-v1430 ::=		SEQUENCE {
+	subframeAllocation-v1430				CHOICE {
+		oneFrame-v1430						BIT STRING (SIZE(2)),
+		fourFrames-v1430					BIT STRING (SIZE(8))
+	}
+}
+
+MBSFN-SubframeConfig-v1610 ::=		SEQUENCE {
+	subframeAllocation-v1610				CHOICE {
+		oneFrame-v1610						BIT STRING (SIZE(2)),
+		fourFrames-v1610					BIT STRING (SIZE(8))
+	}
+}

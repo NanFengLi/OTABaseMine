@@ -1,0 +1,20 @@
+
+DL-CCCH-Message ::= SEQUENCE {
+	message					DL-CCCH-MessageType
+}
+
+DL-CCCH-MessageType ::= CHOICE {
+	c1						CHOICE {
+		rrcConnectionReestablishment			RRCConnectionReestablishment,
+		rrcConnectionReestablishmentReject		RRCConnectionReestablishmentReject,
+		rrcConnectionReject						RRCConnectionReject,
+		rrcConnectionSetup						RRCConnectionSetup
+	},
+	messageClassExtension	CHOICE {
+		c2						CHOICE {
+			rrcEarlyDataComplete-r15			RRCEarlyDataComplete-r15,
+			spare3	NULL, spare2 NULL, spare1 NULL
+		},
+		messageClassExtensionFuture-r15			SEQUENCE {}
+	}
+}

@@ -1,2 +1,0 @@
-
-ReselectionThresholdQ-r9 ::=			INTEGER (0..31)

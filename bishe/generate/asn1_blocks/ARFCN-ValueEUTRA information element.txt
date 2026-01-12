@@ -1,6 +1,0 @@
-
-ARFCN-ValueEUTRA ::=				INTEGER (0..maxEARFCN)
-
-ARFCN-ValueEUTRA-v9e0 ::=			INTEGER (maxEARFCN-Plus1..maxEARFCN2)
-
-ARFCN-ValueEUTRA-r9 ::=				INTEGER (0..maxEARFCN2)

@@ -1,0 +1,35 @@
+
+RRCEarlyDataRequest-r15 ::=		SEQUENCE {
+	criticalExtensions				CHOICE {
+		rrcEarlyDataRequest-r15			RRCEarlyDataRequest-r15-IEs,
+		criticalExtensionsFuture		CHOICE {
+			rrcEarlyDataRequest-5GC-r16		RRCEarlyDataRequest-5GC-r16-IEs,
+			criticalExtensionsFuture-r16	SEQUENCE {}
+		}
+	}
+}
+
+RRCEarlyDataRequest-r15-IEs ::=	SEQUENCE {
+	s-TMSI-r15						S-TMSI,
+	establishmentCause-r15			ENUMERATED {mo-Data, delayTolerantAccess},
+	dedicatedInfoNAS-r15				DedicatedInfoNAS,
+	nonCriticalExtension				RRCEarlyDataRequest-v1590-IEs			OPTIONAL
+}
+
+RRCEarlyDataRequest-v1590-IEs ::=	SEQUENCE {
+	lateNonCriticalExtension				OCTET STRING					OPTIONAL,
+	nonCriticalExtension					RRCEarlyDataRequest-v1610-IEs	OPTIONAL
+}
+
+RRCEarlyDataRequest-v1610-IEs ::=	SEQUENCE {
+	establishmentCause-v1610			ENUMERATED {mt-Access, spare3, spare2, spare1},
+	nonCriticalExtension				SEQUENCE {}					OPTIONAL
+}
+
+RRCEarlyDataRequest-5GC-r16-IEs ::=	SEQUENCE {
+	ng-5G-S-TMSI-r16					NG-5G-S-TMSI-r15,
+	establishmentCause-r16				ENUMERATED {mo-Data, spare3, spare2, spare1},
+	dedicatedInfoNAS-r16				DedicatedInfoNAS,
+	lateNonCriticalExtension			OCTET STRING			OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}			OPTIONAL
+}

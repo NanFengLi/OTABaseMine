@@ -1,0 +1,40 @@
+
+CSI-Process-r11 ::=		SEQUENCE {
+	csi-ProcessId-r11			CSI-ProcessId-r11,
+	csi-RS-ConfigNZPId-r11		CSI-RS-ConfigNZPId-r11,
+	csi-IM-ConfigId-r11			CSI-IM-ConfigId-r11,
+	p-C-AndCBSRList-r11			P-C-AndCBSR-Pair-r13a,
+	cqi-ReportBothProc-r11		CQI-ReportBothProc-r11					OPTIONAL,		-- Need OR
+	cqi-ReportPeriodicProcId-r11	INTEGER (0..maxCQI-ProcExt-r11)		OPTIONAL,		-- Need OR
+	cqi-ReportAperiodicProc-r11	CQI-ReportAperiodicProc-r11				OPTIONAL,		-- Need OR
+	...,
+	[[	alternativeCodebookEnabledFor4TXProc-r12	ENUMERATED {true}	OPTIONAL,	-- Need ON
+		csi-IM-ConfigIdList-r12		CHOICE {
+			release						NULL,
+			setup						SEQUENCE (SIZE (1..2)) OF CSI-IM-ConfigId-r12
+		}																OPTIONAL,	-- Need ON
+		cqi-ReportAperiodicProc2-r12	CHOICE {
+			release						NULL,
+			setup						CQI-ReportAperiodicProc-r11
+		}																OPTIONAL	-- Need ON
+	]],
+	[[	cqi-ReportAperiodicProc-v1310	CHOICE {
+			release							NULL,
+			setup							CQI-ReportAperiodicProc-v1310
+		}																OPTIONAL,		-- Need ON
+		cqi-ReportAperiodicProc2-v1310	CHOICE {
+			release							NULL,
+			setup							CQI-ReportAperiodicProc-v1310
+		}																OPTIONAL,		-- Need ON
+		eMIMO-Type-r13					CSI-RS-ConfigEMIMO-r13			OPTIONAL		-- Need ON
+	]],
+	[[	dummy				CSI-RS-ConfigEMIMO-v1430		OPTIONAL,		-- Need ON
+		eMIMO-Hybrid-r14				CSI-RS-ConfigEMIMO-Hybrid-r14		OPTIONAL,	-- Need ON
+		advancedCodebookEnabled-r14		BOOLEAN							OPTIONAL		-- Need ON
+	]],
+	[[	eMIMO-Type-v1480				CSI-RS-ConfigEMIMO-v1480		OPTIONAL		-- Need ON
+	]],
+	[[	feCOMP-CSI-Enabled-v1530		BOOLEAN							OPTIONAL,		-- Need ON
+		eMIMO-Type-v1530				CSI-RS-ConfigEMIMO-v1530		OPTIONAL		-- Need ON
+	]]
+}

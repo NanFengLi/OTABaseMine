@@ -1,6 +1,0 @@
-
-MBMS-ServiceList-r13 ::=			SEQUENCE (SIZE (0..maxMBMS-ServiceListPerUE-r13)) OF MBMS-ServiceInfo-r13
-
-MBMS-ServiceInfo-r13 ::=				SEQUENCE	{
-	tmgi-r13							TMGI-r9
-}

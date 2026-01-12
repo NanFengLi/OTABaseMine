@@ -1,0 +1,2 @@
+
+PhysCellIdNR-r15 ::=			INTEGER (0.. 1007)

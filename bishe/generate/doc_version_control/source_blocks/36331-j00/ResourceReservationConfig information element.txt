@@ -1,0 +1,39 @@
+
+ResourceReservationConfigDL-r16 ::= SEQUENCE {
+	periodicityStartPos-r16		PeriodicityStartPos-r16,
+	resourceReservationFreq-r16	CHOICE {
+		rbg-Bitmap1dot4				BIT STRING (SIZE (6)),
+		rbg-Bitmap3					BIT STRING (SIZE (8)),
+		rbg-Bitmap5					BIT STRING (SIZE (13)),
+		rbg-Bitmap10				BIT STRING (SIZE (17)),
+		rbg-Bitmap15				BIT STRING (SIZE (19)),
+		rbg-Bitmap20				BIT STRING (SIZE (25))
+	}	OPTIONAL, -- Need OP
+	slotBitmap-r16				CHOICE {
+		slotPattern10ms				BIT STRING (SIZE (20)),
+		slotPattern40ms				BIT STRING (SIZE (80))
+	},
+	symbolBitmap1-r16			BIT STRING (SIZE (7))	OPTIONAL,	-- Cond Bitmap1
+	symbolBitmap2-r16			BIT STRING (SIZE (7))	OPTIONAL,	-- Cond Bitmap2
+	...
+}
+
+ResourceReservationConfigUL-r16 ::= SEQUENCE {
+	periodicityStartPos-r16		PeriodicityStartPos-r16,
+	slotBitmap-r16				CHOICE {
+		slotPattern10ms				BIT STRING (SIZE (20)),
+		slotPattern40ms				BIT STRING (SIZE (80))
+	} OPTIONAL,	-- Cond FDDandTDDnoDL
+	symbolBitmap1-r16			BIT STRING (SIZE (7))	OPTIONAL,	-- Cond Bitmap1
+	symbolBitmap2-r16			BIT STRING (SIZE (7))	OPTIONAL,	-- Cond Bitmap2
+	...
+}
+
+PeriodicityStartPos-r16 ::=		CHOICE {
+	periodicity10ms					NULL,
+	periodicity20ms					INTEGER(0..1),
+	periodicity40ms					INTEGER(0..3),
+	periodicity80ms					INTEGER(0..7),
+	periodicity160ms				INTEGER(0..15),
+	spare3 NULL, spare2 NULL, spare1 NULL
+}

@@ -1,0 +1,5 @@
+
+RSRQ-Type-r12 ::=					SEQUENCE {
+	allSymbols-r12							BOOLEAN,
+	wideBand-r12							BOOLEAN
+}

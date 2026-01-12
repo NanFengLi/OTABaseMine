@@ -1,8 +1,0 @@
-
-RSS-Config-r15 ::=				SEQUENCE {
-	duration-r15					ENUMERATED {sf8, sf16, sf32, sf40},
-	freqLocation-r15					INTEGER (0..98),
-	periodicity-r15					ENUMERATED {ms160, ms320, ms640, ms1280},
-	powerBoost-r15					ENUMERATED {dB0, dB3, dB4dot8, dB6},
-	timeOffset-r15					INTEGER (0..31)
-}

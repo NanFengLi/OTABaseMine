@@ -9,7 +9,7 @@ from typing import List, Dict, Tuple, Any
 # From bishe/generate to OTABase root is ../../
 
 try:
-    from rrc.releaseLTE_R17 import RRCLTE_R17
+    from pycrate_rrc_version import RRCLTE_R17
     from pycrate_asn1rt import *
     from pycrate_asn1rt.utils import *
     from pycrate_asn1rt.err import *
@@ -35,7 +35,7 @@ class TargetType(Enum):
 class PathManager:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
-        self.paths_db_file = Config.PATH_DB_FILE
+        self.target_paths_file = Config.TARGET_PATH_FILE_ROOT + f"/{Config.RRC_VERSION}/rrc_paths.json"
         self.paths_cache = {}
 
     def extract_paths(self, message_name: str = 'DL-DCCH-Message', targets: List[TargetType] = None) -> List[Dict]:
@@ -61,13 +61,10 @@ class PathManager:
         # 或者直接作为属性访问，取决于 pycrate 生成方式
         
         try:
-            # 尝试直接从 EUTRA_RRC_Definitions 获取，这通常是 OTABase 的用法
+            # 尝试直接从 EUTRA_RRC_Definitions 获取 DL_DCCH_Message的定义
             # message_name.replace('-', '_')不会改变message_name的内容
-            msg_obj = getattr(RRCLTE_R17.EUTRA_RRC_Definitions, message_name.replace('-', '_'), None)
-            if not msg_obj:
-                # 尝试查找中划线命名
-                msg_obj = getattr(RRCLTE_R17.EUTRA_RRC_Definitions, message_name, None)
-            
+            msg_obj = getattr(RRCLTE_R17.EUTRA_RRC_Definitions, message_name, None)
+
             if not msg_obj:
                 raise ValueError(f"无法在 RRCLTE_R17 中找到消息: {message_name}")
 
@@ -86,7 +83,7 @@ class PathManager:
                 clean_path = [str(p) for p in full_path]
                 clean_choices = [str(c) for c in choices]
                 formatted_paths.append({
-                    "target_type": "DL-DCCH-MESSAGE", # get_choices 原版不返回类型，这里简化
+                    "target_type": "DL_DCCH_MESSAGE", # get_choices 原版不返回类型，这里简化
                     "path": clean_path,
                     "choices": clean_choices
                 })
@@ -101,19 +98,19 @@ class PathManager:
     def save_paths(self, paths: List[Dict]):
         """保存路径到 JSON 文件"""
         try:
-            with open(self.paths_db_file, 'w', encoding='utf-8') as f:
+            with open(self.target_paths_file, 'w', encoding='utf-8') as f:
                 json.dump(paths, f, indent=2, ensure_ascii=False)
-            self.logger.info(f"路径已保存到 {self.paths_db_file}")
+            self.logger.info(f"路径已保存到 {self.target_paths_file}")
         except Exception as e:
             self.logger.error(f"保存路径失败: {e}")
 
     def load_paths(self) -> List[Dict]:
         """从文件加载路径"""
-        if not os.path.exists(self.paths_db_file):
-            self.logger.warning(f"路径文件不存在: {self.paths_db_file}")
+        if not os.path.exists(self.target_paths_file):
+            self.logger.warning(f"路径文件不存在: {self.target_paths_file}")
             return []
         try:
-            with open(self.paths_db_file, 'r', encoding='utf-8') as f:
+            with open(self.target_paths_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
             self.logger.error(f"加载路径失败: {e}")

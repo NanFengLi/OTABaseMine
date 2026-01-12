@@ -1,2 +1,0 @@
-
-CellIdentity ::=					BIT STRING (SIZE (28))

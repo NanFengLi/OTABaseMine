@@ -1,0 +1,70 @@
+
+RRCConnectionReconfigurationComplete ::= SEQUENCE {
+	rrc-TransactionIdentifier			RRC-TransactionIdentifier,
+	criticalExtensions					CHOICE {
+		rrcConnectionReconfigurationComplete-r8
+											RRCConnectionReconfigurationComplete-r8-IEs,
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+RRCConnectionReconfigurationComplete-r8-IEs ::= SEQUENCE {
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v8a0-IEs	OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v8a0-IEs ::= SEQUENCE {
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1020-IEs	OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1020-IEs ::= SEQUENCE {
+	rlf-InfoAvailable-r10				ENUMERATED {true}				OPTIONAL,
+	logMeasAvailable-r10				ENUMERATED {true}				OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1130-IEs	OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1130-IEs ::= SEQUENCE {
+	connEstFailInfoAvailable-r11		ENUMERATED {true}				OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1250-IEs	OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1250-IEs ::= SEQUENCE {
+	logMeasAvailableMBSFN-r12			ENUMERATED {true}				OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1430-IEs						OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1430-IEs ::= SEQUENCE {
+	perCC-GapIndicationList-r14			PerCC-GapIndicationList-r14		OPTIONAL,
+	numFreqEffective-r14				INTEGER (1..12)					OPTIONAL,
+	numFreqEffectiveReduced-r14			INTEGER (1..12)					OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1510-IEs						OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1510-IEs ::= SEQUENCE {
+	scg-ConfigResponseNR-r15			OCTET STRING					OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1530-IEs						OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1530-IEs ::= SEQUENCE {
+	logMeasAvailableBT-r15				ENUMERATED {true}				OPTIONAL,
+	logMeasAvailableWLAN-r15			ENUMERATED {true}				OPTIONAL,
+	flightPathInfoAvailable-r15			ENUMERATED {true}				OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1700-IEs
+										OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1700-IEs ::= SEQUENCE {
+	selectedCondReconfigurationToApply-r17				CondReconfigurationId-r16	OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1710-IEs
+										OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1710-IEs ::= SEQUENCE {
+	gnss-ValidityDuration-r17			GNSS-ValidityDuration-r17		OPTIONAL,
+	nonCriticalExtension				RRCConnectionReconfigurationComplete-v1800-IEs		OPTIONAL
+}
+
+RRCConnectionReconfigurationComplete-v1800-IEs ::= SEQUENCE {
+	gnss-PositionFixDuration-r18		GNSS-PositionFixDuration-r18	OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}						OPTIONAL
+}

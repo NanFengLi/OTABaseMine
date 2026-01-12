@@ -1,4 +1,0 @@
-
-SL-RestrictResourceReservationPeriodList-r14 ::=	SEQUENCE (SIZE (1..maxReservationPeriod-r14)) OF SL-RestrictResourceReservationPeriod-r14
-
-SL-RestrictResourceReservationPeriod-r14 ::=		ENUMERATED {v0dot2, v0dot5, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, spare4,spare3, spare2, spare1}

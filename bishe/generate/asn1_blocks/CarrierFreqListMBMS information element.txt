@@ -1,2 +1,0 @@
-
-CarrierFreqListMBMS-r11 ::=		SEQUENCE (SIZE (1..maxFreqMBMS-r11)) OF ARFCN-ValueEUTRA-r9

@@ -1,2 +1,0 @@
-
-RRC-TransactionIdentifier ::=		INTEGER (0..3)

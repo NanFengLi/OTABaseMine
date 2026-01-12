@@ -1,6 +1,0 @@
-
-AdditionalSpectrumEmissionNR-r15 ::=		INTEGER (0..7)
-
-AdditionalSpectrumEmissionNR-v1760 ::=	INTEGER (8..39)
-
-AdditionalSpectrumEmissionNR-r18 ::=		INTEGER (0..39)

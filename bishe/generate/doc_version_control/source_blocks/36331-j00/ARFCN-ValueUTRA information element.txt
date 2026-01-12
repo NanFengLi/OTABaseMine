@@ -1,0 +1,2 @@
+
+ARFCN-ValueUTRA ::=					INTEGER (0..16383)

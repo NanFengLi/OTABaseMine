@@ -1,0 +1,32 @@
+
+UE-TimersAndConstants ::=			SEQUENCE {
+	t300								ENUMERATED {
+											ms100, ms200, ms300, ms400, ms600, ms1000, ms1500,
+											ms2000},
+	t301								ENUMERATED {
+											ms100, ms200, ms300, ms400, ms600, ms1000, ms1500,
+											ms2000},
+	t310								ENUMERATED {
+											ms0, ms50, ms100, ms200, ms500, ms1000, ms2000},
+	n310								ENUMERATED {
+											n1, n2, n3, n4, n6, n8, n10, n20},
+	t311								ENUMERATED {
+											ms1000, ms3000, ms5000, ms10000, ms15000,
+											ms20000, ms30000},
+	n311								ENUMERATED {
+											n1, n2, n3, n4, n5, n6, n8, n10},
+	...,
+	[[	t300-v1310						ENUMERATED {
+											ms2500, ms3000, ms3500, ms4000, ms5000, ms6000, ms8000,
+											ms10000}		OPTIONAL,	-- Need OR
+		t301-v1310						ENUMERATED {
+											ms2500, ms3000, ms3500, ms4000, ms5000, ms6000, ms8000,
+											ms10000}		OPTIONAL	-- Need OR
+	]],
+	[[	t310-v1330							ENUMERATED {ms4000, ms6000}	
+															OPTIONAL	-- Need OR
+	]],
+	[[	t300-r15						ENUMERATED {ms4000, ms6000, ms8000, ms10000, ms15000,
+											ms25000, ms40000, ms60000}	OPTIONAL		-- Cond EDTorPUR
+	]]
+}

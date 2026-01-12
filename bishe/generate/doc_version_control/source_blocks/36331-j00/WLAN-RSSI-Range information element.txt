@@ -1,0 +1,2 @@
+
+WLAN-RSSI-Range-r13 ::=						INTEGER(0..141)

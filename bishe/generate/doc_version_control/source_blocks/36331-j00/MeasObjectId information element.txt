@@ -1,0 +1,6 @@
+
+MeasObjectId ::=					INTEGER (1..maxObjectId)
+
+MeasObjectId-v1310 ::=			INTEGER (maxObjectId-Plus1-r13..maxObjectId-r13)
+
+MeasObjectId-r13 ::=				INTEGER (1..maxObjectId-r13)

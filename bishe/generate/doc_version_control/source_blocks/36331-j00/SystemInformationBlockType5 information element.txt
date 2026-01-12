@@ -1,0 +1,238 @@
+
+SystemInformationBlockType5 ::=		SEQUENCE {
+	interFreqCarrierFreqList			InterFreqCarrierFreqList,
+	...,
+	lateNonCriticalExtension				OCTET STRING	(CONTAINING SystemInformationBlockType5-v8h0-IEs)				OPTIONAL,
+	[[	interFreqCarrierFreqList-v1250	InterFreqCarrierFreqList-v1250		OPTIONAL,	-- Need OR
+		interFreqCarrierFreqListExt-r12	InterFreqCarrierFreqListExt-r12	OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqListExt-v1280	InterFreqCarrierFreqListExt-v1280	OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqList-v1310		InterFreqCarrierFreqList-v1310		OPTIONAL,	-- Need OR
+		interFreqCarrierFreqListExt-v1310	InterFreqCarrierFreqListExt-v1310	OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqList-v1350		InterFreqCarrierFreqList-v1350	OPTIONAL,	-- Need OR
+	interFreqCarrierFreqListExt-v1350	InterFreqCarrierFreqListExt-v1350	OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqListExt-v1360	InterFreqCarrierFreqListExt-v1360	OPTIONAL	-- Need OR
+	]],
+	[[	scptm-FreqOffset-r14				INTEGER (1..8)					OPTIONAL	-- Need OP
+	]],
+	[[	interFreqCarrierFreqList-v1530		InterFreqCarrierFreqList-v1530		OPTIONAL,	-- Need OR
+		interFreqCarrierFreqListExt-v1530	InterFreqCarrierFreqListExt-v1530	OPTIONAL,	-- Need OR
+		measIdleConfigSIB-r15				MeasIdleConfigSIB-r15			OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqList-v1610		InterFreqCarrierFreqList-v1610		OPTIONAL,	-- Need OR
+		interFreqCarrierFreqListExt-v1610	InterFreqCarrierFreqListExt-v1610	OPTIONAL,	-- Need OR
+		measIdleConfigSIB-NR-r16			MeasIdleConfigSIB-NR-r16			OPTIONAL	-- Need OR
+	]],
+	[[	interFreqCarrierFreqList-v1800		InterFreqCarrierFreqList-v1800	OPTIONAL,	-- Need OR
+		interFreqCarrierFreqListExt-v1800	InterFreqCarrierFreqListExt-v1800	OPTIONAL	-- Need OR
+	]]
+}
+
+-- Late non critical extensions
+SystemInformationBlockType5-v8h0-IEs ::=	SEQUENCE {
+	interFreqCarrierFreqList-v8h0 SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v8h0				OPTIONAL,	-- Need OP
+	nonCriticalExtension			SystemInformationBlockType5-v9e0-IEs							OPTIONAL
+}
+
+SystemInformationBlockType5-v9e0-IEs ::=	SEQUENCE {
+	interFreqCarrierFreqList-v9e0	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v9e0				OPTIONAL,	-- Need OR
+	nonCriticalExtension			SystemInformationBlockType5-v10j0-IEs	OPTIONAL
+}
+
+SystemInformationBlockType5-v10j0-IEs ::=	SEQUENCE {
+	interFreqCarrierFreqList-v10j0	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v10j0				OPTIONAL,	-- Need OR
+	nonCriticalExtension			SystemInformationBlockType5-v10l0-IEs		OPTIONAL
+}
+
+SystemInformationBlockType5-v10l0-IEs ::=	SEQUENCE {
+	interFreqCarrierFreqList-v10l0	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v10l0				OPTIONAL,	-- Need OR
+	nonCriticalExtension			SystemInformationBlockType5-v13a0-IEs			OPTIONAL
+}
+
+SystemInformationBlockType5-v13a0-IEs ::=	SEQUENCE {
+	-- Late non critical extensions from REL-10 upto REL-12
+	lateNonCriticalExtension		OCTET STRING					OPTIONAL,	-- Need OR
+	interFreqCarrierFreqList-v13a0	InterFreqCarrierFreqList-v13a0	OPTIONAL,	-- Need OR
+	-- Late non critical extensions from REL-13
+	nonCriticalExtension			SEQUENCE {}						OPTIONAL
+}
+
+InterFreqCarrierFreqList ::=		SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo
+
+InterFreqCarrierFreqList-v1250 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1250
+
+InterFreqCarrierFreqList-v1310 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1310
+
+InterFreqCarrierFreqList-v1350 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1350
+
+InterFreqCarrierFreqList-v13a0 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1360
+
+InterFreqCarrierFreqList-v1530 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1530
+
+InterFreqCarrierFreqList-v1610 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1610
+
+InterFreqCarrierFreqList-v1800 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1800
+
+InterFreqCarrierFreqListExt-r12 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-r12
+
+InterFreqCarrierFreqListExt-v1280 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v10j0
+
+InterFreqCarrierFreqListExt-v1310 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1310
+
+InterFreqCarrierFreqListExt-v1350 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1350
+
+InterFreqCarrierFreqListExt-v1360 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1360
+
+InterFreqCarrierFreqListExt-v1530 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1530
+
+InterFreqCarrierFreqListExt-v1610 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1610
+
+InterFreqCarrierFreqListExt-v1800 ::=	SEQUENCE (SIZE (1..maxFreq)) OF InterFreqCarrierFreqInfo-v1800
+
+InterFreqCarrierFreqInfo ::=	SEQUENCE {
+	dl-CarrierFreq						ARFCN-ValueEUTRA,
+	q-RxLevMin							Q-RxLevMin,
+	p-Max								P-Max							OPTIONAL,		-- Need OP
+	t-ReselectionEUTRA					T-Reselection,
+	t-ReselectionEUTRA-SF				SpeedStateScaleFactors			OPTIONAL,		-- Need OP
+	threshX-High						ReselectionThreshold,
+	threshX-Low							ReselectionThreshold,
+	allowedMeasBandwidth				AllowedMeasBandwidth,
+	presenceAntennaPort1				PresenceAntennaPort1,
+	cellReselectionPriority				CellReselectionPriority			OPTIONAL,		-- Need OP
+	neighCellConfig						NeighCellConfig,
+	q-OffsetFreq						Q-OffsetRange					DEFAULT dB0,
+	interFreqNeighCellList				InterFreqNeighCellList			OPTIONAL,		-- Need OR
+	interFreqExcludedCellList				InterFreqExcludedCellList			OPTIONAL,		-- Need OR
+	...,
+	[[	q-QualMin-r9					Q-QualMin-r9					OPTIONAL,		-- Need OP
+		threshX-Q-r9					SEQUENCE {
+			threshX-HighQ-r9				ReselectionThresholdQ-r9,
+			threshX-LowQ-r9					ReselectionThresholdQ-r9
+		}																OPTIONAL		-- Cond RSRQ
+	]],
+	[[	q-QualMinWB-r11					Q-QualMin-r9					OPTIONAL	-- Cond WB-RSRQ
+	]]
+}
+
+InterFreqCarrierFreqInfo-v8h0 ::=		SEQUENCE {
+	multiBandInfoList					MultiBandInfoList				OPTIONAL	-- Need OR
+}
+
+InterFreqCarrierFreqInfo-v9e0 ::=	SEQUENCE {
+	dl-CarrierFreq-v9e0					ARFCN-ValueEUTRA-v9e0	OPTIONAL,	-- Cond dl-FreqMax
+	multiBandInfoList-v9e0				MultiBandInfoList-v9e0	OPTIONAL	-- Need OR
+}
+
+InterFreqCarrierFreqInfo-v10j0 ::=	SEQUENCE {
+	freqBandInfo-r10					NS-PmaxList-r10				OPTIONAL,	-- Need OR
+	multiBandInfoList-v10j0				MultiBandInfoList-v10j0		OPTIONAL	-- Need OR
+}
+
+InterFreqCarrierFreqInfo-v10l0 ::=	SEQUENCE {
+	freqBandInfo-v10l0					NS-PmaxList-v10l0			OPTIONAL,	-- Need OR
+	multiBandInfoList-v10l0				MultiBandInfoList-v10l0		OPTIONAL	-- Need OR
+}
+
+InterFreqCarrierFreqInfo-v1250 ::=		SEQUENCE {
+	reducedMeasPerformance-r12		ENUMERATED {true}		OPTIONAL,		-- Need OP
+	q-QualMinRSRQ-OnAllSymbols-r12	Q-QualMin-r9					OPTIONAL	-- Cond RSRQ2
+}
+
+InterFreqCarrierFreqInfo-r12 ::=		SEQUENCE {
+	dl-CarrierFreq-r12					ARFCN-ValueEUTRA-r9,
+	q-RxLevMin-r12						Q-RxLevMin,
+	p-Max-r12							P-Max							OPTIONAL,		-- Need OP
+	t-ReselectionEUTRA-r12				T-Reselection,
+	t-ReselectionEUTRA-SF-r12			SpeedStateScaleFactors			OPTIONAL,		-- Need OP
+	threshX-High-r12					ReselectionThreshold,
+	threshX-Low-r12						ReselectionThreshold,
+	allowedMeasBandwidth-r12			AllowedMeasBandwidth,
+	presenceAntennaPort1-r12			PresenceAntennaPort1,
+	cellReselectionPriority-r12			CellReselectionPriority			OPTIONAL,		-- Need OP
+	neighCellConfig-r12					NeighCellConfig,
+	q-OffsetFreq-r12					Q-OffsetRange					DEFAULT dB0,
+	interFreqNeighCellList-r12			InterFreqNeighCellList			OPTIONAL,		-- Need OR
+	interFreqExcludedCellList-r12			InterFreqExcludedCellList			OPTIONAL,		-- Need OR
+	q-QualMin-r12						Q-QualMin-r9					OPTIONAL,		-- Need OP
+	threshX-Q-r12						SEQUENCE {
+		threshX-HighQ-r12					ReselectionThresholdQ-r9,
+		threshX-LowQ-r12					ReselectionThresholdQ-r9
+	}																	OPTIONAL,	-- Cond RSRQ
+	q-QualMinWB-r12						Q-QualMin-r9					OPTIONAL,	-- Cond WB-RSRQ
+	multiBandInfoList-r12				MultiBandInfoList-r11			OPTIONAL,	-- Need OR
+	reducedMeasPerformance-r12			ENUMERATED {true}				OPTIONAL,	-- Need OP
+	q-QualMinRSRQ-OnAllSymbols-r12		Q-QualMin-r9					OPTIONAL,	-- Cond RSRQ2
+...
+}
+
+InterFreqCarrierFreqInfo-v1310	::=	SEQUENCE {
+	cellReselectionSubPriority-r13		CellReselectionSubPriority-r13		OPTIONAL,		-- Need OP
+	redistributionInterFreqInfo-r13		RedistributionInterFreqInfo-r13		OPTIONAL, --Need OP
+	cellSelectionInfoCE-r13				CellSelectionInfoCE-r13			OPTIONAL,	-- Need OP
+	t-ReselectionEUTRA-CE-r13			T-ReselectionEUTRA-CE-r13		OPTIONAL	-- Need OP
+}
+
+InterFreqCarrierFreqInfo-v1350	::= SEQUENCE {
+	cellSelectionInfoCE1-r13			CellSelectionInfoCE1-r13			OPTIONAL	-- Need OP
+}
+
+InterFreqCarrierFreqInfo-v1360	::= SEQUENCE {
+	cellSelectionInfoCE1-v1360		CellSelectionInfoCE1-v1360	OPTIONAL	-- Cond QrxlevminCE1
+}
+
+InterFreqCarrierFreqInfo-v1530	::= SEQUENCE {
+	hsdn-Indication-r15					BOOLEAN,
+	interFreqNeighHSDN-CellList-r15		InterFreqNeighHSDN-CellList-r15		OPTIONAL,	-- Need OR
+	cellSelectionInfoCE-v1530			CellSelectionInfoCE-v1530			OPTIONAL	-- Need OP
+}
+
+InterFreqCarrierFreqInfo-v1610	::= SEQUENCE {
+	altCellReselectionPriority-r16		CellReselectionPriority		OPTIONAL,	-- Need OR
+	altCellReselectionSubPriority-r16	CellReselectionSubPriority-r13	OPTIONAL,	-- Need OR
+	rss-ConfigCarrierInfo-r16				RSS-ConfigCarrierInfo-r16		OPTIONAL,	-- Cond RSS
+	interFreqNeighCellList-v1610			InterFreqNeighCellList-v1610	OPTIONAL	-- Cond RSS
+}
+
+
+InterFreqCarrierFreqInfo-v1800	::= SEQUENCE {
+	satelliteAssistanceInfoList-r18		SEQUENCE (SIZE(1..maxSat-r17)) OF SatelliteId-r18
+																			OPTIONAL,	-- Need OP
+	freqBandIndicatorAerial-r18			FreqBandIndicator-r11				OPTIONAL,	-- Need OR
+	freqBandInfoAerial-r18				NS-PmaxListAerial-r18				OPTIONAL,	-- Need OR
+	multiBandInfoListAerial-r18			MultiBandInfoListAerial-r18			OPTIONAL	-- Need OR
+}
+
+InterFreqNeighCellList ::=			SEQUENCE (SIZE (1..maxCellInter)) OF InterFreqNeighCellInfo
+
+InterFreqNeighCellList-v1610 ::=		SEQUENCE (SIZE (1..maxCellInter)) OF InterFreqNeighCellInfo-v1610
+
+InterFreqNeighHSDN-CellList-r15 ::= SEQUENCE (SIZE (1..maxCellInter)) OF PhysCellIdRange
+
+InterFreqNeighCellInfo ::=			SEQUENCE {
+	physCellId							PhysCellId,
+	q-OffsetCell						Q-OffsetRange
+}
+
+InterFreqNeighCellInfo-v1610 ::= SEQUENCE {
+	rss-MeasPowerBias-r16			RSS-MeasPowerBias-r16
+}
+
+InterFreqExcludedCellList ::=			SEQUENCE (SIZE (1..maxExcludedCell)) OF PhysCellIdRange
+
+RedistributionInterFreqInfo-r13 ::=		SEQUENCE {
+	redistributionFactorFreq-r13			RedistributionFactor-r13	OPTIONAL,	--Need OP
+	redistributionNeighCellList-r13			RedistributionNeighCellList-r13		OPTIONAL	--Need OP
+}
+
+RedistributionNeighCellList-r13 ::=		SEQUENCE (SIZE (1..maxCellInter)) OF RedistributionNeighCell-r13
+
+RedistributionNeighCell-r13 ::=		SEQUENCE {
+	physCellId-r13									PhysCellId,
+	redistributionFactorCell-r13					RedistributionFactor-r13
+}
+
+RedistributionFactor-r13 ::=	INTEGER(1..10)

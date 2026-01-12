@@ -1,0 +1,6 @@
+
+CellGlobalIdNR-r16 ::=					SEQUENCE {
+	plmn-Identity-r16							PLMN-Identity,
+	cellIdentity-r16							CellIdentityNR-r15,
+	trackingAreaCode-r16						TrackingAreaCodeNR-r15			OPTIONAL
+}

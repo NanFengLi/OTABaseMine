@@ -1,0 +1,4394 @@
+[
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "csfbParametersResponseCDMA2000",
+      "criticalExtensions",
+      "csfbParametersResponseCDMA2000-r8",
+      "mobilityParameters"
+    ],
+    "choices": [
+      "c1",
+      "csfbParametersResponseCDMA2000",
+      "csfbParametersResponseCDMA2000-r8",
+      "mobilityParameters"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "csfbParametersResponseCDMA2000",
+      "criticalExtensions",
+      "csfbParametersResponseCDMA2000-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "csfbParametersResponseCDMA2000",
+      "csfbParametersResponseCDMA2000-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoType",
+      "dedicatedInfoNAS"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoNAS",
+      "dedicatedInfoNAS"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoType",
+      "dedicatedInfoCDMA2000-1XRTT"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoCDMA2000-1XRTT",
+      "dedicatedInfoCDMA2000-1XRTT"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoType",
+      "dedicatedInfoCDMA2000-HRPD"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoCDMA2000-HRPD",
+      "dedicatedInfoCDMA2000-HRPD"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "dedicatedInfoF1c-r16"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r8",
+      "dedicatedInfoF1c-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoType-r15",
+      "dedicatedInfoNAS"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoNAS",
+      "dedicatedInfoNAS"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoType-r15",
+      "dedicatedInfoCDMA2000-1XRTT"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoCDMA2000-1XRTT",
+      "dedicatedInfoCDMA2000-1XRTT"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoType-r15",
+      "dedicatedInfoCDMA2000-HRPD"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoCDMA2000-HRPD",
+      "dedicatedInfoCDMA2000-HRPD"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r15",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r15",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlInformationTransfer",
+      "criticalExtensions",
+      "c1",
+      "dlInformationTransfer-r15",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "dedicatedInfoF1c-r16"
+    ],
+    "choices": [
+      "c1",
+      "dlInformationTransfer",
+      "c1",
+      "dlInformationTransfer-r15",
+      "dedicatedInfoF1c-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "handoverFromEUTRAPreparationRequest",
+      "criticalExtensions",
+      "c1",
+      "handoverFromEUTRAPreparationRequest-r8",
+      "mobilityParameters"
+    ],
+    "choices": [
+      "c1",
+      "handoverFromEUTRAPreparationRequest",
+      "c1",
+      "handoverFromEUTRAPreparationRequest-r8",
+      "mobilityParameters"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "handoverFromEUTRAPreparationRequest",
+      "criticalExtensions",
+      "c1",
+      "handoverFromEUTRAPreparationRequest-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "handoverFromEUTRAPreparationRequest",
+      "c1",
+      "handoverFromEUTRAPreparationRequest-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "handover",
+      "targetRAT-MessageContainer"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "handover",
+      "targetRAT-MessageContainer"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "handover",
+      "nas-SecurityParamFromEUTRA"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "handover",
+      "nas-SecurityParamFromEUTRA"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "handover",
+      "systemInformation",
+      "si",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "handover",
+      "si",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "handover",
+      "systemInformation",
+      "psi",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "handover",
+      "psi",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "cellChangeOrder",
+      "targetRAT-Type",
+      "geran",
+      "systemInformation",
+      "si",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "cellChangeOrder",
+      "geran",
+      "si",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "purpose",
+      "cellChangeOrder",
+      "targetRAT-Type",
+      "geran",
+      "systemInformation",
+      "psi",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "cellChangeOrder",
+      "geran",
+      "psi",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "handover",
+      "targetRAT-MessageContainer"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "handover",
+      "targetRAT-MessageContainer"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "handover",
+      "nas-SecurityParamFromEUTRA"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "handover",
+      "nas-SecurityParamFromEUTRA"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "handover",
+      "systemInformation",
+      "si",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "handover",
+      "si",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "handover",
+      "systemInformation",
+      "psi",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "handover",
+      "psi",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "cellChangeOrder",
+      "targetRAT-Type",
+      "geran",
+      "systemInformation",
+      "si",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "cellChangeOrder",
+      "geran",
+      "si",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "cellChangeOrder",
+      "targetRAT-Type",
+      "geran",
+      "systemInformation",
+      "psi",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "cellChangeOrder",
+      "geran",
+      "psi",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "e-CSFB-r9",
+      "messageContCDMA2000-1XRTT-r9"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "e-CSFB-r9",
+      "messageContCDMA2000-1XRTT-r9"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "purpose",
+      "e-CSFB-r9",
+      "messageContCDMA2000-HRPD-r9"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "e-CSFB-r9",
+      "messageContCDMA2000-HRPD-r9"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "mobilityFromEUTRACommand",
+      "criticalExtensions",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "mobilityFromEUTRACommand",
+      "c1",
+      "mobilityFromEUTRACommand-r9",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectGERAN",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectGERAN",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeBT-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeWLAN-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectGERAN-r13",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectGERAN-r13",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measConfig",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "dedicatedInfoNASList",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "securityConfigHO",
+      "handoverType",
+      "interRAT",
+      "nas-SecurityParamToEUTRA"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "interRAT",
+      "nas-SecurityParamToEUTRA"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension",
+      "RRCConnectionReconfiguration-v8m0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension",
+      "RRCConnectionReconfiguration-v8m0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension",
+      "RRCConnectionReconfiguration-v8m0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "otherConfig-r9",
+      "measConfigAppLayer-r15",
+      "setup",
+      "measConfigAppLayerContainer-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measConfigAppLayerContainer-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "otherConfig-r9",
+      "bt-NameListConfig-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "otherConfig-r9",
+      "wlan-NameListConfig-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType1Dedicated-r11",
+      "SystemInformationBlockType1",
+      "_cont_systemInformationBlockType1Dedicated-r11",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType1-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType1Dedicated-r11",
+      "SystemInformationBlockType1",
+      "_cont_systemInformationBlockType1Dedicated-r11",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType1Dedicated-r11"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "systemInformationBlockType1Dedicated-r11"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectGERAN",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectGERAN",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeBT-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeWLAN-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectGERAN-r13",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectGERAN-r13",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "scg-Configuration-r12",
+      "setup",
+      "scg-ConfigPartSCG-r12",
+      "measConfigSN-r15",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "lwa-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwa-Configuration-r13",
+      "setup",
+      "lwa-Config-r13",
+      "wt-MAC-Address-r14"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "wt-MAC-Address-r14"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToReleaseList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "lwip-MobilityConfig-r13",
+      "wlan-ToAddList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lwip-Configuration-r13",
+      "setup",
+      "lwip-Config-r13",
+      "tunnelConfigLWIP-r13",
+      "ike-Identity-r13",
+      "idI-r13"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "idI-r13"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "rclwi-Configuration-r13",
+      "setup",
+      "rclwi-Config-r13",
+      "command",
+      "steerToWLAN-r13",
+      "mobilityConfig-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "steerToWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "rclwi-Configuration-r13",
+      "setup",
+      "rclwi-Config-r13",
+      "command",
+      "steerToWLAN-r13",
+      "mobilityConfig-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "steerToWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "rclwi-Configuration-r13",
+      "setup",
+      "rclwi-Config-r13",
+      "command",
+      "steerToWLAN-r13",
+      "mobilityConfig-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "steerToWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType2Dedicated-r14",
+      "SystemInformationBlockType2",
+      "_cont_systemInformationBlockType2Dedicated-r14",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType2-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "SystemInformationBlockType2-v10m0-IEs",
+      "_cont_nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType2Dedicated-r14",
+      "SystemInformationBlockType2",
+      "_cont_systemInformationBlockType2Dedicated-r14",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType2-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType2Dedicated-r14",
+      "SystemInformationBlockType2",
+      "_cont_systemInformationBlockType2Dedicated-r14",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType2Dedicated-r14"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "systemInformationBlockType2Dedicated-r14"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nr-Config-r15",
+      "setup",
+      "nr-SecondaryCellGroupConfig-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "setup",
+      "nr-SecondaryCellGroupConfig-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nr-RadioBearerConfig1-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nr-RadioBearerConfig1-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nr-RadioBearerConfig2-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nr-RadioBearerConfig2-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "securityConfigHO-v1530",
+      "handoverType-v1530",
+      "intra5GC",
+      "nas-Container-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "intra5GC",
+      "nas-Container-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "securityConfigHO-v1530",
+      "handoverType-v1530",
+      "epc-To5GC",
+      "nas-Container-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "epc-To5GC",
+      "nas-Container-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "dedicatedInfoNASList-r15",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "conditionalReconfiguration-r16",
+      "condReconfigurationToAddModList-r16",
+      "_item_",
+      "condReconfigurationToApply-r16"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "condReconfigurationToApply-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "conditionalReconfiguration-r16",
+      "condReconfigurationToAddModList-r16",
+      "_item_",
+      "triggerConditionSN-r17"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "triggerConditionSN-r17"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "sl-ConfigDedicatedForNR-r16"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "sl-ConfigDedicatedForNR-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType31Dedicated-r17",
+      "SystemInformationBlockType31-r17",
+      "_cont_systemInformationBlockType31Dedicated-r17",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionReconfiguration",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "systemInformationBlockType31Dedicated-r17"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionReconfiguration",
+      "c1",
+      "rrcConnectionReconfiguration-r8",
+      "systemInformationBlockType31Dedicated-r17"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "redirectedCarrierInfo",
+      "geran",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "geran",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "idleModeMobilityControlInfo",
+      "freqPriorityListGERAN",
+      "_item_",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "cellInfoList-r9",
+      "geran-r9",
+      "_item_",
+      "systemInformation-r9",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "geran-r9",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "cellInfoList-r9",
+      "utra-FDD-r9",
+      "_item_",
+      "utra-BCCH-Container-r9"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "utra-FDD-r9",
+      "utra-BCCH-Container-r9"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "cellInfoList-r9",
+      "utra-TDD-r9",
+      "_item_",
+      "utra-BCCH-Container-r9"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "utra-TDD-r9",
+      "utra-BCCH-Container-r9"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionRelease",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "cellInfoList-r9",
+      "utra-TDD-r10",
+      "_item_",
+      "utra-BCCH-Container-r10"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionRelease",
+      "c1",
+      "rrcConnectionRelease-r8",
+      "utra-TDD-r10",
+      "utra-BCCH-Container-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "securityModeCommand",
+      "criticalExtensions",
+      "c1",
+      "securityModeCommand-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "securityModeCommand",
+      "c1",
+      "securityModeCommand-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "ueCapabilityEnquiry",
+      "criticalExtensions",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "ueCapabilityEnquiry",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "ueCapabilityEnquiry",
+      "criticalExtensions",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "requestedFreqBandsNR-MRDC-r15"
+    ],
+    "choices": [
+      "c1",
+      "ueCapabilityEnquiry",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "requestedFreqBandsNR-MRDC-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "ueCapabilityEnquiry",
+      "criticalExtensions",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "requestedCapabilityNR-r15"
+    ],
+    "choices": [
+      "c1",
+      "ueCapabilityEnquiry",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "requestedCapabilityNR-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "ueCapabilityEnquiry",
+      "criticalExtensions",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "requestedCapabilityCommon-r15"
+    ],
+    "choices": [
+      "c1",
+      "ueCapabilityEnquiry",
+      "c1",
+      "ueCapabilityEnquiry-r8",
+      "requestedCapabilityCommon-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "counterCheck",
+      "criticalExtensions",
+      "c1",
+      "counterCheck-r8",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "counterCheck",
+      "c1",
+      "counterCheck-r8",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "ueInformationRequest-r9",
+      "criticalExtensions",
+      "c1",
+      "ueInformationRequest-r9",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "ueInformationRequest-r9",
+      "c1",
+      "ueInformationRequest-r9",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "traceReference-r10",
+      "traceId-r10"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "traceId-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "traceRecordingSessionRef-r10"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "traceRecordingSessionRef-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "tce-Id-r10"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "tce-Id-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension-r10"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "lateNonCriticalExtension-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "bt-NameList-r15",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "wlan-NameList-r15",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "c1",
+      "loggedMeasurementConfiguration-r10",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType1-r10",
+      "SystemInformationBlockType1",
+      "_cont_systemInformationBlockType1-r10",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType1-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType1-r10",
+      "SystemInformationBlockType1",
+      "_cont_systemInformationBlockType1-r10",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType1-r10"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "systemInformationBlockType1-r10"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType2-r10",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType2-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "SystemInformationBlockType2-v10m0-IEs",
+      "_cont_nonCriticalExtension",
+      "nonCriticalExtension",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType2-r10",
+      "lateNonCriticalExtension",
+      "SystemInformationBlockType2-v8h0-IEs",
+      "_cont_lateNonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "nonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "rn-SystemInfo-r10",
+      "systemInformationBlockType2-r10",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rnReconfiguration-r10",
+      "criticalExtensions",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rnReconfiguration-r10",
+      "c1",
+      "rnReconfiguration-r10",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectGERAN",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectGERAN",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModList",
+      "_item_",
+      "measObject",
+      "measObjectWLAN-r13",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-r13",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeBT-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "reportConfigToAddModList",
+      "_item_",
+      "reportConfig",
+      "reportConfigEUTRA",
+      "includeWLAN-Meas-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "reportConfigEUTRA",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectGERAN-r13",
+      "carrierFreqs",
+      "followingARFCNs",
+      "variableBitMapOfARFCNs"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectGERAN-r13",
+      "variableBitMapOfARFCNs",
+      "variableBitMapOfARFCNs"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToAddModList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "ssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "ssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "bssid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "bssid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measConfig-r13",
+      "measObjectToAddModListExt-r13",
+      "_item_",
+      "measObject-r13",
+      "measObjectWLAN-v1320",
+      "wlan-ToRemoveList-r13",
+      "_item_",
+      "hessid-r12"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "measObjectWLAN-v1320",
+      "hessid-r12"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "lateNonCriticalExtension"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "otherConfig-r14",
+      "measConfigAppLayer-r15",
+      "setup",
+      "measConfigAppLayerContainer-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "setup",
+      "measConfigAppLayerContainer-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "otherConfig-r14",
+      "bt-NameListConfig-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "otherConfig-r14",
+      "wlan-NameListConfig-r15",
+      "setup",
+      "_item_"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "setup",
+      "_item_"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "rrcConnectionResume-v1510-IEs",
+      "nr-RadioBearerConfig1-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "nr-RadioBearerConfig1-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "rrcConnectionResume-v1510-IEs",
+      "nr-RadioBearerConfig2-r15"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "nr-RadioBearerConfig2-r15"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "rrcConnectionResume-r13",
+      "criticalExtensions",
+      "c1",
+      "rrcConnectionResume-r13",
+      "rrcConnectionResume-v1430-IEs",
+      "rrcConnectionResume-v1510-IEs",
+      "nonCriticalExtension",
+      "nonCriticalExtension",
+      "nr-SecondaryCellGroupConfig-r16"
+    ],
+    "choices": [
+      "c1",
+      "rrcConnectionResume-r13",
+      "c1",
+      "rrcConnectionResume-r13",
+      "nr-SecondaryCellGroupConfig-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlDedicatedMessageSegment-r16",
+      "criticalExtensions",
+      "dlDedicatedMessageSegment-r16",
+      "rrc-MessageSegmentContainer-r16"
+    ],
+    "choices": [
+      "c1",
+      "dlDedicatedMessageSegment-r16",
+      "dlDedicatedMessageSegment-r16",
+      "rrc-MessageSegmentContainer-r16"
+    ]
+  },
+  {
+    "target_type": "DL_DCCH_MESSAGE",
+    "path": [
+      "DL-DCCH-Message",
+      "message",
+      "c1",
+      "dlDedicatedMessageSegment-r16",
+      "criticalExtensions",
+      "dlDedicatedMessageSegment-r16",
+      "lateNonCriticalExtension"
+    ],
+    "choices": [
+      "c1",
+      "dlDedicatedMessageSegment-r16",
+      "dlDedicatedMessageSegment-r16",
+      "lateNonCriticalExtension"
+    ]
+  }
+]

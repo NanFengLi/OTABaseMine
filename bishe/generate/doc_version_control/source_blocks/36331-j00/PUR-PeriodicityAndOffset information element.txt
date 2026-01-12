@@ -1,0 +1,14 @@
+
+PUR-PeriodicityAndOffset-r16 ::= CHOICE {
+	periodicity8		INTEGER (1..7),
+	periodicity16		INTEGER (1..15),
+	periodicity32		INTEGER (1..31),
+	periodicity64		INTEGER (1..63),
+	periodicity128		INTEGER (1..127),
+	periodicity256		INTEGER (1..255),
+	periodicity512		INTEGER (1..511),
+	periodicity1024		INTEGER (1..1023),
+	periodicity2048		INTEGER (1..2047),
+	periodicity4096		INTEGER (1..4095),
+	periodicity8192		INTEGER (1..8191)
+}

@@ -1,0 +1,14 @@
+
+VisitedCellInfoList-r12 ::=	SEQUENCE (SIZE (1..maxCellHistory-r12)) OF VisitedCellInfo-r12
+
+VisitedCellInfo-r12 ::=				SEQUENCE {
+	visitedCellId-r12					CHOICE {
+		cellGlobalId-r12						CellGlobalIdEUTRA,
+		pci-arfcn-r12							SEQUENCE {
+			physCellId-r12							PhysCellId,
+			carrierFreq-r12							ARFCN-ValueEUTRA-r9
+		}
+	}																OPTIONAL,
+	timeSpent-r12						INTEGER (0..4095),
+	...
+}

@@ -1,0 +1,21 @@
+
+LocationInfo-r10 ::=	SEQUENCE {
+	locationCoordinates-r10					CHOICE {
+		ellipsoid-Point-r10						OCTET STRING,
+		ellipsoidPointWithAltitude-r10			OCTET STRING,
+	...,
+		ellipsoidPointWithUncertaintyCircle-r11					OCTET STRING,
+		ellipsoidPointWithUncertaintyEllipse-r11				OCTET STRING,
+		ellipsoidPointWithAltitudeAndUncertaintyEllipsoid-r11	OCTET STRING,
+		ellipsoidArc-r11										OCTET STRING,
+		polygon-r11												OCTET STRING
+	},
+	horizontalVelocity-r10					OCTET STRING				OPTIONAL,
+	gnss-TOD-msec-r10						OCTET STRING				OPTIONAL,
+	...,
+	[[	verticalVelocityInfo-r15		CHOICE {
+			verticalVelocity-r15				OCTET STRING,
+			verticalVelocityAndUncertainty-r15	OCTET STRING
+	}			OPTIONAL
+	]]
+}

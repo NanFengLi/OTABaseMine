@@ -1,0 +1,6 @@
+
+SSB-ToMeasure-r15 ::=		CHOICE {
+	shortBitmap-r15				BIT STRING (SIZE (4)),
+	mediumBitmap-r15				BIT STRING (SIZE (8)),
+	longBitmap-r15					BIT STRING (SIZE (64))
+}

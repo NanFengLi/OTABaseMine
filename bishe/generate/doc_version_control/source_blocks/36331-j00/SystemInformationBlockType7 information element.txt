@@ -1,0 +1,23 @@
+
+SystemInformationBlockType7 ::=		SEQUENCE {
+	t-ReselectionGERAN					T-Reselection,
+	t-ReselectionGERAN-SF				SpeedStateScaleFactors				OPTIONAL,	-- Need OR
+	carrierFreqsInfoList				CarrierFreqsInfoListGERAN			OPTIONAL,	-- Need OR
+	...,
+	lateNonCriticalExtension				OCTET STRING				OPTIONAL
+}
+
+CarrierFreqsInfoListGERAN ::=			SEQUENCE (SIZE (1..maxGNFG)) OF CarrierFreqsInfoGERAN
+
+CarrierFreqsInfoGERAN ::=			SEQUENCE {
+	carrierFreqs						CarrierFreqsGERAN,
+	commonInfo							SEQUENCE {
+		cellReselectionPriority				CellReselectionPriority			OPTIONAL,	-- Need OP
+		ncc-Permitted						BIT STRING (SIZE (8)),
+		q-RxLevMin							INTEGER (0..45),
+		p-MaxGERAN							INTEGER (0..39)					OPTIONAL,	-- Need OP
+		threshX-High						ReselectionThreshold,
+		threshX-Low							ReselectionThreshold
+	},
+	...
+}

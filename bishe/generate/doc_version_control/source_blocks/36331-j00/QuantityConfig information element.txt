@@ -1,0 +1,67 @@
+
+QuantityConfig ::=					SEQUENCE {
+	quantityConfigEUTRA					QuantityConfigEUTRA					OPTIONAL,	-- Need ON
+	quantityConfigUTRA					QuantityConfigUTRA					OPTIONAL,	-- Need ON
+	quantityConfigGERAN					QuantityConfigGERAN					OPTIONAL,	-- Need ON
+	quantityConfigCDMA2000				QuantityConfigCDMA2000				OPTIONAL,	-- Need ON
+	...,
+	[[	quantityConfigUTRA-v1020		QuantityConfigUTRA-v1020			OPTIONAL	-- Need ON
+	]],
+	[[	quantityConfigEUTRA-v1250		QuantityConfigEUTRA-v1250			OPTIONAL	-- Need ON
+	]],
+	[[	quantityConfigEUTRA-v1310		QuantityConfigEUTRA-v1310			OPTIONAL,	-- Need ON
+		quantityConfigWLAN-r13			QuantityConfigWLAN-r13				OPTIONAL	-- Need ON
+	]],
+	[[	quantityConfigNRList-r15		QuantityConfigNRList-r15			OPTIONAL	-- Need ON
+	]]
+}
+
+QuantityConfigEUTRA ::=				SEQUENCE {
+	filterCoefficientRSRP				FilterCoefficient					DEFAULT fc4,
+	filterCoefficientRSRQ				FilterCoefficient					DEFAULT fc4
+}
+
+QuantityConfigEUTRA-v1250 ::=		SEQUENCE {
+	filterCoefficientCSI-RSRP-r12		FilterCoefficient					OPTIONAL		-- Need OR
+}
+
+QuantityConfigEUTRA-v1310 ::=		SEQUENCE {
+	filterCoefficientRS-SINR-r13		FilterCoefficient					DEFAULT fc4
+}
+
+QuantityConfigUTRA ::=				SEQUENCE {
+	measQuantityUTRA-FDD				ENUMERATED {cpich-RSCP, cpich-EcN0},
+	measQuantityUTRA-TDD				ENUMERATED {pccpch-RSCP},
+	filterCoefficient					FilterCoefficient					DEFAULT fc4
+}
+
+QuantityConfigUTRA-v1020 ::=		SEQUENCE {
+	filterCoefficient2-FDD-r10			FilterCoefficient					DEFAULT fc4
+}
+
+QuantityConfigGERAN ::=				SEQUENCE {
+	measQuantityGERAN					ENUMERATED {rssi},
+	filterCoefficient					FilterCoefficient					DEFAULT fc2
+}
+
+QuantityConfigCDMA2000 ::=			SEQUENCE {
+	measQuantityCDMA2000				ENUMERATED {pilotStrength, pilotPnPhaseAndPilotStrength}
+}
+
+QuantityConfigNRList-r15 ::=		SEQUENCE (SIZE (1..maxQuantSetsNR-r15)) OF QuantityConfigNR-r15
+
+QuantityConfigNR-r15 ::=			SEQUENCE {
+	measQuantityCellNR-r15				QuantityConfigRS-NR-r15,
+	measQuantityRS-IndexNR-r15			QuantityConfigRS-NR-r15				OPTIONAL
+}
+
+QuantityConfigRS-NR-r15 ::=				SEQUENCE {
+	filterCoeff-RSRP-r15				FilterCoefficient					DEFAULT fc4,
+	filterCoeff-RSRQ-r15				FilterCoefficient					DEFAULT fc4,
+	filterCoefficient-SINR-r13			FilterCoefficient					DEFAULT fc4
+}
+
+QuantityConfigWLAN-r13 ::=			SEQUENCE {
+	measQuantityWLAN-r13				ENUMERATED {rssiWLAN},
+	filterCoefficient-r13				FilterCoefficient					DEFAULT fc4
+}

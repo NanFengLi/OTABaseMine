@@ -1,2 +1,0 @@
-
-SL-AnchorCarrierFreqList-V2X-r14 ::= SEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9

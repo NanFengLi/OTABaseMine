@@ -1,0 +1,31 @@
+
+SystemInformationBlockType21-r14 ::= SEQUENCE {
+	sl-V2X-ConfigCommon-r14				SL-V2X-ConfigCommon-r14				OPTIONAL,	-- Need OR
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	...,
+	[[	anchorCarrierFreqListNR-r16		SL-NR-AnchorCarrierFreqList-r16		OPTIONAL	-- Need OR
+	]],
+	[[	sl-A2X-ConfigCommon-r18			SL-A2X-ConfigCommon-r18				OPTIONAL	-- Need OR
+	]]
+}
+
+SL-V2X-ConfigCommon-r14 ::=		SEQUENCE {
+	v2x-CommRxPool-r14					SL-CommRxPoolListV2X-r14			OPTIONAL,	-- Need OR
+	v2x-CommTxPoolNormalCommon-r14		SL-CommTxPoolListV2X-r14			OPTIONAL,	-- Need OR
+	p2x-CommTxPoolNormalCommon-r14		SL-CommTxPoolListV2X-r14			OPTIONAL,	-- Need OR
+	v2x-CommTxPoolExceptional-r14		SL-CommResourcePoolV2X-r14			OPTIONAL,	-- Need OR
+	v2x-SyncConfig-r14					SL-SyncConfigListV2X-r14			OPTIONAL,	-- Need OR
+	v2x-InterFreqInfoList-r14			SL-InterFreqInfoListV2X-r14			OPTIONAL,	-- Need OR
+	v2x-ResourceSelectionConfig-r14		SL-CommTxPoolSensingConfig-r14		OPTIONAL,	-- Need OR
+	zoneConfig-r14						SL-ZoneConfig-r14					OPTIONAL,	-- Need OR
+	typeTxSync-r14						SL-TypeTxSync-r14					OPTIONAL,	-- Need OR
+	thresSL-TxPrioritization-r14		SL-Priority-r13						OPTIONAL,	-- Need OR
+	anchorCarrierFreqList-r14			SL-AnchorCarrierFreqList-V2X-r14	OPTIONAL,	-- Need OR
+	offsetDFN-r14						INTEGER (0..1000)					OPTIONAL,	-- Need OR
+	cbr-CommonTxConfigList-r14			SL-CBR-CommonTxConfigList-r14		OPTIONAL	-- Need OR
+}
+
+SL-A2X-ConfigCommon-r18 ::=		SEQUENCE {
+	a2x-CommRxPool-r18					SL-CommRxPoolListV2X-r14			OPTIONAL,	-- Need OR
+	a2x-commTxPool-r18					SL-CommTxPoolListV2X-r14			OPTIONAL	-- Need OR
+}

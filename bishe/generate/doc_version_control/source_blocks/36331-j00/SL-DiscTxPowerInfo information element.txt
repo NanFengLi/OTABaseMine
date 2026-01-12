@@ -1,0 +1,7 @@
+
+SL-DiscTxPowerInfoList-r12 ::=	SEQUENCE (SIZE (maxSL-DiscPowerClass-r12)) OF SL-DiscTxPowerInfo-r12
+
+SL-DiscTxPowerInfo-r12 ::=				SEQUENCE	{
+	discMaxTxPower-r12							P-Max,
+	...
+}

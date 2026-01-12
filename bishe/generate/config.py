@@ -7,11 +7,12 @@ load_dotenv()
 class Config:
     # 向量数据库配置
     CHROMA_PERSIST_DIRECTORY = os.getenv("CHROMA_DB_DIR", "./chroma_db")
+    # 向量数据库的COLLECTION名称
     COLLECTION_NAME = "rrc_asn1_definitions"
     
     # ASN.1 源文件配置
     # 假设用户已经将 ASN.1 文件拆分并放入此目录
-    ASN1_BLOCKS_DIR = os.getenv("ASN1_BLOCKS_DIR", "../asn1_blocks")
+    ASN1_BLOCKS_DIR = os.getenv("ASN1_BLOCKS_DIR", "./doc_version_control/source_blocks/36331-j00")
     
     # 大语言模型 (LLM) 配置
     # 使用环境变量作为 API 密钥
@@ -23,5 +24,7 @@ class Config:
     MAX_RETRIES = 3
     DEFAULT_SEED = 42
 
-    # 路径引导配置
-    PATH_DB_FILE = os.getenv("PATH_DB_FILE", "./rrc_paths.json")
+    # 配置生成的RRC目标字段的可达路径存储文件所在根目录
+    TARGET_PATH_FILE_ROOT = os.getenv("TARGET_PATH_FILE_ROOT", "./rrc_paths.json")
+    #RRC 版本配置
+    RRC_VERSION = os.getenv("RRC_VERSION", "36331-j00")

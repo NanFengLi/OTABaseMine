@@ -1,0 +1,4 @@
+
+SL-TxPoolToReleaseList-r12 ::=	SEQUENCE (SIZE (1..maxSL-TxPool-r12)) OF SL-TxPoolIdentity-r12
+
+SL-TxPoolToReleaseListExt-r13 ::=	SEQUENCE (SIZE (1..maxSL-TxPool-v1310)) OF SL-TxPoolIdentity-v1310

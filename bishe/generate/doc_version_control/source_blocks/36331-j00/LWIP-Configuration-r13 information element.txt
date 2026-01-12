@@ -1,0 +1,13 @@
+
+LWIP-Configuration-r13 ::=		CHOICE {
+	release							NULL,
+	setup							SEQUENCE {
+		lwip-Config-r13					LWIP-Config-r13
+	}
+}
+
+LWIP-Config-r13 ::=	SEQUENCE {
+	lwip-MobilityConfig-r13			WLAN-MobilityConfig-r13		OPTIONAL,	-- Need ON
+	tunnelConfigLWIP-r13			TunnelConfigLWIP-r13		OPTIONAL,	-- Need ON
+	...
+}

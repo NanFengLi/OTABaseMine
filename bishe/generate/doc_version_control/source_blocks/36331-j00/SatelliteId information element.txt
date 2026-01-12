@@ -1,0 +1,2 @@
+
+SatelliteId-r18 ::= INTEGER (0..255)

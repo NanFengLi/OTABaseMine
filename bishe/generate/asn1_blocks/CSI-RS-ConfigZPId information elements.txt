@@ -1,2 +1,0 @@
-
-CSI-RS-ConfigZPId-r11 ::=					INTEGER (1..maxCSI-RS-ZP-r11)

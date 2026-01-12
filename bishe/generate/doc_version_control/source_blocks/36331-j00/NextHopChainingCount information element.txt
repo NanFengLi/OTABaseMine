@@ -1,0 +1,2 @@
+
+NextHopChainingCount ::=					INTEGER (0..7)

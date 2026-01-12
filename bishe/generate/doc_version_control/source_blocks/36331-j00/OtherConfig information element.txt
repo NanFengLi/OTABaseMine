@@ -1,0 +1,107 @@
+
+OtherConfig-r9 ::= SEQUENCE	{
+	reportProximityConfig-r9			ReportProximityConfig-r9		OPTIONAL,	-- Need ON
+	...,
+	[[	idc-Config-r11					IDC-Config-r11					OPTIONAL,	-- Need ON
+		powerPrefIndicationConfig-r11	PowerPrefIndicationConfig-r11	OPTIONAL,	-- Need ON
+		obtainLocationConfig-r11		ObtainLocationConfig-r11		OPTIONAL	-- Need ON
+	]],
+	[[	bw-PreferenceIndicationTimer-r14	ENUMERATED {s0, s0dot5, s1, s2, s5, s10, s20,
+												s30, s60, s90, s120, s300, s600, spare3,
+												spare2, spare1}			OPTIONAL,	-- Need OR
+		sps-AssistanceInfoReport-r14		BOOLEAN			OPTIONAL,	-- Need ON
+		delayBudgetReportingConfig-r14	CHOICE{
+			release					NULL,
+			setup					SEQUENCE{
+				delayBudgetReportingProhibitTimer-r14	ENUMERATED {
+																s0, s0dot4, s0dot8,
+																s1dot6, s3, s6, s12, s30}
+			}
+		}																OPTIONAL,	-- Need ON
+		rlm-ReportConfig-r14			CHOICE {
+			release					NULL,
+			setup					SEQUENCE{
+				rlmReportTimer-r14				ENUMERATED {s0, s0dot5, s1, s2, s5, s10, s20, s30,
+												s60, s90, s120, s300, s600, spare3, spare2, spare1},
+				rlmReportRep-MPDCCH-r14			ENUMERATED {setup}		OPTIONAL	-- Need OR
+			}
+		}	OPTIONAL	-- Need ON
+	]],
+	[[	overheatingAssistanceConfig-r14	CHOICE{
+			release					NULL,
+			setup					SEQUENCE{
+				overheatingIndicationProhibitTimer-r14	ENUMERATED {s0, s0dot5, s1, s2, s5, s10,
+														s20, s30, s60, s90, s120, s300, s600,
+														spare3, spare2, spare1}
+			}
+		}	OPTIONAL		-- Need ON
+	]],
+	[[	measConfigAppLayer-r15		CHOICE{
+			release					NULL,
+			setup					SEQUENCE{
+				measConfigAppLayerContainer-r15		OCTET STRING (SIZE(1..1000)),
+				serviceType-r15						ENUMERATED {qoe, qoemtsi, spare6, spare5, spare4, spare3, spare2, spare1}
+			}
+		}	OPTIONAL,	-- Need ON	
+		ailc-BitConfig-r15				BOOLEAN							OPTIONAL,	-- Need ON
+		bt-NameListConfig-r15		BT-NameListConfig-r15					OPTIONAL,	--Need ON
+		wlan-NameListConfig-r15		WLAN-NameListConfig-r15					OPTIONAL		--Need ON
+	]],
+	[[	overheatingAssistanceConfigForSCG-r16	BOOLEAN		OPTIONAL	-- Cond overheating
+	]],
+	[[	measUncomBarPre-r17			BOOLEAN				OPTIONAL,	--Need ON
+		scg-DeactivationPreferenceConfig-r17	SetupRelease-SCG-DeactivationPreferenceConfig-r17	OPTIONAL		-- Need ON
+	]]
+}
+
+SetupRelease-SCG-DeactivationPreferenceConfig-r17 ::= CHOICE {
+	release			NULL,
+	setup			SCG-DeactivationPreferenceConfig-r17
+}
+
+IDC-Config-r11 ::=				SEQUENCE {
+	idc-Indication-r11					ENUMERATED {setup}				OPTIONAL,	-- Need OR
+	autonomousDenialParameters-r11		SEQUENCE {
+			autonomousDenialSubframes-r11			ENUMERATED {n2, n5, n10, n15,
+														n20, n30, spare2, spare1},
+			autonomousDenialValidity-r11			ENUMERATED {
+														sf200, sf500, sf1000, sf2000,
+														spare4, spare3, spare2, spare1}
+	}		OPTIONAL,		-- Need OR
+	...,
+	[[	idc-Indication-UL-CA-r11			ENUMERATED {setup}		OPTIONAL	-- Cond idc-Ind
+	]],
+	[[	idc-HardwareSharingIndication-r13	ENUMERATED {setup}		OPTIONAL	-- Need OR
+	]],
+	[[	idc-Indication-MRDC-r15		CHOICE{
+			release					NULL,
+			setup					CandidateServingFreqListNR-r15
+		}			OPTIONAL	-- Cond idc-Ind
+	]]
+}
+
+ObtainLocationConfig-r11 ::= SEQUENCE {
+	obtainLocation-r11				ENUMERATED {setup}					OPTIONAL	-- Need OR
+}
+
+PowerPrefIndicationConfig-r11 ::= CHOICE{
+	release					NULL,
+	setup					SEQUENCE{
+		powerPrefIndicationTimer-r11		ENUMERATED {s0, s0dot5, s1, s2, s5, s10, s20,
+											s30, s60, s90, s120, s300, s600, spare3,
+											spare2, spare1}
+	}
+}
+
+ReportProximityConfig-r9 ::= SEQUENCE {
+	proximityIndicationEUTRA-r9		ENUMERATED {enabled}			OPTIONAL,	-- Need OR
+	proximityIndicationUTRA-r9		ENUMERATED {enabled}			OPTIONAL	-- Need OR
+}
+
+CandidateServingFreqListNR-r15 ::= SEQUENCE (SIZE (1..maxFreqIDC-r11)) OF ARFCN-ValueNR-r15
+
+SCG-DeactivationPreferenceConfig-r17 ::= SEQUENCE {
+	scg-DeactivationPreferenceProhibitTimer-r17	
+							ENUMERATED {s0, s1, s2, s4, s8, s10, s20, s30,
+										s60, s120, s180, s240, s300, s600, s900, s1800}
+}

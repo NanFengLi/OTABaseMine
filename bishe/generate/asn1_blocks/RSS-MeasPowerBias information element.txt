@@ -1,2 +1,0 @@
-
-RSS-MeasPowerBias-r16 ::=	ENUMERATED {dB-6, dB-3, dB0, dB3, dB6, dB9, dB12, rssNotUsed}

@@ -1,0 +1,62 @@
+
+EPDCCH-Config-r11 ::=		SEQUENCE{
+	config-r11		CHOICE {
+		release						NULL,
+		setup						SEQUENCE {
+			subframePatternConfig-r11	CHOICE {
+				release						NULL,
+				setup						SEQUENCE {
+					subframePattern-r11			MeasSubframePattern-r10
+				}
+			}																OPTIONAL, -- Need ON
+			startSymbol-r11				INTEGER (1..4)						OPTIONAL, -- Need OP
+			setConfigToReleaseList-r11	EPDCCH-SetConfigToReleaseList-r11	OPTIONAL, -- Need ON
+			setConfigToAddModList-r11	EPDCCH-SetConfigToAddModList-r11	OPTIONAL -- Need ON
+		}
+	}
+}
+
+EPDCCH-SetConfigToAddModList-r11 ::= SEQUENCE (SIZE(1..maxEPDCCH-Set-r11)) OF EPDCCH-SetConfig-r11
+
+EPDCCH-SetConfigToReleaseList-r11 ::= SEQUENCE (SIZE(1..maxEPDCCH-Set-r11)) OF EPDCCH-SetConfigId-r11
+
+EPDCCH-SetConfig-r11 ::=		SEQUENCE {
+	setConfigId-r11					EPDCCH-SetConfigId-r11,
+	transmissionType-r11			ENUMERATED {localised, distributed},
+	resourceBlockAssignment-r11		SEQUENCE{
+		numberPRB-Pairs-r11				ENUMERATED {n2, n4, n8},
+		resourceBlockAssignment-r11		BIT STRING (SIZE(4..38))
+	},
+	dmrs-ScramblingSequenceInt-r11	INTEGER (0..503),
+	pucch-ResourceStartOffset-r11	INTEGER (0..2047),
+	re-MappingQCL-ConfigId-r11		PDSCH-RE-MappingQCL-ConfigId-r11	OPTIONAL, -- Need OR
+	...,
+	[[	csi-RS-ConfigZPId2-r12		CHOICE {
+			release							NULL,
+			setup							CSI-RS-ConfigZPId-r11
+		}															OPTIONAL	-- Need ON
+	]],
+	[[	numberPRB-Pairs-v1310			CHOICE {
+			release							NULL,
+			setup							ENUMERATED {n6}
+		}															OPTIONAL,	-- Need ON
+		mpdcch-config-r13				CHOICE {
+			release							NULL,
+			setup							SEQUENCE {
+				csi-NumRepetitionCE-r13			ENUMERATED {sf1, sf2, sf4, sf8, sf16, sf32},
+				mpdcch-pdsch-HoppingConfig-r13	ENUMERATED {on,off},
+				mpdcch-StartSF-UESS-r13			CHOICE {
+					fdd-r13							ENUMERATED {v1, v1dot5, v2, v2dot5, v4,
+																v5, v8, v10},
+					tdd-r13							ENUMERATED {v1, v2, v4, v5, v8, v10,
+																v20, spare1}
+				},
+				mpdcch-NumRepetition-r13		ENUMERATED {r1, r2, r4, r8, r16,
+															r32, r64, r128, r256},
+				mpdcch-Narrowband-r13			INTEGER (1.. maxAvailNarrowBands-r13)
+			}
+		}															OPTIONAL	-- Need ON
+	]]
+}
+
+EPDCCH-SetConfigId-r11 ::=	INTEGER (0..1)

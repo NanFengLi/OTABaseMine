@@ -1,0 +1,2 @@
+
+ShortI-RNTI-r15 ::=						BIT STRING (SIZE(24))

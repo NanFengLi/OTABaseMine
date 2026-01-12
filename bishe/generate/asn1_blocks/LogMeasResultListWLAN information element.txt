@@ -1,9 +1,0 @@
-
-LogMeasResultListWLAN-r15 ::=		SEQUENCE (SIZE (1..maxWLAN-Id-Report-r14)) OF LogMeasResultWLAN-r15
-
-LogMeasResultWLAN-r15 ::=	SEQUENCE {
-	wlan-Identifiers-r15			WLAN-Identifiers-r12,
-	rssiWLAN-r15					WLAN-RSSI-Range-r13				OPTIONAL,
-	rtt-WLAN-r15					WLAN-RTT-r15					OPTIONAL,
-	...
-}

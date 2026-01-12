@@ -1,0 +1,33 @@
+
+P-C-AndCBSR-r11 ::=	SEQUENCE {
+	p-C-r11						INTEGER (-8..15),
+	codebookSubsetRestriction-r11	BIT STRING
+}
+
+P-C-AndCBSR-r13 ::=	SEQUENCE {
+	p-C-r13						INTEGER (-8..15),
+	cbsr-Selection-r13			CHOICE{
+		nonPrecoded-r13				SEQUENCE {
+			codebookSubsetRestriction1-r13				BIT STRING,
+			codebookSubsetRestriction2-r13				BIT STRING
+		},
+		beamformedK1a-r13			SEQUENCE {
+			codebookSubsetRestriction3-r13				BIT STRING
+		},
+		beamformedKN-r13			SEQUENCE {
+			codebookSubsetRestriction-r13				BIT STRING
+		}
+	},
+	...
+}
+
+P-C-AndCBSR-r15 ::=	SEQUENCE {
+	p-C-r15						INTEGER (-8..15),
+	codebookSubsetRestriction4-r15	BIT STRING
+}
+
+P-C-AndCBSR-Pair-r13a ::=	SEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r11
+
+P-C-AndCBSR-Pair-r13 ::=	SEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r13
+
+P-C-AndCBSR-Pair-r15 ::=	SEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r15

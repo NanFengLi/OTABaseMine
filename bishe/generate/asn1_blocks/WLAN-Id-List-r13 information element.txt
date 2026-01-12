@@ -1,2 +1,0 @@
-
-WLAN-Id-List-r13 ::=				SEQUENCE (SIZE (1..maxWLAN-Id-r13)) OF WLAN-Identifiers-r12

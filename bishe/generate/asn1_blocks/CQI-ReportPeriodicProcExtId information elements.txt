@@ -1,2 +1,0 @@
-
-CQI-ReportPeriodicProcExtId-r11 ::=					INTEGER (1..maxCQI-ProcExt-r11)

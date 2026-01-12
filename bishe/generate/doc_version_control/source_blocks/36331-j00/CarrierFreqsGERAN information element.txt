@@ -1,0 +1,15 @@
+
+CarrierFreqsGERAN ::=			SEQUENCE {
+	startingARFCN						ARFCN-ValueGERAN,
+	bandIndicator						BandIndicatorGERAN,
+	followingARFCNs						CHOICE {
+		explicitListOfARFCNs				ExplicitListOfARFCNs,
+		equallySpacedARFCNs					SEQUENCE {
+			arfcn-Spacing						INTEGER (1..8),
+			numberOfFollowingARFCNs				INTEGER (0..31)
+		},
+		variableBitMapOfARFCNs				OCTET STRING (SIZE (1..16))
+	}
+}
+
+ExplicitListOfARFCNs ::=			SEQUENCE (SIZE (0..31)) OF ARFCN-ValueGERAN

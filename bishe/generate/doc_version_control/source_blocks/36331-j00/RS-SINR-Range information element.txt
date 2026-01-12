@@ -1,0 +1,2 @@
+
+RS-SINR-Range-r13 ::=						INTEGER(0..127)

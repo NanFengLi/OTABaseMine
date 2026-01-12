@@ -1,0 +1,16 @@
+
+SystemInformationBlockType13-r9 ::=	SEQUENCE {
+	mbsfn-AreaInfoList-r9				MBSFN-AreaInfoList-r9,
+	notificationConfig-r9				MBMS-NotificationConfig-r9,
+	lateNonCriticalExtension			OCTET STRING					OPTIONAL,
+	...,
+	[[	
+	notificationConfig-v1430			MBMS-NotificationConfig-v1430		OPTIONAL
+	]],
+	[[
+	mbsfn-AreaInfoList-r16				MBSFN-AreaInfoList-r16		OPTIONAL	-- Need OR
+	]],
+	[[
+	mbsfn-AreaInfoList-r17		MBSFN-AreaInfoList-r17	OPTIONAL	-- Cond Ded15or25PRB
+	]]
+}

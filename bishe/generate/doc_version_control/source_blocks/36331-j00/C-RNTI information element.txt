@@ -1,0 +1,2 @@
+
+C-RNTI ::=							BIT STRING (SIZE (16))

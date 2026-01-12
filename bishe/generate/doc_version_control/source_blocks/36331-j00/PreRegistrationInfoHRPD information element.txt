@@ -1,0 +1,10 @@
+
+PreRegistrationInfoHRPD ::=			SEQUENCE {
+	preRegistrationAllowed				BOOLEAN,
+	preRegistrationZoneId				PreRegistrationZoneIdHRPD	OPTIONAL, -- cond PreRegAllowed
+	secondaryPreRegistrationZoneIdList	SecondaryPreRegistrationZoneIdListHRPD	OPTIONAL -- Need OR
+}
+
+SecondaryPreRegistrationZoneIdListHRPD ::=	SEQUENCE (SIZE (1..2)) OF PreRegistrationZoneIdHRPD
+
+PreRegistrationZoneIdHRPD ::=			INTEGER (0..255)

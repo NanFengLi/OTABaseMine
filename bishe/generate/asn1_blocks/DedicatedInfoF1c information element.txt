@@ -1,2 +1,0 @@
-
-DedicatedInfoF1c-r16 ::=		OCTET STRING

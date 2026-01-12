@@ -1,2 +1,0 @@
-
-Hysteresis ::=							INTEGER (0..30)

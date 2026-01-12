@@ -1,3 +1,0 @@
-
-SystemInfoListGERAN ::=				SEQUENCE (SIZE (1..maxGERAN-SI)) OF
-										OCTET STRING (SIZE (1..23))

@@ -1,0 +1,68 @@
+
+MeasConfig ::=						SEQUENCE {
+	-- Measurement objects
+	measObjectToRemoveList				MeasObjectToRemoveList				OPTIONAL,	-- Need ON
+	measObjectToAddModList				MeasObjectToAddModList				OPTIONAL,	-- Need ON
+	-- Reporting configurations
+	reportConfigToRemoveList			ReportConfigToRemoveList			OPTIONAL,	-- Need ON
+	reportConfigToAddModList			ReportConfigToAddModList			OPTIONAL,	-- Need ON
+	-- Measurement identities
+	measIdToRemoveList					MeasIdToRemoveList					OPTIONAL,	-- Need ON
+	measIdToAddModList					MeasIdToAddModList					OPTIONAL,	-- Need ON
+	-- Other parameters
+	quantityConfig						QuantityConfig						OPTIONAL,	-- Need ON
+	measGapConfig						MeasGapConfig						OPTIONAL,	-- Need ON
+	s-Measure							RSRP-Range							OPTIONAL,	-- Need ON
+	preRegistrationInfoHRPD				PreRegistrationInfoHRPD				OPTIONAL,	-- Need OP
+	speedStatePars			CHOICE {
+		release								NULL,
+		setup								SEQUENCE {
+			mobilityStateParameters				MobilityStateParameters,
+			timeToTrigger-SF					SpeedStateScaleFactors
+		}
+	}																		OPTIONAL,	-- Need ON
+	...,
+	[[	measObjectToAddModList-v9e0			MeasObjectToAddModList-v9e0		OPTIONAL	-- Need ON
+	]],
+	[[	allowInterruptions-r11				BOOLEAN							OPTIONAL	-- Need ON
+	]],
+	[[	measScaleFactor-r12			CHOICE {
+			release						NULL,
+			setup						MeasScaleFactor-r12
+		}																OPTIONAL,	-- Need ON
+		measIdToRemoveListExt-r12			MeasIdToRemoveListExt-r12		OPTIONAL,	-- Need ON
+		measIdToAddModListExt-r12			MeasIdToAddModListExt-r12		OPTIONAL,	-- Need ON
+		measRSRQ-OnAllSymbols-r12		BOOLEAN							OPTIONAL	-- Need ON
+	]],
+	[[
+		measObjectToRemoveListExt-r13		MeasObjectToRemoveListExt-r13	OPTIONAL,	-- Need ON
+		measObjectToAddModListExt-r13		MeasObjectToAddModListExt-r13	OPTIONAL,	-- Need ON
+		measIdToAddModList-v1310			MeasIdToAddModList-v1310		OPTIONAL,	-- Need ON
+		measIdToAddModListExt-v1310			MeasIdToAddModListExt-v1310		OPTIONAL	-- Need ON
+	]],
+	[[	measGapConfigPerCC-List-r14			MeasGapConfigPerCC-List-r14		OPTIONAL,	-- Need ON
+		measGapSharingConfig-r14			MeasGapSharingConfig-r14		OPTIONAL	-- Need ON
+	]],
+	[[	fr1-Gap-r15								BOOLEAN		OPTIONAL,	-- Need ON
+		mgta-r15								BOOLEAN						OPTIONAL	-- Need ON
+	]],
+	[[	measGapConfigDensePRS-r15			MeasGapConfigDensePRS-r15	OPTIONAL,	-- Need ON
+		heightThreshRef-r15	CHOICE {
+			release					NULL,
+			setup					INTEGER (0..31)
+		}										OPTIONAL	--Need ON
+	]],
+	[[	timeMeasConfig-r18					ENUMERATED {true}				OPTIONAL,	-- Need OR
+		locationMeasConfig-r18			ENUMERATED {true}				OPTIONAL	-- Need OR
+	]]
+}
+
+MeasIdToRemoveList ::=				SEQUENCE (SIZE (1..maxMeasId)) OF MeasId
+
+MeasIdToRemoveListExt-r12 ::=		SEQUENCE (SIZE (1..maxMeasId)) OF MeasId-v1250
+
+MeasObjectToRemoveList ::=			SEQUENCE (SIZE (1..maxObjectId)) OF MeasObjectId
+
+MeasObjectToRemoveListExt-r13 ::=	SEQUENCE (SIZE (1..maxObjectId)) OF MeasObjectId-v1310
+
+ReportConfigToRemoveList ::=		SEQUENCE (SIZE (1..maxReportConfigId)) OF ReportConfigId

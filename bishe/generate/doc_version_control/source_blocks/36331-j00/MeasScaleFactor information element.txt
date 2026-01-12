@@ -1,0 +1,2 @@
+
+MeasScaleFactor-r12 ::=			ENUMERATED {sf-EUTRA-cf1, sf-EUTRA-cf2}

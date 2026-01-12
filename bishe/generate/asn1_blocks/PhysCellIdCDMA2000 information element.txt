@@ -1,2 +1,0 @@
-
-PhysCellIdCDMA2000 ::=			INTEGER (0..maxPNOffset)

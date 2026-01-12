@@ -1,0 +1,37 @@
+
+SystemInformationBlockType15-r11 ::=	SEQUENCE {
+	mbms-SAI-IntraFreq-r11					MBMS-SAI-List-r11				OPTIONAL,	-- Need OR
+	mbms-SAI-InterFreqList-r11				MBMS-SAI-InterFreqList-r11		OPTIONAL,	-- Need OR
+	lateNonCriticalExtension				OCTET STRING					OPTIONAL,
+	...,
+	[[	mbms-SAI-InterFreqList-v1140		MBMS-SAI-InterFreqList-v1140	OPTIONAL	-- Cond InterFreq
+	]],
+	[[	mbms-IntraFreqCarrierType-r14		MBMS-CarrierType-r14			OPTIONAL,	-- Need OR
+		mbms-InterFreqCarrierTypeList-r14	
+											MBMS-InterFreqCarrierTypeList-r14	OPTIONAL	-- Need OR
+	]]
+}
+
+MBMS-SAI-List-r11 ::=					SEQUENCE (SIZE (1..maxSAI-MBMS-r11)) OF MBMS-SAI-r11
+
+MBMS-SAI-r11 ::=						INTEGER (0..65535)
+
+MBMS-SAI-InterFreqList-r11 ::=			SEQUENCE (SIZE (1..maxFreq)) OF MBMS-SAI-InterFreq-r11
+
+MBMS-SAI-InterFreqList-v1140 ::=		SEQUENCE (SIZE (1..maxFreq)) OF MBMS-SAI-InterFreq-v1140
+
+MBMS-SAI-InterFreq-r11 ::=				SEQUENCE {
+	dl-CarrierFreq-r11						ARFCN-ValueEUTRA-r9,
+	mbms-SAI-List-r11						MBMS-SAI-List-r11
+}
+
+MBMS-SAI-InterFreq-v1140 ::=			SEQUENCE {
+		multiBandInfoList-r11				MultiBandInfoList-r11			OPTIONAL	-- Need OR
+}
+
+MBMS-InterFreqCarrierTypeList-r14 ::=	SEQUENCE (SIZE (1..maxFreq)) OF MBMS-CarrierType-r14
+
+MBMS-CarrierType-r14 ::=				SEQUENCE {
+	carrierType-r14							ENUMERATED {mbms, fembmsMixed, fembmsDedicated},
+	frameOffset-r14							INTEGER (0..3)					OPTIONAL	-- Need OR
+}

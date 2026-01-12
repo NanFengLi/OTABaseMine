@@ -1,5 +1,0 @@
-
-FlightPathInfoReportConfig-r15 ::= SEQUENCE {		
-	maxWayPointNumber-r15				INTEGER (1..maxWayPoint-r15),
-	includeTimeStamp-r15				ENUMERATED {true}					OPTIONAL
-}

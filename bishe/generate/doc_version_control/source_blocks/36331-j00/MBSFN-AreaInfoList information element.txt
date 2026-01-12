@@ -1,0 +1,54 @@
+
+MBSFN-AreaInfoList-r9 ::=			SEQUENCE (SIZE(1..maxMBSFN-Area)) OF MBSFN-AreaInfo-r9
+
+MBSFN-AreaInfo-r9 ::=				SEQUENCE {
+	mbsfn-AreaId-r9						MBSFN-AreaId-r12,
+	non-MBSFNregionLength				ENUMERATED {s1, s2},
+	notificationIndicator-r9			INTEGER (0..7),
+	mcch-Config-r9						SEQUENCE {
+		mcch-RepetitionPeriod-r9		ENUMERATED {rf32, rf64, rf128, rf256},
+		mcch-Offset-r9					INTEGER (0..10),
+		mcch-ModificationPeriod-r9		ENUMERATED {rf512, rf1024},
+		sf-AllocInfo-r9					BIT STRING (SIZE(6)),
+		signallingMCS-r9				ENUMERATED {n2, n7, n13, n19}
+	},
+	...,
+	[[	mcch-Config-r14				SEQUENCE {
+			mcch-RepetitionPeriod-v1430		ENUMERATED {rf1, rf2, rf4, rf8,
+										rf16 }		OPTIONAL,	-- Need OR
+			mcch-ModificationPeriod-v1430	ENUMERATED {rf1, rf2, rf4, rf8, rf16, rf32, rf64, rf128,
+											rf256, spare7}					OPTIONAL	-- Need OR
+		}																	OPTIONAL,	-- Need OR
+		subcarrierSpacingMBMS-r14		ENUMERATED {kHz7dot5, kHz1dot25}	OPTIONAL	-- Need OR
+	]]
+}
+
+MBSFN-AreaInfoList-r16 ::=		SEQUENCE (SIZE(1..maxMBSFN-Area)) OF MBSFN-AreaInfo-r16
+
+MBSFN-AreaInfo-r16 ::=				SEQUENCE {
+	mbsfn-AreaId-r16					MBSFN-AreaId-r12,
+	notificationIndicator-r16			INTEGER (0..7),
+	mcch-Config-r16						SEQUENCE {
+		mcch-RepetitionPeriod-r16			ENUMERATED {rf1, rf2, rf4, rf8, rf16, rf32, rf64,
+														rf128, rf256, spare7, spare6, spare5,
+														spare4, spare3, spare2, spare1},
+		mcch-ModificationPeriod-r16			ENUMERATED {rf1, rf2, rf4, rf8, rf16, rf32, rf64, rf128,
+														rf256, rf512, rf1024, spare5, spare4,
+														spare3,spare2, spare1},
+		mcch-Offset-r16					INTEGER (0..10),
+		sf-AllocInfo-r16				BIT STRING (SIZE(10)),
+		signallingMCS-r16				ENUMERATED {n2, n7, n13, n19}
+	},
+	subcarrierSpacingMBMS-r16		ENUMERATED {kHz7dot5, kHz2dot5, kHz1dot25, kHz0dot37,
+										kHz15-v1710, spare3, spare2, spare1},
+	timeSeparation-r16				ENUMERATED {sl2, sl4} OPTIONAL,	-- Need OR
+	...
+}
+
+MBSFN-AreaInfoList-r17 ::=	SEQUENCE (SIZE(1..maxMBSFN-Area)) OF MBSFN-AreaInfo-r17
+
+MBSFN-AreaInfo-r17 ::=		SEQUENCE {
+	mbsfn-AreaInfo-r17				MBSFN-AreaInfo-r16,
+	pmch-Bandwidth-r17				ENUMERATED {n40, n35, n30, spare1},
+	...
+}

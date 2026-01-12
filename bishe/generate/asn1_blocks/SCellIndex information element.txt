@@ -1,3 +1,0 @@
-
-SCellIndex-r10 ::=						INTEGER (1..7)
-SCellIndex-r13 ::=						INTEGER (1..31)

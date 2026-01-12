@@ -1,0 +1,47 @@
+
+UL-DCCH-Message ::= SEQUENCE {
+	message			UL-DCCH-MessageType
+}
+
+UL-DCCH-MessageType ::= CHOICE {
+	c1						CHOICE {
+		csfbParametersRequestCDMA2000				CSFBParametersRequestCDMA2000,
+		measurementReport							MeasurementReport,
+		rrcConnectionReconfigurationComplete		RRCConnectionReconfigurationComplete,
+		rrcConnectionReestablishmentComplete		RRCConnectionReestablishmentComplete,
+		rrcConnectionSetupComplete					RRCConnectionSetupComplete,
+		securityModeComplete						SecurityModeComplete,
+		securityModeFailure							SecurityModeFailure,
+		ueCapabilityInformation						UECapabilityInformation,
+		ulHandoverPreparationTransfer				ULHandoverPreparationTransfer,
+		ulInformationTransfer						ULInformationTransfer,
+		counterCheckResponse						CounterCheckResponse,
+		ueInformationResponse-r9					UEInformationResponse-r9,
+		proximityIndication-r9						ProximityIndication-r9,
+		rnReconfigurationComplete-r10				RNReconfigurationComplete-r10,
+		mbmsCountingResponse-r10					MBMSCountingResponse-r10,
+		interFreqRSTDMeasurementIndication-r10		InterFreqRSTDMeasurementIndication-r10
+	},
+	messageClassExtension	CHOICE {
+		c2							CHOICE {
+			ueAssistanceInformation-r11			UEAssistanceInformation-r11,
+			inDeviceCoexIndication-r11			InDeviceCoexIndication-r11,
+			mbmsInterestIndication-r11			MBMSInterestIndication-r11,
+			scgFailureInformation-r12			SCGFailureInformation-r12,
+			sidelinkUEInformation-r12			SidelinkUEInformation-r12,
+			wlanConnectionStatusReport-r13		WLANConnectionStatusReport-r13,
+			rrcConnectionResumeComplete-r13		RRCConnectionResumeComplete-r13,
+			ulInformationTransferMRDC-r15		ULInformationTransferMRDC-r15,
+			scgFailureInformationNR-r15			SCGFailureInformationNR-r15,
+			measReportAppLayer-r15				MeasReportAppLayer-r15,
+			failureInformation-r15				FailureInformation-r15,
+			ulDedicatedMessageSegment-r16		ULDedicatedMessageSegment-r16,
+			purConfigurationRequest-r16			PURConfigurationRequest-r16,
+			failureInformation-r16				FailureInformation-r16,
+			mcgFailureInformation-r16			MCGFailureInformation-r16,
+			ulInformationTransferIRAT-r16		ULInformationTransferIRAT-r16
+		},
+		messageClassExtensionFuture-r11
+	SEQUENCE {}
+	}
+}

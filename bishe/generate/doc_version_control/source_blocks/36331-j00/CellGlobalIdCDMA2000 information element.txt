@@ -1,0 +1,5 @@
+
+CellGlobalIdCDMA2000 ::=				CHOICE {
+	cellGlobalId1XRTT						BIT STRING (SIZE (47)),
+	cellGlobalIdHRPD						BIT STRING (SIZE (128))
+}

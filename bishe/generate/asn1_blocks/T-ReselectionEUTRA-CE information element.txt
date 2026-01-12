@@ -1,2 +1,0 @@
-
-T-ReselectionEUTRA-CE-r13 ::=				INTEGER (0..15)

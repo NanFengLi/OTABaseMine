@@ -1,7 +1,0 @@
-
-SL-TxParameters-r12 ::=				SEQUENCE	{
-	alpha-r12								Alpha-r12,
-	p0-r12									P0-SL-r12
-}
-
-P0-SL-r12 ::=							INTEGER (-126..31)

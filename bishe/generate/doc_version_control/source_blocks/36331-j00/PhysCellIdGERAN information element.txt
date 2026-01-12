@@ -1,0 +1,5 @@
+
+PhysCellIdGERAN ::=				SEQUENCE {
+	networkColourCode					BIT STRING (SIZE (3)),
+	baseStationColourCode				BIT STRING (SIZE (3))
+}

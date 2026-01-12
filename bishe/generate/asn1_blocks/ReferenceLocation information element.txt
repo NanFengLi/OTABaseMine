@@ -1,2 +1,0 @@
-
-ReferenceLocation-r18 ::=		OCTET STRING

@@ -1,8 +1,0 @@
-
-MeasObjectGERAN ::=					SEQUENCE {
-	carrierFreqs						CarrierFreqsGERAN,
-	offsetFreq							Q-OffsetRangeInterRAT		DEFAULT 0,
-	ncc-Permitted						BIT STRING(SIZE (8))		DEFAULT '11111111'B,
-	cellForWhichToReportCGI				PhysCellIdGERAN				OPTIONAL,	-- Need ON
-	...
-}

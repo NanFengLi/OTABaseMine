@@ -1,6 +1,0 @@
-
-BCCH-BCH-Message ::= SEQUENCE {
-	message					BCCH-BCH-MessageType
-}
-
-BCCH-BCH-MessageType ::=						MasterInformationBlock

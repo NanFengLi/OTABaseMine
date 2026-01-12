@@ -1,4 +1,0 @@
-
-SL-PriorityList-r13 ::=		SEQUENCE (SIZE (1..maxSL-Prio-r13)) OF SL-Priority-r13
-
-SL-Priority-r13 ::=			INTEGER (1..8)

@@ -1,0 +1,2 @@
+
+PDSCH-RE-MappingQCL-ConfigId-r11 ::=		INTEGER (1..maxRE-MapQCL-r11)

@@ -1,0 +1,38 @@
+
+RRCConnectionRequest ::=			SEQUENCE {
+	criticalExtensions					CHOICE {
+		rrcConnectionRequest-r8				RRCConnectionRequest-r8-IEs,
+		rrcConnectionRequest-r15			RRCConnectionRequest-5GC-r15-IEs
+	}
+}
+
+RRCConnectionRequest-r8-IEs ::=		SEQUENCE {
+	ue-Identity							InitialUE-Identity,
+	establishmentCause					EstablishmentCause,
+	spare								BIT STRING (SIZE (1))
+}
+
+RRCConnectionRequest-5GC-r15-IEs ::=	SEQUENCE {
+	ue-Identity-r15							InitialUE-Identity-5GC-r15,
+	establishmentCause-r15					EstablishmentCause-5GC-r15,
+	spare									BIT STRING (SIZE (1))
+}
+
+InitialUE-Identity ::=				CHOICE {
+	s-TMSI								S-TMSI,
+	randomValue							BIT STRING (SIZE (40))
+}
+
+InitialUE-Identity-5GC-r15 ::=		CHOICE {
+	ng-5G-S-TMSI-Part1					BIT STRING (SIZE (40)),
+	randomValue							BIT STRING (SIZE (40))
+}
+
+
+EstablishmentCause ::=				ENUMERATED {
+										emergency, highPriorityAccess, mt-Access, mo-Signalling,
+										mo-Data, delayTolerantAccess-v1020, mo-VoiceCall-v1280, spare1}
+
+EstablishmentCause-5GC-r15 ::=		ENUMERATED {
+										emergency, highPriorityAccess, mt-Access, mo-Signalling,
+										mo-Data, mo-VoiceCall, spare2, spare1}

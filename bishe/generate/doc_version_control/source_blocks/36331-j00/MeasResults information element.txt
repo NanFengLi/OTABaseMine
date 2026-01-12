@@ -1,0 +1,406 @@
+
+MeasResults ::=						SEQUENCE {
+	measId								MeasId,
+	measResultPCell						SEQUENCE {
+		rsrpResult							RSRP-Range,
+		rsrqResult							RSRQ-Range
+	},
+	measResultNeighCells				CHOICE {
+		measResultListEUTRA					MeasResultListEUTRA,
+		measResultListUTRA					MeasResultListUTRA,
+		measResultListGERAN					MeasResultListGERAN,
+		measResultsCDMA2000					MeasResultsCDMA2000,
+		...,
+		measResultNeighCellListNR-r15			MeasResultCellListNR-r15
+	}																		OPTIONAL,
+	...,
+	[[	measResultForECID-r9				MeasResultForECID-r9			OPTIONAL
+	]],
+	[[	locationInfo-r10					LocationInfo-r10				OPTIONAL,
+		measResultServFreqList-r10			MeasResultServFreqList-r10		OPTIONAL
+	]],
+	[[	measId-v1250						MeasId-v1250					OPTIONAL,
+		measResultPCell-v1250				RSRQ-Range-v1250				OPTIONAL,
+		measResultCSI-RS-List-r12			MeasResultCSI-RS-List-r12		OPTIONAL
+	]],
+	[[	measResultForRSSI-r13				MeasResultForRSSI-r13			OPTIONAL,
+		measResultServFreqListExt-r13		MeasResultServFreqListExt-r13	OPTIONAL,
+		measResultSSTD-r13					MeasResultSSTD-r13				OPTIONAL,
+		measResultPCell-v1310				SEQUENCE {
+			rs-sinr-Result-r13					RS-SINR-Range-r13
+		}																	OPTIONAL,
+		ul-PDCP-DelayResultList-r13			UL-PDCP-DelayResultList-r13		OPTIONAL,
+		measResultListWLAN-r13				MeasResultListWLAN-r13			OPTIONAL
+	]],
+	[[	measResultPCell-v1360				RSRP-Range-v1360				OPTIONAL
+	]],
+	[[	measResultListCBR-r14				MeasResultListCBR-r14			OPTIONAL,
+		measResultListWLAN-r14				MeasResultListWLAN-r14			OPTIONAL
+	]],
+	[[	measResultServFreqListNR-r15		MeasResultServFreqListNR-r15	OPTIONAL,
+		measResultCellListSFTD-r15		MeasResultCellListSFTD-r15			OPTIONAL
+	]],
+	[[	logMeasResultListBT-r15				LogMeasResultListBT-r15			OPTIONAL,
+		logMeasResultListWLAN-r15			LogMeasResultListWLAN-r15		OPTIONAL,
+		measResultSensing-r15			MeasResultSensing-r15				OPTIONAL,
+		heightUE-r15						INTEGER (-400..8880)		OPTIONAL
+	]],
+	[[	ul-PDCP-DelayValueResultList-r16		UL-PDCP-DelayValueResultList-r16	OPTIONAL,
+		measResultForRSSI-NR-r16				MeasResultForRSSI-NR-r16		OPTIONAL
+	]],
+	[[	uncomBarPreMeasResult-r17				OCTET STRING			OPTIONAL,
+		coarseLocationInfo-r17				OCTET STRING			OPTIONAL
+	]]
+}
+
+MeasResultListEUTRA ::=				SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultEUTRA
+
+MeasResultEUTRA ::=	SEQUENCE {
+	physCellId							PhysCellId,
+	cgi-Info							SEQUENCE {
+		cellGlobalId						CellGlobalIdEUTRA,
+		trackingAreaCode					TrackingAreaCode,
+		plmn-IdentityList					PLMN-IdentityList2				OPTIONAL
+	}															OPTIONAL,
+	measResult							SEQUENCE {
+		rsrpResult							RSRP-Range						OPTIONAL,
+		rsrqResult							RSRQ-Range						OPTIONAL,
+		...,
+		[[	additionalSI-Info-r9				AdditionalSI-Info-r9		OPTIONAL
+		]],
+		[[	primaryPLMN-Suitable-r12			ENUMERATED {true}			OPTIONAL,
+			measResult-v1250					RSRQ-Range-v1250			OPTIONAL
+		]],
+		[[	rs-sinr-Result-r13					RS-SINR-Range-r13			OPTIONAL,
+			cgi-Info-v1310						SEQUENCE {				
+				freqBandIndicator-r13				FreqBandIndicator-r11		OPTIONAL,
+				multiBandInfoList-r13				MultiBandInfoList-r11		OPTIONAL,
+				freqBandIndicatorPriority-r13		ENUMERATED {true}			OPTIONAL
+			}																OPTIONAL
+		]],
+		[[
+			measResult-v1360					RSRP-Range-v1360					OPTIONAL
+		]],
+		[[
+			cgi-Info-5GC-r15		SEQUENCE (SIZE (1..maxPLMN-r11)) OF CellAccessRelatedInfo-5GC-r15		OPTIONAL
+		]],
+		[[
+			hsdn-Cell-r19				ENUMERATED {true}			OPTIONAL
+		]]
+	}
+}
+
+MeasResultListIdle-r15	::= SEQUENCE (SIZE (1..maxIdleMeasCarriers-r15)) OF MeasResultIdle-r15
+
+MeasResultIdle-r15	::= SEQUENCE {
+	measResultServingCell-r15					SEQUENCE {
+		rsrpResult-r15					RSRP-Range,
+		rsrqResult-r15					RSRQ-Range-r13
+	},
+	measResultNeighCells-r15		CHOICE {
+		measResultIdleListEUTRA-r15		MeasResultIdleListEUTRA-r15,
+		...
+	}																	OPTIONAL,
+	...
+}
+
+MeasResultIdleListEUTRA-r15 ::=	SEQUENCE (SIZE (1..maxCellMeasIdle-r15)) OF MeasResultIdleEUTRA-r15
+
+MeasResultIdleEUTRA-r15 ::=	SEQUENCE {
+	carrierFreq-r15						ARFCN-ValueEUTRA-r9,
+	physCellId-r15						PhysCellId,
+	measResult-r15						SEQUENCE {
+		rsrpResult-r15						RSRP-Range,
+		rsrqResult-r15						RSRQ-Range-r13
+	},
+	...
+}
+
+MeasResultListExtIdle-r16 ::= SEQUENCE(SIZE (1..maxIdleMeasCarriersExt-r16)) OF MeasResultIdleListEUTRA-r15
+
+MeasResultListIdleNR-r16	::= SEQUENCE(SIZE (1..maxIdleMeasCarriers-r16)) OF MeasResultIdleNR-r16
+
+MeasResultIdleNR-r16 ::=		SEQUENCE {
+	carrierFreqNR-r16						ARFCN-ValueNR-r15,
+	measResultsPerCellListIdleNR-r16	SEQUENCE (SIZE (1..maxCellMeasIdle-r15)) OF MeasResultsPerCellIdleNR-r16,
+	...
+}
+
+MeasResultsPerCellIdleNR-r16 ::=	SEQUENCE {
+	physCellIdNR-r16					PhysCellIdNR-r15,
+	measIdleResultNR-r16					SEQUENCE {
+		rsrpResultNR-r16						RSRP-RangeNR-r15				OPTIONAL,
+		rsrqResultNR-r16						RSRQ-RangeNR-r15				OPTIONAL,
+		resultRS-IndexList-r16				ResultsPerSSB-IndexList-r16		OPTIONAL
+	},
+	...
+}
+
+ResultsPerSSB-IndexList-r16 ::=	SEQUENCE (SIZE (1..maxRS-IndexReport-r15)) OF ResultsPerSSB-IndexIdle-r16
+
+ResultsPerSSB-IndexIdle-r16 ::=		SEQUENCE {
+	ssb-Index-r16							RS-IndexNR-r15,
+	ssb-Results-r16							SEQUENCE {
+		ssb-RSRP-Result-r16						RSRP-RangeNR-r15			OPTIONAL,
+		ssb-RSRQ-Result-r16						RSRQ-RangeNR-r15			OPTIONAL
+	}																		OPTIONAL
+}
+
+MeasResultServFreqListNR-r15 ::=	SEQUENCE (SIZE (1..maxServCell-r13)) OF MeasResultServFreqNR-r15
+
+MeasResultServFreqNR-r15 ::=		SEQUENCE {
+	carrierFreq-r15						ARFCN-ValueNR-r15,
+	measResultSCell-r15					MeasResultCellNR-r15				OPTIONAL,
+	measResultBestNeighCell-r15			MeasResultCellNR-r15				OPTIONAL,
+	...
+}
+
+MeasResultCellListNR-r15::=		SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultCellNR-r15
+
+MeasResultCellNR-r15 ::=			SEQUENCE {
+	pci-r15								PhysCellIdNR-r15,
+	measResultCell-r15					MeasResultNR-r15,
+	measResultRS-IndexList-r15			MeasResultSSB-IndexList-r15				OPTIONAL,
+	...,
+	[[	cgi-Info-r15						CGI-InfoNR-r15				OPTIONAL
+	]]
+}
+
+MeasResultNR-r15 ::=				SEQUENCE {
+	rsrpResult-r15						RSRP-RangeNR-r15						OPTIONAL,
+	rsrqResult-r15						RSRQ-RangeNR-r15						OPTIONAL,
+	rs-sinr-Result-r15					RS-SINR-RangeNR-r15						OPTIONAL,
+	...
+}
+
+MeasResultSSB-IndexList-r15::=		SEQUENCE (SIZE (1..maxRS-IndexReport-r15)) OF MeasResultSSB-Index-r15
+
+MeasResultSSB-Index-r15 ::=		SEQUENCE {
+	ssb-Index-r15						RS-IndexNR-r15,
+	measResultSSB-Index-r15				MeasResultNR-r15					OPTIONAL,
+	...
+}
+
+MeasResultServFreqList-r10 ::=	SEQUENCE (SIZE (1..maxServCell-r10)) OF MeasResultServFreq-r10
+
+MeasResultServFreqListExt-r13 ::=	SEQUENCE (SIZE (1..maxServCell-r13)) OF MeasResultServFreq-r13
+
+MeasResultServFreq-r10 ::=			SEQUENCE {
+	servFreqId-r10						ServCellIndex-r10,
+	measResultSCell-r10					SEQUENCE {
+		rsrpResultSCell-r10					RSRP-Range,
+		rsrqResultSCell-r10					RSRQ-Range
+	}															OPTIONAL,
+	measResultBestNeighCell-r10			SEQUENCE {
+		physCellId-r10						PhysCellId,
+		rsrpResultNCell-r10					RSRP-Range,
+		rsrqResultNCell-r10					RSRQ-Range
+	}															OPTIONAL,
+	...,
+	[[	measResultSCell-v1250				RSRQ-Range-v1250	OPTIONAL,
+		measResultBestNeighCell-v1250		RSRQ-Range-v1250	OPTIONAL
+	]],
+	[[	measResultSCell-v1310				SEQUENCE {
+			rs-sinr-Result-r13					RS-SINR-Range-r13
+		}		OPTIONAL,
+		measResultBestNeighCell-v1310		SEQUENCE {
+			rs-sinr-Result-r13					RS-SINR-Range-r13
+		}		OPTIONAL
+	]]
+}
+
+MeasResultServFreq-r13 ::=			SEQUENCE {
+	servFreqId-r13						ServCellIndex-r13,
+	measResultSCell-r13					SEQUENCE {
+		rsrpResultSCell-r13					RSRP-Range,
+		rsrqResultSCell-r13					RSRQ-Range-r13,
+		rs-sinr-Result-r13					RS-SINR-Range-r13	OPTIONAL
+	}															OPTIONAL,
+	measResultBestNeighCell-r13			SEQUENCE {
+		physCellId-r13						PhysCellId,
+		rsrpResultNCell-r13					RSRP-Range,
+		rsrqResultNCell-r13					RSRQ-Range-r13,
+		rs-sinr-Result-r13					RS-SINR-Range-r13	OPTIONAL
+	}															OPTIONAL,
+	...,
+	[[	measResultBestNeighCell-v1360		SEQUENCE {
+			rsrpResultNCell-v1360				RSRP-Range-v1360
+		}														OPTIONAL
+	]]
+}
+
+MeasResultCSI-RS-List-r12 ::=	SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultCSI-RS-r12
+
+MeasResultCSI-RS-r12 ::=		SEQUENCE {
+	measCSI-RS-Id-r12				MeasCSI-RS-Id-r12,
+	csi-RSRP-Result-r12				CSI-RSRP-Range-r12,
+	...
+}
+
+MeasResultListUTRA ::=				SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultUTRA
+
+MeasResultUTRA ::=	SEQUENCE {
+	physCellId							CHOICE {
+		fdd									PhysCellIdUTRA-FDD,
+		tdd									PhysCellIdUTRA-TDD
+	},
+	cgi-Info							SEQUENCE {
+		cellGlobalId						CellGlobalIdUTRA,
+		locationAreaCode					BIT STRING (SIZE (16))			OPTIONAL,
+		routingAreaCode						BIT STRING (SIZE (8))			OPTIONAL,
+		plmn-IdentityList					PLMN-IdentityList2				OPTIONAL
+	}															OPTIONAL,
+	measResult							SEQUENCE {
+		utra-RSCP							INTEGER (-5..91)				OPTIONAL,
+		utra-EcN0							INTEGER (0..49)					OPTIONAL,
+		...,
+		[[	additionalSI-Info-r9				AdditionalSI-Info-r9				OPTIONAL
+		]],
+		[[	primaryPLMN-Suitable-r12			ENUMERATED {true}			OPTIONAL
+		]]
+	}
+}
+
+MeasResultListGERAN ::=				SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultGERAN
+
+MeasResultGERAN ::=	SEQUENCE {
+	carrierFreq							CarrierFreqGERAN,
+	physCellId							PhysCellIdGERAN,
+	cgi-Info							SEQUENCE {
+		cellGlobalId						CellGlobalIdGERAN,
+		routingAreaCode						BIT STRING (SIZE (8))			OPTIONAL
+	}																		OPTIONAL,
+	measResult							SEQUENCE {
+		rssi								INTEGER (0..63),
+		...
+	}
+}
+
+MeasResultsCDMA2000 ::=				SEQUENCE {
+	preRegistrationStatusHRPD			BOOLEAN,
+	measResultListCDMA2000				MeasResultListCDMA2000
+}
+
+MeasResultListCDMA2000 ::=			SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultCDMA2000
+
+MeasResultCDMA2000 ::=	SEQUENCE {
+	physCellId							PhysCellIdCDMA2000,
+	cgi-Info							CellGlobalIdCDMA2000				OPTIONAL,
+	measResult							SEQUENCE {
+		pilotPnPhase						INTEGER	(0..32767)				OPTIONAL,
+		pilotStrength						INTEGER (0..63),
+		...
+	}
+}
+
+MeasResultListWLAN-r13 ::=		SEQUENCE (SIZE (1..maxCellReport)) OF MeasResultWLAN-r13
+
+MeasResultListWLAN-r14 ::=		SEQUENCE (SIZE (1..maxWLAN-Id-Report-r14)) OF MeasResultWLAN-r13
+
+MeasResultWLAN-r13 ::=	SEQUENCE {
+	wlan-Identifiers-r13					WLAN-Identifiers-r12,
+	carrierInfoWLAN-r13						WLAN-CarrierInfo-r13	OPTIONAL,
+	bandWLAN-r13							WLAN-BandIndicator-r13	OPTIONAL,
+	rssiWLAN-r13							WLAN-RSSI-Range-r13,
+	availableAdmissionCapacityWLAN-r13		INTEGER (0..31250)		OPTIONAL,
+	backhaulDL-BandwidthWLAN-r13			WLAN-backhaulRate-r12	OPTIONAL,
+	backhaulUL-BandwidthWLAN-r13			WLAN-backhaulRate-r12	OPTIONAL,
+	channelUtilizationWLAN-r13				INTEGER (0..255)		OPTIONAL,
+	stationCountWLAN-r13					INTEGER (0..65535)		OPTIONAL,
+	connectedWLAN-r13						ENUMERATED {true}		OPTIONAL,
+	...
+}
+
+MeasResultListCBR-r14 ::=			SEQUENCE (SIZE (1..maxCBR-Report-r14)) OF MeasResultCBR-r14
+
+MeasResultCBR-r14 ::=	SEQUENCE {
+	poolIdentity-r14		SL-V2X-TxPoolReportIdentity-r14,
+	cbr-PSSCH-r14			SL-CBR-r14,
+	cbr-PSCCH-r14			SL-CBR-r14				OPTIONAL
+}
+
+MeasResultSensing-r15 ::=	SEQUENCE {
+	sl-SubframeRef-r15			INTEGER (0..10239),
+	sensingResult-r15			SEQUENCE (SIZE (0..400)) OF SensingResult-r15
+}
+
+SensingResult-r15 ::=	SEQUENCE {
+	resourceIndex-r15			INTEGER (1..2000)
+}
+
+MeasResultForECID-r9 ::=		SEQUENCE {
+	ue-RxTxTimeDiffResult-r9				INTEGER (0..4095),
+	currentSFN-r9							BIT STRING (SIZE (10))
+}
+
+PLMN-IdentityList2 ::=				SEQUENCE (SIZE (1..5)) OF PLMN-Identity
+
+AdditionalSI-Info-r9 ::=			SEQUENCE {
+	csg-MemberStatus-r9				ENUMERATED {member}				OPTIONAL,
+	csg-Identity-r9						CSG-Identity						OPTIONAL
+}
+MeasResultForRSSI-r13 ::=			SEQUENCE {
+	rssi-Result-r13							RSSI-Range-r13,
+	channelOccupancy-r13					INTEGER (0..100),
+	...
+}
+
+MeasResultForRSSI-NR-r16 ::=		SEQUENCE {
+	rssi-ResultNR-r16					RSSI-Range-r13,
+	channelOccupancyNR-r16			INTEGER (0..100),
+	...
+}
+
+UL-PDCP-DelayResultList-r13 ::=		SEQUENCE (SIZE (1..maxQCI-r13)) OF UL-PDCP-DelayResult-r13
+
+
+UL-PDCP-DelayResult-r13 ::=			SEQUENCE {
+	qci-Id-r13							ENUMERATED {qci1, qci2, qci3, qci4, spare4, spare3, spare2, spare1},
+	excessDelay-r13						INTEGER (0..31),
+	...
+}
+
+UL-PDCP-DelayValueResultList-r16 ::=		SEQUENCE (SIZE (1..maxDRB)) OF UL-PDCP-DelayValueResult-r16
+
+UL-PDCP-DelayValueResult-r16 ::=		SEQUENCE {
+	drb-Id-r16								DRB-Identity,
+	averageDelay-r16						INTEGER (0..10000),
+	...
+}
+
+CGI-InfoNR-r15 ::=					SEQUENCE {
+	plmn-IdentityInfoList-r15			PLMN-IdentityInfoListNR-r15			OPTIONAL,
+	frequencyBandList-r15				MultiFrequencyBandListNR-r15			OPTIONAL,
+	noSIB1-r15							SEQUENCE {
+		ssb-SubcarrierOffset-r15				INTEGER (0..15),
+		pdcch-ConfigSIB1-r15					INTEGER (0..255)
+	}																			OPTIONAL,
+	...,
+	[[
+	plmn-IdentityInfoList-v1710		PLMN-IdentityInfoListNR-v1710			OPTIONAL
+	]],
+	[[
+	hsdn-Cell-r19				ENUMERATED {true}			OPTIONAL
+	]]
+}
+
+CellIdentityNR-r15 ::=				BIT STRING (SIZE (36))
+
+PLMN-IdentityListNR-r15 ::=			SEQUENCE (SIZE (1.. maxPLMN-NR-r15)) OF PLMN-Identity
+
+PLMN-IdentityInfoListNR-r15 ::=		SEQUENCE (SIZE (1..maxPLMN-NR-r15)) OF PLMN-IdentityInfoNR-r15
+
+PLMN-IdentityInfoListNR-v1710 ::=	SEQUENCE (SIZE (1..maxPLMN-NR-r15)) OF PLMN-IdentityInfoNR-v1710
+
+PLMN-IdentityInfoNR-r15 ::=		SEQUENCE {
+	plmn-IdentityList-r15				PLMN-IdentityListNR-r15,
+	trackingAreaCode-r15				TrackingAreaCodeNR-r15			OPTIONAL,
+	ran-AreaCode-r15					RAN-AreaCode-r15					OPTIONAL,
+	cellIdentity-r15					CellIdentityNR-r15
+}
+
+PLMN-IdentityInfoNR-v1710 ::=		SEQUENCE {
+	gNB-ID-Length-r17					INTEGER (22..32)					OPTIONAL
+}
+
+TrackingAreaCodeNR-r15 ::=			BIT STRING (SIZE (24))

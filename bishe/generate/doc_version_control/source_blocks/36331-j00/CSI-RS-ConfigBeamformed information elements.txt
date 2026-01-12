@@ -1,0 +1,39 @@
+
+CSI-RS-ConfigBeamformed-r13 ::=			SEQUENCE	{
+	csi-RS-ConfigNZPIdListExt-r13			SEQUENCE (SIZE (1..7)) OF CSI-RS-ConfigNZPId-r13	OPTIONAL,	-- Need OR
+	csi-IM-ConfigIdList-r13					SEQUENCE (SIZE (1..8)) OF CSI-IM-ConfigId-r13	OPTIONAL,	-- Need OR
+	p-C-AndCBSR-PerResourceConfigList-r13	SEQUENCE (SIZE (1..8)) OF P-C-AndCBSR-Pair-r13	OPTIONAL,	-- Need OR
+	ace-For4Tx-PerResourceConfigList-r13	SEQUENCE (SIZE (1..7)) OF BOOLEAN	OPTIONAL,	-- Need OR
+	alternativeCodebookEnabledBeamformed-r13	ENUMERATED {true}	OPTIONAL,	-- Need OR
+	channelMeasRestriction-r13				ENUMERATED {on}			OPTIONAL	-- Need OR
+}
+
+CSI-RS-ConfigBeamformed-r14 ::=		SEQUENCE {
+	csi-RS-ConfigNZPIdListExt-r14			SEQUENCE (SIZE (1..7)) OF CSI-RS-ConfigNZPId-r13	OPTIONAL,	-- Need OR
+	csi-IM-ConfigIdList-r14					SEQUENCE (SIZE (1..8)) OF CSI-IM-ConfigId-r13	OPTIONAL,	-- Need OR
+	p-C-AndCBSR-PerResourceConfigList-r14	SEQUENCE (SIZE (1..8)) OF P-C-AndCBSR-Pair-r13	OPTIONAL,	-- Need OR
+	ace-For4Tx-PerResourceConfigList-r14	SEQUENCE (SIZE (1..7)) OF BOOLEAN	OPTIONAL,	-- Need OR
+	alternativeCodebookEnabledBeamformed-r14	ENUMERATED {true}	OPTIONAL,	-- Need OR
+	channelMeasRestriction-r14				ENUMERATED {on}			OPTIONAL,	-- Need OR
+	csi-RS-ConfigNZP-ApList-r14				SEQUENCE (SIZE (1..8)) OF CSI-RS-ConfigNZP-r11
+																			OPTIONAL,	-- Need OR
+	nzp-ResourceConfigOriginal-v1430	CSI-RS-Config-NZP-v1430		OPTIONAL,	-- Need OR
+	csi-RS-NZP-Activation-r14				CSI-RS-ConfigNZP-Activation-r14	OPTIONAL		-- Need OR
+}
+
+CSI-RS-ConfigBeamformed-v1430::=		SEQUENCE {
+	csi-RS-ConfigNZP-ApList-r14				SEQUENCE (SIZE (1..8)) OF CSI-RS-ConfigNZP-r11
+																			OPTIONAL,	-- Need OR
+	nzp-ResourceConfigOriginal-v1430	CSI-RS-Config-NZP-v1430		OPTIONAL,	-- Need OR
+	csi-RS-NZP-Activation-r14				CSI-RS-ConfigNZP-Activation-r14	OPTIONAL		-- Need OR
+}
+
+CSI-RS-Config-NZP-v1430::=		SEQUENCE {
+	transmissionComb-r14					NZP-TransmissionComb-r14	OPTIONAL,	-- Need OR
+	frequencyDensity-r14					NZP-FrequencyDensity-r14	OPTIONAL	-- Need OR
+}
+
+CSI-RS-ConfigNZP-Activation-r14::=		SEQUENCE {
+	csi-RS-NZP-mode-r14						ENUMERATED {semiPersistent, aperiodic},
+	activatedResources-r14					INTEGER (0..4)
+}

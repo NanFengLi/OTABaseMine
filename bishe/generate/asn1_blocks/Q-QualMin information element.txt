@@ -1,2 +1,0 @@
-
-Q-QualMin-r9 ::=					INTEGER (-34..-3)

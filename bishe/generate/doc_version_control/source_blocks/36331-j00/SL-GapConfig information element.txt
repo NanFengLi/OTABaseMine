@@ -1,0 +1,15 @@
+
+SL-GapConfig-r13 ::=				SEQUENCE {
+	gapPatternList-r13				SL-GapPatternList-r13
+}
+
+SL-GapPatternList-r13 ::=	SEQUENCE (SIZE (1..maxSL-GP-r13)) OF SL-GapPattern-r13
+
+SL-GapPattern-r13 ::=				SEQUENCE {
+	gapPeriod-r13						ENUMERATED {sf40, sf60, sf70, sf80, sf120, sf140, sf160,
+											sf240, sf280, sf320, sf640, sf1280, sf2560, sf5120,
+											sf10240},
+	gapOffset-r12						SL-OffsetIndicator-r12,
+	gapSubframeBitmap-r13				BIT STRING (SIZE (1..10240)),
+	...
+}

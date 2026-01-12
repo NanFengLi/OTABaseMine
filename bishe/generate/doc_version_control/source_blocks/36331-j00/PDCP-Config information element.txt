@@ -1,0 +1,134 @@
+
+PDCP-Config ::=						SEQUENCE {
+	discardTimer						ENUMERATED {
+											ms50, ms100, ms150, ms300, ms500,
+											ms750, ms1500, infinity
+	}															OPTIONAL,			-- Cond Setup
+	rlc-AM								SEQUENCE {
+		statusReportRequired				BOOLEAN
+	}															OPTIONAL,			-- Cond Rlc-AM-UM
+	rlc-UM								SEQUENCE {
+		pdcp-SN-Size						ENUMERATED {len7bits, len12bits}
+	}															OPTIONAL,			-- Cond Rlc-UM
+	headerCompression					CHOICE {
+		notUsed								NULL,
+		rohc								SEQUENCE {
+			maxCID								INTEGER (1..16383)				DEFAULT 15,
+			profiles							SEQUENCE {
+				profile0x0001						BOOLEAN,
+				profile0x0002						BOOLEAN,
+				profile0x0003						BOOLEAN,
+				profile0x0004						BOOLEAN,
+				profile0x0006						BOOLEAN,
+				profile0x0101						BOOLEAN,
+				profile0x0102						BOOLEAN,
+				profile0x0103						BOOLEAN,
+				profile0x0104						BOOLEAN
+			},
+			...
+		}
+	},
+	...,
+	[[	rn-IntegrityProtection-r10		ENUMERATED {enabled}	OPTIONAL	-- Cond RN
+	]],
+	[[	pdcp-SN-Size-v1130				ENUMERATED {len15bits}	OPTIONAL	-- Cond Rlc-AM2
+	]],
+	[[	ul-DataSplitDRB-ViaSCG-r12		BOOLEAN		OPTIONAL,	-- Need ON
+		t-Reordering-r12				ENUMERATED {
+										ms0, ms20, ms40, ms60, ms80, ms100, ms120, ms140,
+										ms160, ms180, ms200, ms220, ms240, ms260, ms280, ms300,
+										ms500, ms750, spare14, spare13, spare12, spare11, spare10,
+										spare9, spare8, spare7, spare6, spare5, spare4, spare3,
+										spare2, spare1}					OPTIONAL	-- Cond SetupS
+	]],
+	[[	ul-DataSplitThreshold-r13		CHOICE {
+			release						NULL,
+			setup						ENUMERATED {
+										b0, b100, b200, b400, b800, b1600, b3200, b6400, b12800,
+										b25600, b51200, b102400, b204800, b409600, b819200,
+										spare1}
+		}																OPTIONAL,	-- Need ON
+		pdcp-SN-Size-v1310				ENUMERATED {len18bits}	OPTIONAL,	-- Cond Rlc-AM3
+		statusFeedback-r13				CHOICE {
+			release						NULL,
+			setup						SEQUENCE {
+				statusPDU-TypeForPolling-r13		ENUMERATED {type1, type2}		OPTIONAL,	-- Need ON
+				statusPDU-Periodicity-Type1-r13		ENUMERATED {
+										ms5, ms10, ms20, ms30, ms40, ms50, ms60, ms70, ms80, ms90,
+										ms100, ms150, ms200, ms300, ms500, ms1000, ms2000, ms5000,
+										ms10000, ms20000, ms50000}		OPTIONAL,	-- Need ON
+				statusPDU-Periodicity-Type2-r13		ENUMERATED {
+										ms5, ms10, ms20, ms30, ms40, ms50, ms60, ms70, ms80, ms90,
+										ms100, ms150, ms200, ms300, ms500, ms1000, ms2000, ms5000,
+										ms10000, ms20000, ms50000}		OPTIONAL,	-- Need ON
+				statusPDU-Periodicity-Offset-r13	ENUMERATED {
+										ms1, ms2, ms5, ms10, ms25, ms50, ms100, ms250, ms500,
+										ms2500, ms5000, ms25000}	OPTIONAL	-- Need ON
+			}
+		}																OPTIONAL	-- Need ON
+	]],
+	[[	ul-LWA-Config-r14			CHOICE {
+			release						NULL,
+			setup						SEQUENCE {
+				ul-LWA-DRB-ViaWLAN-r14		BOOLEAN,
+				ul-LWA-DataSplitThreshold-r14	ENUMERATED {
+										b0, b100, b200, b400, b800, b1600, b3200, b6400,
+										b12800, b25600, b51200, b102400, b204800, b409600,
+										b819200 }			OPTIONAL	-- Need OR
+			}
+		}														OPTIONAL,		-- Need ON
+		uplinkOnlyHeaderCompression-r14		CHOICE {
+			notUsed-r14							NULL,
+			rohc-r14								SEQUENCE {
+				maxCID-r14								INTEGER (1..16383)		DEFAULT 15,
+				profiles-r14							SEQUENCE {
+					profile0x0006-r14						BOOLEAN
+				},
+				...
+			}
+		}													OPTIONAL -- Need ON
+	]],
+	[[	uplinkDataCompression-r15	SEQUENCE {
+			bufferSize-r15				ENUMERATED {kbyte2, kbyte4, kbyte8, spare1},
+			dictionary-r15				ENUMERATED {sip-SDP, operator}	OPTIONAL, -- Need OR
+			...
+		}															OPTIONAL,-- Cond Rlc-AM4
+		pdcp-DuplicationConfig-r15	CHOICE {
+			release						NULL,
+			setup						SEQUENCE {
+				pdcp-Duplication-r15		ENUMERATED {configured, activated}
+			}
+		}													OPTIONAL -- Need ON
+	]],
+	[[
+	ethernetHeaderCompression-r16	SetupRelease-EthernetHeaderCompression-r16	OPTIONAL -- Need ON
+	]],
+	[[	discardTimerExt-r17		SetupRelease-DiscardTimerExt-r17	OPTIONAL	-- Need ON
+	]]
+}
+
+SetupRelease-EthernetHeaderCompression-r16 ::= CHOICE {
+	release			NULL,
+	setup			EthernetHeaderCompression-r16
+}
+
+SetupRelease-DiscardTimerExt-r17 ::= CHOICE {
+	release			NULL,
+	setup			DiscardTimerExt-r17
+}
+
+EthernetHeaderCompression-r16	::=	SEQUENCE {
+	ehc-Common-r16		SEQUENCE {
+		ehc-CID-Length-r16		ENUMERATED {bits7, bits15}
+	},
+	ehc-Downlink-r16	SEQUENCE {
+		drb-ContinueEHC-DL-r16		ENUMERATED {true}		OPTIONAL -- Need OR
+	}	OPTIONAL,-- Need ON
+	ehc-Uplink-r16		SEQUENCE {
+		maxCID-EHC-UL-r16				INTEGER (1..32767),
+		drb-ContinueEHC-UL-r16		ENUMERATED {true}		OPTIONAL -- Need OR
+	}	OPTIONAL,   -- Need ON
+	...
+}
+
+DiscardTimerExt-r17 ::= ENUMERATED {ms2000, spare}

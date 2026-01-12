@@ -1,2 +1,0 @@
-
-MultiFrequencyBandListNR-r15 ::=		SEQUENCE (SIZE (1.. maxMultiBandsNR-r15)) OF FreqBandIndicatorNR-r15

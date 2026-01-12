@@ -1,0 +1,56 @@
+
+MBMSInterestIndication-r11 ::=		SEQUENCE {
+	criticalExtensions					CHOICE {
+		c1									CHOICE {
+			interestIndication-r11				MBMSInterestIndication-r11-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+MBMSInterestIndication-r11-IEs ::=	SEQUENCE {
+	mbms-FreqList-r11					CarrierFreqListMBMS-r11				OPTIONAL,
+	mbms-Priority-r11					ENUMERATED {true}					OPTIONAL,
+	lateNonCriticalExtension			OCTET STRING						OPTIONAL,
+	nonCriticalExtension				MBMSInterestIndication-v1310-IEs	OPTIONAL
+}
+
+MBMSInterestIndication-v1310-IEs ::=	SEQUENCE {
+	mbms-Services-r13					MBMS-ServiceList-r13				OPTIONAL,
+	nonCriticalExtension				MBMSInterestIndication-v1540-IEs		OPTIONAL
+}
+
+MBMSInterestIndication-v1540-IEs ::=	SEQUENCE {
+	mbms-ROM-InfoList-r15			SEQUENCE (SIZE(1..maxMBMS-ServiceListPerUE-r13)) OF MBMS-ROM-Info-r15																	OPTIONAL,
+	nonCriticalExtension				MBMSInterestIndication-v1610-IEs	OPTIONAL
+}
+
+MBMSInterestIndication-v1610-IEs ::=	SEQUENCE {
+	mbms-ROM-InfoList-r16				SEQUENCE (SIZE(1..maxMBMS-ServiceListPerUE-r13)) OF MBMS-ROM-Info-r16		OPTIONAL,
+	nonCriticalExtension				MBMSInterestIndication-v1900-IEs	OPTIONAL
+}
+
+MBMSInterestIndication-v1900-IEs ::=	SEQUENCE {
+	mbms-ROM-InfoList-r19				SEQUENCE (SIZE(1..maxMBMS-ServiceListPerUE-r13)) OF MBMS-ROM-Info-r19		OPTIONAL,
+	nonCriticalExtension				SEQUENCE {}							OPTIONAL
+}
+
+MBMS-ROM-Info-r15 ::= SEQUENCE {
+	mbms-ROM-Freq-r15						ARFCN-ValueEUTRA-r9,
+	mbms-ROM-SubcarrierSpacing-r15		ENUMERATED {kHz15, kHz7dot5, kHz1dot25},
+	mbms-Bandwidth-r15					ENUMERATED {n6, n15, n25, n50, n75, n100}
+}
+
+MBMS-ROM-Info-r16 ::= SEQUENCE {
+	mbms-ROM-Freq-r16					ARFCN-ValueEUTRA-r9,
+	mbms-ROM-SubcarrierSpacing-r16		ENUMERATED {kHz2dot5, kHz0dot37},
+	mbms-Bandwidth-r16					ENUMERATED {n6, n15, n25, n50, n75, n100}
+}
+
+MBMS-ROM-Info-r19 ::= SEQUENCE {
+	mbms-ROM-Freq-r19					ARFCN-ValueEUTRA-r9,
+	mbms-ROM-SubcarrierSpacing-r19		ENUMERATED {kHz15, kHz7dot5, kHz2dot5, kHz1dot25},
+	mbms-Bandwidth-r19					ENUMERATED {n6, n15, n25, n30, n35, n40, n50, n75, n100},
+	mbms-SoftBufferSizeParameters-r19	PMCH-SoftBufferSizeParameters-r19
+}

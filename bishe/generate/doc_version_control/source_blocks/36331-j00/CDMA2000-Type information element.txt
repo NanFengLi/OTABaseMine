@@ -1,0 +1,2 @@
+
+CDMA2000-Type ::=					ENUMERATED {type1XRTT, typeHRPD}

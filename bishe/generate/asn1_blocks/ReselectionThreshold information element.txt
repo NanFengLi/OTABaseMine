@@ -1,2 +1,0 @@
-
-ReselectionThreshold ::=				INTEGER (0..31)

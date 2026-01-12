@@ -1,2 +1,0 @@
-
-T-Reselection ::=					INTEGER (0..7)

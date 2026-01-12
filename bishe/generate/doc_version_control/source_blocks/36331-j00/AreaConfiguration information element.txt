@@ -1,0 +1,17 @@
+
+AreaConfiguration-r10 ::=	CHOICE {
+	cellGlobalIdList-r10			CellGlobalIdList-r10,
+	trackingAreaCodeList-r10		TrackingAreaCodeList-r10
+}
+
+AreaConfiguration-v1130 ::=		SEQUENCE {
+	trackingAreaCodeList-v1130		TrackingAreaCodeList-v1130
+}
+
+CellGlobalIdList-r10 ::=				SEQUENCE (SIZE (1..32)) OF CellGlobalIdEUTRA
+
+TrackingAreaCodeList-r10 ::=			SEQUENCE (SIZE (1..8)) OF TrackingAreaCode
+
+TrackingAreaCodeList-v1130 ::=	SEQUENCE {
+	plmn-Identity-perTAC-List-r11			SEQUENCE (SIZE (1..8)) OF PLMN-Identity
+}

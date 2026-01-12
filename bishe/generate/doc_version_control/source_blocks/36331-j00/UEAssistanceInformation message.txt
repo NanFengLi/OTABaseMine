@@ -1,0 +1,114 @@
+
+UEAssistanceInformation-r11 ::=		SEQUENCE {
+	criticalExtensions					CHOICE {
+		c1									CHOICE {
+			ueAssistanceInformation-r11			UEAssistanceInformation-r11-IEs,
+			spare3 NULL, spare2 NULL, spare1 NULL
+		},
+		criticalExtensionsFuture			SEQUENCE {}
+	}
+}
+
+UEAssistanceInformation-r11-IEs ::=		SEQUENCE {
+	powerPrefIndication-r11				ENUMERATED	{normal, lowPowerConsumption}	OPTIONAL,
+	lateNonCriticalExtension			OCTET STRING								OPTIONAL,
+	nonCriticalExtension				UEAssistanceInformation-v1430-IEs			OPTIONAL
+}
+
+UEAssistanceInformation-v1430-IEs ::=	SEQUENCE {
+	bw-Preference-r14						BW-Preference-r14						OPTIONAL,
+	sps-AssistanceInformation-r14			SEQUENCE {
+		trafficPatternInfoListSL-r14			TrafficPatternInfoList-r14			OPTIONAL,
+		trafficPatternInfoListUL-r14			TrafficPatternInfoList-r14			OPTIONAL
+	}			OPTIONAL,
+	rlm-Report-r14							SEQUENCE {
+		rlm-Event-r14							ENUMERATED {earlyOutOfSync, earlyInSync},
+		excessRep-MPDCCH-r14					ENUMERATED {excessRep1, excessRep2}	OPTIONAL
+	}																				OPTIONAL,
+	delayBudgetReport-r14					DelayBudgetReport-r14					OPTIONAL,
+	nonCriticalExtension					UEAssistanceInformation-v1450-IEs		OPTIONAL
+}
+
+UEAssistanceInformation-v1450-IEs ::=	SEQUENCE {
+	overheatingAssistance-r14				OverheatingAssistance-r14				OPTIONAL,
+	nonCriticalExtension					UEAssistanceInformation-v1530-IEs		OPTIONAL
+}
+
+UEAssistanceInformation-v1530-IEs ::=	SEQUENCE {
+	sps-AssistanceInformation-v1530			SEQUENCE {
+		trafficPatternInfoListSL-v1530			TrafficPatternInfoList-v1530
+	}			OPTIONAL,
+	nonCriticalExtension					UEAssistanceInformation-v1610-IEs						OPTIONAL
+}
+
+UEAssistanceInformation-v1610-IEs ::=	SEQUENCE {
+	overheatingAssistance-v1610				OverheatingAssistance-v1610			OPTIONAL,
+	nonCriticalExtension					UEAssistanceInformation-v1700-IEs		OPTIONAL
+}
+
+UEAssistanceInformation-v1700-IEs ::=	SEQUENCE {
+	uplinkData-r17								ENUMERATED { true }					OPTIONAL,
+	scg-DeactivationPreference-r17			ENUMERATED { scgDeactivationPreferred,
+														noPreference }					OPTIONAL,
+	nonCriticalExtension						UEAssistanceInformation-v1710-IEs	OPTIONAL
+}
+
+UEAssistanceInformation-v1710-IEs ::=	SEQUENCE {
+	overheatingAssistance-v1710				OverheatingAssistance-v1710			OPTIONAL,
+	nonCriticalExtension						SEQUENCE {}							OPTIONAL
+}
+
+BW-Preference-r14 ::= SEQUENCE {
+	dl-Preference-r14		ENUMERATED	{mhz1dot4, mhz5, mhz20 }				OPTIONAL,
+	ul-Preference-r14		ENUMERATED	{mhz1dot4, mhz5}						OPTIONAL
+}
+
+TrafficPatternInfoList-r14 ::= SEQUENCE (SIZE (1..maxTrafficPattern-r14)) OF TrafficPatternInfo-r14
+
+TrafficPatternInfo-r14 ::=	SEQUENCE {
+	trafficPeriodicity-r14			ENUMERATED {
+										sf20, sf50, sf100, sf200, sf300, sf400, sf500,
+										sf600, sf700, sf800, sf900, sf1000},
+	timingOffset-r14				INTEGER (0..10239),
+	priorityInfoSL-r14				SL-Priority-r13								OPTIONAL,
+	logicalChannelIdentityUL-r14	INTEGER (3..10)								OPTIONAL,
+	messageSize-r14					BIT STRING (SIZE (6))
+}
+
+TrafficPatternInfoList-v1530 ::= SEQUENCE (SIZE (1..maxTrafficPattern-r14)) OF TrafficPatternInfo-v1530
+
+TrafficPatternInfo-v1530 ::=	SEQUENCE {
+	trafficDestination-r15			SL-DestinationIdentity-r12					OPTIONAL,
+	reliabilityInfoSL-r15			SL-Reliability-r15							OPTIONAL
+}
+
+DelayBudgetReport-r14::=	CHOICE {
+	type1							ENUMERATED {
+										msMinus1280, msMinus640, msMinus320, msMinus160,
+										msMinus80, msMinus60, msMinus40, msMinus20, ms0, ms20,
+												ms40, ms60, ms80, ms160, ms320, ms640, ms1280},
+
+	type2							ENUMERATED {
+										msMinus192, msMinus168,msMinus144, msMinus120,
+										msMinus96, msMinus72, msMinus48, msMinus24, ms0, ms24,
+												ms48, ms72, ms96, ms120, ms144, ms168, ms192}
+}
+
+OverheatingAssistance-r14 ::=	SEQUENCE {
+		reducedUE-Category			SEQUENCE {
+			reducedUE-CategoryDL		INTEGER (0..19),
+			reducedUE-CategoryUL		INTEGER (0..21)
+		}		OPTIONAL,
+		reducedMaxCCs				SEQUENCE {
+			reducedCCsDL				INTEGER (0..31),
+			reducedCCsUL				INTEGER (0..31)
+		}		OPTIONAL
+}
+
+OverheatingAssistance-v1610 ::=	SEQUENCE {
+	overheatingAssistanceForSCG-r16			OCTET STRING
+}
+
+OverheatingAssistance-v1710 ::=		SEQUENCE {
+	overheatingAssistanceForSCG-FR2-2-r17		OCTET STRING
+}

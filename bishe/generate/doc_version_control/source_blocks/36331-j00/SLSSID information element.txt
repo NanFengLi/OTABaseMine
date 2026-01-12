@@ -1,0 +1,2 @@
+
+SLSSID-r12 ::=					INTEGER (0..167)
