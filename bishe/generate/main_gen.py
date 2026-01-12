@@ -28,7 +28,7 @@ def main():
     path_mgr = PathManager()
     
     # 提取所有路径 (默认 target: OCTET_STRING, INTEGER, BIT_STRING, SEQOF)
-    paths = path_mgr.extract_paths(message_name='DL_DCCH_Message',targets=[TargetType.OCTET_STRING])
+    paths = path_mgr.extract_paths(message_name='DL_DCCH_Message',targets=[TargetType.INTEGER])
     
     if not paths:
         logger.error("未找到任何路径，程序退出。请检查 RRCLTE_R17 是否正确加载。")

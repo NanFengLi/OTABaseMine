@@ -26,20 +26,18 @@ class RAGDatabase:
             return
 
         # 路径配置
+        # 基准目录设为 self.script_dir (即 bishe/generate)
         self.script_dir = Path(__file__).parent
-        self.mapping_file = self.script_dir / "mapping" / "mapping.json"
-        
-        # 由于 mapping.json 中的路径包含 'asn1_blocks/' 前缀，
-        # 且 asn1_blocks 目录位于本脚本所在目录 (bishe/generate) 下，
-        # 因此基准目录设为 self.script_dir (即 bishe/generate)
-        self.asn1_blocks_dir = self.script_dir
+        # mapping.json 文件的路径，加上了版本控制
+        self.mapping_file = self.script_dir / "doc_version_control" / "mapping" / Config.RRC_VERSION / "mapping.json" 
+        self.asn1_blocks_dir = self.script_dir / "doc_version_control" / "source_blocks" / Config.RRC_VERSION
 
         self.db_path = Config.CHROMA_PERSIST_DIRECTORY
         self.collection_name = Config.COLLECTION_NAME
 
         # 协议版本信息
-        self.protocol_version = "j00"  # RRC协议版本号
-        self.spec_number = "36331"      # 文档协议号
+        self.spec_number = Config.RRC_VERSION.split('-')[0]      # 文档协议号
+        self.protocol_version = Config.RRC_VERSION.split('-')[1]  # RRC协议版本号
 
         # 初始化 ChromaDB
         self.client = chromadb.PersistentClient(path=self.db_path)
@@ -47,7 +45,7 @@ class RAGDatabase:
         # 创建或获取集合
         self.collection = self.client.get_or_create_collection(
             name=self.collection_name,
-            metadata={"description": "RRC ASN.1 protocol documentation"}
+            metadata={"description": "Vector chunks of RRC ASN.1 protocol specifications"}
         )
 
     def load_mapping(self) -> Dict[str, List[str]]:
@@ -97,13 +95,14 @@ class RAGDatabase:
         return chunks
 
     def build_metadata(self, asn_message: str, doc_file: str) -> Dict[str, str]:
-        """构建元数据"""
+        """构建元数据
+        元数据: {"title": "文件名","spec_number": "36331", "version": "j00", "message_releated": "CounterCheck.asn"}
+        """
         metadata = {
             "title": doc_file,
+            "spec_number": self.spec_number,
             "version": self.protocol_version,
-            "spec": self.spec_number,
-            "message_name": asn_message,
-            "source_file": doc_file
+            "message_releated": asn_message,
         }
         return metadata
 
@@ -119,7 +118,7 @@ class RAGDatabase:
             self.client.delete_collection(self.collection_name)
             self.collection = self.client.get_or_create_collection(
                 name=self.collection_name,
-                metadata={"description": "RRC ASN.1 protocol documentation"}
+                metadata={"description": "Vector chunks of RRC ASN.1 protocol specifications"}
             )
         
         # 简单检查是否已存在数据 (如果不是强制刷新)

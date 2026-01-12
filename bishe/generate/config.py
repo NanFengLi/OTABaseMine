@@ -6,7 +6,7 @@ load_dotenv()
 
 class Config:
     # 向量数据库配置
-    CHROMA_PERSIST_DIRECTORY = os.getenv("CHROMA_DB_DIR", "./chroma_db")
+    CHROMA_PERSIST_DIRECTORY = os.getenv("CHROMA_DB_DIR", "./chromadb/chroma_db")
     # 向量数据库的COLLECTION名称
     COLLECTION_NAME = "rrc_asn1_definitions"
     
