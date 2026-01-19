@@ -1,5 +1,23 @@
 {
+    // 指定 Python 解释器（可选，通常由上一步自动设置）
+    "python.defaultInterpreterPath": "/home/lab221/miniconda3/envs/bishe/bin/python",
+
+    // 关键：设置 PYTHONPATH，使项目根目录可导入
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+
+    // 可选：让 Pylance 静态分析也能识别项目模块
+    "python.analysis.extraPaths": [
+        "."
+    ],
+    "python-envs.pythonProjects": [],
     "python-envs.defaultEnvManager": "ms-python.python:conda",
-    "python-envs.defaultPackageManager": "ms-python.python:conda",
-    "python-envs.pythonProjects": []
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
 }

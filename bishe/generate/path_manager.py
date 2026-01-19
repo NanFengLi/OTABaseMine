@@ -43,8 +43,8 @@ class PathManager:
         提取通往指定目标类型的所有路径。
         
         Args:
-            message_name: 起始消息名称
-            targets: 目标类型列表 (如果为 None，则默认全部)
+            message_name: 起始消息名称,如'DL_DCCH_Message',必须使用下划线
+            targets: 目标类型列表 (如果为 None, 则默认全部)
         
         Returns:
             只有路径信息的列表，每个元素包含 'path' (完整路径) 和 'choices' (决策路径)
@@ -83,7 +83,7 @@ class PathManager:
                 clean_path = [str(p) for p in full_path]
                 clean_choices = [str(c) for c in choices]
                 formatted_paths.append({
-                    "target_type": "DL_DCCH_MESSAGE", # get_choices 原版不返回类型，这里简化
+                    "target_type": "DL_DCCH_MESSAGE", 
                     "path": clean_path,
                     "choices": clean_choices
                 })
@@ -116,46 +116,76 @@ class PathManager:
             self.logger.error(f"加载路径失败: {e}")
             return []
 
-    def _get_choices(self, sel, path=[], depth=0, targets=[TargetType.OCTET_STRING]) -> tuple:
+    # 模仿pycrate中的asnobj.py中的get_proto方法写的
+    def _get_choices(self, msg_obj, path=[], depth=0, targets=[TargetType.OCTET_STRING]) -> tuple:
         """
         从 rrc_choices.py 移植并适配的路径提取逻辑
+        入参: 
+            msg_obj: 当前 ASN.1 对象,pycrate中定义的类型
+            path: 从根到当前对象的路径列表
+            depth: 当前递归深度
+            targets: 目标类型列表
+        出参:
+            num: 找到的目标字段数量
+            recur: 递归跟踪信息 (未使用)
+            choice_paths: 包含路径信息的列表，每个元素为 (choices, full_path)
+        说明:
+            该方法递归遍历 ASN.1 对象结构，寻找通往指定目标类型的路径。
+            支持 SEQUENCE, SET, CHOICE, SEQUENCE OF, SET OF, BIT STRING, OCTET STRING, INTEGER 等类型。
+        关键点:
+            - 通过在 CHOICE 类型中记录选择路径，构建完整的决策路径。
+            - 使用 _proto_recur 属性防止循环引用导致的无限递归。    
         """
         num, recur = 0,  []
         choice_paths = []
 
-        if not hasattr(sel, '_proto_recur'):
+        if not hasattr(msg_obj, '_proto_recur'):
             root = True
-            sel._proto_recur = [id(sel)]
-            sel._proto_path = []
+            # 初始化递归跟踪属性,使用 id() 来防止无限递归：
+            # ASN.1 结构可能存在循环引用：
+            # 对象 A 包含对象 B
+            # 对象 B 又引用回对象 A
+            # 如果不检测，会无限递归导致栈溢出
+            msg_obj._proto_recur = [id(msg_obj)]
+            msg_obj._proto_path = []
         else:
             root = False
 
-        # SEQUENCE / SET
-        if sel.TYPE in (TYPE_SEQ, TYPE_SET, TYPE_CLASS):
-            for (ident, Comp) in sel._cont.items():
-                if id(Comp) in sel._proto_recur:
-                    # 递归无需处理
+        # SEQUENCE / SET 
+        if msg_obj.TYPE in (TYPE_SEQ, TYPE_SET, TYPE_CLASS):
+            # items()是字典的一个方法,返回字典中的所有键值对
+            # ident是组件名称(字符串),如'message','rrc-TransactionIdentifier'
+            # Comp 是组件对象(ASN.1 对象)
+            for (ident, Comp) in msg_obj._cont.items():
+                if id(Comp) in msg_obj._proto_recur:
+                    # 发生了循环饮用(出现了环),跳过
                     pass
                 else:
-                    Comp._proto_recur = sel._proto_recur + [id(Comp)]
-                    Comp._proto_path = sel._proto_path + [ident]
+                    Comp._proto_recur = msg_obj._proto_recur + [id(Comp)]
+                    Comp._proto_path = msg_obj._proto_path + [ident]
+                    # 递归调用获取Comp中的路径
+                    # _name也是组件的名称,与ident相同,只不过ident是从_cont属性中临时获取到的变量
                     comp_num, comp_recur, c_paths = self._get_choices(
-                        Comp, path + [sel._name], depth, targets)
+                        Comp, path + [msg_obj._name], depth, targets)
+                    
+                    # del Comp._proto_recur, Comp._proto_path 的作用是清理临时属性，避免污染 ASN.1 对象, 也是模仿asnobj中的方法写的
                     del Comp._proto_recur, Comp._proto_path
                     num += comp_num
+                    # 将子组件 Comp 递归返回的跟踪信息 comp_recur 合并到当前的 recur 列表,收集整个子树的递归信息（虽然在当前代码中 recur 并未被实际使用）
                     recur.extend(comp_recur)
+                    # 将子组件 Comp 中找到的所有路径 c_paths 合并到当前的 choice_paths 收集所有子树中通往目标类型的路径
                     choice_paths.extend(c_paths)
 
         # CHOICE
-        elif sel.TYPE == TYPE_CHOICE:
-            for (ident, Comp) in sel._cont.items():
-                if id(Comp) in sel._proto_recur:
+        elif msg_obj.TYPE == TYPE_CHOICE:
+            for (ident, Comp) in msg_obj._cont.items():
+                if id(Comp) in msg_obj._proto_recur:
                      pass
                 else:
-                    Comp._proto_recur = sel._proto_recur + [id(Comp)]
-                    Comp._proto_path = sel._proto_path + [ident]
+                    Comp._proto_recur = msg_obj._proto_recur + [id(Comp)]
+                    Comp._proto_path = msg_obj._proto_path + [ident]
                     comp_num, comp_recur, c_paths = self._get_choices(
-                        Comp, path + [sel._name], depth + 1, targets)
+                        Comp, path + [msg_obj._name], depth + 1, targets)
                     
                     # 关键：将当前选择 (ident) 加入到 choices 列表中
                     for (choices, full_path) in c_paths:
@@ -166,68 +196,68 @@ class PathManager:
                     recur.extend(comp_recur)
 
         # SEQUENCE OF / SET OF
-        elif sel.TYPE in (TYPE_SEQ_OF, TYPE_SET_OF):
-            Comp = sel._cont
-            if id(Comp) in sel._proto_recur:
+        elif msg_obj.TYPE in (TYPE_SEQ_OF, TYPE_SET_OF):
+            Comp = msg_obj._cont
+            if id(Comp) in msg_obj._proto_recur:
                 pass
             else:
-                Comp._proto_recur = sel._proto_recur + [id(Comp)]
-                Comp._proto_path = sel._proto_path + [None]
+                Comp._proto_recur = msg_obj._proto_recur + [id(Comp)]
+                Comp._proto_path = msg_obj._proto_path + [None]
                 comp_num, comp_recur, c_paths = self._get_choices(
-                    Comp, path + [sel._name], depth, targets)
+                    Comp, path + [msg_obj._name], depth, targets)
                 choice_paths = c_paths # 直接继承
                 del Comp._proto_recur, Comp._proto_path
                 num += comp_num
                 recur.extend(comp_recur)
 
             # 这里的逻辑是 OTABase 特有的：如果有 SEQOF 且在 targets 里，我们也把它算作一条路径
-            if sel.TYPE in (TYPE_SEQ_OF) and TargetType.SEQOF in targets \
-                    and getattr(sel, '_const_sz', None) and sel._const_sz.lb != sel._const_sz.ub:
-                choice_paths = choice_paths + [([sel._name], path + [sel._name])]
+            if msg_obj.TYPE in (TYPE_SEQ_OF) and TargetType.SEQOF in targets \
+                    and getattr(msg_obj, '_const_sz', None) and msg_obj._const_sz.lb != msg_obj._const_sz.ub:
+                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name])]
                 num += 1
 
         # BIT / OCTET STRING with continuation (pycrate specific structure for open types)
-        elif sel.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR) and getattr(sel, '_const_cont', None):
-            Comp = sel._const_cont
-            if id(Comp) in sel._proto_recur:
+        elif msg_obj.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR) and getattr(msg_obj, '_const_cont', None):
+            Comp = msg_obj._const_cont
+            if id(Comp) in msg_obj._proto_recur:
                 pass
             else:
-                Comp._proto_recur = sel._proto_recur + [id(Comp)]
-                Comp._proto_path = sel._proto_path + [None]
+                Comp._proto_recur = msg_obj._proto_recur + [id(Comp)]
+                Comp._proto_path = msg_obj._proto_path + [None]
                 # 注意这里路径可能会变复杂
                 try:
-                    type_list = sel._const_cont.get_type_list()
+                    type_list = msg_obj._const_cont.get_type_list()
                     cont_name = type_list[0] if type_list else "CONTAINER"
                 except:
                     cont_name = "CONTAINER"
                     
                 comp_num, comp_recur, c_paths = self._get_choices(
-                    Comp, path + [sel._name] + [cont_name], depth, targets)
+                    Comp, path + [msg_obj._name] + [cont_name], depth, targets)
                 del Comp._proto_recur, Comp._proto_path
                 num += comp_num
                 choice_paths = c_paths
                 recur.extend(comp_recur)
 
-            if (sel.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
-                    or (sel.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
+            if (msg_obj.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
+                    or (msg_obj.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
                 num += 1
-                choice_paths = choice_paths + [([sel._name], path + [sel._name])]
+                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name])]
 
         # BIT / OCTET STRING (Basic)
-        elif sel.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR):
-            if (sel.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
-                    or (sel.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
+        elif msg_obj.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR):
+            if (msg_obj.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
+                    or (msg_obj.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
                 num += 1
-                choice_paths = [([sel._name], path + [sel._name])]
+                choice_paths = [([msg_obj._name], path + [msg_obj._name])]
                 # 如果长度固定，OTABase sometimes ignores it? 
                 # 这里保留
 
         # INTEGER
-        elif sel.TYPE in TYPE_INT:
+        elif msg_obj.TYPE in TYPE_INT:
             # 检查是否为简单的整数范围，OTABase 只关心某些有“变异价值”的整数
             # 这里简化逻辑，只要是 INTEGER 且在 targets 里就返回
             if TargetType.INTEGER in targets:
-                choice_paths = [([sel._name], path + [sel._name])]
+                choice_paths = [([msg_obj._name], path + [msg_obj._name])]
                 num += 1
 
         else:
@@ -236,7 +266,7 @@ class PathManager:
             choice_paths = []
 
         if root:
-            if hasattr(sel, '_proto_recur'): del sel._proto_recur
-            if hasattr(sel, '_proto_path'): del sel._proto_path
+            if hasattr(msg_obj, '_proto_recur'): del msg_obj._proto_recur
+            if hasattr(msg_obj, '_proto_path'): del msg_obj._proto_path
             
         return num, recur, choice_paths
