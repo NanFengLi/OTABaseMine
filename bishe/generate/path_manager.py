@@ -78,12 +78,12 @@ class PathManager:
             
             # 格式化输出
             formatted_paths = []
-            for choices, full_path in raw_paths:
+            for choices, full_path, target_type in raw_paths:
                  # 将路径转换为字符串列表，方便序列化 (如果有非字符串对象)
                 clean_path = [str(p) for p in full_path]
                 clean_choices = [str(c) for c in choices]
                 formatted_paths.append({
-                    "target_type": "DL_DCCH_MESSAGE", 
+                    "target_type": target_type, 
                     "path": clean_path,
                     "choices": clean_choices
                 })
@@ -128,7 +128,7 @@ class PathManager:
         出参:
             num: 找到的目标字段数量
             recur: 递归跟踪信息 (未使用)
-            choice_paths: 包含路径信息的列表，每个元素为 (choices, full_path)
+            choice_paths: 包含路径信息的列表，每个元素为 (choices, full_path, target_type)
         说明:
             该方法递归遍历 ASN.1 对象结构，寻找通往指定目标类型的路径。
             支持 SEQUENCE, SET, CHOICE, SEQUENCE OF, SET OF, BIT STRING, OCTET STRING, INTEGER 等类型。
@@ -188,8 +188,8 @@ class PathManager:
                         Comp, path + [msg_obj._name], depth + 1, targets)
                     
                     # 关键：将当前选择 (ident) 加入到 choices 列表中
-                    for (choices, full_path) in c_paths:
-                        choice_paths.append(([ident] + choices, full_path))
+                    for (choices, full_path, target_type) in c_paths:
+                        choice_paths.append(([ident] + choices, full_path, target_type))
 
                     del Comp._proto_recur, Comp._proto_path
                     num += comp_num
@@ -213,7 +213,7 @@ class PathManager:
             # 这里的逻辑是 OTABase 特有的：如果有 SEQOF 且在 targets 里，我们也把它算作一条路径
             if msg_obj.TYPE in (TYPE_SEQ_OF) and TargetType.SEQOF in targets \
                     and getattr(msg_obj, '_const_sz', None) and msg_obj._const_sz.lb != msg_obj._const_sz.ub:
-                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name])]
+                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name], "SEQOF")]
                 num += 1
 
         # BIT / OCTET STRING with continuation (pycrate specific structure for open types)
@@ -241,14 +241,16 @@ class PathManager:
             if (msg_obj.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
                     or (msg_obj.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
                 num += 1
-                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name])]
+                target_type_str = "BIT_STRING" if msg_obj.TYPE == TYPE_BIT_STR else "OCTET_STRING"
+                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name], target_type_str)]
 
         # BIT / OCTET STRING (Basic)
         elif msg_obj.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR):
             if (msg_obj.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
                     or (msg_obj.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
                 num += 1
-                choice_paths = [([msg_obj._name], path + [msg_obj._name])]
+                target_type_str = "BIT_STRING" if msg_obj.TYPE == TYPE_BIT_STR else "OCTET_STRING"
+                choice_paths = [([msg_obj._name], path + [msg_obj._name], target_type_str)]
                 # 如果长度固定，OTABase sometimes ignores it? 
                 # 这里保留
 
@@ -257,7 +259,7 @@ class PathManager:
             # 检查是否为简单的整数范围，OTABase 只关心某些有“变异价值”的整数
             # 这里简化逻辑，只要是 INTEGER 且在 targets 里就返回
             if TargetType.INTEGER in targets:
-                choice_paths = [([msg_obj._name], path + [msg_obj._name])]
+                choice_paths = [([msg_obj._name], path + [msg_obj._name], "INTEGER")]
                 num += 1
 
         else:
