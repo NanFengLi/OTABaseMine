@@ -321,7 +321,18 @@ if __name__ == "__main__":
     # 初始化数据库（模型加载只执行一次）
     print("初始化 RAGDatabase，加载模型中...")
     rag_db = RAGDatabase()
-    print(f"初始化完成！数据库中有 {rag_db.collection.count()} 个文档")
+    
+    doc_count = 0
+    if rag_db.collection:
+        doc_count = rag_db.collection.count()
+    
+    print(f"初始化完成！数据库中有 {doc_count} 个文档")
+    
+    if doc_count == 0:
+        print("\n" + "!" * 50)
+        print(" [提示] 数据库当前为空，无法检索到任何内容。")
+        print(" -> 请输入 'rebuild' 并回车，程序将开始读取本地文件并构建向量库。")
+        print("!" * 50)
     
     print("\n" + "=" * 50)
     print("交互式查询模式")

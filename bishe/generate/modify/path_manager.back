@@ -1,3 +1,5 @@
+# 这个旧的文件递归遍历了OCTET STRING中的CONTAINING里面的内容，暂时没办法生成
+
 import json
 import logging
 import sys
@@ -224,12 +226,31 @@ class PathManager:
 
         # BIT / OCTET STRING with continuation (pycrate specific structure for open types)
         elif msg_obj.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR) and getattr(msg_obj, '_const_cont', None):
-            # 遇到 BIT/OCTET STRING with continuation，直接跳过递归，不展开 _const_cont
+            Comp = msg_obj._const_cont
+            if id(Comp) in msg_obj._proto_recur:
+                pass
+            else:
+                Comp._proto_recur = msg_obj._proto_recur + [id(Comp)]
+                Comp._proto_path = msg_obj._proto_path + [None]
+                # 注意这里路径可能会变复杂
+                try:
+                    type_list = msg_obj._const_cont.get_type_list()
+                    cont_name = type_list[0] if type_list else "CONTAINER"
+                except:
+                    cont_name = "CONTAINER"
+                    
+                comp_num, comp_recur, c_paths = self._get_choices(
+                    Comp, path + [msg_obj._name] + [cont_name], depth, targets)
+                del Comp._proto_recur, Comp._proto_path
+                num += comp_num
+                choice_paths = c_paths
+                recur.extend(comp_recur)
+
             if (msg_obj.TYPE == TYPE_BIT_STR and TargetType.BIT_STRING in targets) \
                     or (msg_obj.TYPE == TYPE_OCT_STR and TargetType.OCTET_STRING in targets):
                 num += 1
                 target_type_str = "BIT_STRING" if msg_obj.TYPE == TYPE_BIT_STR else "OCTET_STRING"
-                choice_paths = [([msg_obj._name], path + [msg_obj._name], target_type_str)]
+                choice_paths = choice_paths + [([msg_obj._name], path + [msg_obj._name], target_type_str)]
 
         # BIT / OCTET STRING (Basic)
         elif msg_obj.TYPE in (TYPE_BIT_STR, TYPE_OCT_STR):

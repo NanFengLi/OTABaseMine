@@ -5852,7 +5852,7 @@ AntennaInfoDedicated ::=			SEQUENCE {
 											tm1, tm2, tm3, tm4, tm5, tm6,
 											tm7, tm8-v920},
 	codebookSubsetRestriction			CHOICE {
-		n2TxAntenna-tm3						BIT STRING (SIZE (2)),
+		 						BIT STRING (SIZE (2)),
 		n4TxAntenna-tm3						BIT STRING (SIZE (4)),
 		n2TxAntenna-tm4						BIT STRING (SIZE (6)),
 		n4TxAntenna-tm4						BIT STRING (SIZE (64)),

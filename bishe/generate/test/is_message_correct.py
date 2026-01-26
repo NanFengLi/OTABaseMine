@@ -112,6 +112,12 @@ dl_dcch_message = {
   })) 
 }
 
+dl_ccch_message_uper = "B0"
+def test_none():
+    DL_CCCH = RRCLTE.EUTRA_RRC_Definitions.DL_CCCH_Message
+    dl_ccch_message_uper = "B0"
+    DL_CCCH.from_uper(unhexlify(dl_ccch_message_uper))
+    return DL_CCCH()
 
 def to_uper():
     DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
@@ -121,7 +127,9 @@ def to_uper():
 
 def from_uper():
     DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
-    # uper_data = 
+    uper_data = "18 02 00 01 00 00 00 00 ".replace(" ","")
+    DL_DCCH.from_uper(unhexlify(uper_data))
+    return DL_DCCH()
 
 def method_test():
     DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
@@ -298,6 +306,9 @@ def attr_test():
 if __name__ == "__main__":
 
     # to_uper()
-    method_test()
+    # method_test()
     # attr_test()
     # str_to_dict(BCCH_DL_SCH_Message)
+    a = test_none()
+    # a=from_uper()
+    print(a)
