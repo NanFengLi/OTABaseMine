@@ -1,0 +1,13 @@
+{
+  "total_count": 5644,
+  "packets_generated": 479,
+  "coverage": 1.0,
+  "unique_paths": 5644,
+  "elapsed_time": 188.59891772270203,
+  "seed": 1,
+  "cycles": 1,
+  "targets": [
+    "INTEGER"
+  ],
+  "timestamp": "2026-02-18 17:30:01"
+}
