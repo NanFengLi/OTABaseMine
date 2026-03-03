@@ -14,12 +14,12 @@ import logging
 import random
 from copy import deepcopy
 
-from .rrc_generator import RRCGenerator
-from .rrc_fields import Fields
-from .rrc_stats import get_target_field_count, get_total_ie_count
-from .rrc_utils import simplify_message
-from .releaseLTE_R17 import RRCLTE_R17
-from .config import GeneratorConfig
+from bishe.generate_new.rrc_generator import RRCGenerator
+from bishe.generate_new.rrc_fields import Fields
+from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_count
+from bishe.generate_new.rrc_utils import simplify_message
+from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.generate_new.config import GeneratorConfig
 
 
 class RRCBatchGenerator:

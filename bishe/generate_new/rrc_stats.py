@@ -6,7 +6,7 @@ RRC 统计分析模块
 
 从 OTABase artifact/test-case-generator/rrc/rrc_stats.py 抽取。
 """
-from .releaseLTE_R17 import RRCLTE_R17
+from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
 
 from pycrate_asn1rt import *
 from pycrate_asn1rt.utils import *

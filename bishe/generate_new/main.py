@@ -8,7 +8,7 @@ RRC 合法测试样例生成器 - 主入口
     # 指定目标字段类型
     python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
 
-    # 指定输出文件、种子和循环次数
+    # 指定输出文件、种子和循环次数(循环次数是指有些字段会循环嵌套使用，嵌套的深度即为循环次数)
     python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output/rrc_payloads.txt
 
     # 生成单个数据包（测试模式）
@@ -23,11 +23,11 @@ import argparse
 import logging
 import time
 
-from .rrc_fields import Fields
-from .rrc_generator import RRCGenerator
-from .rrc_batch_generator import RRCBatchGenerator
-from .rrc_stats import get_target_field_count, get_total_ie_count
-from .config import GeneratorConfig
+from bishe.generate_new.rrc_fields import Fields
+from bishe.generate_new.rrc_generator import RRCGenerator
+from bishe.generate_new.rrc_batch_generator import RRCBatchGenerator
+from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_count
+from bishe.generate_new.config import GeneratorConfig
 
 
 def setup_logging(level=logging.INFO):

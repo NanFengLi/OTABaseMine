@@ -7,10 +7,10 @@ RRC 合法样例生成器
 仅包含生成逻辑，不包含变异/fuzzing 策略。
 从 OTABase artifact/test-case-generator/rrc/rrc_generator.py 抽取核心生成功能。
 """
-from .releaseLTE_R17 import RRCLTE_R17
-from .rrc_choices import get_choices
-from .rrc_fields import Fields
-from .rrc_stats import get_recursif_field_paths
+from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.generate_new.rrc_choices import get_choices
+from bishe.generate_new.rrc_fields import Fields
+from bishe.generate_new.rrc_stats import get_recursif_field_paths
 
 import logging
 import os

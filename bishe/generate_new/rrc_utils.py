@@ -11,7 +11,7 @@ RRC 消息精简工具函数
 import logging
 import os
 
-from .releaseLTE_R17 import RRCLTE_R17
+from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
 
 
 def find_paths_to_delete_multi(keep: list, optional_paths: list) -> tuple:

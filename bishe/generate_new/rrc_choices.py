@@ -14,8 +14,8 @@ from pycrate_asn1rt.err import *
 from pycrate_asn1rt.utils import *
 from pycrate_asn1rt import *
 
-from .releaseLTE_R17 import RRCLTE_R17
-from .rrc_fields import Fields
+from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.generate_new.rrc_fields import Fields
 
 import logging
 

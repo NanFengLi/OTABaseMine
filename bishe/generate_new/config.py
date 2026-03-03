@@ -20,10 +20,10 @@ class GeneratorConfig:
     # 默认随机种子
     DEFAULT_SEED = 1
 
-    # 生成的 OCTET_STRING 默认长度
+    # 如果 OCTET_STRING 为没有长度的字段，则指定生成的 OCTET_STRING 默认长度如下
     OCTET_STRING_LENGTH = 32
 
-    # 生成的 BIT_STRING 默认长度
+    # 如果 BIT_STRING 为没有长度的字段，则指定生成的 BIT_STRING 默认长度如下
     BIT_STRING_LENGTH = 64
 
     # 最大递归深度（用于展开嵌套的 OCTET STRING containing 其他 IE）

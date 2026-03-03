@@ -4,7 +4,7 @@ Example usage of RRC mutation tools
 This demonstrates how to use the mutation tools with a sample RRC message.
 """
 
-from bishe.mutated import (
+from bishe.mutated.tools import (
     integer_mutation_tool,
     octet_string_mutation_tool,
     bit_string_mutation_tool,
