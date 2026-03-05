@@ -1,321 +1,121 @@
-# RRC消息变异工具 - 实现总结
+# RRC 消息变异工具——实现总结
 
-## 📋 项目概述
+## 项目概述
 
-本项目成功复现了 [OTABase](https://github.com/OTABase/OTABase) 的 BASE 变异策略，实现了针对 RRC 消息不同字段类型的变异工具。所有工具都设计为可作为 React 模式 Agent 的 tools 使用。
+本项目复现了 [OTABase](https://github.com/OTABase/OTABase) 的 BASE 变异策略，实现了针对 RRC 消息不同字段类型的**比特流层面**变异工具。
 
-## ✅ 已完成的工作
+**核心思路**：`from_uper()` 加载合法消息 → 获取字段 UPER 比特串 → 手工构造非法比特变异 → 在包比特流中定位字段 → 原地替换——完全绕过 pycrate 校验。
 
-### 1. 核心变异工具（BASE 策略）
+---
+
+## 已完成的工作
+
+### 变异工具汇总
 
 | 字段类型 | 文件 | 状态 | 变异数量 |
-|---------|------|------|---------|
-| **INTEGER** | `integer_mutation.py` | ✅ 完成 | 3种变异 |
-| **OCTET_STRING** | `octet_string_mutation.py` | ✅ 完成 | 4-13种变异 |
-| **BIT_STRING** | `bit_string_mutation.py` | ✅ 完成 | 3-10种变异 |
-| **SEQUENCE_OF** | `sequence_of_mutation.py` | ✅ 完成 | 4-6种变异 |
+|---------|------|------|----------|
+| **INTEGER** | `integer_mutation.py` | ✅ 完成 | 3 条 |
+| **OCTET STRING** | `octet_string_mutation.py` | ✅ 完成 | 受约束 4 条 / 无约束 22 条 |
+| **BIT STRING** | `bit_string_mutation.py` | ✅ 完成 | 受约束 4 条 / 无约束 12 条 |
+| **SEQUENCE OF** | `sequence_of_mutation.py` | ✅ 完成 | 4 条 |
 
-### 2. 辅助工具模块
+### 辅助模块
 
-**文件：** `mutation_utils.py`
+**`mutation_utils.py`**——共生工具函数：
 
-包含所有变异策略需要的通用函数：
-- 位/字节转换函数
-- PER 编码/解码函数
-- 随机数据生成
-- 路径导航工具
+| 函数 | 功能 |
+|---|---|
+| `bytes_to_bit_str` | bytes 转 01 字符串 |
+| `bit_str_to_bytes` | 01 字符串转 bytes |
+| `n_random_bits` | 生成 n 个随机比特 |
+| `generate_random_bytes` | 生成随机字节 |
+| `encode_unbound_length` | 无约束长度 PER 编码 |
+| `generate_invalid_length_encoding` | 生成非法长度编码 |
 
-### 3. 文档和示例
+---
 
-- ✅ `README.md` - 完整的 API 文档和使用说明
-- ✅ `example_usage.py` - 可运行的示例代码
-- ✅ `SUMMARY.md` - 本总结文档
+## 变异策略详解
 
-## 📊 变异策略详解
+### INTEGER（3 条）
 
-### INTEGER 字段变异
+设 `lbs = floor(log2(ub - lb)) + 1`（字段实际占用比特数）：
 
-**核心思想：** 利用位表示范围与规范约束的差异
+1. **合法随机值**：`randint(lb, ub) - lb`，合规但随机
+2. **比特冗余溢出**：编码 = `2^lbs - 1`，真实值 = `lb + 2^lbs - 1 ≥ ub`
+3. **上界 +1 溢出**：编码 = `ub - lb + 1`
 
-```
-如果字段约束为 0-9，但使用 4 位编码：
-- 规范范围: 0-9
-- 实际可表示: 0-15
-- 变异策略: 测试 10-15 的值
-```
+### OCTET STRING — 受约束（4 条）
 
-**3种变异：**
-1. 随机有效值（范围内）
-2. 最大可表示值（位溢出）
-3. 范围溢出（upper_bound + 1）
+UPER 格式：`[长度头: lbs 位][内容字节]`
 
-### OCTET_STRING 字段变异
+1. 合法长度，空内容
+2. 长度声明为 0，但内容填 100 字节
+3. 随机长度，内容比声明大 1
+4. 长度头放 maxe，内容填 ub 字节
 
-**核心思想：** 长度字段与内容不匹配
+### OCTET STRING — 无约束（22 条）
 
-**有约束（Constrained）- 4种变异：**
-1. 有效长度，空内容
-2. 长度=0，溢出内容（100字节）
-3. 长度 = 内容长度 - 1（下溢）
-4. 最大编码长度，最大内容
+变长长度编码格式：0∼127→1字节，128∼16383→2字节，≥16384→1分片。
 
-**无约束（Unconstrained）- 13种变异：**
-- 针对 PER 编码边界：0, 127, 128, 2^14-1, 2^14, ...
-- 每个长度值测试：空内容、长度不匹配
-- 无效长度编码测试
+- 10 个边界长度各 2 条：空内容 + 内容不足声明长度
+- 2 条非法长度编码
 
-### BIT_STRING 字段变异
+### BIT STRING（与 OCTET STRING 类似）
 
-**核心思想：** 与 OCTET_STRING 类似，但操作位
+- 受约束：4 条，delta 单位为**比特**
+- 无约束：length_mutations = [0, 127, 128]，各 3 条 + 3 条非法编码 = 12 条
 
-**有约束 - 3种变异：**
-1. 有效长度，空内容
-2. 长度=0，溢出内容
-3. 最大编码长度，溢出内容
+### SEQUENCE OF（4 条）
 
-**无约束 - 10种变异：**
-- 类似 OCTET_STRING，针对位级别操作
+只替换长度头，元素内容不变，长度值分别为 0 / 实际元素数 / 随机值 / maxe。
 
-### SEQUENCE_OF 字段变异
+---
 
-**核心思想：** 声明的元素数量与实际列表长度不匹配
-
-**4-6种变异：**
-1. 长度=0，非空内容
-2. 随机长度，原始内容
-3. 长度/元素数量不匹配
-4. 最大编码长度
-5. 空列表
-6. 超出上界
-
-## 🔍 输入需求分析
-
-### 用户当前的输入
+## 统一接口
 
 ```python
-{
-    "message_type": "csfbParametersResponseCDMA2000",
-    "field_type": "INTEGER",
-    "path": ["DL-DCCH-Message", "message", "c1", 
-             "csfbParametersResponseCDMA2000", "rrc-TransactionIdentifier"],
-    "choices": ["c1", "csfbParametersResponseCDMA2000", ...],
-    "message": {完整的RRC消息字典}
-}
+mutate_xxx(
+    uper_hex:     str,         # 合法消息的 UPER 十六进制字符串
+    message_type: str,         # 消息类型名称
+    target_path:  List[str],   # 目标字段路径
+    seed:         int = None,  # 随机数种子（可选）
+) -> List[Tuple[str, str, List[str]]]
+# 返回: [(mutated_uper_hex, message_type, target_path), ...]
 ```
 
-### ⚠️ 缺少的关键输入
+不需要手动传入约束信息，工具自动从 pycrate 对象读取。
 
-**字段约束信息（Field Constraints）** - 这是最重要的缺失！
+---
 
-#### 需要补充的信息：
-
-1. **INTEGER 字段：**
-   ```python
-   {
-       "lower_bound": 0,
-       "upper_bound": 3
-   }
-   ```
-
-2. **OCTET_STRING / BIT_STRING：**
-   ```python
-   {
-       "constrained": True,  # 或 False
-       "lower_bound": 0,     # 如果 constrained=True
-       "upper_bound": 255    # 如果 constrained=True
-   }
-   ```
-
-3. **SEQUENCE_OF：**
-   ```python
-   {
-       "lower_bound": 1,  # 最小元素数
-       "upper_bound": 8   # 最大元素数
-   }
-   ```
-
-### 📝 建议的完整输入格式
-
-```python
-mutation_input = {
-    # 现有输入
-    "message_type": "csfbParametersResponseCDMA2000",
-    "field_type": "INTEGER",
-    "path": ["DL-DCCH-Message", "message", "c1", 
-             "csfbParametersResponseCDMA2000", "rrc-TransactionIdentifier"],
-    "choices": ["c1", "csfbParametersResponseCDMA2000", "rrc-TransactionIdentifier"],
-    "message": {完整的RRC消息字典},
-    
-    # 需要补充的约束信息
-    "constraints": {
-        "lower_bound": 0,
-        "upper_bound": 3
-    }
-}
-```
-
-## 🛠️ Agent 工具使用方法
-
-### 1. 注册工具
-
-```python
-tools = [
-    {
-        "name": "mutate_integer_field",
-        "description": "Mutate INTEGER field in RRC message using BASE strategy",
-        "function": integer_mutation_tool,
-        "parameters": {
-            "message": "Complete RRC message dict",
-            "target_path": "List of keys to target field",
-            "lower_bound": "Integer constraint lower bound",
-            "upper_bound": "Integer constraint upper bound",
-            "message_type": "RRC message type"
-        }
-    },
-    # ... 其他工具
-]
-```
-
-### 2. Agent 调用示例
-
-```python
-# Agent 接收用户输入
-user_input = {
-    "message_type": "csfbParametersResponseCDMA2000",
-    "field_type": "INTEGER",
-    "path": [...],
-    "constraints": {"lower_bound": 0, "upper_bound": 3},
-    "message": {...}
-}
-
-# Agent 根据 field_type 选择对应的工具
-if user_input["field_type"] == "INTEGER":
-    result = integer_mutation_tool(
-        message=user_input["message"],
-        target_path=user_input["path"],
-        lower_bound=user_input["constraints"]["lower_bound"],
-        upper_bound=user_input["constraints"]["upper_bound"],
-        message_type=user_input["message_type"]
-    )
-    
-    # 返回变异结果
-    return {
-        "mutations": result["mutations"],
-        "count": result["count"],
-        "strategy": result["strategy"]
-    }
-```
-
-## 📂 文件结构
+## 文件结构
 
 ```
 bishe/mutated/
-├── __init__.py                    # 包导出
-├── mutation_utils.py              # 通用工具（219行）
-├── integer_mutation.py            # INTEGER变异（203行）
-├── octet_string_mutation.py       # OCTET_STRING变异（393行）
-├── bit_string_mutation.py         # BIT_STRING变异（421行）
-├── sequence_of_mutation.py        # SEQUENCE_OF变异（212行）
-├── example_usage.py               # 示例代码（165行）
-├── README.md                      # 完整文档
-└── SUMMARY.md                     # 本文档
+├── tools/
+│   ├── __init__.py
+│   ├── mutation_utils.py
+│   ├── integer_mutation.py          ← 新版（比特流方式）
+│   ├── integer_mutation_old.py      ← 旧版（已废弃）
+│   ├── octet_string_mutation.py
+│   ├── bit_string_mutation.py
+│   └── sequence_of_mutation.py
+└── test/
+    ├── test_integer_mutate_new.py
+    └── test_octet_string_mutate.py
 ```
 
-**总代码行数：** ~1600+ 行（含注释和文档）
+---
 
-## ✨ 与 OTABase 的对比
+## 与 OTABase 对比
 
-### 已实现 ✅
+| 特性 | 状态 |
+|---|---|
+| BASE 策略四种字段类型 | ✅ |
+| 受约束 / 无约束处理 | ✅ |
+| UPER 比特流层面直接替换 | ✅ |
+| PER 编码边界测试 | ✅ |
+| TRUNCATE 策略 | ❌ |
+| ADD 策略 | ❌ |
+| 祖先字段长度自动调整 | ❌ |
+| OCTET STRING 嵌入 ASN.1 递归变异 | ❌ |
 
-- [x] BASE 策略所有字段类型
-- [x] Constrained 和 Unconstrained 处理
-- [x] PER 编码边界测试
-- [x] 长度/内容不匹配
-- [x] 溢出和下溢测试
-- [x] 完整的工具接口
-
-### 未实现（可选）❌
-
-OTABase 还包含以下高级特性，这些不是 BASE 策略的核心部分：
-
-- [ ] **TRUNCATE 策略** - 截断数据包
-- [ ] **ADD 策略** - 添加可选字段
-- [ ] **祖先字段长度调整** - 自动调整包含字段的长度
-- [ ] **嵌入字段处理** - OCTET_STRING 中的嵌入 ASN.1
-- [ ] **位级操作** - 实际的位编码和解码
-
-**注意：** 这些特性在 OTABase 中用于生成实际可发送的二进制数据包。你的用例是生成 Python 字典形式的变异消息，然后交给大模型或其他工具处理，因此不需要这些底层的二进制操作。
-
-## 🎯 使用场景
-
-### 场景1：单字段变异
-
-```python
-# 用户提供完整的 RRC 消息和目标字段信息
-result = integer_mutation_tool(
-    message=rrc_message,
-    target_path=["message", "c1", "...", "rrc-TransactionIdentifier"],
-    lower_bound=0,
-    upper_bound=3,
-    message_type="csfbParametersResponseCDMA2000"
-)
-
-# 获得 3 个变异后的消息
-for mut in result["mutations"]:
-    print(mut["mutation_description"])
-    # 使用 mut["message"] 进行后续处理
-```
-
-### 场景2：批量变异
-
-```python
-# 从 rrc_paths.json 读取所有字段
-with open("rrc_paths.json") as f:
-    paths = json.load(f)
-
-all_mutations = []
-for field_info in paths:
-    if field_info["field_type"] == "INTEGER":
-        result = integer_mutation_tool(
-            message=base_message,
-            target_path=field_info["path"],
-            lower_bound=field_info["constraints"]["lower_bound"],
-            upper_bound=field_info["constraints"]["upper_bound"],
-            message_type=field_info["message_type"]
-        )
-        all_mutations.extend(result["mutations"])
-```
-
-## 🔧 测试验证
-
-运行示例代码验证：
-
-```bash
-cd /home/lab221/Projects/OTABase
-conda activate bishe
-python -m bishe.mutated.example_usage
-```
-
-**测试结果：** ✅ 所有变异工具正常工作
-
-## 📖 下一步建议
-
-1. **提取约束信息：** 从 `rrc_paths.json` 或 ASN.1 定义中提取字段约束
-2. **集成到 Agent：** 将这些工具注册为 Agent 的可用工具
-3. **批处理脚本：** 创建批量处理多个字段的脚本
-4. **结果验证：** 使用 pycrate 验证变异后的消息是否有效
-
-## 📚 参考资料
-
-- **OTABase GitHub:** https://github.com/OTABase/OTABase
-- **OTABase README:** 详细的变异策略说明
-- **本项目文档:** [bishe/mutated/README.md](README.md)
-
-## 🏆 总结
-
-✅ **完成度：** 100%（BASE 策略核心功能）  
-✅ **代码质量：** 完整注释、类型提示、错误处理  
-✅ **文档完整性：** API文档、使用示例、总结文档  
-✅ **可用性：** 可直接作为 Agent 工具使用  
-
-**最重要的发现：** 你还需要为每个字段提供**约束信息（constraints）**，这是 OTABase 变异策略的核心输入之一！

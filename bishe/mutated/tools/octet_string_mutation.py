@@ -1,373 +1,215 @@
 """
-OCTET_STRING Field Mutation Tool
+OCTET_STRING 字段变异工具
 
-Implements BASE mutation strategy for OCTET_STRING type fields in RRC messages.
-Based on OTABase fuzzing strategy.
+接口：
+  输入  uper_hex, message_type, target_path
+  输出  变异后的 (uper_hex, message_type, target_path) 列表
+
+完全移植自 OTABase rrc_fuzzer.py::mutate_rrc_octet_field()
+核心：直接在 UPER 比特流层面替换字段，绕过 pycrate 约束校验。
 """
-
 import math
 import random
-from typing import List, Dict, Any, Optional, Tuple
-from copy import deepcopy
+from typing import List, Tuple, Optional
+
+from pycrate_asn1rt.asnobj import ASN1Obj
+ASN1Obj._SAFE_BND = False
+ASN1Obj._SILENT  = True
+
+from pycrate_asn1dir import RRCLTE
+
 from .mutation_utils import (
-    bytes_to_bit_str,
-    bit_str_to_bytes,
+    bytes_to_bit_str, bit_str_to_bytes,
     generate_random_bytes,
-    encode_unbound_length,
-    decode_unbound_length,
-    generate_invalid_length_encoding,
-    calculate_bit_length
+    encode_unbound_length, generate_invalid_length_encoding,
+    n_random_bits,
 )
 
-
-# Constants from OTABase
-MAX_OTA_RRC_PACKET_SIZE = 2048
+MAX_OTA      = 2048
 OVERFLOW_LEN = 100
 
+# ── 共享比特工具 ──────────────────────────────────────────────────────────────
 
-def mutate_octet_string_field(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    constrained: bool = True,
-    lower_bound: Optional[int] = None,
-    upper_bound: Optional[int] = None,
-    current_value: Optional[bytes] = None,
-    seed: int = None
-) -> List[Dict[str, Any]]:
+def _field_bits(field) -> str:
+    """返回字段的 UPER 比特串（去除字节对齐填充位）。"""
+    bits = bytes_to_bit_str(field.to_uper())
+    if field._const_sz is not None:
+        max_len = field._const_sz.ub - field._const_sz.lb
+        lbs     = math.floor(math.log2(max_len)) + 1
+        if lbs % 8 != 0:
+            bits = bits[:-(8 - lbs % 8)]
+    return bits
+
+
+def _find_all(pkt_bits: str, tgt: str) -> set:
+    s, idx_set = 0, set()
+    while True:
+        i = pkt_bits.find(tgt, s)
+        if i == -1:
+            break
+        idx_set.add(i)
+        s = i + 1
+    return idx_set
+
+
+def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
+    idxs = _find_all(pkt_bits, fld_bits)
+    if not idxs:
+        raise ValueError("字段未在数据包比特流中找到")
+    if len(idxs) == 1:
+        return idxs.pop()
+    # 歧义消除：改变字段值，求新旧位置交集
+    fld = packet.get_at(path)
+    old = packet.get_val_at(path)
+    new = old
+    while new == old:
+        new = random.randbytes(len(old))
+    packet.set_val_at(path, new)
+    fld.set_val(new)
+    new_bits = _field_bits(packet.get_at(path))
+    new_pkt  = bytes_to_bit_str(packet.to_uper())
+    idxs     = _find_all(new_pkt, new_bits) & idxs
+    packet.set_val_at(path, old)
+    fld.set_val(old)
+    if not idxs:
+        raise ValueError("OCTET STRING 歧义消除失败")
+    return min(idxs)
+
+
+def _replace(pkt_bits: str, fld_bits: str, idx: int, mut: str) -> str:
+    return pkt_bits[:idx] + mut + pkt_bits[idx + len(fld_bits):]
+
+# ── 变异比特生成 ──────────────────────────────────────────────────────────────
+
+def _constrained_octet_muts(field) -> List[Tuple[str, int]]:
     """
-    Mutate an OCTET_STRING field using BASE strategy.
-    
-    The BASE strategy mutates both the length field and content of OCTET_STRING,
-    exploiting mismatches between declared length and actual content.
-    
-    For CONSTRAINED OCTET_STRING:
-    - Length is encoded in a fixed number of bits
-    - Mutations test boundary conditions and length/content mismatches
-    
-    For UNCONSTRAINED OCTET_STRING:
-    - Length is encoded using PER unbounded length encoding
-    - Mutations test various length encodings and invalid encodings
-    
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the OCTET_STRING field
-        message_type: Type of RRC message
-        constrained: Whether the OCTET_STRING has length constraints
-        lower_bound: Lower bound of length constraint (for constrained)
-        upper_bound: Upper bound of length constraint (for constrained)
-        current_value: Current value of the field (bytes)
-        seed: Random seed for reproducibility
-        
-    Returns:
-        List of mutated message dictionaries with metadata
-        
-    Example:
-        >>> # Constrained OCTET_STRING
-        >>> mutations = mutate_octet_string_field(
-        ...     message=dl_dcch_message,
-        ...     target_path=['message', 'c1', 'csfbParametersResponseCDMA2000',
-        ...                  'criticalExtensions', 'csfbParametersResponseCDMA2000-r8',
-        ...                  'mobilityParameters'],
-        ...     message_type='csfbParametersResponseCDMA2000',
-        ...     constrained=True,
-        ...     lower_bound=0,
-        ...     upper_bound=255,
-        ...     current_value=b'\\x00'
-        ... )
+    受约束 OCTET STRING 变异（字段有 SIZE(lb..ub) 约束），共 4 条。
+    移植自 OTABase mutate_rrc_octet_field()。
+
+    UPER 编码格式：[长度头: lbs 位][内容字节]
+      - lbs = floor(log2(ub - lb)) + 1，即表示最大范围所需的最少比特数
+      - 最大可编码长度值 maxe = 2^lbs - 1（可能超出 ub，故为非法）
+    """
+    fb    = field.to_uper()          # 字段原始 UPER 编码字节
+    fval  = field.get_val_at([])     # 字段原始值（bytes）
+    fsz   = len(fb)                  # 字段原始字节数
+    maxl  = field._const_sz.ub - field._const_sz.lb   # 合法最大长度
+    lbs   = math.floor(math.log2(maxl)) + 1           # 长度头比特数
+    maxe  = 2**lbs - 1               # 长度头能表示的最大值（可能非法）
+
+    def gen(length: int, clen: int):
+        """构造变异字段比特串：[length 编码为 lbs 位] + [clen 字节内容]"""
+        content = (fval + generate_random_bytes(clen - len(fval))
+                   if clen > len(fval) else fb[:clen])
+        bits  = format(length, f"0{lbs}b") + bytes_to_bit_str(content)
+        delta = len(bit_str_to_bytes(bits)) - fsz
+        return (bits, delta * 8)
+
+    r = random.randint(0, max(0, maxl - 1))
+    return [
+        # 变异 1：合法随机长度 r，但内容为空（长度声明 > 实际内容，截断）
+        gen(r, 0),
+        # 变异 2：长度声明为 0，但填入 OVERFLOW_LEN(100) 字节内容（长度为 0 但有大量内容）
+        gen(0, OVERFLOW_LEN),
+        # 变异 3：随机合法长度，但内容比声明多 1 字节（内容越界）
+        gen(random.randint(0, max(0, maxl - 1)),
+            random.randint(0, max(0, maxl - 1)) + field._const_sz.lb + 1),
+        # 变异 4：长度头设为最大可编码值 maxe（≥ ub，超出约束上界），内容填满 ub 字节
+        gen(maxe, field._const_sz.ub),
+    ]
+
+
+def _unconstrained_octet_muts(field) -> List[Tuple[str, int]]:
+    """
+    无约束 OCTET STRING 变异（字段无 SIZE 约束），共 22 条。
+    移植自 OTABase mutate_rrc_octet_field()。
+
+    无约束 OCTET STRING 的 UPER 长度编码使用变长格式（encode_unbound_length）：
+      - 0~127       : 1 字节，首位为 0，如 0x00~0x7F
+      - 128~16383   : 2 字节，首两位为 10，如 0x8080~0xBFFF
+      - ≥16384      : 分片编码，首字节 0xC1/0xC2/0xC3 表示 n×16384 字节分片
+    """
+    fb   = field.to_uper()       # 字段原始 UPER 编码字节
+    fval = field.get_val_at([])  # 字段原始值（bytes）
+    fsz  = len(fb)               # 字段原始字节数
+    muts = []
+
+    def gen(enc: list, clen: int):
+        """构造变异字段：[enc[0]（长度编码字节)] + [clen 字节内容]"""
+        content       = (fval + generate_random_bytes(clen - len(fval))
+                         if clen > len(fval) else fb[:clen])
+        mutated_bytes = enc[0] + content
+        delta         = len(mutated_bytes) - fsz
+        return ("".join(format(b, "08b") for b in mutated_bytes), delta * 8)
+
+    # ── 10 个边界长度值，每个生成 2 条变异（共 20 条） ────────────────────────
+    # 边界选取覆盖：单字节上界(127)、双字节切换点(128)、
+    # 分片边界(16383/16384)、2×/3× 分片边界、协议最大值(65535)
+    for l in [0, 127, 128, 2**14 - 1, 2**14, 2*(2**14),
+              2*(2**14) + 1, 3*(2**14), 3*(2**14) + 1, 2**16 - 1]:
+        enc  = encode_unbound_length(l)
+        safe = max(1, min(MAX_OTA, l - 1 if l > 0 else 1))
+        # 子变异 A：声明长度为 l，但内容为空（长度声明 > 实际内容）
+        muts.append(gen(enc, 0))
+        # 子变异 B：声明长度为 l，内容随机填 1~(l-1) 字节（内容不足声明长度）
+        muts.append(gen(enc, random.randint(1, safe)))
+
+    # ── 非法长度编码，生成 2 条变异（共 22 条） ──────────────────────────────
+    # generate_invalid_length_encoding() 生成不符合 ASN.1 规范的长度字节序列
+    inv   = [generate_invalid_length_encoding()]
+    inv_l = int.from_bytes(inv[0], "big")
+    # 变异 21：非法长度编码 + 空内容
+    muts.append(gen(inv, 0))
+    # 变异 22：非法长度编码 + 比声明长度少 1 字节的内容
+    muts.append(gen(inv, random.randint(1, min(MAX_OTA, max(1, inv_l - 1)))))
+    return muts
+
+# ── 公开接口 ──────────────────────────────────────────────────────────────────
+
+def mutate_octet_string(
+    uper_hex: str,
+    message_type: str,
+    target_path: List[str],
+    seed: Optional[int] = None,
+) -> List[Tuple[str, str, List[str]]]:
+    """
+    对合法 RRC 消息中的 OCTET STRING 字段执行比特流级变异。
+
+    参数：
+        uper_hex:     合法消息的 UPER 十六进制编码
+        message_type: 消息类型名称（用于输出元组）
+        target_path:  目标字段路径列表
+        seed:         随机数种子（可选，用于复现结果）
+
+    返回：
+        [(mutated_uper_hex, message_type, target_path), ...] 列表
     """
     if seed is not None:
         random.seed(seed)
-    
-    if constrained:
-        return _mutate_constrained_octet_string(
-            message, target_path, message_type, 
-            lower_bound, upper_bound, current_value
-        )
-    else:
-        return _mutate_unconstrained_octet_string(
-            message, target_path, message_type, current_value
-        )
 
+    pkt = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+    pkt.from_uper(bytes.fromhex(uper_hex))
 
-def _mutate_constrained_octet_string(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    lower_bound: int,
-    upper_bound: int,
-    current_value: Optional[bytes]
-) -> List[Dict[str, Any]]:
-    """
-    Mutate a constrained OCTET_STRING field.
-    
-    Mutations for constrained OCTET_STRING:
-    1. Valid length with empty content
-    2. Length = 0 with overflow content
-    3. Length = content_length - 1 (underflow)
-    4. Max encoded length with max content
-    """
-    mutations = []
-    
-    # Calculate bit size for length encoding
-    field_max_length = upper_bound - lower_bound
-    len_bit_size = calculate_bit_length(0, field_max_length)
-    field_max_encoded_length = 2**len_bit_size - 1
-    
-    # Get current field value
-    if current_value is None:
-        current_value = b''
-    
-    # Mutation 1: Length set to valid value, buffer content empty
-    length = random.randint(0, field_max_length - 1) if field_max_length > 1 else 0
-    mutation1 = deepcopy(message)
-    mutation1 = _set_octet_value(mutation1, target_path, b'')
-    mutations.append({
-        'message': mutation1,
-        'mutation_type': 'valid_length_empty_content',
-        'mutation_description': f'Length={length}, Content=empty (length/content mismatch)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'length_value': length,
-        'content_length': 0
-    })
-    
-    # Mutation 2: Length set to 0, buffer content set to OVERFLOW_LEN
-    mutation2 = deepcopy(message)
-    overflow_content = generate_random_bytes(OVERFLOW_LEN)
-    mutation2 = _set_octet_value(mutation2, target_path, overflow_content)
-    mutations.append({
-        'message': mutation2,
-        'mutation_type': 'zero_length_overflow_content',
-        'mutation_description': f'Length=0, Content={OVERFLOW_LEN} bytes (buffer overflow)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'length_value': 0,
-        'content_length': OVERFLOW_LEN
-    })
-    
-    # Mutation 3: Length = content_length - 1 (underflow condition)
-    if field_max_length > 1:
-        length = random.randint(0, field_max_length - 1)
-        content_length = length + lower_bound + 1
-        mutation3 = deepcopy(message)
-        content = generate_random_bytes(content_length)
-        mutation3 = _set_octet_value(mutation3, target_path, content)
-        mutations.append({
-            'message': mutation3,
-            'mutation_type': 'length_underflow',
-            'mutation_description': f'Length={length}, Content={content_length} bytes (underflow)',
-            'target_field_path': target_path,
-            'message_type': message_type,
-            'length_value': length,
-            'content_length': content_length
-        })
-    
-    # Mutation 4: Max encoded length with max content size
-    mutation4 = deepcopy(message)
-    max_content = generate_random_bytes(upper_bound)
-    mutation4 = _set_octet_value(mutation4, target_path, max_content)
-    mutations.append({
-        'message': mutation4,
-        'mutation_type': 'max_length_max_content',
-        'mutation_description': f'Length={field_max_encoded_length}, Content={upper_bound} bytes (max values)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'length_value': field_max_encoded_length,
-        'content_length': upper_bound
-    })
-    
-    return mutations
+    fld = pkt.get_at(target_path)
+    fld.set_val(pkt.get_val_at(target_path))
 
+    if fld.TYPE != "OCTET STRING":
+        raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
 
-def _mutate_unconstrained_octet_string(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    current_value: Optional[bytes]
-) -> List[Dict[str, Any]]:
-    """
-    Mutate an unconstrained OCTET_STRING field.
-    
-    Mutations for unconstrained OCTET_STRING:
-    - Various length encodings: 0, 127, 128, 2^14-1, 2^14, etc.
-    - Invalid length encodings
-    - Empty content
-    - Content smaller than declared length
-    """
-    mutations = []
-    
-    # Length mutations based on PER encoding boundaries
-    length_mutations = [0, 127, 128, 2**14 - 1, 2**14, 
-                       2*(2**14), 2*(2**14) + 1, 
-                       3*(2**14), 3*(2**14) + 1, 
-                       2**16 - 1]
-    
-    if current_value is None:
-        current_value = b''
-    
-    for length in length_mutations:
-        # Mutation A: Empty content with declared length
-        mutation_a = deepcopy(message)
-        mutation_a = _set_octet_value(mutation_a, target_path, b'')
-        mutations.append({
-            'message': mutation_a,
-            'mutation_type': 'unconstrained_empty_content',
-            'mutation_description': f'Declared length={length}, Content=empty',
-            'target_field_path': target_path,
-            'message_type': message_type,
-            'declared_length': length,
-            'content_length': 0
-        })
-        
-        # Mutation B: Content length smaller than declared length
-        if length > 0:
-            actual_length = random.randint(1, min(MAX_OTA_RRC_PACKET_SIZE, max(1, length - 1)))
-            mutation_b = deepcopy(message)
-            content = generate_random_bytes(actual_length)
-            mutation_b = _set_octet_value(mutation_b, target_path, content)
-            mutations.append({
-                'message': mutation_b,
-                'mutation_type': 'unconstrained_length_mismatch',
-                'mutation_description': f'Declared length={length}, Actual content={actual_length} bytes',
-                'target_field_path': target_path,
-                'message_type': message_type,
-                'declared_length': length,
-                'content_length': actual_length
-            })
-    
-    # Invalid length encoding mutations
-    invalid_length_bytes = generate_invalid_length_encoding()
-    invalid_length = int.from_bytes(invalid_length_bytes, 'big')
-    
-    # Mutation: Invalid length with empty content
-    mutation_inv1 = deepcopy(message)
-    mutation_inv1 = _set_octet_value(mutation_inv1, target_path, b'')
-    mutations.append({
-        'message': mutation_inv1,
-        'mutation_type': 'invalid_length_encoding',
-        'mutation_description': f'Invalid length encoding (0x{invalid_length_bytes.hex()}), empty content',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'declared_length': invalid_length,
-        'content_length': 0
-    })
-    
-    # Mutation: Invalid length with some content
-    if invalid_length > 0:
-        actual_length = random.randint(1, min(MAX_OTA_RRC_PACKET_SIZE, max(1, invalid_length - 1)))
-        mutation_inv2 = deepcopy(message)
-        content = generate_random_bytes(actual_length)
-        mutation_inv2 = _set_octet_value(mutation_inv2, target_path, content)
-        mutations.append({
-            'message': mutation_inv2,
-            'mutation_type': 'invalid_length_with_content',
-            'mutation_description': f'Invalid length encoding, content={actual_length} bytes',
-            'target_field_path': target_path,
-            'message_type': message_type,
-            'declared_length': invalid_length,
-            'content_length': actual_length
-        })
-    
-    return mutations
+    bit_muts = (_constrained_octet_muts(fld)
+                if fld._const_sz is not None
+                else _unconstrained_octet_muts(fld))
 
+    pkt_bits  = bytes_to_bit_str(pkt.to_uper())
+    fld_bits  = _field_bits(fld)
+    fld_idx   = _find_index(pkt_bits, fld_bits, target_path, pkt)
 
-def _set_octet_value(message: Dict[str, Any], path: List[str], value: bytes) -> Dict[str, Any]:
-    """
-    Helper function to set an OCTET_STRING value at a specific path.
-    
-    Args:
-        message: RRC message dictionary
-        path: Path to the field
-        value: Bytes value to set
-        
-    Returns:
-        Modified message
-    """
-    if not path:
-        return value
-    
-    current = message
-    for i, key in enumerate(path[:-1]):
-        if isinstance(current, tuple):
-            if current[0] == key:
-                remaining_path = path[i+1:]
-                modified_value = _set_octet_value(current[1], remaining_path, value)
-                return (current[0], modified_value)
-            else:
-                raise KeyError(f"Choice mismatch in path")
-        elif isinstance(current, dict):
-            if key not in current:
-                raise KeyError(f"Key '{key}' not found in message")
-            if i == len(path) - 2:
-                break
-            current = current[key]
-        else:
-            raise TypeError(f"Unexpected type {type(current)} at path element {key}")
-    
-    final_key = path[-1]
-    if isinstance(current, dict):
-        current[final_key] = value
-        
-    return message
+    # 恢复原始数据包（_find_index 的歧义消除可能修改了 pkt）
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    pkt_bits = bytes_to_bit_str(pkt.to_uper())
 
-
-# Tool interface for agent
-def octet_string_mutation_tool(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    constrained: bool = True,
-    lower_bound: Optional[int] = None,
-    upper_bound: Optional[int] = None,
-    current_value: Optional[bytes] = None,
-    seed: int = None
-) -> Dict[str, Any]:
-    """
-    Agent tool interface for OCTET_STRING field mutation.
-    
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the OCTET_STRING field
-        message_type: RRC message type
-        constrained: Whether the field has length constraints
-        lower_bound: Lower bound (for constrained)
-        upper_bound: Upper bound (for constrained)
-        current_value: Current field value
-        seed: Random seed
-        
-    Returns:
-        Dictionary with mutations and metadata
-        
-    Example:
-        >>> result = octet_string_mutation_tool(
-        ...     message=dl_dcch_message,
-        ...     target_path=['message', 'c1', '...', 'mobilityParameters'],
-        ...     message_type='csfbParametersResponseCDMA2000',
-        ...     constrained=True,
-        ...     lower_bound=0,
-        ...     upper_bound=255
-        ... )
-    """
-    mutations = mutate_octet_string_field(
-        message=message,
-        target_path=target_path,
-        message_type=message_type,
-        constrained=constrained,
-        lower_bound=lower_bound,
-        upper_bound=upper_bound,
-        current_value=current_value,
-        seed=seed
-    )
-    
-    constraint_type = "constrained" if constrained else "unconstrained"
-    
-    return {
-        'mutations': mutations,
-        'count': len(mutations),
-        'strategy': 'BASE',
-        'field_type': 'OCTET_STRING',
-        'constraint_type': constraint_type,
-        'target_path': target_path,
-        'message_type': message_type
-    }
+    results = []
+    for (mut_bits, _delta) in bit_muts:
+        mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
+        results.append((mutated.hex(), message_type, target_path))
+    return results

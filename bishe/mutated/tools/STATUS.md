@@ -1,149 +1,96 @@
-# Mutation Tools Status
+# 变异工具实现状态
 
-## ✅ Completed: INTEGER Mutation
+## ✅ INTEGER 变异
 
-**File**: `integer_mutation.py`
+**文件**: `integer_mutation.py`  
+**状态**: 完成 ✅  
+**变异数量**: 3 条
+
+| # | 内容 | 意图 |
+|---|---|---|
+| 1 | `randint(lb, ub)` | 合法范围内随机值 |
+| 2 | `lb + 2^lbs - 1` | 比特冗余空间溢出，真实值超出 ub |
+| 3 | `ub + 1` | 上界 +1 边界溢出 |
+
+**测试文件**: `test/test_integer_mutate_new.py`
+
+---
+
+## ✅ OCTET STRING 变异
+
+**文件**: `octet_string_mutation.py`  
+**状态**: 完成 ✅  
+**变异数量**: 受约束 4 条 / 无约束 22 条
+
+**受约束（4 条）**：
+
+| # | 长度头 | 内容 | 意图 |
+|---|---|---|---|
+| 1 | 随机合法值 | 空 | 声明长度 > 实际内容 |
+| 2 | 0 | 100 字节 | 声明为空但填大量内容 |
+| 3 | 随机合法值 | 比声明多 1 字节 | 内容越界 |
+| 4 | maxe（lbs 位最大值）| ub 字节 | 超出约束上界 |
+
+**无约束（22 条）**：10 个边界长度各 2 条，再加 2 条非法长度编码。
+
+**测试文件**: `test/test_octet_string_mutate.py`
+
+---
+
+## ✅ BIT STRING 变异
+
+**文件**: `bit_string_mutation.py`  
+**状态**: 完成 ✅  
+**变异数量**: 受约束 4 条 / 无约束 12 条
+
+内容与 OCTET STRING 逻辑相同，差异为 delta 单位是**比特**（非字节）。无约束变异 length_mutations = [0, 127, 128]，各 3 条，再加 3 条非法长度编码。
+
+---
+
+## ✅ SEQUENCE OF 变异
+
+**文件**: `sequence_of_mutation.py`  
+**状态**: 完成 ✅  
+**变异数量**: 4 条
+
+只替换长度头比特，元素内容不变，delta 始终为 0。
+
+| # | 长度头值 | 意图 |
+|---|---|---|
+| 1 | 0 | 声明 0 个元素 |
+| 2 | 实际元素数 | 正常值（基准）|
+| 3 | 随机值 | 随机错误长度 |
+| 4 | maxe（lbs 位最大值）| 超出上界最大编码 |
+
+---
+
+## 核心架构
+
+### 旧方案（已废弃，保留在 `integer_mutation_old.py`）
+```
+修改 Python 字典 → set_val() → pycrate 抛 invalid value 异常 → 无法编码
+```
+
+### 新方案（当前）
+```
+from_uper(hex) → 获取字段 UPER 比特串（去填充）
+→ 手工构造变异比特串 → 在包比特流中定位字段
+→ 原地替换 → bit_str_to_bytes() 输出
+```
+
+**关键设置**：
+```python
+ASN1Obj._SAFE_BND = False  # 必须在所有 pycrate import 前设置
+ASN1Obj._SILENT = True
+```
+
+---
+
+## 统一接口
+
+```python
+mutate_xxx(uper_hex, message_type, target_path, seed=None)
+# 返回: List[(mutated_uper_hex, message_type, target_path)]
+```
 
 **Status**: WORKING - Returns ASN.1 UPER encoded bytes
-
-**Key Implementation Details**:
-- Sets `DL_DCCH_Message._SAFE_BND = False` to allow out-of-bound values
-- Uses `packet.set_val()` and `packet.set_val_at()` for mutations
-- Returns `List[bytes]` (ASN.1 UPER encoded)
-- Uses `deepcopy(packet._val)` for packet state reset
-
-**Output Format**:
-```python
-{
-    'mutations': [bytes, bytes, bytes],  # ASN.1 UPER encoded
-    'count': 3,
-    'strategy': 'BASE',
-    'field_type': 'INTEGER',
-    'target_path': [...],
-    'message_type': 'csfbParametersResponseCDMA2000',
-    'descriptions': [
-        'Set INTEGER to random valid value: X',
-        'Set INTEGER to max representable value: Y (bit overflow)',
-        'Set INTEGER to overflow value: Z'
-    ]
-}
-```
-
-**Test Result**:
-```
-变异 1: Set INTEGER to random valid value: 0
-  ASN.1编码(hex): 02800000000080602000
-  ASN.1编码长度: 10 字节
-
-变异 2: Set INTEGER to max representable value: 3 (bit overflow)
-  ASN.1编码(hex): 06800000000080602000
-  ASN.1编码长度: 10 字节
-
-变异 3: Set INTEGER to overflow value: 4
-  ASN.1编码(hex): 00800000000080602000
-  ASN.1编码长度: 10 字节
-```
-
----
-
-## 🔄 Pending: OCTET_STRING Mutation
-
-**File**: `octet_string_mutation.py`
-
-**Current Status**: Returns dictionaries (WRONG)
-
-**Required Changes**:
-1. Set `_SAFE_BND = False`
-2. Return ASN.1 bytes instead of dictionaries
-3. Follow OTABase bit-level manipulation approach
-
-**OTABase Strategy**:
-- Mutation 1: Random length + random content
-- Mutation 2: Manipulate length encoding in binary
-- Mutation 3: Set max length + max content
-
----
-
-## 🔄 Pending: BIT_STRING Mutation
-
-**File**: `bit_string_mutation.py`
-
-**Current Status**: Returns dictionaries (WRONG)
-
-**Required Changes**:
-1. Set `_SAFE_BND = False`
-2. Return ASN.1 bytes instead of dictionaries
-3. Implement bit-level length/content manipulation
-
-**OTABase Strategy**:
-- Similar to OCTET_STRING
-- Manipulate bit string length encoding
-- Manipulate bit content
-
----
-
-## 🔄 Pending: SEQUENCE_OF Mutation
-
-**File**: `sequence_of_mutation.py`
-
-**Current Status**: Returns dictionaries (WRONG)
-
-**Required Changes**:
-1. Set `_SAFE_BND = False`
-2. Return ASN.1 bytes instead of dictionaries
-3. Implement sequence length manipulation at binary level
-
-**OTABase Strategy**:
-- Manipulate SEQUENCE OF length field
-- Add/remove elements
-- Overflow sequence count
-
----
-
-## Critical Learnings
-
-### 1. OTABase Mutation Approach
-**NOT**: Modify dictionary → Encode to ASN.1
-**BUT**: Encode to ASN.1 → Manipulate bits → Return bytes
-
-### 2. Pycrate Safety Flags
-- **`_SAFE_BND = False`**: Required to allow out-of-bound values
-- **`_SAFE_VAL = False`**: May be needed for some mutations
-
-### 3. Packet State Management
-```python
-# Save state
-p = deepcopy(packet._val)
-
-# Mutate
-packet.set_val_at(target_path, new_value)
-mutated = packet.to_uper()
-
-# Reset
-packet.set_val(p)
-```
-
-### 4. Message Format
-Must use correct nested tuple/dict structure:
-```python
-{
-    'message': ('c1', ('messageType', {
-        'field1': value1,
-        'field2': ('choice', {...})
-    }))
-}
-```
-
-### 5. Return Format
-All tools should return:
-```python
-{
-    'mutations': List[bytes],  # ASN.1 UPER encoded
-    'count': int,
-    'strategy': 'BASE',
-    'field_type': str,
-    'target_path': List[str],
-    'message_type': str,
-    'descriptions': List[str]
-}
-```

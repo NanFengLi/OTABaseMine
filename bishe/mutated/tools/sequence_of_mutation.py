@@ -1,256 +1,144 @@
 """
-SEQUENCE OF Field Mutation Tool
+SEQUENCE OF 字段变异工具
 
-Implements BASE mutation strategy for SEQUENCE OF type fields in RRC messages.
-Based on OTABase fuzzing strategy.
+接口：
+  输入  uper_hex, message_type, target_path
+  输出  变异后的 (uper_hex, message_type, target_path) 列表
+
+完全移植自 OTABase rrc_fuzzer.py::mutate_rrc_seqof_field()
+注意：只修改长度头比特，元素内容不变（delta 始终为 0）。
 """
-
 import math
 import random
-from typing import List, Dict, Any, Optional
-from copy import deepcopy
-from .mutation_utils import calculate_bit_length
+from typing import List, Tuple, Optional
+
+from pycrate_asn1rt.asnobj import ASN1Obj
+ASN1Obj._SAFE_BND = False
+ASN1Obj._SILENT  = True
+
+from pycrate_asn1dir import RRCLTE
+
+from .mutation_utils import (
+    bytes_to_bit_str, bit_str_to_bytes,
+)
+
+# ── 工具函数 ──────────────────────────────────────────────────────────────────
+
+def _lbs(field) -> int:
+    """计算 SEQUENCE OF 长度头所需的比特数（同 OTABase）"""
+    max_len = field._const_sz.ub - field._const_sz.lb
+    return math.floor(math.log2(max_len)) + 1
 
 
-def mutate_sequence_of_field(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    lower_bound: int,
-    upper_bound: int,
-    current_value: Optional[List] = None,
-    seed: int = None
-) -> List[Dict[str, Any]]:
+def _field_bits(field) -> str:
+    """SEQUENCE OF 只返回长度头比特，移植自 OTABase get_field_bits()"""
+    bits = bytes_to_bit_str(field.to_uper())
+    return bits[:_lbs(field)]
+
+
+def _find_all(pkt_bits: str, tgt: str) -> set:
+    s, idxs = 0, set()
+    while True:
+        i = pkt_bits.find(tgt, s)
+        if i == -1:
+            break
+        idxs.add(i)
+        s = i + 1
+    return idxs
+
+
+def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
+    """SEQUENCE OF 字段歧义消除，移植自 OTABase find_field_bit_index()"""
+    idxs = _find_all(pkt_bits, fld_bits)
+    if not idxs:
+        raise ValueError("SEQOF 长度头未在数据包中找到")
+    if len(idxs) == 1:
+        return idxs.pop()
+
+    fld     = packet.get_at(path)
+    old_val = packet.get_val_at(path)
+    cur_len = len(old_val)
+    new_len = (cur_len + 1 if cur_len < fld._const_sz.ub else cur_len - 1)
+    new_val = (old_val * (new_len // len(old_val) + 1))[:new_len]
+
+    packet.set_val_at(path, new_val)
+    fld.set_val(new_val)
+    nbits = _field_bits(packet.get_at(path))
+    npkt  = bytes_to_bit_str(packet.to_uper())
+    idxs  = _find_all(npkt, nbits) & idxs
+
+    packet.set_val_at(path, old_val)
+    fld.set_val(old_val)
+    if not idxs:
+        raise ValueError("SEQOF 歧义消除失败")
+    return min(idxs)
+
+
+def _replace(pkt_bits: str, fld_bits: str, idx: int, mut: str) -> str:
+    return pkt_bits[:idx] + mut + pkt_bits[idx + len(fld_bits):]
+
+# ── 变异比特生成 ──────────────────────────────────────────────────────────────
+
+def _seqof_muts(field) -> List[Tuple[str, int]]:
     """
-    Mutate a SEQUENCE OF field using BASE strategy.
-    
-    The BASE strategy for SEQUENCE OF mutates the length field while keeping
-    the content the same or varying it. This exploits mismatches between the
-    declared number of elements and actual content.
-    
-    Mutations:
-    1. Length = 0 with non-empty content
-    2. Length = random value with original content
-    3. Length = random value (different from actual)
-    4. Length = maximum encoded value with original content
-    
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the SEQUENCE OF field
-        message_type: Type of RRC message
-        lower_bound: Minimum number of elements
-        upper_bound: Maximum number of elements
-        current_value: Current list of elements
-        seed: Random seed for reproducibility
-        
-    Returns:
-        List of mutated message dictionaries with metadata
-        
-    Example:
-        >>> # Example: A SEQUENCE OF with elements
-        >>> mutations = mutate_sequence_of_field(
-        ...     message=dl_dcch_message,
-        ...     target_path=['message', 'c1', 'someMessage', 'someSequenceOf'],
-        ...     message_type='someMessage',
-        ...     lower_bound=1,
-        ...     upper_bound=8,
-        ...     current_value=[elem1, elem2, elem3]
-        ... )
+    4 条 SEQUENCE OF 长度头变异，移植自 OTABase mutate_rrc_seqof_field()。
+    内容（元素比特）保持不变，仅替换长度头，delta 始终为 0。
+    """
+    n_elem = len(field.get_val_at([]))
+    lbs_   = _lbs(field)
+    maxe   = 2**lbs_ - 1
+
+    return [
+        (format(0,      f"0{lbs_}b"), 0),
+        (format(n_elem, f"0{lbs_}b"), 0),
+        (format(random.randint(0, maxe), f"0{lbs_}b"), 0),
+        (format(maxe,   f"0{lbs_}b"), 0),
+    ]
+
+# ── 公开接口 ──────────────────────────────────────────────────────────────────
+
+def mutate_sequence_of(
+    uper_hex: str,
+    message_type: str,
+    target_path: List[str],
+    seed: Optional[int] = None,
+) -> List[Tuple[str, str, List[str]]]:
+    """
+    对合法 RRC 消息中的 SEQUENCE OF 字段执行比特流级变异。
+
+    参数：
+        uper_hex:     合法消息的 UPER 十六进制编码
+        message_type: 消息类型名称（用于输出元组）
+        target_path:  目标字段路径列表
+        seed:         随机数种子（可选，用于复现结果）
+
+    返回：
+        [(mutated_uper_hex, message_type, target_path), ...] 列表
     """
     if seed is not None:
         random.seed(seed)
-    
-    mutations = []
-    
-    # Calculate bit size for length encoding
-    field_max_length = upper_bound - lower_bound
-    len_bit_size = calculate_bit_length(0, field_max_length)
-    field_max_encoded_length = 2**len_bit_size - 1
-    
-    # Get current value
-    if current_value is None:
-        current_value = []
-    
-    num_elements = len(current_value)
-    
-    # Mutation 1: Length = 0 with existing content
-    # This tests if the decoder properly handles mismatch
-    mutation1 = deepcopy(message)
-    # Keep the content but claim length is 0
-    mutations.append({
-        'message': mutation1,
-        'mutation_type': 'zero_length_with_content',
-        'mutation_description': f'Length=0, Actual elements={num_elements} (length/content mismatch)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'declared_length': 0,
-        'actual_elements': num_elements
-    })
-    
-    # Mutation 2: Keep actual number of elements but with random length declaration
-    mutation2 = deepcopy(message)
-    random_length = random.randint(0, field_max_encoded_length)
-    mutations.append({
-        'message': mutation2,
-        'mutation_type': 'random_length_original_content',
-        'mutation_description': f'Length={random_length}, Actual elements={num_elements}',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'declared_length': random_length,
-        'actual_elements': num_elements
-    })
-    
-    # Mutation 3: Random length between 0 and max with original content
-    mutation3 = deepcopy(message)
-    random_length2 = random.randint(0, field_max_encoded_length)
-    mutations.append({
-        'message': mutation3,
-        'mutation_type': 'random_length_mismatch',
-        'mutation_description': f'Length={random_length2}, Elements={num_elements} (mismatch)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'declared_length': random_length2,
-        'actual_elements': num_elements
-    })
-    
-    # Mutation 4: Max encoded length with original content
-    mutation4 = deepcopy(message)
-    mutations.append({
-        'message': mutation4,
-        'mutation_type': 'max_length_original_content',
-        'mutation_description': f'Length={field_max_encoded_length}, Elements={num_elements} (max length)',
-        'target_field_path': target_path,
-        'message_type': message_type,
-        'declared_length': field_max_encoded_length,
-        'actual_elements': num_elements
-    })
-    
-    # Additional mutation: Modify actual list size
-    # Mutation 5: Empty list
-    if num_elements > 0:
-        mutation5 = deepcopy(message)
-        mutation5 = _set_sequence_of_value(mutation5, target_path, [])
-        mutations.append({
-            'message': mutation5,
-            'mutation_type': 'empty_list',
-            'mutation_description': f'Empty SEQUENCE OF (0 elements)',
-            'target_field_path': target_path,
-            'message_type': message_type,
-            'declared_length': 0,
-            'actual_elements': 0
-        })
-    
-    # Mutation 6: Add duplicate elements to exceed bounds
-    if num_elements > 0 and upper_bound < 100:  # Avoid creating huge lists
-        mutation6 = deepcopy(message)
-        # Duplicate elements to create a longer list
-        extended_list = current_value * ((upper_bound // num_elements) + 2)
-        extended_list = extended_list[:upper_bound + 5]  # Slightly exceed upper bound
-        mutation6 = _set_sequence_of_value(mutation6, target_path, extended_list)
-        mutations.append({
-            'message': mutation6,
-            'mutation_type': 'exceed_upper_bound',
-            'mutation_description': f'Exceed upper bound: {len(extended_list)} > {upper_bound}',
-            'target_field_path': target_path,
-            'message_type': message_type,
-            'declared_length': len(extended_list),
-            'actual_elements': len(extended_list)
-        })
-    
-    return mutations
 
+    pkt = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+    pkt.from_uper(bytes.fromhex(uper_hex))
 
-def _set_sequence_of_value(message: Dict[str, Any], path: List[str], value: List) -> Dict[str, Any]:
-    """
-    Helper function to set a SEQUENCE OF value at a specific path.
-    
-    Args:
-        message: RRC message dictionary
-        path: Path to the field
-        value: List value to set
-        
-    Returns:
-        Modified message
-    """
-    if not path:
-        return value
-    
-    current = message
-    for i, key in enumerate(path[:-1]):
-        if isinstance(current, tuple):
-            if current[0] == key:
-                remaining_path = path[i+1:]
-                modified_value = _set_sequence_of_value(current[1], remaining_path, value)
-                return (current[0], modified_value)
-            else:
-                raise KeyError(f"Choice mismatch in path")
-        elif isinstance(current, dict):
-            if key not in current:
-                raise KeyError(f"Key '{key}' not found in message")
-            if i == len(path) - 2:
-                break
-            current = current[key]
-        else:
-            raise TypeError(f"Unexpected type {type(current)} at path element {key}")
-    
-    final_key = path[-1]
-    if isinstance(current, dict):
-        current[final_key] = value
-        
-    return message
+    fld = pkt.get_at(target_path)
+    fld.set_val(pkt.get_val_at(target_path))
 
+    if fld.TYPE != "SEQUENCE OF":
+        raise TypeError(f"字段类型为 {fld.TYPE}，不是 SEQUENCE OF")
 
-# Tool interface for agent
-def sequence_of_mutation_tool(
-    message: Dict[str, Any],
-    target_path: List[str],
-    message_type: str,
-    lower_bound: int,
-    upper_bound: int,
-    current_value: Optional[List] = None,
-    seed: int = None
-) -> Dict[str, Any]:
-    """
-    Agent tool interface for SEQUENCE OF field mutation.
-    
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the SEQUENCE OF field
-        message_type: RRC message type
-        lower_bound: Minimum number of elements
-        upper_bound: Maximum number of elements
-        current_value: Current list of elements
-        seed: Random seed
-        
-    Returns:
-        Dictionary with mutations and metadata
-        
-    Example:
-        >>> result = sequence_of_mutation_tool(
-        ...     message=dl_dcch_message,
-        ...     target_path=['message', 'c1', '...', 'someList'],
-        ...     message_type='someMessage',
-        ...     lower_bound=1,
-        ...     upper_bound=8,
-        ...     current_value=[elem1, elem2]
-        ... )
-    """
-    mutations = mutate_sequence_of_field(
-        message=message,
-        target_path=target_path,
-        message_type=message_type,
-        lower_bound=lower_bound,
-        upper_bound=upper_bound,
-        current_value=current_value,
-        seed=seed
-    )
-    
-    return {
-        'mutations': mutations,
-        'count': len(mutations),
-        'strategy': 'BASE',
-        'field_type': 'SEQUENCE_OF',
-        'target_path': target_path,
-        'message_type': message_type,
-        'bounds': f'[{lower_bound}, {upper_bound}]'
-    }
+    bit_muts = _seqof_muts(fld)
+
+    pkt_bits = bytes_to_bit_str(pkt.to_uper())
+    fld_bits = _field_bits(fld)
+    fld_idx  = _find_index(pkt_bits, fld_bits, target_path, pkt)
+
+    # 恢复原始数据包
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    pkt_bits = bytes_to_bit_str(pkt.to_uper())
+
+    results = []
+    for (mut_bits, _delta) in bit_muts:
+        mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
+        results.append((mutated.hex(), message_type, target_path))
+    return results

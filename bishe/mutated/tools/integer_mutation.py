@@ -1,183 +1,177 @@
 """
-INTEGER Field Mutation Tool
+INTEGER 字段变异工具
 
-Implements the BASE mutation strategy for INTEGER fields in RRC messages,
-based on the OTABase fuzzing framework.
+接口：
+  输入  uper_hex, message_type, target_path
+  输出  变异后的 (uper_hex, message_type, target_path) 列表
 
-Reference: OTABase rrc_fuzzer.py - mutate_rrc_integer_field()
+移植自 OTABase rrc_fuzzer.py::mutate_rrc_integer_field()
+核心：直接在 UPER 比特流层面替换字段，绕过 pycrate 约束校验。
+
+INTEGER 的 UPER 编码格式（受约束，SIZE(lb..ub)）：
+  编码值 = value - lb，占 lbs = floor(log2(ub - lb)) + 1 位
+  因此 lbs 位最多能表示 2^lbs - 1，对应真实值 lb + 2^lbs - 1，
+  而规范上界仅为 ub，故 lb + 2^lbs - 1 >= ub，存在可利用的冗余位空间。
 """
-
 import math
 import random
-from copy import deepcopy
-from typing import Any, Dict, List
+from typing import List, Tuple, Optional
 
-from bishe.mutated.tools.mutation_utils import calculate_bit_length
+from pycrate_asn1rt.asnobj import ASN1Obj
+ASN1Obj._SAFE_BND = False
+ASN1Obj._SILENT  = True
 
-# Try to import pycrate for ASN.1 encoding
-try:
-    from pycrate_asn1dir import RRCLTE
-    DL_DCCH_Message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
-    PYCRATE_AVAILABLE = True
-except ImportError:
-    PYCRATE_AVAILABLE = False
-    DL_DCCH_Message = None
+from pycrate_asn1dir import RRCLTE
+
+from .mutation_utils import bytes_to_bit_str, bit_str_to_bytes
+
+# ── 比特工具 ──────────────────────────────────────────────────────────────────
+
+def _lbs(field) -> int:
+    """计算 INTEGER 字段的长度头比特数：floor(log2(ub - lb)) + 1"""
+    lb = field._const_val.lb
+    ub = field._const_val.ub
+    return math.floor(math.log2(ub - lb)) + 1
 
 
-def mutate_integer_field(
-    message: Dict[str, Any],
-    target_path: List[str],
-    lower_bound: int,
-    upper_bound: int,
-    message_type: str,
-    seed: int = None
-) -> List[bytes]:
+def _field_bits(field) -> str:
     """
-    Mutate an INTEGER field using BASE strategy.
-
-    The BASE strategy for INTEGER fields exploits the fact that the number of bits
-    allocated for the field can represent values beyond the specification constraints.
-    For example, if a field is constrained to 0-9 (spec) but uses 4 bits, it can
-    actually represent 0-15.
-
-    Mutations:
-    1. Random value within valid range
-    2. Maximum value representable with allocated bits
-    3. Overflow: upper_bound + 1
-
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the INTEGER field to mutate
-        lower_bound: Lower bound of the INTEGER constraint
-        upper_bound: Upper bound of the INTEGER constraint
-        message_type: Type of RRC message (e.g., 'csfbParametersResponseCDMA2000')
-        seed: Random seed for reproducibility (optional)
-
-    Returns:
-        List of ASN.1 UPER encoded bytes (mutated packets)
-
-    Example:
-        >>> message = {
-        ...     'message': ('c1', ('csfbParametersResponseCDMA2000', {
-        ...         'rrc-TransactionIdentifier': 0,
-        ...         'criticalExtensions': ('criticalExtensionsFuture', {})
-        ...     }))
-        ... }
-        >>> mutations = mutate_integer_field(
-        ...     message=message,
-        ...     target_path=['message', 'c1', 'csfbParametersResponseCDMA2000',
-        ...                  'rrc-TransactionIdentifier'],
-        ...     lower_bound=0,
-        ...     upper_bound=3,
-        ...     message_type='csfbParametersResponseCDMA2000'
-        ... )
-        >>> len(mutations)
-        3
-        >>> all(isinstance(m, bytes) for m in mutations)
-        True
+    返回 INTEGER 字段在 UPER 中的比特串。
+    INTEGER 编码为 (value - lb) 的定长二进制，共 lbs 位，无填充。
     """
-    if not PYCRATE_AVAILABLE:
-        raise ImportError("pycrate is required for mutation. Install with: pip install pycrate")
-
-    if seed is not None:
-        random.seed(seed)
-
-    # Get the DL-DCCH-Message ASN.1 object
-    packet = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
-
-    # Disable boundary checking to allow out-of-bound values
-    packet._SAFE_BND = False
-
-    # Set initial message
-    packet.set_val(message)
-
-    # Save initial packet value for reset
-    p = deepcopy(packet._val)
-
-    mutated_packets = []
-
-    # Calculate the number of bits used to represent this integer
-    bit_length = calculate_bit_length(lower_bound, upper_bound)
-    max_representable = (2 ** bit_length - 1) + lower_bound
-
-    # Mutation 1: Random value within valid range
-    packet.set_val(p)
-    random_value = random.randint(lower_bound, upper_bound)
-    packet.set_val_at(target_path, random_value)
-    mutated_packets.append(packet.to_uper())
-
-    # Mutation 2: Maximum representable value (exploits bit allocation)
-    packet.set_val(p)
-    packet.set_val_at(target_path, max_representable)
-    mutated_packets.append(packet.to_uper())
-
-    # Mutation 3: Overflow (upper_bound + 1)
-    packet.set_val(p)
-    overflow_value = upper_bound + 1
-    packet.set_val_at(target_path, overflow_value)
-    mutated_packets.append(packet.to_uper())
-
-    return mutated_packets
+    lb  = field._const_val.lb
+    val = field.get_val()
+    lbs = _lbs(field)
+    return format(val - lb, f"0{lbs}b")
 
 
-def integer_mutation_tool(
-    message: Dict[str, Any],
-    target_path: List[str],
-    lower_bound: int,
-    upper_bound: int,
-    message_type: str,
-    seed: int = None
-) -> Dict[str, Any]:
+def _find_all(pkt_bits: str, tgt: str) -> set:
+    s, idxs = 0, set()
+    while True:
+        i = pkt_bits.find(tgt, s)
+        if i == -1:
+            break
+        idxs.add(i)
+        s = i + 1
+    return idxs
+
+
+def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
     """
-    Agent tool interface for INTEGER field mutation.
-
-    This is the function that should be registered as an agent tool.
-
-    Args:
-        message: Complete RRC message dictionary
-        target_path: Path to the INTEGER field (list of strings)
-        lower_bound: Lower bound of INTEGER constraint
-        upper_bound: Upper bound of INTEGER constraint
-        message_type: RRC message type
-        seed: Random seed for reproducibility
-
-    Returns:
-        Dictionary containing:
-            - mutations: List of ASN.1 UPER encoded bytes
-            - count: Number of mutations generated
-            - strategy: Mutation strategy used
-            - descriptions: List of mutation descriptions
+    在数据包比特流中定位 INTEGER 字段位置。
+    若存在多个相同比特串，通过修改字段值后求交集消除歧义。
     """
-    mutations = mutate_integer_field(
-        message=message,
-        target_path=target_path,
-        lower_bound=lower_bound,
-        upper_bound=upper_bound,
-        message_type=message_type,
-        seed=seed
-    )
+    idxs = _find_all(pkt_bits, fld_bits)
+    if not idxs:
+        raise ValueError("INTEGER 字段未在数据包比特流中找到")
+    if len(idxs) == 1:
+        return idxs.pop()
+    # 歧义消除：改变字段为不同值，取新旧位置交集
+    fld     = packet.get_at(path)
+    lb      = fld._const_val.lb
+    ub      = fld._const_val.ub
+    old_val = packet.get_val_at(path)
+    new_val = old_val
+    while new_val == old_val:
+        new_val = random.randint(lb, ub)
+    packet.set_val_at(path, new_val)
+    fld.set_val(new_val)
+    nbits = _field_bits(packet.get_at(path))
+    npkt  = bytes_to_bit_str(packet.to_uper())
+    idxs  = _find_all(npkt, nbits) & idxs
+    packet.set_val_at(path, old_val)
+    fld.set_val(old_val)
+    if not idxs:
+        raise ValueError("INTEGER 歧义消除失败")
+    return min(idxs)
 
-    # Calculate bit length for descriptions
-    bit_length = calculate_bit_length(lower_bound, upper_bound)
-    max_representable = (2 ** bit_length - 1) + lower_bound
 
-    # Generate random value for description (same seed)
-    if seed is not None:
-        random.seed(seed)
-    random_value = random.randint(lower_bound, upper_bound)
+def _replace(pkt_bits: str, fld_bits: str, idx: int, mut: str) -> str:
+    return pkt_bits[:idx] + mut + pkt_bits[idx + len(fld_bits):]
 
-    descriptions = [
-        f'Set INTEGER to random valid value: {random_value}',
-        f'Set INTEGER to max representable value: {max_representable} (bit overflow)',
-        f'Set INTEGER to overflow value: {upper_bound + 1}'
+# ── 变异比特生成 ──────────────────────────────────────────────────────────────
+
+def _integer_muts(field) -> List[Tuple[str, int]]:
+    """
+    INTEGER 3 条变异，移植自 OTABase mutate_rrc_integer_field()。
+
+    设 lbs = floor(log2(ub - lb)) + 1（字段实际占用比特数）：
+
+      变异 1：范围内随机合法值
+        编码 = randint(lb, ub) - lb，在 [0, ub-lb] 内，合法但随机
+      变异 2：比特位最大可表示值（利用冗余比特空间）
+        编码 = 2^lbs - 1，对应真实值 lb + 2^lbs - 1 >= ub（超出规范上界）
+      变异 3：上界溢出值（ub + 1）
+        编码 = ub - lb + 1，比最大合法编码值大 1（边界溢出）
+    """
+    lb      = field._const_val.lb
+    ub      = field._const_val.ub
+    lbs_    = _lbs(field)
+    cur_bits = _field_bits(field)
+
+    # 变异 1：范围内随机合法值（编码合规，但值随机）
+    rand_val    = random.randint(lb, ub)
+    rand_bits   = format(rand_val - lb, f"0{lbs_}b")
+
+    # 变异 2：比特位可表示的最大值（编码冗余空间溢出）
+    max_repr    = 2**lbs_ - 1                    # 最大编码值（对应真实值 lb + 2^lbs - 1）
+    maxrepr_bits = format(max_repr, f"0{lbs_}b")
+
+    # 变异 3：上界 +1 溢出（仅超出规范上界 1 个单位）
+    overflow    = ub - lb + 1                    # 编码值 = ub - lb + 1
+    overflow_bits = format(overflow, f"0{lbs_}b")
+
+    delta = 0  # INTEGER 定长编码，替换后数据包长度不变
+    return [
+        (rand_bits,     delta),
+        (maxrepr_bits,  delta),
+        (overflow_bits, delta),
     ]
 
-    return {
-        'mutations': mutations,  # List of bytes
-        'count': len(mutations),
-        'strategy': 'BASE',
-        'field_type': 'INTEGER',
-        'target_path': target_path,
-        'message_type': message_type,
-        'descriptions': descriptions
-    }
+# ── 公开接口 ──────────────────────────────────────────────────────────────────
+
+def mutate_integer(
+    uper_hex: str,
+    message_type: str,
+    target_path: List[str],
+    seed: Optional[int] = None,
+) -> List[Tuple[str, str, List[str]]]:
+    """
+    对合法 RRC 消息中的 INTEGER 字段执行比特流级变异。
+
+    参数：
+        uper_hex:     合法消息的 UPER 十六进制编码
+        message_type: 消息类型名称（用于输出元组）
+        target_path:  目标字段路径列表
+        seed:         随机数种子（可选，用于复现结果）
+
+    返回：
+        [(mutated_uper_hex, message_type, target_path), ...] 列表，共 3 条
+    """
+    if seed is not None:
+        random.seed(seed)
+
+    pkt = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+    pkt.from_uper(bytes.fromhex(uper_hex))
+
+    fld = pkt.get_at(target_path)
+    fld.set_val(pkt.get_val_at(target_path))
+
+    if fld.TYPE != "INTEGER":
+        raise TypeError(f"字段类型为 {fld.TYPE}，不是 INTEGER")
+
+    bit_muts = _integer_muts(fld)
+
+    pkt_bits = bytes_to_bit_str(pkt.to_uper())
+    fld_bits = _field_bits(fld)
+    fld_idx  = _find_index(pkt_bits, fld_bits, target_path, pkt)
+
+    # 恢复原始数据包（_find_index 的歧义消除可能修改了 pkt）
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    pkt_bits = bytes_to_bit_str(pkt.to_uper())
+
+    results = []
+    for (mut_bits, _delta) in bit_muts:
+        mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
+        results.append((mutated.hex(), message_type, target_path))
+    return results

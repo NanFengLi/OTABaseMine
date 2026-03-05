@@ -79,37 +79,48 @@ from binascii import unhexlify, hexlify
 #   })) 
 # }
 
+# dl_dcch_message = {
+#    'message': ('c1',
+#    ('rrcConnectionReconfiguration',
+#    {
+#      'rrc-TransactionIdentifier': 0,
+#      'criticalExtensions': ('c1',
+#      ('rrcConnectionReconfiguration-r8',
+#      {
+#        'nonCriticalExtension': {
+#          'nonCriticalExtension': {
+#            'nonCriticalExtension': {
+#              'nonCriticalExtension': {
+#                'nonCriticalExtension': {
+#                  'nonCriticalExtension': {
+#                    'nonCriticalExtension': {
+#                      'nonCriticalExtension': {
+#                        'nonCriticalExtension': {
+#                          'nonCriticalExtension': {
+#                            'sl-SSB-PriorityEUTRA-r16': 1 
+#                         } 
+#                       } 
+#                     } 
+#                   } 
+#                 } 
+#               } 
+#             } 
+#           } 
+#         } 
+#       } 
+#     })) 
+#   })) 
+# }
+
 dl_dcch_message = {
-   'message': ('c1',
-   ('rrcConnectionReconfiguration',
-   {
-     'rrc-TransactionIdentifier': 0,
-     'criticalExtensions': ('c1',
-     ('rrcConnectionReconfiguration-r8',
-     {
-       'nonCriticalExtension': {
-         'nonCriticalExtension': {
-           'nonCriticalExtension': {
-             'nonCriticalExtension': {
-               'nonCriticalExtension': {
-                 'nonCriticalExtension': {
-                   'nonCriticalExtension': {
-                     'nonCriticalExtension': {
-                       'nonCriticalExtension': {
-                         'nonCriticalExtension': {
-                           'sl-SSB-PriorityEUTRA-r16': 1 
-                        } 
-                      } 
-                    } 
-                  } 
-                } 
-              } 
-            } 
-          } 
-        } 
-      } 
-    })) 
-  })) 
+    'message': ('c1', ('csfbParametersResponseCDMA2000', {
+        'rrc-TransactionIdentifier': 1,
+        'criticalExtensions': ('csfbParametersResponseCDMA2000-r8', {
+            'rand': (1095513148, 32),
+            'mobilityParameters': b'\x1e\x7e\xc2\x73\x78\xa6\x61\xc9',
+            'nonCriticalExtension': {}
+        })
+    }))
 }
 
 dl_ccch_message_uper = "B0"
@@ -127,7 +138,7 @@ def to_uper():
 
 def from_uper():
     DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
-    uper_data = "18 02 00 01 00 00 00 00 ".replace(" ","")
+    uper_data = "0220a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d73288380".replace(" ","")
     DL_DCCH.from_uper(unhexlify(uper_data))
     return DL_DCCH()
 
@@ -305,10 +316,10 @@ def attr_test():
 
 if __name__ == "__main__":
 
-    # to_uper()
+    a = to_uper()
     # method_test()
     # attr_test()
     # str_to_dict(BCCH_DL_SCH_Message)
-    a = test_none()
+    # a = test_none()
     # a=from_uper()
     print(a)
