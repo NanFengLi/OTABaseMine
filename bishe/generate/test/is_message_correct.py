@@ -1,7 +1,7 @@
 import ast
 import json
 # import RRC_LET_R19 as RRC_LTE_R19
-from pycrate_asn1dir import RRCLTE
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 from binascii import unhexlify, hexlify
 
 

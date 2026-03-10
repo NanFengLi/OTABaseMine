@@ -133,7 +133,7 @@ dl_dcch_message = {
 }
 
 # 编码
-from pycrate_asn1dir import RRCLTE
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 from binascii import hexlify
 
 DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message

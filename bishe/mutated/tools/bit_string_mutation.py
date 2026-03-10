@@ -15,7 +15,7 @@ from pycrate_asn1rt.asnobj import ASN1Obj
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT  = True
 
-from pycrate_asn1dir import RRCLTE
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 
 from .mutation_utils import (
     bytes_to_bit_str, bit_str_to_bytes,

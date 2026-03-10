@@ -1,13 +1,13 @@
 {
-  "total_count": 116,
-  "packets_generated": 51,
+  "total_count": 788,
+  "packets_generated": 73,
   "coverage": 1.0,
-  "unique_paths": 116,
-  "elapsed_time": 3.887808084487915,
+  "unique_paths": 788,
+  "elapsed_time": 33.14080619812012,
   "seed": 1,
   "cycles": 1,
   "targets": [
-    "OCTET_STRING"
+    "BIT_STRING"
   ],
-  "timestamp": "2026-03-05 10:35:16"
+  "timestamp": "2026-03-10 14:30:50"
 }

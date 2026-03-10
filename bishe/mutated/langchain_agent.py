@@ -342,21 +342,21 @@ def demo_direct_tool_calls():
       - OCTET STRING: mobilityFromEUTRACommand，字段 si（无约束）
     """
     # ── INTEGER 变异演示 ────────────────────────────────────────────────────
-    print("=" * 60)
-    print("直接调用 integer_mutation 工具")
-    print("字段: dlInformationTransfer / refDays-r15 (INTEGER, lb=0, ub=72999)")
-    print("=" * 60)
-    result = _run_integer_mutation(
-        uper_hex="0a501a2ba8a181f05b",
-        message_type="dlInformationTransfer",
-        target_path=[
-            "message", "c1", "dlInformationTransfer",
-            "criticalExtensions", "c1", "dlInformationTransfer-r8",
-            "dedicatedInfoType", "dedicatedInfoNAS",
-        ],
-        seed=42,
-    )
-    print(result)
+    # print("=" * 60)
+    # print("直接调用 integer_mutation 工具")
+    # print("字段: dlInformationTransfer / refDays-r15 (INTEGER, lb=0, ub=72999)")
+    # print("=" * 60)
+    # result = _run_integer_mutation(
+    #     uper_hex="0a501a2ba8a181f05b",
+    #     message_type="dlInformationTransfer",
+    #     target_path=[
+    #         "message", "c1", "dlInformationTransfer",
+    #         "criticalExtensions", "c1", "dlInformationTransfer-r15", "timeReferenceInfo-r15",
+    #         "time-r15", "refDays-r15",
+    #     ],
+    #     seed=42,
+    # )
+    # print(result)
 
     # ── OCTET STRING 变异演示 ───────────────────────────────────────────────
     print("\n" + "=" * 60)
@@ -365,49 +365,51 @@ def demo_direct_tool_calls():
     print("=" * 60)
     result = _run_octet_string_mutation(
         uper_hex=(
-            "1a128403cfd84e6f14cc3926"
-            "b8539c2c349c4e4f37ea608b"
-            "f091c62a7af80"
+            "0220a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d73288380"
         ),
-        message_type="mobilityFromEUTRACommand",
+        message_type="csfbParametersResponseCDMA2000",
         target_path=[
-            "message", "c1", "mobilityFromEUTRACommand",
-            "criticalExtensions", "c1", "mobilityFromEUTRACommand-r8",
-            "purpose", "handover", "targetRAT-MessageContainer",
+            "message","c1","csfbParametersResponseCDMA2000",
+            "criticalExtensions","csfbParametersResponseCDMA2000-r8",
+            "mobilityParameters"
         ],
         seed=42,
     )
     # 只打印前 3 条，避免输出过多
     parsed = json.loads(result)
-    print(f"共生成 {len(parsed)} 条变异，前 3 条：")
-    print(json.dumps(parsed[:3], ensure_ascii=False, indent=2))
+    print(f"共生成 {len(parsed)} 条变异，全部的为：")
+    print(json.dumps(parsed, ensure_ascii=False, indent=2))
 
-    # ── BIT STRING 变异演示 ─────────────────────────────────────────────────
-    print("\n" + "=" * 60)
-    print("直接调用 bit_string_mutation 工具")
-    print("字段: dlInformationTransfer / dedicatedInfoNAS（作为占位演示，实际字段需按需替换）")
-    print("=" * 60)
-    # 该演示仅展示调用方式，若字段类型不匹配会抛出 TypeError
-    try:
-        result = _run_bit_string_mutation(
-            uper_hex="0a501a2ba8a181f05b",
-            message_type="dlInformationTransfer",
-            target_path=[
-                "message", "c1", "dlInformationTransfer",
-                "criticalExtensions", "c1", "dlInformationTransfer-r8",
-                "dedicatedInfoType", "dedicatedInfoNAS",
-            ],
-            seed=42,
-        )
-        print(result)
-    except TypeError as e:
-        print(f"[预期错误] {e}（请替换为 BIT STRING 类型字段路径）")
+    # # ── BIT STRING 变异演示 ─────────────────────────────────────────────────
+    # print("\n" + "=" * 60)
+    # print("直接调用 bit_string_mutation 工具")
+    # print("字段: dlInformationTransfer / dedicatedInfoNAS（作为占位演示，实际字段需按需替换）")
+    # print("=" * 60)
+    # # 该演示仅展示调用方式，若字段类型不匹配会抛出 TypeError
+    # try:
+    #     result = _run_bit_string_mutation(
+    #         uper_hex="0a501a2ba8a181f05b",
+    #         message_type="dlInformationTransfer",
+    #         target_path=[
+    #             "message", "c1", "dlInformationTransfer",
+    #             "criticalExtensions", "c1", "dlInformationTransfer-r8",
+    #             "dedicatedInfoType", "dedicatedInfoNAS",
+    #         ],
+    #         seed=42,
+    #     )
+    #     print(result)
+    # except TypeError as e:
+    #     print(f"[预期错误] {e}（请替换为 BIT STRING 类型字段路径）")
 
 
 # ---------------------------------------------------------------------------
 # 使用 Agent 与 LLM 交互的示例
 # ---------------------------------------------------------------------------
 
+
+agent = build_agent(model="gpt-4o", temperature=0)
+
+# 测试使用的方法，手动调用大模型,需要API Key
 def demo_agent_interaction():
     """
     通过 LangChain ReAct Agent（需要 OPENAI_API_KEY）与工具交互。

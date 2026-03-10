@@ -16,7 +16,7 @@ from bishe.mutated.tools.mutation_utils import calculate_bit_length
 
 # 尝试导入 pycrate 以进行 ASN.1 编码
 try:
-    from pycrate_asn1dir import RRCLTE
+    from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
     DL_DCCH_Message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     PYCRATE_AVAILABLE = True
 except ImportError:

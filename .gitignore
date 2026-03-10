@@ -1,2 +1,5 @@
 **/__pycache__/
 bishe/generate/chromadb/chroma_db/
+agent.egg-info
+.env
+.langgraph_api

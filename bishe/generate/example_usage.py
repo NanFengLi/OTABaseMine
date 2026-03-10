@@ -4,7 +4,7 @@
 
 from database_manager import RRCDatabaseManager
 from binascii import hexlify
-from pycrate_asn1dir import RRCLTE
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 
 
 def example_insert_message():

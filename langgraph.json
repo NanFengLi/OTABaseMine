@@ -1,0 +1,7 @@
+{
+    "dependencies": ["."],
+    "graphs": {
+        "agent": "./bishe/mutated/langchain_agent.py:agent"
+    },
+    "env": ".env"
+}

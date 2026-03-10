@@ -52,7 +52,7 @@ def validate_message_encoding(message_code: str) -> Tuple[bool, Optional[str]]:
     """
     try:
         # 动态导入必要的模块
-        from pycrate_asn1dir import RRCLTE
+        from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
         from binascii import hexlify
         
         # 执行生成的代码，获取消息变量

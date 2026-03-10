@@ -21,7 +21,8 @@ from pycrate_asn1rt.asnobj import ASN1Obj
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT   = True
 
-from pycrate_asn1dir import RRCLTE
+# from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 
 # 支持的类型 → 对应变异工具名
 _SUPPORTED: Dict[str, str] = {
