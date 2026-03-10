@@ -136,6 +136,7 @@ print(f"生成了 {result['total_count']} 个最小合法载荷")
 | `--seed` | `-s` | 随机种子 | `1` |
 | `--output` | `-o` | 输出文件路径 | `output/rrc_legitimate_payloads.txt` |
 | `--report` | `-r` | 生成报告 JSON 文件 | `output/generation_report.json` |
+| `--append-report` | — | 追加写入报告（JSON 列表） | `False` |
 | `--test` | `-t` | 测试模式 (`single`/`stats`/`benchmark`) | 无 |
 | `--recur-depth` | — | 最大递归展开深度 | `0` |
 | `--no-optional` | — | 不生成可选字段 | `False` |

@@ -11,7 +11,7 @@ RRC 消息精简工具函数
 import logging
 import os
 
-from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 
 
 def find_paths_to_delete_multi(keep: list, optional_paths: list) -> tuple:
@@ -117,7 +117,7 @@ def delete_fields(msg, delete_paths: list):
                 continue
             # 处理嵌套在 OCTET STRING 中的字段
             if key == '*' and type(curr_msg) is bytes:
-                embedded = RRCLTE_R17.GLOBAL.MOD['EUTRA-RRC-Definitions'][p[i + 1]]
+                embedded = RRCLTE.GLOBAL.MOD['EUTRA-RRC-Definitions'][p[i + 1]]
                 embedded.from_uper(curr_msg)
                 r = delete_fields(embedded.get_val(), [p[i + 2:]])
                 embedded.set_val(r)

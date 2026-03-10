@@ -6,7 +6,7 @@ RRC 统计分析模块
 
 从 OTABase artifact/test-case-generator/rrc/rrc_stats.py 抽取。
 """
-from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 
 from pycrate_asn1rt import *
 from pycrate_asn1rt.utils import *
@@ -209,7 +209,7 @@ def get_target_field_count(targets, w_recur=False):
     Returns:
         int: 目标字段数量
     """
-    message = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     recur, stats, _, _ = get_stats(
         message, w_opt=True, targets=targets)
 
@@ -229,7 +229,7 @@ def get_recursif_field_paths(targets, optional=True):
     Returns:
         list: 过滤后的递归路径列表
     """
-    message = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     recur = get_stats(
         message, w_opt=optional, targets=targets)[0]
     filtered_recur = []
@@ -245,7 +245,7 @@ def get_total_ie_count():
     Returns:
         int: IE 总数
     """
-    message = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     _, _, _, ies = get_stats(
         message, w_opt=True, targets=[])
     return len(ies)
@@ -263,6 +263,6 @@ def get_stats_mutation_paths(targets, w_recur=False, w_opt=True):
     Returns:
         set: IE 名称集合
     """
-    message = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     return get_stats(
         message, w_opt=w_opt, targets=targets)[-1]

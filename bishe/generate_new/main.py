@@ -68,7 +68,7 @@ def cmd_generate(args):
 
     # 写入报告
     if args.report:
-        batch_gen.write_report(args.report, result)
+        batch_gen.write_report(args.report, result, append=args.append_report)
 
 
 def cmd_single(args):
@@ -207,6 +207,8 @@ def main():
                         help='输出文件路径')
     parser.add_argument('-r', '--report', type=str, default=None,
                         help='生成报告 JSON 文件路径')
+    parser.add_argument('--append-report', action='store_true',
+                        help='追加写入报告（将每次运行追加到 JSON 列表）')
     parser.add_argument('--recur-depth', type=int, default=0,
                         help='最大递归展开深度 (默认: 0)')
     parser.add_argument('--no-optional', action='store_true',

@@ -18,7 +18,7 @@ from bishe.generate_new.rrc_generator import RRCGenerator
 from bishe.generate_new.rrc_fields import Fields
 from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_count
 from bishe.generate_new.rrc_utils import simplify_message
-from bishe.generate_new.releaseLTE_R17 import RRCLTE_R17
+from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 from bishe.generate_new.config import GeneratorConfig
 
 
@@ -235,13 +235,13 @@ class RRCBatchGenerator:
                 packet_fields, target_path, optional_paths)
 
             # 重新编码
-            packet_obj = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+            packet_obj = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
             packet_obj.set_val(simplified_fields)
             return packet_obj.to_uper().hex()
         except Exception as e:
             logging.warning(f"精简失败，回退使用完整消息: {e}")
             # 回退：用原始完整消息编码
-            packet_obj = RRCLTE_R17.EUTRA_RRC_Definitions.DL_DCCH_Message
+            packet_obj = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
             packet_obj.set_val(packet_fields)
             return packet_obj.to_uper().hex()
 
@@ -308,20 +308,44 @@ class RRCBatchGenerator:
 
         logging.info(f"已写入 {total} 条载荷到 {filepath}")
 
-    def write_report(self, report_file, result):
+    def write_report(self, report_file, result, append=False):
         """
         将生成报告写入 JSON 文件
 
         Args:
             report_file: 报告文件路径
             result: generate_all() 的返回结果
+            append: 是否追加写入（True 时会将报告追加到 JSON 列表）
         """
         os.makedirs(os.path.dirname(report_file) if os.path.dirname(report_file) else '.', exist_ok=True)
 
         report = {k: v for k, v in result.items() if k != 'payloads'}
         report['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')
 
-        with open(report_file, 'w', encoding='utf-8') as f:
-            json.dump(report, f, indent=2, ensure_ascii=False)
+        if not append:
+            with open(report_file, 'w', encoding='utf-8') as f:
+                json.dump(report, f, indent=2, ensure_ascii=False)
+            logging.info(f"已写入生成报告到 {report_file}")
+            return
 
-        logging.info(f"已写入生成报告到 {report_file}")
+        existing_reports = []
+        if os.path.exists(report_file):
+            try:
+                with open(report_file, 'r', encoding='utf-8') as f:
+                    old_content = json.load(f)
+                if isinstance(old_content, list):
+                    existing_reports = old_content
+                elif isinstance(old_content, dict):
+                    # 兼容旧版本单对象格式，自动升级为列表
+                    existing_reports = [old_content]
+                else:
+                    logging.warning(f"报告文件格式非对象/数组，将覆盖重建: {report_file}")
+            except (json.JSONDecodeError, OSError) as e:
+                logging.warning(f"读取历史报告失败，将覆盖重建: {report_file}, error={e}")
+
+        existing_reports.append(report)
+
+        with open(report_file, 'w', encoding='utf-8') as f:
+            json.dump(existing_reports, f, indent=2, ensure_ascii=False)
+
+        logging.info(f"已追加生成报告到 {report_file} (当前 {len(existing_reports)} 条)")
