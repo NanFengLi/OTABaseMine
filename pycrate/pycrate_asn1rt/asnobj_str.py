@@ -1398,7 +1398,9 @@ Specific constraints attributes:
                 else:
                     val, _gen = ASN1CodecPER.decode_const_open_ws(char, self._const_sz, Obj)
                 Obj._parent = _const_cont_par
-                if Obj._typeref is not None:
+                if isinstance(val, bytes_types):
+                    self._val = val
+                elif Obj._typeref is not None:
                     self._val = (Obj._typeref.called[1], val)
                 else:
                     self._val = (Obj.TYPE, val)
@@ -1464,7 +1466,9 @@ Specific constraints attributes:
                 else:
                     val = ASN1CodecPER.decode_const_open(char, self._const_sz, Obj)
                 Obj._parent = _const_cont_par
-                if Obj._typeref is not None:
+                if isinstance(val, bytes_types):
+                    self._val = val
+                elif Obj._typeref is not None:
                     self._val = (Obj._typeref.called[1], val)
                 else:
                     self._val = (Obj.TYPE, val)

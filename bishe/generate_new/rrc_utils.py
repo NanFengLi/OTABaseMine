@@ -46,7 +46,12 @@ def find_paths_to_delete_multi(keep: list, optional_paths: list) -> tuple:
                 break
             # path 是 keep 路径的子节点
             elif path != k and len(k) < len(path) and path[:len(k)] == k:
-                childrens.append(path)
+                # 如果子节点跨越了 OCTET STRING 容器边界（'*'），
+                # 说明它在容器内部，应该删除以精简容器内容
+                if path[len(k)] == '*':
+                    to_delete.append(path)
+                else:
+                    childrens.append(path)
                 found = True
                 break
         if not found:
@@ -84,6 +89,54 @@ def reduce_paths(paths: list, children_paths: list) -> list:
     return unique_paths
 
 
+def _navigate_to(msg, path_keys):
+    """
+    沿路径导航到目标位置，返回 (当前节点, 父节点, 父中的键)。
+
+    处理 CHOICE 元组、'^' 跳过和 '__elem__' 跳过。
+    遇到 '*' (容器边界) 时停止。
+
+    Args:
+        msg:       消息字典
+        path_keys: 路径键列表
+
+    Returns:
+        (curr, parent, key, consumed) 或 None（导航失败时）
+        consumed: 已消费的键数量
+    """
+    curr = msg
+    parent = msg
+    last_key = ''
+    skip_next = False
+
+    for i, key in enumerate(path_keys):
+        if skip_next:
+            skip_next = False
+            continue
+        if key == '*':
+            return curr, parent, last_key, i
+        if key == '__elem__':
+            continue
+        if key == '^':
+            skip_next = True
+            continue
+        if type(curr) is tuple:
+            if key != curr[0]:
+                return None
+            parent = curr
+            last_key = 1
+            curr = curr[1]
+        else:
+            try:
+                parent = curr
+                last_key = key
+                curr = curr[key]
+            except Exception:
+                return None
+
+    return curr, parent, last_key, len(path_keys)
+
+
 def delete_fields(msg, delete_paths: list, global_mod=None):
     """
     从 RRC 消息字典中删除指定路径的字段。
@@ -91,7 +144,7 @@ def delete_fields(msg, delete_paths: list, global_mod=None):
     支持处理：
     - 普通字典键删除
     - CHOICE 元组结构中的删除
-    - 嵌套在 OCTET STRING 容器（以 '*' 标记）中的递归删除
+    - 嵌套在 OCTET STRING 容器（以 '*' 标记）中的递归删除（批量处理）
     - SEQUENCE OF 元素标记（'^' 和 '__elem__'）的跳过
 
     Args:
@@ -102,55 +155,74 @@ def delete_fields(msg, delete_paths: list, global_mod=None):
     Returns:
         dict: 精简后的消息字典
     """
-    simplified_message = msg
+    # 将路径分为：直接删除路径 和 容器内删除路径（按容器分组）
+    direct_paths = []
+    # container_groups: { (container_prefix_tuple): { type_name: [sub_paths] } }
+    container_groups = {}
+
     for p in delete_paths:
-        skip_del = False
-        skip_next_key = False
-        curr_msg = simplified_message
-        parent_msg = simplified_message
-        last_key = ''
-
-        for i, key in enumerate(p[:-1]):
-            if skip_next_key:
-                skip_next_key = False
-                continue
-            # 处理嵌套在 OCTET STRING 中的字段
-            if key == '*' and type(curr_msg) is bytes:
-                try:
-                    embedded = global_mod[p[i + 1]]
-                    embedded.from_uper(curr_msg)
-                    r = delete_fields(embedded.get_val(), [p[i + 2:]], global_mod=global_mod)
-                    embedded.set_val(r)
-                    parent_msg[last_key] = embedded.to_uper()
-                except Exception:
-                    logging.debug(f'Cannot decode embedded content for path {p}, skipping')
-                skip_del = True
+        # 找到第一个 '*'
+        star_idx = None
+        for i, key in enumerate(p):
+            if key == '*':
+                star_idx = i
                 break
-            if key == '*' or '__elem__' == key:
-                continue
-            if key == '^':
-                skip_next_key = True
-                continue
-            if type(curr_msg) is tuple:
-                assert key == curr_msg[0]
-                parent_msg = curr_msg
-                last_key = 1
-                curr_msg = curr_msg[1]
-            else:
-                try:
-                    parent_msg = curr_msg
-                    last_key = key
-                    curr_msg = curr_msg[key]
-                except Exception:
-                    logging.debug(f'Exception accessing {key} in path {p}, skipping')
-                    skip_del = True
-                    break
 
-        if not skip_del:
+        if star_idx is None:
+            direct_paths.append(p)
+        else:
+            prefix = tuple(p[:star_idx])
+            type_name = p[star_idx + 1]
+            sub_path = p[star_idx + 2:]
+            container_groups.setdefault(prefix, {}).setdefault(type_name, []).append(sub_path)
+
+    # 1. 处理直接删除（不涉及容器）
+    simplified_message = msg
+    for p in direct_paths:
+        nav = _navigate_to(simplified_message, p[:-1])
+        if nav is None:
+            logging.debug(f'Cannot navigate to path {p}, skipping')
+            continue
+        curr, _, _, _ = nav
+        try:
+            del curr[p[-1]]
+        except (KeyError, TypeError) as e:
+            logging.debug(f'Could not delete {p[-1]}: {e}')
+
+    # 2. 批量处理容器内删除（每个容器只解码/编码一次）
+    for prefix, type_groups in container_groups.items():
+        nav = _navigate_to(simplified_message, list(prefix))
+        if nav is None:
+            logging.debug(f'Cannot navigate to container prefix {prefix}, skipping')
+            continue
+
+        container_bytes, parent, last_key, _ = nav
+        if not isinstance(container_bytes, bytes):
+            logging.debug(f'Container at {prefix} is not bytes, skipping')
+            continue
+
+        for type_name, sub_paths in type_groups.items():
             try:
-                del curr_msg[p[-1]]
-            except (KeyError, TypeError) as e:
-                logging.debug(f'Could not delete {p[-1]}: {e}')
+                embedded = global_mod[type_name]
+                embedded.from_uper(container_bytes)
+                inner_dict = embedded.get_val()
+
+                # 递归删除容器内的所有路径
+                inner_dict = delete_fields(inner_dict, sub_paths, global_mod=global_mod)
+
+                embedded.set_val(inner_dict)
+                container_bytes = embedded.to_uper()
+
+                # 更新父节点中的容器字节
+                if isinstance(parent, tuple):
+                    # 父是 CHOICE 元组，无法直接修改；需要通过上层处理
+                    logging.debug(f'Container parent is tuple at {prefix}, skipping')
+                else:
+                    parent[last_key] = container_bytes
+            except Exception as e:
+                logging.debug(f'Cannot process container {type_name} at {prefix}: {e}')
+
+    return simplified_message
 
     return simplified_message
 

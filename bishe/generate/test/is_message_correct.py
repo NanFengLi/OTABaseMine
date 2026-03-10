@@ -2,6 +2,7 @@ import ast
 import json
 # import RRC_LET_R19 as RRC_LTE_R19
 from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
+from bishe.pycrate_asn1obj.nr_5g import RRCNR
 from binascii import unhexlify, hexlify
 
 
@@ -137,8 +138,9 @@ def to_uper():
     print(hexlify(DL_DCCH.to_uper()))
 
 def from_uper():
-    DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
-    uper_data = "0220a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d73288380".replace(" ","")
+    # DL_DCCH = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+    DL_DCCH = RRCNR.NR_RRC_Definitions.DL_DCCH_Message
+    uper_data = "020900483322a5e90b2e20ad2ee6201fb1853cc7633cc14f10a2dcd72cc01a0fc59fd07a080ee4a78acdafc17c4d52fc99df8963d4a29cd251784559da0f634adbf0566eee00".replace(" ","")
     DL_DCCH.from_uper(unhexlify(uper_data))
     return DL_DCCH()
 
@@ -316,10 +318,10 @@ def attr_test():
 
 if __name__ == "__main__":
 
-    a = to_uper()
+    # a = to_uper()
     # method_test()
     # attr_test()
     # str_to_dict(BCCH_DL_SCH_Message)
     # a = test_none()
-    # a=from_uper()
+    a=from_uper()
     print(a)

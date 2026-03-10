@@ -772,13 +772,16 @@ class ASN1CodecPER(ASN1Codec):
             if wrapped is None:
                 return buf, GEN
             else:
-                if cla.ALIGNED:
-                    wrapped.from_aper_ws(buf)
-                else:
-                    wrapped.from_uper_ws(buf)
-                val = wrapped._val
-                #wrapped._val = None
-                return val, GEN
+                try:
+                    if cla.ALIGNED:
+                        wrapped.from_aper_ws(buf)
+                    else:
+                        wrapped.from_uper_ws(buf)
+                    val = wrapped._val
+                    #wrapped._val = None
+                    return val, GEN
+                except Exception:
+                    return buf, GEN
         elif wrapped is None:
             V = Buf('V', bl=8*ldet, rep=REPR_HEX)
             V._from_char(char)
@@ -792,19 +795,30 @@ class ASN1CodecPER(ASN1Codec):
             char._len_bit = char._cur + 8*ldet
             if char._len_bit > lb:
                 raise(ASN1PERDecodeErr('length determinant too long'))
-            if cla.ALIGNED:
-                # keep track of the char's cursor to increment the APER offset
-                _cur = char._cur
-                wrapped.from_aper_ws(char)
-                cla._off[-1] += char._cur - _cur
-            else:
-                wrapped.from_uper_ws(char)
-            # restore char length
-            char._len_bit = lb
-            GEN.append(wrapped._struct)
-            val = wrapped._val
-            #wrapped._val = None
-            return val, GEN
+            _cur_saved = char._cur
+            try:
+                if cla.ALIGNED:
+                    # keep track of the char's cursor to increment the APER offset
+                    _cur = char._cur
+                    wrapped.from_aper_ws(char)
+                    cla._off[-1] += char._cur - _cur
+                else:
+                    wrapped.from_uper_ws(char)
+                # restore char length
+                char._len_bit = lb
+                GEN.append(wrapped._struct)
+                val = wrapped._val
+                #wrapped._val = None
+                return val, GEN
+            except Exception:
+                char._cur = _cur_saved
+                char._len_bit = lb
+                V = Buf('V', bl=8*ldet, rep=REPR_HEX)
+                V._from_char(char)
+                GEN.append(V)
+                if cla.ALIGNED:
+                    cla._off[-1] += 8*ldet
+                return V(), GEN
     
     @classmethod
     def decode_const_open_ws(cla, char, const_sz, wrapped=None):
@@ -832,20 +846,31 @@ class ASN1CodecPER(ASN1Codec):
             char._len_bit = char._cur + 8*ldet
             if char._len_bit > lb:
                 raise(ASN1PERDecodeErr('length determinant too long'))
-            # decoding a wrapped object
-            if cla.ALIGNED:
-                # keep track of the char's cursor to increment the APER offset
-                _cur = char._cur
-                wrapped.from_aper_ws(char)
-                cla._off[-1] += char._cur - _cur
-            else:
-                wrapped.from_uper_ws(char)
-            # restore char length
-            char._len_bit = lb
-            GEN.append(wrapped._struct)
-            val = wrapped._val
-            #wrapped._val = None
-            return val, GEN
+            _cur_saved = char._cur
+            try:
+                # decoding a wrapped object
+                if cla.ALIGNED:
+                    # keep track of the char's cursor to increment the APER offset
+                    _cur = char._cur
+                    wrapped.from_aper_ws(char)
+                    cla._off[-1] += char._cur - _cur
+                else:
+                    wrapped.from_uper_ws(char)
+                # restore char length
+                char._len_bit = lb
+                GEN.append(wrapped._struct)
+                val = wrapped._val
+                #wrapped._val = None
+                return val, GEN
+            except Exception:
+                char._cur = _cur_saved
+                char._len_bit = lb
+                V = Buf('V', bl=8*ldet, rep=REPR_HEX)
+                V._from_char(char)
+                GEN.append(V)
+                if cla.ALIGNED:
+                    cla._off[-1] += 8*ldet
+                return V(), GEN
     
     @classmethod
     def decode_unconst_open(cla, char, wrapped=None):
@@ -859,13 +884,16 @@ class ASN1CodecPER(ASN1Codec):
             if wrapped is None:
                 return buf
             else:
-                if cla.ALIGNED:
-                    wrapped.from_aper(buf)
-                else:
-                    wrapped.from_uper(buf)
-                val = wrapped._val
-                #wrapped._val = None
-                return val
+                try:
+                    if cla.ALIGNED:
+                        wrapped.from_aper(buf)
+                    else:
+                        wrapped.from_uper(buf)
+                    val = wrapped._val
+                    #wrapped._val = None
+                    return val
+                except Exception:
+                    return buf
         elif wrapped is None:
             if cla.ALIGNED:
                 cla._off[-1] += 8*ldet
@@ -876,18 +904,26 @@ class ASN1CodecPER(ASN1Codec):
             char._len_bit = char._cur + 8*ldet
             if char._len_bit > lb:
                 raise(ASN1PERDecodeErr('length determinant too long'))
-            if cla.ALIGNED:
-                # keep track of the char's cursor to increment the APER offset
-                _cur = char._cur
-                wrapped.from_aper(char)
-                cla._off[-1] += char._cur - _cur
-            else:
-                wrapped.from_uper(char)
-            # restore char length
-            char._len_bit = lb
-            val = wrapped._val
-            #wrapped._val = None
-            return val
+            _cur_saved = char._cur
+            try:
+                if cla.ALIGNED:
+                    # keep track of the char's cursor to increment the APER offset
+                    _cur = char._cur
+                    wrapped.from_aper(char)
+                    cla._off[-1] += char._cur - _cur
+                else:
+                    wrapped.from_uper(char)
+                # restore char length
+                char._len_bit = lb
+                val = wrapped._val
+                #wrapped._val = None
+                return val
+            except Exception:
+                char._cur = _cur_saved
+                char._len_bit = lb
+                if cla.ALIGNED:
+                    cla._off[-1] += 8*ldet
+                return char.get_bytes(8*ldet)
     
     @classmethod
     def decode_const_open(cla, char, const_sz, wrapped=None):
@@ -912,19 +948,27 @@ class ASN1CodecPER(ASN1Codec):
             char._len_bit = char._cur + 8*ldet
             if char._len_bit > lb:
                 raise(ASN1PERDecodeErr('length determinant too long'))
-            # decoding a wrapped object
-            if cla.ALIGNED:
-                # keep track of the char's cursor to increment the APER offset
-                _cur = char._cur
-                wrapped.from_aper(char)
-                cla._off[-1] += char._cur - _cur
-            else:
-                wrapped.from_uper(char)
-            # restore char length
-            char._len_bit = lb
-            val = wrapped._val
-            #wrapped._val = None
-            return val
+            _cur_saved = char._cur
+            try:
+                # decoding a wrapped object
+                if cla.ALIGNED:
+                    # keep track of the char's cursor to increment the APER offset
+                    _cur = char._cur
+                    wrapped.from_aper(char)
+                    cla._off[-1] += char._cur - _cur
+                else:
+                    wrapped.from_uper(char)
+                # restore char length
+                char._len_bit = lb
+                val = wrapped._val
+                #wrapped._val = None
+                return val
+            except Exception:
+                char._cur = _cur_saved
+                char._len_bit = lb
+                if cla.ALIGNED:
+                    cla._off[-1] += 8*ldet
+                return char.get_bytes(8*ldet)
     
     @classmethod
     def encode_unconst_open_ws(cla, wrapped):
