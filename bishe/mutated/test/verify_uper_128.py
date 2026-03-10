@@ -7,11 +7,11 @@
 
 """
 
-from pycrate_asn1rt.asnobj import ASN1Obj
+from pycrate.pycrate_asn1rt.asnobj import ASN1Obj
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT = True
 
-from pycrate_asn1rt.asnobj_str import OCT_STR
+from pycrate.pycrate_asn1rt.asnobj_str import OCT_STR
 
 for length in [0, 1, 32, 127, 128, 129, 255, 256, 16383, 16384]:
     obj = OCT_STR()

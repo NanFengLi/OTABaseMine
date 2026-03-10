@@ -6,15 +6,13 @@ RRC 统计分析模块
 
 从 OTABase artifact/test-case-generator/rrc/rrc_stats.py 抽取。
 """
-from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
-
-from pycrate_asn1rt import *
-from pycrate_asn1rt.utils import *
-from pycrate_asn1rt.err import *
-from pycrate_asn1rt.refobj import *
-from pycrate_asn1rt.dictobj import *
-from pycrate_asn1rt.setobj import *
-from pycrate_asn1rt.codecs import *
+from pycrate.pycrate_asn1rt import *
+from pycrate.pycrate_asn1rt.utils import *
+from pycrate.pycrate_asn1rt.err import *
+from pycrate.pycrate_asn1rt.refobj import *
+from pycrate.pycrate_asn1rt.dictobj import *
+from pycrate.pycrate_asn1rt.setobj import *
+from pycrate.pycrate_asn1rt.codecs import *
 
 from .rrc_fields import Fields
 
@@ -198,18 +196,18 @@ def sum_stats(targets, stats):
     return total
 
 
-def get_target_field_count(targets, w_recur=False):
+def get_target_field_count(targets, w_recur=False, message=None):
     """
     获取 DL-DCCH-Message 中目标字段的总数量。
 
     Args:
         targets: 目标字段类型列表
         w_recur: 是否计入递归路径中的字段
+        message: DL-DCCH-Message ASN.1 对象
 
     Returns:
         int: 目标字段数量
     """
-    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     recur, stats, _, _ = get_stats(
         message, w_opt=True, targets=targets)
 
@@ -218,18 +216,18 @@ def get_target_field_count(targets, w_recur=False):
     return sum_stats(targets, stats)
 
 
-def get_recursif_field_paths(targets, optional=True):
+def get_recursif_field_paths(targets, optional=True, message=None):
     """
     获取所有会导致递归的字段路径。
 
     Args:
         targets: 目标字段类型列表
         optional: 是否包含可选字段
+        message: DL-DCCH-Message ASN.1 对象
 
     Returns:
         list: 过滤后的递归路径列表
     """
-    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     recur = get_stats(
         message, w_opt=optional, targets=targets)[0]
     filtered_recur = []
@@ -238,20 +236,22 @@ def get_recursif_field_paths(targets, optional=True):
     return filtered_recur
 
 
-def get_total_ie_count():
+def get_total_ie_count(message=None):
     """
     获取 DL-DCCH-Message 中所有 IE 的总数量。
+
+    Args:
+        message: DL-DCCH-Message ASN.1 对象
 
     Returns:
         int: IE 总数
     """
-    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     _, _, _, ies = get_stats(
         message, w_opt=True, targets=[])
     return len(ies)
 
 
-def get_stats_mutation_paths(targets, w_recur=False, w_opt=True):
+def get_stats_mutation_paths(targets, w_recur=False, w_opt=True, message=None):
     """
     获取所有可用于生成的目标路径。
 
@@ -259,10 +259,10 @@ def get_stats_mutation_paths(targets, w_recur=False, w_opt=True):
         targets: 目标字段类型列表
         w_recur: 是否考虑递归
         w_opt: 是否包含可选字段
+        message: DL-DCCH-Message ASN.1 对象
 
     Returns:
         set: IE 名称集合
     """
-    message = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     return get_stats(
         message, w_opt=w_opt, targets=targets)[-1]

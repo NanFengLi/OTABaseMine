@@ -18,7 +18,7 @@ import random                        # 随机数生成
 from typing import List, Tuple, Optional  # 类型提示
 
 # ── pycrate ASN.1 运行时配置 ──────────────────────────────────────────────────
-from pycrate_asn1rt.asnobj import ASN1Obj  # ASN.1 对象基类
+from pycrate.pycrate_asn1rt.asnobj import ASN1Obj  # ASN.1 对象基类
 ASN1Obj._SAFE_BND = False  # 关闭安全边界检查，允许设置超出约束范围的值
 ASN1Obj._SILENT  = True    # 静默模式，抑制 pycrate 的告警输出
 

@@ -5,7 +5,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from pycrate_asn1rt.asnobj import ASN1Obj
+from pycrate.pycrate_asn1rt.asnobj import ASN1Obj
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT = True
 from bishe.pycrate_asn1obj.eutran_4g import RRCLTE

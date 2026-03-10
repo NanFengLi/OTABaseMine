@@ -7,7 +7,7 @@ RRC 合法样例生成器
 仅包含生成逻辑，不包含变异/fuzzing 策略。
 从 OTABase artifact/test-case-generator/rrc/rrc_generator.py 抽取核心生成功能。
 """
-from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
+from bishe.generate_new.rrc_protocol import RRCContext
 from bishe.generate_new.rrc_choices import get_choices
 from bishe.generate_new.rrc_fields import Fields
 from bishe.generate_new.rrc_stats import get_recursif_field_paths
@@ -33,15 +33,18 @@ class RRCGenerator:
     OCTET_STRING_LENGTH = 32
     BIT_STRING_LENGTH = 64
 
-    def __init__(self, targets: list, max_recur_depth=0, seed=20, optional=True) -> None:
+    def __init__(self, targets: list, max_recur_depth=0, seed=20, optional=True,
+                 rrc_ctx: RRCContext = None) -> None:
         self.seed = seed
         random.seed(seed)
         self.targets = targets
         self.optional = optional
-        self.bb = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+        self.rrc_ctx = rrc_ctx
+        self.bb = rrc_ctx.dl_dcch_message
 
         self.recursif_fields = list(
-            map(lambda x: x[-1], get_recursif_field_paths(self.targets)))
+            map(lambda x: x[-1], get_recursif_field_paths(
+                self.targets, message=self.bb)))
         self.max_recur_depth = max_recur_depth
 
         # 对每个目标字段，获取到达该字段的路径及所需的 CHOICE 选择序列
@@ -236,7 +239,7 @@ class RRCGenerator:
                         return b'a', [], optional_paths
                     recur_depth = recur_depth + 1
 
-                container = RRCLTE.GLOBAL.MOD['EUTRA-RRC-Definitions'][
+                container = self.rrc_ctx.global_mod[
                     bb._const_cont.get_type_list()[0]]
 
                 ie, rec_mutation_paths, rec_optional_paths = self._loop_IE(
@@ -345,7 +348,7 @@ class RRCGenerator:
             mutation_paths:  可用于后续处理的路径列表
             optional_paths:  可选字段路径列表
         """
-        gen_result = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+        gen_result = self.rrc_ctx.dl_dcch_message
         result, mutation_paths, optional_paths = self._loop_IE(
             self.bb, targets=self.targets)
 

@@ -17,7 +17,7 @@
 
 from typing import Dict, List
 
-from pycrate_asn1rt.asnobj import ASN1Obj
+from pycrate.pycrate_asn1rt.asnobj import ASN1Obj
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT   = True
 

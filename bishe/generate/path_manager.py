@@ -9,14 +9,14 @@ from typing import List, Dict, Tuple, Any
 # From bishe/generate to OTABase root is ../../
 
 try:
-    from pycrate_rrc_version import RRCLTE_R17
-    from pycrate_asn1rt import *
-    from pycrate_asn1rt.utils import *
-    from pycrate_asn1rt.err import *
-    from pycrate_asn1rt.refobj import *
-    from pycrate_asn1rt.dictobj import *
-    from pycrate_asn1rt.setobj import *
-    from pycrate_asn1rt.codecs import *
+    from pycrate.pycrate_rrc_version import RRCLTE_R17
+    from pycrate.pycrate_asn1rt import *
+    from pycrate.pycrate_asn1rt.utils import *
+    from pycrate.pycrate_asn1rt.err import *
+    from pycrate.pycrate_asn1rt.refobj import *
+    from pycrate.pycrate_asn1rt.dictobj import *
+    from pycrate.pycrate_asn1rt.setobj import *
+    from pycrate.pycrate_asn1rt.codecs import *
 except ImportError as e:
     logging.error(f"Failed to import pycrate or RRCLTE_R17: {e}")
     RRCLTE_R17 = None

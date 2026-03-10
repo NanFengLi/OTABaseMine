@@ -11,8 +11,6 @@ RRC 消息精简工具函数
 import logging
 import os
 
-from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
-
 
 def find_paths_to_delete_multi(keep: list, optional_paths: list) -> tuple:
     """
@@ -86,7 +84,7 @@ def reduce_paths(paths: list, children_paths: list) -> list:
     return unique_paths
 
 
-def delete_fields(msg, delete_paths: list):
+def delete_fields(msg, delete_paths: list, global_mod=None):
     """
     从 RRC 消息字典中删除指定路径的字段。
 
@@ -99,6 +97,7 @@ def delete_fields(msg, delete_paths: list):
     Args:
         msg:          RRC 消息字典
         delete_paths: 要删除的字段路径列表
+        global_mod:   GLOBAL.MOD 中的协议定义字典
 
     Returns:
         dict: 精简后的消息字典
@@ -117,11 +116,14 @@ def delete_fields(msg, delete_paths: list):
                 continue
             # 处理嵌套在 OCTET STRING 中的字段
             if key == '*' and type(curr_msg) is bytes:
-                embedded = RRCLTE.GLOBAL.MOD['EUTRA-RRC-Definitions'][p[i + 1]]
-                embedded.from_uper(curr_msg)
-                r = delete_fields(embedded.get_val(), [p[i + 2:]])
-                embedded.set_val(r)
-                parent_msg[last_key] = embedded.to_uper()
+                try:
+                    embedded = global_mod[p[i + 1]]
+                    embedded.from_uper(curr_msg)
+                    r = delete_fields(embedded.get_val(), [p[i + 2:]], global_mod=global_mod)
+                    embedded.set_val(r)
+                    parent_msg[last_key] = embedded.to_uper()
+                except Exception:
+                    logging.debug(f'Cannot decode embedded content for path {p}, skipping')
                 skip_del = True
                 break
             if key == '*' or '__elem__' == key:
@@ -154,7 +156,7 @@ def delete_fields(msg, delete_paths: list):
 
 
 def simplify_message(packet_fields: dict, target_path: list,
-                     optional_paths: list) -> dict:
+                     optional_paths: list, global_mod=None) -> dict:
     """
     将 RRC 消息精简为到达目标字段的最小合法消息。
 
@@ -179,6 +181,6 @@ def simplify_message(packet_fields: dict, target_path: list,
     reduced_paths = reduce_paths(paths_to_delete, childrens)
 
     # 执行删除
-    simplified = delete_fields(packet_fields, reduced_paths)
+    simplified = delete_fields(packet_fields, reduced_paths, global_mod=global_mod)
 
     return simplified

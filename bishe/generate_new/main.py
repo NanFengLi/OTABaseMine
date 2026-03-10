@@ -2,14 +2,17 @@
 RRC 合法测试样例生成器 - 主入口
 
 用法:
-    # 使用默认配置生成（目标: OCTET_STRING）
+    # 使用默认配置生成（目标: OCTET_STRING，协议: 4G LTE）
     python -m bishe.generate_new.main
 
     # 指定目标字段类型
     python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
 
+    # 生成 5G NR 的 RRC 消息
+    python -m bishe.generate_new.main --rat 5g
+
     # 指定输出文件、种子和循环次数(循环次数是指有些字段会循环嵌套使用，嵌套的深度即为循环次数)
-    python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output/rrc_payloads.txt
+    python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output_4g/rrc_payloads.txt
 
     # 生成单个数据包（测试模式）
     python -m bishe.generate_new.main -t single
@@ -27,6 +30,7 @@ from bishe.generate_new.rrc_fields import Fields
 from bishe.generate_new.rrc_generator import RRCGenerator
 from bishe.generate_new.rrc_batch_generator import RRCBatchGenerator
 from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_count
+from bishe.generate_new.rrc_protocol import RRCContext, RATType
 from bishe.generate_new.config import GeneratorConfig
 
 
@@ -47,7 +51,9 @@ def parse_target_fields(field_names: list) -> list:
 def cmd_generate(args):
     """执行批量生成"""
     target_fields = parse_target_fields(args.fields)
+    rrc_ctx = RRCContext(RATType(args.rat))
 
+    logging.info(f"协议类型: {args.rat.upper()}")
     logging.info(f"目标字段: {', '.join(f.name for f in target_fields)}")
     logging.info(f"随机种子: {args.seed}")
     logging.info(f"循环次数: {args.cycles}")
@@ -59,6 +65,7 @@ def cmd_generate(args):
         max_recur_depth=args.recur_depth,
         optional=not args.no_optional,
         simplify=not args.no_simplify,
+        rrc_ctx=rrc_ctx,
     )
 
     result = batch_gen.generate_all(
@@ -74,12 +81,14 @@ def cmd_generate(args):
 def cmd_single(args):
     """生成单个数据包"""
     target_fields = parse_target_fields(args.fields)
+    rrc_ctx = RRCContext(RATType(args.rat))
 
     generator = RRCGenerator(
         targets=target_fields,
         seed=args.seed,
         max_recur_depth=args.recur_depth,
         optional=not args.no_optional,
+        rrc_ctx=rrc_ctx,
     )
 
     logging.info("生成单个合法 RRC 数据包:")
@@ -100,20 +109,24 @@ def cmd_single(args):
 
 def cmd_stats(args):
     """显示统计信息"""
+    rrc_ctx = RRCContext(RATType(args.rat))
     all_targets = [Fields.BIT_STRING, Fields.OCTET_STRING, Fields.INTEGER, Fields.SEQOF]
 
+    rat_label = "LTE 4G" if args.rat == "4g" else "NR 5G"
     print("=" * 60)
-    print("RRC DL-DCCH-Message 目标字段统计")
+    print(f"RRC DL-DCCH-Message 目标字段统计 ({rat_label})")
     print("=" * 60)
 
-    total_ie = get_total_ie_count()
+    total_ie = get_total_ie_count(message=rrc_ctx.dl_dcch_message)
     print(f"\nIE 总数: {total_ie}")
 
     for target in all_targets:
-        count = get_target_field_count(targets=[target], w_recur=False)
+        count = get_target_field_count(
+            targets=[target], w_recur=False, message=rrc_ctx.dl_dcch_message)
         print(f"  {target.name:15s}: {count} 个可变异路径")
 
-    all_count = get_target_field_count(targets=all_targets, w_recur=False)
+    all_count = get_target_field_count(
+        targets=all_targets, w_recur=False, message=rrc_ctx.dl_dcch_message)
     print(f"  {'ALL':15s}: {all_count} 个可变异路径")
     print()
 
@@ -121,10 +134,12 @@ def cmd_stats(args):
 def cmd_benchmark(args):
     """基准测试"""
     target_fields = parse_target_fields(args.fields)
+    rrc_ctx = RRCContext(RATType(args.rat))
 
     generator = RRCGenerator(
         targets=target_fields,
         seed=args.seed,
+        rrc_ctx=rrc_ctx,
     )
 
     n_tests = args.benchmark_count
@@ -174,17 +189,23 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  # 生成覆盖所有 OCTET_STRING 路径的合法载荷
+  # 生成覆盖所有 OCTET_STRING 路径的合法载荷（4G）
   python -m bishe.generate_new.main -f OCTET_STRING
+
+  # 生成 5G NR 的 RRC 消息
+  python -m bishe.generate_new.main --rat 5g
 
   # 生成覆盖所有字段类型的合法载荷
   python -m bishe.generate_new.main -f BIT_STRING OCTET_STRING INTEGER SEQOF
 
   # 指定输出和种子
-  python -m bishe.generate_new.main -f OCTET_STRING -s 42 -o output/payloads.txt
+  python -m bishe.generate_new.main -f OCTET_STRING -s 42 -o output_4g/payloads.txt
 
   # 显示统计信息
   python -m bishe.generate_new.main -t stats
+
+  # 显示 5G 统计信息
+  python -m bishe.generate_new.main -t stats --rat 5g
 
   # 基准测试
   python -m bishe.generate_new.main -t benchmark -n 100
@@ -194,6 +215,10 @@ def main():
     parser.add_argument('-t', '--test', type=str,
                         choices=['single', 'stats', 'benchmark'],
                         help='测试模式: single(生成单包), stats(统计), benchmark(基准测试)')
+    parser.add_argument('--rat', type=str,
+                        choices=['4g', '5g'],
+                        default='4g',
+                        help='无线接入技术类型: 4g(LTE), 5g(NR) (默认: 4g)')
     parser.add_argument('-f', '--fields', type=str, nargs='+',
                         choices=['BIT_STRING', 'OCTET_STRING', 'INTEGER', 'SEQOF'],
                         default=['OCTET_STRING'],
@@ -228,16 +253,18 @@ def main():
     log_level = logging.DEBUG if args.debug else logging.INFO
     setup_logging(level=log_level)
 
-    # 设置默认输出路径
+    # 根据 RAT 类型设置默认输出路径
+    output_subdir = "output_4g" if args.rat == "4g" else "output_5g"
+
     if args.output is None and args.test is None:
-        os.makedirs(os.path.join(os.path.dirname(__file__), 'output'), exist_ok=True)
-        args.output = os.path.join(
-            os.path.dirname(__file__), 'output', GeneratorConfig.DEFAULT_OUTPUT_FILE)
+        out_dir = os.path.join(os.path.dirname(__file__), output_subdir)
+        os.makedirs(out_dir, exist_ok=True)
+        args.output = os.path.join(out_dir, GeneratorConfig.DEFAULT_OUTPUT_FILE)
 
     if args.report is None and args.test is None:
-        os.makedirs(os.path.join(os.path.dirname(__file__), 'output'), exist_ok=True)
-        args.report = os.path.join(
-            os.path.dirname(__file__), 'output', GeneratorConfig.REPORT_FILE)
+        out_dir = os.path.join(os.path.dirname(__file__), output_subdir)
+        os.makedirs(out_dir, exist_ok=True)
+        args.report = os.path.join(out_dir, GeneratorConfig.REPORT_FILE)
 
     # 执行
     if args.test == 'single':

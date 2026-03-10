@@ -18,7 +18,7 @@ from bishe.generate_new.rrc_generator import RRCGenerator
 from bishe.generate_new.rrc_fields import Fields
 from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_count
 from bishe.generate_new.rrc_utils import simplify_message
-from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
+from bishe.generate_new.rrc_protocol import RRCContext
 from bishe.generate_new.config import GeneratorConfig
 
 
@@ -38,7 +38,8 @@ class RRCBatchGenerator:
     """
 
     def __init__(self, targets=None, seed=1, cycles=1,
-                 max_recur_depth=0, optional=True, simplify=True):
+                 max_recur_depth=0, optional=True, simplify=True,
+                 rrc_ctx: RRCContext = None):
         """
         初始化批量生成器
 
@@ -48,6 +49,7 @@ class RRCBatchGenerator:
             cycles:           生成循环次数（每个循环覆盖所有目标路径一次）
             max_recur_depth:  最大递归展开深度
             optional:         是否生成可选字段
+            rrc_ctx:          RRC 协议上下文
         """
         if targets is None:
             targets = [Fields.OCTET_STRING]
@@ -58,6 +60,7 @@ class RRCBatchGenerator:
         self.optional = optional
         self.max_recur_depth = max_recur_depth
         self.simplify = simplify
+        self.rrc_ctx = rrc_ctx
 
         random.seed(seed)
 
@@ -66,14 +69,16 @@ class RRCBatchGenerator:
             targets=targets,
             max_recur_depth=max_recur_depth,
             seed=seed,
-            optional=optional
+            optional=optional,
+            rrc_ctx=rrc_ctx
         )
 
         # 计算目标字段总数（用于覆盖率计算）
         w_recur = not (max_recur_depth == 0)
         self.total_targets = get_target_field_count(
-            targets=targets, w_recur=w_recur)
-        self.total_ie_count = get_total_ie_count()
+            targets=targets, w_recur=w_recur, message=rrc_ctx.dl_dcch_message)
+        self.total_ie_count = get_total_ie_count(
+            message=rrc_ctx.dl_dcch_message)
 
         logging.info(f"RRC 批量生成器初始化完成:")
         logging.info(f"  目标字段类型: {[t.name for t in targets]}")
@@ -232,16 +237,17 @@ class RRCBatchGenerator:
         """
         try:
             simplified_fields = simplify_message(
-                packet_fields, target_path, optional_paths)
+                packet_fields, target_path, optional_paths,
+                global_mod=self.rrc_ctx.global_mod)
 
             # 重新编码
-            packet_obj = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+            packet_obj = self.rrc_ctx.dl_dcch_message
             packet_obj.set_val(simplified_fields)
             return packet_obj.to_uper().hex()
         except Exception as e:
             logging.warning(f"精简失败，回退使用完整消息: {e}")
             # 回退：用原始完整消息编码
-            packet_obj = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
+            packet_obj = self.rrc_ctx.dl_dcch_message
             packet_obj.set_val(packet_fields)
             return packet_obj.to_uper().hex()
 
