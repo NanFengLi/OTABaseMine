@@ -152,7 +152,7 @@ void rrc_ue_impl::maybe_send_next_otabase_rrc_message(const char* trigger)
 
 bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
 {
-  const std::string& index_file_name = context.cfg.otabase_test_index_file;
+  static const std::string index_file_name = "testFileIndex";
 
   if (!otabase_is_test_file_open) {
     std::ifstream index_file(index_file_name);
@@ -370,6 +370,7 @@ void rrc_ue_impl::notify_rrc_oracle()
       }
       if (!context.cfg.otabase_replay_mode) {
         otabase_blacklist_test_cases(otabase_backtracking_msg);
+        otabase_temp_blacklist_test_cases(otabase_backtracking_msg);
       }
     }
   } else {
@@ -462,6 +463,14 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
   const std::string log_dir = "otabase_crashes";
   fs::create_directories(log_dir + "/crashes");
 
+  // Keep a persistent crash counter to match OTABase behavior across restarts.
+  const std::string crash_count_file = log_dir + "/crashes/crash_count.txt";
+  if (otabase_crash_counter == 0 && fs::exists(crash_count_file)) {
+    std::ifstream in_count(crash_count_file);
+    if (in_count.is_open()) {
+      in_count >> otabase_crash_counter;
+    }
+  }
   ++otabase_crash_counter;
 
   // Build JSON-like plain-text report of the recent messages.
@@ -501,7 +510,23 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
   report << "}\n";
 
   std::string crash_dir = log_dir + "/crashes/crash_" + std::to_string(otabase_crash_counter);
+  while (fs::exists(crash_dir)) {
+    ++otabase_crash_counter;
+    crash_dir = log_dir + "/crashes/crash_" + std::to_string(otabase_crash_counter);
+  }
   fs::create_directories(crash_dir);
+
+  std::ofstream out_count(crash_count_file);
+  if (out_count.is_open()) {
+    out_count << otabase_crash_counter;
+  }
+
+  const std::string candidate_list_file = log_dir + "/candidate_list.txt";
+  std::ofstream      out_candidate(candidate_list_file, std::ios::app);
+  if (out_candidate.is_open()) {
+    const uint64_t candidate_line = otabase_cur_line_num - otabase_backtracking_num;
+    out_candidate << otabase_test_file_name << "," << candidate_line << "\n";
+  }
 
   std::ofstream out(crash_dir + "/candidates.json");
   if (out.is_open()) {
@@ -528,7 +553,12 @@ void rrc_ue_impl::otabase_blacklist_test_cases(const std::string& blacklist_msg)
 
   // Skip ahead in the input file past all entries with the same msgName+fieldName.
   std::string line;
-  while (std::getline(otabase_input_test_file, line)) {
+  while (true) {
+    std::streampos cur_pos = otabase_input_test_file.tellg();
+    if (!std::getline(otabase_input_test_file, line)) {
+      break;
+    }
+
     otabase_cur_line_num++;
     std::istringstream ls(line);
     std::string        num, pl, cur_msg_fields;
@@ -537,11 +567,10 @@ void rrc_ue_impl::otabase_blacklist_test_cases(const std::string& blacklist_msg)
     std::getline(ls, cur_msg_fields);
 
     if (cur_msg_fields != msg_and_fields) {
-      // Went past the blacklisted block — seek back so this line is read next time.
+      // Went past the blacklisted block — roll back so this line is read next time.
+      otabase_input_test_file.clear();
+      otabase_input_test_file.seekg(cur_pos);
       otabase_cur_line_num--;
-      // We can't easily seekg on getline-consumed lines, so we just continue from here.
-      // The current approach: this non-matching line is consumed.  We'll accept a 1-line
-      // skip for simplicity, consistent with 4G behavior.
       break;
     }
     logger.log_info("OTABase: blacklist skip line {}", otabase_cur_line_num - 1);
