@@ -116,6 +116,67 @@ mutate_xxx(
 ) -> List[Tuple[str, str, List[str]]]
 ```
 
+### UPER 编码基础
+
+理解变异策略前，需要先了解各字段类型在 UPER（Unaligned PER）中的编码方式。
+
+#### INTEGER 的 UPER 编码
+
+有约束 `INTEGER (lb..ub)` 时，编码为 constrained whole number：
+- 占用 $lbs = \lceil \log_2(ub - lb + 1) \rceil$ 比特
+- 编码值 = `actual_value - lb`（偏移量表示）
+- 无长度头，定长编码
+
+#### OCTET STRING 的 UPER 编码
+
+分三种情况：
+
+**1. 固定长度 `SIZE(n)`**
+- 无长度头，直接编码 n 个字节的内容（n×8 bit）
+
+**2. 有约束 `SIZE(lb..ub)`**
+- `ub < 65536` 时：长度头用 constrained whole number 编码，占 $\lceil \log_2(ub - lb + 1) \rceil$ bit，值为 `actual_len - lb`，后跟内容字节
+- `ub ≥ 65536` 时：使用分片编码（fragmentation）
+- **不做字节对齐**，长度头紧接前面的比特流
+
+**3. 无约束（无 SIZE 限制）**
+- 先对齐到字节边界（padding 到 8 的整数倍）
+- 长度头采用通用长度编码（见下方"长度决定子"表格）
+- 后跟内容字节
+- 长度头和内容都是 **octet-aligned**（按字节对齐）
+
+#### BIT STRING 的 UPER 编码
+
+与 OCTET STRING 类似，区别在于长度头和内容的单位是**比特**而非字节：
+
+**1. 固定长度 `SIZE(n)`**
+- 无长度头，直接编码 n 个比特
+
+**2. 有约束 `SIZE(lb..ub)`**
+- 长度头 $\lceil \log_2(ub - lb + 1) \rceil$ bit，值为 `actual_bitlen - lb`
+- 后跟实际比特内容
+
+**3. 无约束**
+- 先对齐到字节边界
+- 长度头采用通用长度编码（单位为比特数）
+- 后跟比特内容
+
+#### SEQUENCE OF 的 UPER 编码
+
+有约束 `SIZE(lb..ub)` 时：
+- 长度头用 constrained whole number 编码，占 $\lceil \log_2(ub - lb + 1) \rceil$ bit，值为 `count - lb`
+- 后跟各元素的 UPER 编码（紧接排列）
+
+#### 通用长度决定子（Length Determinant）
+
+无约束类型统一使用的长度编码格式：
+
+| 长度范围 | 编码字节数 | 首位模式 | 编码值范围 |
+|---|---|---|---|
+| 0 ~ 127 | 1 字节 | `0xxxxxxx` | `0x00` ~ `0x7F` |
+| 128 ~ 16383 | 2 字节 | `10xxxxxx xxxxxxxx` | `0x8080` ~ `0xBFFF` |
+| ≥ 16384 | 分片 | `11xxxxxx`（表示 n×16384） | `0xC1` ~ `0xC4` |
+
 ### 各字段类型变异策略
 
 #### INTEGER（3 条）

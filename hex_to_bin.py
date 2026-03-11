@@ -12,5 +12,5 @@ def hex_to_bin(hex_str):
 		return None
 
 if __name__ == "__main__":
-	hex_input = "0a508e9428a181f05b"  # 修改这里的16进制字符串
+	hex_input = "02440400100401f1c91de0d56def2458b4bb604038b9b9dc0cd0347995bd359c5b59c394b23e7ef0"  # 修改这里的16进制字符串
 	hex_to_bin(hex_input)
