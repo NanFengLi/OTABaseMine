@@ -3,3 +3,5 @@ bishe/generate/chromadb/chroma_db/
 agent.egg-info
 .env
 .langgraph_api
+bishe/generate_new/output_5g/rrc_legitimate_payloads.txt
+bishe/generate_new/output_5g/rrc_legitimate_payloads.txt
