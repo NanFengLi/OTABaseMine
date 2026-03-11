@@ -372,6 +372,18 @@ static void configure_cli11_rrc_args(CLI::App& app, cu_cp_unit_rrc_config& confi
           config.otabase_test_index_file,
           "Path to OTABase test index file (default: testFileIndex)")
         ->capture_default_str();
+
+    add_option(app,
+          "--otabase_check_period",
+          config.otabase_check_period,
+          "Oracle liveness check period (default: 10)")
+        ->capture_default_str();
+
+    add_option(app,
+          "--otabase_replay_mode",
+          config.otabase_replay_mode,
+          "Enable OTABase replay mode")
+        ->capture_default_str();
 }
 
 static void configure_cli11_security_args(CLI::App& app, cu_cp_unit_security_config& config)

@@ -1,0 +1,29 @@
+# OTABase 5G RRC Fuzzing Configuration
+#
+# This configuration enables OTABase-style RRC fuzzing injection on the gNB CU-CP.
+# It extends a standard gNB config with OTABase-specific RRC parameters.
+#
+# Usage:
+#   sudo ./gnb -c gnb_rf_b200_tdd_n78_20mhz.yml -c otabase_fuzzing.yml
+#
+# The test payload file path and the index file (testFileIndex) must be prepared
+# before starting the gNB.  See artifact/srsRAN_Project/configs/OTABASE_README.md
+# for details.
+
+cu_cp:
+  rrc:
+    # Enable OTABase 5G RRC fuzzing injection.
+    otabase_enable_5g_rrc_fuzzing: true
+
+    # Path to the test index file.  This file contains the current payload file
+    # name and progress (line number).  Format: "<payload_file>,<cur_line>,<total_lines>"
+    otabase_test_index_file: testFileIndex
+
+    # Oracle liveness check period: send a UECapabilityEnquiry every N test
+    # messages to verify the UE is still alive.  Default: 10.
+    otabase_check_period: 10
+
+    # Replay mode: when true, uses a shorter check_period (2) and disables
+    # blacklisting.  Useful for replaying a specific sequence of messages to
+    # confirm a crash.  Default: false.
+    otabase_replay_mode: false

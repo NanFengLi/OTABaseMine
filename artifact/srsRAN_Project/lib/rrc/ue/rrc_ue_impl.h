@@ -29,7 +29,10 @@
 #include "srsran/asn1/rrc_nr/ul_dcch_msg_ies.h"
 #include "srsran/rrc/rrc_cell_context.h"
 #include "srsran/rrc/rrc_ue.h"
+#include "srsran/support/timers.h"
 #include <fstream>
+#include <queue>
+#include <unordered_map>
 
 namespace srsran {
 namespace srs_cu_cp {
@@ -124,6 +127,18 @@ private:
   static bool decode_hex_payload(const std::string& payload_hex, std::vector<uint8_t>& out_bytes);
   static std::string increment_otabase_filename(const std::string& filename);
 
+  // OTABase oracle / backtracking / blacklisting helpers.
+  void send_ue_cap_enquiry_oracle();
+  void set_otabase_oracle_timer();
+  void otabase_oracle_timer_expired(timer_id_t tid);
+  void notify_rrc_oracle();
+  void send_rrc_test_message_backtracking();
+  void put_otabase_test_message_queue(const std::string& test_message);
+  std::vector<std::string> get_otabase_recent_messages();
+  void save_otabase_recent_messages(const std::string& candidate = "", int order = 0);
+  void otabase_blacklist_test_cases(const std::string& blacklist_msg);
+  void otabase_temp_blacklist_test_cases(const std::string& blacklist_msg);
+
   // rrc_ue_setup_proc_notifier
   void on_new_dl_ccch(const asn1::rrc_nr::dl_ccch_msg_s& dl_ccch_msg) override;
   void on_ue_release_required(const ngap_cause_t& cause) override;
@@ -154,6 +169,24 @@ private:
   std::string   otabase_test_file_name;
   unsigned      otabase_cur_line_num = 1;
   unsigned      otabase_total_line_num = 0;
+
+  // OTABase oracle / backtracking state.
+  unique_timer                           otabase_oracle_timer;
+  bool                                   otabase_waiting_for_rrc_oracle = false;
+  unsigned                               otabase_num_msg_N_oracle       = 0;
+  uint16_t                               otabase_rrc_oracle_cnt         = 0;
+  bool                                   otabase_is_backtracking        = false;
+  uint64_t                               otabase_backtracking_num       = 0;
+  uint16_t                               otabase_backtracking_num_total = 0;
+  std::string                            otabase_backtracking_msg;
+  std::queue<std::string>                otabase_test_msg_queue;
+  static constexpr size_t                otabase_queue_max_size         = 30;
+  int                                    otabase_crash_counter          = 0;
+  // Blacklisting state.
+  std::unordered_map<std::string, int>   otabase_blacklist_count;
+  std::vector<std::string>               otabase_blacklist_active;
+  static constexpr int                   otabase_blacklist_max_count    = 3;
+  static constexpr int                   otabase_blacklist_reset_threshold = 30;
 };
 
 } // namespace srs_cu_cp

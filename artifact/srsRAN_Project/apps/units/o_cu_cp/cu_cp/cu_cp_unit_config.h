@@ -154,6 +154,10 @@ struct cu_cp_unit_rrc_config {
   bool otabase_enable_5g_rrc_fuzzing = false;
   /// Path to OTABase index file (for example: testFileIndex).
   std::string otabase_test_index_file = "testFileIndex";
+  /// Oracle check period.
+  unsigned otabase_check_period = 10;
+  /// Replay mode.
+  bool otabase_replay_mode = false;
 };
 
 /// Security configuration parameters.

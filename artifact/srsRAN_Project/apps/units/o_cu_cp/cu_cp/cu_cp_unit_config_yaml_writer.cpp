@@ -220,6 +220,8 @@ static YAML::Node build_cu_cp_rrc_section(const cu_cp_unit_rrc_config& config)
   node["rrc_procedure_guard_time_ms"]    = config.rrc_procedure_guard_time_ms;
   node["otabase_enable_5g_rrc_fuzzing"]  = config.otabase_enable_5g_rrc_fuzzing;
   node["otabase_test_index_file"]        = config.otabase_test_index_file;
+  node["otabase_check_period"]           = config.otabase_check_period;
+  node["otabase_replay_mode"]            = config.otabase_replay_mode;
 
   return node;
 }
