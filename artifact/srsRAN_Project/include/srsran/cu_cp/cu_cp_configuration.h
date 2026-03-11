@@ -36,6 +36,7 @@
 #include "srsran/support/async/async_task.h"
 #include "srsran/support/executors/task_executor.h"
 #include <chrono>
+#include <string>
 
 namespace srsran {
 
@@ -107,6 +108,10 @@ struct cu_cp_configuration {
     bool force_reestablishment_fallback = false;
     /// Guard time for RRC procedures.
     std::chrono::milliseconds rrc_procedure_guard_time_ms{1000};
+    /// Enable OTABase-style 5G RRC mutation message injection.
+    bool otabase_enable_5g_rrc_fuzzing = false;
+    /// Path to OTABase index file (for example: testFileIndex).
+    std::string otabase_test_index_file = "testFileIndex";
     /// Version of the RRC.
     unsigned rrc_version = 2;
   };

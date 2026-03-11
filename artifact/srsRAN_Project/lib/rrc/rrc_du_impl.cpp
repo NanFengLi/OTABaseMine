@@ -185,6 +185,8 @@ rrc_ue_interface* rrc_du_impl::add_ue(const rrc_ue_creation_message& msg)
   rrc_ue_cfg_t ue_cfg                   = {};
   ue_cfg.force_reestablishment_fallback = cfg.force_reestablishment_fallback;
   ue_cfg.rrc_procedure_guard_time_ms    = cfg.rrc_procedure_guard_time_ms;
+  ue_cfg.otabase_enable_5g_rrc_fuzzing  = cfg.otabase_enable_5g_rrc_fuzzing;
+  ue_cfg.otabase_test_index_file        = cfg.otabase_test_index_file;
   ue_cfg.meas_timings                   = cell_info_db.at(msg.cell.cgi.nci).meas_timings;
 
   // Copy RRC cell and add SSB ARFCN.

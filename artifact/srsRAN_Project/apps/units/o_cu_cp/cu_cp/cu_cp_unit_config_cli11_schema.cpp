@@ -360,6 +360,18 @@ static void configure_cli11_rrc_args(CLI::App& app, cu_cp_unit_rrc_config& confi
              config.rrc_procedure_guard_time_ms,
              "Guard time in ms used for RRC message exchange with UE. This is added to the RRC procedure timeout.")
       ->capture_default_str();
+
+    add_option(app,
+          "--otabase_enable_5g_rrc_fuzzing",
+          config.otabase_enable_5g_rrc_fuzzing,
+          "Enable OTABase-style 5G RRC mutation message injection")
+        ->capture_default_str();
+
+    add_option(app,
+          "--otabase_test_index_file",
+          config.otabase_test_index_file,
+          "Path to OTABase test index file (default: testFileIndex)")
+        ->capture_default_str();
 }
 
 static void configure_cli11_security_args(CLI::App& app, cu_cp_unit_security_config& config)

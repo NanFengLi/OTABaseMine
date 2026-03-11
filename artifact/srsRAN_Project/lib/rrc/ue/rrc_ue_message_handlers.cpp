@@ -189,15 +189,18 @@ void rrc_ue_impl::handle_pdu(const srb_id_t srb_id, byte_buffer rrc_pdu)
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::rrc_setup_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().rrc_setup_complete().rrc_transaction_id);
+      maybe_send_next_otabase_rrc_message("rrc_setup_complete");
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::security_mode_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().security_mode_complete().rrc_transaction_id);
+      maybe_send_next_otabase_rrc_message("security_mode_complete");
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::security_mode_fail:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().security_mode_fail().rrc_transaction_id);
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::ue_cap_info:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().ue_cap_info().rrc_transaction_id);
+      maybe_send_next_otabase_rrc_message("ue_cap_info");
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::rrc_recfg_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().rrc_recfg_complete().rrc_transaction_id);
@@ -205,9 +208,11 @@ void rrc_ue_impl::handle_pdu(const srb_id_t srb_id, byte_buffer rrc_pdu)
         context.transfer_context.value().is_inter_cu_handover = false;
         cu_cp_notifier.on_rrc_reconfiguration_complete_indicator();
       }
+      maybe_send_next_otabase_rrc_message("rrc_recfg_complete");
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::rrc_reest_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().rrc_reest_complete().rrc_transaction_id);
+      maybe_send_next_otabase_rrc_message("rrc_reest_complete");
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::meas_report:
       handle_measurement_report(ul_dcch_msg.msg.c1().meas_report());

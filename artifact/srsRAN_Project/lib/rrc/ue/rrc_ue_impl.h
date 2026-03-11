@@ -29,6 +29,7 @@
 #include "srsran/asn1/rrc_nr/ul_dcch_msg_ies.h"
 #include "srsran/rrc/rrc_cell_context.h"
 #include "srsran/rrc/rrc_ue.h"
+#include <fstream>
 
 namespace srsran {
 namespace srs_cu_cp {
@@ -115,6 +116,13 @@ private:
   /// Packs a DL-CCCH message and logs the message
   void send_dl_ccch(const asn1::rrc_nr::dl_ccch_msg_s& dl_ccch_msg);
   void send_dl_dcch(srb_id_t srb_id, const asn1::rrc_nr::dl_dcch_msg_s& dl_dcch_msg);
+  bool send_dl_dcch_bytes(srb_id_t srb_id, const std::string& payload_hex);
+
+  // OTABase-style test message helpers.
+  void        maybe_send_next_otabase_rrc_message(const char* trigger);
+  bool        get_otabase_test_msg_from_file(std::string& payload_hex);
+  static bool decode_hex_payload(const std::string& payload_hex, std::vector<uint8_t>& out_bytes);
+  static std::string increment_otabase_filename(const std::string& filename);
 
   // rrc_ue_setup_proc_notifier
   void on_new_dl_ccch(const asn1::rrc_nr::dl_ccch_msg_s& dl_ccch_msg) override;
@@ -139,6 +147,13 @@ private:
 
   /// RRC timer constants
   const unsigned rrc_reject_max_wait_time_s = 16;
+
+  // OTABase-style test-message injection state.
+  std::ifstream otabase_input_test_file;
+  bool          otabase_is_test_file_open = false;
+  std::string   otabase_test_file_name;
+  unsigned      otabase_cur_line_num = 1;
+  unsigned      otabase_total_line_num = 0;
 };
 
 } // namespace srs_cu_cp

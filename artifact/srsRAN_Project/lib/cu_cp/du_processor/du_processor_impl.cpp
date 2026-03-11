@@ -37,6 +37,8 @@ static rrc_cfg_t create_rrc_config(const cu_cp_configuration& cu_cp_cfg)
   rrc_cfg.gnb_id                         = cu_cp_cfg.node.gnb_id;
   rrc_cfg.force_reestablishment_fallback = cu_cp_cfg.rrc.force_reestablishment_fallback;
   rrc_cfg.rrc_procedure_guard_time_ms    = cu_cp_cfg.rrc.rrc_procedure_guard_time_ms;
+  rrc_cfg.otabase_enable_5g_rrc_fuzzing  = cu_cp_cfg.rrc.otabase_enable_5g_rrc_fuzzing;
+  rrc_cfg.otabase_test_index_file        = cu_cp_cfg.rrc.otabase_test_index_file;
   rrc_cfg.int_algo_pref_list             = cu_cp_cfg.security.int_algo_pref_list;
   rrc_cfg.enc_algo_pref_list             = cu_cp_cfg.security.enc_algo_pref_list;
   rrc_cfg.srb2_cfg                       = cu_cp_cfg.bearers.srb2_cfg;
