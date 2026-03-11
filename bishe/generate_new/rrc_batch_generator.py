@@ -87,14 +87,23 @@ class RRCBatchGenerator:
         logging.info(f"  循环次数: {cycles}")
         logging.info(f"  随机种子: {seed}")
 
-    def generate_all(self, output_file=None, verbose=True):
+    def generate_all(self, output_file=None, verbose=True, max_lines_per_file=2000):
         """
         批量生成合法 RRC 数据包，覆盖所有目标字段路径。
         支持流式写入：每生成一条载荷立即写入文件。
+        当单个文件达到 max_lines_per_file 条后自动切换到下一个文件。
+
+                文件命名规则：
+                    输出目录下生成 rrc_legitimate_payloads_<timestamp>.txt 系列文件，
+                    当超过单文件条数上限时，timestamp 递增后继续写入下一个文件。
+                    同时生成 testFileIndex 指向第一个文件。
+                    文件名格式兼容 OTABase 的 increment_otabase_filename() 自动递增逻辑。
 
         Args:
-            output_file:  输出文件路径，None 则只返回结果
+            output_file:  输出目录路径或文件路径（取其所在目录）；
+                          None 则只返回结果不写文件
             verbose:      是否打印进度信息
+            max_lines_per_file:  单个文件最多写入的载荷条数 (默认 2000)
 
         Returns:
             dict: 生成结果，包含:
@@ -103,20 +112,52 @@ class RRCBatchGenerator:
                 - coverage:       最终覆盖率
                 - unique_paths:   唯一路径数
                 - elapsed_time:   耗时（秒）
+                - output_files:   生成的所有 payload 文件路径列表
         """
         start_time = time.time()
         all_payloads = []
         total_packets_generated = 0
-        payload_index = 0
+        payload_index = 0          # 全局载荷序号
+        file_payload_count = 0     # 当前文件中的载荷数
+        file_number = 1            # 当前文件编号
+        output_files = []          # 所有生成的文件路径
 
-        # 流式输出：立即打开文件，先写占位行
+        # ---------- 输出目录与文件名 ----------
+        out_dir = None
+        base_timestamp = int(time.time())
         out_fh = None
+
         if output_file:
-            os.makedirs(
-                os.path.dirname(output_file) if os.path.dirname(output_file) else '.',
-                exist_ok=True)
-            out_fh = open(output_file, 'w')
-            out_fh.write('000000\n')  # 占位，结束时回填
+            # 从 output_file 提取目录
+            if os.path.isdir(output_file):
+                out_dir = output_file
+            else:
+                out_dir = os.path.dirname(output_file) or '.'
+            os.makedirs(out_dir, exist_ok=True)
+
+        def _open_new_file():
+            """打开一个新的 payload 输出文件，返回 (file_handle, filepath)。"""
+            ts = base_timestamp + (file_number - 1)
+            fname = f"rrc_legitimate_payloads_{ts}.txt"
+            fpath = os.path.join(out_dir, fname)
+            fh = open(fpath, 'w')
+            fh.write('000000\n')  # 占位行，结束时回填实际条数
+            output_files.append(fpath)
+            if verbose:
+                logging.info(f"  打开新文件: {fpath}")
+            return fh, fpath
+
+        def _close_file(fh, count):
+            """回填当前文件的条数并关闭。"""
+            if fh and not fh.closed:
+                fh.seek(0)
+                fh.write(str(count).zfill(6))
+                fh.close()
+
+        # 打开第一个文件
+        cur_file_path = None
+        if out_dir:
+            out_fh, cur_file_path = _open_new_file()
 
         try:
             for cycle in range(1, self.cycles + 1):
@@ -168,13 +209,27 @@ class RRCBatchGenerator:
                         field_path_str = ",".join(str(x) for x in unique_path)
 
                         payload_index += 1
+                        file_payload_count += 1
                         entry = (payload_hex, msg_type, field_path_str)
                         all_payloads.append(entry)
 
                         # 流式写入
                         if out_fh:
-                            out_fh.write(f"{payload_index},{payload_hex},{msg_type},{field_path_str}\n")
+                            out_fh.write(
+                                f"{file_payload_count},{payload_hex},"
+                                f"{msg_type},{field_path_str}\n")
                             out_fh.flush()
+
+                            # 检查是否需要切换到下一个文件
+                            if file_payload_count >= max_lines_per_file:
+                                _close_file(out_fh, file_payload_count)
+                                if verbose:
+                                    logging.info(
+                                        f"  文件 {cur_file_path} 已满 "
+                                        f"({file_payload_count} 条)，切换到下一个文件")
+                                file_number += 1
+                                file_payload_count = 0
+                                out_fh, cur_file_path = _open_new_file()
 
                     # 进度日志
                     coverage = len(coverage_map) / self.total_targets
@@ -191,13 +246,22 @@ class RRCBatchGenerator:
                         f"覆盖率: 100%")
 
         finally:
-            # 回填总数并关闭文件
+            # 回填最后一个文件的条数并关闭
             if out_fh:
-                out_fh.seek(0)
-                out_fh.write(str(payload_index).zfill(6))
-                out_fh.close()
+                _close_file(out_fh, file_payload_count)
                 if verbose:
-                    logging.info(f"  已写入 {payload_index} 条载荷到 {output_file}")
+                    logging.info(f"  已写入 {file_payload_count} 条载荷到 {cur_file_path}")
+
+            # 生成 testFileIndex，指向第一个文件（使用相对文件名）
+            if out_dir and output_files:
+                index_path = os.path.join(out_dir, "testFileIndex")
+                first_file_basename = os.path.basename(output_files[0])
+                with open(index_path, 'w') as idx_f:
+                    idx_f.write(f"{first_file_basename}\n")
+                if verbose:
+                    logging.info(f"  已生成 testFileIndex -> {first_file_basename}")
+                    logging.info(f"  共生成 {len(output_files)} 个 payload 文件: "
+                                 f"{', '.join(os.path.basename(f) for f in output_files)}")
 
         elapsed = time.time() - start_time
 
@@ -211,12 +275,15 @@ class RRCBatchGenerator:
             'seed': self.seed,
             'cycles': self.cycles,
             'targets': [t.name for t in self.targets],
+            'output_files': [os.path.basename(f) for f in output_files],
+            'max_lines_per_file': max_lines_per_file,
         }
 
         if verbose:
             logging.info(f"\n=== 生成完成 ===")
             logging.info(f"  合法载荷总数: {result['total_count']}")
             logging.info(f"  总共生成包数: {total_packets_generated}")
+            logging.info(f"  输出文件数: {len(output_files)}")
             logging.info(f"  耗时: {elapsed:.2f} 秒")
 
         return result

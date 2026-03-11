@@ -167,6 +167,7 @@ private:
   std::ifstream otabase_input_test_file;
   bool          otabase_is_test_file_open = false;
   std::string   otabase_test_file_name;
+  std::string   otabase_index_file_dir;       // directory containing testFileIndex
   unsigned      otabase_cur_line_num = 1;
   unsigned      otabase_total_line_num = 0;
 

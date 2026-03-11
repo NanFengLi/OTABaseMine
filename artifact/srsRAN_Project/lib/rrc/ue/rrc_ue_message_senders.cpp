@@ -26,6 +26,7 @@
 #include "srsran/asn1/rrc_nr/dl_ccch_msg.h"
 #include "srsran/asn1/rrc_nr/dl_dcch_msg.h"
 #include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
@@ -152,9 +153,20 @@ void rrc_ue_impl::maybe_send_next_otabase_rrc_message(const char* trigger)
 
 bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
 {
-  static const std::string index_file_name = "testFileIndex";
+  namespace fs = std::filesystem;
+
+  // Use the configured index file path (supports both absolute and relative paths).
+  const std::string& index_file_name = context.cfg.otabase_test_index_file;
 
   if (!otabase_is_test_file_open) {
+    // Compute the directory that contains the index file so that relative
+    // payload filenames inside it are resolved from that same directory
+    // (just like the original OTABase behaviour).
+    otabase_index_file_dir = fs::path(index_file_name).parent_path().string();
+    if (!otabase_index_file_dir.empty()) {
+      otabase_index_file_dir += '/';
+    }
+
     std::ifstream index_file(index_file_name);
     if (!index_file.is_open()) {
       logger.log_warning("OTABase: failed to open index file {}", index_file_name);
@@ -172,6 +184,12 @@ bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
     if (otabase_test_file_name.empty()) {
       logger.log_warning("OTABase: invalid index file first token");
       return false;
+    }
+
+    // If the payload filename is relative, resolve it relative to the index
+    // file directory so that testFileIndex can use plain names like "rrcTest1".
+    if (!fs::path(otabase_test_file_name).is_absolute()) {
+      otabase_test_file_name = otabase_index_file_dir + otabase_test_file_name;
     }
 
     otabase_cur_line_num  = 1;
@@ -215,9 +233,16 @@ bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
   if (!std::getline(otabase_input_test_file, line)) {
     const std::string next_file = increment_otabase_filename(otabase_test_file_name);
 
+    // Write back the next filename relative to the index file directory
+    // so that testFileIndex stays self-contained with relative names.
+    std::string next_file_for_index = next_file;
+    if (!otabase_index_file_dir.empty() && next_file.rfind(otabase_index_file_dir, 0) == 0) {
+      next_file_for_index = next_file.substr(otabase_index_file_dir.size());
+    }
+
     std::ofstream index_file(index_file_name);
     if (index_file.is_open()) {
-      index_file << next_file << '\n';
+      index_file << next_file_for_index << '\n';
     }
 
     otabase_input_test_file.close();
@@ -231,9 +256,15 @@ bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
 
   ++otabase_cur_line_num;
 
+  // Write back relative filename (strip the base dir prefix if present).
+  std::string file_name_for_index = otabase_test_file_name;
+  if (!otabase_index_file_dir.empty() && otabase_test_file_name.rfind(otabase_index_file_dir, 0) == 0) {
+    file_name_for_index = otabase_test_file_name.substr(otabase_index_file_dir.size());
+  }
+
   std::ofstream index_file(index_file_name);
   if (index_file.is_open()) {
-    index_file << otabase_test_file_name << ',' << otabase_cur_line_num << ',' << otabase_total_line_num << '\n';
+    index_file << file_name_for_index << ',' << otabase_cur_line_num << ',' << otabase_total_line_num << '\n';
   }
 
   std::istringstream line_stream(line);
@@ -293,13 +324,36 @@ bool rrc_ue_impl::decode_hex_payload(const std::string& payload_hex, std::vector
 
 std::string rrc_ue_impl::increment_otabase_filename(const std::string& filename)
 {
-  const size_t pos = filename.find_first_of("0123456789");
-  if (pos == std::string::npos) {
+  namespace fs = std::filesystem;
+
+  fs::path     p(filename);
+  std::string  stem = p.stem().string();
+  std::string  ext  = p.extension().string();
+
+  // Increment trailing numeric suffix in file stem.
+  // Examples:
+  //   rrcPayloads1 -> rrcPayloads2
+  //   rrc_legitimate_payloads_1762368000.txt -> rrc_legitimate_payloads_1762368001.txt
+  size_t i = stem.size();
+  while (i > 0 && std::isdigit(static_cast<unsigned char>(stem[i - 1]))) {
+    --i;
+  }
+
+  if (i == stem.size()) {
     return filename;
   }
-  const std::string prefix  = filename.substr(0, pos);
-  const std::string num_str = filename.substr(pos);
-  return prefix + std::to_string(std::stoi(num_str) + 1);
+
+  const std::string prefix  = stem.substr(0, i);
+  const std::string num_str = stem.substr(i);
+
+  try {
+    const unsigned long long n = std::stoull(num_str);
+    const std::string        next_stem = prefix + std::to_string(n + 1ULL);
+    fs::path                 next = p.parent_path() / (next_stem + ext);
+    return next.string();
+  } catch (...) {
+    return filename;
+  }
 }
 
 // ---------------------------------------------------------------------------

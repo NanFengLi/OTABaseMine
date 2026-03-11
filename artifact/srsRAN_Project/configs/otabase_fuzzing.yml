@@ -15,9 +15,10 @@ cu_cp:
     # Enable OTABase 5G RRC fuzzing injection.
     otabase_enable_5g_rrc_fuzzing: true
 
-    # Kept for compatibility. To match original OTABase behavior, the current
-    # code uses a fixed filename "testFileIndex" in the gNB working directory.
-    otabase_test_index_file: testFileIndex
+    # Path to the index file. Relative payload filenames inside it will be
+    # resolved relative to this file's directory, so you can use plain names
+    # like "rrcTest1" in testFileIndex.
+    otabase_test_index_file: ../example-test-case/rrc/testFileIndex
 
     # Oracle liveness check period: send a UECapabilityEnquiry every N test
     # messages to verify the UE is still alive.  Default: 10.

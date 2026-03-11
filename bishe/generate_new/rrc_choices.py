@@ -6,13 +6,13 @@ RRC CHOICE 路径分析模块
 
 从 OTABase artifact/test-case-generator/rrc/rrc_choices.py 抽取。
 """
-from pycrate_asn1rt.codecs import *
-from pycrate_asn1rt.setobj import *
-from pycrate_asn1rt.dictobj import *
-from pycrate_asn1rt.refobj import *
-from pycrate_asn1rt.err import *
-from pycrate_asn1rt.utils import *
-from pycrate_asn1rt import *
+from pycrate.pycrate_asn1rt.codecs import *
+from pycrate.pycrate_asn1rt.setobj import *
+from pycrate.pycrate_asn1rt.dictobj import *
+from pycrate.pycrate_asn1rt.refobj import *
+from pycrate.pycrate_asn1rt.err import *
+from pycrate.pycrate_asn1rt.utils import *
+from pycrate.pycrate_asn1rt import *
 
 from bishe.generate_new.rrc_fields import Fields
 

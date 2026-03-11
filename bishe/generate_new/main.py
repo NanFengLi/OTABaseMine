@@ -57,6 +57,7 @@ def cmd_generate(args):
     logging.info(f"目标字段: {', '.join(f.name for f in target_fields)}")
     logging.info(f"随机种子: {args.seed}")
     logging.info(f"循环次数: {args.cycles}")
+    logging.info(f"单文件最大条数: {args.max_lines}")
 
     batch_gen = RRCBatchGenerator(
         targets=target_fields,
@@ -70,7 +71,8 @@ def cmd_generate(args):
 
     result = batch_gen.generate_all(
         output_file=args.output,
-        verbose=True
+        verbose=True,
+        max_lines_per_file=args.max_lines,
     )
 
     # 写入报告
@@ -240,6 +242,8 @@ def main():
                         help='不生成可选字段')
     parser.add_argument('--no-simplify', action='store_true',
                         help='跳过消息精简步骤（大幅加速，但消息体积更大）')
+    parser.add_argument('--max-lines', type=int, default=2000,
+                        help='单个 payload 文件最多写入的消息条数 (默认: 2000)')
     parser.add_argument('-d', '--debug', action='store_true',
                         help='启用调试日志')
     parser.add_argument('-v', '--verbose', action='store_true',
@@ -253,13 +257,12 @@ def main():
     log_level = logging.DEBUG if args.debug else logging.INFO
     setup_logging(level=log_level)
 
-    # 根据 RAT 类型设置默认输出路径
+    # 根据 RAT 类型设置默认输出路径（传目录，由 generate_all 内部命名文件）
     output_subdir = "output_4g" if args.rat == "4g" else "output_5g"
 
     if args.output is None and args.test is None:
-        out_dir = os.path.join(os.path.dirname(__file__), output_subdir)
-        os.makedirs(out_dir, exist_ok=True)
-        args.output = os.path.join(out_dir, GeneratorConfig.DEFAULT_OUTPUT_FILE)
+        args.output = os.path.join(os.path.dirname(__file__), output_subdir)
+        os.makedirs(args.output, exist_ok=True)
 
     if args.report is None and args.test is None:
         out_dir = os.path.join(os.path.dirname(__file__), output_subdir)
