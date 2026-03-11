@@ -94,7 +94,7 @@ bool rrc_ue_impl::send_dl_dcch_bytes(srb_id_t srb_id, const std::string& payload
     return false;
   }
 
-  auto pdcp_packing_result = context.srbs.at(srb_id).pack_rrc_pdu(rrc_pdu.value());
+  auto pdcp_packing_result = context.srbs.at(srb_id).pack_rrc_pdu(std::move(rrc_pdu.value()));
   if (!pdcp_packing_result.is_successful()) {
     logger.log_info("Requesting UE release. Cause: PDCP packing failed with {}",
                     pdcp_packing_result.get_failure_cause());

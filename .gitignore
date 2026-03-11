@@ -4,3 +4,4 @@ agent.egg-info
 .env
 .langgraph_api
 bishe/generate_new/output_5g/rrc_legitimate_payloads.txt
+artifact/srsRAN_Project/build

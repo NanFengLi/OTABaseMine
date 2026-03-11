@@ -5,13 +5,13 @@
 
 cu_cp:
   amf:
-    addr: 127.0.1.100
+    addr: 127.0.0.5
     port: 38412
     bind_addr: 127.0.0.1
     supported_tracking_areas:
-      - tac: 7
+      - tac: 1
         plmn_list:
-          - plmn: "00101"
+          - plmn: "99970"
             tai_slice_support_list:
               - sst: 1
 
@@ -28,8 +28,8 @@ cell_cfg:
   band: 78
   channel_bandwidth_MHz: 20
   common_scs: 30
-  plmn: "00101"
-  tac: 7
+  plmn: "99970"
+  tac: 1
   pci: 1
 
 log:
@@ -37,7 +37,7 @@ log:
   all_level: warning
 
 pcap:
-  mac_enable: false
+  mac_enable: true
   mac_filename: /tmp/gnb_mac.pcap
-  ngap_enable: false
+  ngap_enable: true
   ngap_filename: /tmp/gnb_ngap.pcap
