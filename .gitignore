@@ -6,3 +6,7 @@ agent.egg-info
 artifact/srsRAN_Project/build
 bishe/generate_new/output_4g/
 bishe/generate_new/output_5g/
+bishe/generate_new/output_4g_back
+bishe/generate_new/output_5g_back
+paths_4g.db
+paths_5g.db
