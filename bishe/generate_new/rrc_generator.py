@@ -79,6 +79,15 @@ class RRCGenerator:
         """
         self.found_paths.add(tuple(path))
 
+    def set_found_paths(self, paths: set) -> None:
+        """
+        从外部批量设置已发现路径（断点续传时使用）。
+
+        Args:
+            paths: 已覆盖路径集合，每个元素为 tuple
+        """
+        self.found_paths = set(paths)
+
     def reset_found(self) -> None:
         """重置已发现路径集合和 CHOICE 集合"""
         self.found_paths = set()

@@ -4,6 +4,9 @@ RRC 合法样例批量生成器
 驱动 RRCGenerator 批量生成覆盖所有目标字段路径的合法 RRC 数据包，
 追踪路径覆盖率，输出到文件。
 
+路径去重使用 SQLite 持久化前缀树（PathTrieDB），支持断点续传：
+进程中断后重新运行相同命令，会自动检测已有覆盖数据并从断点继续。
+
 这是整个生成流程的核心调度器，等价于原始代码中 RRCFuzzer.fill_queue()
 + RRCController 的"仅生成"功能，去除了变异策略。
 """
@@ -12,6 +15,7 @@ import json
 import time
 import logging
 import random
+import re
 from copy import deepcopy
 
 from bishe.generate_new.rrc_generator import RRCGenerator
@@ -20,6 +24,9 @@ from bishe.generate_new.rrc_stats import get_target_field_count, get_total_ie_co
 from bishe.generate_new.rrc_utils import simplify_message
 from bishe.generate_new.rrc_protocol import RRCContext
 from bishe.generate_new.config import GeneratorConfig
+from bishe.generate_new.path_trie import PathTrieDB
+
+_PAYLOAD_RE = re.compile(r"^rrc_legitimate_payloads_(\d+)\.txt$")
 
 
 class RRCBatchGenerator:
@@ -29,17 +36,20 @@ class RRCBatchGenerator:
     系统性地生成合法 RRC DL-DCCH-Message 数据包，确保覆盖
     所有目标字段路径。输出格式兼容 OTABase 执行框架。
 
+    路径去重通过 SQLite 前缀树持久化，支持断点续传。
+
     Attributes:
         targets:    目标字段类型列表
         seed:       随机种子
         cycles:     生成循环次数
         optional:   是否包含可选字段
         simplify:   是否精简消息（去除无关可选字段）
+        db_path:    SQLite 前缀树数据库路径
     """
 
     def __init__(self, targets=None, seed=1, cycles=1,
                  max_recur_depth=0, optional=True, simplify=True,
-                 rrc_ctx: RRCContext = None):
+                 rrc_ctx: RRCContext = None, db_path: str = None):
         """
         初始化批量生成器
 
@@ -50,6 +60,7 @@ class RRCBatchGenerator:
             max_recur_depth:  最大递归展开深度
             optional:         是否生成可选字段
             rrc_ctx:          RRC 协议上下文
+            db_path:          SQLite 前缀树数据库路径（None 则不持久化）
         """
         if targets is None:
             targets = [Fields.OCTET_STRING]
@@ -61,6 +72,7 @@ class RRCBatchGenerator:
         self.max_recur_depth = max_recur_depth
         self.simplify = simplify
         self.rrc_ctx = rrc_ctx
+        self.db_path = db_path
 
         random.seed(seed)
 
@@ -86,18 +98,60 @@ class RRCBatchGenerator:
         logging.info(f"  IE 总数: {self.total_ie_count}")
         logging.info(f"  循环次数: {cycles}")
         logging.info(f"  随机种子: {seed}")
+        if db_path:
+            logging.info(f"  前缀树数据库: {db_path}")
+
+    # ------------------------------------------------------------------
+    # 输出文件扫描（断点续传用）
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _count_data_lines(filepath: str) -> int:
+        """统计 payload 文件中的数据行数（排除第一行的计数占位行）。"""
+        count = 0
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                for i, line in enumerate(f):
+                    if i == 0:
+                        continue  # 跳过第一行（计数行）
+                    if line.strip():
+                        count += 1
+        except OSError:
+            pass
+        return count
+
+    @staticmethod
+    def _scan_payload_files(out_dir: str):
+        """
+        扫描输出目录中已有的 payload 文件。
+
+        Returns:
+            list of (filepath, timestamp, data_line_count) 按 timestamp 升序
+        """
+        results = []
+        if not out_dir or not os.path.isdir(out_dir):
+            return results
+        for fname in os.listdir(out_dir):
+            m = _PAYLOAD_RE.match(fname)
+            if m:
+                ts = int(m.group(1))
+                fpath = os.path.join(out_dir, fname)
+                count = RRCBatchGenerator._count_data_lines(fpath)
+                results.append((fpath, ts, count))
+        results.sort(key=lambda x: x[1])
+        return results
+
+    # ------------------------------------------------------------------
+    # 核心生成
+    # ------------------------------------------------------------------
 
     def generate_all(self, output_file=None, verbose=True, max_lines_per_file=2000):
         """
         批量生成合法 RRC 数据包，覆盖所有目标字段路径。
-        支持流式写入：每生成一条载荷立即写入文件。
-        当单个文件达到 max_lines_per_file 条后自动切换到下一个文件。
 
-                文件命名规则：
-                    输出目录下生成 rrc_legitimate_payloads_<timestamp>.txt 系列文件，
-                    当超过单文件条数上限时，timestamp 递增后继续写入下一个文件。
-                    同时生成 testFileIndex 指向第一个文件。
-                    文件名格式兼容 OTABase 的 increment_otabase_filename() 自动递增逻辑。
+        使用 SQLite 前缀树持久化路径覆盖状态，支持断点续传：
+        如果 db_path 指向的数据库已有覆盖数据且参数一致，
+        会自动跳过已覆盖路径，从上次中断处继续生成。
 
         Args:
             output_file:  输出目录路径或文件路径（取其所在目录）；
@@ -106,45 +160,132 @@ class RRCBatchGenerator:
             max_lines_per_file:  单个文件最多写入的载荷条数 (默认 2000)
 
         Returns:
-            dict: 生成结果，包含:
-                - payloads:       [(hex_payload, msg_type, field_path), ...]
-                - total_count:    生成的数据包总数
-                - coverage:       最终覆盖率
-                - unique_paths:   唯一路径数
-                - elapsed_time:   耗时（秒）
-                - output_files:   生成的所有 payload 文件路径列表
+            dict: 生成结果统计
         """
         start_time = time.time()
         all_payloads = []
         total_packets_generated = 0
-        payload_index = 0          # 全局载荷序号
-        file_payload_count = 0     # 当前文件中的载荷数
-        file_number = 1            # 当前文件编号
-        output_files = []          # 所有生成的文件路径
+        payload_index = 0
+        file_payload_count = 0
+        file_number = 1
+        output_files = []
 
-        # ---------- 输出目录与文件名 ----------
+        # ---------- 输出目录 ----------
         out_dir = None
         base_timestamp = int(time.time())
         out_fh = None
 
         if output_file:
-            # 从 output_file 提取目录
             if os.path.isdir(output_file):
                 out_dir = output_file
             else:
                 out_dir = os.path.dirname(output_file) or '.'
             os.makedirs(out_dir, exist_ok=True)
 
+        # ---------- 打开前缀树 ----------
+        trie = None
+        if self.db_path:
+            trie = PathTrieDB(self.db_path)
+
+        resuming = False
+        targets_json = json.dumps(sorted(t.name for t in self.targets))
+
+        # ---------- 断点续传检测 ----------
+        if trie and trie.count() > 0:
+            state = trie.load_state()
+            saved_targets = state.get("targets")
+            if saved_targets == targets_json:
+                covered = trie.count()
+                if covered >= self.total_targets:
+                    logging.info(f"前缀树显示所有 {self.total_targets} 条路径已覆盖，无需继续。")
+                    if trie:
+                        trie.close()
+                    return {
+                        'payloads': [],
+                        'total_count': covered,
+                        'packets_generated': 0,
+                        'coverage': 1.0,
+                        'unique_paths': covered,
+                        'elapsed_time': 0.0,
+                        'seed': self.seed,
+                        'cycles': self.cycles,
+                        'targets': [t.name for t in self.targets],
+                        'output_files': [],
+                        'max_lines_per_file': max_lines_per_file,
+                        'resumed': True,
+                    }
+
+                resuming = True
+                base_timestamp = state.get("base_timestamp", base_timestamp)
+                saved_payload_index = state.get("payload_index", 0)
+
+                # 恢复 generator 的 found_paths
+                existing_paths = trie.all_paths()
+                self.generator.set_found_paths(existing_paths)
+
+                # 扫描属于本次运行的已有文件（按 base_timestamp 过滤）
+                all_files = self._scan_payload_files(out_dir)
+                existing_files = [
+                    ef for ef in all_files if ef[1] >= base_timestamp
+                ]
+                payload_index = saved_payload_index
+                if existing_files:
+                    output_files = [ef[0] for ef in existing_files]
+                    last_path, last_ts, last_count = existing_files[-1]
+                    file_number = last_ts - base_timestamp + 1
+                    file_payload_count = last_count
+
+                    if last_count >= max_lines_per_file:
+                        file_number += 1
+                        file_payload_count = 0
+                    else:
+                        # 追加到最后一个未满文件
+                        output_files.pop()  # 稍后由 _open_resume_file 重新添加
+
+                logging.info(
+                    f"  [断点续传] 已覆盖 {covered}/{self.total_targets} 条路径, "
+                    f"已写入 {payload_index} 条载荷, "
+                    f"继续从文件 #{file_number} 开始")
+            else:
+                logging.warning(
+                    f"  前缀树 targets 不匹配 (DB={saved_targets}, "
+                    f"当前={targets_json})，将清空重建。")
+                trie.close()
+                os.remove(self.db_path)
+                trie = PathTrieDB(self.db_path)
+
+        # ---------- 保存初始状态 ----------
+        if trie and not resuming:
+            trie.save_states({
+                "base_timestamp": base_timestamp,
+                "payload_index": 0,
+                "targets": targets_json,
+                "total_targets": self.total_targets,
+            })
+
+        # ---------- 文件打开辅助函数 ----------
         def _open_new_file():
-            """打开一个新的 payload 输出文件，返回 (file_handle, filepath)。"""
+            """打开一个全新的 payload 输出文件。"""
             ts = base_timestamp + (file_number - 1)
             fname = f"rrc_legitimate_payloads_{ts}.txt"
             fpath = os.path.join(out_dir, fname)
             fh = open(fpath, 'w')
-            fh.write('000000\n')  # 占位行，结束时回填实际条数
+            fh.write('000000\n')
             output_files.append(fpath)
             if verbose:
                 logging.info(f"  打开新文件: {fpath}")
+            return fh, fpath
+
+        def _open_resume_file():
+            """以追加模式打开上次未写满的文件。"""
+            ts = base_timestamp + (file_number - 1)
+            fname = f"rrc_legitimate_payloads_{ts}.txt"
+            fpath = os.path.join(out_dir, fname)
+            fh = open(fpath, 'r+')
+            fh.seek(0, 2)  # seek 到末尾
+            output_files.append(fpath)
+            if verbose:
+                logging.info(f"  [续传] 追加写入: {fpath} (已有 {file_payload_count} 行)")
             return fh, fpath
 
         def _close_file(fh, count):
@@ -154,21 +295,28 @@ class RRCBatchGenerator:
                 fh.write(str(count).zfill(6))
                 fh.close()
 
-        # 打开第一个文件
+        # ---------- 打开输出文件 ----------
         cur_file_path = None
         if out_dir:
-            out_fh, cur_file_path = _open_new_file()
+            if resuming and file_payload_count > 0 and file_payload_count < max_lines_per_file:
+                out_fh, cur_file_path = _open_resume_file()
+            else:
+                out_fh, cur_file_path = _open_new_file()
 
         try:
             for cycle in range(1, self.cycles + 1):
                 if verbose:
                     logging.info(f"--- 开始第 {cycle}/{self.cycles} 轮生成 ---")
 
-                coverage_map = set()
-                self.generator.reset_found()
+                if not resuming:
+                    self.generator.reset_found()
+                    if trie:
+                        # 全新 cycle：清空前缀树（多 cycle 场景）
+                        pass  # 第一轮 trie 本来就是空的
 
-                while len(coverage_map) < self.total_targets:
-                    # 生成一个完整数据包
+                already_covered = trie.count() if trie else 0
+
+                while (trie.count() if trie else already_covered) < self.total_targets:
                     uper_bytes, result, mutation_paths, optional_paths = \
                         self.generator.generate_packet()
                     total_packets_generated += 1
@@ -176,26 +324,23 @@ class RRCBatchGenerator:
                     if len(mutation_paths) == 0:
                         continue
 
-                    # 收集本包的新路径，一次性精简
                     new_paths = []
                     for path in mutation_paths:
                         unique_path = tuple(
                             [x for x in path if not isinstance(x, int)])
-                        if unique_path not in coverage_map:
+                        is_new = trie.insert(unique_path) if trie else (unique_path not in self.generator.found_paths)
+                        if is_new:
                             self.generator.add_to_found(unique_path)
-                            coverage_map.add(unique_path)
                             new_paths.append((path, unique_path))
 
                     if not new_paths:
                         continue
 
-                    # 如果需要精简，对整包做一次 deepcopy
                     if self.simplify:
                         result_copy = deepcopy(result)
                     else:
                         result_copy = None
 
-                    # 直接使用完整包的 hex（不精简时）
                     full_hex = uper_bytes.hex() if not self.simplify else None
 
                     for path, unique_path in new_paths:
@@ -206,7 +351,6 @@ class RRCBatchGenerator:
                             payload_hex = full_hex
 
                         msg_type = unique_path[2] if len(unique_path) > 2 else "unknown"
-                        # 与 artifact 一致：写入完整 path（含 SEQUENCE OF 下标），供变异时 get_val_at 使用
                         field_path_str = ",".join(str(x) for x in path)
 
                         payload_index += 1
@@ -214,14 +358,12 @@ class RRCBatchGenerator:
                         entry = (payload_hex, msg_type, field_path_str)
                         all_payloads.append(entry)
 
-                        # 流式写入
                         if out_fh:
                             out_fh.write(
                                 f"{file_payload_count},{payload_hex},"
                                 f"{msg_type},{field_path_str}\n")
                             out_fh.flush()
 
-                            # 检查是否需要切换到下一个文件
                             if file_payload_count >= max_lines_per_file:
                                 _close_file(out_fh, file_payload_count)
                                 if verbose:
@@ -232,13 +374,20 @@ class RRCBatchGenerator:
                                 file_payload_count = 0
                                 out_fh, cur_file_path = _open_new_file()
 
-                    # 进度日志
-                    coverage = len(coverage_map) / self.total_targets
+                    # 持久化进度
+                    if trie:
+                        trie.save_state("payload_index", payload_index)
+
+                    covered_now = trie.count() if trie else len(self.generator.found_paths)
                     if verbose and total_packets_generated % 50 == 0:
+                        coverage = covered_now / self.total_targets
                         logging.info(
                             f"  进度: 已生成 {total_packets_generated} 个包, "
-                            f"覆盖 {len(coverage_map)}/{self.total_targets} "
+                            f"覆盖 {covered_now}/{self.total_targets} "
                             f"({coverage:.1%})")
+
+                # cycle 结束后重置续传标记，后续 cycle 从空开始
+                resuming = False
 
                 if verbose:
                     logging.info(
@@ -247,13 +396,11 @@ class RRCBatchGenerator:
                         f"覆盖率: 100%")
 
         finally:
-            # 回填最后一个文件的条数并关闭
             if out_fh:
                 _close_file(out_fh, file_payload_count)
                 if verbose:
                     logging.info(f"  已写入 {file_payload_count} 条载荷到 {cur_file_path}")
 
-            # 生成 testFileIndex，指向第一个文件（使用相对文件名）
             if out_dir and output_files:
                 index_path = os.path.join(out_dir, "testFileIndex")
                 first_file_basename = os.path.basename(output_files[0])
@@ -264,11 +411,15 @@ class RRCBatchGenerator:
                     logging.info(f"  共生成 {len(output_files)} 个 payload 文件: "
                                  f"{', '.join(os.path.basename(f) for f in output_files)}")
 
+            if trie:
+                trie.save_state("payload_index", payload_index)
+                trie.close()
+
         elapsed = time.time() - start_time
 
         result = {
             'payloads': all_payloads,
-            'total_count': len(all_payloads),
+            'total_count': payload_index,
             'packets_generated': total_packets_generated,
             'coverage': 1.0,
             'unique_paths': self.total_targets,
@@ -278,6 +429,7 @@ class RRCBatchGenerator:
             'targets': [t.name for t in self.targets],
             'output_files': [os.path.basename(f) for f in output_files],
             'max_lines_per_file': max_lines_per_file,
+            'resumed': resuming,
         }
 
         if verbose:

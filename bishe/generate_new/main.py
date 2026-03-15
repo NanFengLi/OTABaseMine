@@ -1,6 +1,9 @@
 """
 RRC 合法测试样例生成器 - 主入口
 
+路径去重使用 SQLite 持久化前缀树，支持断点续传：
+进程中断后重新运行相同命令，会自动从上次中断处继续生成。
+
 用法:
     # 使用默认配置生成（目标: OCTET_STRING，协议: 4G LTE）
     python -m bishe.generate_new.main
@@ -11,7 +14,13 @@ RRC 合法测试样例生成器 - 主入口
     # 生成 5G NR 的 RRC 消息
     python -m bishe.generate_new.main --rat 5g
 
-    # 指定输出文件、种子和循环次数(循环次数是指有些字段会循环嵌套使用，嵌套的深度即为循环次数)
+    # 中断后续传（自动检测 coverage.db，跳过已覆盖路径）
+    python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
+
+    # 强制从头开始（删除旧的前缀树数据库）
+    python -m bishe.generate_new.main -f OCTET_STRING --clean
+
+    # 指定输出文件、种子和循环次数
     python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output_4g/rrc_payloads.txt
 
     # 生成单个数据包（测试模式）
@@ -53,6 +62,17 @@ def cmd_generate(args):
     target_fields = parse_target_fields(args.fields)
     rrc_ctx = RRCContext(RATType(args.rat))
 
+    # 计算 db_path（前缀树数据库，放在输出目录中）
+    db_path = None
+    if args.output:
+        out_dir = args.output if os.path.isdir(args.output) else (os.path.dirname(args.output) or '.')
+        db_path = os.path.join(out_dir, "coverage.db")
+
+    # --clean: 删除已有数据库，从头开始
+    if getattr(args, 'clean', False) and db_path and os.path.exists(db_path):
+        os.remove(db_path)
+        logging.info(f"已删除旧的前缀树数据库: {db_path}")
+
     logging.info(f"协议类型: {args.rat.upper()}")
     logging.info(f"目标字段: {', '.join(f.name for f in target_fields)}")
     logging.info(f"随机种子: {args.seed}")
@@ -67,6 +87,7 @@ def cmd_generate(args):
         optional=not args.no_optional,
         simplify=not args.no_simplify,
         rrc_ctx=rrc_ctx,
+        db_path=db_path,
     )
 
     result = batch_gen.generate_all(
@@ -248,6 +269,8 @@ def main():
                         help='启用调试日志')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='详细输出')
+    parser.add_argument('--clean', action='store_true',
+                        help='删除已有前缀树数据库（coverage.db），从头开始生成')
     parser.add_argument('-n', '--benchmark-count', type=int, default=100,
                         help='基准测试数据包数量 (默认: 100)')
 
