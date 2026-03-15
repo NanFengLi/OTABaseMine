@@ -13,7 +13,12 @@ ASN1Obj._SILENT  = True
 
 from bishe.pycrate_asn1obj.nr_5g import RRCNR
 
-from .mutation_utils import bytes_to_bit_str, bit_str_to_bytes
+from .mutation_utils import (
+    bytes_to_bit_str,
+    bit_str_to_bytes,
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
+)
 
 
 def _lbs(field) -> int:
@@ -42,30 +47,25 @@ def _find_all(pkt_bits: str, tgt: str) -> set:
     return idxs
 
 
-def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
-    """在数据包比特流中定位 INTEGER 字段位置"""
+def _find_index(pkt_bits: str, fld_bits: str, val_path: list, packet, fld, old_val) -> int:
     idxs = _find_all(pkt_bits, fld_bits)
     if not idxs:
         raise ValueError("INTEGER 字段未在数据包比特流中找到")
     if len(idxs) == 1:
         return idxs.pop()
-
-    fld     = packet.get_at(path)
+    original_idxs = set(idxs)
     lb      = fld._const_val.lb
     ub      = fld._const_val.ub
-    old_val = packet.get_val_at(path)
     new_val = old_val
     while new_val == old_val:
         new_val = random.randint(lb, ub)
-    packet.set_val_at(path, new_val)
-    fld.set_val(new_val)
-    nbits = _field_bits(packet.get_at(path))
+    packet.set_val_at(val_path, new_val)
+    fld._val = new_val
+    nbits = _field_bits(fld)
     npkt  = bytes_to_bit_str(packet.to_uper())
-    idxs  = _find_all(npkt, nbits) & idxs
-    packet.set_val_at(path, old_val)
-    fld.set_val(old_val)
+    idxs  = _find_all(npkt, nbits) & original_idxs
     if not idxs:
-        raise ValueError("INTEGER 歧义消除失败")
+        return min(original_idxs)
     return min(idxs)
 
 
@@ -120,8 +120,11 @@ def mutate_integer_5g(
     pkt = RRCNR.NR_RRC_Definitions.DL_DCCH_Message
     pkt.from_uper(bytes.fromhex(uper_hex))
 
-    fld = pkt.get_at(target_path)
-    fld.set_val(pkt.get_val_at(target_path))
+    val_path = normalize_field_path_for_get_val_at(target_path)
+
+    fld = get_field_type_at_value_path(pkt, val_path)
+    old_val = pkt.get_val_at(val_path)
+    fld._val = old_val
 
     if fld.TYPE != "INTEGER":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 INTEGER")
@@ -130,7 +133,9 @@ def mutate_integer_5g(
 
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
     fld_bits = _field_bits(fld)
-    fld_idx  = _find_index(pkt_bits, fld_bits, target_path, pkt)
+
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    fld_idx  = _find_index(pkt_bits, fld_bits, val_path, pkt, fld, old_val)
 
     pkt.from_uper(bytes.fromhex(uper_hex))
     pkt_bits = bytes_to_bit_str(pkt.to_uper())

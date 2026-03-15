@@ -33,6 +33,8 @@ from .mutation_utils import (
     encode_unbound_length,            # PER 无界长度决定子编码（输入整数 → 输出编码字节列表）
     generate_invalid_length_encoding, # 生成不合法的 PER 长度编码字节（用于模糊测试）
     n_random_bits,                    # 生成指定长度的随机比特串（未在本文件使用，但统一导入）
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
 )
 
 # ── 全局常量 ──────────────────────────────────────────────────────────────────
@@ -92,67 +94,31 @@ def _find_all(pkt_bits: str, tgt: str) -> set:
     return idx_set
 
 
-def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
+def _find_index(pkt_bits: str, fld_bits: str, val_path: list, packet, fld, old_val) -> int:
     """
     在数据包比特串中精确定位目标字段的起始比特位置。
-
-    如果字段比特串在数据包中只出现一次，直接返回该位置。
-    如果出现多次（歧义），则通过修改字段值再比较来消除歧义：
-      1. 将字段值改为一个随机新值
-      2. 重新编码数据包，在新比特串中搜索新字段值
-      3. 取新旧搜索结果的交集 → 剩下的就是真实位置
-
-    参数：
-        pkt_bits:  完整数据包的比特串
-        fld_bits:  目标字段的比特串（由 _field_bits() 得到）
-        path:      字段在消息树中的路径
-        packet:    pycrate 消息对象（用于修改值和重新编码）
-
-    返回：
-        字段在比特串中的起始索引（int）
+    old_val 由调用方在 to_uper() 之前获取并传入，避免 to_uper() 修改内部状态后 get_val_at 失败。
     """
-    # 第一步：在数据包中查找字段比特串的所有出现位置
     idxs = _find_all(pkt_bits, fld_bits)
-
-    # 如果完全找不到，说明 _field_bits 提取有问题
     if not idxs:
         raise ValueError("字段未在数据包比特流中找到")
-
-    # 如果只有一处匹配，无歧义，直接返回
     if len(idxs) == 1:
         return idxs.pop()
 
-    # ── 歧义消除流程 ─────────────────────────────────────────────────────────
-    # 字段比特在数据包中出现了多次，需要通过改变字段值来确定真实位置
-    fld = packet.get_at(path)           # 获取字段的 ASN.1 对象
-    old = packet.get_val_at(path)       # 保存字段当前值
+    original_idxs = set(idxs)
+    new = old_val
+    while new == old_val:
+        new = random.randbytes(len(old_val))
 
-    # 生成一个与当前值不同的随机值
-    new = old
-    while new == old:                   # 确保新值和旧值不同
-        new = random.randbytes(len(old))  # 生成相同长度的随机字节
+    packet.set_val_at(val_path, new)
+    fld._val = new
 
-    # 设置新值并重新编码
-    packet.set_val_at(path, new)        # 在消息树中设置新值
-    fld.set_val(new)                    # 在字段对象上也设置新值
+    new_bits = _field_bits(fld)
+    new_pkt  = bytes_to_bit_str(packet.to_uper())
+    idxs     = _find_all(new_pkt, new_bits) & original_idxs
 
-    # 获取新字段值的比特串和新数据包的比特串
-    new_bits = _field_bits(packet.get_at(path))  # 新字段值的 UPER 比特
-    new_pkt  = bytes_to_bit_str(packet.to_uper())  # 新数据包的完整比特串
-
-    # 在新数据包中搜索新字段比特，与旧位置取交集
-    # 真实位置会在新旧两次搜索中都出现（因为字段位置不变，只是值变了）
-    idxs     = _find_all(new_pkt, new_bits) & idxs
-
-    # 恢复字段原始值（不影响后续操作）
-    packet.set_val_at(path, old)        # 恢复消息树中的值
-    fld.set_val(old)                    # 恢复字段对象的值
-
-    # 交集应该只剩一个位置
     if not idxs:
-        raise ValueError("OCTET STRING 歧义消除失败")
-
-    # 返回最小的匹配位置（理论上交集只有一个元素）
+        return min(original_idxs)
     return min(idxs)
 
 
@@ -273,8 +239,10 @@ def _unconstrained_octet_muts(field) -> List[Tuple[str, int]]:
     """
     # 获取字段的原始 UPER 编码（长度决定子 + 内容），用于计算大小差异
     fb   = field.to_uper()       # 字段完整 UPER 编码（bytes），包含长度头 + 内容
-    # 获取字段的纯内容值
-    fval = field.get_val_at([])  # 字段原始值（bytes），不含长度编码
+    # 获取字段的纯内容值；CONTAINING 等类型可能返回非 bytes，统一转为 bytes
+    fval = field.get_val_at([])
+    if not isinstance(fval, (bytes, bytearray)):
+        fval = b""
     # 原始编码的总字节数
     fsz  = len(fb)               # 原始编码字节数，用于计算 delta
     # 初始化变异结果列表
@@ -298,8 +266,9 @@ def _unconstrained_octet_muts(field) -> List[Tuple[str, int]]:
         # 构造内容字节：不够则追加随机字节，多余则截取原始值
         content       = (fval + generate_random_bytes(clen - len(fval))
                          if clen > len(fval) else fval[:clen])
-        # 拼接：长度编码字节 + 内容字节 → 完整的变异字段字节
-        mutated_bytes = enc[0] + content
+        # 拼接：长度编码字节（enc 可能多段，如分片编码）+ 内容字节
+        length_enc    = enc[0] if len(enc) == 1 else b"".join(enc)
+        mutated_bytes = length_enc + content
         # 计算变异后字节数与原始字节数的差异（× 8 转为比特数）
         delta         = len(mutated_bytes) - fsz
         # 将变异字段字节逐字节转为 8 位二进制字符串，拼接成完整比特串
@@ -397,34 +366,30 @@ def mutate_octet_string(
     pkt.from_uper(bytes.fromhex(uper_hex))
 
     # ── 步骤 2：获取并初始化目标字段 ────────────────────────────────────────
-    # 通过路径获取字段的 ASN.1 对象引用（字段定义 + 当前值）
-    fld = pkt.get_at(target_path)
-    # 将消息树中的值显式设置到字段对象上（确保 fld 的内部状态与消息树同步）
-    fld.set_val(pkt.get_val_at(target_path))
+    val_path = normalize_field_path_for_get_val_at(target_path)
+
+    fld = get_field_type_at_value_path(pkt, val_path)
+    old_val = pkt.get_val_at(val_path)
+    fld._val = old_val
 
     # ── 步骤 3：类型检查 ────────────────────────────────────────────────────
-    # 确认目标字段确实是 OCTET STRING 类型
     if fld.TYPE != "OCTET STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
 
     # ── 步骤 4：根据约束类型生成变异比特串 ──────────────────────────────────
-    # 有 SIZE 约束 → 受约束变异（4 条）；无约束 → 无约束变异（22 条）
     bit_muts = (_constrained_octet_muts(fld)
                 if fld._const_sz is not None
                 else _unconstrained_octet_muts(fld))
 
     # ── 步骤 5：在数据包比特流中定位字段的精确位置 ──────────────────────────
-    # 将完整数据包编码为比特串
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())
-    # 提取字段的有效比特串（去除对齐填充）
     fld_bits  = _field_bits(fld)
-    # 在数据包比特流中搜索字段位置（含歧义消除）
-    fld_idx   = _find_index(pkt_bits, fld_bits, target_path, pkt)
 
-    # ── 步骤 5.5：恢复原始数据包 ────────────────────────────────────────────
-    # _find_index 的歧义消除过程会临时修改字段值，需要重新加载原始数据
+    # to_uper() 可能修改 pycrate 内部状态，需重新加载确保 _find_index 中 set_val_at 可用
     pkt.from_uper(bytes.fromhex(uper_hex))
-    # 重新获取数据包比特串（确保是未被修改的原始版本）
+    fld_idx   = _find_index(pkt_bits, fld_bits, val_path, pkt, fld, old_val)
+
+    pkt.from_uper(bytes.fromhex(uper_hex))
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
 
     # ── 步骤 6：逐条替换字段比特，生成变异数据包 ────────────────────────────

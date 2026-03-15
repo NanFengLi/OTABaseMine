@@ -12,6 +12,10 @@ ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT   = True
 
 from bishe.pycrate_asn1obj.nr_5g import RRCNR
+from .mutation_utils import (
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
+)
 
 _SUPPORTED: Dict[str, str] = {
     "INTEGER":      "integer_mutation_5g",
@@ -37,8 +41,11 @@ def inspect_field_type_5g(
     pkt = RRCNR.NR_RRC_Definitions.DL_DCCH_Message
     pkt.from_uper(bytes.fromhex(uper_hex))
 
-    fld = pkt.get_at(target_path)
-    fld.set_val(pkt.get_val_at(target_path))
+    # 用“值路径”沿报文值同步推导类型，与 4G 一致，不依赖 get_at()，避免 SEQUENCE OF 处 path 不被消费导致的 invalid path。
+    # 不捕获异常，有错就抛。
+    val_path = normalize_field_path_for_get_val_at(target_path)
+    fld = get_field_type_at_value_path(pkt, val_path)
+    path_for_mutation = target_path
 
     raw_type: str = fld.TYPE
     normalized = raw_type.strip()
@@ -48,13 +55,15 @@ def inspect_field_type_5g(
 
     constraint = _describe_constraint(fld, normalized)
 
-    return {
+    out = {
         "field_type": normalized,
         "tool_name":  tool_name,
         "supported":  supported,
         "path":       ".".join(str(x) for x in target_path),
         "constraint": constraint,
     }
+    out["path_for_mutation"] = path_for_mutation
+    return out
 
 
 def _describe_constraint(fld, field_type: str) -> str:

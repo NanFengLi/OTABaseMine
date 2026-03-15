@@ -21,6 +21,8 @@ from .mutation_utils import (
     encode_unbound_length,
     generate_invalid_length_encoding,
     n_random_bits,
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
 )
 
 MAX_OTA      = 2048
@@ -49,33 +51,29 @@ def _find_all(pkt_bits: str, tgt: str) -> set:
     return idx_set
 
 
-def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
-    """在数据包比特流中精确定位目标字段的起始比特位置"""
+def _find_index(pkt_bits: str, fld_bits: str, val_path: list, packet, fld, old_val) -> int:
     idxs = _find_all(pkt_bits, fld_bits)
     if not idxs:
         raise ValueError("字段未在数据包比特流中找到")
     if len(idxs) == 1:
         return idxs.pop()
 
-    fld = packet.get_at(path)
-    old = packet.get_val_at(path)
+    original_idxs = set(idxs)
 
-    if not isinstance(old, (bytes, bytearray)):
-        # CONTAINING 类型无法简单修改值来消除歧义，取最小位置
-        return min(idxs)
+    if not isinstance(old_val, (bytes, bytearray)):
+        return min(original_idxs)
 
-    new = old
-    while new == old:
-        new = random.randbytes(len(old))
-    packet.set_val_at(path, new)
-    fld.set_val(new)
-    new_bits = _field_bits(packet.get_at(path))
+    new = old_val
+    while new == old_val:
+        new = random.randbytes(len(old_val))
+    packet.set_val_at(val_path, new)
+    fld._val = new
+    new_bits = _field_bits(fld)
     new_pkt  = bytes_to_bit_str(packet.to_uper())
-    idxs     = _find_all(new_pkt, new_bits) & idxs
-    packet.set_val_at(path, old)
-    fld.set_val(old)
+    idxs     = _find_all(new_pkt, new_bits) & original_idxs
+
     if not idxs:
-        raise ValueError("OCTET STRING 歧义消除失败")
+        return min(original_idxs)
     return min(idxs)
 
 
@@ -167,8 +165,11 @@ def mutate_octet_string_5g(
     pkt = RRCNR.NR_RRC_Definitions.DL_DCCH_Message
     pkt.from_uper(bytes.fromhex(uper_hex))
 
-    fld = pkt.get_at(target_path)
-    fld.set_val(pkt.get_val_at(target_path))
+    val_path = normalize_field_path_for_get_val_at(target_path)
+
+    fld = get_field_type_at_value_path(pkt, val_path)
+    old_val = pkt.get_val_at(val_path)
+    fld._val = old_val
 
     if fld.TYPE != "OCTET STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
@@ -179,7 +180,9 @@ def mutate_octet_string_5g(
 
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())
     fld_bits  = _field_bits(fld)
-    fld_idx   = _find_index(pkt_bits, fld_bits, target_path, pkt)
+
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    fld_idx   = _find_index(pkt_bits, fld_bits, val_path, pkt, fld, old_val)
 
     pkt.from_uper(bytes.fromhex(uper_hex))
     pkt_bits = bytes_to_bit_str(pkt.to_uper())

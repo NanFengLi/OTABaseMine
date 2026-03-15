@@ -18,6 +18,8 @@ from .mutation_utils import (
     generate_random_bytes,
     encode_unbound_length, generate_invalid_length_encoding,
     n_random_bits,
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
 )
 
 MAX_OTA      = 2048
@@ -46,28 +48,24 @@ def _find_all(pkt_bits: str, tgt: str) -> set:
     return idxs
 
 
-def _find_index(pkt_bits: str, fld_bits: str, path: list, packet) -> int:
-    """在数据包比特流中定位 BIT STRING 字段位置"""
+def _find_index(pkt_bits: str, fld_bits: str, val_path: list, packet, fld, old_val) -> int:
     idxs = _find_all(pkt_bits, fld_bits)
     if not idxs:
         raise ValueError("字段未在数据包比特流中找到")
     if len(idxs) == 1:
         return idxs.pop()
-
-    fld         = packet.get_at(path)
-    oval, olen  = packet.get_val_at(path)
+    original_idxs = set(idxs)
+    oval, olen  = old_val
     nval = oval
     while nval == oval:
         nval = random.randint(0, 2**olen - 1)
-    packet.set_val_at(path, (nval, olen))
-    fld.set_val((nval, olen))
-    nbits = _field_bits(packet.get_at(path))
+    packet.set_val_at(val_path, (nval, olen))
+    fld._val = (nval, olen)
+    nbits = _field_bits(fld)
     npkt  = bytes_to_bit_str(packet.to_uper())
-    idxs  = _find_all(npkt, nbits) & idxs
-    packet.set_val_at(path, (oval, olen))
-    fld.set_val((oval, olen))
+    idxs  = _find_all(npkt, nbits) & original_idxs
     if not idxs:
-        raise ValueError("BIT STRING 歧义消除失败")
+        return min(original_idxs)
     return min(idxs)
 
 
@@ -147,8 +145,11 @@ def mutate_bit_string_5g(
     pkt = RRCNR.NR_RRC_Definitions.DL_DCCH_Message
     pkt.from_uper(bytes.fromhex(uper_hex))
 
-    fld = pkt.get_at(target_path)
-    fld.set_val(pkt.get_val_at(target_path))
+    val_path = normalize_field_path_for_get_val_at(target_path)
+
+    fld = get_field_type_at_value_path(pkt, val_path)
+    old_val = pkt.get_val_at(val_path)
+    fld._val = old_val
 
     if fld.TYPE != "BIT STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 BIT STRING")
@@ -159,7 +160,9 @@ def mutate_bit_string_5g(
 
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
     fld_bits = _field_bits(fld)
-    fld_idx  = _find_index(pkt_bits, fld_bits, target_path, pkt)
+
+    pkt.from_uper(bytes.fromhex(uper_hex))
+    fld_idx  = _find_index(pkt_bits, fld_bits, val_path, pkt, fld, old_val)
 
     pkt.from_uper(bytes.fromhex(uper_hex))
     pkt_bits = bytes_to_bit_str(pkt.to_uper())

@@ -1,13 +1,42 @@
 """
-langchain_agent_4g_mutator using RRC Mutation Tools
+langchain_agent_4g_mutator — 4G LTE RRC 批量变异 & LangChain Agent 入口
 
-将 bishe/mutated/tools 下的四种 RRC 字段变异工具封装为 LangChain StructuredTool，
-并构建一个可以调用这些工具的 Agent。
+对 bishe/generate_new/output_4g 下的合法 4G LTE RRC payload 进行批量变异，
+或通过 LangChain Agent 与 LLM 交互式调用变异工具。
 
-新接口（比特流替换方式）：
-    工具输入：uper_hex（完整消息 UPER 十六进制）+ message_type + target_path + seed
-    工具输出：JSON 数组，每项为 [mutated_uper_hex, message_type, [path...]]
-    约束参数（lower_bound/upper_bound/constrained）由工具内部从 pycrate 自动解析，无需外部传入。
+使用方法：
+    # 方式 1：批量变异（推荐，无需 API Key）
+    #   读取 generate_new/output_4g/rrc_legitimate_payloads*.txt
+    #   自动识别字段类型 → 调用对应变异工具 → 输出到 mutate_output_4g/
+    python -m bishe.mutated.langchain_agent_4g_mutator --batch
+
+    # 方式 2：批量变异，限制每个文件最多处理 100 行
+    python -m bishe.mutated.langchain_agent_4g_mutator --batch --limit 100
+
+    # 方式 3：仅识别字段类型，不执行变异
+    python -m bishe.mutated.langchain_agent_4g_mutator --batch --inspect-only
+
+    # 方式 4：直接调用工具演示（无需 API Key）
+    python -m bishe.mutated.langchain_agent_4g_mutator
+
+    # 方式 5：通过 LangChain Agent 交互（需要 OPENAI_API_KEY）
+    python -m bishe.mutated.langchain_agent_4g_mutator --agent
+
+    # 方式 6：在代码中导入使用
+    from bishe.mutated.langchain_agent_4g_mutator import run_batch_mutate
+    stats = run_batch_mutate(limit_per_file=100)
+
+    # 或直接调用底层工具函数
+    from bishe.mutated.tools import mutate_integer, inspect_field_type
+    results = mutate_integer(uper_hex, message_type, target_path, seed=42)
+
+批量变异输出格式：
+    第一行：总条数
+    之后每行：<序号>,<变异后hex>,<消息类型>,<字段路径>,<字段类型>,<变异策略编号>
+
+环境变量（仅 Agent 模式需要，在 .env 中配置）：
+    OPENAI_API_KEY:  OpenAI API Key
+    OPENAI_BASE_URL: 自定义 API 地址（可选，用于代理或国内镜像）
 """
 
 import json
@@ -19,10 +48,6 @@ from dotenv import load_dotenv
 # 使用 python-dotenv 自动加载当前工作目录下的 .env
 load_dotenv()
 
-
-from langchain.agents import create_agent
-from langchain_core.tools import StructuredTool
-from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
 from bishe.mutated.tools import (
@@ -32,6 +57,14 @@ from bishe.mutated.tools import (
     mutate_sequence_of,
     inspect_field_type,
 )
+
+# 批量变异：tool_name -> 实际变异函数
+_RUN_MUTATE = {
+    "integer_mutation": mutate_integer,
+    "octet_string_mutation": mutate_octet_string,
+    "bit_string_mutation": mutate_bit_string,
+    "sequence_of_mutation": mutate_sequence_of,
+}
 
 # ---------------------------------------------------------------------------
 # Pydantic 输入 Schema（LangChain StructuredTool 需要）
@@ -191,81 +224,7 @@ def _run_sequence_of_mutation(
 
 
 # ---------------------------------------------------------------------------
-# 注册为 LangChain StructuredTool
-# ---------------------------------------------------------------------------
-
-field_type_tool = StructuredTool.from_function(
-    func=_run_inspect_field_type,
-    name="inspect_field_type",
-    description=(
-        "检测 RRC 消息中指定路径字段的 ASN.1 类型。"
-        "输入合法消息的 UPER 十六进制编码（uper_hex）和字段路径（target_path），"
-        "返回包含以下字段的 JSON 对象："
-        "field_type（ASN.1 类型名称）、"
-        "tool_name（对应变异工具名称，如 integer_mutation）、"
-        "supported（是否支持变异：true/false）、"
-        "path（点分路径字符串）、"
-        "constraint（约束摘要）。"
-        "在调用任何变异工具之前，如果不确定字段类型，请先调用此工具。"
-    ),
-    args_schema=FieldTypeInspectorInput,
-)
-
-integer_tool = StructuredTool.from_function(
-    func=_run_integer_mutation,
-    name="integer_mutation",
-    description=(
-        "对 RRC 消息中的 INTEGER 字段执行比特流级 BASE 策略变异。"
-        "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path），"
-        "约束信息由工具自动从 pycrate 读取，无需手动提供。"
-        "生成 3 条变异：① 合法随机值；② 比特全1溢出；③ 上界+1溢出。"
-        "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
-    ),
-    args_schema=IntegerMutationInput,
-)
-
-octet_string_tool = StructuredTool.from_function(
-    func=_run_octet_string_mutation,
-    name="octet_string_mutation",
-    description=(
-        "对 RRC 消息中的 OCTET STRING 字段执行比特流级 BASE 策略变异。"
-        "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
-        "有约束时生成 4 条变异，无约束时生成 22 条变异，约束信息自动解析。"
-        "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
-    ),
-    args_schema=OctetStringMutationInput,
-)
-
-bit_string_tool = StructuredTool.from_function(
-    func=_run_bit_string_mutation,
-    name="bit_string_mutation",
-    description=(
-        "对 RRC 消息中的 BIT STRING 字段执行比特流级 BASE 策略变异。"
-        "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
-        "有约束时生成 4 条变异，无约束时生成 12 条变异，约束信息自动解析。"
-        "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
-    ),
-    args_schema=BitStringMutationInput,
-)
-
-sequence_of_tool = StructuredTool.from_function(
-    func=_run_sequence_of_mutation,
-    name="sequence_of_mutation",
-    description=(
-        "对 RRC 消息中的 SEQUENCE OF 字段执行比特流级 BASE 策略变异。"
-        "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
-        "生成 4 条变异：长度头为 0、实际元素数、随机值、maxe，内容字节保持不变。"
-        "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
-    ),
-    args_schema=SequenceOfMutationInput,
-)
-
-# 所有工具列表（inspect_field_type 排在最前，便于 Agent 优先发现）
-ALL_TOOLS = [field_type_tool, integer_tool, octet_string_tool, bit_string_tool, sequence_of_tool]
-
-
-# ---------------------------------------------------------------------------
-# 构建 LangChain Agent
+# 构建 LangChain Agent（内部再导入 langchain，便于 --batch 时不加载）
 # ---------------------------------------------------------------------------
 
 def build_agent(
@@ -291,6 +250,10 @@ def build_agent(
         OPENAI_API_KEY: OpenAI API Key
         OPENAI_BASE_URL (可选): 自定义 API 地址（用于代理或国内镜像）
     """
+    from langchain.agents import create_agent
+    from langchain_core.tools import StructuredTool
+    from langchain_openai import ChatOpenAI
+
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_BASE_URL")
 
@@ -307,6 +270,69 @@ def build_agent(
         timeout=timeout_s,
         max_retries=max_retries,
     )
+
+    field_type_tool = StructuredTool.from_function(
+        func=_run_inspect_field_type,
+        name="inspect_field_type",
+        description=(
+            "检测 RRC 消息中指定路径字段的 ASN.1 类型。"
+            "输入合法消息的 UPER 十六进制编码（uper_hex）和字段路径（target_path），"
+            "返回包含以下字段的 JSON 对象："
+            "field_type（ASN.1 类型名称）、"
+            "tool_name（对应变异工具名称，如 integer_mutation）、"
+            "supported（是否支持变异：true/false）、"
+            "path（点分路径字符串）、"
+            "constraint（约束摘要）。"
+            "在调用任何变异工具之前，如果不确定字段类型，请先调用此工具。"
+        ),
+        args_schema=FieldTypeInspectorInput,
+    )
+    integer_tool = StructuredTool.from_function(
+        func=_run_integer_mutation,
+        name="integer_mutation",
+        description=(
+            "对 RRC 消息中的 INTEGER 字段执行比特流级 BASE 策略变异。"
+            "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path），"
+            "约束信息由工具自动从 pycrate 读取，无需手动提供。"
+            "生成 3 条变异：① 合法随机值；② 比特全1溢出；③ 上界+1溢出。"
+            "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
+        ),
+        args_schema=IntegerMutationInput,
+    )
+    octet_string_tool = StructuredTool.from_function(
+        func=_run_octet_string_mutation,
+        name="octet_string_mutation",
+        description=(
+            "对 RRC 消息中的 OCTET STRING 字段执行比特流级 BASE 策略变异。"
+            "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
+            "有约束时生成 4 条变异，无约束时生成 22 条变异，约束信息自动解析。"
+            "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
+        ),
+        args_schema=OctetStringMutationInput,
+    )
+    bit_string_tool = StructuredTool.from_function(
+        func=_run_bit_string_mutation,
+        name="bit_string_mutation",
+        description=(
+            "对 RRC 消息中的 BIT STRING 字段执行比特流级 BASE 策略变异。"
+            "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
+            "有约束时生成 4 条变异，无约束时生成 12 条变异，约束信息自动解析。"
+            "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
+        ),
+        args_schema=BitStringMutationInput,
+    )
+    sequence_of_tool = StructuredTool.from_function(
+        func=_run_sequence_of_mutation,
+        name="sequence_of_mutation",
+        description=(
+            "对 RRC 消息中的 SEQUENCE OF 字段执行比特流级 BASE 策略变异。"
+            "输入合法消息的 UPER 十六进制编码（uper_hex）、消息类型（message_type）和字段路径（target_path）。"
+            "生成 4 条变异：长度头为 0、实际元素数、随机值、maxe，内容字节保持不变。"
+            "返回 JSON 数组，每项为 [mutated_uper_hex, message_type, target_path]。"
+        ),
+        args_schema=SequenceOfMutationInput,
+    )
+    ALL_TOOLS = [field_type_tool, integer_tool, octet_string_tool, bit_string_tool, sequence_of_tool]
 
     system_prompt = (
         "你是一个 LTE RRC 协议模糊测试专家，能够使用 BASE 策略对 RRC 消息字段进行比特流级变异。\n"
@@ -406,9 +432,6 @@ def demo_direct_tool_calls():
 # 使用 Agent 与 LLM 交互的示例
 # ---------------------------------------------------------------------------
 
-
-agent = build_agent(model="gpt-4o", temperature=0)
-
 # 测试使用的方法，手动调用大模型,需要API Key
 def demo_agent_interaction():
     """
@@ -436,10 +459,183 @@ def demo_agent_interaction():
     print(last_msg.content)
 
 
+# ---------------------------------------------------------------------------
+# 批量变异：读取 rrc_legitimate_payloads*.txt → 识别类型 → 变异 → 写入 mutate_output_4g
+# ---------------------------------------------------------------------------
+
+# 默认路径：bishe/generate_new/output_4g、bishe/mutated/mutate_output_4g
+DEFAULT_PAYLOAD_INPUT_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "generate_new", "output_4g",
+)
+DEFAULT_MUTATE_OUTPUT_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "mutate_output_4g",
+)
+
+
+def run_batch_mutate(
+    input_dir: str = DEFAULT_PAYLOAD_INPUT_DIR,
+    output_dir: str = DEFAULT_MUTATE_OUTPUT_DIR,
+    limit_per_file: Optional[int] = None,
+) -> dict:
+    """
+    读取 input_dir 下所有 rrc_legitimate_payloads 开头的 .txt，
+    对每一行：先 inspect_field_type，再按类型调用对应变异工具，
+    将变异结果写入 output_dir，每输入文件对应一个输出文件。
+
+    输入文件每行格式：idx, uper_hex, message_type, path_component_1, path_component_2, ...
+    输出文件格式与输入文件一致：
+      第一行为总条数
+      之后每行：序号,hex,message_type,path...,field_type,mutation_strategy_idx
+
+    Args:
+        input_dir: 存放 rrc_legitimate_payloads*.txt 的目录
+        output_dir: 变异结果输出目录（不存在则创建）
+        limit_per_file: 每个文件最多处理行数，None 表示全部
+
+    Returns:
+        统计信息 {"files_read": N, "lines_processed": N, "mutations_written": N, "errors": N, "by_file": {...}}
+    """
+    os.makedirs(output_dir, exist_ok=True)
+
+    payload_files = sorted([
+        f for f in os.listdir(input_dir)
+        if f.startswith("rrc_legitimate_payloads") and f.endswith(".txt")
+    ])
+    if not payload_files:
+        return {"error": f"No rrc_legitimate_payloads*.txt in {input_dir}", "files_read": 0}
+
+    stats = {"files_read": 0, "lines_processed": 0, "mutations_written": 0, "errors": 0, "by_file": {}}
+
+    for basename in payload_files:
+        in_path = os.path.join(input_dir, basename)
+        out_name = basename.replace(".txt", "_mutations.txt")
+        out_path = os.path.join(output_dir, out_name)
+        file_stats = {"lines": 0, "mutations": 0, "errors": 0}
+
+        mutations_lines = []
+        with open(in_path, "r", encoding="utf-8") as f:
+            for line_no, line in enumerate(f):
+                line = line.strip()
+                if not line:
+                    continue
+                if limit_per_file is not None and file_stats["lines"] >= limit_per_file:
+                    break
+                parts = line.split(",")
+                if len(parts) < 4:
+                    continue
+                try:
+                    idx = parts[0].strip()
+                    uper_hex = parts[1].strip()
+                    message_type = parts[2].strip()
+                    target_path = [p.strip() for p in parts[3:]]
+                except Exception:
+                    file_stats["errors"] += 1
+                    stats["errors"] += 1
+                    continue
+
+                file_stats["lines"] += 1
+                stats["lines_processed"] += 1
+
+                # 识别过程若报错（如 get_at 路径无效）直接抛异常，不捕获，让程序停止
+                info = inspect_field_type(uper_hex=uper_hex, target_path=target_path)
+
+                if info.get("supported") != "true" or info.get("tool_name") not in _RUN_MUTATE:
+                    continue
+
+                # 使用与报文一致的路径做变异（若识别时做过 resolve 则用 path_for_mutation，避免 CHOICE 分支不一致导致变异报错）
+                path_for_mutation = info.get("path_for_mutation", target_path)
+                if isinstance(path_for_mutation, str):
+                    path_for_mutation = [path_for_mutation]
+                mut_fn = _RUN_MUTATE[info["tool_name"]]
+                # 有错就抛，不捕获，便于排查
+                results = mut_fn(
+                    uper_hex=uper_hex,
+                    message_type=message_type,
+                    target_path=path_for_mutation,
+                    seed=None,
+                )
+
+                path_csv = ",".join(str(p) for p in target_path)
+                field_type = info.get("field_type", "")
+                for strategy_idx, (mut_hex, _msg_type, _path) in enumerate(results, 1):
+                    mutations_lines.append(
+                        ",".join([mut_hex, message_type, path_csv, field_type, str(strategy_idx)])
+                    )
+                    file_stats["mutations"] += 1
+                    stats["mutations_written"] += 1
+
+        stats["by_file"][basename] = file_stats
+        stats["files_read"] += 1
+
+        with open(out_path, "w", encoding="utf-8") as out:
+            out.write(str(len(mutations_lines)) + "\n")
+            for i, ml in enumerate(mutations_lines, 1):
+                out.write(str(i) + "," + ml + "\n")
+
+    return stats
+
+
+def run_batch_inspect_only(
+    input_dir: str = DEFAULT_PAYLOAD_INPUT_DIR,
+    limit_per_file: Optional[int] = None,
+) -> dict:
+    """
+    仅做类型识别：遍历所有 payload 行，对每条调用 inspect_field_type，不调用变异。
+    不捕获异常，任一行识别失败即抛错。用于验证能否识别出全部路径类型。
+    """
+    payload_files = sorted([
+        f for f in os.listdir(input_dir)
+        if f.startswith("rrc_legitimate_payloads") and f.endswith(".txt")
+    ])
+    if not payload_files:
+        return {"error": f"No rrc_legitimate_payloads*.txt in {input_dir}", "lines_identified": 0}
+
+    total = 0
+    by_file = {}
+    for basename in payload_files:
+        in_path = os.path.join(input_dir, basename)
+        count = 0
+        with open(in_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                if limit_per_file is not None and count >= limit_per_file:
+                    break
+                parts = line.split(",")
+                if len(parts) < 4:
+                    continue
+                idx, uper_hex, message_type = parts[0].strip(), parts[1].strip(), parts[2].strip()
+                target_path = [p.strip() for p in parts[3:]]
+                info = inspect_field_type(uper_hex=uper_hex, target_path=target_path)
+                count += 1
+                total += 1
+        by_file[basename] = count
+    return {"lines_identified": total, "by_file": by_file, "files_read": len(payload_files)}
+
+
 if __name__ == "__main__":
     import sys
 
-    if "--agent" in sys.argv:
+    if "--batch" in sys.argv:
+        # 批量变异：读取 output_4g 下 rrc_legitimate_payloads*.txt，输出到 mutate_output_4g
+        limit = None
+        if "--limit" in sys.argv:
+            i = sys.argv.index("--limit")
+            if i + 1 < len(sys.argv):
+                limit = int(sys.argv[i + 1])
+        if "--inspect-only" in sys.argv:
+            stats = run_batch_inspect_only(
+                limit_per_file=limit,
+                input_dir=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "generate_new", "output_4g"),
+            )
+            print("Inspect-only stats:", json.dumps(stats, ensure_ascii=False, indent=2))
+        else:
+            stats = run_batch_mutate(limit_per_file=limit)
+            print("Batch mutate stats:", json.dumps(stats, ensure_ascii=False, indent=2))
+    elif "--agent" in sys.argv:
         # 需要设置 OPENAI_API_KEY 环境变量
         demo_agent_interaction()
     else:

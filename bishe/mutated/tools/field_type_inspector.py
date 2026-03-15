@@ -18,15 +18,19 @@
 from typing import Dict, List
 
 from pycrate.pycrate_asn1rt.asnobj import ASN1Obj
+
 ASN1Obj._SAFE_BND = False
 ASN1Obj._SILENT   = True
 
-# from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
 from bishe.pycrate_asn1obj.eutran_4g import RRCLTE
+from .mutation_utils import (
+    normalize_field_path_for_get_val_at,
+    get_field_type_at_value_path,
+)
 
 # 支持的类型 → 对应变异工具名
 _SUPPORTED: Dict[str, str] = {
-    "INTEGER":     "integer_mutation",
+    "INTEGER":      "integer_mutation",
     "OCTET STRING": "octet_string_mutation",
     "BIT STRING":   "bit_string_mutation",
     "SEQUENCE OF":  "sequence_of_mutation",
@@ -63,9 +67,13 @@ def inspect_field_type(
     pkt = RRCLTE.EUTRA_RRC_Definitions.DL_DCCH_Message
     pkt.from_uper(bytes.fromhex(uper_hex))
 
-    fld = pkt.get_at(target_path)
-    fld.set_val(pkt.get_val_at(target_path))
+    # 用“值路径”沿报文值同步推导类型，不依赖 get_at()，避免 SEQUENCE OF 处 path 不被消费导致的 invalid path。
+    # 不捕获异常，有错就抛。
+    val_path = normalize_field_path_for_get_val_at(target_path)
+    fld = get_field_type_at_value_path(pkt, val_path)
+    path_for_mutation = target_path
 
+    # 只需要类型信息即可，无需读取具体取值，避免在字段值不存在时抛出 invalid value path 异常
     raw_type: str = fld.TYPE  # pycrate 原始类型字符串
 
     # 归一化：pycrate 有时使用 "BIT STRING" / "OCTET STRING"（含空格）
@@ -77,13 +85,16 @@ def inspect_field_type(
     # 约束摘要
     constraint = _describe_constraint(fld, normalized)
 
-    return {
+    out = {
         "field_type": normalized,
         "tool_name":  tool_name,
         "supported":  supported,
         "path":       ".".join(target_path),
         "constraint": constraint,
     }
+    # 供 batch 使用：若路径被解析过，变异时用 path_for_mutation（与报文一致）以保证不报错
+    out["path_for_mutation"] = path_for_mutation
+    return out
 
 
 def _describe_constraint(fld, field_type: str) -> str:

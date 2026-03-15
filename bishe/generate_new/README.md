@@ -1,9 +1,10 @@
-# RRC 合法测试样例生成器
+# RRC 合法测试样例生成器（4G LTE / 5G NR）
 
 ## 概述
 
 本模块从 OTABase 的 `artifact/test-case-generator/rrc` 中抽取了 **RRC 合法消息生成**的核心逻辑，
 去除了变异（mutation）和模糊测试（fuzzing）策略，专注于生成符合 3GPP RRC 规范的合法 DL-DCCH-Message。
+支持 **4G LTE**（基于 `pycrate_asn1dir.RRCLTE`）和 **5G NR**（基于 `NR-RRC-Definitions`）两套协议。
 
 ### 与原始代码的关系
 
@@ -59,14 +60,20 @@ pip install pycrate
 # 从项目根目录运行
 cd /path/to/OTABaseMine
 
-# 生成覆盖所有 OCTET_STRING 路径的合法载荷（默认）
+# 生成覆盖所有 OCTET_STRING 路径的合法载荷（默认 4G LTE）
 python -m bishe.generate_new.main
 
 # 指定多种目标字段类型
 python -m bishe.generate_new.main -f BIT_STRING OCTET_STRING INTEGER SEQOF
 
+# 生成 5G NR RRC 消息
+python -m bishe.generate_new.main --rat 5g -f OCTET_STRING BIT_STRING INTEGER SEQOF
+
 # 指定输出文件、种子和循环次数
-python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output/my_payloads.txt
+python -m bishe.generate_new.main -f OCTET_STRING -s 42 -c 2 -o output_4g/my_payloads.txt
+
+# 控制每个文件的最大行数（默认 2000，超出自动分文件）
+python -m bishe.generate_new.main --rat 5g -f OCTET_STRING --max-lines 2000
 
 # 生成单个数据包（测试）
 python -m bishe.generate_new.main -t single -v
@@ -77,6 +84,20 @@ python -m bishe.generate_new.main -t stats
 # 基准测试（默认 100 个包）
 python -m bishe.generate_new.main -t benchmark -n 200
 ```
+
+### 多文件切分
+
+当生成的 payload 行数超过 `--max-lines`（默认 2000）时，自动拆分为多个文件：
+
+```
+output_5g/
+├── rrc_legitimate_payloads_1773542609.txt   # 第 1 个（≤ 2000 行）
+├── rrc_legitimate_payloads_1773542610.txt   # 第 2 个
+├── rrc_legitimate_payloads_1773542611.txt   # 第 3 个（剩余）
+└── testFileIndex                            # 指向第一个文件名
+```
+
+`testFileIndex` 供 srsRAN gNB / eNB 读取，自动指向第一个 payload 文件。
 
 ### Python API
 
@@ -134,7 +155,9 @@ print(f"生成了 {result['total_count']} 个最小合法载荷")
 | `--fields` | `-f` | 目标字段类型 | `OCTET_STRING` |
 | `--cycles` | `-c` | 生成循环次数 | `1` |
 | `--seed` | `-s` | 随机种子 | `1` |
-| `--output` | `-o` | 输出文件路径 | `output/rrc_legitimate_payloads.txt` |
+| `--rat` | — | 协议版本：`4g`（默认）或 `5g` | `4g` |
+| `--max-lines` | — | 每个输出文件最大行数 | `2000` |
+| `--output` | `-o` | 输出文件路径 | `output_4g/rrc_legitimate_payloads.txt` |
 | `--report` | `-r` | 生成报告 JSON 文件 | `output/generation_report.json` |
 | `--append-report` | — | 追加写入报告（JSON 列表） | `False` |
 | `--test` | `-t` | 测试模式 (`single`/`stats`/`benchmark`) | 无 |

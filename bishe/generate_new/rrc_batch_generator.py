@@ -206,7 +206,8 @@ class RRCBatchGenerator:
                             payload_hex = full_hex
 
                         msg_type = unique_path[2] if len(unique_path) > 2 else "unknown"
-                        field_path_str = ",".join(str(x) for x in unique_path)
+                        # 与 artifact 一致：写入完整 path（含 SEQUENCE OF 下标），供变异时 get_val_at 使用
+                        field_path_str = ",".join(str(x) for x in path)
 
                         payload_index += 1
                         file_payload_count += 1

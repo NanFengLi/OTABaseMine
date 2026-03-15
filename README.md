@@ -1,198 +1,153 @@
-# OTABaseMine 使用说明（整合版）
+# OTABaseMine
 
-本仓库可以分成 4 个核心部分：
+基于 [OTABase](https://github.com/OTABase/OTABase) 的 4G LTE / 5G NR RRC 协议模糊测试框架。本项目实现了 **合法 RRC 消息生成 → 比特流级字段变异 → OTA 空口注入** 的完整 fuzzing 流水线，支持 4G LTE（srsRAN 4G）和 5G NR（srsRAN Project）两套协议栈。
 
-1. `bishe/generate_new`：生成合法 RRC 消息（4G / 5G）
-2. `bishe/mutated`：对合法 RRC 消息进行大模型/手动变异
-3. `artifact/srsRAN_Project`：发送 5G 变异消息（gNB 侧）
-4. `artifact/otabase`：发送 4G 变异消息（eNB/MME 侧）
+## 项目架构
 
----
-
-## 一、目录职责
-
-### 1) 合法消息生成（4G/5G）
-
-- 目录：`bishe/generate_new`
-- 作用：生成 ASN.1 合法 RRC UPER payload，作为后续变异输入
-- 输出目录：
-	- 4G：`bishe/generate_new/output_4g`
-	- 5G：`bishe/generate_new/output_5g`
-
-### 2) 变异（LLM 或直接工具）
-
-- 目录：`bishe/mutated`
-- 作用：对指定字段进行 INTEGER / OCTET STRING / BIT STRING / SEQUENCE OF 变异
-- 支持：
-	- 4G mutator
-	- 5G mutator
-	- 直接工具模式（无需 LLM）
-
-### 3) 5G 发送（srsRAN gNB）
-
-- 目录：`artifact/srsRAN_Project`
-- 作用：CU-CP RRC 层读取 `testFileIndex` 和 payload 文件，向 UE 注入变异 RRC 消息
-
-### 4) 4G 发送（原版 OTABase）
-
-- 目录：`artifact/otabase`
-- 作用：在 4G 栈中执行 OTABase 风格变异注入
-
----
-
-## 二、环境准备
-
-建议先激活 Python 环境：
-
-```bash
-source /home/lab221/miniconda3/bin/activate bishe
+```
+OTABaseMine/
+├── bishe/
+│   ├── generate_new/          # 合法 RRC 消息生成器（4G / 5G）
+│   │   ├── main.py            #   命令行入口
+│   │   ├── rrc_generator.py   #   核心 ASN.1 递归生成器
+│   │   ├── rrc_batch_generator.py  # 批量生成 + 消息精简
+│   │   ├── output_4g/         #   4G 合法 payload 输出
+│   │   └── output_5g/         #   5G 合法 payload 输出
+│   ├── mutated/               # 比特流级变异引擎
+│   │   ├── tools/             #   四种字段类型变异工具（4G + 5G）
+│   │   ├── langchain_agent_4g_mutator.py  # 4G 批量变异入口
+│   │   ├── langchain_agent_5g_mutator.py  # 5G 批量变异入口
+│   │   ├── mutate_output_4g/  #   4G 变异结果输出
+│   │   └── mutate_output_5g/  #   5G 变异结果输出
+│   └── pycrate_asn1obj/       # pycrate ASN.1 协议定义加载
+├── artifact/
+│   ├── srsRAN_Project/        # 5G gNB（基于 srsRAN Project 修改）
+│   └── otabase/               # 4G eNB/EPC（基于 srsRAN 4G 修改）
+└── pycrate/                   # pycrate 库（本地副本）
 ```
 
-在仓库根目录执行命令：
+## 快速开始
+
+### 环境准备
 
 ```bash
-cd /home/lab221/Projects/OTABaseMine
+# 激活 conda 环境
+conda activate bishe
+
+# 进入项目根目录
+cd /path/to/OTABaseMine
 ```
 
----
-
-## 三、如何生成合法 RRC 消息（generate_new）
-
-### 1) 生成 4G 合法消息
+### Step 1：生成合法 RRC 消息
 
 ```bash
+# 4G LTE：生成覆盖所有字段类型的合法 payload
 python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
-```
 
-### 2) 生成 5G 合法消息
-
-```bash
+# 5G NR：生成覆盖所有字段类型的合法 payload
 python -m bishe.generate_new.main --rat 5g -f OCTET_STRING BIT_STRING INTEGER SEQOF
+
+# 可选参数
+#   --max-lines 2000    每个文件最多行数（默认 2000，超出自动分文件）
+#   -s 42               随机种子
+#   -c 2                递归循环深度
 ```
 
-### 3) 文件切分规则（已支持）
+输出目录：
+- 4G → `bishe/generate_new/output_4g/`
+- 5G → `bishe/generate_new/output_5g/`
 
-- 每个 payload 文件最多 `2000` 条（可通过 `--max-lines` 调整）
-- 超过后自动写入下一个文件
-- 文件名按时间戳递增，例如：
-	- `rrc_legitimate_payloads_1710000000.txt`
-	- `rrc_legitimate_payloads_1710000001.txt`
-	- `rrc_legitimate_payloads_1710000002.txt`
-- 同时生成 `testFileIndex`，指向第一个文件
+每个目录下生成：
+- `rrc_legitimate_payloads_<timestamp>.txt`（按 2000 行自动分文件）
+- `testFileIndex`（指向第一个 payload 文件，供 eNB/gNB 读取）
 
-示例：
+### Step 2：批量变异
 
 ```bash
-python -m bishe.generate_new.main --rat 5g -f OCTET_STRING --max-lines 2000
+# 4G 批量变异（读取 output_4g → 输出到 mutate_output_4g）
+python -m bishe.mutated.langchain_agent_4g_mutator --batch
+
+# 5G 批量变异（读取 output_5g → 输出到 mutate_output_5g）
+python -m bishe.mutated.langchain_agent_5g_mutator --batch
+
+# 可选参数
+#   --limit N           每个文件最多处理 N 行
+#   --inspect-only      仅识别字段类型，不执行变异
 ```
 
----
+变异流程：对每条合法 payload，自动识别字段类型（INTEGER / OCTET STRING / BIT STRING / SEQUENCE OF），调用对应的 BASE 策略变异工具，在 UPER 比特流层面直接替换字段值，绕过 pycrate 约束校验。
 
-## 四、如何做变异（mutated）
+输出文件格式：
+```
+<总条数>
+<序号>,<变异后hex>,<消息类型>,<字段路径>,<字段类型>,<变异策略编号>
+```
 
-### 1) 5G 变异（推荐先用直接工具模式）
+### Step 3：OTA 空口注入
+
+#### 5G 注入（srsRAN Project gNB）
 
 ```bash
+# 构建 gNB
+cd artifact/srsRAN_Project && mkdir -p build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) gnb
+
+# 配置 otabase_fuzzing.yml
+#   otabase_enable_5g_rrc_fuzzing: true
+#   otabase_test_index_file: ../../bishe/generate_new/output_5g/testFileIndex
+
+# 启动
+sudo ./apps/gnb/gnb \
+    -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
+    -c ../configs/otabase_fuzzing.yml
+```
+
+#### 4G 注入（srsRAN 4G eNB）
+
+```bash
+# 参考 artifact/otabase/ 下的构建和启动脚本
+artifact/otabase/build_trial.sh
+artifact/otabase/install.sh
+```
+
+### 其他运行模式
+
+```bash
+# 直接调用工具演示（无需 API Key）
+python -m bishe.mutated.langchain_agent_4g_mutator
 python -m bishe.mutated.langchain_agent_5g_mutator
-```
 
-- 不带参数：直接工具演示模式（无需 API Key）
-- Agent 模式（需要配置 `OPENAI_API_KEY`）：
-
-```bash
+# 通过 LangChain Agent 交互（需要 OPENAI_API_KEY）
+python -m bishe.mutated.langchain_agent_4g_mutator --agent
 python -m bishe.mutated.langchain_agent_5g_mutator --agent
 ```
 
-### 2) 4G 变异
+## 变异策略
 
-```bash
-python -m bishe.mutated.langchain_agent_4g_mutator
-```
+基于 OTABase 的 BASE 策略，在 UPER 比特流层面直接替换字段，共支持四种字段类型：
 
----
+| 字段类型 | 变异数量 | 策略概要 |
+|---------|---------|---------|
+| INTEGER | 3 条 | 随机值、比特全1溢出、上界+1溢出 |
+| OCTET STRING（受约束） | 4 条 | 长度/内容不匹配、边界溢出 |
+| OCTET STRING（无约束） | 22 条 | 10 个 PER 长度编码边界 × 2 + 2 条非法编码 |
+| BIT STRING（受约束） | 4 条 | 长度/内容不匹配（比特级） |
+| BIT STRING（无约束） | 12 条 | 3 个边界长度 × 3 + 3 条非法编码 |
+| SEQUENCE OF | 4 条 | 长度头：0、实际值、随机、最大编码 |
 
-## 五、如何发送 5G 变异消息（srsRAN_Project）
+详细策略说明见 [`bishe/mutated/tools/README.md`](bishe/mutated/tools/README.md)。
 
-### 1) 构建 gNB
+## 注意事项
 
-```bash
-cd artifact/srsRAN_Project
-mkdir -p build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(nproc) gnb
-```
-
-### 2) 配置 `testFileIndex` 路径
-
-编辑：`artifact/srsRAN_Project/configs/otabase_fuzzing.yml`
-
-关键项：
-
-```yaml
-cu_cp:
-	rrc:
-		otabase_enable_5g_rrc_fuzzing: true
-		otabase_test_index_file: <你的 testFileIndex 路径>
-		otabase_check_period: 10
-		otabase_replay_mode: false
-```
-
-如果你用 `bishe/generate_new/output_5g` 的结果，通常填：
-
-```yaml
-otabase_test_index_file: ../../bishe/generate_new/output_5g/testFileIndex
-```
-
-（相对路径基于 gNB 运行目录 `artifact/srsRAN_Project/build`）
-
-### 3) 启动 gNB
-
-```bash
-cd artifact/srsRAN_Project/build
-sudo ./apps/gnb/gnb \
-	-c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
-	-c ../configs/otabase_fuzzing.yml
-```
-
-### 4) 生效判定
-
-- UE 进入 `RRC Connected` 后才会触发注入
-- 日志中出现 `OTABase trigger=... send payload len=...` 表示正在发送变异消息
-
----
-
-## 六、如何发送 4G 变异消息（artifact/otabase）
-
-`artifact/otabase` 是原版 OTABase 4G 路径，典型流程：
-
-1. 在 4G test-case-generator 侧准备 `testFileIndex` + payload 文件
-2. 启动 `srsenb/srsepc`（或你的 4G OTABase 运行脚本）
-3. eNB RRC 侧读取 `testFileIndex` 并按序注入变异消息
-
-可参考目录内脚本：
-
-- `artifact/otabase/build_trial.sh`
-- `artifact/otabase/install.sh`
-- `artifact/otabase/srsenb/`
-- `artifact/otabase/srsepc/`
-
----
-
-## 七、推荐端到端流程
-
-1. 用 `generate_new` 生成 5G 合法消息（`output_5g`）
-2. 用 `mutated` 对目标字段做 5G 变异，得到变异后的 payload 集
-3. 组织为 OTABase 格式文件并更新 `testFileIndex`
-4. 在 `srsRAN_Project` 启动 gNB 注入
-5. 观察 UE 行为、崩溃/恢复、网络侧日志（含 oracle/backtracking）
-
----
-
-## 八、注意事项
-
-1. 5G gNB 必须喂 5G NR RRC payload，不能混用 4G LTE payload
+1. 5G gNB 必须使用 5G NR RRC payload，不能混用 4G LTE payload
 2. `testFileIndex` 与 payload 文件路径需一致且可访问
 3. 若从 `build/` 启动 gNB，路径解析基于配置中的 `otabase_test_index_file`
-4. 输出目录 `output_4g/`、`output_5g/` 已建议忽略 Git 管理
+4. 输出目录 `output_4g/`、`output_5g/`、`mutate_output_4g/`、`mutate_output_5g/` 建议忽略 Git 管理
+
+## 参考资料
+
+- [OTABase](https://github.com/OTABase/OTABase) — 原始 4G RRC fuzzing 框架
+- [srsRAN Project](https://github.com/srsran/srsRAN_Project) — 5G NR gNB 实现
+- 3GPP TS 36.331 — LTE RRC 协议规范
+- 3GPP TS 38.331 — NR RRC 协议规范
 

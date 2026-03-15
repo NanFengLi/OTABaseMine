@@ -27,15 +27,24 @@
 ```
 bishe/mutated/
 ├── tools/
-│   ├── __init__.py                    # 包导出（四个 mutate_xxx 函数）
-│   ├── mutation_utils.py              # 通用工具（比特转换、长度编码等）
-│   ├── integer_mutation.py            # INTEGER 字段变异
-│   ├── integer_mutation_old.py        # 旧版实现（已废弃，仅供参考）
-│   ├── octet_string_mutation.py       # OCTET STRING 字段变异
-│   ├── bit_string_mutation.py         # BIT STRING 字段变异
-│   ├── sequence_of_mutation.py        # SEQUENCE OF 字段变异
+│   ├── __init__.py                    # 包导出（4G + 5G 共 10 个函数）
+│   ├── mutation_utils.py              # 通用工具（比特转换、路径解析、类型查找等）
+│   ├── field_type_inspector.py        # 4G 字段类型识别
+│   ├── field_type_inspector_5g.py     # 5G 字段类型识别
+│   ├── integer_mutation.py            # 4G INTEGER 变异
+│   ├── integer_mutation_5g.py         # 5G INTEGER 变异
+│   ├── octet_string_mutation.py       # 4G OCTET STRING 变异
+│   ├── octet_string_mutation_5g.py    # 5G OCTET STRING 变异
+│   ├── bit_string_mutation.py         # 4G BIT STRING 变异
+│   ├── bit_string_mutation_5g.py      # 5G BIT STRING 变异
+│   ├── sequence_of_mutation.py        # 4G SEQUENCE OF 变异
+│   ├── sequence_of_mutation_5g.py     # 5G SEQUENCE OF 变异
 │   ├── example_usage.py               # 使用示例
 │   └── README.md                      # 本文档
+├── langchain_agent_4g_mutator.py      # 4G 批量变异 + LangChain Agent 入口
+├── langchain_agent_5g_mutator.py      # 5G 批量变异 + LangChain Agent 入口
+├── mutate_output_4g/                  # 4G 变异结果
+├── mutate_output_5g/                  # 5G 变异结果
 └── test/
     ├── test_integer_mutate_new.py     # INTEGER 变异测试
     └── test_octet_string_mutate.py    # OCTET STRING 变异测试
@@ -45,17 +54,37 @@ bishe/mutated/
 
 ```bash
 conda activate bishe
-# 依赖 pycrate_asn1dir（RRCLTE）
+# 核心依赖：pycrate（ASN.1 解析和 UPER 编解码）
 ```
 
 ## 使用方法
 
-### 统一接口
+### 批量变异（推荐）
 
-四个工具的调用方式完全一致：
+```bash
+# 4G 批量变异：读取 generate_new/output_4g → 变异 → 输出到 mutate_output_4g
+python -m bishe.mutated.langchain_agent_4g_mutator --batch
+
+# 5G 批量变异：读取 generate_new/output_5g → 变异 → 输出到 mutate_output_5g
+python -m bishe.mutated.langchain_agent_5g_mutator --batch
+
+# 可选参数
+#   --limit N           每个文件最多处理 N 行
+#   --inspect-only      仅识别字段类型，不执行变异
+```
+
+### Python API（单条调用）
+
+4G 和 5G 工具接口完全一致，仅函数名加 `_5g` 后缀：
 
 ```python
+# ---- 4G LTE ----
 from bishe.mutated.tools import mutate_integer, mutate_octet_string, mutate_bit_string, mutate_sequence_of
+from bishe.mutated.tools import inspect_field_type
+
+# ---- 5G NR ----
+from bishe.mutated.tools import mutate_integer_5g, mutate_octet_string_5g, mutate_bit_string_5g, mutate_sequence_of_5g
+from bishe.mutated.tools import inspect_field_type_5g
 
 # 输入：合法消息的 UPER hex + 消息类型 + 目标字段路径
 results = mutate_integer(
@@ -71,6 +100,10 @@ results = mutate_integer(
 # 输出：List[(mutated_uper_hex, message_type, target_path)]
 for mut_hex, msg_type, path in results:
     print(f"变异后 hex: {mut_hex[:20]}...")
+
+# 字段类型识别（批量变异内部自动调用）
+info = inspect_field_type(uper_hex="0a501a2ba8a181f05b", target_path=["message", ...])
+# 返回: {"field_type": "INTEGER", "tool_name": "integer_mutation", "supported": "true", ...}
 ```
 
 ### 输入格式
