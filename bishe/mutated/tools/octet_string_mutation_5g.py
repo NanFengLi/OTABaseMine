@@ -146,15 +146,17 @@ def mutate_octet_string_5g(
     message_type: str,
     target_path: List[str],
     seed: Optional[int] = None,
+    max_strategies: Optional[int] = None,
 ) -> List[Tuple[str, str, List[str]]]:
     """
     对 5G NR RRC 消息中的 OCTET STRING 字段执行比特流级变异。
 
     参数：
-        uper_hex:     合法消息的 UPER 十六进制编码字符串
-        message_type: 消息类型名称
-        target_path:  目标字段路径列表
-        seed:         随机数种子（可选）
+        uper_hex:        合法消息的 UPER 十六进制编码字符串
+        message_type:    消息类型名称
+        target_path:     目标字段路径列表
+        seed:            随机数种子（可选）
+        max_strategies:  无约束字段时，从全部策略中随机挑选的最大数量（None 表示全部使用）
 
     返回：
         [(mutated_uper_hex, message_type, target_path), ...] 列表
@@ -174,9 +176,12 @@ def mutate_octet_string_5g(
     if fld.TYPE != "OCTET STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
 
-    bit_muts = (_constrained_octet_muts(fld)
-                if fld._const_sz is not None
-                else _unconstrained_octet_muts(fld))
+    if fld._const_sz is not None:
+        bit_muts = _constrained_octet_muts(fld)
+    else:
+        bit_muts = _unconstrained_octet_muts(fld)
+        if max_strategies is not None and max_strategies < len(bit_muts):
+            bit_muts = random.sample(bit_muts, max_strategies)
 
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())
     fld_bits  = _field_bits(fld)

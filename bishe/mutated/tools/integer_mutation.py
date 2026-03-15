@@ -95,37 +95,29 @@ def _replace(pkt_bits: str, fld_bits: str, idx: int, mut: str) -> str:
 
 def _integer_muts(field) -> List[Tuple[str, int]]:
     """
-    INTEGER 3 条变异,移植自 OTABase mutate_rrc_integer_field()。
+    INTEGER 2 条变异,移植自 OTABase mutate_rrc_integer_field()。
 
     设 lbs = floor(log2(ub - lb)) + 1(字段实际占用比特数):
 
-      变异 1:范围内随机合法值
-        编码 = randint(lb, ub) - lb,在 [0, ub-lb] 内,合法但随机
-      变异 2:比特位最大可表示值(利用冗余比特空间)
+      变异 1:比特位最大可表示值(利用冗余比特空间)
         编码 = 2^lbs - 1,对应真实值 lb + 2^lbs - 1 >= ub(超出规范上界)
-      变异 3:上界溢出值(ub + 1)
+      变异 2:上界溢出值(ub + 1)
         编码 = ub - lb + 1,比最大合法编码值大 1(边界溢出)
     """
     lb      = field._const_val.lb
     ub      = field._const_val.ub
     lbs_    = _lbs(field)
-    cur_bits = _field_bits(field)
 
-    # 变异 1:范围内随机合法值(编码合规,但值随机)
-    rand_val    = random.randint(lb, ub)
-    rand_bits   = format(rand_val - lb, f"0{lbs_}b")
-
-    # 变异 2:比特位可表示的最大值(编码冗余空间溢出)
-    max_repr    = 2**lbs_ - 1                    # 最大编码值(对应真实值 lb + 2^lbs - 1)
+    # 变异 1:比特位可表示的最大值(编码冗余空间溢出)
+    max_repr    = 2**lbs_ - 1
     maxrepr_bits = format(max_repr, f"0{lbs_}b")
 
-    # 变异 3:上界 +1 溢出(仅超出规范上界 1 个单位)
-    overflow    = ub - lb + 1                    # 编码值 = ub - lb + 1
+    # 变异 2:上界 +1 溢出(仅超出规范上界 1 个单位)
+    overflow    = ub - lb + 1
     overflow_bits = format(overflow, f"0{lbs_}b")
 
     delta = 0  # INTEGER 定长编码,替换后数据包长度不变
     return [
-        (rand_bits,     delta),
         (maxrepr_bits,  delta),
         (overflow_bits, delta),
     ]
@@ -148,7 +140,7 @@ def mutate_integer(
         seed:         随机数种子(可选,用于复现结果)
 
     返回:
-        [(mutated_uper_hex, message_type, target_path), ...] 列表,共 3 条
+        [(mutated_uper_hex, message_type, target_path), ...] 列表,共 2 条
     """
     if seed is not None:
         random.seed(seed)

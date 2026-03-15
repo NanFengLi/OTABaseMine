@@ -11,8 +11,9 @@ OTABaseMine/
 │   │   ├── main.py            #   命令行入口
 │   │   ├── rrc_generator.py   #   核心 ASN.1 递归生成器
 │   │   ├── rrc_batch_generator.py  # 批量生成 + 消息精简
-│   │   ├── output_4g/         #   4G 合法 payload 输出
-│   │   └── output_5g/         #   5G 合法 payload 输出
+│   │   ├── path_trie.py       #   SQLite 持久化前缀树（断点续传）
+│   │   ├── output_4g/         #   4G 合法 payload + coverage.db
+│   │   └── output_5g/         #   5G 合法 payload + coverage.db
 │   ├── mutated/               # 比特流级变异引擎
 │   │   ├── tools/             #   四种字段类型变异工具（4G + 5G）
 │   │   ├── langchain_agent_4g_mutator.py  # 4G 批量变异入口
@@ -47,11 +48,19 @@ python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
 # 5G NR：生成覆盖所有字段类型的合法 payload
 python -m bishe.generate_new.main --rat 5g -f OCTET_STRING BIT_STRING INTEGER SEQOF
 
-# 可选参数
+# 中断后再次运行相同命令，自动从断点续传（基于 SQLite 前缀树持久化）
+python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
+
+# 强制从头开始（删除旧的前缀树数据库 coverage.db）
+python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF --clean
+
+# 其他可选参数
 #   --max-lines 2000    每个文件最多行数（默认 2000，超出自动分文件）
 #   -s 42               随机种子
 #   -c 2                递归循环深度
 ```
+
+路径去重使用 SQLite 持久化前缀树（`coverage.db`），进程中断后重新运行相同命令会自动跳过已覆盖路径继续生成。
 
 输出目录：
 - 4G → `bishe/generate_new/output_4g/`
@@ -60,6 +69,7 @@ python -m bishe.generate_new.main --rat 5g -f OCTET_STRING BIT_STRING INTEGER SE
 每个目录下生成：
 - `rrc_legitimate_payloads_<timestamp>.txt`（按 2000 行自动分文件）
 - `testFileIndex`（指向第一个 payload 文件，供 eNB/gNB 读取）
+- `coverage.db`（SQLite 前缀树数据库，用于断点续传）
 
 ### Step 2：批量变异
 
@@ -71,8 +81,9 @@ python -m bishe.mutated.langchain_agent_4g_mutator --batch
 python -m bishe.mutated.langchain_agent_5g_mutator --batch
 
 # 可选参数
-#   --limit N           每个文件最多处理 N 行
-#   --inspect-only      仅识别字段类型，不执行变异
+#   --limit N              每个文件最多处理 N 行
+#   --max-strategies N     无约束 OCTET STRING / BIT STRING 每条消息随机挑选 N 种策略（默认全部）
+#   --inspect-only         仅识别字段类型，不执行变异
 ```
 
 变异流程：对每条合法 payload，自动识别字段类型（INTEGER / OCTET STRING / BIT STRING / SEQUENCE OF），调用对应的 BASE 策略变异工具，在 UPER 比特流层面直接替换字段值，绕过 pycrate 约束校验。
@@ -128,14 +139,63 @@ python -m bishe.mutated.langchain_agent_5g_mutator --agent
 
 | 字段类型 | 变异数量 | 策略概要 |
 |---------|---------|---------|
-| INTEGER | 3 条 | 随机值、比特全1溢出、上界+1溢出 |
+| INTEGER | 2 条 | 比特全1溢出、上界+1溢出 |
 | OCTET STRING（受约束） | 4 条 | 长度/内容不匹配、边界溢出 |
 | OCTET STRING（无约束） | 22 条 | 10 个 PER 长度编码边界 × 2 + 2 条非法编码 |
 | BIT STRING（受约束） | 4 条 | 长度/内容不匹配（比特级） |
 | BIT STRING（无约束） | 12 条 | 3 个边界长度 × 3 + 3 条非法编码 |
 | SEQUENCE OF | 4 条 | 长度头：0、实际值、随机、最大编码 |
 
+> 无约束 OCTET STRING / BIT STRING 策略数量较多，可通过 `--max-strategies N` 限制每条消息随机挑选 N 种策略，例如 `--max-strategies 4`。受约束字段不受此参数影响。
+
 详细策略说明见 [`bishe/mutated/tools/README.md`](bishe/mutated/tools/README.md)。
+
+## OTA 注入与异常检测机制
+
+变异后的 RRC 消息由 eNB/gNB 注入空口发送给 UE，整个过程包含 **发送 → Oracle 检测 → 黑名单 → Crash 记录** 四个环节。
+
+### 发送链路对比
+
+| 维度 | srsRAN_Project (5G NR) | otabase (4G LTE) |
+|------|------------------------|------------------|
+| **架构** | CU-CP 与 DU 分离 | 单体 eNB |
+| **注入点** | CU-CP 侧 RRC UE | eNB 侧 RRC |
+| **发送链路** | RRC → PDCP → F1AP → SCTP → DU → RLC/MAC/PHY → 空口 | RRC → PDCP → RLC → MAC → PHY → 空口 |
+| **CU↔DU 传输** | F1AP over SCTP（跨网络） | 无（同一进程） |
+
+两者都从 `testFileIndex` 索引文件定位 payload 文件和当前行号，逐条读取 hex 载荷，经 PDCP 安全封装（完整性保护 + 加密）后通过空口发送。
+
+### Oracle 机制（UE 存活检测）
+
+每发送一条变异消息后，基站紧接着发送一条 **UECapabilityEnquiry** 作为探测：
+
+1. 若 UE 在 **1000ms** 内回复 `UECapabilityInformation` → UE 存活，继续下一条
+2. 超时未回复 → 最多**重试 2 次**
+3. 重试仍失败 → 进入 **Backtracking**（逐条回溯最近发送的消息，定位导致崩溃的具体消息）
+
+otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次数耗尽（UE 未 ACK），直接判定 UE 可能崩溃并进入 Backtracking。5G 因 CU-DU 分离，CU-CP 无法直接感知 RLC 状态，仅依赖 Oracle 超时。
+
+### 黑名单机制
+
+两者都维护**永久黑名单 + 临时黑名单**（内存数据结构）：
+
+| 类型 | 说明 |
+|------|------|
+| **永久黑名单** | Backtracking 确认 crash 候选后，在 payload 文件中永久跳过同一 `msgName+fieldName` 的所有行 |
+| **临时黑名单** | 同一 `msgName+fieldName` 触发超时 **3 次**后临时屏蔽，累计跳过 **30 行**后自动移除 |
+
+回放模式（`--replay` / `otabase_replay_mode`）下黑名单机制会被禁用，用于复现验证。
+
+### Crash 记录与输出文件
+
+| 文件 | 说明 |
+|------|------|
+| `testFileIndex` | 测试进度索引：`payloadFileName,curLineNum,totalLineNum`，每发送一条自动递增，支持断点续跑 |
+| `crashes/crash_N/candidates.json` | 第 N 次 crash 的详细信息：最近发送的消息队列、Best Candidate（Payload hex / Message 类型 / Field 路径） |
+| `crashes/crash_count.txt` | 累计 crash 次数 |
+| `candidate_list.txt` | 所有 crash 候选的行号列表（`testFileName,candidate_line`），追加写入 |
+
+> srsRAN_Project 的输出路径为 `otabase_crashes/`，otabase 的输出路径由 `-o` 参数指定。
 
 ## 注意事项
 

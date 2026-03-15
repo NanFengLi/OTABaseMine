@@ -133,15 +133,17 @@ def mutate_bit_string(
     message_type: str,
     target_path: List[str],
     seed: Optional[int] = None,
+    max_strategies: Optional[int] = None,
 ) -> List[Tuple[str, str, List[str]]]:
     """
     对合法 RRC 消息中的 BIT STRING 字段执行比特流级变异。
 
     参数：
-        uper_hex:     合法消息的 UPER 十六进制编码
-        message_type: 消息类型名称（用于输出元组）
-        target_path:  目标字段路径列表
-        seed:         随机数种子（可选，用于复现结果）
+        uper_hex:        合法消息的 UPER 十六进制编码
+        message_type:    消息类型名称
+        target_path:     目标字段路径列表
+        seed:            随机数种子（可选）
+        max_strategies:  无约束字段时，从全部策略中随机挑选的最大数量（None 表示全部使用）
 
     返回：
         [(mutated_uper_hex, message_type, target_path), ...] 列表
@@ -161,9 +163,12 @@ def mutate_bit_string(
     if fld.TYPE != "BIT STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 BIT STRING")
 
-    bit_muts = (_constrained_bit_muts(fld)
-                if fld._const_sz is not None
-                else _unconstrained_bit_muts(fld))
+    if fld._const_sz is not None:
+        bit_muts = _constrained_bit_muts(fld)
+    else:
+        bit_muts = _unconstrained_bit_muts(fld)
+        if max_strategies is not None and max_strategies < len(bit_muts):
+            bit_muts = random.sample(bit_muts, max_strategies)
 
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
     fld_bits = _field_bits(fld)

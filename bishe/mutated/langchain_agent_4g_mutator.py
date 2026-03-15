@@ -6,29 +6,38 @@ langchain_agent_4g_mutator — 4G LTE RRC 批量变异 & LangChain Agent 入口
 
 使用方法：
     # 方式 1：批量变异（推荐，无需 API Key）
-    #   读取 generate_new/output_4g/rrc_legitimate_payloads*.txt
-    #   自动识别字段类型 → 调用对应变异工具 → 输出到 mutate_output_4g/
     python -m bishe.mutated.langchain_agent_4g_mutator --batch
 
-    # 方式 2：批量变异，限制每个文件最多处理 100 行
+    # 方式 2：限制每个文件最多处理 100 行
     python -m bishe.mutated.langchain_agent_4g_mutator --batch --limit 100
 
-    # 方式 3：仅识别字段类型，不执行变异
+    # 方式 3：无约束 OCTET STRING / BIT STRING 每条消息仅随机挑选 4 种策略
+    python -m bishe.mutated.langchain_agent_4g_mutator --batch --max-strategies 4
+
+    # 方式 4：仅识别字段类型，不执行变异
     python -m bishe.mutated.langchain_agent_4g_mutator --batch --inspect-only
 
-    # 方式 4：直接调用工具演示（无需 API Key）
+    # 方式 5：直接调用工具演示（无需 API Key）
     python -m bishe.mutated.langchain_agent_4g_mutator
 
-    # 方式 5：通过 LangChain Agent 交互（需要 OPENAI_API_KEY）
+    # 方式 6：通过 LangChain Agent 交互（需要 OPENAI_API_KEY）
     python -m bishe.mutated.langchain_agent_4g_mutator --agent
 
-    # 方式 6：在代码中导入使用
-    from bishe.mutated.langchain_agent_4g_mutator import run_batch_mutate
-    stats = run_batch_mutate(limit_per_file=100)
+命令行参数：
+    --batch              批量变异模式
+    --limit N            每个文件最多处理 N 行
+    --max-strategies N   无约束 OCTET STRING（22 条）/ BIT STRING（12 条）
+                         每条消息随机挑选 N 种策略变异（默认全部使用）
+    --inspect-only       仅识别字段类型，不执行变异
+    --agent              LangChain Agent 交互模式（需要 OPENAI_API_KEY）
 
-    # 或直接调用底层工具函数
-    from bishe.mutated.tools import mutate_integer, inspect_field_type
-    results = mutate_integer(uper_hex, message_type, target_path, seed=42)
+变异策略数量：
+    INTEGER            — 2 条（比特全1溢出、上界+1溢出）
+    OCTET STRING 受约束 — 4 条
+    OCTET STRING 无约束 — 22 条（可通过 --max-strategies 限制）
+    BIT STRING 受约束   — 4 条
+    BIT STRING 无约束   — 12 条（可通过 --max-strategies 限制）
+    SEQUENCE OF        — 4 条
 
 批量变异输出格式：
     第一行：总条数
@@ -478,21 +487,18 @@ def run_batch_mutate(
     input_dir: str = DEFAULT_PAYLOAD_INPUT_DIR,
     output_dir: str = DEFAULT_MUTATE_OUTPUT_DIR,
     limit_per_file: Optional[int] = None,
+    max_strategies: Optional[int] = None,
 ) -> dict:
     """
     读取 input_dir 下所有 rrc_legitimate_payloads 开头的 .txt，
     对每一行：先 inspect_field_type，再按类型调用对应变异工具，
     将变异结果写入 output_dir，每输入文件对应一个输出文件。
 
-    输入文件每行格式：idx, uper_hex, message_type, path_component_1, path_component_2, ...
-    输出文件格式与输入文件一致：
-      第一行为总条数
-      之后每行：序号,hex,message_type,path...,field_type,mutation_strategy_idx
-
     Args:
         input_dir: 存放 rrc_legitimate_payloads*.txt 的目录
         output_dir: 变异结果输出目录（不存在则创建）
         limit_per_file: 每个文件最多处理行数，None 表示全部
+        max_strategies: 无约束 OCTET STRING / BIT STRING 每条消息随机挑选的最大策略数（None 表示全部使用）
 
     Returns:
         统计信息 {"files_read": N, "lines_processed": N, "mutations_written": N, "errors": N, "by_file": {...}}
@@ -549,13 +555,17 @@ def run_batch_mutate(
                 if isinstance(path_for_mutation, str):
                     path_for_mutation = [path_for_mutation]
                 mut_fn = _RUN_MUTATE[info["tool_name"]]
-                # 有错就抛，不捕获，便于排查
-                results = mut_fn(
+                mut_kwargs = dict(
                     uper_hex=uper_hex,
                     message_type=message_type,
                     target_path=path_for_mutation,
                     seed=None,
                 )
+                if max_strategies is not None and info["tool_name"] in (
+                    "octet_string_mutation", "bit_string_mutation",
+                ):
+                    mut_kwargs["max_strategies"] = max_strategies
+                results = mut_fn(**mut_kwargs)
 
                 path_csv = ",".join(str(p) for p in target_path)
                 field_type = info.get("field_type", "")
@@ -626,6 +636,11 @@ if __name__ == "__main__":
             i = sys.argv.index("--limit")
             if i + 1 < len(sys.argv):
                 limit = int(sys.argv[i + 1])
+        max_strat = None
+        if "--max-strategies" in sys.argv:
+            i = sys.argv.index("--max-strategies")
+            if i + 1 < len(sys.argv):
+                max_strat = int(sys.argv[i + 1])
         if "--inspect-only" in sys.argv:
             stats = run_batch_inspect_only(
                 limit_per_file=limit,
@@ -633,7 +648,7 @@ if __name__ == "__main__":
             )
             print("Inspect-only stats:", json.dumps(stats, ensure_ascii=False, indent=2))
         else:
-            stats = run_batch_mutate(limit_per_file=limit)
+            stats = run_batch_mutate(limit_per_file=limit, max_strategies=max_strat)
             print("Batch mutate stats:", json.dumps(stats, ensure_ascii=False, indent=2))
     elif "--agent" in sys.argv:
         # 需要设置 OPENAI_API_KEY 环境变量

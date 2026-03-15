@@ -74,13 +74,10 @@ def _replace(pkt_bits: str, fld_bits: str, idx: int, mut: str) -> str:
 
 
 def _integer_muts(field) -> List[Tuple[str, int]]:
-    """INTEGER 3 条变异"""
+    """INTEGER 2 条变异：比特全1溢出 + 上界+1溢出"""
     lb      = field._const_val.lb
     ub      = field._const_val.ub
     lbs_    = _lbs(field)
-
-    rand_val     = random.randint(lb, ub)
-    rand_bits    = format(rand_val - lb, f"0{lbs_}b")
 
     max_repr     = 2**lbs_ - 1
     maxrepr_bits = format(max_repr, f"0{lbs_}b")
@@ -90,7 +87,6 @@ def _integer_muts(field) -> List[Tuple[str, int]]:
 
     delta = 0
     return [
-        (rand_bits,     delta),
         (maxrepr_bits,  delta),
         (overflow_bits, delta),
     ]
@@ -112,7 +108,7 @@ def mutate_integer_5g(
         seed:         随机数种子（可选）
 
     返回：
-        [(mutated_uper_hex, message_type, target_path), ...] 列表，共 3 条
+        [(mutated_uper_hex, message_type, target_path), ...] 列表，共 2 条
     """
     if seed is not None:
         random.seed(seed)

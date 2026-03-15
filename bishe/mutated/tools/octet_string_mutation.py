@@ -330,30 +330,20 @@ def mutate_octet_string(
     message_type: str,
     target_path: List[str],
     seed: Optional[int] = None,
+    max_strategies: Optional[int] = None,
 ) -> List[Tuple[str, str, List[str]]]:
     """
     对合法 RRC 消息中的 OCTET STRING 字段执行比特流级变异。
 
-    整体流程：
-      1. 将 UPER hex 解码为 pycrate 消息对象
-      2. 定位目标 OCTET STRING 字段
-      3. 根据字段是否有 SIZE 约束，选择受约束/无约束变异策略
-      4. 生成变异比特串列表
-      5. 在数据包比特流中找到字段的精确位置
-      6. 逐条替换字段比特，生成变异后的完整数据包
-
     参数：
-        uper_hex:     合法消息的 UPER 十六进制编码字符串
-        message_type: 消息类型名称（原样传入输出元组，标记变异来源）
-        target_path:  目标字段在消息树中的路径列表
-                      如 ["message", "c1", "dlInformationTransfer", ...]
-        seed:         随机数种子（可选），指定后变异结果可复现
+        uper_hex:        合法消息的 UPER 十六进制编码字符串
+        message_type:    消息类型名称
+        target_path:     目标字段在消息树中的路径列表
+        seed:            随机数种子（可选）
+        max_strategies:  无约束字段时，从全部策略中随机挑选的最大数量（None 表示全部使用）
 
     返回：
         [(mutated_uper_hex, message_type, target_path), ...] 列表
-        - mutated_uper_hex: 变异后的完整数据包 UPER 十六进制字符串
-        - message_type:     与输入相同
-        - target_path:      与输入相同
     """
     # 如果指定了种子，设置随机数种子以确保结果可复现
     if seed is not None:
@@ -377,9 +367,12 @@ def mutate_octet_string(
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
 
     # ── 步骤 4：根据约束类型生成变异比特串 ──────────────────────────────────
-    bit_muts = (_constrained_octet_muts(fld)
-                if fld._const_sz is not None
-                else _unconstrained_octet_muts(fld))
+    if fld._const_sz is not None:
+        bit_muts = _constrained_octet_muts(fld)
+    else:
+        bit_muts = _unconstrained_octet_muts(fld)
+        if max_strategies is not None and max_strategies < len(bit_muts):
+            bit_muts = random.sample(bit_muts, max_strategies)
 
     # ── 步骤 5：在数据包比特流中定位字段的精确位置 ──────────────────────────
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())

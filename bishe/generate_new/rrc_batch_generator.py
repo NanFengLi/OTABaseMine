@@ -94,7 +94,7 @@ class RRCBatchGenerator:
 
         logging.info(f"RRC 批量生成器初始化完成:")
         logging.info(f"  目标字段类型: {[t.name for t in targets]}")
-        logging.info(f"  目标路径总数: {self.total_targets}")
+        logging.info(f"  目标路径总数: {self.total_targets} (理论上限，实际可达路径数以生成结果为准)")
         logging.info(f"  IE 总数: {self.total_ie_count}")
         logging.info(f"  循环次数: {cycles}")
         logging.info(f"  随机种子: {seed}")
@@ -315,6 +315,8 @@ class RRCBatchGenerator:
                         pass  # 第一轮 trie 本来就是空的
 
                 already_covered = trie.count() if trie else 0
+                stall_counter = 0
+                STALL_THRESHOLD = 2000
 
                 while (trie.count() if trie else already_covered) < self.total_targets:
                     uper_bytes, result, mutation_paths, optional_paths = \
@@ -322,6 +324,14 @@ class RRCBatchGenerator:
                     total_packets_generated += 1
 
                     if len(mutation_paths) == 0:
+                        stall_counter += 1
+                        if stall_counter >= STALL_THRESHOLD:
+                            covered_now = trie.count() if trie else len(self.generator.found_paths)
+                            logging.warning(
+                                f"连续 {STALL_THRESHOLD} 个包未发现新路径，"
+                                f"判定所有可达路径已覆盖 "
+                                f"({covered_now}/{self.total_targets})")
+                            break
                         continue
 
                     new_paths = []
@@ -334,7 +344,17 @@ class RRCBatchGenerator:
                             new_paths.append((path, unique_path))
 
                     if not new_paths:
+                        stall_counter += 1
+                        if stall_counter >= STALL_THRESHOLD:
+                            covered_now = trie.count() if trie else len(self.generator.found_paths)
+                            logging.warning(
+                                f"连续 {STALL_THRESHOLD} 个包未发现新路径，"
+                                f"判定所有可达路径已覆盖 "
+                                f"({covered_now}/{self.total_targets})")
+                            break
                         continue
+
+                    stall_counter = 0
 
                     if self.simplify:
                         result_copy = deepcopy(result)
@@ -389,11 +409,14 @@ class RRCBatchGenerator:
                 # cycle 结束后重置续传标记，后续 cycle 从空开始
                 resuming = False
 
+                covered_now = trie.count() if trie else len(self.generator.found_paths)
+                coverage_pct = covered_now / self.total_targets if self.total_targets else 1.0
                 if verbose:
                     logging.info(
                         f"  第 {cycle} 轮完成: "
                         f"生成 {payload_index} 个有效载荷, "
-                        f"覆盖率: 100%")
+                        f"覆盖 {covered_now}/{self.total_targets} "
+                        f"({coverage_pct:.1%})")
 
         finally:
             if out_fh:
@@ -413,16 +436,20 @@ class RRCBatchGenerator:
 
             if trie:
                 trie.save_state("payload_index", payload_index)
+                final_covered = trie.count()
                 trie.close()
+            else:
+                final_covered = payload_index
 
         elapsed = time.time() - start_time
-
+        final_coverage = final_covered / self.total_targets if self.total_targets else 1.0
         result = {
             'payloads': all_payloads,
             'total_count': payload_index,
             'packets_generated': total_packets_generated,
-            'coverage': 1.0,
-            'unique_paths': self.total_targets,
+            'coverage': final_coverage,
+            'unique_paths': final_covered,
+            'total_targets': self.total_targets,
             'elapsed_time': elapsed,
             'seed': self.seed,
             'cycles': self.cycles,
@@ -436,6 +463,7 @@ class RRCBatchGenerator:
             logging.info(f"\n=== 生成完成 ===")
             logging.info(f"  合法载荷总数: {result['total_count']}")
             logging.info(f"  总共生成包数: {total_packets_generated}")
+            logging.info(f"  可达路径覆盖: {final_covered}/{self.total_targets} ({final_coverage:.1%})")
             logging.info(f"  输出文件数: {len(output_files)}")
             logging.info(f"  耗时: {elapsed:.2f} 秒")
 
