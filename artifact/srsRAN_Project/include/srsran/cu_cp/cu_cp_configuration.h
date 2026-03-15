@@ -116,6 +116,10 @@ struct cu_cp_configuration {
     unsigned otabase_check_period = 10;
     /// Replay mode.
     bool otabase_replay_mode = false;
+    /// Output directory for crash candidates (same as 4G -o). If empty, uses "otabase_crashes".
+    std::string otabase_output_directory;
+    /// Enable temporary blacklist (same as 4G temp_blacklist).
+    bool otabase_temp_blacklist = true;
     /// Version of the RRC.
     unsigned rrc_version = 2;
   };

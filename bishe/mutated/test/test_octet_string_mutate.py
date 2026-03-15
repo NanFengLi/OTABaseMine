@@ -62,7 +62,7 @@ def show_results(results):
 
     orig_len = len(UPER_HEX) // 2
 
-    for i, (mut_hex, msg_type, path) in enumerate(results, 1):
+    for i, (mut_hex, msg_type, path, strategy_idx) in enumerate(results, 1):
         mut_len  = len(mut_hex) // 2
         delta    = mut_len - orig_len
         delta_s  = f"{delta:+d}"

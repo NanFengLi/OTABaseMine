@@ -384,6 +384,18 @@ static void configure_cli11_rrc_args(CLI::App& app, cu_cp_unit_rrc_config& confi
           config.otabase_replay_mode,
           "Enable OTABase replay mode")
         ->capture_default_str();
+
+    add_option(app,
+          "-o,--otabase_output_directory",
+          config.otabase_output_directory,
+          "Output directory for crash candidates (same as 4G -o). If empty, uses otabase_crashes")
+        ->capture_default_str();
+
+    add_option(app,
+          "--otabase_temp_blacklist",
+          config.otabase_temp_blacklist,
+          "Enable temporary blacklist (same as 4G temp_blacklist). Default: true")
+        ->capture_default_str();
 }
 
 static void configure_cli11_security_args(CLI::App& app, cu_cp_unit_security_config& config)

@@ -184,6 +184,19 @@ otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次�
 | **永久黑名单** | Backtracking 确认 crash 候选后，在 payload 文件中永久跳过同一 `msgName+fieldName` 的所有行 |
 | **临时黑名单** | 同一 `msgName+fieldName` 触发超时 **3 次**后临时屏蔽，累计跳过 **30 行**后自动移除 |
 
+**临时黑名单开关**（与 4G 一致）：  
+- **4G**：`--temp_blacklist`（默认 true），设为 false 可关闭临时黑名单，仅保留永久黑名单。  
+- **5G**：`otabase_temp_blacklist`（YAML：`cu_cp.rrc.otabase_temp_blacklist`，CLI：`--otabase_temp_blacklist`，默认 true），设为 false 可关闭临时黑名单。
+
+**`msgName` 与 `fieldName` 含义**（与 payload 文件列对应）：
+
+- **msgName**：第 3 列，**消息类型**（如 `dlDedicatedMessageSegment-r16`）。
+- **fieldName**：第 4 列到行末的整段字符串，与 msgName 一起唯一标识该行测试用例：
+  - **生成器**输出格式为 `序号,hex,消息类型,消息路径` → fieldName = **消息路径**（path_csv）。
+  - **变异器**输出格式为 `序号,hex,消息类型,消息路径,变异的字段类型,变异的策略序号` → fieldName = **消息路径,字段类型,策略序号**。
+
+因此“fieldName”不是单指 ASN.1 字段名，而是“路径（及可选的其他列）”这一整段，用于黑名单键 `msgName+fieldName` 的匹配与跳过统计。
+
 回放模式（`--replay` / `otabase_replay_mode`）下黑名单机制会被禁用，用于复现验证。
 
 ### Crash 记录与输出文件
@@ -195,7 +208,8 @@ otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次�
 | `crashes/crash_count.txt` | 累计 crash 次数 |
 | `candidate_list.txt` | 所有 crash 候选的行号列表（`testFileName,candidate_line`），追加写入 |
 
-> srsRAN_Project 的输出路径为 `otabase_crashes/`，otabase 的输出路径由 `-o` 参数指定。
+> **5G (srsRAN_Project)**：与 4G 一致，通过可配置输出目录写入崩溃用例。命令行可用 **`-o`**（与 4G 相同），或 YAML：`cu_cp.rrc.otabase_output_directory`、长选项 `--otabase_output_directory`。未配置时默认使用 **`otabase_crashes/`**（相对进程当前工作目录）；配置后则写入该目录，即 `{otabase_output_directory}/crashes/crash_count.txt`、`{otabase_output_directory}/crashes/crash_N/candidates.json`、`{otabase_output_directory}/candidate_list.txt`。  
+> **4G (otabase)**：输出目录由 `-o` 参数指定，上述文件写在该目录下。
 
 ## 注意事项
 

@@ -147,7 +147,7 @@ def mutate_octet_string_5g(
     target_path: List[str],
     seed: Optional[int] = None,
     max_strategies: Optional[int] = None,
-) -> List[Tuple[str, str, List[str]]]:
+) -> List[Tuple[str, str, List[str], int]]:
     """
     对 5G NR RRC 消息中的 OCTET STRING 字段执行比特流级变异。
 
@@ -159,7 +159,8 @@ def mutate_octet_string_5g(
         max_strategies:  无约束字段时，从全部策略中随机挑选的最大数量（None 表示全部使用）
 
     返回：
-        [(mutated_uper_hex, message_type, target_path), ...] 列表
+        [(mutated_uper_hex, message_type, target_path, strategy_idx), ...] 列表
+        strategy_idx 为原始 1-based 编号（从全部策略中采样时保留原始编号）
     """
     if seed is not None:
         random.seed(seed)
@@ -178,10 +179,15 @@ def mutate_octet_string_5g(
 
     if fld._const_sz is not None:
         bit_muts = _constrained_octet_muts(fld)
+        strategy_indices = list(range(1, len(bit_muts) + 1))
     else:
         bit_muts = _unconstrained_octet_muts(fld)
         if max_strategies is not None and max_strategies < len(bit_muts):
-            bit_muts = random.sample(bit_muts, max_strategies)
+            sampled = sorted(random.sample(range(len(bit_muts)), max_strategies))
+            bit_muts = [bit_muts[i] for i in sampled]
+            strategy_indices = [i + 1 for i in sampled]
+        else:
+            strategy_indices = list(range(1, len(bit_muts) + 1))
 
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())
     fld_bits  = _field_bits(fld)
@@ -193,8 +199,8 @@ def mutate_octet_string_5g(
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
 
     results = []
-    for (mut_bits, _delta) in bit_muts:
+    for strategy_idx, (mut_bits, _delta) in zip(strategy_indices, bit_muts):
         mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
-        results.append((mutated.hex(), message_type, target_path))
+        results.append((mutated.hex(), message_type, target_path, strategy_idx))
 
     return results

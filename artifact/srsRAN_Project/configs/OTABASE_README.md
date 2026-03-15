@@ -177,6 +177,8 @@ sudo ./gnb -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
 | `cu_cp.rrc.otabase_test_index_file` | `--otabase_test_index_file` | 固定文件名 `testFileIndex` | 当前保留为兼容字段 |
 | `cu_cp.rrc.otabase_check_period` | `--otabase_check_period` | `10` | 每发送 N 条测试消息插入一次 oracle 检查 |
 | `cu_cp.rrc.otabase_replay_mode` | `--otabase_replay_mode` | `false` | 回放模式，启用后会更频繁做 oracle 检查，并关闭 blacklist |
+| `cu_cp.rrc.otabase_output_directory` | **`-o`** / `--otabase_output_directory` | 空（默认用 `otabase_crashes`） | 崩溃候选输出目录，与 4G 的 `-o` 一致；未设置时写当前目录下的 `otabase_crashes/` |
+| `cu_cp.rrc.otabase_temp_blacklist` | `--otabase_temp_blacklist` | `true` | 是否启用临时黑名单（与 4G `temp_blacklist` 一致）；为 false 时仅保留永久黑名单 |
 
 建议：
 
@@ -192,10 +194,12 @@ sudo ./gnb -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
 1. gNB 不再只发送标准流程消息，而会额外发送来自 payload 文件的原始 RRC 消息。
 2. 每隔 `otabase_check_period` 条消息，会插入一次 `UECapabilityEnquiry` 作为 liveness oracle。
 3. 如果 UE 不响应 oracle，系统会进入 backtracking 模式。
-4. 当识别到候选崩溃消息后，会在运行目录下生成：
+4. 当识别到候选崩溃消息后，会在 `otabase_output_directory`（未配置时为 `otabase_crashes`）下生成：
 
 ```text
-otabase_crashes/crashes/crash_N/candidates.json
+{otabase_output_directory}/crashes/crash_N/candidates.json
+{otabase_output_directory}/crashes/crash_count.txt
+{otabase_output_directory}/candidate_list.txt
 ```
 
 ## 6. 典型启动流程
@@ -223,4 +227,4 @@ sudo ./gnb -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
 1. 注入阶段：在若干个 UL DCCH 完成消息之后，gNB 会读取下一条 payload，并以原始 DL-DCCH PDU 形式从 SRB1 发给 UE。
 2. Oracle 阶段：每隔 `check_period` 条测试消息，gNB 发送一次 `UECapabilityEnquiry` 作为活性检查，并启动 1 秒定时器。
 3. Backtracking 阶段：若 UE 连续不响应 oracle，则回放最近 10 条消息，按“消息 / oracle / 消息 / oracle”方式缩小触发范围。
-4. 落盘阶段：命中候选消息后，会把最近消息和候选项保存到 `otabase_crashes` 目录。
+4. 落盘阶段：命中候选消息后，会把最近消息和候选项保存到配置的 `otabase_output_directory` 目录（未配置时为当前目录下的 `otabase_crashes`）。

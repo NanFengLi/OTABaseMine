@@ -156,18 +156,18 @@ def _run_inspect_field_type(
 
 
 def _serialize_results(results: list) -> str:
-    """将 mutate_xxx 返回的 List[Tuple[str, str, List[str]]] 序列化为 JSON。
+    """将 mutate_xxx 返回的 List[Tuple[str, str, List[str], int]] 序列化为 JSON。
 
-    每个元素由 (mutated_uper_hex, message_type, target_path) 三元组组成，
+    每个元素由 (mutated_uper_hex, message_type, target_path, strategy_idx) 四元组组成，
     序列化后格式为：
         [
-          ["<hex>", "<message_type>", ["path", "item", ...]],
+          ["<hex>", "<message_type>", ["path", "item", ...], <strategy_idx>],
           ...
         ]
     """
     serialized = [
-        [mut_hex, msg_type, list(path)]
-        for mut_hex, msg_type, path in results
+        [mut_hex, msg_type, list(path), strategy_idx]
+        for mut_hex, msg_type, path, strategy_idx in results
     ]
     return json.dumps(serialized, ensure_ascii=False, indent=2)
 
@@ -569,7 +569,7 @@ def run_batch_mutate(
 
                 path_csv = ",".join(str(p) for p in target_path)
                 field_type = info.get("field_type", "")
-                for strategy_idx, (mut_hex, _msg_type, _path) in enumerate(results, 1):
+                for (mut_hex, _msg_type, _path, strategy_idx) in results:
                     mutations_lines.append(
                         ",".join([mut_hex, message_type, path_csv, field_type, str(strategy_idx)])
                     )

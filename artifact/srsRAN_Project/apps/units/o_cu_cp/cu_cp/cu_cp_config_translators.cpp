@@ -392,6 +392,8 @@ srs_cu_cp::cu_cp_configuration srsran::generate_cu_cp_config(const cu_cp_unit_co
   out_cfg.rrc.otabase_test_index_file        = cu_cfg.rrc_config.otabase_test_index_file;
   out_cfg.rrc.otabase_check_period           = cu_cfg.rrc_config.otabase_check_period;
   out_cfg.rrc.otabase_replay_mode            = cu_cfg.rrc_config.otabase_replay_mode;
+  out_cfg.rrc.otabase_output_directory      = cu_cfg.rrc_config.otabase_output_directory;
+  out_cfg.rrc.otabase_temp_blacklist        = cu_cfg.rrc_config.otabase_temp_blacklist;
 
   out_cfg.bearers.drb_config = generate_cu_cp_qos_config(cu_cfg);
 

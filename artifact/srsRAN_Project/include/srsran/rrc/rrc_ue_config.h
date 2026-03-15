@@ -51,6 +51,10 @@ struct rrc_ue_cfg_t {
   unsigned otabase_check_period = 10;
   /// Replay mode: disables blacklisting, reduces check_period to 2.
   bool otabase_replay_mode = false;
+  /// Output directory for crash candidates (same as 4G -o). If empty, uses "otabase_crashes".
+  std::string otabase_output_directory;
+  /// Enable temporary blacklist (same as 4G temp_blacklist). When true, same msg+field timeout 3 times → temp skip; 30 lines skipped → remove.
+  bool otabase_temp_blacklist = true;
 };
 
 } // namespace srs_cu_cp

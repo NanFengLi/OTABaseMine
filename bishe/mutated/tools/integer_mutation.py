@@ -129,7 +129,7 @@ def mutate_integer(
     message_type: str,
     target_path: List[str],
     seed: Optional[int] = None,
-) -> List[Tuple[str, str, List[str]]]:
+) -> List[Tuple[str, str, List[str], int]]:
     """
     对合法 RRC 消息中的 INTEGER 字段执行比特流级变异。
 
@@ -140,7 +140,7 @@ def mutate_integer(
         seed:         随机数种子(可选,用于复现结果)
 
     返回:
-        [(mutated_uper_hex, message_type, target_path), ...] 列表,共 2 条
+        [(mutated_uper_hex, message_type, target_path, strategy_idx), ...] 列表,共 2 条
     """
     if seed is not None:
         random.seed(seed)
@@ -170,7 +170,7 @@ def mutate_integer(
     pkt_bits = bytes_to_bit_str(pkt.to_uper())
 
     results = []
-    for (mut_bits, _delta) in bit_muts:
+    for strategy_idx, (mut_bits, _delta) in enumerate(bit_muts, 1):
         mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
-        results.append((mutated.hex(), message_type, target_path))
+        results.append((mutated.hex(), message_type, target_path, strategy_idx))
     return results

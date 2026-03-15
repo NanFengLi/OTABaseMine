@@ -36,12 +36,12 @@ print("mut bits at field start first 32:", " ".join([mbits[idx + i: idx + i + 8]
 
 muts = mutate_octet_string(orig, "csfbParametersResponseCDMA2000", path, seed=42)
 found = None
-for i, (h, _, _) in enumerate(muts):
+for i, (h, _, _, _strategy) in enumerate(muts):
     if h == mut:
         found = i
         break
 print("found index:", found)
 
-for i, (h, _, _) in enumerate(muts):
+for i, (h, _, _, _strategy) in enumerate(muts):
     if i in [6, 7, 8, 9, 10, 11, 12, 13, 14]:
         print(i, h)

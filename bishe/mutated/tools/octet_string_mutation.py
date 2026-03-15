@@ -331,7 +331,7 @@ def mutate_octet_string(
     target_path: List[str],
     seed: Optional[int] = None,
     max_strategies: Optional[int] = None,
-) -> List[Tuple[str, str, List[str]]]:
+) -> List[Tuple[str, str, List[str], int]]:
     """
     对合法 RRC 消息中的 OCTET STRING 字段执行比特流级变异。
 
@@ -343,7 +343,8 @@ def mutate_octet_string(
         max_strategies:  无约束字段时，从全部策略中随机挑选的最大数量（None 表示全部使用）
 
     返回：
-        [(mutated_uper_hex, message_type, target_path), ...] 列表
+        [(mutated_uper_hex, message_type, target_path, strategy_idx), ...] 列表
+        strategy_idx 为原始 1-based 编号（从全部策略中采样时保留原始编号）
     """
     # 如果指定了种子，设置随机数种子以确保结果可复现
     if seed is not None:
@@ -366,13 +367,19 @@ def mutate_octet_string(
     if fld.TYPE != "OCTET STRING":
         raise TypeError(f"字段类型为 {fld.TYPE}，不是 OCTET STRING")
 
-    # ── 步骤 4：根据约束类型生成变异比特串 ──────────────────────────────────
+    # ── 步骤 4：根据约束类型生成变异比特串，并记录原始 1-based 策略编号 ────────
     if fld._const_sz is not None:
         bit_muts = _constrained_octet_muts(fld)
+        strategy_indices = list(range(1, len(bit_muts) + 1))
     else:
         bit_muts = _unconstrained_octet_muts(fld)
         if max_strategies is not None and max_strategies < len(bit_muts):
-            bit_muts = random.sample(bit_muts, max_strategies)
+            # 随机采样时保留原始编号（如从 22 中取 4 个，编号仍为 1-22 中的对应值）
+            sampled = sorted(random.sample(range(len(bit_muts)), max_strategies))
+            bit_muts = [bit_muts[i] for i in sampled]
+            strategy_indices = [i + 1 for i in sampled]
+        else:
+            strategy_indices = list(range(1, len(bit_muts) + 1))
 
     # ── 步骤 5：在数据包比特流中定位字段的精确位置 ──────────────────────────
     pkt_bits  = bytes_to_bit_str(pkt.to_uper())
@@ -387,11 +394,8 @@ def mutate_octet_string(
 
     # ── 步骤 6：逐条替换字段比特，生成变异数据包 ────────────────────────────
     results = []  # 存放最终结果的列表
-    for (mut_bits, _delta) in bit_muts:
-        # 在数据包比特流的 fld_idx 位置，将原始字段比特替换为变异比特
-        # 然后将比特串转回字节（自动补齐到 8 的倍数）
+    for strategy_idx, (mut_bits, _delta) in zip(strategy_indices, bit_muts):
         mutated = bit_str_to_bytes(_replace(pkt_bits, fld_bits, fld_idx, mut_bits))
-        # 将变异后的字节转为十六进制字符串，与消息类型和路径一起作为结果
-        results.append((mutated.hex(), message_type, target_path))
+        results.append((mutated.hex(), message_type, target_path, strategy_idx))
 
     return results

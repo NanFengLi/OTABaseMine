@@ -424,7 +424,9 @@ void rrc_ue_impl::notify_rrc_oracle()
       }
       if (!context.cfg.otabase_replay_mode) {
         otabase_blacklist_test_cases(otabase_backtracking_msg);
-        otabase_temp_blacklist_test_cases(otabase_backtracking_msg);
+        if (context.cfg.otabase_temp_blacklist) {
+          otabase_temp_blacklist_test_cases(otabase_backtracking_msg);
+        }
       }
     }
   } else {
@@ -514,7 +516,9 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
 {
   namespace fs = std::filesystem;
 
-  const std::string log_dir = "otabase_crashes";
+  // Same logic as 4G: use configurable output directory (-o); if empty, fallback to otabase_crashes.
+  const std::string log_dir =
+      context.cfg.otabase_output_directory.empty() ? "otabase_crashes" : context.cfg.otabase_output_directory;
   fs::create_directories(log_dir + "/crashes");
 
   // Keep a persistent crash counter to match OTABase behavior across restarts.
