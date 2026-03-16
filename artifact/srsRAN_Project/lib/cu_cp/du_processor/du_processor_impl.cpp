@@ -300,6 +300,23 @@ void du_processor_impl::handle_du_initiated_ue_context_release_request(const f1a
 
   logger.debug("ue={}: Handling DU initiated UE context release request", request.ue_index);
 
+  // OTABase: RLC Max Retx detection.
+  // When the DU reports a radio link failure at the RLC layer (rl_fail_rlc / rl_fail_others)
+  // during fuzzing, immediately notify the RRC UE to enter backtracking without waiting for
+  // the oracle timeout.  This mirrors the 4G max_retx_attempted() hook in srsenb/rrc.cc.
+  if (cfg.cu_cp_cfg.rrc.otabase_enable_5g_rrc_fuzzing) {
+    const auto* radio_cause = std::get_if<f1ap_cause_radio_network_t>(&request.cause);
+    if (radio_cause != nullptr &&
+        (*radio_cause == f1ap_cause_radio_network_t::rl_fail_rlc ||
+         *radio_cause == f1ap_cause_radio_network_t::rl_fail_others)) {
+      rrc_ue_interface* rrc_ue = rrc->get_rrc_ue_handler().find_ue(request.ue_index);
+      if (rrc_ue != nullptr) {
+        logger.info("ue={}: OTABase RLC Max Retx detected, notifying RRC oracle immediately", request.ue_index);
+        rrc_ue->handle_rlc_max_retx();
+      }
+    }
+  }
+
   // Schedule on UE task scheduler
   ue->get_task_sched().schedule_async_task(
       launch_async([this, request, ue](coro_context<async_task<void>>& ctx) mutable {

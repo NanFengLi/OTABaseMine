@@ -128,6 +128,7 @@ private:
   static std::string increment_otabase_filename(const std::string& filename);
 
   // OTABase oracle / backtracking / blacklisting helpers.
+  void handle_rlc_max_retx() override;
   void send_ue_cap_enquiry_oracle();
   void set_otabase_oracle_timer();
   void otabase_oracle_timer_expired(timer_id_t tid);

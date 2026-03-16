@@ -512,6 +512,11 @@ public:
   virtual rrc_ngap_message_handler&       get_rrc_ngap_message_handler()       = 0;
   virtual rrc_ue_control_message_handler& get_rrc_ue_control_message_handler() = 0;
   virtual rrc_ue_context_handler&         get_rrc_ue_context_handler()         = 0;
+
+  /// OTABase: called by du_processor when the DU reports RLC Max Retx (F1AP cause rl_fail_rlc /
+  /// rl_fail_others) during fuzzing. Cancels any pending oracle timer and immediately enters
+  /// backtracking mode, equivalent to 4G's max_retx_attempted() hook.
+  virtual void handle_rlc_max_retx() {}
 };
 
 } // namespace srs_cu_cp

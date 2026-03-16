@@ -388,6 +388,35 @@ void rrc_ue_impl::set_otabase_oracle_timer()
   logger.log_info("OTABase: oracle timer started (1000ms)");
 }
 
+// ---------------------------------------------------------------------------
+// handle_rlc_max_retx — called by du_processor when DU reports RLC Max Retx
+// (F1AP cause rl_fail_rlc / rl_fail_others).  Equivalent to 4G's
+// max_retx_attempted() hook: bypasses oracle retry attempts and forces
+// immediate entry into backtracking mode.
+// ---------------------------------------------------------------------------
+void rrc_ue_impl::handle_rlc_max_retx()
+{
+  if (!context.cfg.otabase_enable_5g_rrc_fuzzing || !otabase_is_test_file_open) {
+    return;
+  }
+
+  logger.log_info("OTABase: DU reported RLC Max Retx — forcing immediate backtracking (bypassing oracle retries)");
+
+  // RLC failure supersedes any pending oracle wait; cancel timer.
+  if (otabase_oracle_timer.is_running()) {
+    otabase_oracle_timer.stop();
+  }
+  otabase_waiting_for_rrc_oracle = false;
+
+  // Set oracle counter above max_oracle_trial (2) so that notify_rrc_oracle()
+  // skips the "retry oracle" path and goes straight to backtracking.
+  constexpr uint8_t max_oracle_trial = 2;
+  if (otabase_rrc_oracle_cnt <= max_oracle_trial) {
+    otabase_rrc_oracle_cnt = max_oracle_trial;
+  }
+  notify_rrc_oracle();
+}
+
 void rrc_ue_impl::otabase_oracle_timer_expired(timer_id_t /*tid*/)
 {
   logger.log_info("OTABase: oracle timer expired — UE did not respond");

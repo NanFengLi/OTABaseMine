@@ -147,6 +147,8 @@ python -m bishe.mutated.langchain_agent_5g_mutator --agent
 | SEQUENCE OF | 4 条 | 长度头：0、实际值、随机、最大编码 |
 
 > 无约束 OCTET STRING / BIT STRING 策略数量较多，可通过 `--max-strategies N` 限制每条消息随机挑选 N 种策略，例如 `--max-strategies 4`。受约束字段不受此参数影响。
+>
+> **策略编号说明**：输出文件中的策略编号始终反映该策略在全部策略集合中的**原始编号**（1-based），而非采样后的重编号。例如无约束 OCTET STRING 共 22 种策略，若 `--max-strategies 4` 随机挑选了第 3、7、15、19 号策略，输出中仍记录为 `3,7,15,19`，而非重编号为 `1,2,3,4`。
 
 详细策略说明见 [`bishe/mutated/tools/README.md`](bishe/mutated/tools/README.md)。
 
@@ -173,7 +175,18 @@ python -m bishe.mutated.langchain_agent_5g_mutator --agent
 2. 超时未回复 → 最多**重试 2 次**
 3. 重试仍失败 → 进入 **Backtracking**（逐条回溯最近发送的消息，定位导致崩溃的具体消息）
 
-otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次数耗尽（UE 未 ACK），直接判定 UE 可能崩溃并进入 Backtracking。5G 因 CU-DU 分离，CU-CP 无法直接感知 RLC 状态，仅依赖 Oracle 超时。
+otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次数耗尽（UE 未 ACK），直接判定 UE 可能崩溃并进入 Backtracking。
+
+5G NR 同样具备 RLC 层，但由于 CU-DU 分离，RLC 运行在 **DU** 侧而非 CU-CP 侧：
+
+| 维度 | 4G（otabase） | 5G（srsRAN_Project） |
+|------|--------------|----------------------|
+| RLC 所在位置 | eNB 同进程 | DU（独立进程/主机） |
+| Max Retx 触发方式 | `max_retx_attempted()` 同进程直接回调 | DU → F1AP `UE Context Release Request`（原因码 `rl_failure`）→ SCTP → CU-CP |
+| CU-CP 感知方式 | 直接（同线程） | 间接（跨网络 F1AP 消息） |
+| 当前是否启用 | ✅ 已启用 | ✅ 已启用（F1AP 路径） |
+
+**5G RLC Max Retx 实现原理**：当 DU 检测到 RLC Max Retx 时，通过 F1AP `UE Context Release Request`（原因码 `rl_fail_rlc` / `rl_fail_others`）通知 CU-CP；CU-CP 的 `du_processor_impl::handle_du_initiated_ue_context_release_request()` 收到后，调用 `rrc_ue_interface::handle_rlc_max_retx()`，将 oracle 重试计数器强制设为阈值以上并立即进入 Backtracking，与 4G 的 `max_retx_attempted()` 行为等价。F1AP/SCTP 传输延迟（< 20ms）远小于 Oracle 超时（1000ms），不影响检测实时性。
 
 ### 黑名单机制
 
