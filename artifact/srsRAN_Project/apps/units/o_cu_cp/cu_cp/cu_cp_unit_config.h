@@ -162,6 +162,8 @@ struct cu_cp_unit_rrc_config {
   std::string otabase_output_directory;
   /// Enable temporary blacklist (same as 4G temp_blacklist).
   bool otabase_temp_blacklist = true;
+  /// Pacing timer interval in ms (mimics 4G RLC-ACK-driven injection). 0 = disabled.
+  unsigned otabase_pacing_ms = 5;
 };
 
 /// Security configuration parameters.

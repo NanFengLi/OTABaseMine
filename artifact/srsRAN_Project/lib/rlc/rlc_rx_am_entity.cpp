@@ -26,15 +26,16 @@
 
 using namespace srsran;
 
-rlc_rx_am_entity::rlc_rx_am_entity(gnb_du_id_t                       gnb_du_id,
-                                   du_ue_index_t                     ue_index,
-                                   rb_id_t                           rb_id,
-                                   const rlc_rx_am_config&           config,
-                                   rlc_rx_upper_layer_data_notifier& upper_dn_,
-                                   rlc_bearer_metrics_collector&     metrics_coll_,
-                                   rlc_pcap&                         pcap_,
-                                   task_executor&                    ue_executor_,
-                                   timer_manager&                    timers) :
+rlc_rx_am_entity::rlc_rx_am_entity(gnb_du_id_t                            gnb_du_id,
+                                   du_ue_index_t                          ue_index,
+                                   rb_id_t                                rb_id,
+                                   const rlc_rx_am_config&                config,
+                                   rlc_rx_upper_layer_data_notifier&      upper_dn_,
+                                   rlc_bearer_metrics_collector&          metrics_coll_,
+                                   rlc_pcap&                              pcap_,
+                                   task_executor&                         ue_executor_,
+                                   timer_manager&                         timers,
+                                   rlc_rx_upper_layer_control_notifier*   rx_upper_cn_) :
   rlc_rx_entity(gnb_du_id, ue_index, rb_id, upper_dn_, metrics_coll_, pcap_, ue_executor_, timers),
   cfg(config),
   mod(cardinality(to_number(cfg.sn_field_length))),
@@ -46,7 +47,8 @@ rlc_rx_am_entity::rlc_rx_am_entity(gnb_du_id_t                       gnb_du_id,
   status_prohibit_timer(ue_timer_factory.create_timer()),
   reassembly_timer(ue_timer_factory.create_timer()),
   ue_executor(ue_executor_),
-  pcap_context(ue_index, rb_id, config)
+  pcap_context(ue_index, rb_id, config),
+  rx_upper_cn(rx_upper_cn_)
 {
   metrics.metrics_set_mode(rlc_mode::am);
 
@@ -118,6 +120,9 @@ void rlc_rx_am_entity::handle_control_pdu(byte_buffer_slice buf)
   if (status_pdu.unpack(buf.view())) {
     logger.log_info("RX status PDU. {}", status_pdu);
     status_handler->on_status_pdu(std::move(status_pdu));
+    if (rx_upper_cn != nullptr) {
+      rx_upper_cn->on_control_pdu_received();
+    }
   } else {
     logger.log_warning(buf.begin(), buf.end(), "Failed to unpack control PDU. pdu_len={}", buf.length());
   }

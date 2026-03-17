@@ -51,6 +51,8 @@ public:
 
   async_task<void> stop() override;
 
+  ue_index_t get_ue_index(gnb_cu_ue_f1ap_id_t cu_ue_id) const override;
+
   // f1ap_rrc_message_handler functions.
   void handle_dl_rrc_message_transfer(const f1ap_dl_rrc_message& msg) override;
 

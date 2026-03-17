@@ -224,6 +224,7 @@ static YAML::Node build_cu_cp_rrc_section(const cu_cp_unit_rrc_config& config)
   node["otabase_replay_mode"]            = config.otabase_replay_mode;
   node["otabase_output_directory"]       = config.otabase_output_directory;
   node["otabase_temp_blacklist"]        = config.otabase_temp_blacklist;
+  node["otabase_pacing_ms"]             = config.otabase_pacing_ms;
 
   return node;
 }

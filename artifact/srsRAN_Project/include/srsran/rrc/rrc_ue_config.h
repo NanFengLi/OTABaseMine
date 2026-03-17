@@ -55,6 +55,10 @@ struct rrc_ue_cfg_t {
   std::string otabase_output_directory;
   /// Enable temporary blacklist (same as 4G temp_blacklist). When true, same msg+field timeout 3 times → temp skip; 30 lines skipped → remove.
   bool otabase_temp_blacklist = true;
+  /// Pacing timer interval in milliseconds. After sending each test message a
+  /// short timer fires to trigger the next one, mimicking 4G's RLC-ACK-driven
+  /// injection loop.  Set to 0 to disable (fall back to UL-RRC-only triggering).
+  unsigned otabase_pacing_ms = 5;
 };
 
 } // namespace srs_cu_cp

@@ -82,4 +82,15 @@ public:
   virtual void on_new_sdu(byte_buffer_chain pdu) = 0;
 };
 
+/// Optional notifier for control PDU events (e.g. RLC AM status PDU / ACK received).
+/// Used by OTABase to trigger the next test message when UE acknowledges a DL PDU.
+class rlc_rx_upper_layer_control_notifier
+{
+public:
+  virtual ~rlc_rx_upper_layer_control_notifier() = default;
+
+  /// Called when an RLC control PDU (e.g. status PDU / ACK) is received.
+  virtual void on_control_pdu_received() = 0;
+};
+
 } // namespace srsran

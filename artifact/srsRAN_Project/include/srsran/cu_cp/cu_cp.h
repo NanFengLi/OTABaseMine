@@ -28,6 +28,7 @@
 #include "srsran/cu_cp/cu_cp_f1c_handler.h"
 #include "srsran/cu_cp/cu_cp_metrics_handler.h"
 #include "srsran/cu_cp/cu_cp_ng_handler.h"
+#include "srsran/f1ap/f1ap_ue_id_types.h"
 
 namespace srsran {
 namespace srs_cu_cp {
@@ -64,6 +65,10 @@ public:
 
   /// \brief Stop the CU-CP operation.
   virtual void stop() = 0;
+
+  /// \brief OTABase: notify CU-CP that RLC received UL status PDU (ACK) for the given UE.
+  /// Triggers sending next test message instead of waiting for pacing timer.
+  virtual void on_rlc_ack_received(gnb_cu_ue_f1ap_id_t cu_ue_id) = 0;
 };
 
 } // namespace srs_cu_cp

@@ -31,16 +31,17 @@ namespace srsran {
 class rlc_am_entity : public rlc_base_entity
 {
 public:
-  rlc_am_entity(gnb_du_id_t                          gnb_du_id_,
-                du_ue_index_t                        ue_index_,
-                rb_id_t                              rb_id_,
-                const rlc_am_config&                 config,
-                timer_duration                       metrics_period_,
-                rlc_metrics_notifier*                rlc_metrics_notifier_,
-                rlc_rx_upper_layer_data_notifier&    rx_upper_dn,
-                rlc_tx_upper_layer_data_notifier&    tx_upper_dn,
-                rlc_tx_upper_layer_control_notifier& tx_upper_cn,
-                rlc_tx_lower_layer_notifier&         tx_lower_dn,
+  rlc_am_entity(gnb_du_id_t                           gnb_du_id_,
+                du_ue_index_t                         ue_index_,
+                rb_id_t                               rb_id_,
+                const rlc_am_config&                  config,
+                timer_duration                        metrics_period_,
+                rlc_metrics_notifier*                 rlc_metrics_notifier_,
+                rlc_rx_upper_layer_data_notifier&     rx_upper_dn,
+                rlc_rx_upper_layer_control_notifier*  rx_upper_cn,
+                rlc_tx_upper_layer_data_notifier&     tx_upper_dn,
+                rlc_tx_upper_layer_control_notifier&  tx_upper_cn,
+                rlc_tx_lower_layer_notifier&          tx_lower_dn,
                 rlc_pcap&                            pcap,
                 task_executor&                       pcell_executor,
                 task_executor&                       ue_executor,
@@ -61,7 +62,7 @@ public:
                                                                                  ue_executor,
                                                                                  timers);
     std::unique_ptr<rlc_rx_am_entity> rx_am = std::make_unique<rlc_rx_am_entity>(
-        gnb_du_id_, ue_index_, rb_id_, config.rx, rx_upper_dn, metrics_coll, pcap, ue_executor, timers);
+        gnb_du_id_, ue_index_, rb_id_, config.rx, rx_upper_dn, metrics_coll, pcap, ue_executor, timers, rx_upper_cn);
 
     // Tx/Rx interconnect
     tx_am->set_status_provider(rx_am.get());

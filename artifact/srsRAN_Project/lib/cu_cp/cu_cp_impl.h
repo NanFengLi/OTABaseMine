@@ -73,6 +73,8 @@ public:
   bool start() override;
   void stop() override;
 
+  void on_rlc_ack_received(gnb_cu_ue_f1ap_id_t cu_ue_id) override;
+
   // NGAP interface.
   ngap_message_handler* get_ngap_message_handler(const plmn_identity& plmn) override;
 

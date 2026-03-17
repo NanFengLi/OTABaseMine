@@ -115,6 +115,11 @@ void rrc_ue_impl::maybe_send_next_otabase_rrc_message(const char* trigger)
     return;
   }
 
+  // Cancel any running pacing timer so we don't double-fire.
+  if (otabase_pacing_timer.is_valid() && otabase_pacing_timer.is_running()) {
+    otabase_pacing_timer.stop();
+  }
+
   // If we are waiting for an oracle response, do nothing — the handler will resume.
   if (otabase_waiting_for_rrc_oracle) {
     return;
@@ -149,6 +154,12 @@ void rrc_ue_impl::maybe_send_next_otabase_rrc_message(const char* trigger)
 
   logger.log_info("OTABase trigger={} send payload len={}B", trigger, payload_hex.size() / 2U);
   send_dl_dcch_bytes(srb_id_t::srb1, payload_hex);
+
+  // Start the pacing timer to trigger the next test message automatically.
+  // In 4G, each RLC ACK (~4-8 ms) triggers the next message directly. The 5G
+  // CU/DU split prevents CU-CP from seeing RLC ACKs, so we use a short timer
+  // to replicate the same fast injection cadence.
+  start_otabase_pacing_timer();
 }
 
 bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
@@ -376,6 +387,29 @@ void rrc_ue_impl::send_ue_cap_enquiry_oracle()
   send_dl_dcch(srb_id_t::srb1, dl_dcch_msg);
 }
 
+// ---------------------------------------------------------------------------
+// Pacing timer — mimics 4G's RLC-ACK-driven injection loop.
+// After sending a test payload (normal or backtracking), this short timer
+// fires and calls maybe_send_next_otabase_rrc_message() to dispatch the
+// next message without waiting for an UL RRC response from the UE.
+// ---------------------------------------------------------------------------
+void rrc_ue_impl::start_otabase_pacing_timer()
+{
+  if (context.cfg.otabase_pacing_ms == 0) {
+    return;
+  }
+
+  if (!otabase_pacing_timer.is_valid()) {
+    otabase_pacing_timer = cu_cp_ue_notifier.get_timer_factory().create_timer();
+  }
+
+  otabase_pacing_timer.set(std::chrono::milliseconds(context.cfg.otabase_pacing_ms),
+                           [this](timer_id_t /*tid*/) {
+                             maybe_send_next_otabase_rrc_message("pacing_timer");
+                           });
+  otabase_pacing_timer.run();
+}
+
 void rrc_ue_impl::set_otabase_oracle_timer()
 {
   if (!otabase_oracle_timer.is_valid()) {
@@ -402,7 +436,10 @@ void rrc_ue_impl::handle_rlc_max_retx()
 
   logger.log_info("OTABase: DU reported RLC Max Retx — forcing immediate backtracking (bypassing oracle retries)");
 
-  // RLC failure supersedes any pending oracle wait; cancel timer.
+  // RLC failure supersedes any pending pacing / oracle wait; cancel timers.
+  if (otabase_pacing_timer.is_valid() && otabase_pacing_timer.is_running()) {
+    otabase_pacing_timer.stop();
+  }
   if (otabase_oracle_timer.is_running()) {
     otabase_oracle_timer.stop();
   }
@@ -415,6 +452,11 @@ void rrc_ue_impl::handle_rlc_max_retx()
     otabase_rrc_oracle_cnt = max_oracle_trial;
   }
   notify_rrc_oracle();
+}
+
+void rrc_ue_impl::handle_rlc_ack()
+{
+  maybe_send_next_otabase_rrc_message("rlc_ack");
 }
 
 void rrc_ue_impl::otabase_oracle_timer_expired(timer_id_t /*tid*/)
@@ -511,6 +553,9 @@ void rrc_ue_impl::send_rrc_test_message_backtracking()
 
   logger.log_info("OTABase: [Backtracking #{}] payload len={}B", otabase_backtracking_num, payload.size() / 2U);
   send_dl_dcch_bytes(srb_id_t::srb1, payload);
+
+  // Use pacing timer for backtracking payloads too (same as 4G).
+  start_otabase_pacing_timer();
 }
 
 // ---------------------------------------------------------------------------

@@ -193,6 +193,9 @@ public:
 
   virtual async_task<void> stop() = 0;
 
+  /// \brief Get ue_index from gnb_cu_ue_f1ap_id. Returns invalid if not found.
+  virtual ue_index_t get_ue_index(gnb_cu_ue_f1ap_id_t cu_ue_id) const = 0;
+
   virtual f1ap_message_handler&              get_f1ap_message_handler()              = 0;
   virtual f1ap_rrc_message_handler&          get_f1ap_rrc_message_handler()          = 0;
   virtual f1ap_ue_context_manager&           get_f1ap_ue_context_manager()           = 0;

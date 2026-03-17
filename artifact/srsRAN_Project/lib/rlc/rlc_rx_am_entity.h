@@ -149,16 +149,20 @@ private:
 
   bool stopped = false;
 
+  /// Optional notifier for control PDU (e.g. status PDU / ACK) received. Used by OTABase.
+  rlc_rx_upper_layer_control_notifier* rx_upper_cn = nullptr;
+
 public:
-  rlc_rx_am_entity(gnb_du_id_t                       gnb_du_id,
-                   du_ue_index_t                     ue_index,
-                   rb_id_t                           rb_id,
-                   const rlc_rx_am_config&           config,
-                   rlc_rx_upper_layer_data_notifier& upper_dn_,
-                   rlc_bearer_metrics_collector&     metrics_coll_,
-                   rlc_pcap&                         pcap_,
-                   task_executor&                    ue_executor_,
-                   timer_manager&                    timers);
+  rlc_rx_am_entity(gnb_du_id_t                        gnb_du_id,
+                   du_ue_index_t                      ue_index,
+                   rb_id_t                            rb_id,
+                   const rlc_rx_am_config&            config,
+                   rlc_rx_upper_layer_data_notifier&  upper_dn_,
+                   rlc_bearer_metrics_collector&      metrics_coll_,
+                   rlc_pcap&                          pcap_,
+                   task_executor&                     ue_executor_,
+                   timer_manager&                     timers,
+                   rlc_rx_upper_layer_control_notifier* rx_upper_cn_ = nullptr);
 
   void stop() final
   {

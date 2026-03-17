@@ -58,12 +58,14 @@ srsran::srs_du::make_rlc_entity_creation_message(gnb_du_id_t                    
                                                  const rlc_config&                        rlc_cfg,
                                                  const du_manager_params::service_params& du_services,
                                                  rlc_tx_upper_layer_control_notifier&     rlc_rlf_notifier,
-                                                 rlc_pcap&                                pcap_writer)
+                                                 rlc_pcap&                                pcap_writer,
+                                                 rlc_rx_upper_layer_control_notifier*     rx_upper_cn)
 {
   rlc_entity_creation_message msg;
   fill_rlc_entity_creation_message_common(
       msg, gnb_du_id, ue_index, pcell_index, bearer, rlc_cfg, du_services, rlc_rlf_notifier, pcap_writer);
   msg.rb_id = bearer.srb_id;
+  msg.rx_upper_cn = rx_upper_cn;
   return msg;
 }
 

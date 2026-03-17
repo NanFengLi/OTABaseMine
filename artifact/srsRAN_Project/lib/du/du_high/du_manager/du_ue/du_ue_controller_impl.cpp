@@ -20,7 +20,9 @@
  *
  */
 
+#include "du_ue_adapters.h"
 #include "du_ue_controller_impl.h"
+#include "srsran/du/du_high/du_manager/du_manager_params.h"
 #include "srsran/mac/mac_ue_configurator.h"
 #include "srsran/support/async/async_no_op_task.h"
 #include "srsran/support/async/execute_on_blocking.h"
@@ -260,6 +262,19 @@ du_ue_controller_impl::du_ue_controller_impl(const du_ue_context&         contex
   mac_rlf_notifier(std::make_unique<mac_rlf_du_adapter>(ue_index, ue_db)),
   rlc_rlf_notifier(std::make_unique<rlc_rlf_du_adapter>(ue_index, ue_db, cfg.services.du_mng_exec))
 {
+}
+
+rlc_rx_upper_layer_control_notifier* du_ue_controller_impl::get_rlc_ack_notifier()
+{
+  if (rlc_ack_adapter != nullptr) {
+    return rlc_ack_adapter.get();
+  }
+  if (cfg.rlc.rlc_ack_to_cu_notifier && cfg.rlc.rlc_ack_ue_id_translator != nullptr) {
+    rlc_ack_adapter = std::make_unique<rlc_ack_du_adapter>(
+        ue_index, *cfg.rlc.rlc_ack_ue_id_translator, cfg.rlc.rlc_ack_to_cu_notifier);
+    return rlc_ack_adapter.get();
+  }
+  return nullptr;
 }
 
 du_ue_controller_impl::~du_ue_controller_impl() {}

@@ -126,3 +126,20 @@ void mac_sdu_rx_adapter::disconnect()
 {
   connect(null_rlc_bearer);
 }
+
+rlc_ack_du_adapter::rlc_ack_du_adapter(du_ue_index_t                    ue_index_,
+                                       f1ap_ue_id_translator&            translator_,
+                                       std::function<void(gnb_cu_ue_f1ap_id_t)> callback_) :
+  ue_index(ue_index_), translator(translator_), callback(std::move(callback_))
+{
+}
+
+void rlc_ack_du_adapter::on_control_pdu_received()
+{
+  if (callback) {
+    auto cu_id = translator.get_gnb_cu_ue_f1ap_id(ue_index);
+    if (cu_id.has_value()) {
+      callback(*cu_id);
+    }
+  }
+}

@@ -70,6 +70,7 @@ std::unique_ptr<rlc_entity> srsran::create_rlc_entity(const rlc_entity_creation_
                                              msg.config.metrics_period,
                                              msg.rlc_metrics_notif,
                                              *msg.rx_upper_dn,
+                                             msg.rx_upper_cn,
                                              *msg.tx_upper_dn,
                                              *msg.tx_upper_cn,
                                              *msg.tx_lower_dn,

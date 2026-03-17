@@ -28,3 +28,8 @@ cu_cp:
     # blacklisting.  Useful for replaying a specific sequence of messages to
     # confirm a crash.  Default: false.
     otabase_replay_mode: false
+
+    # Pacing timer in milliseconds.  When > 0, works alongside RLC ACK:
+    # whichever fires first (RLC ACK or timer) triggers the next message.
+    # Set to 0 to rely solely on RLC ACK (same as 4G).  Default: 5.
+    otabase_pacing_ms: 5

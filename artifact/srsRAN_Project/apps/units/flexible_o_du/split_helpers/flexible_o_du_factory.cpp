@@ -261,6 +261,7 @@ o_du_unit flexible_o_du_factory::create_flexible_o_du(const o_du_unit_dependenci
                                                           *(o_du.e2_metric_connectors),
                                                           *dependencies.metrics_notifier,
                                                           {}};
+  odu_hi_unit_dependencies.o_du_hi_dependencies.du_hi.rlc_ack_to_cu_notifier = dependencies.rlc_ack_to_cu_notifier;
 
   // Adjust the dependencies.
   for (unsigned i = 0, e = du_cells.size(); i != e; ++i) {

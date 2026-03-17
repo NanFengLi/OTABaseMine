@@ -396,6 +396,12 @@ static void configure_cli11_rrc_args(CLI::App& app, cu_cp_unit_rrc_config& confi
           config.otabase_temp_blacklist,
           "Enable temporary blacklist (same as 4G temp_blacklist). Default: true")
         ->capture_default_str();
+
+    add_option(app,
+          "--otabase_pacing_ms",
+          config.otabase_pacing_ms,
+          "Pacing timer in ms between test messages (mimics 4G RLC-ACK speed). 0 = disabled. Default: 5")
+        ->capture_default_str();
 }
 
 static void configure_cli11_security_args(CLI::App& app, cu_cp_unit_security_config& config)

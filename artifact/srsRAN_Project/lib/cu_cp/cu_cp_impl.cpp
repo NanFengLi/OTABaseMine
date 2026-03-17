@@ -143,6 +143,21 @@ bool cu_cp_impl::start()
   return fut.get();
 }
 
+void cu_cp_impl::on_rlc_ack_received(gnb_cu_ue_f1ap_id_t cu_ue_id)
+{
+  for (du_index_t du_idx : du_db.get_du_processor_indexes()) {
+    f1ap_cu& f1ap = du_db.get_du_processor(du_idx).get_f1ap_handler();
+    ue_index_t ue_idx = f1ap.get_ue_index(cu_ue_id);
+    if (ue_idx != ue_index_t::invalid) {
+      rrc_ue_interface* rrc_ue = du_db.get_du_processor(du_idx).get_rrc_du_handler().find_ue(ue_idx);
+      if (rrc_ue != nullptr) {
+        rrc_ue->handle_rlc_ack();
+      }
+      return;
+    }
+  }
+}
+
 void cu_cp_impl::stop()
 {
   bool already_stopped = stopped.exchange(true);

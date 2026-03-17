@@ -29,7 +29,9 @@
 #include "srsran/mac/mac_sdu_handler.h"
 #include "srsran/mac/mac_ue_control_information_handler.h"
 #include "srsran/rlc/rlc_rx.h"
+#include "srsran/f1ap/du/f1ap_du.h"
 #include "srsran/rlc/rlc_tx.h"
+#include <functional>
 
 namespace srsran {
 namespace srs_du {
@@ -211,6 +213,20 @@ private:
   /// thread still uses this to notify F1 of transmitted/delivered PDCP SNs.
   /// The lifetime of the F1 bearer exceeds the \c disconnect and is synchronized with the scheduler.
   std::atomic<f1u_tx_delivery_handler*> handler = nullptr;
+};
+
+/// Adapter: when RLC receives UL status PDU (ACK), notify CU-CP. Used by OTABase.
+class rlc_ack_du_adapter : public rlc_rx_upper_layer_control_notifier
+{
+public:
+  rlc_ack_du_adapter(du_ue_index_t ue_index_, f1ap_ue_id_translator& translator_, std::function<void(gnb_cu_ue_f1ap_id_t)> callback_);
+
+  void on_control_pdu_received() override;
+
+private:
+  du_ue_index_t                            ue_index;
+  f1ap_ue_id_translator&                    translator;
+  std::function<void(gnb_cu_ue_f1ap_id_t)>  callback;
 };
 
 class rlc_tx_control_notifier : public rlc_tx_upper_layer_control_notifier

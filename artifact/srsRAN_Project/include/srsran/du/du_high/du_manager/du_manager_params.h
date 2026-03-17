@@ -35,6 +35,7 @@
 #include "srsran/ran/gnb_du_id.h"
 #include "srsran/rlc/rlc_metrics.h"
 #include "srsran/scheduler/config/scheduler_expert_config.h"
+#include <functional>
 #include <map>
 
 namespace srsran {
@@ -80,6 +81,9 @@ struct du_manager_params {
     f1ap_rrc_message_transfer_procedure_handler& f1ap_rx_proc_handler;
     rlc_pcap&                                    pcap_writer;
     rlc_metrics_notifier*                        rlc_metrics_notif = nullptr;
+    /// Optional. OTABase: when RLC receives UL status PDU (ACK), notify CU-CP to send next test message.
+    f1ap_ue_id_translator*                       rlc_ack_ue_id_translator = nullptr;
+    std::function<void(gnb_cu_ue_f1ap_id_t)>     rlc_ack_to_cu_notifier;
   };
 
   struct mac_config_params {

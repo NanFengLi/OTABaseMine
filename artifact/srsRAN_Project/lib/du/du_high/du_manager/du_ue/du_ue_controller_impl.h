@@ -54,6 +54,9 @@ public:
   mac_ue_radio_link_notifier&          get_mac_rlf_notifier() override { return *mac_rlf_notifier; }
   rlc_tx_upper_layer_control_notifier& get_rlc_rlf_notifier() override { return *rlc_rlf_notifier; }
 
+  /// Optional. OTABase: notifier for RLC control PDU (ACK) received. nullptr if not configured.
+  rlc_rx_upper_layer_control_notifier* get_rlc_ack_notifier() override;
+
 private:
   class rlf_state_machine;
 
@@ -64,9 +67,10 @@ private:
   const du_manager_params&  cfg;
   srslog::basic_logger&     logger = srslog::fetch_basic_logger("DU-MNG");
 
-  std::unique_ptr<rlf_state_machine>                   rlf_handler;
-  std::unique_ptr<mac_ue_radio_link_notifier>          mac_rlf_notifier;
-  std::unique_ptr<rlc_tx_upper_layer_control_notifier> rlc_rlf_notifier;
+  std::unique_ptr<rlf_state_machine>                    rlf_handler;
+  std::unique_ptr<mac_ue_radio_link_notifier>           mac_rlf_notifier;
+  std::unique_ptr<rlc_tx_upper_layer_control_notifier>  rlc_rlf_notifier;
+  std::unique_ptr<rlc_ack_du_adapter> rlc_ack_adapter;
 };
 
 } // namespace srs_du

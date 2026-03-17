@@ -42,7 +42,8 @@ rlc_entity_creation_message make_rlc_entity_creation_message(gnb_du_id_t        
                                                              const rlc_config&                        rlc_cfg,
                                                              const du_manager_params::service_params& du_services,
                                                              rlc_tx_upper_layer_control_notifier&     rlc_rlf_notifier,
-                                                             rlc_pcap&                                rlc_pcap);
+                                                             rlc_pcap&                                rlc_pcap,
+                                                             rlc_rx_upper_layer_control_notifier*     rx_upper_cn = nullptr);
 
 /// \brief Create configuration for RLC DRB entity.
 rlc_entity_creation_message make_rlc_entity_creation_message(gnb_du_id_t                              du_id,

@@ -6,6 +6,16 @@ the bring up and, therefore, they only expose the most important as well as the 
 to change configuration options. For the sake of simplicity and readability they do not
 list all available configuration sections, subsection and fields.
 
+## OTABase RRC Fuzzing
+
+OTABase 5G RRC fuzzing 请使用叠加配置 `otabase_fuzzing.yml`：
+
+```bash
+sudo ./gnb -c gnb_rf_b200_tdd_n78_20mhz.yml -c otabase_fuzzing.yml
+```
+
+完整说明见 `srsRAN_Project_Modefy_README.md`，包括 RLC ACK 通知、pacing timer 及所有相关参数。
+
 ## Usage
 
 The srsRAN Project gNB can be configured via one or multiple configuration files and/or via 

@@ -26,7 +26,9 @@
 #include "apps/services/metrics/metrics_config.h"
 #include "apps/units/application_unit_commands.h"
 #include "srsran/du/du.h"
+#include "srsran/f1ap/f1ap_ue_id_types.h"
 #include "srsran/ntn/ntn_configuration_manager.h"
+#include <functional>
 #include <memory>
 #include <vector>
 
@@ -71,6 +73,8 @@ struct o_du_unit_dependencies {
   rlc_pcap*                       rlc_p              = nullptr;
   e2_connection_client*           e2_client_handler  = nullptr;
   app_services::metrics_notifier* metrics_notifier   = nullptr;
+  /// Optional. OTABase: when RLC receives UL status PDU (ACK), notify CU-CP.
+  std::function<void(gnb_cu_ue_f1ap_id_t)> rlc_ack_to_cu_notifier;
 };
 
 } // namespace srsran

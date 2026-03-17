@@ -517,6 +517,10 @@ public:
   /// rl_fail_others) during fuzzing. Cancels any pending oracle timer and immediately enters
   /// backtracking mode, equivalent to 4G's max_retx_attempted() hook.
   virtual void handle_rlc_max_retx() {}
+
+  /// OTABase: called when RLC receives UL status PDU (ACK). Triggers sending next test message
+  /// instead of waiting for pacing timer.
+  virtual void handle_rlc_ack() {}
 };
 
 } // namespace srs_cu_cp

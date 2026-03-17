@@ -68,6 +68,12 @@ const f1ap_du_context& f1ap_cu_impl::get_context() const
   return du_ctxt;
 }
 
+ue_index_t f1ap_cu_impl::get_ue_index(gnb_cu_ue_f1ap_id_t cu_ue_id) const
+{
+  const f1ap_ue_context* ue_ctxt = ue_ctxt_list.find(cu_ue_id);
+  return ue_ctxt != nullptr ? ue_ctxt->ue_ids.ue_index : ue_index_t::invalid;
+}
+
 void f1ap_cu_impl::handle_dl_rrc_message_transfer(const f1ap_dl_rrc_message& msg)
 {
   f1ap_ue_context* ue_ctxt = ue_ctxt_list.find(msg.ue_index);

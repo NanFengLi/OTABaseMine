@@ -129,9 +129,11 @@ private:
 
   // OTABase oracle / backtracking / blacklisting helpers.
   void handle_rlc_max_retx() override;
+  void handle_rlc_ack() override;
   void send_ue_cap_enquiry_oracle();
   void set_otabase_oracle_timer();
   void otabase_oracle_timer_expired(timer_id_t tid);
+  void start_otabase_pacing_timer();
   void notify_rrc_oracle();
   void send_rrc_test_message_backtracking();
   void put_otabase_test_message_queue(const std::string& test_message);
@@ -173,6 +175,7 @@ private:
   unsigned      otabase_total_line_num = 0;
 
   // OTABase oracle / backtracking state.
+  unique_timer                           otabase_pacing_timer;
   unique_timer                           otabase_oracle_timer;
   bool                                   otabase_waiting_for_rrc_oracle = false;
   unsigned                               otabase_num_msg_N_oracle       = 0;

@@ -35,14 +35,15 @@
 namespace srsran {
 
 struct rlc_entity_creation_message {
-  gnb_du_id_t                          gnb_du_id;
-  du_ue_index_t                        ue_index;
-  rb_id_t                              rb_id;
-  rlc_config                           config;
-  rlc_rx_upper_layer_data_notifier*    rx_upper_dn;
-  rlc_tx_upper_layer_data_notifier*    tx_upper_dn;
-  rlc_tx_upper_layer_control_notifier* tx_upper_cn;
-  rlc_tx_lower_layer_notifier*         tx_lower_dn;
+  gnb_du_id_t                           gnb_du_id;
+  du_ue_index_t                         ue_index;
+  rb_id_t                               rb_id;
+  rlc_config                            config;
+  rlc_rx_upper_layer_data_notifier*     rx_upper_dn;
+  rlc_rx_upper_layer_control_notifier*   rx_upper_cn = nullptr; ///< Optional. OTABase: notify when RLC ACK received.
+  rlc_tx_upper_layer_data_notifier*     tx_upper_dn;
+  rlc_tx_upper_layer_control_notifier*   tx_upper_cn;
+  rlc_tx_lower_layer_notifier*          tx_lower_dn;
   timer_manager*                       timers;
   task_executor*                       pcell_executor;
   task_executor*                       ue_executor;

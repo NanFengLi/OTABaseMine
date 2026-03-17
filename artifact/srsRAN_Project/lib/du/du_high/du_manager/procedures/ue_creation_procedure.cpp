@@ -205,7 +205,8 @@ void ue_creation_procedure::create_rlc_srbs()
                                                            ue_ctx->resources->srbs[srb_id_t::srb1].rlc_cfg,
                                                            du_params.services,
                                                            ue_ctx->get_rlc_rlf_notifier(),
-                                                           du_params.rlc.pcap_writer));
+                                                           du_params.rlc.pcap_writer,
+                                                           ue_ctx->get_rlc_ack_notifier()));
   }
 }
 

@@ -25,6 +25,7 @@
 #include "../ran_resource_management/du_ran_resource_manager.h"
 #include "../ran_resource_management/du_ue_resource_config.h"
 #include "du_ue_bearer_manager.h"
+#include "srsran/rlc/rlc_rx.h"
 #include "srsran/ran/du_types.h"
 #include "srsran/ran/rnti.h"
 
@@ -92,6 +93,9 @@ public:
 
   /// \brief Access to the RLC RLF notifier for this UE.
   virtual rlc_tx_upper_layer_control_notifier& get_rlc_rlf_notifier() = 0;
+
+  /// \brief Optional. OTABase: notifier for RLC control PDU (ACK) received. Returns nullptr if not configured.
+  virtual rlc_rx_upper_layer_control_notifier* get_rlc_ack_notifier() { return nullptr; }
 };
 
 class du_ue : public du_ue_context, public du_ue_controller

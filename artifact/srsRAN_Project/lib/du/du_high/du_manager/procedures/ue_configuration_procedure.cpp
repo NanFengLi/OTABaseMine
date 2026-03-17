@@ -114,7 +114,8 @@ void ue_configuration_procedure::update_ue_context()
                                                                         srb_cfg.rlc_cfg,
                                                                         du_params.services,
                                                                         ue->get_rlc_rlf_notifier(),
-                                                                        du_params.rlc.pcap_writer));
+                                                                        du_params.rlc.pcap_writer,
+                                                                        ue->get_rlc_ack_notifier()));
   }
 
   // > Create F1-C bearers.
