@@ -192,6 +192,7 @@ rrc_ue_interface* rrc_du_impl::add_ue(const rrc_ue_creation_message& msg)
   ue_cfg.otabase_output_directory       = cfg.otabase_output_directory;
   ue_cfg.otabase_temp_blacklist         = cfg.otabase_temp_blacklist;
   ue_cfg.otabase_pacing_ms              = cfg.otabase_pacing_ms;
+  ue_cfg.otabase_inject_after_auth_only = cfg.otabase_inject_after_auth_only;
   ue_cfg.meas_timings                   = cell_info_db.at(msg.cell.cgi.nci).meas_timings;
 
   // Copy RRC cell and add SSB ARFCN.

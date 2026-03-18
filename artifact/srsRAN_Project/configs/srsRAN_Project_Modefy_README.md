@@ -9,6 +9,7 @@
 
 | 日期 | 改动 | 涉及文件数 | 简述 |
 |------|------|-----------|------|
+| 2026-03-16 | **注入时机选择（认证前/后）** | 8 | 新增 `otabase_inject_after_auth_only` 参数，可选择仅在认证后注入 |
 | 2026-03-16 | **真正的 RLC ACK 通知** | 20+ | DU RLC 收到 UE 上行 status PDU 时通知 CU-CP，触发下一条（与 4G 一致） |
 | 2026-03-16 | Pacing Timer 快速注入 | 11 | 模仿 4G RLC ACK 驱动，发完一条自动触发下一条（备选方案） |
 | 此前 | RLC Max Retx → 立即回溯 | 4 | DU 报 RLC 失败时绕过 oracle 重试直接进入 backtracking |
@@ -505,7 +506,8 @@ cu_cp:
     otabase_test_index_file: testFileIndex
     otabase_check_period: 10
     otabase_replay_mode: false
-    otabase_pacing_ms: 5      # 0=纯 RLC ACK，5=RLC ACK 与 timer 并存
+    otabase_pacing_ms: 5                    # 0=纯 RLC ACK，5=RLC ACK 与 timer 并存
+    otabase_inject_after_auth_only: false   # true=仅在认证后注入，false=从 rrc_setup_complete 起注入
 ```
 
 启动时叠加到原有 gNB 配置即可：
@@ -542,6 +544,7 @@ sudo ./gnb -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
 | `cu_cp.rrc.otabase_output_directory` | **`-o`** / `--otabase_output_directory` | 空（默认用 `otabase_crashes`） | 崩溃候选输出目录，与 4G 的 `-o` 一致；未设置时写当前目录下的 `otabase_crashes/` |
 | `cu_cp.rrc.otabase_temp_blacklist` | `--otabase_temp_blacklist` | `true` | 是否启用临时黑名单（与 4G `temp_blacklist` 一致）；为 false 时仅保留永久黑名单 |
 | `cu_cp.rrc.otabase_pacing_ms` | `--otabase_pacing_ms` | `5` | 注入节奏定时器（ms）。与 RLC ACK 并存时，谁先到谁触发。设为 0 则完全依赖 RLC ACK（与 4G 一致） |
+| `cu_cp.rrc.otabase_inject_after_auth_only` | `--otabase_inject_after_auth_only` | `false` | 为 true 时，跳过 rrc_setup_complete 的注入，首次注入发生在 security_mode_complete（认证后）；为 false 时从 rrc_setup_complete 起注入（认证前即可开始） |
 
 建议：
 
@@ -587,7 +590,85 @@ sudo ./gnb -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
 
 ## 7. 运行机制简述
 
-1. **注入阶段**：首次由 UL RRC 事件（如 `rrc_setup_complete`）触发，之后由 **RLC ACK**（DU 收到 UE status PDU 时通知 CU-CP）或 pacing timer（默认 5ms）自动连续发送测试 payload。RLC ACK 与 4G 行为一致。
+1. **注入阶段**：首次触发点由 `otabase_inject_after_auth_only` 控制。`false`（默认）时在 `rrc_setup_complete`（认证前）即开始注入；`true` 时跳过该事件，首次注入发生在 `security_mode_complete`（认证后）。之后由 **RLC ACK**（DU 收到 UE status PDU 时通知 CU-CP）或 pacing timer（默认 5ms）自动连续发送测试 payload。RLC ACK 与 4G 行为一致。
 2. **Oracle 阶段**：每隔 `check_period` 条测试消息，gNB 发送一次 `UECapabilityEnquiry` 作为活性检查，并启动 1 秒定时器。此时暂停 pacing timer，等待 UE 回应。
 3. **Backtracking 阶段**：若 UE 连续不响应 oracle（或 DU 报告 RLC Max Retx），则回放最近 10 条消息，按"消息 / oracle / 消息 / oracle"方式缩小触发范围。
 4. **落盘阶段**：命中候选消息后，会把最近消息和候选项保存到配置的 `otabase_output_directory` 目录（未配置时为当前目录下的 `otabase_crashes`）。
+
+---
+
+# Part F — 注入时机选择：认证前 / 认证后（2026-03-16）
+
+## F.1 背景
+
+原始 OTABase（4G 与 5G）默认在 `rrc_setup_complete` 时就开始注入变异 RRC 消息，此时 UE 尚未完成 NAS 认证和 RRC 安全激活（SecurityModeCommand 还未发出）。
+
+某些测试场景需要 UE 处于**完全认证后**的状态下才能触发特定的 RRC 行为（例如需要 PDCP 完整性保护 + 加密的消息，或对认证后状态机的 fuzzing），此时希望跳过认证前的注入点。
+
+## F.2 RRC 事件与认证阶段对应关系
+
+| 事件 | 认证阶段 | `inject_after_auth_only: false` | `inject_after_auth_only: true` |
+|------|----------|---|----|
+| `rrc_setup_complete` | 认证**前** | ✓ 触发注入 | ✗ 跳过 |
+| `security_mode_complete` | 认证**后** | ✓ 继续注入 | ✓ **首次注入** |
+| `ue_cap_info` | 认证后 | ✓ 续触 | ✓ 续触 |
+| `rrc_recfg_complete` | 认证后 | ✓ 续触 | ✓ 续触 |
+| `rrc_reest_complete` | 认证后 | ✓ 续触 | ✓ 续触 |
+
+> **说明**：各 RRC 事件是注入循环的"续触"点（re-trigger），而非每个事件都独立注入一批消息。注入循环一旦启动后，主要由 RLC ACK / pacing timer 驱动连续发送，RRC 事件只在循环意外中断时提供再次触发机会。
+
+## F.3 改动原理
+
+核心改动在 `lib/rrc/ue/rrc_ue_message_handlers.cpp` 的 `handle_pdu()` 中：
+
+```diff
+ case ul_dcch_msg_type_c::c1_c_::types_opts::rrc_setup_complete:
+   handle_rrc_transaction_complete(ul_dcch_msg, ...);
+-  maybe_send_next_otabase_rrc_message("rrc_setup_complete");
++  if (!context.cfg.otabase_inject_after_auth_only) {
++    maybe_send_next_otabase_rrc_message("rrc_setup_complete");
++  }
+   break;
+```
+
+`security_mode_complete` 及之后的事件不做任何修改——它们本身就是认证后事件，无论该开关是 true 还是 false 都会正常触发。
+
+## F.4 修改的文件清单
+
+| 文件 | 改动 |
+|------|------|
+| `include/srsran/rrc/rrc_ue_config.h` | 添加 `bool otabase_inject_after_auth_only = false;` |
+| `include/srsran/rrc/rrc_config.h` | 同上 |
+| `include/srsran/cu_cp/cu_cp_configuration.h` | 同上（`rrc_params` 结构体） |
+| `apps/units/o_cu_cp/cu_cp/cu_cp_unit_config.h` | 同上（`cu_cp_unit_rrc_config` 结构体） |
+| `apps/units/o_cu_cp/cu_cp/cu_cp_unit_config_cli11_schema.cpp` | 添加 `--otabase_inject_after_auth_only` CLI 选项 |
+| `apps/units/o_cu_cp/cu_cp/cu_cp_unit_config_yaml_writer.cpp` | 添加 `node["otabase_inject_after_auth_only"]` |
+| `apps/units/o_cu_cp/cu_cp/cu_cp_config_translators.cpp` | 添加 `out_cfg.rrc.otabase_inject_after_auth_only = ...` |
+| `lib/cu_cp/du_processor/du_processor_impl.cpp` | 添加 `rrc_cfg.otabase_inject_after_auth_only = ...` |
+| `lib/rrc/rrc_du_impl.cpp` | 添加 `ue_cfg.otabase_inject_after_auth_only = ...` |
+| `lib/rrc/ue/rrc_ue_message_handlers.cpp` | 核心逻辑：条件跳过 `rrc_setup_complete` 注入 |
+| `configs/otabase_fuzzing.yml` | 添加 `otabase_inject_after_auth_only: false` |
+
+## F.5 配置方式
+
+YAML（推荐）：
+
+```yaml
+cu_cp:
+  rrc:
+    otabase_inject_after_auth_only: true   # 仅在认证后注入
+```
+
+CLI：
+
+```bash
+--otabase_inject_after_auth_only=true
+```
+
+## F.6 适用场景建议
+
+| 场景 | 推荐配置 |
+|------|---------|
+| 通用 RRC fuzzing（最大覆盖） | `otabase_inject_after_auth_only: false`（默认） |
+| 针对认证后 RRC 流程测试 | `otabase_inject_after_auth_only: true` |
+| 复现认证后崩溃 | `otabase_inject_after_auth_only: true` + `otabase_replay_mode: true` |

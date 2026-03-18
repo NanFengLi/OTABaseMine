@@ -33,3 +33,7 @@ cu_cp:
     # whichever fires first (RLC ACK or timer) triggers the next message.
     # Set to 0 to rely solely on RLC ACK (same as 4G).  Default: 5.
     otabase_pacing_ms: 5
+
+    # When true, skip injection at rrc_setup_complete (pre-auth); first injection
+    # happens at security_mode_complete (post-auth).  Default: false.
+    otabase_inject_after_auth_only: false

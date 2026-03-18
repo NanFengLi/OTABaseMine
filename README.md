@@ -103,9 +103,10 @@ python -m bishe.mutated.langchain_agent_5g_mutator --batch
 cd artifact/srsRAN_Project && mkdir -p build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) gnb
 
-# 配置 otabase_fuzzing.yml
+# 配置 otabase_fuzzing.yml（关键参数）
 #   otabase_enable_5g_rrc_fuzzing: true
 #   otabase_test_index_file: ../../bishe/generate_new/output_5g/testFileIndex
+#   otabase_inject_after_auth_only: false  # true=仅认证后注入，false=从 rrc_setup_complete 起注入（默认）
 
 # 启动
 sudo ./apps/gnb/gnb \
@@ -200,6 +201,9 @@ otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次�
 **临时黑名单开关**（与 4G 一致）：  
 - **4G**：`--temp_blacklist`（默认 true），设为 false 可关闭临时黑名单，仅保留永久黑名单。  
 - **5G**：`otabase_temp_blacklist`（YAML：`cu_cp.rrc.otabase_temp_blacklist`，CLI：`--otabase_temp_blacklist`，默认 true），设为 false 可关闭临时黑名单。
+
+**注入时机开关**（5G 专有）：  
+- **5G**：`otabase_inject_after_auth_only`（YAML：`cu_cp.rrc.otabase_inject_after_auth_only`，CLI：`--otabase_inject_after_auth_only`，默认 false）。`false` 时从 `rrc_setup_complete`（认证前）起开始注入；`true` 时跳过认证前，首次注入发生在 `security_mode_complete`（认证后）。
 
 **`msgName` 与 `fieldName` 含义**（与 payload 文件列对应）：
 

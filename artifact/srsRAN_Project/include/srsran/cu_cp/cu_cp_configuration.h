@@ -122,6 +122,8 @@ struct cu_cp_configuration {
     bool otabase_temp_blacklist = true;
     /// Pacing timer interval in ms (mimics 4G RLC-ACK-driven injection). 0 = disabled.
     unsigned otabase_pacing_ms = 5;
+    /// When true, skip injection at rrc_setup_complete; first injection at security_mode_complete.
+    bool otabase_inject_after_auth_only = false;
     /// Version of the RRC.
     unsigned rrc_version = 2;
   };

@@ -225,6 +225,7 @@ static YAML::Node build_cu_cp_rrc_section(const cu_cp_unit_rrc_config& config)
   node["otabase_output_directory"]       = config.otabase_output_directory;
   node["otabase_temp_blacklist"]        = config.otabase_temp_blacklist;
   node["otabase_pacing_ms"]             = config.otabase_pacing_ms;
+  node["otabase_inject_after_auth_only"] = config.otabase_inject_after_auth_only;
 
   return node;
 }

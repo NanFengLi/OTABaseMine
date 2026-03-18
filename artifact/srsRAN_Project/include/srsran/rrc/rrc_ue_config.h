@@ -59,6 +59,10 @@ struct rrc_ue_cfg_t {
   /// short timer fires to trigger the next one, mimicking 4G's RLC-ACK-driven
   /// injection loop.  Set to 0 to disable (fall back to UL-RRC-only triggering).
   unsigned otabase_pacing_ms = 5;
+  /// When true, skip injection at rrc_setup_complete (pre-auth); first injection
+  /// happens at security_mode_complete (post-auth). When false, inject from
+  /// rrc_setup_complete onward (default).
+  bool otabase_inject_after_auth_only = false;
 };
 
 } // namespace srs_cu_cp

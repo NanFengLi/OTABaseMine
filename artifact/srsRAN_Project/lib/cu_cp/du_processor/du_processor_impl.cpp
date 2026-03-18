@@ -43,6 +43,8 @@ static rrc_cfg_t create_rrc_config(const cu_cp_configuration& cu_cp_cfg)
   rrc_cfg.otabase_replay_mode            = cu_cp_cfg.rrc.otabase_replay_mode;
   rrc_cfg.otabase_output_directory       = cu_cp_cfg.rrc.otabase_output_directory;
   rrc_cfg.otabase_temp_blacklist         = cu_cp_cfg.rrc.otabase_temp_blacklist;
+  rrc_cfg.otabase_pacing_ms              = cu_cp_cfg.rrc.otabase_pacing_ms;
+  rrc_cfg.otabase_inject_after_auth_only = cu_cp_cfg.rrc.otabase_inject_after_auth_only;
   rrc_cfg.int_algo_pref_list             = cu_cp_cfg.security.int_algo_pref_list;
   rrc_cfg.enc_algo_pref_list             = cu_cp_cfg.security.enc_algo_pref_list;
   rrc_cfg.srb2_cfg                       = cu_cp_cfg.bearers.srb2_cfg;

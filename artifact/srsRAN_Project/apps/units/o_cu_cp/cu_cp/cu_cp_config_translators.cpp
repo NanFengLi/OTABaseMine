@@ -395,6 +395,7 @@ srs_cu_cp::cu_cp_configuration srsran::generate_cu_cp_config(const cu_cp_unit_co
   out_cfg.rrc.otabase_output_directory      = cu_cfg.rrc_config.otabase_output_directory;
   out_cfg.rrc.otabase_temp_blacklist        = cu_cfg.rrc_config.otabase_temp_blacklist;
   out_cfg.rrc.otabase_pacing_ms             = cu_cfg.rrc_config.otabase_pacing_ms;
+  out_cfg.rrc.otabase_inject_after_auth_only = cu_cfg.rrc_config.otabase_inject_after_auth_only;
 
   out_cfg.bearers.drb_config = generate_cu_cp_qos_config(cu_cfg);
 

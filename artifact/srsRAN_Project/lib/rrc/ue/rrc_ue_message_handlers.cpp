@@ -189,7 +189,9 @@ void rrc_ue_impl::handle_pdu(const srb_id_t srb_id, byte_buffer rrc_pdu)
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::rrc_setup_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().rrc_setup_complete().rrc_transaction_id);
-      maybe_send_next_otabase_rrc_message("rrc_setup_complete");
+      if (!context.cfg.otabase_inject_after_auth_only) {
+        maybe_send_next_otabase_rrc_message("rrc_setup_complete");
+      }
       break;
     case ul_dcch_msg_type_c::c1_c_::types_opts::security_mode_complete:
       handle_rrc_transaction_complete(ul_dcch_msg, ul_dcch_msg.msg.c1().security_mode_complete().rrc_transaction_id);
