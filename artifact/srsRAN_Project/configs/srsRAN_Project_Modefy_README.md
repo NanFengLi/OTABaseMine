@@ -9,6 +9,7 @@
 
 | 日期 | 改动 | 涉及文件数 | 简述 |
 |------|------|-----------|------|
+| 2026-03-16 | **崩溃记录立即落盘修复** | 1 | 修复 5G 因 rrc_ue_impl 生命周期问题导致 candidate_list.txt 不生成的 Bug |
 | 2026-03-16 | **注入时机选择（认证前/后）** | 8 | 新增 `otabase_inject_after_auth_only` 参数，可选择仅在认证后注入 |
 | 2026-03-16 | **真正的 RLC ACK 通知** | 20+ | DU RLC 收到 UE 上行 status PDU 时通知 CU-CP，触发下一条（与 4G 一致） |
 | 2026-03-16 | Pacing Timer 快速注入 | 11 | 模仿 4G RLC ACK 驱动，发完一条自动触发下一条（备选方案） |
@@ -664,6 +665,68 @@ CLI：
 ```bash
 --otabase_inject_after_auth_only=true
 ```
+
+---
+
+# Part G — 崩溃记录立即落盘修复（2026-03-16）
+
+## G.1 Bug 描述
+
+即使 UE（手机）已经崩溃、完全无响应，`candidate_list.txt` 和 `crashes/` 目录也不会生成。
+
+## G.2 根本原因：rrc_ue_impl 生命周期与 4G 的架构差异
+
+| 维度 | 4G (otabase/srsenb) | 5G (srsRAN_Project) 修复前 |
+|------|---------------------|---------------------------|
+| 回溯状态存放位置 | 父级 `rrc` 对象（全局单例，**UE 断开也不销毁**） | `rrc_ue_impl`（**每次连接独立，断开即销毁**） |
+| UE 崩溃后重连 | 同一 `rrc` 对象，`is_backtracking=true` 仍在 → 新连接继续回溯 | 新 `rrc_ue_impl` 从零创建，回溯标志全部丢失 |
+| 结果 | 重连后回溯运行，找到候选 → 落盘 | 回溯状态消失，永远不落盘 |
+
+**具体时序**（5G 修复前）：
+
+```
+oracle 3 次超时 → notify_rrc_oracle()
+  → 设置 otabase_is_backtracking = true
+  → 什么也不发送（没有任何 timer 触发下一步）
+      ↓
+DU 检测到 UE 失联 → F1AP UE Context Release Request
+  → handle_du_initiated_ue_context_release_request()
+  → handle_rlc_max_retx() 进入回溯
+  → 调度 on_ue_release_required()
+  → rrc_ue_impl 被销毁，所有回溯状态丢失
+      ↓
+UE 重连 → 全新 rrc_ue_impl，is_backtracking = false
+  → 继续正常发测试消息，永远不落盘
+```
+
+## G.3 修复方案
+
+在 `notify_rrc_oracle()` 中，当 oracle 3 次超时**首次进入回溯模式**时，立即保存崩溃记录（以最近发送的消息作为 Best Candidate 的初步猜测）。这样即使 `rrc_ue_impl` 随后被销毁，`candidate_list.txt` 也已经写入磁盘。
+
+修复后还额外调用 `send_rrc_test_message_backtracking()`，如果 UE 尚未完全死亡（仍可收消息），精确回溯仍可继续运行，后续若再次 oracle 超时则会写入更精确的候选记录（第二次落盘）。
+
+```
+oracle 3 次超时 → notify_rrc_oracle()
+  → otabase_is_backtracking = true
+  → [新增] 立即 save_otabase_recent_messages(last_msg)  ← candidate_list.txt 生成！
+  → [新增] send_rrc_test_message_backtracking()         ← 尝试精确回溯
+  → 若 UE 还活着：精确回溯继续，找到更精确候选后再次落盘
+  → 若 UE 已死：rrc_ue_impl 被销毁，但 candidate_list.txt 已经有记录
+```
+
+## G.4 修改文件
+
+| 文件 | 改动 |
+|------|------|
+| `lib/rrc/ue/rrc_ue_message_senders.cpp` | `notify_rrc_oracle()` 在进入回溯时立即落盘并触发回溯 |
+
+## G.5 落盘行为对比
+
+| 场景 | 修复前 | 修复后 |
+|------|--------|--------|
+| UE 崩溃无响应，oracle 超时 3 次 | ❌ 不落盘 | ✅ 立即落盘（last msg 为候选） |
+| UE 崩溃后能重连，回溯成功 | ❌ 不落盘 | ✅ 两次落盘（初步 + 精确） |
+| UE 能响应 oracle（未崩溃） | ✅ 不落盘（正常） | ✅ 不落盘（正常） |
 
 ## F.6 适用场景建议
 

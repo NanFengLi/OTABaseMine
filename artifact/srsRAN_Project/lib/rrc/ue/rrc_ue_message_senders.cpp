@@ -483,10 +483,47 @@ void rrc_ue_impl::notify_rrc_oracle()
       otabase_backtracking_num_total = 0;
       otabase_backtracking_msg.clear();
       logger.log_info("OTABase: entering backtracking mode");
+
+      // In 4G (otabase/srsenb), the backtracking state lives in the parent
+      // rrc object which persists across UE reconnections. When the UE
+      // reconnects after a crash the same backtracking flags are still set,
+      // so backtracking messages are replayed on the fresh connection and
+      // candidate detection works normally.
+      //
+      // In 5G (srsRAN_Project), each connection has its own rrc_ue_impl.
+      // When the UE crashes and disconnects the rrc_ue_impl is destroyed,
+      // taking all backtracking state with it.  The new rrc_ue_impl created
+      // on reconnection starts with clean flags, so backtracking never gets
+      // a chance to run and candidate_list.txt is never written.
+      //
+      // Fix: save a crash record immediately when we first enter backtracking.
+      // Use the most-recently-sent message as the "best candidate" guess.
+      // If the UE stays alive and backtracking can complete, a second (more
+      // precise) save will be written below in the otabase_is_backtracking
+      // branch on the next oracle failure.
+      {
+        auto              recent   = get_otabase_recent_messages();
+        const std::string last_msg = recent.empty() ? "" : recent.back();
+        logger.log_info("OTABase: saving preliminary crash record (UE unresponsive, last msg is best guess)");
+        save_otabase_recent_messages(last_msg, 0);
+        if (!context.cfg.otabase_replay_mode) {
+          if (!last_msg.empty()) {
+            otabase_blacklist_test_cases(last_msg);
+            if (context.cfg.otabase_temp_blacklist) {
+              otabase_temp_blacklist_test_cases(last_msg);
+            }
+          }
+        }
+      }
+
+      // Kick off backtracking immediately in case the UE is still reachable.
+      // In 4G this is driven by the next RLC ACK after reconnection; here we
+      // start a pacing-timer-triggered backtracking cycle right away.
+      send_rrc_test_message_backtracking();
     } else {
-      // Oracle failed during backtracking — we found a crash candidate.
+      // Oracle failed during backtracking — we found a refined crash candidate.
       if (otabase_backtracking_num == 1) {
-        logger.log_info("OTABase: found best crash candidate");
+        logger.log_info("OTABase: found best crash candidate (backtracking)");
         save_otabase_recent_messages(otabase_backtracking_msg);
       } else {
         logger.log_info("OTABase: found candidate at backtracking position {}", otabase_backtracking_num);
