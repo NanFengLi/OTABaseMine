@@ -520,7 +520,12 @@ def run_batch_mutate(
         out_path = os.path.join(output_dir, out_name)
         file_stats = {"lines": 0, "mutations": 0, "errors": 0}
 
-        mutations_lines = []
+        # 流式写入：边处理边写，不缓存到内存
+        out_file = open(out_path, "w", encoding="utf-8")
+        out_file.write("0\n")  # 先写占位符，稍后更新总数
+        mutation_count = 0
+        seq_no = 0
+
         with open(in_path, "r", encoding="utf-8") as f:
             for line_no, line in enumerate(f):
                 line = line.strip()
@@ -570,19 +575,20 @@ def run_batch_mutate(
                 path_csv = ",".join(str(p) for p in target_path)
                 field_type = info.get("field_type", "")
                 for (mut_hex, _msg_type, _path, strategy_idx) in results:
-                    mutations_lines.append(
-                        ",".join([mut_hex, message_type, path_csv, field_type, str(strategy_idx)])
-                    )
+                    seq_no += 1
+                    mutation_line = ",".join([mut_hex, message_type, path_csv, field_type, str(strategy_idx)])
+                    out_file.write(str(seq_no) + "," + mutation_line + "\n")
+                    mutation_count += 1
                     file_stats["mutations"] += 1
                     stats["mutations_written"] += 1
 
+        # 回到文件开始，更新总数
+        out_file.seek(0)
+        out_file.write(str(mutation_count) + "\n")
+        out_file.close()
+
         stats["by_file"][basename] = file_stats
         stats["files_read"] += 1
-
-        with open(out_path, "w", encoding="utf-8") as out:
-            out.write(str(len(mutations_lines)) + "\n")
-            for i, ml in enumerate(mutations_lines, 1):
-                out.write(str(i) + "," + ml + "\n")
 
     return stats
 

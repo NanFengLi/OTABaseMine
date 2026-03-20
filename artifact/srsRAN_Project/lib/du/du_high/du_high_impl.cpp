@@ -106,7 +106,7 @@ du_high_impl::du_high_impl(const du_high_configuration& config_, const du_high_d
        *f1ap,
        *dependencies.rlc_p,
        dependencies.rlc_metrics_notif,
-       f1ap,
+       f1ap.get(),
        dependencies.rlc_ack_to_cu_notifier},
       {*mac, cfg.ran.sched_cfg},
       {cfg.metrics.period,
