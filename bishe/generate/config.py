@@ -25,6 +25,20 @@ class Config:
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
     OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
     LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4")
+
+    # DashScope / Qwen rerank（与 OPENAI 密钥独立；未设置则 hybrid 后仅用 RRF 顺序，不调用 rerank）
+    DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+    RERANK_MODEL = os.getenv("RERANK_MODEL", "qwen3-rerank")
+    # ASN.1 名称检索：偏语义对齐
+    RERANK_INSTRUCT = os.getenv(
+        "RERANK_INSTRUCT",
+        "Retrieve semantically similar text.",
+    )
+    # 混合检索与 rerank 规模（环境变量可覆盖）
+    VEC_RECALL_K = int(os.getenv("VEC_RECALL_K", "24"))
+    KW_RECALL_K = int(os.getenv("KW_RECALL_K", "24"))
+    RRF_K = int(os.getenv("RRF_K", "60"))
+    RERANK_CANDIDATE_CAP = int(os.getenv("RERANK_CANDIDATE_CAP", "40"))
     
     # 生成设置
     MAX_RETRIES = 3

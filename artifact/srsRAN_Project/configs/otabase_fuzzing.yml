@@ -15,9 +15,14 @@ cu_cp:
     # Enable OTABase 5G RRC fuzzing injection.
     otabase_enable_5g_rrc_fuzzing: true
 
-    # Path to the index file. Relative payload filenames inside it will be
-    # resolved relative to this file's directory, so you can use plain names
-    # like "rrcTest1" in testFileIndex.
+    # Path to the index file.
+    # IMPORTANT: relative paths are resolved relative to the gnb PROCESS working
+    # directory (i.e. where you run the gnb binary from), NOT relative to this
+    # YAML file's location.
+    # If you get "OTABase: failed to open index file" errors, use an ABSOLUTE path:
+    #   otabase_test_index_file: /absolute/path/to/example-test-case/rrc/testFileIndex
+    # Relative payload filenames inside testFileIndex will be resolved relative
+    # to the directory that CONTAINS testFileIndex (not the working directory).
     otabase_test_index_file: ../example-test-case/rrc/testFileIndex
 
     # Oracle liveness check period: send a UECapabilityEnquiry every N test

@@ -3,7 +3,7 @@ import re
 import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 
 try:
     import chromadb
@@ -14,7 +14,16 @@ except ImportError:
     CHROMA_AVAILABLE = False
     logging.warning("未安装 chromadb。RAG 功能将受限。")
 
-from config import Config
+try:
+    from bishe.generate.config import Config
+except ImportError:
+    from config import Config
+
+try:
+    from bishe.generate.rerank_qwen import rerank_document_indices
+except ImportError:
+    from rerank_qwen import rerank_document_indices
+
 
 class RAGDatabase:
     """
@@ -241,80 +250,211 @@ class RAGDatabase:
 
         logging.info(f"向量数据库构建完成！成功添加切片: {success_count}。处理消息数: {total_count}。")
 
-    def query_asn1(
-        self, 
-        query_texts: List[str], 
-        n_results: int = 5,
-        spec_number: Optional[str] = None,
-        version: Optional[str] = None,
-        message_releated: Optional[str] = None
-    ) -> List[str]:
-        """
-        根据查询文本检索相关的 ASN.1 内容。
-        
-        Args:
-            query_texts: 查询文本列表
-            n_results: 返回结果数量
-            spec_number: 过滤条件 - 协议号（如 "36331"）
-            version: 过滤条件 - 版本号（如 "j00"）
-            message_releated: 过滤条件 - 关联消息（如 "CounterCheck.asn"）
-        
-        注意：documents 存储完整 JSON 内容，embeddings 是基于 digested_asn_definitions 生成的向量。
-        查询时会对 query_texts 进行向量化，与存储的 embeddings 进行相似度匹配。
-        """
-        if not CHROMA_AVAILABLE or self.collection is None:
-            return []
-
-        # 构建 metadata 过滤条件列表
+    def _build_where_filter(
+        self,
+        spec_number: Optional[str],
+        version: Optional[str],
+        message_releated: Optional[str],
+    ) -> Dict[str, Any]:
         conditions = []
         if spec_number:
             conditions.append({"spec_number": spec_number})
         if version:
             conditions.append({"version": version})
         if message_releated:
-            # 确保格式一致
-            msg = message_releated if message_releated.endswith('.asn') else f"{message_releated}.asn"
+            msg = message_releated if message_releated.endswith(".asn") else f"{message_releated}.asn"
             conditions.append({"message_releated": msg})
-        
-        # 如果没有指定过滤条件，使用当前实例的 spec_number 和 version
+
         if not conditions:
             conditions = [
                 {"spec_number": self.spec_number},
-                {"version": self.protocol_version}
+                {"version": self.protocol_version},
             ]
-        
-        # ChromaDB 多条件需要用 $and 组合
-        if len(conditions) == 1:
-            where_filter = conditions[0]
-        else:
-            where_filter = {"$and": conditions}
 
-        results = self.collection.query(
-            query_texts=query_texts,
-            n_results=n_results,
+        if len(conditions) == 1:
+            return conditions[0]
+        return {"$and": conditions}
+
+    @staticmethod
+    def _parse_stored_document(doc_str: str) -> Tuple[str, str]:
+        """从 Chroma 中存储的 JSON 文档解析 (block_file, 用于展示的正文)."""
+        try:
+            doc_json = json.loads(doc_str)
+            block_file = doc_json.get("block_file", "") or ""
+            if "content_chunk" in doc_json:
+                return block_file, doc_json["content_chunk"]
+            return block_file, doc_str
+        except json.JSONDecodeError:
+            return "", doc_str
+
+    @staticmethod
+    def _rrf_merge(rank_lists: List[List[str]], k: int) -> List[str]:
+        """倒数排名融合：多路有序 id 列表合并为单一排序。"""
+        scores: Dict[str, float] = {}
+        for ranks in rank_lists:
+            if not ranks:
+                continue
+            for i, doc_id in enumerate(ranks):
+                scores[doc_id] = scores.get(doc_id, 0.0) + 1.0 / (k + i + 1)
+        return sorted(scores.keys(), key=lambda x: -scores[x])
+
+    def _keyword_candidates(
+        self, query_text: str, where_filter: Dict[str, Any], limit: int
+    ) -> Tuple[List[str], Dict[str, str]]:
+        """
+        基于 Chroma where_document $contains 的关键词召回（子串匹配存储的 document JSON）。
+        返回 (有序 id 列表, id -> document 字符串)。
+        """
+        if not query_text.strip():
+            return [], {}
+        try:
+            res = self.collection.get(
+                where=where_filter,
+                where_document={"$contains": query_text},
+                limit=limit,
+                include=["documents"],
+            )
+            ids = res.get("ids") or []
+            docs = res.get("documents") or []
+            if not isinstance(ids, list):
+                return [], {}
+            id_to_doc: Dict[str, str] = {}
+            for i, doc_id in enumerate(ids):
+                if i < len(docs) and docs[i] is not None:
+                    id_to_doc[doc_id] = docs[i]
+            return list(ids), id_to_doc
+        except Exception as e:
+            logging.debug("关键词召回失败（可忽略并仅使用向量）: %s", e)
+            return [], {}
+
+    def _hybrid_ranked_chunks(
+        self,
+        query_text: str,
+        where_filter: Dict[str, Any],
+        n_results: int,
+        hybrid: bool,
+        use_rerank: bool,
+    ) -> List[Tuple[str, str]]:
+        """
+        单条查询：向量 + 关键词（可选）融合后，可选 qwen rerank，返回 [(block_file, content_chunk), ...]。
+        """
+        vec_k = max(n_results, Config.VEC_RECALL_K)
+        kw_k = max(n_results, Config.KW_RECALL_K)
+        cap = max(n_results, min(Config.RERANK_CANDIDATE_CAP, vec_k + kw_k))
+
+        vec_results = self.collection.query(
+            query_texts=[query_text],
+            n_results=vec_k,
             where=where_filter,
-            include=["documents"]  # documents 现在存的是完整内容
+            include=["documents", "ids"],
         )
-        
-        snippets = []
-        seen_block_files = set()  # 用于根据 block_file 去重
-        # documents 现在存储的是完整 JSON 内容
-        if results.get('documents'):
-            for doc_list in results['documents']:
-                for doc_str in doc_list:
-                    try:
-                        doc_json = json.loads(doc_str)
-                        block_file = doc_json.get("block_file", "")
-                        # 根据 block_file 去重
-                        if block_file and block_file not in seen_block_files:
-                            seen_block_files.add(block_file)
-                            if "content_chunk" in doc_json:
-                                snippets.append(doc_json["content_chunk"])
-                            else:
-                                snippets.append(doc_str)
-                    except json.JSONDecodeError:
-                        snippets.append(doc_str)
-        
+
+        vec_ids: List[str] = []
+        id_to_doc: Dict[str, str] = {}
+        if vec_results.get("ids") and vec_results["ids"]:
+            vec_ids = list(vec_results["ids"][0])
+            docs0 = vec_results.get("documents") or [[]]
+            for i, doc_id in enumerate(vec_ids):
+                if i < len(docs0[0]) and docs0[0][i] is not None:
+                    id_to_doc[doc_id] = docs0[0][i]
+
+        kw_ids: List[str] = []
+        if hybrid:
+            kw_ids, kw_id_to_doc = self._keyword_candidates(query_text, where_filter, kw_k)
+            id_to_doc.update(kw_id_to_doc)
+
+        rank_lists = [vec_ids]
+        if hybrid and kw_ids:
+            rank_lists.append(kw_ids)
+        merged_ids = self._rrf_merge(rank_lists, k=Config.RRF_K)
+
+        # 按融合顺序收集 (block_file, content)，去重 block_file，长度受 cap 限制
+        ordered: List[Tuple[str, str]] = []
+        seen_bf: set = set()
+        for doc_id in merged_ids:
+            if doc_id not in id_to_doc:
+                continue
+            bf, content = self._parse_stored_document(id_to_doc[doc_id])
+            if bf and bf in seen_bf:
+                continue
+            if bf:
+                seen_bf.add(bf)
+            ordered.append((bf, content))
+            if len(ordered) >= cap:
+                break
+
+        if not ordered:
+            return []
+
+        if use_rerank and Config.DASHSCOPE_API_KEY:
+            texts = [t[1] for t in ordered]
+            rerank_top = min(len(texts), max(n_results, cap))
+            new_idx = rerank_document_indices(
+                query_text,
+                texts,
+                top_n=rerank_top,
+            )
+            if new_idx is not None:
+                reranked: List[Tuple[str, str]] = []
+                seen2: set = set()
+                for i in new_idx:
+                    if 0 <= i < len(ordered):
+                        bf, content = ordered[i]
+                        if bf and bf in seen2:
+                            continue
+                        if bf:
+                            seen2.add(bf)
+                        reranked.append((bf, content))
+                        if len(reranked) >= n_results:
+                            break
+                if reranked:
+                    return reranked
+
+        return ordered[:n_results]
+
+    def query_asn1(
+        self,
+        query_texts: List[str],
+        n_results: int = 5,
+        spec_number: Optional[str] = None,
+        version: Optional[str] = None,
+        message_releated: Optional[str] = None,
+        hybrid: bool = True,
+        use_rerank: bool = True,
+    ) -> List[str]:
+        """
+        根据查询文本检索相关的 ASN.1 内容。
+
+        默认：Chroma 向量召回 + where_document 子串关键词召回，RRF 融合后使用 qwen3-rerank（DashScope）重排。
+
+        Args:
+            query_texts: 查询文本列表
+            n_results: 每个查询返回的条数（合并去重前按查询依次截取）
+            spec_number / version / message_releated: metadata 过滤
+            hybrid: 是否启用关键词分支（False 时仅向量 + 可选 rerank）
+            use_rerank: 是否在融合后调用 rerank（仍需要配置 DASHSCOPE_API_KEY）
+
+        注意：embeddings 基于 digested_asn_definitions；关键词匹配落在完整 JSON 文本上，可命中 content_chunk 中的类型名。
+        """
+        if not CHROMA_AVAILABLE or self.collection is None:
+            return []
+
+        where_filter = self._build_where_filter(spec_number, version, message_releated)
+
+        snippets: List[str] = []
+        seen_block_files: set = set()
+
+        for qt in query_texts:
+            ranked = self._hybrid_ranked_chunks(
+                qt, where_filter, n_results, hybrid=hybrid, use_rerank=use_rerank
+            )
+            for block_file, content in ranked:
+                if block_file and block_file not in seen_block_files:
+                    seen_block_files.add(block_file)
+                    snippets.append(content)
+                elif not block_file:
+                    snippets.append(content)
+
         return snippets
 
 if __name__ == "__main__":
