@@ -1,10 +1,10 @@
 # RRC 消息变异工具
 
-基于 OTABase 项目的 BASE 变异策略，在 **UPER 比特流层面**直接替换字段，完全绕过 pycrate 约束校验，实现非法 ASN.1 编码的生成。
+在 **UPER 比特流层面**直接替换字段，完全绕过 pycrate 约束校验，实现非法 ASN.1 编码的生成。
 
 ## 项目背景
 
-本项目复现了 [OTABase](https://github.com/OTABase/OTABase) 项目中的 RRC 消息变异策略，用于生成针对不同字段类型的非法 ASN.1 变异测试用例。
+本项目实现了 RRC 消息变异策略，用于生成针对不同字段类型的非法 ASN.1 变异测试用例。
 
 **核心思路**：不再通过修改字典后调用 `set_val()` 触发 pycrate 抛出 `invalid value` 异常，而是：
 1. `from_uper(hex)` 加载合法消息
@@ -328,11 +328,6 @@ BIT STRING 的 UPER 编码格式为：`[lbs 位长度头（单位：比特数）
 ✅ PER 编码边界测试  
 ✅ 长度/内容不匹配、溢出/下溢  
 
-### 未实现（按需求扩展）
-❌ TRUNCATE 策略（截断数据包）  
-❌ ADD 策略（添加可选字段）  
-❌ 祖先字段长度自动调整  
-❌ OCTET STRING 中嵌入的 ASN.1 递归变异
 
 ## 输出格式
 
@@ -353,11 +348,3 @@ for mut_hex, msg_type, path in results:
     f.write(line + "\n")
 ```
 
-## 参考资料
-
-- OTABase GitHub: https://github.com/OTABase/OTABase
-- 3GPP TS 36.331: RRC Protocol Specification
-
-## 许可证
-
-本项目基于 OTABase 的开源实现，遵循相同的许可证。
