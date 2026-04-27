@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "LoggingInterval information element.txt",
+  "content_chunk": "LoggingInterval-r10 ::=\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\tms1280, ms2560, ms5120, ms10240, ms20480,\n\t\t\t\t\t\t\t\t\tms30720, ms40960, ms61440}",
+  "digested_asn_definitions": "LoggingInterval-r10"
+}

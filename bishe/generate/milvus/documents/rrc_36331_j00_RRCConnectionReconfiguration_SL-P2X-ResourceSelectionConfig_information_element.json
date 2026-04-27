@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-P2X-ResourceSelectionConfig information element.txt",
+  "content_chunk": "SL-P2X-ResourceSelectionConfig-r14 ::=\t\t\tSEQUENCE {\n\tpartialSensing-r14\t\t\t\tENUMERATED {true}\t\t\t\tOPTIONAL,\t-- Need OR\n\trandomSelection-r14\t\t\t\tENUMERATED {true}\t\t\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "SL-P2X-ResourceSelectionConfig-r14"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "SlotOrSubslotPDSCH-Config information element.txt",
+  "content_chunk": "SlotOrSubslotPDSCH-Config-r15 ::= CHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\taltCQI-TableSTTI-r15\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tallSubframes, csi-SubframeSet1,\n\t\t\t\t\t\t\t\t\t\t\tcsi-SubframeSet2, spare1}\t\t\tOPTIONAL, -- Need OR\n\t\taltCQI-Table1024QAM-STTI-r15\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tallSubframes, csi-SubframeSet1,\n\t\t\t\t\t\t\t\t\t\t\tcsi-SubframeSet2, spare1}\t\t\tOPTIONAL, -- Need OR\n\t\tresourceAllocation-r15\t\t\tENUMERATED {\n\t\t\t\t\t\t\tresourceAllocationType0,resourceAllocationType2}\tOPTIONAL, -- Need OR\n\t\ttbsIndexAlt-STTI-r15\t\t\tENUMERATED {a33}\t\t\tOPTIONAL, -- Need OR\n\t\ttbsIndexAlt2-STTI-r15\t\t\tENUMERATED {b33}\t\t\tOPTIONAL, -- Need OR\n\t\ttbsIndexAlt3-STTI-r15\t\t\tENUMERATED {a37}\t\t\tOPTIONAL, -- Need OR\n\t\t\t...\n\t}\n}",
+  "digested_asn_definitions": "SlotOrSubslotPDSCH-Config-r15"
+}

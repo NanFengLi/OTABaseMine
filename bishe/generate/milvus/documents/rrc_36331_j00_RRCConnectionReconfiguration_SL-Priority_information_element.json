@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-Priority information element.txt",
+  "content_chunk": "SL-PriorityList-r13 ::=\t\tSEQUENCE (SIZE (1..maxSL-Prio-r13)) OF SL-Priority-r13\n\nSL-Priority-r13 ::=\t\t\tINTEGER (1..8)",
+  "digested_asn_definitions": "SL-PriorityList-r13,SL-Priority-r13"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-GapConfig information element.txt",
+  "content_chunk": "SL-GapConfig-r13 ::=\t\t\t\tSEQUENCE {\n\tgapPatternList-r13\t\t\t\tSL-GapPatternList-r13\n}\n\nSL-GapPatternList-r13 ::=\tSEQUENCE (SIZE (1..maxSL-GP-r13)) OF SL-GapPattern-r13\n\nSL-GapPattern-r13 ::=\t\t\t\tSEQUENCE {\n\tgapPeriod-r13\t\t\t\t\t\tENUMERATED {sf40, sf60, sf70, sf80, sf120, sf140, sf160,\n\t\t\t\t\t\t\t\t\t\t\tsf240, sf280, sf320, sf640, sf1280, sf2560, sf5120,\n\t\t\t\t\t\t\t\t\t\t\tsf10240},\n\tgapOffset-r12\t\t\t\t\t\tSL-OffsetIndicator-r12,\n\tgapSubframeBitmap-r13\t\t\t\tBIT STRING (SIZE (1..10240)),\n\t...\n}",
+  "digested_asn_definitions": "SL-GapConfig-r13,SL-GapPatternList-r13,SL-GapPattern-r13"
+}

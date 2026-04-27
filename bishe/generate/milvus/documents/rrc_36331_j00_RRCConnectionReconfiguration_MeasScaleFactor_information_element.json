@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasScaleFactor information element.txt",
+  "content_chunk": "MeasScaleFactor-r12 ::=\t\t\tENUMERATED {sf-EUTRA-cf1, sf-EUTRA-cf2}",
+  "digested_asn_definitions": "MeasScaleFactor-r12"
+}

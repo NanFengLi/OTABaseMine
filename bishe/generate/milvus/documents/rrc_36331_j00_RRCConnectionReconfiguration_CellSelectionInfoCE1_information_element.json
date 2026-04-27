@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CellSelectionInfoCE1 information element.txt",
+  "content_chunk": "CellSelectionInfoCE1-r13 ::=\t\tSEQUENCE {\n\tq-RxLevMinCE1-r13\t\t\t\tQ-RxLevMin,\n\tq-QualMinRSRQ-CE1-r13\t\t\tQ-QualMin-r9\t\t\t\t\t\tOPTIONAL\t-- Need OR\n}\n\nCellSelectionInfoCE1-v1360 ::=\t\tSEQUENCE {\n\tdelta-RxLevMinCE1-v1360\t\t\t\t\tINTEGER (-8..-1)\n}",
+  "digested_asn_definitions": "CellSelectionInfoCE1-r13,CellSelectionInfoCE1-v1360"
+}

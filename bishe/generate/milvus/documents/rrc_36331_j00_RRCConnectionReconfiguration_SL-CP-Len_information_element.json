@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-CP-Len information element.txt",
+  "content_chunk": "SL-CP-Len-r12 ::=\t\t\t\tENUMERATED {normal, extended}",
+  "digested_asn_definitions": "SL-CP-Len-r12"
+}

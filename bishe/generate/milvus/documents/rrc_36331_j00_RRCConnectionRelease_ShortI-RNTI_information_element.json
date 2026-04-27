@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "ShortI-RNTI information element.txt",
+  "content_chunk": "ShortI-RNTI-r15 ::=\t\t\t\t\t\tBIT STRING (SIZE(24))",
+  "digested_asn_definitions": "ShortI-RNTI-r15"
+}

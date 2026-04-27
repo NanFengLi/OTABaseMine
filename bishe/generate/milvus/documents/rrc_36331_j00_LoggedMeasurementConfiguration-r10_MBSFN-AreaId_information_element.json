@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "MBSFN-AreaId information element.txt",
+  "content_chunk": "MBSFN-AreaId-r12 ::=\t\t\t\t\tINTEGER (0..255)",
+  "digested_asn_definitions": "MBSFN-AreaId-r12"
+}

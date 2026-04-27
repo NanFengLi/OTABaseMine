@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasObjectWLAN information element.txt",
+  "content_chunk": "MeasObjectWLAN-r13 ::=\tSEQUENCE {\n\tcarrierFreq-r13\t\t\t\t\tCHOICE {\n\t\tbandIndicatorListWLAN-r13\t\tSEQUENCE (SIZE (1..maxWLAN-Bands-r13)) OF WLAN-BandIndicator-r13,\n\t\tcarrierInfoListWLAN-r13\t\t\tSEQUENCE (SIZE (1..maxWLAN-CarrierInfo-r13)) OF WLAN-CarrierInfo-r13\n\t}\t\tOPTIONAL,\t-- Need ON\n\twlan-ToAddModList-r13\t\t\t\tWLAN-Id-List-r13\t\t\tOPTIONAL,\t-- Need ON\n\twlan-ToRemoveList-r13\t\t\t\tWLAN-Id-List-r13\t\t\tOPTIONAL,\t-- Need ON\n\t...\n}\n\nWLAN-BandIndicator-r13 ::=\tENUMERATED {band2dot4, band5, band60-v1430, spare5, spare4, spare3, spare2, spare1, ...}",
+  "digested_asn_definitions": "MeasObjectWLAN-r13,WLAN-BandIndicator-r13"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "TrackingAreaCode information element.txt",
+  "content_chunk": "TrackingAreaCode ::=\t\t\t\tBIT STRING (SIZE (16))\nTrackingAreaCode-5GC-r15 ::=\t\tBIT STRING (SIZE (24))",
+  "digested_asn_definitions": "TrackingAreaCode,TrackingAreaCode-5GC-r15"
+}

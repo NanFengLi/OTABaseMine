@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-HoppingConfig information element.txt",
+  "content_chunk": "SL-HoppingConfigComm-r12 ::=\t\tSEQUENCE\t{\n\thoppingParameter-r12\t\t\t\tINTEGER (0..504),\n\tnumSubbands-r12\t\t\t\t\t\tENUMERATED {ns1, ns2, ns4},\n\trb-Offset-r12\t\t\t\t\t\tINTEGER (0..110)\n}\n\nSL-HoppingConfigDisc-r12 ::=\tSEQUENCE\t{\n\ta-r12\t\t\t\t\t\t\t\t\tINTEGER (1..200),\n\tb-r12\t\t\t\t\t\t\t\t\tINTEGER (1..10),\n\tc-r12\t\t\t\t\t\t\t\t\tENUMERATED {n1, n5}\n}",
+  "digested_asn_definitions": "SL-HoppingConfigComm-r12,SL-HoppingConfigDisc-r12"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "PhysCellIdUTRA-FDD information element.txt",
+  "content_chunk": "PhysCellIdUTRA-FDD ::=\t\t\t\tINTEGER (0..511)",
+  "digested_asn_definitions": "PhysCellIdUTRA-FDD"
+}

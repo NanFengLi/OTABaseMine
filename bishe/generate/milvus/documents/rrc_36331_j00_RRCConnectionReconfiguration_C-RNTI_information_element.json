@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "C-RNTI information element.txt",
+  "content_chunk": "C-RNTI ::=\t\t\t\t\t\t\tBIT STRING (SIZE (16))",
+  "digested_asn_definitions": "C-RNTI"
+}

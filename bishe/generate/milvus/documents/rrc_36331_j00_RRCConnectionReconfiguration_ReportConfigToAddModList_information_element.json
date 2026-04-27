@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "ReportConfigToAddModList information element.txt",
+  "content_chunk": "ReportConfigToAddModList ::=\t\tSEQUENCE (SIZE (1..maxReportConfigId)) OF ReportConfigToAddMod\n\nReportConfigToAddMod ::=\tSEQUENCE {\n\treportConfigId\t\t\t\t\t\tReportConfigId,\n\treportConfig\t\t\t\t\t\tCHOICE {\n\t\treportConfigEUTRA\t\t\t\t\tReportConfigEUTRA,\n\t\treportConfigInterRAT\t\t\t\tReportConfigInterRAT\n\t}\n}",
+  "digested_asn_definitions": "ReportConfigToAddModList,ReportConfigToAddMod"
+}

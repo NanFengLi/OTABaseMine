@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "ARFCN-ValueCDMA2000 information element.txt",
+  "content_chunk": "ARFCN-ValueCDMA2000 ::=\t\t\tINTEGER (0..2047)",
+  "digested_asn_definitions": "ARFCN-ValueCDMA2000"
+}

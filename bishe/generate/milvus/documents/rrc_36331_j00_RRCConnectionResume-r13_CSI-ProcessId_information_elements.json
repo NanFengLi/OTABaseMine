@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CSI-ProcessId information elements.txt",
+  "content_chunk": "CSI-ProcessId-r11 ::=\t\tINTEGER (1..maxCSI-Proc-r11)",
+  "digested_asn_definitions": "CSI-ProcessId-r11"
+}

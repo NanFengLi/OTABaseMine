@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "P-C-AndCBSR information elements.txt",
+  "content_chunk": "P-C-AndCBSR-r11 ::=\tSEQUENCE {\n\tp-C-r11\t\t\t\t\t\tINTEGER (-8..15),\n\tcodebookSubsetRestriction-r11\tBIT STRING\n}\n\nP-C-AndCBSR-r13 ::=\tSEQUENCE {\n\tp-C-r13\t\t\t\t\t\tINTEGER (-8..15),\n\tcbsr-Selection-r13\t\t\tCHOICE{\n\t\tnonPrecoded-r13\t\t\t\tSEQUENCE {\n\t\t\tcodebookSubsetRestriction1-r13\t\t\t\tBIT STRING,\n\t\t\tcodebookSubsetRestriction2-r13\t\t\t\tBIT STRING\n\t\t},\n\t\tbeamformedK1a-r13\t\t\tSEQUENCE {\n\t\t\tcodebookSubsetRestriction3-r13\t\t\t\tBIT STRING\n\t\t},\n\t\tbeamformedKN-r13\t\t\tSEQUENCE {\n\t\t\tcodebookSubsetRestriction-r13\t\t\t\tBIT STRING\n\t\t}\n\t},\n\t...\n}\n\nP-C-AndCBSR-r15 ::=\tSEQUENCE {\n\tp-C-r15\t\t\t\t\t\tINTEGER (-8..15),\n\tcodebookSubsetRestriction4-r15\tBIT STRING\n}\n\nP-C-AndCBSR-Pair-r13a ::=\tSEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r11\n\nP-C-AndCBSR-Pair-r13 ::=\tSEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r13\n\nP-C-AndCBSR-Pair-r15 ::=\tSEQUENCE (SIZE (1..2)) OF P-C-AndCBSR-r15",
+  "digested_asn_definitions": "P-C-AndCBSR-r11,P-C-AndCBSR-r13,P-C-AndCBSR-r15,P-C-AndCBSR-Pair-r13a,P-C-AndCBSR-Pair-r13,P-C-AndCBSR-Pair-r15"
+}

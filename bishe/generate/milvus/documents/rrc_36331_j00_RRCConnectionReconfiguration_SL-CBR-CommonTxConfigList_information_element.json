@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-CBR-CommonTxConfigList information element.txt",
+  "content_chunk": "SL-CBR-CommonTxConfigList-r14 ::=\tSEQUENCE {\n\tcbr-RangeCommonConfigList-r14\tSEQUENCE (SIZE (1..maxSL-V2X-CBRConfig-r14)) OF SL-CBR-Levels-Config-r14,\n\tsl-CBR-PSSCH-TxConfigList-r14\tSEQUENCE (SIZE (1..maxSL-V2X-TxConfig-r14)) OF SL-CBR-PSSCH-TxConfig-r14\n}\n\nSL-CBR-Levels-Config-r14 ::=\t\tSEQUENCE (SIZE (1..maxCBR-Level-r14)) OF SL-CBR-r14\n\n\nSL-CBR-PSSCH-TxConfig-r14 ::=\t\tSEQUENCE {\n\tcr-Limit-r14\t\t\t\t\tINTEGER(0..10000),\n\ttx-Parameters-r14\t\t\t\tSL-PSSCH-TxParameters-r14\n}\n\nSL-CBR-r14 ::=\t\t\t\t\t\tINTEGER(0..100)",
+  "digested_asn_definitions": "SL-CBR-CommonTxConfigList-r14,SL-CBR-Levels-Config-r14,SL-CBR-PSSCH-TxConfig-r14,SL-CBR-r14"
+}

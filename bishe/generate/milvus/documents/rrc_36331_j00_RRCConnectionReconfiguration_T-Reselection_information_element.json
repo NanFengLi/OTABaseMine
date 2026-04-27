@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "T-Reselection information element.txt",
+  "content_chunk": "T-Reselection ::=\t\t\t\t\tINTEGER (0..7)",
+  "digested_asn_definitions": "T-Reselection"
+}

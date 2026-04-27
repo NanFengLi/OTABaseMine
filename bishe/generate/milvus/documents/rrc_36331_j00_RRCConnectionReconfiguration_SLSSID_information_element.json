@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SLSSID information element.txt",
+  "content_chunk": "SLSSID-r12 ::=\t\t\t\t\tINTEGER (0..167)",
+  "digested_asn_definitions": "SLSSID-r12"
+}

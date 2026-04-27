@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "ConditionalReconfigurationId information element.txt",
+  "content_chunk": "CondReconfigurationId-r16 ::= INTEGER (1.. maxCondConfig-r16)",
+  "digested_asn_definitions": "CondReconfigurationId-r16"
+}

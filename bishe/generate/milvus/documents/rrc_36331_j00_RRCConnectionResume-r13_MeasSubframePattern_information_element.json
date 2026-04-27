@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasSubframePattern information element.txt",
+  "content_chunk": "MeasSubframePattern-r10 ::= CHOICE {\n\tsubframePatternFDD-r10\t\t\t\tBIT STRING (SIZE (40)),\n\tsubframePatternTDD-r10\t\t\t\tCHOICE {\n\t\tsubframeConfig1-5-r10\t\t\t\t\tBIT STRING (SIZE (20)),\n\t\tsubframeConfig0-r10\t\t\t\t\t\tBIT STRING (SIZE (70)),\n\t\tsubframeConfig6-r10\t\t\t\t\t\tBIT STRING (SIZE (60)),\n\t\t...\n\t},\n\t...\n}",
+  "digested_asn_definitions": "MeasSubframePattern-r10"
+}

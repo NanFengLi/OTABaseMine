@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "RAN-AreaCode information element.txt",
+  "content_chunk": "RAN-AreaCode-r15 ::=\t\t\t\t\tINTEGER (0..255)",
+  "digested_asn_definitions": "RAN-AreaCode-r15"
+}

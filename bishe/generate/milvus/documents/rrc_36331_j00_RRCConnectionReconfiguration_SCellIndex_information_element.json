@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SCellIndex information element.txt",
+  "content_chunk": "SCellIndex-r10 ::=\t\t\t\t\t\tINTEGER (1..7)\nSCellIndex-r13 ::=\t\t\t\t\t\tINTEGER (1..31)",
+  "digested_asn_definitions": "SCellIndex-r10,SCellIndex-r13"
+}

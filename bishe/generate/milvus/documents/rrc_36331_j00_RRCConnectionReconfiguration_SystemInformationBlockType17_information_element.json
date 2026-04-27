@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SystemInformationBlockType17 information element.txt",
+  "content_chunk": "SystemInformationBlockType17-r12 ::=\tSEQUENCE {\n\twlan-OffloadInfoPerPLMN-List-r12\t\tSEQUENCE (SIZE (1..maxPLMN-r11)) OF\n\t\t\t\t\t\t\t\t\t\tWLAN-OffloadInfoPerPLMN-r12\t\t\tOPTIONAL, -- Need OR\n\tlateNonCriticalExtension\t\t\t\tOCTET STRING\t\t\t\tOPTIONAL,\n\t...\n}\n\nWLAN-OffloadInfoPerPLMN-r12 ::=\t\t\tSEQUENCE {\n\t\twlan-OffloadConfigCommon-r12\t\tWLAN-OffloadConfig-r12\t\tOPTIONAL,\t-- Need OR\n\t\twlan-Id-List-r12\t\t\t\t\tWLAN-Id-List-r12\t\t\tOPTIONAL,\t-- Need OR\n\t\t...\n}\n\nWLAN-Id-List-r12 ::=\t\t\t\tSEQUENCE (SIZE (1..maxWLAN-Id-r12)) OF WLAN-Identifiers-r12\n\nWLAN-Identifiers-r12 ::=\t\t\tSEQUENCE {\n\tssid-r12\t\t\t\t\t\tOCTET STRING (SIZE (1..32))\t\tOPTIONAL,\t-- Need OR\n\tbssid-r12\t\t\t\t\t\tOCTET STRING (SIZE (6))\t\t\tOPTIONAL,\t-- Need OR\n\thessid-r12\t\t\t\t\t\tOCTET STRING (SIZE (6))\t\t\tOPTIONAL,\t-- Need OR\n\t...\n}",
+  "digested_asn_definitions": "SystemInformationBlockType17-r12,WLAN-OffloadInfoPerPLMN-r12,WLAN-Id-List-r12,WLAN-Identifiers-r12"
+}

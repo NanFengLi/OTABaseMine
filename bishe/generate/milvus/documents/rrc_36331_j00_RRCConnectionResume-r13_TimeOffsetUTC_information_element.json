@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "TimeOffsetUTC information element.txt",
+  "content_chunk": "TimeOffsetUTC-r17 ::=\t\tINTEGER (0..1048575)",
+  "digested_asn_definitions": "TimeOffsetUTC-r17"
+}

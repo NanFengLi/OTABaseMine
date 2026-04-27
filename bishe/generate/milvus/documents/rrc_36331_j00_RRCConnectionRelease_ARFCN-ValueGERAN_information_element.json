@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "ARFCN-ValueGERAN information element.txt",
+  "content_chunk": "ARFCN-ValueGERAN ::=\t\t\tINTEGER (0..1023)",
+  "digested_asn_definitions": "ARFCN-ValueGERAN"
+}

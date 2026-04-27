@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CSI-RS-ConfigZPId information elements.txt",
+  "content_chunk": "CSI-RS-ConfigZPId-r11 ::=\t\t\t\t\tINTEGER (1..maxCSI-RS-ZP-r11)",
+  "digested_asn_definitions": "CSI-RS-ConfigZPId-r11"
+}

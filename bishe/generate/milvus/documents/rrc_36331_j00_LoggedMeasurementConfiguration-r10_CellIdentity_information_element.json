@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "CellIdentity information element.txt",
+  "content_chunk": "CellIdentity ::=\t\t\t\t\tBIT STRING (SIZE (28))",
+  "digested_asn_definitions": "CellIdentity"
+}

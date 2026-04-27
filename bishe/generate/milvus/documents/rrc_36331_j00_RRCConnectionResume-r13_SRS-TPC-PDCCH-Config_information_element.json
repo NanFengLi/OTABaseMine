@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "SRS-TPC-PDCCH-Config information element.txt",
+  "content_chunk": "SRS-TPC-PDCCH-Config-r14 ::=\t\t\t\t\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\tsrs-TPC-RNTI-r14\t\t\t\t\t\t\t\t\tBIT STRING (SIZE (16)),\n\t\tstartingBitOfFormat3B-r14\t\t\t\t\t\t\tINTEGER (0..31),\n\t\tfieldTypeFormat3B-r14\t\t\t\t\t\t\t\tINTEGER (1..4),\n\t\tsrs-CC-SetIndexlist-r14\t\t\t\t\t\t\tSEQUENCE (SIZE(1..4)) OF SRS-CC-SetIndex-r14\tOPTIONAL\t-- Cond SRS-Trigger-TypeA\n\n\t}\n}\n\nSRS-CC-SetIndex-r14 ::=\t\t\tSEQUENCE {\n\tcc-SetIndex-r14\t\t\t\tINTEGER (0..3),\n\tcc-IndexInOneCC-Set-r14\t\tINTEGER (0..7)\n}",
+  "digested_asn_definitions": "SRS-TPC-PDCCH-Config-r14,SRS-CC-SetIndex-r14"
+}

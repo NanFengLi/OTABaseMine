@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SBAS-ID information element.txt",
+  "content_chunk": "SBAS-ID-r15 ::= SEQUENCE {\n\tsbas-id-r15\t\t\t\tENUMERATED {waas, egnos, msas, gagan, ...},\n\t...\n}",
+  "digested_asn_definitions": "SBAS-ID-r15"
+}

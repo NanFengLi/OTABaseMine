@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CDMA2000-Type information element.txt",
+  "content_chunk": "CDMA2000-Type ::=\t\t\t\t\tENUMERATED {type1XRTT, typeHRPD}",
+  "digested_asn_definitions": "CDMA2000-Type"
+}

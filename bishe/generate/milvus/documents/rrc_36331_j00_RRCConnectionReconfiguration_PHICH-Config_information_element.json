@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "PHICH-Config information element.txt",
+  "content_chunk": "PHICH-Config ::=\t\t\t\t\tSEQUENCE {\n\tphich-Duration\t\t\t\t\t\tENUMERATED {normal, extended},\n\tphich-Resource\t\t\t\t\t\tENUMERATED {oneSixth, half, one, two}\n}",
+  "digested_asn_definitions": "PHICH-Config"
+}

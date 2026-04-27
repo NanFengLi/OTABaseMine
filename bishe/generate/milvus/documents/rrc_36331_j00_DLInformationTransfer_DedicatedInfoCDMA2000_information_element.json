@@ -1,0 +1,6 @@
+{
+  "message_releated": "DLInformationTransfer",
+  "block_file": "DedicatedInfoCDMA2000 information element.txt",
+  "content_chunk": "DedicatedInfoCDMA2000 ::=\t\t\t\tOCTET STRING",
+  "digested_asn_definitions": "DedicatedInfoCDMA2000"
+}

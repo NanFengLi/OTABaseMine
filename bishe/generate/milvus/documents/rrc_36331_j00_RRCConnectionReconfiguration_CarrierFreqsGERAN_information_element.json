@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CarrierFreqsGERAN information element.txt",
+  "content_chunk": "CarrierFreqsGERAN ::=\t\t\tSEQUENCE {\n\tstartingARFCN\t\t\t\t\t\tARFCN-ValueGERAN,\n\tbandIndicator\t\t\t\t\t\tBandIndicatorGERAN,\n\tfollowingARFCNs\t\t\t\t\t\tCHOICE {\n\t\texplicitListOfARFCNs\t\t\t\tExplicitListOfARFCNs,\n\t\tequallySpacedARFCNs\t\t\t\t\tSEQUENCE {\n\t\t\tarfcn-Spacing\t\t\t\t\t\tINTEGER (1..8),\n\t\t\tnumberOfFollowingARFCNs\t\t\t\tINTEGER (0..31)\n\t\t},\n\t\tvariableBitMapOfARFCNs\t\t\t\tOCTET STRING (SIZE (1..16))\n\t}\n}\n\nExplicitListOfARFCNs ::=\t\t\tSEQUENCE (SIZE (0..31)) OF ARFCN-ValueGERAN",
+  "digested_asn_definitions": "CarrierFreqsGERAN,ExplicitListOfARFCNs"
+}

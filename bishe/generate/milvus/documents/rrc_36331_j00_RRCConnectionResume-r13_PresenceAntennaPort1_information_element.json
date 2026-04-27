@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "PresenceAntennaPort1 information element.txt",
+  "content_chunk": "PresenceAntennaPort1 ::=\t\t\t\tBOOLEAN",
+  "digested_asn_definitions": "PresenceAntennaPort1"
+}

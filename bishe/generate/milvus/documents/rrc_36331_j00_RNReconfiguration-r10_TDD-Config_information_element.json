@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "TDD-Config information element.txt",
+  "content_chunk": "TDD-Config ::=\t\t\t\t\t\tSEQUENCE {\n\tsubframeAssignment\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tsa0, sa1, sa2, sa3, sa4, sa5, sa6},\n\tspecialSubframePatterns\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tssp0, ssp1, ssp2, ssp3, ssp4,ssp5, ssp6, ssp7,\n\t\t\t\t\t\t\t\t\t\t\tssp8}\n}\n\nTDD-Config-v1130 ::=\t\t\t\tSEQUENCE {\n\tspecialSubframePatterns-v1130\t\tENUMERATED {ssp7,ssp9}\n}\n\nTDD-Config-v1430 ::=\t\t\t\tSEQUENCE {\n\tspecialSubframePatterns-v1430\t\tENUMERATED {ssp10}\n}\n\nTDD-Config-v1450 ::=\t\t\t\tSEQUENCE {\n\tspecialSubframePatterns-v1450\t\tENUMERATED {ssp10-CRS-LessDwPTS}\n}\n\nTDD-ConfigSL-r12 ::=\t\tSEQUENCE {\n\tsubframeAssignmentSL-r12\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tnone, sa0, sa1, sa2, sa3, sa4, sa5, sa6}\n}",
+  "digested_asn_definitions": "TDD-Config,TDD-Config-v1130,TDD-Config-v1430,TDD-Config-v1450,TDD-ConfigSL-r12"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasGapConfigPerCC-List information element.txt",
+  "content_chunk": "MeasGapConfigPerCC-List-r14 ::=\tCHOICE {\n\trelease\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\tSEQUENCE {\n\t\tmeasGapConfigToRemoveList-r14\tMeasGapConfigToRemoveList-r14\tOPTIONAL,\t-- Need ON\n\t\tmeasGapConfigToAddModList-r14\tMeasGapConfigToAddModList-r14\tOPTIONAL\t-- Need ON\n\t}\n}\n\nMeasGapConfigToRemoveList-r14 ::=\tSEQUENCE (SIZE (1..maxServCell-r13)) OF ServCellIndex-r13\n\nMeasGapConfigToAddModList-r14 ::=\tSEQUENCE (SIZE (1..maxServCell-r13)) OF MeasGapConfigPerCC-r14\n\nMeasGapConfigPerCC-r14 ::=\tSEQUENCE {\n\tservCellId-r14\t\t\t\tServCellIndex-r13,\n\tmeasGapConfigCC-r14\t\t\tMeasGapConfig\n}",
+  "digested_asn_definitions": "MeasGapConfigPerCC-List-r14,MeasGapConfigToRemoveList-r14,MeasGapConfigToAddModList-r14,MeasGapConfigPerCC-r14"
+}

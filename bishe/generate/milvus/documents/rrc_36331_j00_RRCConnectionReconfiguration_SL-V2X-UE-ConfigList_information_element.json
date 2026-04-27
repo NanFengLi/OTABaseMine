@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-V2X-UE-ConfigList information element.txt",
+  "content_chunk": "SL-V2X-UE-ConfigList-r14 ::=\tSEQUENCE (SIZE (1.. maxCellIntra)) OF SL-V2X-InterFreqUE-Config-r14\n\nSL-V2X-InterFreqUE-Config-r14 ::=\t\tSEQUENCE {\n\tphysCellIdList-r14\t\t\t\t\tPhysCellIdList-r13\t\t\t\t\tOPTIONAL,\t-- Need OR\n\ttypeTxSync-r14\t\t\t\t\t\tSL-TypeTxSync-r14\t\t\t\t\tOPTIONAL,\t-- Need OR\n\tv2x-SyncConfig-r14\t\t\t\t\tSL-SyncConfigListNFreqV2X-r14\t\tOPTIONAL,\t-- Need OR\n\tv2x-CommRxPool-r14\t\t\t\t\tSL-CommRxPoolListV2X-r14\t\t\t\tOPTIONAL,\t-- Need OR\n\tv2x-CommTxPoolNormal-r14\t\t\t\tSL-CommTxPoolListV2X-r14\t\t\t\tOPTIONAL,\t-- Need OR\n\tp2x-CommTxPoolNormal-r14\t\t\t\tSL-CommTxPoolListV2X-r14\t\t\t\tOPTIONAL,\t-- Need OR\n\tv2x-CommTxPoolExceptional-r14\t\tSL-CommResourcePoolV2X-r14\t\t\tOPTIONAL,\t-- Need OR\n\tv2x-ResourceSelectionConfig-r14\t\tSL-CommTxPoolSensingConfig-r14\t\tOPTIONAL,\t-- Need OR\n\tzoneConfig-r14\t\t\t\t\t\tSL-ZoneConfig-r14\t\t\t\t\tOPTIONAL,\t-- Need OR\n\toffsetDFN-r14\t\t\t\t\t\tINTEGER (0..1000)\t\t\t\t\tOPTIONAL,\t-- Need OR\n\t...\n}",
+  "digested_asn_definitions": "SL-V2X-UE-ConfigList-r14,SL-V2X-InterFreqUE-Config-r14"
+}

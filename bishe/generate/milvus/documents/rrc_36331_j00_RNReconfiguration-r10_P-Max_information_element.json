@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "P-Max information element.txt",
+  "content_chunk": "P-Max ::=\t\t\t\tINTEGER (-30..33)",
+  "digested_asn_definitions": "P-Max"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "SlotOrSubslotPUSCH-Config information element.txt",
+  "content_chunk": "SlotOrSubslotPUSCH-Config-r15 ::= CHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\tbetaOffsetSlot-ACK-Index-r15\t\tINTEGER(0..15)\t\tOPTIONAL, -- Need OR\n\t\tbetaOffset2Slot-ACK-Index-r15\t\tINTEGER(0..15)\t\tOPTIONAL, -- Need OR\n\t\tbetaOffsetSubslot-ACK-Index-r15\t\tSEQUENCE (SIZE(1..2)) OF INTEGER(0..15)\tOPTIONAL, -- Need OR\n\t\tbetaOffset2Subslot-ACK-Index-r15\tSEQUENCE (SIZE(1..2)) OF INTEGER(0..15) OPTIONAL, -- Need OR\n\t\tbetaOffsetSlot-RI-Index-r15\t\t\tINTEGER(0..15)\t\tOPTIONAL, -- Need OR\n\t\tbetaOffsetSubslot-RI-Index-r15\t\tSEQUENCE (SIZE(1..2)) OF INTEGER(0..15)\tOPTIONAL, -- Need OR\n\t\tbetaOffsetSlot-CQI-Index-r15\t\tINTEGER(0..15)\t\tOPTIONAL, -- Need OR\n\t\tbetaOffsetSubslot-CQI-Index-r15\t\tINTEGER(0..15)\t\tOPTIONAL, -- Need OR\n\t\tenable256QAM-SlotOrSubslot-r15\t\tEnable256QAM-r14\tOPTIONAL, -- Need ON\n\t\tresourceAllocationOffset-r15\t\tINTEGER (1..2)\t\tOPTIONAL, -- Need OR\n\t\tul-DMRS-IFDMA-SlotOrSubslot-r15\t\tBOOLEAN,\n\t\t...\n\t}\n}",
+  "digested_asn_definitions": "SlotOrSubslotPUSCH-Config-r15"
+}

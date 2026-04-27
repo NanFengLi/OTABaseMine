@@ -10,8 +10,17 @@ load_dotenv()
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 class Config:
-    # 向量数据库配置
-    CHROMA_PERSIST_DIRECTORY = str(PROJECT_ROOT / "bishe/generate/chromadb")
+    # 向量数据库配置（Milvus Lite 本地文件；也可通过环境变量改为远程 Milvus URI）
+    MILVUS_URI = os.getenv(
+        "MILVUS_URI",
+        str(PROJECT_ROOT / "bishe/generate/milvus/rrc_asn1.db")
+    )
+    MILVUS_DOCUMENTS_DIR = os.getenv(
+        "MILVUS_DOCUMENTS_DIR",
+        str(PROJECT_ROOT / "bishe/generate/milvus/documents")
+    )
+    # 兼容旧字段名（避免其他代码直接引用时报错）
+    CHROMA_PERSIST_DIRECTORY = MILVUS_URI
     # 向量数据库的COLLECTION名称
     COLLECTION_NAME = "rrc_asn1_definitions"
     
@@ -37,6 +46,7 @@ class Config:
     # 混合检索与 rerank 规模（环境变量可覆盖）
     VEC_RECALL_K = int(os.getenv("VEC_RECALL_K", "24"))
     KW_RECALL_K = int(os.getenv("KW_RECALL_K", "24"))
+    BM25_CANDIDATE_POOL = int(os.getenv("BM25_CANDIDATE_POOL", "3000"))
     RRF_K = int(os.getenv("RRF_K", "60"))
     RERANK_CANDIDATE_CAP = int(os.getenv("RERANK_CANDIDATE_CAP", "40"))
     

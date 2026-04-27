@@ -1,0 +1,6 @@
+{
+  "message_releated": "CSFBParametersResponseCDMA2000",
+  "block_file": "CSFBParametersResponseCDMA2000 message.txt",
+  "content_chunk": "CSFBParametersResponseCDMA2000 ::= SEQUENCE {\n\trrc-TransactionIdentifier\t\t\tRRC-TransactionIdentifier,\n\tcriticalExtensions\t\t\t\t\t\tCHOICE {\n\t\tcsfbParametersResponseCDMA2000-r8\t\tCSFBParametersResponseCDMA2000-r8-IEs,\n\t\tcriticalExtensionsFuture\t\t\t\tSEQUENCE {}\n\t}\n}\n\nCSFBParametersResponseCDMA2000-r8-IEs ::= SEQUENCE {\n\trand\t\t\t\t\t\t\t\tRAND-CDMA2000,\n\tmobilityParameters\t\t\t\t\tMobilityParametersCDMA2000,\n\tnonCriticalExtension\t\t\t\tCSFBParametersResponseCDMA2000-v8a0-IEs\tOPTIONAL\n}\n\nCSFBParametersResponseCDMA2000-v8a0-IEs ::= SEQUENCE {\n\tlateNonCriticalExtension\t\t\tOCTET STRING\t\t\t\t\t\tOPTIONAL,\n\tnonCriticalExtension\t\t\t\tSEQUENCE {}\t\t\t\t\t\t\tOPTIONAL\n}",
+  "digested_asn_definitions": "CSFBParametersResponseCDMA2000,CSFBParametersResponseCDMA2000-r8-IEs,CSFBParametersResponseCDMA2000-v8a0-IEs"
+}

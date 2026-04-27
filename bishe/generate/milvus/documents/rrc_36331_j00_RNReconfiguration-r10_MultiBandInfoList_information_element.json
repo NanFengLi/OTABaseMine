@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "MultiBandInfoList information element.txt",
+  "content_chunk": "MultiBandInfoList ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator\n\nMultiBandInfoList-v9e0 ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF MultiBandInfo-v9e0\n\nMultiBandInfoList-v10j0 ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF NS-PmaxList-r10\n\nMultiBandInfoList-v10l0 ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF NS-PmaxList-v10l0\n\nMultiBandInfoList-r11 ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF FreqBandIndicator-r11\n\nMultiBandInfo-v9e0 ::=\t\tSEQUENCE {\n\tfreqBandIndicator-v9e0\t\t\t\tFreqBandIndicator-v9e0\t\tOPTIONAL\t-- Need OP\n}\n\nMultiBandInfoListAerial-r18 ::=\tSEQUENCE (SIZE (1..maxMultiBands)) OF MultiBandInfoAerial-r18\n\nMultiBandInfoAerial-r18 ::= SEQUENCE {\n\tfreqBandIndicatorAerial-r18\t\tFreqBandIndicator-r11\tOPTIONAL,\t\t-- Cond NotSIB3\n\tns-PmaxListAerial-r18\t\t\tNS-PmaxListAerial-r18\tOPTIONAL\t\t-- Need OP\n}",
+  "digested_asn_definitions": "MultiBandInfoList,MultiBandInfoList-v9e0,MultiBandInfoList-v10j0,MultiBandInfoList-v10l0,MultiBandInfoList-r11,MultiBandInfo-v9e0,MultiBandInfoListAerial-r18,MultiBandInfoAerial-r18"
+}

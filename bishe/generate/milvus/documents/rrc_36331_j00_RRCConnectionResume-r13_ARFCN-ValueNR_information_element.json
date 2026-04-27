@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ARFCN-ValueNR information element.txt",
+  "content_chunk": "ARFCN-ValueNR-r15 ::=\t\t\t\tINTEGER (0.. 3279165)",
+  "digested_asn_definitions": "ARFCN-ValueNR-r15"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "PhysCellIdUTRA-TDD information element.txt",
+  "content_chunk": "PhysCellIdUTRA-TDD ::=\t\t\t\tINTEGER (0..127)",
+  "digested_asn_definitions": "PhysCellIdUTRA-TDD"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ReportConfigId information element.txt",
+  "content_chunk": "ReportConfigId ::=\t\t\t\t\tINTEGER (1..maxReportConfigId)",
+  "digested_asn_definitions": "ReportConfigId"
+}

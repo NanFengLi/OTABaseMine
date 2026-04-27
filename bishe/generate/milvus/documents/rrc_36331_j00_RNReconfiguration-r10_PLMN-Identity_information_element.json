@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "PLMN-Identity information element.txt",
+  "content_chunk": "PLMN-Identity ::=\t\t\t\t\tSEQUENCE {\n\tmcc\t\t\t\t\t\t\t\t\tMCC\t\t\t\t\tOPTIONAL,\t\t\t\t\t-- Cond MCC\n\tmnc\t\t\t\t\t\t\t\t\tMNC\n}\n\nMCC ::=\t\t\t\t\t\t\t\tSEQUENCE (SIZE (3)) OF\n\t\t\t\t\t\t\t\t\t\t\tMCC-MNC-Digit\n\nMNC ::=\t\t\t\t\t\t\t\tSEQUENCE (SIZE (2..3)) OF\n\t\t\t\t\t\t\t\t\t\t\tMCC-MNC-Digit\n\nMCC-MNC-Digit ::=\t\t\t\t\tINTEGER (0..9)",
+  "digested_asn_definitions": "PLMN-Identity,MCC,MNC,MCC-MNC-Digit"
+}

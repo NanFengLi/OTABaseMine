@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-InterFreqInfoListV2X information element.txt",
+  "content_chunk": "SL-InterFreqInfoListV2X-r14 ::=\tSEQUENCE (SIZE (0..maxFreqV2X-1-r14)) OF SL-InterFreqInfoV2X-r14\n\nSL-InterFreqInfoV2X-r14 ::=\t\tSEQUENCE {\n\tplmn-IdentityList-r14\t\t\t\tPLMN-IdentityList\t\t\tOPTIONAL,\t\t-- Need OP\n\tv2x-CommCarrierFreq-r14\t\t\tARFCN-ValueEUTRA-r9,\n\tsl-MaxTxPower-r14\t\t\t\t\tP-Max\t\t\t\tOPTIONAL,\t\t-- Need OR\n\tsl-Bandwidth-r14\t\t\t\t\tENUMERATED {n6, n15, n25, n50, n75, n100}\tOPTIONAL,\t-- Need OR\n\tv2x-SchedulingPool-r14\t\t\t\tSL-CommResourcePoolV2X-r14\t\t\t\tOPTIONAL,\t-- Need OR\n\tv2x-UE-ConfigList-r14\t\tSL-V2X-UE-ConfigList-r14\tOPTIONAL,\t-- Need OR\n\t...,\n\t[[\tadditionalSpectrumEmissionV2X-r14\t\tCHOICE {\n\t\t\tadditionalSpectrumEmission-r14\t\t\tAdditionalSpectrumEmission,\n\t\t\tadditionalSpectrumEmission-v1440\t\tAdditionalSpectrumEmission-v10l0\n\t\t}\t\t\t\tOPTIONAL\t\t-- Need ON\n\t]],\n\t[[\tv2x-FreqSelectionConfigList-r15\tSL-V2X-FreqSelectionConfigList-r15\tOPTIONAL\t--Need OR\n\t]]\n}",
+  "digested_asn_definitions": "SL-InterFreqInfoListV2X-r14,SL-InterFreqInfoV2X-r14"
+}

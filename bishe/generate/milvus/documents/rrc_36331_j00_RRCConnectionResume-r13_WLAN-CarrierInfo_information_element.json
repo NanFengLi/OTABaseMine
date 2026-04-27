@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "WLAN-CarrierInfo information element.txt",
+  "content_chunk": "WLAN-CarrierInfo-r13 ::=\tSEQUENCE {\n\toperatingClass-r13\t\t\tINTEGER (0..255)\t\t\tOPTIONAL,\t-- Need ON\n\tcountryCode-r13\t\t\t\tENUMERATED {unitedStates, europe, japan, global, ...}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tOPTIONAL,\t-- Need ON\n\tchannelNumbers-r13\t\t\tWLAN-ChannelList-r13\t\tOPTIONAL,\t-- Need ON\n\t...\n}\n\nWLAN-ChannelList-r13 ::=\tSEQUENCE (SIZE (1..maxWLAN-Channels-r13)) OF WLAN-Channel-r13\n\nWLAN-Channel-r13 ::=\tINTEGER(0..255)",
+  "digested_asn_definitions": "WLAN-CarrierInfo-r13,WLAN-ChannelList-r13,WLAN-Channel-r13"
+}

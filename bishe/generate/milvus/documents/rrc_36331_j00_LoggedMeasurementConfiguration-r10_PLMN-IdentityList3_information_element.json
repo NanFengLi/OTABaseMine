@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "PLMN-IdentityList3 information element.txt",
+  "content_chunk": "PLMN-IdentityList3-r11 ::=\t\t\t\tSEQUENCE (SIZE (1..16)) OF PLMN-Identity",
+  "digested_asn_definitions": "PLMN-IdentityList3-r11"
+}

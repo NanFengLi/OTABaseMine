@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "PhysCellId information element.txt",
+  "content_chunk": "PhysCellId ::=\t\t\t\t\t\tINTEGER (0..503)",
+  "digested_asn_definitions": "PhysCellId"
+}

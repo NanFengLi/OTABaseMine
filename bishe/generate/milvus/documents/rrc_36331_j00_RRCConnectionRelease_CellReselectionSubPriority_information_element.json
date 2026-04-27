@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "CellReselectionSubPriority information element.txt",
+  "content_chunk": "CellReselectionSubPriority-r13 ::=\t\t\tENUMERATED {oDot2, oDot4, oDot6, oDot8}",
+  "digested_asn_definitions": "CellReselectionSubPriority-r13"
+}

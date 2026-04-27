@@ -1,0 +1,6 @@
+{
+  "message_releated": "DLDedicatedMessageSegment-r16",
+  "block_file": "DLDedicatedMessageSegment message.txt",
+  "content_chunk": "DLDedicatedMessageSegment-r16 ::=\t\tSEQUENCE {\n\tcriticalExtensions\t\t\t\t\t\tCHOICE {\n\t\tdlDedicatedMessageSegment-r16\t\t\tDLDedicatedMessageSegment-r16-IEs,\n\t\tcriticalExtensionsFuture\t\t\t\tSEQUENCE {}\n\t}\n}\n\nDLDedicatedMessageSegment-r16-IEs ::=\tSEQUENCE {\n\tsegmentNumber-r16\t\t\t\t\t\tINTEGER (0..4),\n\trrc-MessageSegmentContainer-r16\t\t\tOCTET STRING,\n\trrc-MessageSegmentType-r16\t\t\t\tENUMERATED {notLastSegment, lastSegment},\n\tlateNonCriticalExtension\t\t\t\tOCTET STRING\t\t\t\t\tOPTIONAL,\n\tnonCriticalExtension\t\t\t\t\tSEQUENCE {}\t\t\t\t\t\tOPTIONAL\n}",
+  "digested_asn_definitions": "DLDedicatedMessageSegment-r16,DLDedicatedMessageSegment-r16-IEs"
+}

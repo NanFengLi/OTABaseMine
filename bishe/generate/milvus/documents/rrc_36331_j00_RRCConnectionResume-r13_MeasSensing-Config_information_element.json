@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasSensing-Config information element.txt",
+  "content_chunk": "MeasSensing-Config-r15 ::=\t\t\tSEQUENCE {\n\t\tsensingSubchannelNumber-r15\t\tINTEGER (1..20),\n\t\tsensingPeriodicity-r15\t\t\tENUMERATED {ms20, ms50, ms100, ms200,\n\t\t\t\t\t\t\t\t\t\t\tms300, ms400, ms500, ms600,\n\t\t\t\t\t\t\t\t\t\t\tms700, ms800, ms900, ms1000},\n\t\tsensingReselectionCounter-r15\tINTEGER (5..75),\n\t\tsensingPriority-r15\t\t\t\tINTEGER (1..8)\n}",
+  "digested_asn_definitions": "MeasSensing-Config-r15"
+}

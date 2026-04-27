@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-TxPower information element.txt",
+  "content_chunk": "SL-TxPower-r14 ::=\t\tCHOICE {\n\tminusinfinity-r14\t\t\t\tNULL,\n\ttxPower-r14\t\t\t\t\t\tINTEGER (-41..31)\n}",
+  "digested_asn_definitions": "SL-TxPower-r14"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "LWA-Configuration-r13 information element.txt",
+  "content_chunk": "LWA-Configuration-r13 ::=\t\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\tlwa-Config-r13\t\t\t\t\tLWA-Config-r13\n\t}\n}\n\nLWA-Config-r13 ::=\tSEQUENCE {\n\tlwa-MobilityConfig-r13\t\t\tWLAN-MobilityConfig-r13\t\tOPTIONAL,\t-- Need ON\n\tlwa-WT-Counter-r13\t\t\t\tINTEGER (0..65535)\t\t\tOPTIONAL,\t-- Need ON\n\t...,\n\t[[\twt-MAC-Address-r14\t\tOCTET STRING (SIZE (6))\tOPTIONAL\t-- Need ON\n\t]]\n}",
+  "digested_asn_definitions": "LWA-Configuration-r13,LWA-Config-r13"
+}

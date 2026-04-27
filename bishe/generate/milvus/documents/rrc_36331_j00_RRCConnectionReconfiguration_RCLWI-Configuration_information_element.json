@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "RCLWI-Configuration information element.txt",
+  "content_chunk": "RCLWI-Configuration-r13 ::=\t\t\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\trclwi-Config-r13\t\t\t\t\tRCLWI-Config-r13\n\t}\n}\n\nRCLWI-Config-r13 ::=\t\t\t\tSEQUENCE {\n\tcommand\t\t\t\t\t\t\t\tCHOICE {\n\t\tsteerToWLAN-r13\t\t\t\t\t\tSEQUENCE {\n\t\t\tmobilityConfig-r13\t\t\t\t\tWLAN-Id-List-r12\n\t\t},\n\t\tsteerToLTE-r13\t\t\t\t\t\tNULL\n\t},\n\t...\n}",
+  "digested_asn_definitions": "RCLWI-Configuration-r13,RCLWI-Config-r13"
+}

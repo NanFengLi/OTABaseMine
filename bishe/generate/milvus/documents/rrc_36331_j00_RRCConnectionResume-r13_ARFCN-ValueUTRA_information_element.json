@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ARFCN-ValueUTRA information element.txt",
+  "content_chunk": "ARFCN-ValueUTRA ::=\t\t\t\t\tINTEGER (0..16383)",
+  "digested_asn_definitions": "ARFCN-ValueUTRA"
+}

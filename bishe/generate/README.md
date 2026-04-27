@@ -1,81 +1,198 @@
-# bishe/generate — RAG 与检索说明
+# bishe/generate 使用说明（Milvus Standalone + BM25）
 
-本文说明当前工程里 **ChromaDB 检索如何工作**，以及 **「关键词检索」**的真实含义（与 BM25 的区别）。
+本文档包含：
 
----
-
-## 一、入库时 Chroma 里存了什么
-
-每条记录包含三部分（见 `rag_db.py` 的 `ingest_asn1_blocks`）：
-
-| 字段 | 内容 |
-|------|------|
-| **embeddings** | 仅对 `digested_asn_definitions`（从 ASN.1 正文里抽出来的类型名摘要）用 SentenceTransformer 计算向量。 |
-| **documents** | 完整 `chunk` 的 **JSON 字符串**（含 `message_releated`、`block_file`、`content_chunk`、`digested_asn_definitions` 等）。 |
-| **metadatas** | `spec_number`、`version`、`message_releated`、`block_file`，用于 **metadata 过滤**。 |
-
-要点：
-
-- **没有单独建「关键词字段」或倒排索引**；向量与「全文」是分离的：向量来自类型名摘要，正文在 `documents` 的 JSON 里。
-- 添加数据时传入自定义 `embeddings`，Chroma **不会**再对 `documents` 全文自动向量化。
+1. 环境准备
+2. 常用启动命令
+3. RAG 入库/检索流程说明
+4. 常见问题排查
 
 ---
 
-## 二、向量检索（Chroma：`collection.query`）
+## 1. 环境准备
 
-1. 使用集合创建时绑定的 **同一套 embedding 函数**，把 **查询字符串** 编成查询向量。
-2. 在 **`where` 元数据条件** 限定的子集上（例如当前 RRC 的 `spec_number` + `version`），按 **向量空间近邻** 排序并返回 Top-K。
-3. 近邻度量由 collection 的 distance 配置决定（Chroma 常见为 L2；若向量已归一化，与余弦排序常单调相关）。
+建议在项目根目录执行。
 
-**小结**：向量这一路是 **语义/embedding 相似度检索**，不是全文 BM25。
+### 1.1 激活 Conda 环境
 
----
-
-## 三、「关键词检索」是什么（Chroma：`collection.get` + `where_document`）
-
-实现上使用：
-
-```text
-where_document = { "$contains": query_text }
+```bash
+source /home/lab221/miniconda3/bin/activate bishe
 ```
 
-含义：
+### 1.2 安装依赖
 
-- 在已通过 **`where` 过滤** 的文档中，检查 **`documents` 整段字符串**（即那条 JSON）里是否 **包含查询串作为子串**。
-- 典型情况：查询缺失的类型名（如 `MeasObjectEUTRA`）时，只要该字符串出现在 JSON 的 `content_chunk` 或 `digested_asn_definitions` 等字段的文本里，就可能被这一路召回。
+```bash
+pip install -r bishe/generate/requirements.txt
+```
 
-**不是 BM25**：
+### 1.3 配置 `.env`
 
-- BM25 会基于词频、逆文档频率、文档长度等给出 **相关性分数并排序**。
-- 当前 `$contains` 是 **子串命中过滤**，**没有** BM25 打分；命中顺序主要依赖 Chroma 返回顺序，后续由应用层的 RRF / rerank 使用。
+在 `bishe/generate/.env` 中至少配置：
 
----
+```env
+# Milvus Standalone 地址
+MILVUS_URI=http://127.0.0.1:19530
 
-## 四、Chroma 之外：混合与重排（应用代码）
+# 侧车文档目录（可不改）
+MILVUS_DOCUMENTS_DIR=/home/lab221/Projects/OTABaseMine/bishe/generate/milvus/documents
 
-Chroma 只负责：
+# BM25 候选池
+BM25_CANDIDATE_POOL=3000
 
-1. **metadata 过滤**（`where`）；
-2. **向量近邻 Top-K**（`query`）；
-3. **全文子串过滤**（`get` + `where_document`）。
+# 可选：启用 rerank
+DASHSCOPE_API_KEY=你的key
+RERANK_MODEL=qwen3-rerank
+```
 
-以下在 **Python 业务代码** 中完成，不是 Chroma 内置能力：
-
-- **RRF（倒数排名融合）**：把「向量路返回的 id 顺序」与「关键词路返回的 id 顺序」合并成一路排序（`rag_db.py` 中 `_rrf_merge`）。
-- **Qwen rerank**：对融合后的候选文本调用阿里云百炼兼容接口（`rerank_qwen.py`，默认 `qwen3-rerank`），需配置 `DASHSCOPE_API_KEY`。未配置时跳过 rerank，仅用 RRF 顺序截断。
-
-可调环境变量见 `config.py`（如 `VEC_RECALL_K`、`KW_RECALL_K`、`RRF_K`、`RERANK_CANDIDATE_CAP`、`RERANK_MODEL`、`RERANK_INSTRUCT` 等）。
-
----
-
-## 五、API 行为摘要（`query_asn1`）
-
-- **`hybrid=True`（默认）**：向量 + `$contains` 两路召回，RRF 融合，可选 Qwen 重排。
-- **`hybrid=False`**：仅向量召回，仍可选 rerank。
-- **`use_rerank=True`（默认）**：在有关键的前提下调用 rerank；无 `DASHSCOPE_API_KEY` 时自动降级为仅 RRF 顺序。
+> 说明：若不填 `MILVUS_URI`，会回退到 Milvus Lite 本地 `.db` 文件模式。
 
 ---
 
-## 六、一句话总结
+## 2. 常用启动命令（最重要）
 
-**Chroma 当前负责：metadata 过滤 + 向量近邻 + 基于 document 全文的子串包含过滤；混合排序与精排由 RRF 与 Qwen rerank 在应用层完成；关键词这一路不是 BM25。**
+### 2.1 构建 / 重建 RAG 向量库
+
+在 `bishe/generate` 目录：
+
+```bash
+python main_gen.py -b
+```
+
+强制重建（推荐在切换配置或更换数据后使用）：
+
+```bash
+python main_gen.py -b -f
+```
+
+### 2.2 提取路径
+
+```bash
+python main_gen.py -e
+```
+
+指定目标类型：
+
+```bash
+python main_gen.py -e -t OCTET_STRING INTEGER BIT_STRING SEQOF
+```
+
+### 2.3 运行主生成流程
+
+```bash
+python main_gen.py
+```
+
+### 2.4 检索自测脚本（推荐）
+
+项目内已提供：`bishe/generate/test/test_rag_retrieval.py`
+
+示例：
+
+```bash
+python bishe/generate/test/test_rag_retrieval.py -q RRCConnectionReconfiguration -q MeasSubframePattern -k 3 --hybrid
+```
+
+启用 rerank：
+
+```bash
+python bishe/generate/test/test_rag_retrieval.py -q RRCConnectionReconfiguration -k 3 --hybrid --rerank
+```
+
+---
+
+## 3. RAG 端到端流程
+
+调用关系：
+
+1. `RAGDatabase.ingest_asn1_blocks()`：构建向量库。
+2. `RAGDatabase.query_asn1()`：执行检索。
+
+`query_asn1()` 内部：
+
+- metadata 过滤（`_build_where_filter`）
+- 向量召回（`MilvusClient.search`）
+- 关键词召回（`MilvusClient.query` + 应用层 BM25）
+- RRF 融合（`_rrf_merge`）
+- 可选 rerank（`rerank_qwen.py`）
+- 解析命中文档并返回 `content_chunk`
+
+---
+
+## 4. 切片结构与存储方式
+
+### 4.1 切片结构
+
+每个切片包含：
+
+- `message_releated`
+- `block_file`
+- `content_chunk`
+- `digested_asn_definitions`
+
+### 4.2 为什么有 `milvus/documents/`
+
+为了避免 Milvus 动态字段长度限制，完整正文 JSON 不直接塞进 Milvus。
+
+当前做法：
+
+- **Milvus 中保存**：`pk`、`doc_uid`、`embedding`、`document_path`、metadata
+- **本地侧车文件保存**：完整 JSON 正文（在 `milvus/documents/`）
+
+检索命中后，代码会根据 `document_path` 回读侧车文件，再解析正文。
+
+---
+
+## 5. 检索策略说明
+
+### 5.1 向量检索
+
+- embedding 模型：`all-MiniLM-L6-v2`
+- 向量字段：`embedding`
+- 相似度：COSINE
+
+### 5.2 关键词检索（BM25）
+
+- 先按 metadata 过滤候选
+- 从侧车 JSON 中抽取文本
+- 使用 `rank-bm25` 排序
+- 若 `rank-bm25` 不可用，回退到子串匹配
+
+### 5.3 融合与重排
+
+- 向量路 + 关键词路通过 RRF 融合
+- 可选 Qwen rerank（需要 `DASHSCOPE_API_KEY`）
+
+关键参数（见 `config.py`）：
+
+- `VEC_RECALL_K`
+- `KW_RECALL_K`
+- `BM25_CANDIDATE_POOL`
+- `RRF_K`
+- `RERANK_CANDIDATE_CAP`
+- `RERANK_MODEL`
+
+---
+
+## 6. 快速验证清单
+
+1. 向量库构建成功：`python main_gen.py -b -f` 无报错
+2. 自测检索有结果：`test_rag_retrieval.py` 返回 `RESULT_COUNT > 0`
+3. 若启用 rerank：确认 `.env` 已设置 `DASHSCOPE_API_KEY`
+
+---
+
+## 7. 常见问题
+
+### Q1：启动像“卡住”
+
+通常是 embedding 模型首次下载慢（Hugging Face 网络问题）。
+
+### Q2：Milvus 报字段过长
+
+已通过侧车文件方案规避；若出现旧数据问题，执行 `python main_gen.py -b -f` 重建。
+
+### Q3：检索结果为 0
+
+- 检查 `collection_count`
+- 检查 `MILVUS_URI` 是否指向你当前使用的 Milvus 实例
+- 重新执行 `-b -f` 后再测

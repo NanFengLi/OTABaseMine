@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MobilityStateParameters information element.txt",
+  "content_chunk": "MobilityStateParameters ::=\t\t\tSEQUENCE {\n\tt-Evaluation\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\ts30, s60, s120, s180, s240, spare3, spare2, spare1},\n\tt-HystNormal\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\ts30, s60, s120, s180, s240, spare3, spare2, spare1},\n\tn-CellChangeMedium\t\t\t\t\tINTEGER (1..16),\n\tn-CellChangeHigh\t\t\t\t\tINTEGER (1..16)\n}",
+  "digested_asn_definitions": "MobilityStateParameters"
+}

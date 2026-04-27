@@ -1,0 +1,6 @@
+{
+  "message_releated": "UEInformationRequest-r9",
+  "block_file": "FlightPathInfoReportConfig information element.txt",
+  "content_chunk": "FlightPathInfoReportConfig-r15 ::= SEQUENCE {\t\t\n\tmaxWayPointNumber-r15\t\t\t\tINTEGER (1..maxWayPoint-r15),\n\tincludeTimeStamp-r15\t\t\t\tENUMERATED {true}\t\t\t\t\tOPTIONAL\n}",
+  "digested_asn_definitions": "FlightPathInfoReportConfig-r15"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "SSB-PositionQCL-RelationNR information element.txt",
+  "content_chunk": "SSB-PositionQCL-RelationNR-r16 ::=\t\tENUMERATED {n1, n2, n4, n8}\n\nSSB-PositionQCL-RelationNR-r17 ::=\t\tENUMERATED {n32, n64}",
+  "digested_asn_definitions": "SSB-PositionQCL-RelationNR-r16,SSB-PositionQCL-RelationNR-r17"
+}

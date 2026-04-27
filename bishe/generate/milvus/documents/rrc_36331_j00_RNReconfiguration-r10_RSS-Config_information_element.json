@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "RSS-Config information element.txt",
+  "content_chunk": "RSS-Config-r15 ::=\t\t\t\tSEQUENCE {\n\tduration-r15\t\t\t\t\tENUMERATED {sf8, sf16, sf32, sf40},\n\tfreqLocation-r15\t\t\t\t\tINTEGER (0..98),\n\tperiodicity-r15\t\t\t\t\tENUMERATED {ms160, ms320, ms640, ms1280},\n\tpowerBoost-r15\t\t\t\t\tENUMERATED {dB0, dB3, dB4dot8, dB6},\n\ttimeOffset-r15\t\t\t\t\tINTEGER (0..31)\n}",
+  "digested_asn_definitions": "RSS-Config-r15"
+}

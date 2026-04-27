@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ReportInterval information element.txt",
+  "content_chunk": "ReportInterval ::=\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\tms120, ms240, ms480, ms640, ms1024, ms2048, ms5120, ms10240,\n\t\t\t\t\t\t\t\t\t\tmin1, min6, min12, min30, min60, spare3, spare2, spare1}",
+  "digested_asn_definitions": "ReportInterval"
+}

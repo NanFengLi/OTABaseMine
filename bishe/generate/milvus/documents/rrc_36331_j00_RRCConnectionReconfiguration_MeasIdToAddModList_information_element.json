@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasIdToAddModList information element.txt",
+  "content_chunk": "MeasIdToAddModList ::=\t\t\t\tSEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod\n\nMeasIdToAddModList-v1310 ::=\t\tSEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod-v1310\n\nMeasIdToAddModListExt-r12 ::=\t\tSEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddModExt-r12\n\nMeasIdToAddModListExt-v1310 ::=\t\tSEQUENCE (SIZE (1..maxMeasId)) OF MeasIdToAddMod-v1310\n\nMeasIdToAddMod ::=\tSEQUENCE {\n\tmeasId\t\t\t\t\t\t\t\tMeasId,\n\tmeasObjectId\t\t\t\t\t\tMeasObjectId,\n\treportConfigId\t\t\t\t\t\tReportConfigId\n}\n\nMeasIdToAddModExt-r12 ::=\tSEQUENCE {\n\tmeasId-v1250\t\t\t\t\t\tMeasId-v1250,\n\tmeasObjectId-r12\t\t\t\t\tMeasObjectId,\n\treportConfigId-r12\t\t\t\t\tReportConfigId\n}\n\nMeasIdToAddMod-v1310 ::=\tSEQUENCE {\n\tmeasObjectId-v1310\t\t\tMeasObjectId-v1310\t\tOPTIONAL\n}",
+  "digested_asn_definitions": "MeasIdToAddModList,MeasIdToAddModList-v1310,MeasIdToAddModListExt-r12,MeasIdToAddModListExt-v1310,MeasIdToAddMod,MeasIdToAddModExt-r12,MeasIdToAddMod-v1310"
+}

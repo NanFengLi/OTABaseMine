@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-TxPoolToReleaseList information element.txt",
+  "content_chunk": "SL-TxPoolToReleaseList-r12 ::=\tSEQUENCE (SIZE (1..maxSL-TxPool-r12)) OF SL-TxPoolIdentity-r12\n\nSL-TxPoolToReleaseListExt-r13 ::=\tSEQUENCE (SIZE (1..maxSL-TxPool-v1310)) OF SL-TxPoolIdentity-v1310",
+  "digested_asn_definitions": "SL-TxPoolToReleaseList-r12,SL-TxPoolToReleaseListExt-r13"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ServCellIndex information element.txt",
+  "content_chunk": "ServCellIndex-r10 ::=\t\t\t\t\tINTEGER (0..7)\nServCellIndex-r13 ::=\t\t\t\tINTEGER (0..31)",
+  "digested_asn_definitions": "ServCellIndex-r10,ServCellIndex-r13"
+}

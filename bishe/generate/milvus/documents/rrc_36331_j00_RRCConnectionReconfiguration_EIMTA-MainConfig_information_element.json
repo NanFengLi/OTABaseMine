@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "EIMTA-MainConfig information element.txt",
+  "content_chunk": "EIMTA-MainConfig-r12 ::=\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\teimta-RNTI-r12\t\t\t\tC-RNTI,\n\t\teimta-CommandPeriodicity-r12\tENUMERATED {sf10, sf20, sf40, sf80},\n\t\teimta-CommandSubframeSet-r12\tBIT STRING (SIZE(10))\n\t}\n}\n\nEIMTA-MainConfigServCell-r12 ::=\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\teimta-UL-DL-ConfigIndex-r12\t\t\tINTEGER (1..5),\n\t\teimta-HARQ-ReferenceConfig-r12\t\tENUMERATED {sa2, sa4, sa5},\n\t\tmbsfn-SubframeConfigList-v1250\t\tCHOICE {\n\t\t\t\trelease\t\t\t\t\t\t\t\tNULL,\n\t\t\t\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\t\t\tsubframeConfigList-r12\t\t\t\tMBSFN-SubframeConfigList\n\t\t\t}\n\t\t}\n\t}\n}",
+  "digested_asn_definitions": "EIMTA-MainConfig-r12,EIMTA-MainConfigServCell-r12"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "PUR-PeriodicityAndOffset information element.txt",
+  "content_chunk": "PUR-PeriodicityAndOffset-r16 ::= CHOICE {\n\tperiodicity8\t\tINTEGER (1..7),\n\tperiodicity16\t\tINTEGER (1..15),\n\tperiodicity32\t\tINTEGER (1..31),\n\tperiodicity64\t\tINTEGER (1..63),\n\tperiodicity128\t\tINTEGER (1..127),\n\tperiodicity256\t\tINTEGER (1..255),\n\tperiodicity512\t\tINTEGER (1..511),\n\tperiodicity1024\t\tINTEGER (1..1023),\n\tperiodicity2048\t\tINTEGER (1..2047),\n\tperiodicity4096\t\tINTEGER (1..4095),\n\tperiodicity8192\t\tINTEGER (1..8191)\n}",
+  "digested_asn_definitions": "PUR-PeriodicityAndOffset-r16"
+}

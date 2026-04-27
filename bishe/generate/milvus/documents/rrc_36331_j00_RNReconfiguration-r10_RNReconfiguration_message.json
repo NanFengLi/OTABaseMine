@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "RNReconfiguration message.txt",
+  "content_chunk": "RNReconfiguration-r10 ::=\t\tSEQUENCE {\n\trrc-TransactionIdentifier\t\tRRC-TransactionIdentifier,\n\tcriticalExtensions\t\t\t\tCHOICE {\n\t\tc1\t\t\t\t\t\t\t\tCHOICE {\n\t\t\trnReconfiguration-r10\t\tRNReconfiguration-r10-IEs,\n\t\t\tspare3 NULL, spare2 NULL, spare1 NULL\n\t\t},\n\t\tcriticalExtensionsFuture\t\tSEQUENCE {}\n\t}\n}\n\nRNReconfiguration-r10-IEs ::=\t\tSEQUENCE {\n\trn-SystemInfo-r10\t\t\t\t\tRN-SystemInfo-r10\t\t\t\tOPTIONAL,\t-- Need ON\n\trn-SubframeConfig-r10\t\t\t\tRN-SubframeConfig-r10\t\t\tOPTIONAL,\t-- Need ON\n\tlateNonCriticalExtension\t\t\tOCTET STRING\t\t\t\t\tOPTIONAL,\n\tnonCriticalExtension\t\t\t\tSEQUENCE {}\t\t\t\t\t\tOPTIONAL\n}\n\nRN-SystemInfo-r10 ::=\t\t\tSEQUENCE {\n\tsystemInformationBlockType1-r10\t\tOCTET STRING (CONTAINING SystemInformationBlockType1)\tOPTIONAL,\t-- Need ON\n\tsystemInformationBlockType2-r10\t\tSystemInformationBlockType2\t\tOPTIONAL,\t-- Need ON\n\t...\n}",
+  "digested_asn_definitions": "RNReconfiguration-r10,RNReconfiguration-r10-IEs,RN-SystemInfo-r10"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "PhysCellIdCDMA2000 information element.txt",
+  "content_chunk": "PhysCellIdCDMA2000 ::=\t\t\tINTEGER (0..maxPNOffset)",
+  "digested_asn_definitions": "PhysCellIdCDMA2000"
+}

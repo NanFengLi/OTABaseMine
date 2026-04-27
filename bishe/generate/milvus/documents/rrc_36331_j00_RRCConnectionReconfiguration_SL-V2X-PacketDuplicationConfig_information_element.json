@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-V2X-PacketDuplicationConfig information element.txt",
+  "content_chunk": "SL-V2X-PacketDuplicationConfig-r15 ::=\tSEQUENCE {\n\tthreshSL-Reliability-r15\t\tSL-Reliability-r15,\n\tallowedCarrierFreqConfig-r15\tSL-PPPR-Dest-CarrierFreqList-r15\t\tOPTIONAL,\t-- Need OR\n\t...\n}\n\nSL-PPPR-Dest-CarrierFreqList-r15 ::=\tSEQUENCE (SIZE (1..maxSL-Dest-r12)) OF SL-PPPR-Dest-CarrierFreq\n\nSL-PPPR-Dest-CarrierFreq ::=\tSEQUENCE {\n\tdestinationInfoList-r15\t\t\tSL-DestinationInfoList-r12\t\tOPTIONAL,\t-- Need OR\n\tallowedCarrierFreqList-r15\t\tSL-AllowedCarrierFreqList-r15\t\t\tOPTIONAL\t-- Need OR\n}\n\nSL-AllowedCarrierFreqList-r15 ::=\tSEQUENCE {\n\tallowedCarrierFreqSet1\t\tSEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9,\n\tallowedCarrierFreqSet2\t\tSEQUENCE (SIZE (1..maxFreqV2X-r14)) OF ARFCN-ValueEUTRA-r9\n}",
+  "digested_asn_definitions": "SL-V2X-PacketDuplicationConfig-r15,SL-PPPR-Dest-CarrierFreqList-r15,SL-PPPR-Dest-CarrierFreq,SL-AllowedCarrierFreqList-r15"
+}

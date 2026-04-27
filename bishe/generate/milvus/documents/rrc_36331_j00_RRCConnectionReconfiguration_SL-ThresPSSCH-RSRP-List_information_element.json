@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-ThresPSSCH-RSRP-List information element.txt",
+  "content_chunk": "SL-ThresPSSCH-RSRP-List-r14 ::=\tSEQUENCE (SIZE (64)) OF SL-ThresPSSCH-RSRP-r14\n\nSL-ThresPSSCH-RSRP-r14 ::=\t\tINTEGER (0..66)",
+  "digested_asn_definitions": "SL-ThresPSSCH-RSRP-List-r14,SL-ThresPSSCH-RSRP-r14"
+}

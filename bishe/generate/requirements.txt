@@ -1,4 +1,7 @@
-chromadb==1.3.7
+pymilvus>=2.4.6
+milvus-lite>=2.4.10
+sentence-transformers>=3.0.1
+rank-bm25>=0.2.2
 openai>=2.15.0
 langchain>=0.2.0
 langchain-openai==1.1.7

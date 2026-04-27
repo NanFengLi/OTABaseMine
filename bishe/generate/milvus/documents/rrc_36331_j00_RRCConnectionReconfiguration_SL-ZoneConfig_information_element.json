@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-ZoneConfig information element.txt",
+  "content_chunk": "SL-ZoneConfig-r14 ::=\t\tSEQUENCE {\n\tzoneLength-r14\tENUMERATED { m5, m10, m20, m50, m100, m200, m500, spare1},\n\tzoneWidth-r14\tENUMERATED { m5, m10, m20, m50, m100, m200, m500, spare1},\n\tzoneIdLongiMod-r14\tINTEGER (1..4),\n\tzoneIdLatiMod-r14\tINTEGER (1..4)\n}",
+  "digested_asn_definitions": "SL-ZoneConfig-r14"
+}

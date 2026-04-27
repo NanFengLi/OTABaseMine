@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "AreaConfiguration information element.txt",
+  "content_chunk": "AreaConfiguration-r10 ::=\tCHOICE {\n\tcellGlobalIdList-r10\t\t\tCellGlobalIdList-r10,\n\ttrackingAreaCodeList-r10\t\tTrackingAreaCodeList-r10\n}\n\nAreaConfiguration-v1130 ::=\t\tSEQUENCE {\n\ttrackingAreaCodeList-v1130\t\tTrackingAreaCodeList-v1130\n}\n\nCellGlobalIdList-r10 ::=\t\t\t\tSEQUENCE (SIZE (1..32)) OF CellGlobalIdEUTRA\n\nTrackingAreaCodeList-r10 ::=\t\t\tSEQUENCE (SIZE (1..8)) OF TrackingAreaCode\n\nTrackingAreaCodeList-v1130 ::=\tSEQUENCE {\n\tplmn-Identity-perTAC-List-r11\t\t\tSEQUENCE (SIZE (1..8)) OF PLMN-Identity\n}",
+  "digested_asn_definitions": "AreaConfiguration-r10,AreaConfiguration-v1130,CellGlobalIdList-r10,TrackingAreaCodeList-r10,TrackingAreaCodeList-v1130"
+}

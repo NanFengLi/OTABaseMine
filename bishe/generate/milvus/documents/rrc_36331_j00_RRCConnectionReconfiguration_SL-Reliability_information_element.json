@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-Reliability information element.txt",
+  "content_chunk": "SL-ReliabilityList-r15 ::=\t\tSEQUENCE (SIZE (1..maxSL-Reliability-r15)) OF SL-Reliability-r15\n\nSL-Reliability-r15 ::=\t\t\tINTEGER (1..8)",
+  "digested_asn_definitions": "SL-ReliabilityList-r15,SL-Reliability-r15"
+}

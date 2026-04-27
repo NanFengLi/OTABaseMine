@@ -1,0 +1,6 @@
+{
+  "message_releated": "MobilityFromEUTRACommand",
+  "block_file": "SystemInfoListGERAN information element.txt",
+  "content_chunk": "SystemInfoListGERAN ::=\t\t\t\tSEQUENCE (SIZE (1..maxGERAN-SI)) OF\n\t\t\t\t\t\t\t\t\t\tOCTET STRING (SIZE (1..23))",
+  "digested_asn_definitions": "SystemInfoListGERAN"
+}

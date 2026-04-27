@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasObjectId information element.txt",
+  "content_chunk": "MeasObjectId ::=\t\t\t\t\tINTEGER (1..maxObjectId)\n\nMeasObjectId-v1310 ::=\t\t\tINTEGER (maxObjectId-Plus1-r13..maxObjectId-r13)\n\nMeasObjectId-r13 ::=\t\t\t\tINTEGER (1..maxObjectId-r13)",
+  "digested_asn_definitions": "MeasObjectId,MeasObjectId-v1310,MeasObjectId-r13"
+}

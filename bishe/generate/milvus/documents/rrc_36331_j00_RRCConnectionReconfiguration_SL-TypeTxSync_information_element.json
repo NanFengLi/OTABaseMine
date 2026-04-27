@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-TypeTxSync information element.txt",
+  "content_chunk": "SL-TypeTxSync-r14 ::=\t\tENUMERATED {gnss, enb, ue}",
+  "digested_asn_definitions": "SL-TypeTxSync-r14"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CSI-IM-ConfigId information elements.txt",
+  "content_chunk": "CSI-IM-ConfigId-r11 ::=\t\t\t\t\tINTEGER (1..maxCSI-IM-r11)\nCSI-IM-ConfigId-r12 ::=\t\t\t\t\tINTEGER (1..maxCSI-IM-r12)\nCSI-IM-ConfigId-v1250 ::=\t\t\t\tINTEGER (maxCSI-IM-r12)\nCSI-IM-ConfigId-v1310 ::=\t\t\t\tINTEGER (minCSI-IM-r13..maxCSI-IM-r13)\nCSI-IM-ConfigId-r13 ::=\t\t\t\t\tINTEGER (1..maxCSI-IM-r13)",
+  "digested_asn_definitions": "CSI-IM-ConfigId-r11,CSI-IM-ConfigId-r12,CSI-IM-ConfigId-v1250,CSI-IM-ConfigId-v1310,CSI-IM-ConfigId-r13"
+}

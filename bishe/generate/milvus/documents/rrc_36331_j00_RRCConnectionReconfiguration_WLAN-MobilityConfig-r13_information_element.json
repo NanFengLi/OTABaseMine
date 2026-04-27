@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "WLAN-MobilityConfig-r13 information element.txt",
+  "content_chunk": "WLAN-MobilityConfig-r13 ::=\t\tSEQUENCE {\n\twlan-ToReleaseList-r13\t\t\t\tWLAN-Id-List-r13\t\t\tOPTIONAL,\t-- Need ON\n\twlan-ToAddList-r13\t\t\t\t\tWLAN-Id-List-r13\t\t\tOPTIONAL,\t-- Need ON\n\tassociationTimer-r13\t\t\t\tENUMERATED {s10, s30,\n\t\t\t\t\t\t\t\t\t\ts60, s120, s240}\t\t\tOPTIONAL,\t-- Need OR\n\tsuccessReportRequested-r13\t\t\tENUMERATED {true}\t\t\tOPTIONAL,\t-- Need OR\n\t...,\n\t[[\twlan-SuspendConfig-r14\t\t\tWLAN-SuspendConfig-r14\t\tOPTIONAL\t-- Need ON\n\t]]\n}",
+  "digested_asn_definitions": "WLAN-MobilityConfig-r13"
+}

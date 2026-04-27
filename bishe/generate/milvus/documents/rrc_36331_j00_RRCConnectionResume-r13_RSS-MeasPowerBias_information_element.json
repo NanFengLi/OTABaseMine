@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "RSS-MeasPowerBias information element.txt",
+  "content_chunk": "RSS-MeasPowerBias-r16 ::=\tENUMERATED {dB-6, dB-3, dB0, dB3, dB6, dB9, dB12, rssNotUsed}",
+  "digested_asn_definitions": "RSS-MeasPowerBias-r16"
+}

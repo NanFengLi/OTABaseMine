@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "GNSS-ID information element.txt",
+  "content_chunk": "GNSS-ID-r15 ::= SEQUENCE {\n\tgnss-id-r15\t\t\t\tENUMERATED{gps, sbas, qzss, galileo, glonass, bds, ..., navic-v1610},\n\t...\n}",
+  "digested_asn_definitions": "GNSS-ID-r15"
+}

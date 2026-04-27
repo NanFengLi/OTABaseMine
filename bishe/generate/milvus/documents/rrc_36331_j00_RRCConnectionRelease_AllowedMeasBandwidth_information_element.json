@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "AllowedMeasBandwidth information element.txt",
+  "content_chunk": "AllowedMeasBandwidth ::=\t\t\t\tENUMERATED {mbw6, mbw15, mbw25, mbw50, mbw75, mbw100}",
+  "digested_asn_definitions": "AllowedMeasBandwidth"
+}

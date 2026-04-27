@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "BT-NameList information element.txt",
+  "content_chunk": "BT-NameListConfig-r15 ::=\t\tCHOICE{\n\trelease\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\tBT-NameList-r15\n}\n\nBT-NameList-r15 ::=\t\t\tSEQUENCE (SIZE (1..maxBT-Name-r15)) OF BT-Name-r15\n\nBT-Name-r15 ::=\t\tOCTET STRING (SIZE (1..248))",
+  "digested_asn_definitions": "BT-NameListConfig-r15,BT-NameList-r15,BT-Name-r15"
+}

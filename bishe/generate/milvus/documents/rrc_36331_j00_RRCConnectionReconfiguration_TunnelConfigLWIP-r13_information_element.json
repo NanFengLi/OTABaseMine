@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "TunnelConfigLWIP-r13 information element.txt",
+  "content_chunk": "TunnelConfigLWIP-r13 ::= SEQUENCE {\n\tip-Address-r13\t\t\tIP-Address-r13,\n\tike-Identity-r13\t\t\tIKE-Identity-r13,\n\t...,\n\t[[\tlwip-Counter-r13\tINTEGER (0..65535)\t\tOPTIONAL\t-- Cond LWIP-Setup\n\t]]\n}\n\nIKE-Identity-r13 ::= SEQUENCE {\n\tidI-r13\t\t\t\t\tOCTET STRING\n}\n\nIP-Address-r13 ::= CHOICE {\n\tipv4-r13\t\t\t\t\tBIT STRING (SIZE (32)),\n\tipv6-r13\t\t\t\t\tBIT STRING (SIZE (128))\n}",
+  "digested_asn_definitions": "TunnelConfigLWIP-r13,IKE-Identity-r13,IP-Address-r13"
+}

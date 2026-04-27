@@ -1,0 +1,6 @@
+{
+  "message_releated": "DLInformationTransfer",
+  "block_file": "DedicatedInfoNAS information element.txt",
+  "content_chunk": "DedicatedInfoNAS ::=\t\tOCTET STRING",
+  "digested_asn_definitions": "DedicatedInfoNAS"
+}

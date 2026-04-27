@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "TPC-PDCCH-Config information element.txt",
+  "content_chunk": "TPC-PDCCH-Config ::=\t\t\t\t\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\ttpc-RNTI\t\t\t\t\t\t\tBIT STRING (SIZE (16)),\n\t\ttpc-Index\t\t\t\t\t\t\tTPC-Index\n\t}\n}\n\nTPC-PDCCH-ConfigSCell-r13 ::=\t\t\t\t\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\ttpc-Index-PUCCH-SCell-r13\t\tTPC-Index\n\t}\n}\n\nTPC-Index ::=\t\t\t\t\t\t\tCHOICE {\n\tindexOfFormat3\t\t\t\t\t\t\tINTEGER (1..15),\n\tindexOfFormat3A\t\t\t\t\t\t\tINTEGER (1..31)\n}",
+  "digested_asn_definitions": "TPC-PDCCH-Config,TPC-PDCCH-ConfigSCell-r13,TPC-Index"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "MBSFN-SubframeConfig information element.txt",
+  "content_chunk": "MBSFN-SubframeConfig ::=\t\t\tSEQUENCE {\n\tradioframeAllocationPeriod\t\t\tENUMERATED {n1, n2, n4, n8, n16, n32},\n\tradioframeAllocationOffset\t\t\tINTEGER (0..7),\n\tsubframeAllocation\t\t\t\t\tCHOICE {\n\t\toneFrame\t\t\t\t\t\t\tBIT STRING (SIZE(6)),\n\t\tfourFrames\t\t\t\t\t\t\tBIT STRING (SIZE(24))\n\t}\n}\n\nMBSFN-SubframeConfig-v1430 ::=\t\tSEQUENCE {\n\tsubframeAllocation-v1430\t\t\t\tCHOICE {\n\t\toneFrame-v1430\t\t\t\t\t\tBIT STRING (SIZE(2)),\n\t\tfourFrames-v1430\t\t\t\t\tBIT STRING (SIZE(8))\n\t}\n}\n\nMBSFN-SubframeConfig-v1610 ::=\t\tSEQUENCE {\n\tsubframeAllocation-v1610\t\t\t\tCHOICE {\n\t\toneFrame-v1610\t\t\t\t\t\tBIT STRING (SIZE(2)),\n\t\tfourFrames-v1610\t\t\t\t\tBIT STRING (SIZE(8))\n\t}\n}",
+  "digested_asn_definitions": "MBSFN-SubframeConfig,MBSFN-SubframeConfig-v1430,MBSFN-SubframeConfig-v1610"
+}

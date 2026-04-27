@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "RSRQ-Range information element.txt",
+  "content_chunk": "RSRQ-Range ::=\t\t\t\t\tINTEGER(0..34)\n\nRSRQ-Range-v1250 ::=\t\t\tINTEGER(-30..46)\n\nRSRQ-Range-r13 ::=\t\t\t\tINTEGER(-30..46)",
+  "digested_asn_definitions": "RSRQ-Range,RSRQ-Range-v1250,RSRQ-Range-r13"
+}

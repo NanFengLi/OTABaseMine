@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CQI-ReportPeriodicProcExtId information elements.txt",
+  "content_chunk": "CQI-ReportPeriodicProcExtId-r11 ::=\t\t\t\t\tINTEGER (1..maxCQI-ProcExt-r11)",
+  "digested_asn_definitions": "CQI-ReportPeriodicProcExtId-r11"
+}

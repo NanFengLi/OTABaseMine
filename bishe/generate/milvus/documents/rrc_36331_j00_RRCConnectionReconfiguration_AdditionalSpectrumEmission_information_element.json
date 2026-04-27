@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "AdditionalSpectrumEmission information element.txt",
+  "content_chunk": "AdditionalSpectrumEmission ::=\t\tINTEGER (1..32)\n\nAdditionalSpectrumEmission-v10l0 ::=\tINTEGER (33..288)\n\nAdditionalSpectrumEmission-r18 ::=\tINTEGER (1..288)",
+  "digested_asn_definitions": "AdditionalSpectrumEmission,AdditionalSpectrumEmission-v10l0,AdditionalSpectrumEmission-r18"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SS-RSSI-Measurement information element.txt",
+  "content_chunk": "SS-RSSI-Measurement-r15 ::=\t\t\tSEQUENCE {\n\tmeasurementSlots-r15\t\t\t\tBIT STRING (SIZE(1..80)),\n\tendSymbol-r15\t\t\t\t\t\tINTEGER(0..3)\n}",
+  "digested_asn_definitions": "SS-RSSI-Measurement-r15"
+}

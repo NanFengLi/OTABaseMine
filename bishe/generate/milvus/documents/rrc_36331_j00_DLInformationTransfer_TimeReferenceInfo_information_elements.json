@@ -1,0 +1,6 @@
+{
+  "message_releated": "DLInformationTransfer",
+  "block_file": "TimeReferenceInfo information elements.txt",
+  "content_chunk": "TimeReferenceInfo-r15 ::=\t\tSEQUENCE {\n\ttime-r15\t\t\t\t\t\t\tReferenceTime-r15,\n\tuncertainty-r15\t\t\t\t\t\tINTEGER (0..12)\t\t\t\tOPTIONAL,\t-- Need OR\n\ttimeInfoType-r15\t\t\t\t\tENUMERATED {localClock}\t\tOPTIONAL,\t-- Need OR\n\treferenceSFN-r15\t\t\t\t\tINTEGER (0..1023)\t\t\tOPTIONAL\t-- Cond TimeRef\n}\n\nReferenceTime-r15 ::=\t\t\tSEQUENCE {\n\trefDays-r15\t\t\t\t\t\t\tINTEGER (0..72999),\n\trefSeconds-r15\t\t\t\t\t\tINTEGER (0..86399),\n\trefMilliSeconds-r15\t\t\t\t\tINTEGER (0..999),\n\trefQuarterMicroSeconds-r15\t\t\tINTEGER (0..3999)\n}",
+  "digested_asn_definitions": "TimeReferenceInfo-r15,ReferenceTime-r15"
+}

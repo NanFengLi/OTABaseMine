@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "RACH-ConfigDedicated information element.txt",
+  "content_chunk": "RACH-ConfigDedicated ::=\t\tSEQUENCE {\n\tra-PreambleIndex\t\t\t\t\tINTEGER (0..63),\n\tra-PRACH-MaskIndex\t\t\t\t\tINTEGER (0..15)\n}",
+  "digested_asn_definitions": "RACH-ConfigDedicated"
+}

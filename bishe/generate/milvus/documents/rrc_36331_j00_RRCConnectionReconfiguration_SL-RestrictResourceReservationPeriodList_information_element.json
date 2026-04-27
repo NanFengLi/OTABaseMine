@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-RestrictResourceReservationPeriodList information element.txt",
+  "content_chunk": "SL-RestrictResourceReservationPeriodList-r14 ::=\tSEQUENCE (SIZE (1..maxReservationPeriod-r14)) OF SL-RestrictResourceReservationPeriod-r14\n\nSL-RestrictResourceReservationPeriod-r14 ::=\t\tENUMERATED {v0dot2, v0dot5, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, spare4,spare3, spare2, spare1}",
+  "digested_asn_definitions": "SL-RestrictResourceReservationPeriodList-r14,SL-RestrictResourceReservationPeriod-r14"
+}

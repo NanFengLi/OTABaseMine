@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "ConditionalReconfiguration information element.txt",
+  "content_chunk": "ConditionalReconfiguration-r16 ::= SEQUENCE {\n\tcondReconfigurationToAddModList-r16\tCondReconfigurationToAddModList-r16\t\tOPTIONAL, -- Need ON\n\tcondReconfigurationToRemoveList-r16\tCondReconfigurationToRemoveList-r16\t\tOPTIONAL, -- Need ON\n\tattemptCondReconf-r16\t\t\t\tENUMERATED {true}\t\t\t\t\t\tOPTIONAL, -- Cond CHO\n\t...\n}\n\nCondReconfigurationToRemoveList-r16 ::= SEQUENCE (SIZE (1..maxCondConfig-r16)) OF CondReconfigurationId-r16",
+  "digested_asn_definitions": "ConditionalReconfiguration-r16,CondReconfigurationToRemoveList-r16"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "WLAN-SuspendConfig information element.txt",
+  "content_chunk": "WLAN-SuspendConfig-r14 ::=\tSEQUENCE {\n\twlan-SuspendResumeAllowed-r14\t\t\t\tBOOLEAN\t\tOPTIONAL,\t-- Need ON\n\twlan-SuspendTriggersStatusReport-r14\t\tBOOLEAN\t\tOPTIONAL\t-- Need ON\n}",
+  "digested_asn_definitions": "WLAN-SuspendConfig-r14"
+}

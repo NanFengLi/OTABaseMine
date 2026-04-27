@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "BandIndicatorGERAN information element.txt",
+  "content_chunk": "BandIndicatorGERAN ::=\t\t\tENUMERATED {dcs1800, pcs1900}",
+  "digested_asn_definitions": "BandIndicatorGERAN"
+}

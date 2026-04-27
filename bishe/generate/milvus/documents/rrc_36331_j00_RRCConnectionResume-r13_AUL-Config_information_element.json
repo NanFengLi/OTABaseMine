@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "AUL-Config information element.txt",
+  "content_chunk": "AUL-Config-r15 ::=\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\taul-CRNTI-r15\t\t\t\t\t\t\tC-RNTI,\n\t\taul-Subframes-r15\t\t\t\t\t\tBIT STRING (SIZE (40)),\n\t\taul-HARQ-Processes-r15\t\t\t\t\tINTEGER (1..16),\n\t\ttransmissionModeUL-AUL-r15\t\t\t\tENUMERATED {tm1,tm2},\t\n\t\taul-StartingFullBW-InsideMCOT-r15\t\tBIT STRING (SIZE (5)),\n\t\taul-StartingFullBW-OutsideMCOT-r15\t\tBIT STRING (SIZE (7)),\n\t\taul-StartingPartialBW-InsideMCOT-r15\tENUMERATED {o34, o43, o52, o61, oOS1},\n\t\taul-StartingPartialBW-OutsideMCOT-r15\tENUMERATED {o16, o25, o34, o43, o52, o61, oOS1},\n\t\taul-RetransmissionTimer-r15\t\t\t\tENUMERATED {psf4, psf5, psf6, psf8, psf10, psf12, psf20, psf28, psf37, psf44, psf68, psf84, psf100,\n\t\t\t\t\t\t\t\t\t\t\t\tpsf116, psf132, psf164, psf324},\n\t\tendingSymbolAUL-r15\t\t\t\t\t\tINTEGER(12..13),\n\t\tsubframeOffsetCOT-Sharing-r15\t\t\tINTEGER(2..4),\n\t\tcontentionWindowSizeTimer-r15\t\t\tENUMERATED {n0, n5, n10}\n\t}\n}",
+  "digested_asn_definitions": "AUL-Config-r15"
+}

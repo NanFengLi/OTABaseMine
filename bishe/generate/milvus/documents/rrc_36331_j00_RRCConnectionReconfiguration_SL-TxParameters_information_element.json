@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-TxParameters information element.txt",
+  "content_chunk": "SL-TxParameters-r12 ::=\t\t\t\tSEQUENCE\t{\n\talpha-r12\t\t\t\t\t\t\t\tAlpha-r12,\n\tp0-r12\t\t\t\t\t\t\t\t\tP0-SL-r12\n}\n\nP0-SL-r12 ::=\t\t\t\t\t\t\tINTEGER (-126..31)",
+  "digested_asn_definitions": "SL-TxParameters-r12,P0-SL-r12"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "WLAN-RSSI-Range information element.txt",
+  "content_chunk": "WLAN-RSSI-Range-r13 ::=\t\t\t\t\t\tINTEGER(0..141)",
+  "digested_asn_definitions": "WLAN-RSSI-Range-r13"
+}

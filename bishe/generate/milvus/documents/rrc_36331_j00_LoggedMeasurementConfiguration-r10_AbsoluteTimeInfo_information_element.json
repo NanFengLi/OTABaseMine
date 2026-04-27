@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "AbsoluteTimeInfo information element.txt",
+  "content_chunk": "AbsoluteTimeInfo-r10 ::=\t\t\t\tBIT STRING (SIZE (48))",
+  "digested_asn_definitions": "AbsoluteTimeInfo-r10"
+}

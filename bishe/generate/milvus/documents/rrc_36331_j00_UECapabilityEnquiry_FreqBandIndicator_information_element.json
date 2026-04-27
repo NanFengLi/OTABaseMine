@@ -1,0 +1,6 @@
+{
+  "message_releated": "UECapabilityEnquiry",
+  "block_file": "FreqBandIndicator information element.txt",
+  "content_chunk": "FreqBandIndicator ::=\t\t\t\t\tINTEGER (1..maxFBI)\n\nFreqBandIndicator-v9e0 ::=\t\t\t\tINTEGER (maxFBI-Plus1..maxFBI2)\n\nFreqBandIndicator-r11 ::=\t\t\t\tINTEGER (1..maxFBI2)",
+  "digested_asn_definitions": "FreqBandIndicator,FreqBandIndicator-v9e0,FreqBandIndicator-r11"
+}

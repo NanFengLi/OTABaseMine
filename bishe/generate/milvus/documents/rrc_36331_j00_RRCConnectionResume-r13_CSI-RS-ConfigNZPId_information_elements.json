@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CSI-RS-ConfigNZPId information elements.txt",
+  "content_chunk": "CSI-RS-ConfigNZPId-r11 ::=\t\t\t\t\tINTEGER (1..maxCSI-RS-NZP-r11)\nCSI-RS-ConfigNZPId-v1310 ::=\t\t\t\tINTEGER (minCSI-RS-NZP-r13..maxCSI-RS-NZP-r13)\nCSI-RS-ConfigNZPId-r13 ::=\t\t\t\t\tINTEGER (1..maxCSI-RS-NZP-r13)",
+  "digested_asn_definitions": "CSI-RS-ConfigNZPId-r11,CSI-RS-ConfigNZPId-v1310,CSI-RS-ConfigNZPId-r13"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "Q-RxLevMin information element.txt",
+  "content_chunk": "Q-RxLevMin ::=\t\t\t\t\t\tINTEGER (-70..-22)",
+  "digested_asn_definitions": "Q-RxLevMin"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "SpeedStateScaleFactors information element.txt",
+  "content_chunk": "SpeedStateScaleFactors ::=\t\t\tSEQUENCE {\n\tsf-Medium\t\t\t\t\t\t\tENUMERATED {oDot25, oDot5, oDot75, lDot0},\n\tsf-High\t\t\t\t\t\t\t\tENUMERATED {oDot25, oDot5, oDot75, lDot0}\n}",
+  "digested_asn_definitions": "SpeedStateScaleFactors"
+}

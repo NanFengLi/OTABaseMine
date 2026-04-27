@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "WLAN-Id-List-r13 information element.txt",
+  "content_chunk": "WLAN-Id-List-r13 ::=\t\t\t\tSEQUENCE (SIZE (1..maxWLAN-Id-r13)) OF WLAN-Identifiers-r12",
+  "digested_asn_definitions": "WLAN-Id-List-r13"
+}

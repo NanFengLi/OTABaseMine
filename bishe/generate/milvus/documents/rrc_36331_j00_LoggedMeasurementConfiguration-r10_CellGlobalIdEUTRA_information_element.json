@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "CellGlobalIdEUTRA information element.txt",
+  "content_chunk": "CellGlobalIdEUTRA ::=\t\t\t\t\tSEQUENCE {\n\tplmn-Identity\t\t\t\t\t\t\tPLMN-Identity,\n\tcellIdentity\t\t\t\t\t\t\tCellIdentity\n}",
+  "digested_asn_definitions": "CellGlobalIdEUTRA"
+}

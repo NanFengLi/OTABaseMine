@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasObjectGERAN information element.txt",
+  "content_chunk": "MeasObjectGERAN ::=\t\t\t\t\tSEQUENCE {\n\tcarrierFreqs\t\t\t\t\t\tCarrierFreqsGERAN,\n\toffsetFreq\t\t\t\t\t\t\tQ-OffsetRangeInterRAT\t\tDEFAULT 0,\n\tncc-Permitted\t\t\t\t\t\tBIT STRING(SIZE (8))\t\tDEFAULT '11111111'B,\n\tcellForWhichToReportCGI\t\t\t\tPhysCellIdGERAN\t\t\t\tOPTIONAL,\t-- Need ON\n\t...\n}",
+  "digested_asn_definitions": "MeasObjectGERAN"
+}

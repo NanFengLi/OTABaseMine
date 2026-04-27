@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "TraceReference information element.txt",
+  "content_chunk": "TraceReference-r10 ::=\t\t\tSEQUENCE {\n\tplmn-Identity-r10\t\t\t\tPLMN-Identity,\n\ttraceId-r10\t\t\t\t\t\tOCTET STRING (SIZE (3))\n}",
+  "digested_asn_definitions": "TraceReference-r10"
+}

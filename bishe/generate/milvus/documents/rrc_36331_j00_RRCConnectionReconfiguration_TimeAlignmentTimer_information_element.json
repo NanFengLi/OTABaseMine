@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "TimeAlignmentTimer information element.txt",
+  "content_chunk": "TimeAlignmentTimer ::=\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\t\tsf500, sf750, sf1280, sf1920, sf2560, sf5120,\n\t\t\t\t\t\t\t\t\t\t\t\tsf10240, infinity}",
+  "digested_asn_definitions": "TimeAlignmentTimer"
+}

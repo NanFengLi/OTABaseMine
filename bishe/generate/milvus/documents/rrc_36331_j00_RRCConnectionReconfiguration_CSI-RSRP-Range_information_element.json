@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CSI-RSRP-Range information element.txt",
+  "content_chunk": "CSI-RSRP-Range-r12 ::=\t\t\t\t\t\tINTEGER(0..97)",
+  "digested_asn_definitions": "CSI-RSRP-Range-r12"
+}

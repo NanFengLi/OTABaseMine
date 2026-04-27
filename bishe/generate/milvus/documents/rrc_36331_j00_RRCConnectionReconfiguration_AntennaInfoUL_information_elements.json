@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "AntennaInfoUL information elements.txt",
+  "content_chunk": "AntennaInfoUL-r10 ::=\t\tSEQUENCE {\n\ttransmissionModeUL-r10\t\t\t\tENUMERATED {tm1, tm2, spare6, spare5,\n\t\t\t\t\t\t\t\t\t\t\t\t\tspare4, spare3, spare2, spare1}\tOPTIONAL,\t-- Need OR\n\tfourAntennaPortActivated-r10\t\t\tENUMERATED {setup}\t\t\tOPTIONAL\t\t-- Need OR\n}\n\nAntennaInfoUL-STTI-r15 ::=\tSEQUENCE {\n\ttransmissionModeUL-STTI-r15\t\t\tENUMERATED {tm1, tm2}\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "AntennaInfoUL-r10,AntennaInfoUL-STTI-r15"
+}

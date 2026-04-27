@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "RSRP-RangeNR information element.txt",
+  "content_chunk": "RSRP-RangeNR-r15 ::=\t\t\t\t\t\tINTEGER (0..127)",
+  "digested_asn_definitions": "RSRP-RangeNR-r15"
+}

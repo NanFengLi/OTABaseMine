@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "DMRS-Config information elements.txt",
+  "content_chunk": "DMRS-Config-r11 ::=\t\tCHOICE {\n\trelease\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\tSEQUENCE {\n\t\tscramblingIdentity-r11\t\tINTEGER (0..503),\n\t\tscramblingIdentity2-r11\t\tINTEGER (0..503)\n\t}\n}\nDMRS-Config-v1310 ::=\t\t\tSEQUENCE {\n\t\tdmrs-tableAlt-r13\t\t\t\tENUMERATED {true}\t\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "DMRS-Config-r11,DMRS-Config-v1310"
+}

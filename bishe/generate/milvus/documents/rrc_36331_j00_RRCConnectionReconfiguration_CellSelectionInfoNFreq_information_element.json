@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CellSelectionInfoNFreq information element.txt",
+  "content_chunk": "CellSelectionInfoNFreq-r13 ::=\tSEQUENCE {\n\t-- Cell selection information as in SIB1\n\tq-RxLevMin-r13\t\t\t\t\tQ-RxLevMin,\n\tq-RxLevMinOffset\t\t\t\t\tINTEGER (1..8)\t\t\tOPTIONAL,\t-- Need OP\n\t-- Cell re-selection information as in SIB3\n\tq-Hyst-r13\t\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\tdB0, dB1, dB2, dB3, dB4, dB5, dB6, dB8, dB10,\n\t\t\t\t\t\t\t\t\t\t\tdB12, dB14, dB16, dB18, dB20, dB22, dB24},\n\tq-RxLevMinReselection-r13\t\t\tQ-RxLevMin,\n\tt-ReselectionEUTRA-r13\t\t\t\tT-Reselection\n}",
+  "digested_asn_definitions": "CellSelectionInfoNFreq-r13"
+}

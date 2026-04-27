@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "SSB-ToMeasure information element.txt",
+  "content_chunk": "SSB-ToMeasure-r15 ::=\t\tCHOICE {\n\tshortBitmap-r15\t\t\t\tBIT STRING (SIZE (4)),\n\tmediumBitmap-r15\t\t\t\tBIT STRING (SIZE (8)),\n\tlongBitmap-r15\t\t\t\t\tBIT STRING (SIZE (64))\n}",
+  "digested_asn_definitions": "SSB-ToMeasure-r15"
+}

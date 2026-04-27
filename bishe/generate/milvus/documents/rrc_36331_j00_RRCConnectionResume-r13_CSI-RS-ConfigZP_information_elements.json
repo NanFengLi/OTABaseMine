@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CSI-RS-ConfigZP information elements.txt",
+  "content_chunk": "CSI-RS-ConfigZP-r11 ::=\t\tSEQUENCE {\n\tcsi-RS-ConfigZPId-r11\t\tCSI-RS-ConfigZPId-r11,\n\tresourceConfigList-r11\t\tBIT STRING (SIZE (16)),\n\tsubframeConfig-r11\t\t\tINTEGER (0..154),\n\t...\n}\n\nCSI-RS-ConfigZP-ApList-r14 ::=\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE (SIZE (1.. maxCSI-RS-ZP-r11)) OF CSI-RS-ConfigZP-r11\n}",
+  "digested_asn_definitions": "CSI-RS-ConfigZP-r11,CSI-RS-ConfigZP-ApList-r14"
+}

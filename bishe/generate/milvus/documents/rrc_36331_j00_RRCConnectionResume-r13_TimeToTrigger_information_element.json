@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "TimeToTrigger information element.txt",
+  "content_chunk": "TimeToTrigger ::=\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\tms0, ms40, ms64, ms80, ms100, ms128, ms160, ms256,\n\t\t\t\t\t\t\t\t\t\tms320, ms480, ms512, ms640, ms1024, ms1280, ms2560,\n\t\t\t\t\t\t\t\t\t\tms5120}",
+  "digested_asn_definitions": "TimeToTrigger"
+}

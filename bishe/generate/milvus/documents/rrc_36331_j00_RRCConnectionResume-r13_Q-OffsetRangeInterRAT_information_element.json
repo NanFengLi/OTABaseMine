@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "Q-OffsetRangeInterRAT information element.txt",
+  "content_chunk": "Q-OffsetRangeInterRAT ::=\t\t\t\t\tINTEGER (-15..15)",
+  "digested_asn_definitions": "Q-OffsetRangeInterRAT"
+}

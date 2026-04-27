@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasGapConfig information element.txt",
+  "content_chunk": "MeasGapConfig ::=\t\t\t\t\tCHOICE {\n\trelease\t\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\tgapOffset\t\t\t\t\t\t\tCHOICE {\n\t\t\t\tgp0\t\t\t\t\t\t\t\t\tINTEGER (0..39),\n\t\t\t\tgp1\t\t\t\t\t\t\t\t\tINTEGER (0..79),\n\t\t\t\t\n\t\t\t\t...,\n\t\t\t\tgp2-r14\t\t\t\t\t\t\t\tINTEGER (0..39),\n\t\t\t\tgp3-r14\t\t\t\t\t\t\t\tINTEGER (0..79),\n\t\t\t\tgp-ncsg0-r14\t\t\t\t\t\tINTEGER (0..39),\n\t\t\t\tgp-ncsg1-r14\t\t\t\t\t\tINTEGER (0..79),\n\t\t\t\tgp-ncsg2-r14\t\t\t\t\t\tINTEGER (0..39),\n\t\t\t\tgp-ncsg3-r14\t\t\t\t\t\tINTEGER (0..79),\n\t\t\t\tgp-nonUniform1-r14\t\t\t\t\tINTEGER (0..1279),\n\t\t\t\tgp-nonUniform2-r14\t\t\t\t\tINTEGER (0..2559),\n\t\t\t\tgp-nonUniform3-r14\t\t\t\t\tINTEGER (0..5119),\n\t\t\t\tgp-nonUniform4-r14\t\t\t\t\tINTEGER (0..10239),\n\t\t\t\tgp4-r15\t\t\t\t\t\t\t\tINTEGER (0..19),\n\t\t\t\tgp5-r15\t\t\t\t\t\t\t\tINTEGER (0..159),\n\t\t\t\tgp6-r15\t\t\t\t\t\t\t\tINTEGER (0..19),\n\t\t\t\tgp7-r15\t\t\t\t\t\t\t\tINTEGER (0..39),\n\t\t\t\tgp8-r15\t\t\t\t\t\t\t\tINTEGER (0..79),\n\t\t\t\tgp9-r15\t\t\t\t\t\t\t\tINTEGER (0..159),\n\t\t\t\tgp10-r15\t\t\t\t\t\t\tINTEGER (0..19),\n\t\t\t\tgp11-r15\t\t\t\t\t\t\tINTEGER (0..159)\n\t\t}\n\t}\n}",
+  "digested_asn_definitions": "MeasGapConfig"
+}

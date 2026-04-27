@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-SyncAllowed information element.txt",
+  "content_chunk": "SL-SyncAllowed-r14 ::=\t\tSEQUENCE {\n\tgnss-Sync-r14\t\t\t\t\t\tENUMERATED {true}\t\t\t\tOPTIONAL,\t-- Need OR\n\tenb-Sync-r14\t\t\t\t\t\tENUMERATED {true}\t\t\t\tOPTIONAL,\t-- Need OR\n\tue-Sync-r14\t\t\t\t\t\t\tENUMERATED {true}\t\t\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "SL-SyncAllowed-r14"
+}

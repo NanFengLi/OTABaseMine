@@ -1,0 +1,2 @@
+1
+1,0241282442100283056f8068204c83735a72050f4044007b6a00239f1b434078000afe517c669800,rrcReconfiguration,message,c1,rrcReconfiguration,criticalExtensions,rrcReconfiguration,secondaryCellGroup,*,CellGroupConfig,spCellConfig,reconfigurationWithSync,spCellConfigCommon,uplinkConfigCommon,initialUplinkBWP,rach-ConfigCommon,setup,featureCombinationPreamblesList-r17,__elem__,0,separateMsgA-PUSCH-Config-r17,msgA-PUSCH-ResourceGroupB-r16,interlaceIndexFirstPO-MsgA-PUSCH-r16,INTEGER,1

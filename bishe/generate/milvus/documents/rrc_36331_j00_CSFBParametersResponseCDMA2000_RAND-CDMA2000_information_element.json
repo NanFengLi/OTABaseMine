@@ -1,0 +1,6 @@
+{
+  "message_releated": "CSFBParametersResponseCDMA2000",
+  "block_file": "RAND-CDMA2000 information element.txt",
+  "content_chunk": "RAND-CDMA2000 ::=\t\t\t\t\t\tBIT STRING (SIZE (32))",
+  "digested_asn_definitions": "RAND-CDMA2000"
+}

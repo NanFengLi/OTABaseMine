@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "PhysCellIdRange information element.txt",
+  "content_chunk": "PhysCellIdRange ::=\t\t\t\tSEQUENCE {\n\tstart\t\t\t\t\t\t\tPhysCellId,\n\trange\t\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\tn4, n8, n12, n16, n24, n32, n48, n64, n84,\n\t\t\t\t\t\t\t\t\t\tn96, n128, n168, n252, n504, spare2,\n\t\t\t\t\t\t\t\t\t\tspare1}\t\t\t\t\tOPTIONAL\t-- Need OP\n}",
+  "digested_asn_definitions": "PhysCellIdRange"
+}

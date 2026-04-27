@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "MeasObjectCDMA2000 information element.txt",
+  "content_chunk": "MeasObjectCDMA2000 ::=\t\t\t\tSEQUENCE {\n\tcdma2000-Type\t\t\t\t\t\tCDMA2000-Type,\n\tcarrierFreq\t\t\t\t\t\t\tCarrierFreqCDMA2000,\n\tsearchWindowSize\t\t\t\t\tINTEGER (0..15)\t\t\t\t\t\tOPTIONAL,\t-- Need ON\n\toffsetFreq\t\t\t\t\t\t\tQ-OffsetRangeInterRAT\t\t\t\tDEFAULT 0,\n\tcellsToRemoveList\t\t\t\t\tCellIndexList\t\t\t\t\t\tOPTIONAL,\t-- Need ON\n\tcellsToAddModList\t\t\t\t\tCellsToAddModListCDMA2000\t\t\tOPTIONAL,\t-- Need ON\n\tcellForWhichToReportCGI\t\t\t\tPhysCellIdCDMA2000\t\t\t\t\tOPTIONAL,\t-- Need ON\n\t...\n}\n\nCellsToAddModListCDMA2000 ::=\t\tSEQUENCE (SIZE (1..maxCellMeas)) OF CellsToAddModCDMA2000\n\nCellsToAddModCDMA2000 ::=\tSEQUENCE {\n\tcellIndex\t\t\t\t\t\t\tINTEGER (1..maxCellMeas),\n\tphysCellId\t\t\t\t\t\t\tPhysCellIdCDMA2000\n}",
+  "digested_asn_definitions": "MeasObjectCDMA2000,CellsToAddModListCDMA2000,CellsToAddModCDMA2000"
+}

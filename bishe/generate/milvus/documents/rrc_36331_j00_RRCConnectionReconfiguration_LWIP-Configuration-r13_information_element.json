@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "LWIP-Configuration-r13 information element.txt",
+  "content_chunk": "LWIP-Configuration-r13 ::=\t\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\tlwip-Config-r13\t\t\t\t\tLWIP-Config-r13\n\t}\n}\n\nLWIP-Config-r13 ::=\tSEQUENCE {\n\tlwip-MobilityConfig-r13\t\t\tWLAN-MobilityConfig-r13\t\tOPTIONAL,\t-- Need ON\n\ttunnelConfigLWIP-r13\t\t\tTunnelConfigLWIP-r13\t\tOPTIONAL,\t-- Need ON\n\t...\n}",
+  "digested_asn_definitions": "LWIP-Configuration-r13,LWIP-Config-r13"
+}

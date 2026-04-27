@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "NS-PmaxList information element.txt",
+  "content_chunk": "NS-PmaxList-r10 ::=\t\t\t\tSEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValue-r10\n\nNS-PmaxList-v10l0 ::=\t\t\tSEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValue-v10l0\n\nNS-PmaxListAerial-r18 ::=\t\tSEQUENCE (SIZE (1..maxNS-Pmax-r10)) OF NS-PmaxValueAerial-r18\n\nNS-PmaxValue-r10 ::=\t\t\tSEQUENCE {\n\tadditionalPmax-r10\t\t\t\t\tP-Max\t\t\t\t\t\t\tOPTIONAL,\t-- Need OP\n\tadditionalSpectrumEmission\t\t\tAdditionalSpectrumEmission\n}\n\nNS-PmaxValue-v10l0 ::=\t\t\tSEQUENCE {\n\tadditionalSpectrumEmission-v10l0\tAdditionalSpectrumEmission-v10l0\tOPTIONAL\t-- Need OP\n}\n\nNS-PmaxValueAerial-r18 ::=\t\t\tSEQUENCE {\n\tadditionalPmax-r18\t\t\t\t\tP-Max\t\t\t\t\t\t\t\tOPTIONAL,\t-- Need OP\n\tadditionalSpectrumEmission-r18\t\tAdditionalSpectrumEmission-r18\t\tOPTIONAL\t-- Need OP\n}",
+  "digested_asn_definitions": "NS-PmaxList-r10,NS-PmaxList-v10l0,NS-PmaxListAerial-r18,NS-PmaxValue-r10,NS-PmaxValue-v10l0,NS-PmaxValueAerial-r18"
+}

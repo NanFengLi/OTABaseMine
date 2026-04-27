@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "Hysteresis information element.txt",
+  "content_chunk": "Hysteresis ::=\t\t\t\t\t\t\tINTEGER (0..30)",
+  "digested_asn_definitions": "Hysteresis"
+}

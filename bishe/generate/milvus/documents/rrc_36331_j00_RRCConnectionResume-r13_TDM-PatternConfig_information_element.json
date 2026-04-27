@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "TDM-PatternConfig information element.txt",
+  "content_chunk": "TDM-PatternConfig-r15 ::=\t\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\tsubframeAssignment-r15\t\tSubframeAssignment-r15,\n\t\tharq-Offset-r15\t\t\t\tINTEGER (0..9)\n\t}\n}\n\nSubframeAssignment-r15 ::=\t\tENUMERATED {sa0, sa1, sa2, sa3, sa4, sa5, sa6}",
+  "digested_asn_definitions": "TDM-PatternConfig-r15,SubframeAssignment-r15"
+}

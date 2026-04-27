@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "Alpha information element.txt",
+  "content_chunk": "Alpha-r12 ::= ENUMERATED {al0, al04, al05, al06, al07, al08, al09, al1}",
+  "digested_asn_definitions": "Alpha-r12"
+}

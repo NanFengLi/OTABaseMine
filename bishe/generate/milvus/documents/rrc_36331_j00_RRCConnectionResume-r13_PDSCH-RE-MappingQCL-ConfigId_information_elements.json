@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "PDSCH-RE-MappingQCL-ConfigId information elements.txt",
+  "content_chunk": "PDSCH-RE-MappingQCL-ConfigId-r11 ::=\t\tINTEGER (1..maxRE-MapQCL-r11)",
+  "digested_asn_definitions": "PDSCH-RE-MappingQCL-ConfigId-r11"
+}

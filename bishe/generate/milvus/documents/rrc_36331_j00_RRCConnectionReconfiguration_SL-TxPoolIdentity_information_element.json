@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-TxPoolIdentity information element.txt",
+  "content_chunk": "SL-TxPoolIdentity-r12 ::=\t\t\tINTEGER (1.. maxSL-TxPool-r12)\n\nSL-TxPoolIdentity-v1310 ::=\t\tINTEGER (maxSL-TxPool-r12Plus1-r13.. maxSL-TxPool-r13)\n\nSL-V2X-TxPoolIdentity-r14 ::=\t\tINTEGER (1.. maxSL-V2X-TxPool-r14)",
+  "digested_asn_definitions": "SL-TxPoolIdentity-r12,SL-TxPoolIdentity-v1310,SL-V2X-TxPoolIdentity-r14"
+}

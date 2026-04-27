@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "PhysCellIdRangeUTRA-FDDList information element.txt",
+  "content_chunk": "PhysCellIdRangeUTRA-FDDList-r9::=\t\tSEQUENCE (SIZE (1..maxPhysCellIdRange-r9)) OF PhysCellIdRangeUTRA-FDD-r9\n\nPhysCellIdRangeUTRA-FDD-r9 ::=\t\t\tSEQUENCE {\n\t\tstart-r9\t\t\t\t\t\t\tPhysCellIdUTRA-FDD,\n\t\trange-r9\t\t\t\t\t\t\tINTEGER (2..512)\t\t\t\tOPTIONAL\t-- Need OP\n}",
+  "digested_asn_definitions": "PhysCellIdRangeUTRA-FDDList-r9,PhysCellIdRangeUTRA-FDD-r9"
+}

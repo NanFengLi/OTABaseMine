@@ -1,0 +1,6 @@
+{
+  "message_releated": "SecurityModeCommand",
+  "block_file": "SecurityAlgorithmConfig information element.txt",
+  "content_chunk": "SecurityAlgorithmConfig ::=\t\t\tSEQUENCE {\n\tcipheringAlgorithm\t\t\t\t\tCipheringAlgorithm-r12,\n\tintegrityProtAlgorithm\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\teia0-v920, eia1, eia2, eia3-v1130, spare4, spare3,\n\t\t\t\t\t\t\t\t\t\t\tspare2, spare1, ...}\n}\n\nCipheringAlgorithm-r12 ::=\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\teea0, eea1, eea2, eea3-v1130, spare4, spare3,\n\t\t\t\t\t\t\t\t\t\t\tspare2, spare1, ...}",
+  "digested_asn_definitions": "SecurityAlgorithmConfig,CipheringAlgorithm-r12"
+}

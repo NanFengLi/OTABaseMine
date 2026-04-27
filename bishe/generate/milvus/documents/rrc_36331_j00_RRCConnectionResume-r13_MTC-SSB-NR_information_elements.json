@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MTC-SSB-NR information elements.txt",
+  "content_chunk": "MTC-SSB-NR-r15 ::=\tSEQUENCE {\n\tperiodicityAndOffset-r15\t\tCHOICE {\n\t\tsf5-r15\t\t\t\t\t\tINTEGER (0..4),\n\t\tsf10-r15\t\t\t\t\t\tINTEGER (0..9),\n\t\tsf20-r15\t\t\t\t\t\tINTEGER (0..19),\n\t\tsf40-r15\t\t\t\t\t\tINTEGER (0..39),\n\t\tsf80-r15\t\t\t\t\t\tINTEGER (0..79),\n\t\tsf160-r15\t\t\t\t\tINTEGER (0..159)\n\t},\n\tssb-Duration-r15\t\t\t\t\tENUMERATED {sf1, sf2, sf3, sf4, sf5 }\n}\n\nMTC-SSB2-LP-NR-r16::= SEQUENCE {\n\tpci-List-r16\t\t\tSEQUENCE (SIZE (1..maxNrofPCI-PerSMTC-r16)) OF PhysCellIdNR-r15\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tOPTIONAL,   -- Need OR\n\tperiodicity-r16\t\tENUMERATED {sf10, sf20, sf40, sf80, sf160, spare3, spare2, spare1}\n}",
+  "digested_asn_definitions": "MTC-SSB-NR-r15,MTC-SSB2-LP-NR-r16"
+}

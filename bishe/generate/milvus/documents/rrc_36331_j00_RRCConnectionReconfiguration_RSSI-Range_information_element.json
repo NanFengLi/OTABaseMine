@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "RSSI-Range information element.txt",
+  "content_chunk": "RSSI-Range-r13 ::=\t\t\t\t\t\tINTEGER(0..76)",
+  "digested_asn_definitions": "RSSI-Range-r13"
+}

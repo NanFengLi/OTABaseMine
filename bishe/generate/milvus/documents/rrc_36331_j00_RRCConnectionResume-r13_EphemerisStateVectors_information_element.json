@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "EphemerisStateVectors information element.txt",
+  "content_chunk": "EphemerisStateVectors-r17 ::=\tSEQUENCE {\n\tpositionX-r17\t\t\t\t\tPositionStateVector-r17,\n\tpositionY-r17\t\t\t\t\tPositionStateVector-r17,\n\tpositionZ-r17\t\t\t\t\tPositionStateVector-r17,\n\tvelocityVX-r17\t\t\t\t\tVelocityStateVector-r17,\n\tvelocityVY-r17\t\t\t\t\tVelocityStateVector-r17,\n\tvelocityVZ-r17\t\t\t\t\tVelocityStateVector-r17\n}\n\nPositionStateVector-r17 ::= INTEGER (-33554432..33554431)\n\nVelocityStateVector-r17 ::= INTEGER (-131072..131071)",
+  "digested_asn_definitions": "EphemerisStateVectors-r17,PositionStateVector-r17,VelocityStateVector-r17"
+}

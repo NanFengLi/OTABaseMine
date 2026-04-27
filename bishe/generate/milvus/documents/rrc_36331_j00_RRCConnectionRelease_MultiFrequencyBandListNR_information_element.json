@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "MultiFrequencyBandListNR information element.txt",
+  "content_chunk": "MultiFrequencyBandListNR-r15 ::=\t\tSEQUENCE (SIZE (1.. maxMultiBandsNR-r15)) OF FreqBandIndicatorNR-r15",
+  "digested_asn_definitions": "MultiFrequencyBandListNR-r15"
+}

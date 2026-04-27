@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CSG-Identity information element.txt",
+  "content_chunk": "CSG-Identity ::=\t\t\t\t\tBIT STRING (SIZE (27))",
+  "digested_asn_definitions": "CSG-Identity"
+}

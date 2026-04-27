@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "PhysCellIdGERAN information element.txt",
+  "content_chunk": "PhysCellIdGERAN ::=\t\t\t\tSEQUENCE {\n\tnetworkColourCode\t\t\t\t\tBIT STRING (SIZE (3)),\n\tbaseStationColourCode\t\t\t\tBIT STRING (SIZE (3))\n}",
+  "digested_asn_definitions": "PhysCellIdGERAN"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "UECapabilityEnquiry",
+  "block_file": "RAT-Type information element.txt",
+  "content_chunk": "RAT-Type ::=\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\teutra, utra, geran-cs, geran-ps, cdma2000-1XRTT,\n\t\t\t\t\t\t\t\t\t\tnr, eutra-nr, spare1, ...}",
+  "digested_asn_definitions": "RAT-Type"
+}

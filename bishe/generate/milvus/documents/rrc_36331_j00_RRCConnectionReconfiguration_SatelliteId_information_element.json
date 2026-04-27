@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SatelliteId information element.txt",
+  "content_chunk": "SatelliteId-r18 ::= INTEGER (0..255)",
+  "digested_asn_definitions": "SatelliteId-r18"
+}

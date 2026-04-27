@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-OffsetIndicator information element.txt",
+  "content_chunk": "SL-OffsetIndicator-r12 ::=\t\t\tCHOICE {\n\tsmall-r12\t\t\t\t\t\t\t\tINTEGER (0..319),\n\tlarge-r12\t\t\t\t\t\t\t\tINTEGER (0..10239)\n}\n\nSL-OffsetIndicatorSync-r12 ::=\t\t\tINTEGER (0..39)\n\nSL-OffsetIndicatorSync-v1430 ::=\t\tINTEGER (40..159)\n\nSL-OffsetIndicatorSync-r14 ::=\t\t\tINTEGER (0..159)",
+  "digested_asn_definitions": "SL-OffsetIndicator-r12,SL-OffsetIndicatorSync-r12,SL-OffsetIndicatorSync-v1430,SL-OffsetIndicatorSync-r14"
+}

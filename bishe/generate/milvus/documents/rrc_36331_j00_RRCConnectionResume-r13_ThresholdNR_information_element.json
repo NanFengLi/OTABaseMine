@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "ThresholdNR information element.txt",
+  "content_chunk": "ThresholdNR-r15 ::=\t\t\t\tCHOICE{\n\tnr-RSRP-r15\t\t\t\t\t\t\tRSRP-RangeNR-r15,\n\tnr-RSRQ-r15\t\t\t\t\t\t\tRSRQ-RangeNR-r15,\n\tnr-SINR-r15\t\t\t\t\t\t\tRS-SINR-RangeNR-r15\n}\n\nThresholdListNR-r15 ::=\t\t\t\tSEQUENCE{\n\tnr-RSRP-r15\t\t\t\t\t\t\tRSRP-RangeNR-r15\t\t\t\tOPTIONAL,\t-- Need OR\n\tnr-RSRQ-r15\t\t\t\t\t\t\tRSRQ-RangeNR-r15\t\t\t\tOPTIONAL,\t-- Need OR\n\tnr-SINR-r15\t\t\t\t\t\t\tRS-SINR-RangeNR-r15\t\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "ThresholdNR-r15,ThresholdListNR-r15"
+}

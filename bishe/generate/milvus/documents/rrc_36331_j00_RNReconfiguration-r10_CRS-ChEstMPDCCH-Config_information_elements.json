@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "CRS-ChEstMPDCCH-Config information elements.txt",
+  "content_chunk": "CRS-ChEstMPDCCH-ConfigCommon-r16 ::=\t\tSEQUENCE {\n\tpowerRatio-r16\t\tENUMERATED {dB-4dot77, dB-3, dB-1dot77, dB0, dB1, dB2, dB3, dB4dot77}\n}\n\nCRS-ChEstMPDCCH-ConfigDedicated-r16 ::=\t\tSEQUENCE {\n\tpowerRatio-r16\t\t\t\tENUMERATED {dB-4dot77, dB-3, dB-1dot77, dB0, dB1, dB2, dB3,\n\t\t\t\t\t\t\t\t\t\t\tdB4dot77}\tOPTIONAL, -- Cond setup\n\tlocalizedMappingType-r16\tENUMERATED {predefined, csi-Based, reciprocityBased}\n\t\t\t\t\t\t\t\t\t\t\tDEFAULT\tpredefined\n}",
+  "digested_asn_definitions": "CRS-ChEstMPDCCH-ConfigCommon-r16,CRS-ChEstMPDCCH-ConfigDedicated-r16"
+}

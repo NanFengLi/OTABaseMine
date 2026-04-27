@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "RSRP-Range information element.txt",
+  "content_chunk": "RSRP-Range ::=\t\t\t\t\t\tINTEGER(0..97)\n\nRSRP-Range-v1360 ::=\t\t\t\tINTEGER(-17..-1)\n\nRSRP-RangeSL-r12 ::=\t\t\t\tINTEGER(0..13)\n\nRSRP-RangeSL2-r12 ::=\t\t\t\tINTEGER(0..7)\n\nRSRP-RangeSL3-r12 ::=\t\t\t\tINTEGER(0..11)\n\nRSRP-RangeSL4-r13 ::=\t\t\t\tINTEGER(0..49)",
+  "digested_asn_definitions": "RSRP-Range,RSRP-Range-v1360,RSRP-RangeSL-r12,RSRP-RangeSL2-r12,RSRP-RangeSL3-r12,RSRP-RangeSL4-r13"
+}

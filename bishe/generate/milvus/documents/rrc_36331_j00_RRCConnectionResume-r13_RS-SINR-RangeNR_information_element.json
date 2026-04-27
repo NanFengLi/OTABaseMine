@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "RS-SINR-RangeNR information element.txt",
+  "content_chunk": "RS-SINR-RangeNR-r15 ::=\t\t\t\t\tINTEGER (0..127)",
+  "digested_asn_definitions": "RS-SINR-RangeNR-r15"
+}

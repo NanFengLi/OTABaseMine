@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-CommTxPoolSensingConfig information element.txt",
+  "content_chunk": "SL-CommTxPoolSensingConfig-r14 ::=\t\tSEQUENCE {\n\tpssch-TxConfigList-r14\t\t\t\t\tSL-PSSCH-TxConfigList-r14,\n\tthresPSSCH-RSRP-List-r14\t\t\t\tSL-ThresPSSCH-RSRP-List-r14,\n\trestrictResourceReservationPeriod-r14\tSL-RestrictResourceReservationPeriodList-r14\tOPTIONAL,\t-- Need OR\n\tprobResourceKeep-r14\t\t\t\tENUMERATED {v0, v0dot2, v0dot4, v0dot6, v0dot8,\n\t\t\t\t\t\t\t\t\t\t\t\t\tspare3,spare2, spare1},\n\tp2x-SensingConfig-r14\t\t\t\t\tSEQUENCE {\n\t\tminNumCandidateSF-r14\t\t\t\tINTEGER (1..13),\n\t\tgapCandidateSensing-r14\t\t\t\tBIT STRING (SIZE (10))\n\t}\t\tOPTIONAL,\t-- Need OR\n\tsl-ReselectAfter-r14\t\t\t\tENUMERATED {n1, n2, n3, n4, n5, n6, n7, n8, n9,\n\t\t\t\t\t\t\t\t\t\t\t\tspare7, spare6, spare5, spare4, spare3, spare2,\n\t\t\t\t\t\t\t\t\t\t\t\tspare1}\t\t\t\tOPTIONAL\t\t-- Need OR\n}",
+  "digested_asn_definitions": "SL-CommTxPoolSensingConfig-r14"
+}

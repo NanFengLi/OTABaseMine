@@ -9,7 +9,7 @@ from typing import List, Dict, Tuple, Any
 # From bishe/generate to OTABase root is ../../
 
 try:
-    from pycrate.pycrate_rrc_version import RRCLTE_R17
+    from bishe.generate.pycrate_rrc_version import RRCLTE_R17
     from pycrate.pycrate_asn1rt import *
     from pycrate.pycrate_asn1rt.utils import *
     from pycrate.pycrate_asn1rt.err import *

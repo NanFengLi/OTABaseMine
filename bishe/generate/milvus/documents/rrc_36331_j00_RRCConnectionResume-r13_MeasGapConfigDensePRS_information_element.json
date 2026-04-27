@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasGapConfigDensePRS information element.txt",
+  "content_chunk": "MeasGapConfigDensePRS-r15 ::=\tCHOICE {\n\trelease\t\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\t\tSEQUENCE {\n\t\tgapOffsetDensePRS-r15\t\t\tCHOICE {\n\t\t\trstd0-r15\t\t\t\t\t\tINTEGER (0..79),\n\t\t\trstd1-r15\t\t\t\t\t\tINTEGER (0..159),\n\t\t\trstd2-r15\t\t\t\t\t\tINTEGER (0..319),\n\t\t\trstd3-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd4-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd5-r15\t\t\t\t\t\tINTEGER (0..159),\n\t\t\trstd6-r15\t\t\t\t\t\tINTEGER (0..319),\n\t\t\trstd7-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd8-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd9-r15\t\t\t\t\t\tINTEGER (0..319),\n\t\t\trstd10-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd11-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd12-r15\t\t\t\t\t\tINTEGER (0..319),\n\t\t\trstd13-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd14-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd15-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd16-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd17-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd18-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\trstd19-r15\t\t\t\t\t\tINTEGER (0..639),\n\t\t\trstd20-r15\t\t\t\t\t\tINTEGER (0..1279),\n\t\t\t...\n\t\t}\n\t}\n}",
+  "digested_asn_definitions": "MeasGapConfigDensePRS-r15"
+}

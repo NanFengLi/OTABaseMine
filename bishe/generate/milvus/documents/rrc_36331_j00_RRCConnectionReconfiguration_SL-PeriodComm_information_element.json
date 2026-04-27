@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-PeriodComm information element.txt",
+  "content_chunk": "SL-PeriodComm-r12 ::=\t\t\t\t\tENUMERATED {sf40, sf60, sf70, sf80, sf120, sf140,\n\t\t\t\t\t\t\t\t\t\t\t\tsf160, sf240, sf280, sf320, spare6, spare5,\n\t\t\t\t\t\t\t\t\t\t\t\tspare4, spare3, spare2, spare}",
+  "digested_asn_definitions": "SL-PeriodComm-r12"
+}

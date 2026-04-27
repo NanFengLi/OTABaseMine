@@ -1,0 +1,6 @@
+{
+  "message_releated": "MobilityFromEUTRACommand",
+  "block_file": "CarrierFreqGERAN information element.txt",
+  "content_chunk": "CarrierFreqGERAN ::=\t\t\tSEQUENCE {\n\tarfcn\t\t\t\t\t\t\tARFCN-ValueGERAN,\n\tbandIndicator\t\t\t\t\tBandIndicatorGERAN\n}",
+  "digested_asn_definitions": "CarrierFreqGERAN"
+}

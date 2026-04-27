@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "UL-DelayValueConfig information element.txt",
+  "content_chunk": "UL-DelayValueConfig-r16 ::=\t\t\tCHOICE {\n\t\trelease\t\t\t\t\t\t\t\tNULL,\n\t\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\t\tdelay-DRBlist-r16\t\t\t\t\t\tSEQUENCE (SIZE(1..maxDRB)) OF DRB-Identity\n\t\t}\n}",
+  "digested_asn_definitions": "UL-DelayValueConfig-r16"
+}

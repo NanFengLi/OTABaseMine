@@ -111,7 +111,8 @@ cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) gnb
 # 启动
 sudo ./apps/gnb/gnb \
     -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
-    -c ../configs/otabase_fuzzing.yml
+    -c ../configs/otabase_fuzzing.yml \
+    cu_cp security --nea_pref_list=nea2,nea1,nea3,nea0
 ```
 
 #### 4G 注入（srsRAN 4G eNB）

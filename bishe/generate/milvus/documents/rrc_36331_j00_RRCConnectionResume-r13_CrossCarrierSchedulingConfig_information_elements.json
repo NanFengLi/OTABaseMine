@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "CrossCarrierSchedulingConfig information elements.txt",
+  "content_chunk": "CrossCarrierSchedulingConfig-r10 ::=\t\tSEQUENCE {\n\tschedulingCellInfo-r10\t\t\t\tCHOICE {\n\t\town-r10\t\t\t\t\t\t\t\tSEQUENCE {\t\t\t\t\t-- No cross carrier scheduling\n\t\t\tcif-Presence-r10\t\t\t\t\t\tBOOLEAN\n\t\t},\n\t\tother-r10\t\t\t\t\t\t\t\tSEQUENCE {\t\t\t\t\t-- Cross carrier scheduling\n\t\t\tschedulingCellId-r10\t\t\t\tServCellIndex-r10,\n\t\t\tpdsch-Start-r10\t\t\t\t\t\tINTEGER (1..4)\n\t\t}\n\t}\n}\n\nCrossCarrierSchedulingConfig-r13 ::=\t\tSEQUENCE {\n\tschedulingCellInfo-r13\t\t\t\tCHOICE {\n\t\town-r13\t\t\t\t\t\t\t\tSEQUENCE {\t\t\t\t\t-- No cross carrier scheduling\n\t\t\tcif-Presence-r13\t\t\t\t\t\tBOOLEAN\n\t\t},\n\t\tother-r13\t\t\t\t\t\t\tSEQUENCE {\t\t\t\t\t-- Cross carrier scheduling\n\t\t\tschedulingCellId-r13\t\t\t\tServCellIndex-r13,\n\t\t\tpdsch-Start-r13\t\t\t\t\t\tINTEGER (1..4),\n\t\t\tcif-InSchedulingCell-r13\t\t\t\tINTEGER (1..7)\n\t\t}\n\t}\n}\n\nCrossCarrierSchedulingConfigLAA-UL-r14 ::=\t\tSEQUENCE {\n\tschedulingCellId-r14\t\t\t\t\t\t\tServCellIndex-r13,\n\tcif-InSchedulingCell-r14\t\t\t\t\t\tINTEGER (1..7)\n}",
+  "digested_asn_definitions": "CrossCarrierSchedulingConfig-r10,CrossCarrierSchedulingConfig-r13,CrossCarrierSchedulingConfigLAA-UL-r14"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "SL-V2X-FreqSelectionConfigList information element.txt",
+  "content_chunk": "SL-V2X-FreqSelectionConfigList-r15 ::=\tSEQUENCE (SIZE (1..8)) OF SL-V2X-FreqSelectionConfig-r15\n\nSL-V2X-FreqSelectionConfig-r15 ::=\t\t\t\tSEQUENCE {\n\tpriorityList-r15\t\t\t\t\tSL-PriorityList-r13,\n\tthreshCBR-FreqReselection-r15\t\tSL-CBR-r14\t\t\tOPTIONAL,\t-- Need OR\n\tthreshCBR-FreqKeeping-r15\t\t\tSL-CBR-r14\t\t\tOPTIONAL\t-- Need OR\n}",
+  "digested_asn_definitions": "SL-V2X-FreqSelectionConfigList-r15,SL-V2X-FreqSelectionConfig-r15"
+}

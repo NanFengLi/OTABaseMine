@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "PreRegistrationInfoHRPD information element.txt",
+  "content_chunk": "PreRegistrationInfoHRPD ::=\t\t\tSEQUENCE {\n\tpreRegistrationAllowed\t\t\t\tBOOLEAN,\n\tpreRegistrationZoneId\t\t\t\tPreRegistrationZoneIdHRPD\tOPTIONAL, -- cond PreRegAllowed\n\tsecondaryPreRegistrationZoneIdList\tSecondaryPreRegistrationZoneIdListHRPD\tOPTIONAL -- Need OR\n}\n\nSecondaryPreRegistrationZoneIdListHRPD ::=\tSEQUENCE (SIZE (1..2)) OF PreRegistrationZoneIdHRPD\n\nPreRegistrationZoneIdHRPD ::=\t\t\tINTEGER (0..255)",
+  "digested_asn_definitions": "PreRegistrationInfoHRPD,SecondaryPreRegistrationZoneIdListHRPD,PreRegistrationZoneIdHRPD"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "SecurityModeCommand",
+  "block_file": "SecurityModeCommand message.txt",
+  "content_chunk": "SecurityModeCommand ::=\t\t\t\tSEQUENCE {\n\trrc-TransactionIdentifier\t\t\tRRC-TransactionIdentifier,\n\tcriticalExtensions\t\t\t\t\tCHOICE {\n\t\tc1\t\t\t\t\t\t\t\t\tCHOICE{\n\t\t\tsecurityModeCommand-r8\t\t\t\tSecurityModeCommand-r8-IEs,\n\t\t\tspare3 NULL, spare2 NULL, spare1 NULL\n\t\t},\n\t\tcriticalExtensionsFuture\t\t\tSEQUENCE {}\n\t}\n}\n\nSecurityModeCommand-r8-IEs ::=\t\tSEQUENCE {\n\tsecurityConfigSMC\t\t\t\t\tSecurityConfigSMC,\n\tnonCriticalExtension\t\t\t\tSecurityModeCommand-v8a0-IEs\t\tOPTIONAL\n}\n\nSecurityModeCommand-v8a0-IEs ::= SEQUENCE {\n\tlateNonCriticalExtension\t\t\tOCTET STRING\t\t\t\t\t\tOPTIONAL,\n\tnonCriticalExtension\t\t\t\tSEQUENCE {}\t\t\t\t\t\t\tOPTIONAL\n}\n\nSecurityConfigSMC ::=\t\t\t\t\tSEQUENCE {\n\tsecurityAlgorithmConfig\t\t\t\t\tSecurityAlgorithmConfig,\n\t...\n}",
+  "digested_asn_definitions": "SecurityModeCommand,SecurityModeCommand-r8-IEs,SecurityModeCommand-v8a0-IEs,SecurityConfigSMC"
+}

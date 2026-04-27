@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "WLAN-NameList information element.txt",
+  "content_chunk": "WLAN-NameListConfig-r15 ::=\t\tCHOICE{\n\trelease\t\t\t\t\t\tNULL,\n\tsetup\t\t\t\t\t\tWLAN-NameList-r15\n}\n\nWLAN-NameList-r15 ::=\t\t\tSEQUENCE (SIZE (1..maxWLAN-Name-r15)) OF WLAN-Name-r15\n\nWLAN-Name-r15 ::=\t\tOCTET STRING (SIZE (1..32))",
+  "digested_asn_definitions": "WLAN-NameListConfig-r15,WLAN-NameList-r15,WLAN-Name-r15"
+}

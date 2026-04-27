@@ -1,0 +1,6 @@
+{
+  "message_releated": "RNReconfiguration-r10",
+  "block_file": "WUS-Config information element.txt",
+  "content_chunk": "WUS-Config-r15 ::=\t\t\t\tSEQUENCE {\n\tmaxDurationFactor-r15\t\t\t\t\tENUMERATED {one32th, one16th, one8th, one4th},\n\tnumPOs-r15\t\t\t\t\t\tENUMERATED {n1, n2, n4, spare1}\t\tDEFAULT n1,\n\tfreqLocation-r15\t\t\t\t\tENUMERATED {n0, n2, n4, spare1},\n\ttimeOffsetDRX-r15\t\t\t\tENUMERATED {ms40, ms80, ms160, ms240},\n\ttimeOffset-eDRX-Short-r15\t\tENUMERATED {ms40, ms80, ms160, ms240},\n\ttimeOffset-eDRX-Long-r15\t\tENUMERATED {ms1000, ms2000}\t\tOPTIONAL\t-- Need OP\n}\n\nWUS-Config-v1560 ::=\t\t\tSEQUENCE {\n\tpowerBoost-r15\t\t\t\t\tENUMERATED {dB0, dB1dot8, dB3, dB4dot8}\n}\n\nWUS-Config-v1610 ::=\t\t\tSEQUENCE {\n\tnumDRX-CyclesRelaxed-r16\t\tENUMERATED {n1, n2, n4, n8}\n}",
+  "digested_asn_definitions": "WUS-Config-r15,WUS-Config-v1560,WUS-Config-v1610"
+}

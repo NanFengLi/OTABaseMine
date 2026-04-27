@@ -1,0 +1,6 @@
+{
+  "message_releated": "CSFBParametersResponseCDMA2000",
+  "block_file": "MobilityParametersCDMA2000 information element.txt",
+  "content_chunk": "MobilityParametersCDMA2000 ::=\t\t\tOCTET STRING",
+  "digested_asn_definitions": "MobilityParametersCDMA2000"
+}

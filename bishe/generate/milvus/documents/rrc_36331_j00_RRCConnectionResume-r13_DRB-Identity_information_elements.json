@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "DRB-Identity information elements.txt",
+  "content_chunk": "DRB-Identity ::=\t\t\t\t\tINTEGER (1..32)",
+  "digested_asn_definitions": "DRB-Identity"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "NeighCellConfig information element.txt",
+  "content_chunk": "NeighCellConfig ::=\t\t\tBIT STRING (SIZE (2))",
+  "digested_asn_definitions": "NeighCellConfig"
+}

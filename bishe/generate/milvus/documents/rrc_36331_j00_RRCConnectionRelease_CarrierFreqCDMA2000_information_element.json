@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionRelease",
+  "block_file": "CarrierFreqCDMA2000 information element.txt",
+  "content_chunk": "CarrierFreqCDMA2000 ::=\t\t\tSEQUENCE {\n\tbandClass\t\t\t\t\t\t\tBandclassCDMA2000,\n\tarfcn\t\t\t\t\t\t\tARFCN-ValueCDMA2000\n}",
+  "digested_asn_definitions": "CarrierFreqCDMA2000"
+}

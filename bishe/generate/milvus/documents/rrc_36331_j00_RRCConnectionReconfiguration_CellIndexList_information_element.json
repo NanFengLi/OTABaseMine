@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "CellIndexList information element.txt",
+  "content_chunk": "CellIndexList ::=\t\t\t\t\t\tSEQUENCE (SIZE (1..maxCellMeas)) OF CellIndex\n\nCellIndex ::=\t\t\t\t\t\t\tINTEGER (1..maxCellMeas)",
+  "digested_asn_definitions": "CellIndexList,CellIndex"
+}

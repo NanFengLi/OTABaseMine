@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "MeasId information element.txt",
+  "content_chunk": "MeasId ::=\t\t\t\t\t\t\tINTEGER (1..maxMeasId)\n\nMeasId-v1250 ::=\t\t\t\t\tINTEGER (maxMeasId-Plus1..maxMeasId-r12)",
+  "digested_asn_definitions": "MeasId,MeasId-v1250"
+}

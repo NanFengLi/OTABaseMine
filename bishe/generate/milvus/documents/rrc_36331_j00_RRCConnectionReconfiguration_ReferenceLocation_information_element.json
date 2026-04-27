@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "ReferenceLocation information element.txt",
+  "content_chunk": "ReferenceLocation-r18 ::=\t\tOCTET STRING",
+  "digested_asn_definitions": "ReferenceLocation-r18"
+}

@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionReconfiguration",
+  "block_file": "FreqBandIndicatorNR information element.txt",
+  "content_chunk": "FreqBandIndicatorNR-r15 ::=\t\t\tINTEGER (1.. maxFBI-NR-r15)",
+  "digested_asn_definitions": "FreqBandIndicatorNR-r15"
+}

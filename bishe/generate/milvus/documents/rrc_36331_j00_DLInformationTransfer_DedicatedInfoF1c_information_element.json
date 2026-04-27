@@ -1,0 +1,6 @@
+{
+  "message_releated": "DLInformationTransfer",
+  "block_file": "DedicatedInfoF1c information element.txt",
+  "content_chunk": "DedicatedInfoF1c-r16 ::=\t\tOCTET STRING",
+  "digested_asn_definitions": "DedicatedInfoF1c-r16"
+}

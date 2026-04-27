@@ -1,0 +1,6 @@
+{
+  "message_releated": "LoggedMeasurementConfiguration-r10",
+  "block_file": "LoggingDuration information element.txt",
+  "content_chunk": "LoggingDuration-r10 ::=\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\tmin10, min20, min40, min60, min90, min120, spare2, spare1}",
+  "digested_asn_definitions": "LoggingDuration-r10"
+}

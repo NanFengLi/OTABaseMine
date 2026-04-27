@@ -1,0 +1,6 @@
+{
+  "message_releated": "RRCConnectionResume-r13",
+  "block_file": "UL-DelayConfig information element.txt",
+  "content_chunk": "UL-DelayConfig-r13 ::=\t\t\t\t\tCHOICE {\n\t\trelease\t\t\t\t\t\t\t\tNULL,\n\t\tsetup\t\t\t\t\t\t\t\tSEQUENCE {\n\t\t\tdelayThreshold-r13\t\t\t\t\t\t\tENUMERATED {\n\t\t\t\t\t\t\t\t\t\t\t\tms30, ms40, ms50, ms60, ms70, ms80,\n\t\t\t\t\t\t\t\t\t\t\t\tms90,ms100, ms150, ms300, ms500, ms750, spare4,\n\t\t\t\t\t\t\t\t\t\t\t\tspare3, spare2, spare1}\n\t\t}\n}",
+  "digested_asn_definitions": "UL-DelayConfig-r13"
+}
