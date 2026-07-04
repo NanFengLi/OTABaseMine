@@ -1,245 +1,505 @@
 # OTABaseMine
 
-基于 [OTABase](https://github.com/OTABase/OTABase) 的 4G LTE / 5G NR RRC 协议模糊测试框架。本项目实现了 **合法 RRC 消息生成 → 比特流级字段变异 → OTA 空口注入** 的完整 fuzzing 流水线，支持 4G LTE（srsRAN 4G）和 5G NR（srsRAN Project）两套协议栈。
+本仓库围绕 RRC fuzzing 做了三件事：
 
-## 项目架构
+1. 生成 4G LTE / 5G NR 的合法 RRC DL-DCCH payload。
+2. 对合法 payload 做 UPER 比特流级字段变异。
+3. 将 payload 注入到两个空口执行框架中：
+   - `artifact/otabase`：4G LTE，基于 OTABase / srsRAN 4G。
+   - `artifact/srsRAN_Project`：5G NR，基于 srsRAN Project 修改。
 
-```
+本文档只关注 RRC 相关内容。NAS、IP、PDCP 等方向不在这里展开。
+
+## 与上游 OTABase 的关系
+
+上游 [OTABase/OTABase](https://github.com/OTABase/OTABase) 将 OTABase 描述为一个 over-the-air LTE baseband testing framework，核心包括三类能力：
+
+- network-side state control；
+- specification-guided test case generation；
+- crash detection oracle。
+
+上游项目目标是 LTE commercial baseband 的 RRC/NAS memory crash 检测，并把 `artifact/otabase/` 作为执行框架，把 `artifact/test-case-generator/` 作为测试用例生成器。
+
+本仓库和上游的主要不同点：
+
+- 保留并使用 `artifact/otabase` 作为 4G RRC 空口执行参考。
+- 另引入 `artifact/srsRAN_Project`，尝试把 OTABase 风格的 RRC fuzzing 移植到 5G NR gNB。
+- 将生成器整理到 `bishe/generate_new`，支持 4G LTE 和 5G NR 合法 RRC payload 生成。
+- 将字段变异整理到 `bishe/mutated`，目前主要复现 BASE 类字段变异策略。
+
+因此，本仓库不是上游 OTABase 的简单镜像；它的研究重点是：**以 4G OTABase 的 RRC fuzzing 行为为基准，让 5G srsRAN Project 尽量实现同等能力。**
+
+## 目录结构
+
+```text
 OTABaseMine/
 ├── bishe/
-│   ├── generate_new/          # 合法 RRC 消息生成器（4G / 5G）
-│   │   ├── main.py            #   命令行入口
-│   │   ├── rrc_generator.py   #   核心 ASN.1 递归生成器
-│   │   ├── rrc_batch_generator.py  # 批量生成 + 消息精简
-│   │   ├── path_trie.py       #   SQLite 持久化前缀树（断点续传）
-│   │   ├── output_4g/         #   4G 合法 payload + coverage.db
-│   │   └── output_5g/         #   5G 合法 payload + coverage.db
-│   ├── mutated/               # 比特流级变异引擎
-│   │   ├── tools/             #   四种字段类型变异工具（4G + 5G）
-│   │   ├── langchain_agent_4g_mutator.py  # 4G 批量变异入口
-│   │   ├── langchain_agent_5g_mutator.py  # 5G 批量变异入口
-│   │   ├── mutate_output_4g/  #   4G 变异结果输出
-│   │   └── mutate_output_5g/  #   5G 变异结果输出
-│   └── pycrate_asn1obj/       # pycrate ASN.1 协议定义加载
+│   ├── generate_new/      # 4G/5G RRC 合法 payload 生成
+│   └── mutated/           # RRC payload 字段变异
 ├── artifact/
-│   ├── srsRAN_Project/        # 5G gNB（基于 srsRAN Project 修改）
-│   └── otabase/               # 4G eNB/EPC（基于 srsRAN 4G 修改）
-└── pycrate/                   # pycrate 库（本地副本）
+│   ├── otabase/           # 4G OTABase / srsRAN 4G 执行框架
+│   └── srsRAN_Project/    # 5G srsRAN Project 执行框架
+└── pycrate/               # 本地 pycrate 副本
 ```
 
-## 快速开始
+## Payload 生成与变异
 
-### 环境准备
-
-```bash
-# 激活 conda 环境
-conda activate bishe
-
-# 进入项目根目录
-cd /path/to/OTABaseMine
-```
-
-### Step 1：生成合法 RRC 消息
+### 生成合法 RRC payload
 
 ```bash
-# 4G LTE：生成覆盖所有字段类型的合法 payload
+# 4G LTE
 python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
 
-# 5G NR：生成覆盖所有字段类型的合法 payload
+# 5G NR
 python -m bishe.generate_new.main --rat 5g -f OCTET_STRING BIT_STRING INTEGER SEQOF
-
-# 中断后再次运行相同命令，自动从断点续传（基于 SQLite 前缀树持久化）
-python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF
-
-# 强制从头开始（删除旧的前缀树数据库 coverage.db）
-python -m bishe.generate_new.main -f OCTET_STRING BIT_STRING INTEGER SEQOF --clean
-
-# 其他可选参数
-#   --max-lines 2000    每个文件最多行数（默认 2000，超出自动分文件）
-#   -s 42               随机种子
-#   -c 2                递归循环深度
 ```
 
-路径去重使用 SQLite 持久化前缀树（`coverage.db`），进程中断后重新运行相同命令会自动跳过已覆盖路径继续生成。
+生成器输出：
 
-输出目录：
-- 4G → `bishe/generate_new/output_4g/`
-- 5G → `bishe/generate_new/output_5g/`
+- 4G：`bishe/generate_new/output_4g/`
+- 5G：`bishe/generate_new/output_5g/`
 
-每个目录下生成：
-- `rrc_legitimate_payloads_<timestamp>.txt`（按 2000 行自动分文件）
-- `testFileIndex`（指向第一个 payload 文件，供 eNB/gNB 读取）
-- `coverage.db`（SQLite 前缀树数据库，用于断点续传）
+典型文件：
 
-### Step 2：批量变异
+- `rrc_legitimate_payloads_<timestamp>.txt`
+- `testFileIndex`
+- `coverage.db`
+
+payload 文件格式：
+
+```text
+<total_count>
+<id>,<hex_payload>,<message_type>,<field_path>
+```
+
+### 批量变异
 
 ```bash
-# 4G 批量变异（读取 output_4g → 输出到 mutate_output_4g）
+# 4G
 python -m bishe.mutated.langchain_agent_4g_mutator --batch
 
-# 5G 批量变异（读取 output_5g → 输出到 mutate_output_5g）
+# 5G
 python -m bishe.mutated.langchain_agent_5g_mutator --batch
-
-# 可选参数
-#   --limit N              每个文件最多处理 N 行
-#   --max-strategies N     无约束 OCTET STRING / BIT STRING 每条消息随机挑选 N 种策略（默认全部）
-#   --inspect-only         仅识别字段类型，不执行变异
 ```
 
-变异流程：对每条合法 payload，自动识别字段类型（INTEGER / OCTET STRING / BIT STRING / SEQUENCE OF），调用对应的 BASE 策略变异工具，在 UPER 比特流层面直接替换字段值，绕过 pycrate 约束校验。
+变异输出格式：
 
-输出文件格式：
+```text
+<total_count>
+<id>,<mutated_hex>,<message_type>,<field_path>,<field_type>,<strategy_id>
 ```
-<总条数>
-<序号>,<变异后hex>,<消息类型>,<字段路径>,<字段类型>,<变异策略编号>
+
+当前变异工具覆盖：
+
+| 字段类型 | 当前实现 |
+|---|---|
+| INTEGER | 比特冗余/边界溢出类变异 |
+| OCTET STRING | 受约束/无约束长度与内容不一致变异 |
+| BIT STRING | 受约束/无约束比特长度与内容变异 |
+| SEQUENCE OF | 长度头变异 |
+
+注意：当前变异侧主要实现 BASE 类策略；上游 OTABase README 中提到的 TRUNCATE、ADD 等策略不应默认认为已经完整移植到本仓库变异工具。
+
+## 4G RRC 执行框架：artifact/otabase
+
+4G 侧是当前最完整的参考实现。RRC fuzzing 相关源码集中在：
+
+- `artifact/otabase/srsenb/src/stack/rrc/rrc.cc`
+- `artifact/otabase/srsenb/src/stack/rrc/rrc_ue.cc`
+- `artifact/otabase/srsenb/hdr/stack/rrc/rrc.h`
+- `artifact/otabase/srsenb/src/stack/upper/rlc.cc`
+
+### 4G 的发送驱动
+
+4G 通过 RLC ACK 触发下一条测试消息：
+
+```text
+fuzzed RRC DL-DCCH
+  -> PDCP/RLC/MAC/PHY
+  -> UE 收到 RLC PDU
+  -> eNB RLC 收到 ACK
+  -> rrc::send_next_test_msg()
+  -> send_rrc_test_message() 或 send_rrc_test_message_backtracking()
 ```
 
-### Step 3：OTA 空口注入
+关键函数：
 
-#### 5G 注入（srsRAN Project gNB）
+- `rrc::send_next_test_msg()`：收到 ACK 后决定发送普通测试消息或 backtracking 消息。
+- `rrc::ue::send_rrc_test_message()`：正常读取并发送下一条 RRC payload。
+- `rrc::ue::send_rrc_test_message_backtracking()`：从最近消息队列倒序回放候选。
+
+### 4G 的 payload 读取和断点续跑
+
+4G 固定读取当前工作目录下的 `testFileIndex`。
+
+`testFileIndex` 支持两种形态：
+
+```text
+rrcTest1
+rrcTest1,curLineNum,totalLineNum
+```
+
+`rrc::get_test_msg_from_file()` 会：
+
+- 打开 `testFileIndex` 指定的 payload 文件；
+- 读取第一行总数；
+- 逐行读取 `<id>,<hex>,<message>,<field>`；
+- 每发送一条后回写 `testFileIndex`；
+- 文件结束后通过文件名数字递增切到下一个文件。
+
+4G 每次读取到 payload 后会把：
+
+```text
+payload,msgName,fieldName
+```
+
+放入 `test_message_queue`，用于后续 backtracking。
+
+### 4G 的 RRC oracle
+
+4G 每隔 `check_period` 条消息发送 `UECapabilityEnquiry` 作为 RRC 存活探测。
+
+```text
+UE 回复 UECapabilityInformation -> 认为 UE 存活，继续发送
+UE 未回复，oracle timer 超时 -> 重试
+超过重试次数 -> 进入 backtracking
+```
+
+关键函数：
+
+- `rrc::ue::send_ue_cap_enquiry()`
+- `rrc::set_rrc_oracle_timer()`
+- `rrc::rrc_oracle_timer_expired()`
+- `rrc::ue::notify_rrc_oracle()`
+
+### 4G 的 RLC Max Retx crash 信号
+
+4G RLC Max Retx 通过同进程回调直接进入 RRC：
+
+```text
+RLC max retx
+  -> rrc::max_retx_attempted(rnti)
+  -> ue->notify_ack_timeout()
+  -> ue->max_rlc_retx_reached()
+```
+
+如果此时处于 backtracking，4G 会将当前 backtracking payload 记录为 crash candidate。
+
+### 4G 的 crash 记录
+
+4G crash 记录在 `rrc::save_recent_messages()` 中完成，输出目录来自 `-o` 参数。
+
+输出文件：
+
+```text
+<output_dir>/candidate_list.txt
+<output_dir>/crashes/crash_count.txt
+<output_dir>/crashes/crash_N/candidates.json
+```
+
+`candidate_list.txt` 格式：
+
+```text
+testFileName,candidate_line
+```
+
+其中 `candidate_line` 由：
+
+```cpp
+curLineNum - backtracking_num
+```
+
+计算得到。
+
+### 4G 的关键特点
+
+4G 的 OTABase RRC 状态主要保存在父级 `rrc` 对象中，包括：
+
+- `is_backtracking`
+- `backtracking_num`
+- `backtracking_msg`
+- `test_message_queue`
+- `blacklistMsgField`
+- `crashCounter`
+- payload 文件读取状态
+
+这很重要：UE 掉线或重连时，父级 `rrc` 对象仍然存在，因此 backtracking 状态和最近消息队列不容易丢失。
+
+## 5G RRC 执行框架：artifact/srsRAN_Project
+
+5G 侧在 srsRAN Project 的 CU-CP/RRC 位置加入了 OTABase 风格逻辑。主要源码：
+
+- `artifact/srsRAN_Project/lib/rrc/ue/rrc_ue_message_senders.cpp`
+- `artifact/srsRAN_Project/lib/rrc/ue/rrc_ue_message_handlers.cpp`
+- `artifact/srsRAN_Project/lib/rrc/ue/rrc_ue_impl.h`
+- `artifact/srsRAN_Project/lib/cu_cp/du_processor/du_processor_impl.cpp`
+- `artifact/srsRAN_Project/lib/cu_cp/cu_cp_impl.cpp`
+- `artifact/srsRAN_Project/lib/du/du_high/du_manager/du_ue/du_ue_adapters.cpp`
+
+### 5G 配置入口
+
+5G 使用 `cu_cp.rrc` 下的 OTABase 配置：
+
+```yaml
+cu_cp:
+  rrc:
+    otabase_enable_5g_rrc_fuzzing: true
+    otabase_test_index_file: /absolute/path/to/testFileIndex
+    otabase_check_period: 10
+    otabase_replay_mode: false
+    otabase_output_directory: /absolute/path/to/otabase_crashes
+    otabase_temp_blacklist: true
+    otabase_pacing_ms: 5
+    otabase_inject_after_auth_only: false
+```
+
+配置链路：
+
+```text
+YAML / CLI
+  -> cu_cp_unit_config
+  -> cu_cp_config_translators.cpp
+  -> cu_cp_configuration.rrc
+  -> du_processor_impl.cpp create_rrc_config()
+  -> rrc_du_impl.cpp
+  -> rrc_ue_cfg_t
+  -> rrc_ue_impl
+```
+
+### 5G 的注入触发点
+
+5G 在 UL DCCH handler 里触发下一条测试消息：
+
+- `rrc_setup_complete`
+- `security_mode_complete`
+- `ue_cap_info`
+- `rrc_recfg_complete`
+- `rrc_reest_complete`
+
+如果 `otabase_inject_after_auth_only=false`，从 `rrc_setup_complete` 后开始注入；如果为 `true`，跳过认证前阶段，从 `security_mode_complete` 后开始注入。
+
+5G 发送前有硬条件：
+
+```cpp
+context.cfg.otabase_enable_5g_rrc_fuzzing == true
+context.state == rrc_state::connected
+```
+
+也就是说，当前实现只在 RRC CONNECTED 状态发送 DL-DCCH fuzz payload。
+
+### 5G 的 RRC 状态
+
+5G RRC 状态枚举为：
+
+```cpp
+enum class rrc_state { idle = 0, connected, connected_inactive };
+```
+
+当前 fuzzing 只支持 `connected`。这不是 bug，而是因为当前 payload 是 DL-DCCH，需要 SRB1/PDCP 发送路径。`idle` 或 `connected_inactive` 不应按同一方式直接发送 DL-DCCH fuzz payload。
+
+### 5G 的发送驱动
+
+5G 当前有两类驱动：
+
+1. UL RRC 消息触发：例如 `security_mode_complete`、`ue_cap_info`。
+2. RLC ACK / pacing timer 触发：
+   - DU 侧 RLC 收到 status/control PDU 后通过 `rlc_ack_du_adapter` 回调；
+   - `gnb.cpp` 将 DU 的 `rlc_ack_to_cu_notifier` 接到 CU-CP；
+   - `cu_cp_impl::on_rlc_ack_received()` 找到 UE 后调用 `rrc_ue->handle_rlc_ack()`；
+   - `rrc_ue_impl::handle_rlc_ack()` 调用 `maybe_send_next_otabase_rrc_message("rlc_ack")`；
+   - 同时，`otabase_pacing_ms` 提供定时器兜底。
+
+因此，当前 5G 代码已经尝试补齐 4G 的 ACK 驱动节奏；这部分不能简单说“5G 只能靠 timer”。
+
+### 5G 的 payload 读取
+
+5G 从 `context.cfg.otabase_test_index_file` 读取 `testFileIndex`，支持绝对路径和相对路径。相对 payload 文件会按 `testFileIndex` 所在目录解析。
+
+每发送一条后，5G 会回写：
+
+```text
+payload_file,curLineNum,totalLineNum
+```
+
+并将：
+
+```text
+payload,msgName,fieldName
+```
+
+放入 `otabase_test_msg_queue`。
+
+### 5G 的 oracle 和 backtracking
+
+5G 同样使用 `UECapabilityEnquiry` 作为 RRC liveness oracle：
+
+- `send_ue_cap_enquiry_oracle()`
+- `set_otabase_oracle_timer()`
+- `otabase_oracle_timer_expired()`
+- `notify_rrc_oracle()`
+
+超过重试次数后进入 backtracking：
+
+- `otabase_is_backtracking = true`
+- `send_rrc_test_message_backtracking()`
+- 最近消息队列倒序回放
+- backtracking 中再次 oracle failure 时保存 refined candidate
+
+当前 5G 还做了一个 preliminary save：第一次进入 backtracking 时就把最近一条消息作为 best guess 写盘，避免 UE context 很快销毁导致完全没有记录。
+
+### 5G 的 RLC Max Retx 路径
+
+5G RLC 在 DU 侧，RRC UE 在 CU-CP 侧。因此 RLC Max Retx 不能像 4G 一样同进程直接调 eNB RRC。
+
+当前代码通过 DU initiated UE context release 的 F1AP cause 处理：
+
+```text
+DU reports UE Context Release Request
+  -> du_processor_impl::handle_du_initiated_ue_context_release_request()
+  -> cause == rl_fail_rlc 或 rl_fail_others
+  -> rrc_ue->handle_rlc_max_retx()
+  -> notify_rrc_oracle()
+```
+
+注意：只有 cause 是 `rl_fail_rlc` 或 `rl_fail_others` 时，当前代码才会走这条 RLC Max Retx 兜底路径。
+
+### 5G 的 crash 记录
+
+5G 保存函数是 `rrc_ue_impl::save_otabase_recent_messages()`。
+
+输出目录：
+
+- 如果配置了 `otabase_output_directory`，写入该目录。
+- 如果未配置，写入进程当前工作目录下的 `otabase_crashes/`。
+
+输出文件：
+
+```text
+<output_dir>/candidate_list.txt
+<output_dir>/crashes/crash_count.txt
+<output_dir>/crashes/crash_N/candidates.json
+```
+
+`candidate_list.txt` 格式同样是：
+
+```text
+payload_file,candidate_line
+```
+
+## 4G 与 5G 当前差异
+
+| 维度 | 4G `artifact/otabase` | 5G `artifact/srsRAN_Project` | 当前判断 |
+|---|---|---|---|
+| 协议栈架构 | eNB 单体进程 | CU-CP / DU 分层 | 5G 状态和回调链更复杂 |
+| 注入点 | eNB RRC UE | CU-CP RRC UE | 都是 RRC 层注入 DL-DCCH |
+| 发送链路 | RRC -> PDCP -> RLC -> MAC -> PHY | RRC -> PDCP -> F1AP -> DU -> RLC/MAC/PHY | 5G 多一层 F1AP/CU-DU 边界 |
+| 下一条消息触发 | RLC ACK 触发 `send_next_test_msg()` | UL RRC / RLC ACK 回调 / pacing timer | 5G 已有 ACK 回调和 timer |
+| oracle | UECapabilityEnquiry | UECapabilityEnquiry | 机制相同 |
+| RLC Max Retx | RLC 同进程直接通知 RRC | DU release cause 间接通知 CU-CP RRC | 5G 只匹配 `rl_fail_rlc` / `rl_fail_others` |
+| crash 记录 | `rrc::save_recent_messages()` | `rrc_ue_impl::save_otabase_recent_messages()` | 文件结构大体对齐 |
+| backtracking 状态位置 | 父级 `rrc` 对象 | per-UE `rrc_ue_impl` | 这是 5G 最大差异 |
+| UE 重连后的状态保留 | 更容易保留 | 容易随 `rrc_ue_impl` 销毁丢失 | 5G 尚未完全等价 |
+| RRC 状态 | LTE eNB UE 状态机 | `idle / connected / connected_inactive` | 5G 只应在 connected 发送 DL-DCCH |
+
+## 当前 5G 尚未完全等价 4G 的点
+
+当前 5G 已经实现了很多 4G 行为：
+
+- payload 文件读取；
+- `testFileIndex` 进度回写；
+- RRC oracle；
+- backtracking；
+- crash 文件落盘；
+- blacklist / temp blacklist；
+- RLC ACK 回调；
+- RLC Max Retx cause 处理；
+- preliminary crash save。
+
+但仍有一个结构性差异：**5G 的 OTABase 状态仍放在每个 `rrc_ue_impl` 中，而不是放在更持久的 RRC/CU-CP session 中。**
+
+这会导致：
+
+- UE context 被释放后，backtracking 状态可能丢失；
+- UE 重连后，新 `rrc_ue_impl` 不自然继承旧队列；
+- preliminary save 能避免“完全没有记录”，但不等于 4G 那种跨重连继续精确 backtracking；
+- 如果 DU initiated release 的 cause 不是 `rl_fail_rlc` / `rl_fail_others`，当前 RLC Max Retx 兜底不一定触发。
+
+## 后续修改 5G 的推荐方向
+
+目标：让 5G RRC fuzzing 行为更接近 4G OTABase。
+
+推荐修改顺序：
+
+1. 新增一个长生命周期的 OTABase RRC fuzzing session/state。
+
+   不要继续把所有状态都放在 `rrc_ue_impl`。应将下面这些状态上移：
+
+   - payload 文件名、当前行号、总行数；
+   - 最近消息队列；
+   - backtracking 开关、编号、当前 candidate；
+   - crash counter；
+   - blacklist / temp blacklist；
+   - crash 保存逻辑。
+
+2. 让新的 `rrc_ue_impl` 复用同一个 session。
+
+   UE 崩溃并重连后，新 RRC UE 对象应能继续旧 session 的 backtracking，而不是从空状态开始。
+
+3. 对 DU initiated UE context release 增加兜底记录。
+
+   当前只处理 `rl_fail_rlc` / `rl_fail_others`。建议在 OTABase 开启且最近消息队列非空时，对更多 UE release 场景至少做 preliminary save，并记录 cause，避免 crash 后没有编号。
+
+4. 保留 `rrc_state::connected` 限制。
+
+   不建议在 `idle` 或 `connected_inactive` 中直接发送 DL-DCCH fuzz payload。若需要“保持手机处于 CONNECTED”，应通过配置或状态控制减少 inactivity/release，而不是绕过 RRC 状态机。
+
+5. 明确单 UE 测试假设或实现多 UE 隔离。
+
+   4G OTABase 通常按单目标 UE OTA 测试理解。5G 若要支持多 UE，需要按 UE/session 隔离 recent queue、candidate、blacklist，否则 crash 归因可能串号。
+
+## 建议运行配置
+
+### 4G RRC
+
+上游 OTABase 的 RRC 执行方式是：
 
 ```bash
-# 构建 gNB
-cd artifact/srsRAN_Project && mkdir -p build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) gnb
-
-# 配置 otabase_fuzzing.yml（关键参数）
-#   otabase_enable_5g_rrc_fuzzing: true
-#   otabase_test_index_file: ../../bishe/generate_new/output_5g/testFileIndex
-#   otabase_inject_after_auth_only: false  # true=仅认证后注入，false=从 rrc_setup_complete 起注入（默认）
-
-# 启动
-sudo ./apps/gnb/gnb \
-    -c ../configs/gnb_rf_b200_tdd_n78_20mhz.yml \
-    -c ../configs/otabase_fuzzing.yml \
-    cu_cp security --nea_pref_list=nea2,nea1,nea3,nea0
+cd artifact/otabase/build/srsenb/src
+cp ../../../example-test-case/rrc/* .
+echo rrcTest1 > testFileIndex
+sudo ./srsenb ../../../conf/enb/enb.conf --target_protocol=rrc --o=<outdir> --rf.dl_earfcn=<earfcn>
 ```
 
-#### 4G 注入（srsRAN 4G eNB）
+实际参数以本地构建和 RF 环境为准。
 
-```bash
-# 参考 artifact/otabase/ 下的构建和启动脚本
-artifact/otabase/build_trial.sh
-artifact/otabase/install.sh
+### 5G RRC
+
+建议使用绝对路径，避免工作目录造成误判：
+
+```yaml
+cu_cp:
+  rrc:
+    otabase_enable_5g_rrc_fuzzing: true
+    otabase_test_index_file: /home/nanfeng/projects/OTABaseMine/bishe/generate_new/output_5g/testFileIndex
+    otabase_output_directory: /home/nanfeng/projects/OTABaseMine/artifact/srsRAN_Project/otabase_crashes
+    otabase_check_period: 10
+    otabase_replay_mode: false
+    otabase_temp_blacklist: true
+    otabase_pacing_ms: 5
+    otabase_inject_after_auth_only: true
 ```
 
-### 其他运行模式
+`otabase_inject_after_auth_only=true` 更适合先验证稳定的 CONNECTED 后注入；如果需要测试认证前路径，再改为 `false`。
 
-```bash
-# 直接调用工具演示（无需 API Key）
-python -m bishe.mutated.langchain_agent_4g_mutator
-python -m bishe.mutated.langchain_agent_5g_mutator
+## 文档维护原则
 
-# 通过 LangChain Agent 交互（需要 OPENAI_API_KEY）
-python -m bishe.mutated.langchain_agent_4g_mutator --agent
-python -m bishe.mutated.langchain_agent_5g_mutator --agent
-```
+本 README 是本仓库 RRC 相关的主文档。后续如果继续修改 `artifact/otabase` 或 `artifact/srsRAN_Project` 的 RRC fuzzing 行为，应优先更新这里，避免多个 Markdown 互相矛盾。
 
-## 变异策略
+保留第三方/上游项目自身 README 的原因是它们属于 vendored 项目的原始说明；本仓库对 4G/5G RRC fuzzing 的判断以本 README 和源码为准。
 
-基于 OTABase 的 BASE 策略，在 UPER 比特流层面直接替换字段，共支持四种字段类型：
+## 参考
 
-| 字段类型 | 变异数量 | 策略概要 |
-|---------|---------|---------|
-| INTEGER | 2 条 | 比特全1溢出、上界+1溢出 |
-| OCTET STRING（受约束） | 4 条 | 长度/内容不匹配、边界溢出 |
-| OCTET STRING（无约束） | 22 条 | 10 个 PER 长度编码边界 × 2 + 2 条非法编码 |
-| BIT STRING（受约束） | 4 条 | 长度/内容不匹配（比特级） |
-| BIT STRING（无约束） | 12 条 | 3 个边界长度 × 3 + 3 条非法编码 |
-| SEQUENCE OF | 4 条 | 长度头：0、实际值、随机、最大编码 |
-
-> 无约束 OCTET STRING / BIT STRING 策略数量较多，可通过 `--max-strategies N` 限制每条消息随机挑选 N 种策略，例如 `--max-strategies 4`。受约束字段不受此参数影响。
->
-> **策略编号说明**：输出文件中的策略编号始终反映该策略在全部策略集合中的**原始编号**（1-based），而非采样后的重编号。例如无约束 OCTET STRING 共 22 种策略，若 `--max-strategies 4` 随机挑选了第 3、7、15、19 号策略，输出中仍记录为 `3,7,15,19`，而非重编号为 `1,2,3,4`。
-
-详细策略说明见 [`bishe/mutated/tools/README.md`](bishe/mutated/tools/README.md)。
-
-## OTA 注入与异常检测机制
-
-变异后的 RRC 消息由 eNB/gNB 注入空口发送给 UE，整个过程包含 **发送 → Oracle 检测 → 黑名单 → Crash 记录** 四个环节。
-
-### 发送链路对比
-
-| 维度 | srsRAN_Project (5G NR) | otabase (4G LTE) |
-|------|------------------------|------------------|
-| **架构** | CU-CP 与 DU 分离 | 单体 eNB |
-| **注入点** | CU-CP 侧 RRC UE | eNB 侧 RRC |
-| **发送链路** | RRC → PDCP → F1AP → SCTP → DU → RLC/MAC/PHY → 空口 | RRC → PDCP → RLC → MAC → PHY → 空口 |
-| **CU↔DU 传输** | F1AP over SCTP（跨网络） | 无（同一进程） |
-
-两者都从 `testFileIndex` 索引文件定位 payload 文件和当前行号，逐条读取 hex 载荷，经 PDCP 安全封装（完整性保护 + 加密）后通过空口发送。
-
-### Oracle 机制（UE 存活检测）
-
-每发送一条变异消息后，基站紧接着发送一条 **UECapabilityEnquiry** 作为探测：
-
-1. 若 UE 在 **1000ms** 内回复 `UECapabilityInformation` → UE 存活，继续下一条
-2. 超时未回复 → 最多**重试 2 次**
-3. 重试仍失败 → 进入 **Backtracking**（逐条回溯最近发送的消息，定位导致崩溃的具体消息）
-
-otabase (4G) 额外支持 **RLC Max Retx 检测**：当 RLC 层最大重传次数耗尽（UE 未 ACK），直接判定 UE 可能崩溃并进入 Backtracking。
-
-5G NR 同样具备 RLC 层，但由于 CU-DU 分离，RLC 运行在 **DU** 侧而非 CU-CP 侧：
-
-| 维度 | 4G（otabase） | 5G（srsRAN_Project） |
-|------|--------------|----------------------|
-| RLC 所在位置 | eNB 同进程 | DU（独立进程/主机） |
-| Max Retx 触发方式 | `max_retx_attempted()` 同进程直接回调 | DU → F1AP `UE Context Release Request`（原因码 `rl_failure`）→ SCTP → CU-CP |
-| CU-CP 感知方式 | 直接（同线程） | 间接（跨网络 F1AP 消息） |
-| 当前是否启用 | ✅ 已启用 | ✅ 已启用（F1AP 路径） |
-
-**5G RLC Max Retx 实现原理**：当 DU 检测到 RLC Max Retx 时，通过 F1AP `UE Context Release Request`（原因码 `rl_fail_rlc` / `rl_fail_others`）通知 CU-CP；CU-CP 的 `du_processor_impl::handle_du_initiated_ue_context_release_request()` 收到后，调用 `rrc_ue_interface::handle_rlc_max_retx()`，将 oracle 重试计数器强制设为阈值以上并立即进入 Backtracking，与 4G 的 `max_retx_attempted()` 行为等价。F1AP/SCTP 传输延迟（< 20ms）远小于 Oracle 超时（1000ms），不影响检测实时性。
-
-### 黑名单机制
-
-两者都维护**永久黑名单 + 临时黑名单**（内存数据结构）：
-
-| 类型 | 说明 |
-|------|------|
-| **永久黑名单** | Backtracking 确认 crash 候选后，在 payload 文件中永久跳过同一 `msgName+fieldName` 的所有行 |
-| **临时黑名单** | 同一 `msgName+fieldName` 触发超时 **3 次**后临时屏蔽，累计跳过 **30 行**后自动移除 |
-
-**临时黑名单开关**（与 4G 一致）：  
-- **4G**：`--temp_blacklist`（默认 true），设为 false 可关闭临时黑名单，仅保留永久黑名单。  
-- **5G**：`otabase_temp_blacklist`（YAML：`cu_cp.rrc.otabase_temp_blacklist`，CLI：`--otabase_temp_blacklist`，默认 true），设为 false 可关闭临时黑名单。
-
-**注入时机开关**（5G 专有）：  
-- **5G**：`otabase_inject_after_auth_only`（YAML：`cu_cp.rrc.otabase_inject_after_auth_only`，CLI：`--otabase_inject_after_auth_only`，默认 false）。`false` 时从 `rrc_setup_complete`（认证前）起开始注入；`true` 时跳过认证前，首次注入发生在 `security_mode_complete`（认证后）。
-
-**`msgName` 与 `fieldName` 含义**（与 payload 文件列对应）：
-
-- **msgName**：第 3 列，**消息类型**（如 `dlDedicatedMessageSegment-r16`）。
-- **fieldName**：第 4 列到行末的整段字符串，与 msgName 一起唯一标识该行测试用例：
-  - **生成器**输出格式为 `序号,hex,消息类型,消息路径` → fieldName = **消息路径**（path_csv）。
-  - **变异器**输出格式为 `序号,hex,消息类型,消息路径,变异的字段类型,变异的策略序号` → fieldName = **消息路径,字段类型,策略序号**。
-
-因此“fieldName”不是单指 ASN.1 字段名，而是“路径（及可选的其他列）”这一整段，用于黑名单键 `msgName+fieldName` 的匹配与跳过统计。
-
-回放模式（`--replay` / `otabase_replay_mode`）下黑名单机制会被禁用，用于复现验证。
-
-### Crash 记录与输出文件
-
-| 文件 | 说明 |
-|------|------|
-| `testFileIndex` | 测试进度索引：`payloadFileName,curLineNum,totalLineNum`，每发送一条自动递增，支持断点续跑 |
-| `crashes/crash_N/candidates.json` | 第 N 次 crash 的详细信息：最近发送的消息队列、Best Candidate（Payload hex / Message 类型 / Field 路径） |
-| `crashes/crash_count.txt` | 累计 crash 次数 |
-| `candidate_list.txt` | 所有 crash 候选的行号列表（`testFileName,candidate_line`），追加写入 |
-
-> **5G (srsRAN_Project)**：与 4G 一致，通过可配置输出目录写入崩溃用例。命令行可用 **`-o`**（与 4G 相同），或 YAML：`cu_cp.rrc.otabase_output_directory`、长选项 `--otabase_output_directory`。未配置时默认使用 **`otabase_crashes/`**（相对进程当前工作目录）；配置后则写入该目录，即 `{otabase_output_directory}/crashes/crash_count.txt`、`{otabase_output_directory}/crashes/crash_N/candidates.json`、`{otabase_output_directory}/candidate_list.txt`。  
-> **4G (otabase)**：输出目录由 `-o` 参数指定，上述文件写在该目录下。
-
-## 注意事项
-
-1. 5G gNB 必须使用 5G NR RRC payload，不能混用 4G LTE payload
-2. `testFileIndex` 与 payload 文件路径需一致且可访问
-3. 若从 `build/` 启动 gNB，路径解析基于配置中的 `otabase_test_index_file`
-4. 输出目录 `output_4g/`、`output_5g/`、`mutate_output_4g/`、`mutate_output_5g/` 建议忽略 Git 管理
-
-## 参考资料
-
-- [OTABase](https://github.com/OTABase/OTABase) — 原始 4G RRC fuzzing 框架
-- [srsRAN Project](https://github.com/srsran/srsRAN_Project) — 5G NR gNB 实现
-- 3GPP TS 36.331 — LTE RRC 协议规范
-- 3GPP TS 38.331 — NR RRC 协议规范
-
+- OTABase: https://github.com/OTABase/OTABase
+- srsRAN Project: https://github.com/srsran/srsRAN_Project
+- 3GPP TS 36.331: LTE RRC
+- 3GPP TS 38.331: NR RRC

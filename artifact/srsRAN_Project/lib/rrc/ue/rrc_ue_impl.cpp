@@ -74,7 +74,16 @@ rrc_ue_impl::rrc_ue_impl(rrc_pdu_f1ap_notifier&                 f1ap_pdu_notifie
   }
 }
 
-rrc_ue_impl::~rrc_ue_impl() {}
+rrc_ue_impl::~rrc_ue_impl()
+{
+  if (otabase_pacing_timer.is_valid() && otabase_pacing_timer.is_running()) {
+    otabase_pacing_timer.stop();
+  }
+  if (otabase_oracle_timer.is_valid() && otabase_oracle_timer.is_running()) {
+    otabase_oracle_timer.stop();
+  }
+  save_otabase_release_crash_record("rrc_ue_destroyed");
+}
 
 void rrc_ue_impl::create_srb(const srb_creation_message& msg)
 {
@@ -181,6 +190,8 @@ byte_buffer rrc_ue_impl::get_packed_handover_preparation_message()
 
 void rrc_ue_impl::on_ue_release_required(const ngap_cause_t& cause)
 {
+  save_otabase_release_crash_record("ue_release_required");
+
   cu_cp_ue_notifier.schedule_async_task(launch_async([this, cause](coro_context<async_task<void>>& ctx) mutable {
     CORO_BEGIN(ctx);
 

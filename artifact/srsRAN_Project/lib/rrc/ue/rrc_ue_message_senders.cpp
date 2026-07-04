@@ -153,7 +153,10 @@ void rrc_ue_impl::maybe_send_next_otabase_rrc_message(const char* trigger)
   }
 
   logger.log_info("OTABase trigger={} send payload len={}B", trigger, payload_hex.size() / 2U);
-  send_dl_dcch_bytes(srb_id_t::srb1, payload_hex);
+  if (!send_dl_dcch_bytes(srb_id_t::srb1, payload_hex)) {
+    save_otabase_release_crash_record("raw_rrc_send_failed");
+    return;
+  }
 
   // Start the pacing timer to trigger the next test message automatically.
   // In 4G, each RLC ACK (~4-8 ms) triggers the next message directly. The 5G
@@ -266,6 +269,7 @@ bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
   }
 
   ++otabase_cur_line_num;
+  otabase_last_mutation_line = otabase_cur_line_num - 1U;
 
   // Write back relative filename (strip the base dir prefix if present).
   std::string file_name_for_index = otabase_test_file_name;
@@ -305,7 +309,7 @@ bool rrc_ue_impl::get_otabase_test_msg_from_file(std::string& payload_hex)
   // Enqueue for backtracking: "payload,msgName,fieldName".
   if (!msg_name.empty()) {
     std::string queue_entry = payload_hex + "," + msg_name + "," + field_name;
-    put_otabase_test_message_queue(queue_entry);
+    put_otabase_test_message_queue(queue_entry, otabase_last_mutation_line);
   }
 
   return true;
@@ -505,7 +509,8 @@ void rrc_ue_impl::notify_rrc_oracle()
         auto              recent   = get_otabase_recent_messages();
         const std::string last_msg = recent.empty() ? "" : recent.back();
         logger.log_info("OTABase: saving preliminary crash record (UE unresponsive, last msg is best guess)");
-        save_otabase_recent_messages(last_msg, 0);
+        save_otabase_recent_messages(last_msg, 0, "oracle_timeout");
+        otabase_release_record_saved = true;
         if (!context.cfg.otabase_replay_mode) {
           if (!last_msg.empty()) {
             otabase_blacklist_test_cases(last_msg);
@@ -524,11 +529,14 @@ void rrc_ue_impl::notify_rrc_oracle()
       // Oracle failed during backtracking — we found a refined crash candidate.
       if (otabase_backtracking_num == 1) {
         logger.log_info("OTABase: found best crash candidate (backtracking)");
-        save_otabase_recent_messages(otabase_backtracking_msg);
+        save_otabase_recent_messages(otabase_backtracking_msg, 0, "backtracking_timeout");
+        otabase_release_record_saved = true;
       } else {
         logger.log_info("OTABase: found candidate at backtracking position {}", otabase_backtracking_num);
         save_otabase_recent_messages(otabase_backtracking_msg,
-                                     static_cast<int>(otabase_backtracking_num));
+                                     static_cast<int>(otabase_backtracking_num),
+                                     "backtracking_timeout");
+        otabase_release_record_saved = true;
       }
       if (!context.cfg.otabase_replay_mode) {
         otabase_blacklist_test_cases(otabase_backtracking_msg);
@@ -563,6 +571,7 @@ void rrc_ue_impl::send_rrc_test_message_backtracking()
     otabase_backtracking_msg.clear();
     // Clear queue so we don't replay old messages.
     otabase_test_msg_queue = {};
+    otabase_test_line_queue = {};
     // Resume normal testing.
     maybe_send_next_otabase_rrc_message("backtracking_done");
     return;
@@ -589,7 +598,10 @@ void rrc_ue_impl::send_rrc_test_message_backtracking()
   }
 
   logger.log_info("OTABase: [Backtracking #{}] payload len={}B", otabase_backtracking_num, payload.size() / 2U);
-  send_dl_dcch_bytes(srb_id_t::srb1, payload);
+  if (!send_dl_dcch_bytes(srb_id_t::srb1, payload)) {
+    save_otabase_release_crash_record("backtracking_send_failed");
+    return;
+  }
 
   // Use pacing timer for backtracking payloads too (same as 4G).
   start_otabase_pacing_timer();
@@ -598,11 +610,15 @@ void rrc_ue_impl::send_rrc_test_message_backtracking()
 // ---------------------------------------------------------------------------
 // Test message queue — FIFO of recent test messages for backtracking
 // ---------------------------------------------------------------------------
-void rrc_ue_impl::put_otabase_test_message_queue(const std::string& test_message)
+void rrc_ue_impl::put_otabase_test_message_queue(const std::string& test_message, uint64_t line_number)
 {
   otabase_test_msg_queue.push(test_message);
+  otabase_test_line_queue.push(line_number);
   while (otabase_test_msg_queue.size() > otabase_queue_max_size) {
     otabase_test_msg_queue.pop();
+    if (!otabase_test_line_queue.empty()) {
+      otabase_test_line_queue.pop();
+    }
   }
 }
 
@@ -623,7 +639,7 @@ std::vector<std::string> rrc_ue_impl::get_otabase_recent_messages()
 // ---------------------------------------------------------------------------
 // save_otabase_recent_messages — persist crash candidates to disk
 // ---------------------------------------------------------------------------
-void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int order)
+void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int order, const char* trigger)
 {
   namespace fs = std::filesystem;
 
@@ -642,26 +658,32 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
   }
   ++otabase_crash_counter;
 
-  // Build JSON-like plain-text report of the recent messages.
-  std::ostringstream report;
-  report << "{\n";
-  std::queue<std::string> temp = otabase_test_msg_queue;
+  // Build a strict JSON report of the recent messages.
+  std::vector<std::string> fields;
+  if (trigger != nullptr && trigger[0] != '\0') {
+    fields.push_back("  \"Trigger\": \"" + escape_otabase_json_string(trigger) + "\"");
+  }
+  std::queue<std::string> temp       = otabase_test_msg_queue;
+  std::queue<uint64_t>    temp_lines = otabase_test_line_queue;
   int idx = 0;
   while (!temp.empty()) {
     const std::string& entry = temp.front();
+    const uint64_t     line_number = temp_lines.empty() ? 0 : temp_lines.front();
     std::istringstream iss(entry);
     std::string payload, msg_name, field_name;
     std::getline(iss, payload, ',');
     std::getline(iss, msg_name, ',');
     std::getline(iss, field_name);
-    report << "  \"" << idx << "\": {\"Payload\": \"" << payload
-           << "\", \"Message\": \"" << msg_name
-           << "\", \"Field\": \"" << field_name << "\"}";
+    std::ostringstream field;
+    field << "  \"" << idx << "\": {\"Payload\": \"" << escape_otabase_json_string(payload)
+          << "\", \"Message\": \"" << escape_otabase_json_string(msg_name)
+          << "\", \"Field\": \"" << escape_otabase_json_string(field_name)
+          << "\", \"Line\": " << line_number << "}";
+    fields.push_back(field.str());
     temp.pop();
-    if (!temp.empty()) {
-      report << ",";
+    if (!temp_lines.empty()) {
+      temp_lines.pop();
     }
-    report << "\n";
     ++idx;
   }
 
@@ -672,9 +694,23 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
     std::getline(iss, c_msg, ',');
     std::getline(iss, c_field);
     std::string label = (order == 0) ? "Best Candidate" : "Candidate " + std::to_string(order);
-    report << "  ,\"" << label << "\": {\"Payload\": \"" << c_payload
-           << "\", \"Message\": \"" << c_msg
-           << "\", \"Field\": \"" << c_field << "\"}\n";
+    std::ostringstream field;
+    field << "  \"" << escape_otabase_json_string(label)
+          << "\": {\"Payload\": \"" << escape_otabase_json_string(c_payload)
+          << "\", \"Message\": \"" << escape_otabase_json_string(c_msg)
+          << "\", \"Field\": \"" << escape_otabase_json_string(c_field)
+          << "\", \"Line\": " << get_otabase_candidate_line(candidate) << "}";
+    fields.push_back(field.str());
+  }
+
+  std::ostringstream report;
+  report << "{\n";
+  for (size_t i = 0; i != fields.size(); ++i) {
+    report << fields[i];
+    if (i + 1 != fields.size()) {
+      report << ",";
+    }
+    report << "\n";
   }
   report << "}\n";
 
@@ -693,7 +729,10 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
   const std::string candidate_list_file = log_dir + "/candidate_list.txt";
   std::ofstream      out_candidate(candidate_list_file, std::ios::app);
   if (out_candidate.is_open()) {
-    const uint64_t candidate_line = otabase_cur_line_num - otabase_backtracking_num;
+    uint64_t candidate_line = get_otabase_candidate_line(candidate);
+    if (candidate_line == 0) {
+      candidate_line = otabase_last_mutation_line;
+    }
     out_candidate << otabase_test_file_name << "," << candidate_line << "\n";
   }
 
@@ -703,6 +742,73 @@ void rrc_ue_impl::save_otabase_recent_messages(const std::string& candidate, int
     out.close();
     logger.log_info("OTABase: saved crash candidates to {}", crash_dir);
   }
+}
+
+void rrc_ue_impl::save_otabase_release_crash_record(const char* trigger)
+{
+  if (!context.cfg.otabase_enable_5g_rrc_fuzzing || otabase_release_record_saved || otabase_test_msg_queue.empty()) {
+    return;
+  }
+
+  auto              recent   = get_otabase_recent_messages();
+  const std::string last_msg = recent.empty() ? "" : recent.back();
+  logger.log_info("OTABase: saving crash record on {} (last mutation line={})",
+                  trigger == nullptr ? "unknown" : trigger,
+                  otabase_last_mutation_line);
+  save_otabase_recent_messages(last_msg, 0, trigger == nullptr ? "unknown" : trigger);
+  otabase_release_record_saved = true;
+}
+
+uint64_t rrc_ue_impl::get_otabase_candidate_line(const std::string& candidate) const
+{
+  if (candidate.empty()) {
+    return 0;
+  }
+
+  std::queue<std::string> temp       = otabase_test_msg_queue;
+  std::queue<uint64_t>    temp_lines = otabase_test_line_queue;
+  while (!temp.empty()) {
+    const std::string entry = temp.front();
+    const uint64_t    line  = temp_lines.empty() ? 0 : temp_lines.front();
+    if (entry == candidate) {
+      return line;
+    }
+    temp.pop();
+    if (!temp_lines.empty()) {
+      temp_lines.pop();
+    }
+  }
+
+  return otabase_last_mutation_line;
+}
+
+std::string rrc_ue_impl::escape_otabase_json_string(const std::string& value)
+{
+  std::string escaped;
+  escaped.reserve(value.size());
+  for (char c : value) {
+    switch (c) {
+      case '\\':
+        escaped += "\\\\";
+        break;
+      case '"':
+        escaped += "\\\"";
+        break;
+      case '\n':
+        escaped += "\\n";
+        break;
+      case '\r':
+        escaped += "\\r";
+        break;
+      case '\t':
+        escaped += "\\t";
+        break;
+      default:
+        escaped += c;
+        break;
+    }
+  }
+  return escaped;
 }
 
 // ---------------------------------------------------------------------------

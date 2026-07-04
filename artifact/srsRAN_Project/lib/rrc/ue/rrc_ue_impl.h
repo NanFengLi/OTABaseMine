@@ -136,9 +136,12 @@ private:
   void start_otabase_pacing_timer();
   void notify_rrc_oracle();
   void send_rrc_test_message_backtracking();
-  void put_otabase_test_message_queue(const std::string& test_message);
+  void put_otabase_test_message_queue(const std::string& test_message, uint64_t line_number);
   std::vector<std::string> get_otabase_recent_messages();
-  void save_otabase_recent_messages(const std::string& candidate = "", int order = 0);
+  void save_otabase_recent_messages(const std::string& candidate = "", int order = 0, const char* trigger = "");
+  void save_otabase_release_crash_record(const char* trigger);
+  uint64_t get_otabase_candidate_line(const std::string& candidate) const;
+  static std::string escape_otabase_json_string(const std::string& value);
   void otabase_blacklist_test_cases(const std::string& blacklist_msg);
   void otabase_temp_blacklist_test_cases(const std::string& blacklist_msg);
 
@@ -173,6 +176,7 @@ private:
   std::string   otabase_index_file_dir;       // directory containing testFileIndex
   unsigned      otabase_cur_line_num = 1;
   unsigned      otabase_total_line_num = 0;
+  uint64_t      otabase_last_mutation_line = 0;
 
   // OTABase oracle / backtracking state.
   unique_timer                           otabase_pacing_timer;
@@ -185,8 +189,10 @@ private:
   uint16_t                               otabase_backtracking_num_total = 0;
   std::string                            otabase_backtracking_msg;
   std::queue<std::string>                otabase_test_msg_queue;
+  std::queue<uint64_t>                   otabase_test_line_queue;
   static constexpr size_t                otabase_queue_max_size         = 30;
   int                                    otabase_crash_counter          = 0;
+  bool                                   otabase_release_record_saved   = false;
   // Blacklisting state.
   std::unordered_map<std::string, int>   otabase_blacklist_count;
   std::vector<std::string>               otabase_blacklist_active;
