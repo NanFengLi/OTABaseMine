@@ -1,0 +1,128 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "rrc-InactiveConfig-r15",
+            "ran-NotificationAreaInfo-r15",
+            "cellList",
+            "__elem__",
+            "0",
+            "plmn-Identity-r15",
+            "mnc",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "a808aa22218efe4a6eaf314786a1106bc3d6a605c67581cbd50c391a4cec"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "geran",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "2c26393ea0"
+    },
+    "2": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "geran",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "2c26393e0cddd02c7c01d5328ab5f06620788b60099d3a2109e87bb4d783f006dd2c1e1caa6f68034d422e705915b304ffb8a480a36b65da5e475dece9ae2d14eda11f2942ec65bcb0d45b66186c1bd9ef3850ad0173ceafaad0fe98e674a6b08e9559b02726a334c0"
+    },
+    "3": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "geran",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "2c26393eacddd02c7c01d5328abc299f9de210"
+    },
+    "4": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "geran",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "2c26393efcddd02c7c01d5328abd175bec43e2be00"
+    },
+    "5": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "utra-TDD-r9",
+            "__elem__",
+            "0",
+            "utra-BCCH-Container-r9",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "2c0ec84f90145d727d436993e2d7902e6aa323d5dfd71f4d3e98d960d6ebdad26e3fdbbdb45e00"
+    },
+    "Candidate 3": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,redirectedCarrierInfo,geran,followingARFCNs,variableBitMapOfARFCNs,OCTET STRING,3",
+        "Payload": "2c26393eacddd02c7c01d5328abc299f9de210"
+    }
+}

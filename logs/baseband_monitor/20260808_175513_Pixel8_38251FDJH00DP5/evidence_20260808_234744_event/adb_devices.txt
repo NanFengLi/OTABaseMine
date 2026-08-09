@@ -1,0 +1,3 @@
+List of devices attached
+38251FDJH00DP5         device usb:1-3 product:shiba model:Pixel_8 device:shiba transport_id:5
+

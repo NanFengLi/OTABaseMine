@@ -1,0 +1,552 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca837c321077d84810"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca8ffc321077d84810"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToRemoveList-r14"
+        ],
+        "Payload": "201010006e30a0dc58a7d860807009"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToAddList-r14"
+        ],
+        "Payload": "201010006e3020dc58a0c101b013a2c08d30321077d84810"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToAddList-r14"
+        ],
+        "Payload": "201010006e3020dc58a0c101b013a2c0ff30321077d84810"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToAddList-r14"
+        ],
+        "Payload": "201010006e3020dc58a0c101b013a2c0c830321077d84810"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToAddList-r14"
+        ],
+        "Payload": "201010006e"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingSubchannelNumber-r15"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e18101e4e1a06420efb0902"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingSubchannelNumber-r15"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e18101fee1a06420efb0902"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingSubchannelNumber-r15"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e18101e8e1a06420efb0902"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingSubchannelNumber-r15"
+        ],
+        "Payload": "201010006e"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingReselectionCounter-r15"
+        ],
+        "Payload": "201010006e3020dc58a0c180e013a2c0f37410321077d84810"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca8a00321077d84810"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingReselectionCounter-r15"
+        ],
+        "Payload": "201010006e3020dc58a0c180e013a2c0f37ff0321077d84810"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingReselectionCounter-r15"
+        ],
+        "Payload": "201010006e3020dc58a0c180e013a2c0f378f0321077d84810"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSensing-Config-r15",
+            "sensingReselectionCounter-r15"
+        ],
+        "Payload": "201010006e30"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measRSS-DedicatedConfig-r16",
+            "setup",
+            "rss-ConfigCarrierInfo-r16",
+            "narrowbandIndex-r16"
+        ],
+        "Payload": "201010006e3020dc58a0c0c0f370d000bb16420efb090200"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSubframePatternConfigNeigh-r10",
+            "setup",
+            "measSubframeCellList-r10",
+            "start"
+        ],
+        "Payload": "201010006e3020dc58a0c100d01846323077d84810d001dd08130a13656c00"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSubframePatternConfigNeigh-r10",
+            "setup",
+            "measSubframeCellList-r10",
+            "start"
+        ],
+        "Payload": "201010006e3020dc58a0c100d01846323077d84810d001dd08130a17fd6c00"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSubframePatternConfigNeigh-r10",
+            "setup",
+            "measSubframeCellList-r10",
+            "start"
+        ],
+        "Payload": "201010006e3020dc58a0c100d01846323077d84810d001dd08130a17e16c00"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measSubframePatternConfigNeigh-r10",
+            "setup",
+            "measSubframeCellList-r10",
+            "start"
+        ],
+        "Payload": "201010006e3020dc58a0c100d01846323077d8"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "201010006e3020dc58a0c040b902b23077d84810c400c3046d00"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "201010006e3020dc58a0c040b902b23077d84810c400c307fd00"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "carrierFreq-r13"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e184018bbde46420efb0902"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "carrierFreq-r13"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e184018ffffe6420efb0902"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "carrierFreq-r13"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e184018e00006420efb0902"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "carrierFreq-r13"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e184018b2d086"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToRemoveList-r14"
+        ],
+        "Payload": "201010006e30a0dc58a7d86080700b7179083bec2408"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToRemoveList-r14"
+        ],
+        "Payload": "201010006e30a0dc58a7d86080700ff179083bec2408"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "tx-ResourcePoolToRemoveList-r14"
+        ],
+        "Payload": "201010006e30a0dc58a7d86080700c8179083bec2408"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,measConfig,measObjectToAddModList,measObject,measObjectEUTRA,measDS-Config-r12,setup,dmtc-PeriodOffset-r12,ms80-r12",
+        "Payload": "201010006e3020dc58a0c040b902b23077d84810c400c307fd00"
+    }
+}

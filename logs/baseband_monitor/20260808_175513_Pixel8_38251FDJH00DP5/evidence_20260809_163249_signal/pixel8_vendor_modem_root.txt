@@ -1,0 +1,37 @@
+===== /data/vendor/modem_stat/debug.txt =====
+NO_MODEM_STAT
+===== /data/vendor/ssrdump =====
+NO_SSRDUMP_DIR
+===== crashinfo_modem files =====
+===== /dev/logbuffer_cpif tail =====
+===== pcie_event_stats =====
+NO_PCIE_EVENT_STATS
+===== vendor radio/log dirs =====
+
+[stderr]
+su: option requires an argument -- c
+
+MagiskSU
+
+Usage: su [options] [-] [user [argument...]]
+
+Options:
+  -c, --command COMMAND         Pass COMMAND to the invoked shell
+  -i, --interactive             Force pseudo-terminal allocation when using -c
+  -g, --group GROUP             Specify the primary group
+  -G, --supp-group GROUP        Specify a supplementary group
+                                The first specified supplementary group is also used
+                                as a primary group if the option -g is not specified
+  -Z, --context CONTEXT         Change SELinux context
+  -t, --target PID              PID to take mount namespace from
+  -d, --drop-cap                Drop all Linux capabilities
+  -h, --help                    Display this help message and exit
+  -, -l, --login                Pretend the shell to be a login shell
+  -m, -p,
+  --preserve-environment        Preserve the entire environment
+  -s, --shell SHELL             Use SHELL instead of the default /system/bin/sh
+  -v, --version                 Display version number and exit
+  -V                            Display version code and exit
+  -mm, -M,
+  --mount-master                Force run in the global mount namespace
+

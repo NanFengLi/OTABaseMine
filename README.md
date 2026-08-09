@@ -491,6 +491,118 @@ cu_cp:
 
 `otabase_inject_after_auth_only=true` 更适合先验证稳定的 CONNECTED 后注入；如果需要测试认证前路径，再改为 `false`。
 
+### ADB 基带崩溃监控
+
+仓库根目录提供了一个独立脚本 `adb_baseband_crash_monitor.py`，用来模仿 5Ghoul 的 ADB logcat magic-word 监控方式。它只负责检测和记录疑似基带崩溃事件，不会自动重启手机，也不会修改 `testFileIndex`。
+
+先确认 ADB 设备：
+
+```bash
+python3 adb_baseband_crash_monitor.py --list-devices
+```
+
+当前已验证的一加设备示例：
+
+```bash
+cd /home/nanfeng/projects/OTABaseMine
+mkdir -p logs
+
+python3 adb_baseband_crash_monitor.py \
+  --profile oneplus \
+  -s 3B6F5JEAZ2KCBRDG \
+  --clear \
+  --reconnect \
+  --quiet \
+  -o logs/baseband_crashes.jsonl
+```
+
+Pixel 8 推荐使用三终端模式。三个进程都通过 `run_otabase_stack.sh` 启动，并共用同一个 `SESSION_DIR`，这样 EPC/eNB 的 PCAP、ADB 监控日志、手机端证据都会落到同一个目录。
+
+```bash
+cd /home/nanfeng/projects/OTABaseMine
+
+./run_otabase_stack.sh new-session
+```
+
+这条命令会打印并记住一个新的 session 目录。后续三个终端运行 `epc`、`enb`、`monitor` 时会自动使用同一个目录。
+
+终端 1 启动 EPC：
+
+```bash
+cd /home/nanfeng/projects/OTABaseMine
+./run_otabase_stack.sh epc
+```
+
+终端 2 启动 eNB：
+
+```bash
+cd /home/nanfeng/projects/OTABaseMine
+EARFCN=2452 TEST_DEVICE=Pixel8 ./run_otabase_stack.sh enb
+```
+
+终端 3 启动 ADB 监控：
+
+```bash
+cd /home/nanfeng/projects/OTABaseMine
+./run_otabase_stack.sh monitor
+```
+
+如果想清掉当前记住的 session：
+
+```bash
+./run_otabase_stack.sh clear-session
+```
+
+默认 session 目录格式：
+
+```text
+logs/baseband_monitor/YYYYMMDD_HHMMSS_Pixel8_<adb_serial>/
+```
+
+每个目录内会保存：
+
+- `manifest.json`：本次运行参数。
+- `logcat_filtered.log`：本次监控期间过滤后的强事件相关 logcat，不保存日常 RIL/radio 轮询日志。
+- `baseband_crashes.jsonl`：匹配到的疑似崩溃事件。
+- `epc_s1ap.pcap`：本次 EPC 侧 S1AP 抓包。
+- `enb_s1ap.pcap`：本次 eNB 侧 S1AP 抓包。
+- `enb_mac.pcap`：本次 eNB 侧 MAC 抓包。
+- `monitor.log`：本次 ADB 监控终端输出。
+- `otabase_epc_crashes/`：本次 EPC 的 `--o` 输出目录。
+- `otabase_rrc_crashes/`：本次 eNB/RRC 的 `--o` 输出目录和前缀；`rrc_data_*.csv`、`rrc/candidate_list.txt` 等证据都会在这里。
+- `evidence_*_event/`：检测到事件时从手机自动拉取的证据。
+- `evidence_*_final/`：按 Ctrl-C 退出时从手机自动拉取的最终状态。
+
+Pixel 8 证据目录会包含 `telephony_registry.txt`、`dropbox_modem.txt`、`pixel8_vendor_modem_root.txt`、`logcat_snapshot_filtered.txt` 等文件。重点看 `pixel8_vendor_modem_root.txt` 里的 `crashinfo_modem*`、`/data/vendor/modem_stat/debug.txt`、`/dev/logbuffer_cpif`，以及 `dropbox_modem.txt` 里的 `SubsystemRestart` / `Crash by CP`。
+
+常用参数：
+
+- `--profile oneplus`：启用一加/OPlus/MTK/Qualcomm 相关关键词。
+- `--profile pixel`：启用 Pixel/Google radio/Exynos/Qualcomm 相关关键词。
+- `--device-type Pixel8`：启用 Pixel 8 专项证据采集；未指定 `-o` 时自动写入本次 session 目录。
+- `--session-dir <dir>`：手动指定本次运行目录。
+- `--capture-start`：启动监控时立即抓一次手机证据。
+- `--no-capture-on-event`：检测到疑似事件时不自动抓证据。
+- `--no-capture-final`：退出监控时不自动抓最终证据。
+- `--clear`：开始监控前清空 logcat，减少旧日志误报。
+- `--reconnect`：如果手机重启或 ADB logcat 退出，自动重新启动监控。
+- `--quiet`：不在终端打印检测事件，只写入 `-o` 指定日志。
+- `-o logs/baseband_crashes.jsonl`：把每个疑似 crash 事件追加写入 JSONL 文件。
+- `--raw-log-mode filtered`：默认只保存 crash/SSR/modem reset/RADIO_NOT_AVAILABLE/airplane/CPIF 等强事件相关日志。
+- `--raw-log-mode all`：保存所有被监听 buffer 的 logcat 行，除非需要完整现场，否则不建议打开。
+
+默认监听 `radio,crash,system,kernel` buffers，并匹配一加 / Pixel / 高通 / MTK 平台常见的 modem crash、SSR、ramdump、CrashDump、CCCI/MD exception 关键词。查看检测结果：
+
+```bash
+tail -f logs/baseband_crashes.jsonl
+```
+
+现场如果发现厂商日志里有新的固定字符串，可以追加：
+
+```bash
+python3 adb_baseband_crash_monitor.py --pattern "your modem crash keyword"
+```
+
 ## 文档维护原则
 
 本 README 是本仓库 RRC 相关的主文档。后续如果继续修改 `artifact/otabase` 或 `artifact/srsRAN_Project` 的 RRC fuzzing 行为，应优先更新这里，避免多个 Markdown 互相矛盾。

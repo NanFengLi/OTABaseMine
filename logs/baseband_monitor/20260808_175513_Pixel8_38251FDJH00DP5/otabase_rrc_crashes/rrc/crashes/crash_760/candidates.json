@@ -1,0 +1,585 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToAddModList",
+            "__elem__",
+            "1",
+            "pdcp-Config",
+            "uplinkOnlyHeaderCompression-r14",
+            "rohc-r14",
+            "maxCID-r14",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200210100642a01c200dbfff80"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToAddModList",
+            "__elem__",
+            "1",
+            "pdcp-Config",
+            "uplinkOnlyHeaderCompression-r14",
+            "rohc-r14",
+            "maxCID-r14",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200210100642a01c200dbfff80"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "20020447144000a4c000"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "20020447144000a6c000"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "30020447144000a2c000"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "30020447144000a2c000"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "20020447144000d09aa000"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "20020447144000d49aa000"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "20020447144000d69aa000"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "20020447144000d69aa000"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "__elem__",
+            "0",
+            "stag-Id-r11",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "20020447144000d2daa000"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToAddModList-r11",
+            "__elem__",
+            "0",
+            "stag-Id-r11",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "20020447144000d2daa000"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToAddModList",
+            "__elem__",
+            "1",
+            "pdcp-Config",
+            "ethernetHeaderCompression-r16",
+            "setup",
+            "ehc-Uplink-r16",
+            "maxCID-EHC-UL-r16",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200210100642a01c080f37fff0"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config-v1130",
+            "longDRX-CycleStartOffset-v1130",
+            "sf60-v1130",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200204471440008a7e00"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config-v1130",
+            "longDRX-CycleStartOffset-v1130",
+            "sf60-v1130",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200204471440008a7800"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config-v1310",
+            "longDRX-CycleStartOffset-v1310",
+            "sf60-v1310",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "20020447141000a7f000"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config-v1310",
+            "longDRX-CycleStartOffset-v1310",
+            "sf60-v1310",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "20020447141000a7c000"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config",
+            "sps-ConfigUL",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200202357ffc80"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config",
+            "sps-ConfigUL",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200202357cbc80"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config",
+            "sps-ConfigUL",
+            "setup",
+            "sps-ConfigIndex-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200202397831020780"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config",
+            "sps-ConfigUL",
+            "setup",
+            "sps-ConfigIndex-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200202397831020700"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "tpc-PDCCH-ConfigPUSCH",
+            "setup",
+            "tpc-Index",
+            "indexOfFormat3A",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2002010212a57fc0"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "tpc-PDCCH-ConfigPUSCH",
+            "setup",
+            "tpc-Index",
+            "indexOfFormat3A",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2002010212a57fc0"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToAddModList",
+            "__elem__",
+            "1",
+            "pdcp-Config",
+            "ethernetHeaderCompression-r16",
+            "setup",
+            "ehc-Uplink-r16",
+            "maxCID-EHC-UL-r16",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200210100642a01c080f37fff0"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToReleaseList",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "2002080e78"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToReleaseList",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "2002082e78"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToReleaseList",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "2002088e78"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "drb-ToReleaseList",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "200208fe78"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "20020447144000a0c000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "mac-MainConfig",
+            "explicitValue",
+            "stag-ToReleaseList-r11",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "20020447144000a4c000"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,physicalConfigDedicated,tpc-PDCCH-ConfigPUSCH,setup,tpc-Index,indexOfFormat3A,INTEGER,2",
+        "Payload": "2002010212a57fc0"
+    }
+}

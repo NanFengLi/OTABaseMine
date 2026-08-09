@@ -1,0 +1,505 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "cbr-RangeCommonConfigList-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c4239d504f922291ca0c432505e3307028d1d215c9a300"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "cbr-RangeCommonConfigList-r14"
+        ],
+        "Payload": "20"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxSubchannel-NumberPSSCH-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c4239d504f9222912a0c432505e330702551d215c9a300"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxSubchannel-NumberPSSCH-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c4239d504f9222912a0c432505e330702fd1d215c9a300"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxSubchannel-NumberPSSCH-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c4239d504f9222912a0c432505e330702a51d215c9a300"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxSubchannel-NumberPSSCH-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c4239d504f9222912a0c432505e3307028d1d2"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxTxPower-r14",
+            "txPower-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a84208c0512a0c432505e3387028d1d1d215c9a300"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxTxPower-r14",
+            "txPower-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a84208c0512a0c432505e3387028dff1d215c9a300"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxTxPower-r14",
+            "txPower-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a84208c0512a0c432505e3387028d931d215c9a300"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "maxTxPower-r14",
+            "txPower-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a84208c0512a0c"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "rach-Skip-r14",
+            "ul-ConfigInfo-r14",
+            "ul-StartSubframe-r14"
+        ],
+        "Payload": "2008424db95dc0089f18c003ecea1080a2813a6dc000"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "rach-Skip-r14",
+            "ul-ConfigInfo-r14",
+            "ul-StartSubframe-r14"
+        ],
+        "Payload": "2008424db95dc0089f18c003ecea1080a2817a6dc000"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "cr-Limit-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c5239d171a104f912a0c43250620307028d1d215c9a300"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "rach-Skip-r14",
+            "ul-ConfigInfo-r14",
+            "ul-StartSubframe-r14"
+        ],
+        "Payload": "2008424db95dc0089f18c003ecea1080a281526dc000"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "rach-Skip-r14",
+            "ul-ConfigInfo-r14",
+            "ul-StartSubframe-r14"
+        ],
+        "Payload": "2008424db9"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea100209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea10020209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea17f209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea17f20d71cf7a6c482f9ca53b2ecdf8079f79fd7529aa4b1fc8ec991a9d9b4ebce0d5449fbd322926d5f51d8fb71c61776ce05be74be37dcf43ceb7d6f453a241c00998afc3811e4d5a21995c4bb9d434af9a12ac617dfe380f15d49fad9078a25daa93f4cde5c3e072c6e07bb683186cd811b2d5f714207308ab29407ff209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea18080209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "dedicatedInfoNASList"
+        ],
+        "Payload": "201410006e1020dc58ac8c1df612043100540741a44ea1808020d71cf7209b4f2787095d518d1b1d32a00588045ce99c0d5b2bf22733e89e479a6eec9125"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModList",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentity-r15"
+        ],
+        "Payload": "201210006e3020dc58a0c200ca8708321077d848141805008a1c04"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModList",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentity-r15"
+        ],
+        "Payload": "201210006e3020dc58a0c200ca8708321077d848141805008a3c04"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "cr-Limit-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c5239d171a104f912a0c432507fff07028d1d215c9a300"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "cr-Limit-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8420bc0c5239d171a104f912a0c43250671107028d1d215c9a300"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "cr-Limit-r14"
+        ],
+        "Payload": "2008424db95dc0009e0fb3a8"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "minSubChannel-NumberPSSCH-r14"
+        ],
+        "Payload": "201810006e3020dc58a0c40150112f6645f21077d8481849b72bb80013c1f6750841080a25418864a0bc660e251a3a42b93460"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "minSubChannel-NumberPSSCH-r14"
+        ],
+        "Payload": "201810006e3020dc58a0c40150112f6645f21077d8481849b72bb80013c1f6750841080a25418864a0bc660e3f1a3a42b93460"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "minSubChannel-NumberPSSCH-r14"
+        ],
+        "Payload": "201810006e3020dc58a0c40150112f6645f21077d8481849b72bb80013c1f6750841080a25418864a0bc660e291a3a42b93460"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "cbr-MobilityTxConfigList-r14",
+            "sl-CBR-PSSCH-TxConfigList-r14",
+            "tx-Parameters-r14",
+            "minSubChannel-NumberPSSCH-r14"
+        ],
+        "Payload": "201810006e3020dc58a0c40150112f6645f21077d8481849b72bb80013c1f6750841080a"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,srb-ToAddModList,rlc-BearerConfigSecondary-r15,setup,logicalChannelIdentityConfig-r15,logicalChannelIdentity-r15",
+        "Payload": "201210006e3020dc58a0c200ca8708321077d848141805008a3c04"
+    }
+}

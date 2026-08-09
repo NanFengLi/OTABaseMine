@@ -1,0 +1,119 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0a4a018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0bea018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0b0a018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83b"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "beamformedK1a-r13",
+            "codebookSubsetRestriction3-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b700018003840023010050e23401ae22ef1bc83bd004a0404f7115b3d85211441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0928028a0359b8aaa546c65a9c200000"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,physicalConfigDedicated,cqi-ReportConfig-v1130,cqi-ReportBoth-r11,csi-ProcessToAddModList-r11,eMIMO-Type-r13,setup,nonPrecoded-r13,p-C-AndCBSRList-r13,cbsr-Selection-r13,beamformedK1a-r13,codebookSubsetRestriction3-r13",
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b700018003840023010050e23401ae22ef1bc83bd004a0404f7115b3d85211441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0928028a0359b8aaa546c65a9c200000"
+    }
+}

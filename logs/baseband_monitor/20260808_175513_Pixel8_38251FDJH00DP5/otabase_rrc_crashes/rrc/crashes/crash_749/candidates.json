@@ -1,0 +1,595 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "cellsForWhichToReportSFTD-r15",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "201040006103f81b261caeb25c2b0214247439b42d3a5ed5100000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "cellForWhichToReportCGI-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "201040006102a81b261caeb25c2b0217207439b42d3a414028ffc000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigPerCC-List-r14",
+            "setup",
+            "measGapConfigToAddModList-r14",
+            "__elem__",
+            "1",
+            "measGapConfigCC-r14",
+            "setup",
+            "gapOffset",
+            "gp-ncsg1-r14",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "201040006080d50e4fc180d000"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "200803fe597b800488d00c70"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "200803f0597b800488d00c70"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b8007fed00c70"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b80068cd00c70"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b800c891cbfb4031c"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b800c891cafb4031c"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b880489fe680638"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b880489be680638"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b800488ff8c70"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "cellForWhichToReportCGI-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "201040006102a81b261caeb25c2b0217207439b42d3a414028fc0000"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b800488f18c70"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b800488d01f70"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b800488d01e70"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pucch-ConfigCommon",
+            "nRB-CQI",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b820488d00c73fb6480"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pucch-ConfigCommon",
+            "nRB-CQI",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b820488d00c731b6480"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon",
+            "p0-NominalPUSCH",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2008020c597b808488d00c7ff7b86700"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon",
+            "p0-NominalPUSCH",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2008020c597b808488d00c7977b86700"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config-v1310",
+            "rsrp-ThresholdsPrachInfoList-r13",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "2008020c597ba00488d00c70810024101ad700"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config-v1310",
+            "rsrp-ThresholdsPrachInfoList-r13",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "2008020c597ba00488d00c70810024109ad700"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config-v1310",
+            "rsrp-ThresholdsPrachInfoList-r13",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "2008020c597ba00488d00c70810024105ad700"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "ss-RSSI-Measurement-r15",
+            "measurementSlots-r15",
+            "BIT STRING",
+            "1"
+        ],
+        "Payload": "201040006103081b261caeb25c2b021d207439b42d3a41405217800000"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "ss-RSSI-Measurement-r15",
+            "measurementSlots-r15",
+            "BIT STRING",
+            "2"
+        ],
+        "Payload": "201040006103081b261caeb25c2b021d207439b42d3a4140520032732deaf1b58dc5ed01e2a40c000000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "ss-RSSI-Measurement-r15",
+            "measurementSlots-r15",
+            "BIT STRING",
+            "3"
+        ],
+        "Payload": "201040006103081b261caeb25c2b021d207439b42d3a414052241dd7ebb3380000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "ss-RSSI-Measurement-r15",
+            "measurementSlots-r15",
+            "BIT STRING",
+            "4"
+        ],
+        "Payload": "201040006103081b261caeb25c2b021d207439b42d3a414052ff6031fd1e35bc123a8cddf520a0e65077bd72e00e40ff1535f5b92181700000"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "cellsToAddModList-r16",
+            "__elem__",
+            "0",
+            "physCellId-r16",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "201040006103281b261caeb25c2b021f207439b42d3a4110643dc4192ffc8000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "__elem__",
+            "1",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "cellsToAddModList-r16",
+            "__elem__",
+            "0",
+            "physCellId-r16",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "201040006103281b261caeb25c2b021f207439b42d3a4110643dc4192fc08000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigPerCC-List-r14",
+            "setup",
+            "measGapConfigToAddModList-r14",
+            "__elem__",
+            "1",
+            "measGapConfigCC-r14",
+            "setup",
+            "gapOffset",
+            "gp-ncsg1-r14",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "201040006080d50e4fc180ff00"
+    }
+}

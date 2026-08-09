@@ -1,0 +1,123 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "utra-TDD-r10",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "2e2500088134d8c8"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "utra-TDD-r10",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "2e250009c134d8c8"
+    },
+    "2": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "utra-TDD-r10",
+            "__elem__",
+            "0",
+            "utra-BCCH-Container-r10",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "2e0cd009029a34b20f6c4adc7d456768daf8b9c0bc16a3cdca993ed0e9078b2531569b038a73ba9cfd5266007b00"
+    },
+    "3": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "utra-TDD-r10",
+            "__elem__",
+            "0",
+            "utra-BCCH-Container-r10",
+            "OCTET STRING",
+            "6"
+        ],
+        "Payload": "2e0cd009029a34b20f6c4adc7d456768daf8b9c0bc16a3cdca993ed0e9078b2531569b038a73ba9cfd526640407b6256e3ea2b3b46d7c5ce05e0b51e6e54c9f687483c59298ab4d81c539dd4e7ad9c39e51bdd431b477ce7b7bc8965487dccfafb9687a4f0698f04a9a97e35acc7448320b5f36dc0996dfc326bbafaef5b8c748ed80c029a93b2918a81a4c5af234d7bb79413ee105594e0590b477ba3d0fae0297efbb88580"
+    },
+    "4": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "utra-TDD-r10",
+            "__elem__",
+            "0",
+            "utra-BCCH-Container-r10",
+            "OCTET STRING",
+            "10"
+        ],
+        "Payload": "2e0cd009029a34b20f6c4adc7d456768daf8b9c0bc16a3cdca993ed0e9078b2531569b038a73ba9cfd52666000807b6256e3ea2b3b46d7c5ce05e0b51e6e54c9f687483c59298ab4d81c539dd4e7a2cf06b4935323009803192d660419889d9a7209ba9deb271635c9ae6e26e4d23a46545abee10e261b881112380cf8381b66d175097e9c93924c4d31168524c31c04f552b9e52676f6671a0711aa7a84951d3748e664a57d26d2cbb66438b6a9c2ea363db32b4e5e7fbb30dc5f25549145f2ce9a8749207e38dda4a73920df68e149a479f2927eeb32c28317e594e11cd4e92c8d38c6981c300fec2c9b054e9bba76f9b3cf780c65bf3ce0111246bbb8d14aff984548983797aec0e46b3680c84e23ebc82377eed5a620df80"
+    },
+    "5": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "utra-TDD-r10",
+            "__elem__",
+            "0",
+            "utra-BCCH-Container-r10",
+            "OCTET STRING",
+            "12"
+        ],
+        "Payload": "2e0cd009029a34b20f6c4adc7d456768daf8b9c0bc16a3cdca993ed0e9078b2531569b038a73ba9cfd52666001007b6256e3ea2b3b46d7c5ce05e0b51e6e54c9f687483c59298ab4d81c539dd4e7c23f09566c4dd625ced2f0cc0ec121ad8f6e412faf3d7b3f6aa997f829ce45172d7bc2bb653b90f97ff60a0bce7ba2e45606d4c17a80f25b672bbccbfbb773f343031d686903e1c5c1ccb1fdcaafc706730e75fbaadafeb4eb584acd65a969f06d695b33354cd5d5c57389a3c3969d4c2ab79605f335670b375e2ea39e6d70f1d620b84ac39ddf2d78249cabe55ecac47a22e6cd924b7ab14bb5d9945b996abecd6435619ad8257cb290d3f71754e5068025c2801df3fbad4c00cbe9ed7fabba79f9e4bed4fc9214eda443d93b0fda93fb02a1bf5c738977b8c2ff9f04448a094cfba73a2577fa92453bb7a998bf1cb22342b8ab8a79ed41ec091f663f46a9c4efa7517c886bce7d2b4e139ed8239d3779824bea9ae1d25ebb3ee7c7d15adeee4b7e3c65aba54d7b5edc5098c3e9e6c99649b46d7d29618380db4c9bb0b24ed14574cc4aa165ea2c57849c66c57775ca20b1d221b45e08c556eb39d6cceba0b6780e661393150a8fc9e105c52e6b72c43c0b99dcfe6299d39db095678c98927be0841a3000be447f2e8b3faa80fc3b51507a92e84344ec8bf3f116a2f1670a931d0c9a0d01abb401f32accfeae248c13d69dcbbe31d32c30b8dfaf429886c31aed30d6c51700486f47c8a0a0b44f000884d3129e3ac1c1655efedb77b0f97257f747ef008994380875c854c3f552bde9607905140b7cc4419d24903e606c418450b9b8a94d88f8138fc805ea26035d3a01e5d44aab7073360bea8c801c10d2cbe593acc7b556ca663d099148fe97b87411f5060dc36bb0f2789e6d0a1622e7f4ee95f43f9795d5c6f40902e5be4c66503514108d7a1fdf5bdef0b09cdb5549000299db2b3151da8a2a2b8df9472737a2a299f9959c4cd77d0a83cb2da9de992128efc26259796530ad2a59445ba48178ad61a6f48eb34c3c1d96c367656b4c34ad5aaa932f005425263808f7e43d1f9229a3f0fb10ab01cfa13039462155578808d58e8d549bf5cb139e6cd994d406c8af76c3ab85eba8c8f52eb3b87f924bb5925ccb7fd168268fe689d9a9d468a08eeef5bc1e33ec5f8e5df36701f205308b3b626a44dd69ac584e6a13f34532846e5d2823134e85910a4b8543017fe01db4a9f10c6509434619cf4ca0ac339afc47a71f9bcee9196580dc3174712598c4bbe1a27c0fc2aeb6ee22ae229f8e0ecbc6b499556186e1355b2480a9c77e7bbc7ed598aa338ab487ec8432cf07508c4df04257e7a92bbd0232444e013675b7a878cef3dc13cf416a84b3b3ed724b528e25912c06106628bd51a944e35e80e920c6a1757d47eaca7495c69eee10cbf6c992cc2688c06b229086127a478bf358e33f1d0e6aaeff9cebab89ad53ba9c32d77617ffd84c13117c9db2df1ddc0a6580d69139aec56e0fe885de1887c25fdc5290c7875d937bde8ff271dd9e44df61c191fa9daef09ac61d4a16d5d59998cc4ed02fbec0456512067090995eb0f3cb26afb95208bad4a255ea07d784fcf7b6b911dd308d83cb0ceaeb67e374d48ebe185f9c357b504346cf4be62fe4d43f11589c7328084e73ce2a5287c5fff257d8c252e7357abb0ed40a3cda1db121a19939d8b4695861e94d8999d875245fc155a5fad295dcfc86544eefd482ca34b05358c02542f30c20c4c2cb8a22a143cea731472ceaa89e15422d922015dc71cd0d16f7ff70d3e1746621c8cb7a92e53507005a9177b996203457952000124718eef9e34744f3427de8c46e3e3d69a768745e526e6918cf857e5d4231144ebc181027fed7225db1b3652feb2640ecf5bd121aff8720fee01d5993e7beb66551bc95e3a531eb693c6337d14d54b443f77869982de09d390561389a6a4626187f74169c1c7ccfd7686f81afd165c022d6d9c5a25eae8fcb477a8de9ad682110fe78d225608409a8e5eeb2d155e7f19d631500e66372a932cb0d6dec54bfbd10a5588bec797bc94af2b97c1815b4d5f2b346702a0ea61e7685e5d5e106e32e6be6d91e271c002088ada02627d53fc58401660cb7e052e54c005280d334513d90e0d533a8420eadcc184d63a23ca9ec42a2ed6bb7b6bb331de4fde7d4fea5544f8e00"
+    },
+    "Candidate 4": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,nonCriticalExtension,nonCriticalExtension,cellInfoList-r9,utra-TDD-r10,__elem__,0,utra-BCCH-Container-r10,OCTET STRING,2",
+        "Payload": "2e0cd009029a34b20f6c4adc7d456768daf8b9c0bc16a3cdca993ed0e9078b2531569b038a73ba9cfd5266007b00"
+    }
+}

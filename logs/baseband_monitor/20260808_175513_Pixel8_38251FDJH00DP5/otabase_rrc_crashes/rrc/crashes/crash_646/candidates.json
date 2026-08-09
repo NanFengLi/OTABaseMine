@@ -1,0 +1,533 @@
+{
+    "0": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsDL-r13"
+        ],
+        "Payload": "3c251f20536cbbe45033c49e0c00ff4b08e16e6dd76ac140e2f686872e2db0ea301623c148f8"
+    },
+    "1": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsDL-r13"
+        ],
+        "Payload": "3c251f20536cbbe45033c49e0c00ff4b08e16e6dd76ac140e2f686872e2db0ea301623c148f8"
+    },
+    "10": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b3f90719d3b778a0e45216d31dee9d26415b77101c5902ecf6580"
+    },
+    "11": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b404000"
+    },
+    "12": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b404010719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e939e4647ec7e74957f0781f7b7a5c888995b8c48615464e367b6e80"
+    },
+    "13": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b5fff80"
+    },
+    "14": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b5fff90719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e95065008b14ca581b93a0f70290408155d62a13c9b9ca582ba713ea3f53078584e145a3ad82009b0a8e98c82482954f0ee514cb27ccf776aecfaa8094819167b8a8cfa2a998ca0ab077e6972acb99bab6405da38a36c9c429c501f8e9bf26742b399871ca1b7acb6a0c7c3ee9bfb7a3c113fe3d783dbd7f0ae3c70b0f24cb1c665870c13f9ec5e6ec3fa14b52ad3678c5baeda7e2703e2a7514bd949096a5409c27a5603907a51f466f525e20b50c6db0b4749492dffa46ffb096ebac4b75f435e6f9893e38c05cd0b9ebb03776d6ff2c85544736622b4df67b1790a889a1b3703f05dd59b907316fd81040898a8e007190cd0eddfd5fcc0b4b891a9db208fdc3d7dd5af495fd5ab7dbbf19d59f03fab219fdf378e8fb32d633a9b75238f3d58afc5ff01dd677678484f4367677ebdad6afb1cdcacac6d137fbfdacb366ed222885a557cf77c7385cfbc0945741f0eb0c6d88280a1922e635ff3a91f4cf03b28d4eba27a03bc6d5a3a2a43ca4e3c2f39ee429766410d3a7071a58d6970c26e38b02985fd25413fec3741ba635f6bb99cd62b906abb760dee14c548be3362551740fcf1cb6984a90c32cbf8856675cfd430c7fb33884e7b784523a6495a978166fa156fc0e09c637b7f808277a80"
+    },
+    "15": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600080"
+    },
+    "16": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600090719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e91d0c7d41774a855f941e8e44b2eeb1ee4400cb7fb5c9086a36f1dd9a4f91f9db170b80316d3835580d7450f27f685f1e9726601c705ba570a60bd1769cdbc05d1e2c0d3896318a7212a5e3fdffbb646bf104360bc06a2a98b45e2ccf18ac62a0a2fd4dba95cdb65639c05edc2c774ec63f9ce406d082abaedadab3becd0b61d1fa116326c38b441784f10d54591b92f7c82f1f447ce2febee812949134b596312b05dadd6f196bd6a68da49bfc6a62ba41befa218336afb37c50897494d49056b8c6ed3de2db31f8e51838484ccd227d9488ed1c5772ff1bfc1736da76b08015593935b7a246a753c7fe1803b35f50ce8df062ae62b593397eb34189a8adc8cd8642e484ea19ac2edee3c07caa799bd17e39e267d16437d284f5ddcfc4351e7b1b355d3dcf42a4d5c19499e4fad1edf1117c9a34285bf2fccda2ea94b638c704057a419f55cce86796981011cf2c7207470e2e9c6091356a6d134b658696793e5cea1ae04607882e734c0382876c44f5661157267aeac8adf0be42b01c6bdb18f97f375e0066507b2e85ed533797ff0b171f8eae221299dcf5507cde5397901e2abf69c14fda22741057b241af28985a85a8d3adbca37c274d7a482009c09858304c103249c92e161ca24652250e0ec3c6b4d734607079f3da97d3862ba3d5952e1aa5908f35f631af670b24e0fd8e294a0b92c69dc6bdaf25d8ecfd440309f523dae82a08d96d265767fbc027a424d12c64e26c3ffbad7d0296a9db6938cbbebf823f765d1874f025a367cea13fb61bf676664db8d010a71f671e1cf1f37bba5c07d4aa1aca5ba838bda777481c4ecd3277c07976413ab9ca05479664777c8329f66b0dceeb656d56dc1c686fa064080531e870f681ca0ffba8f054ca7761e3a583ce61ac624ba1b2970a24db6b471eda8bc418c3603f1ea2e45f83f896157c117b0c48b838195c4aca16dd7ff15b57a825e3a0e2313f19393d666eeff94bf20378e361fd9999bdecd8043c90c8dbed78d02622fad71c5e879c7f83f864f09b13cdec81d4b6b6a43fbfc2020493a541d9c09176c1babc6a2f10e5c9a063675c08293d901b90ce7ba2273306daf480747765c519949bd2031fc29a1df0193279d15d60e39291090460c583fd8a8ffb77534c9ef49b25001d63be10d15adc8f65aff050305ce5ed29191991bdd83fc6bbe76884ddedcdd527c5e8df04402e513cc8d1ca4be887c45cb47fb4f80e2e00a7703c927e60fd843f5bb351795e4eaafe0b62a2f619f298dffb6c7ffea895df82e4de305bb799cdc14ee8db133f2ee8238d18ab59cb7bf9004c85eed02f87f38601aa9e5ed7cda8a9e15b9db3dc612dbf9498ecad919fe6d6cd8b6366317250a73014f252210bf81b7a43ff3fd2a17cf7f8e9569d664b7946bde9204f66ff0f0b0b61a8cfde6b2a61bdc8188f025917a65c116fc49f4244c84222fd29c9ffc5405d6b5856eec31b3e131e72ca4d1e63364b70d495c5b9b391cfedb77f751bfbc1b94810656c1b56ec807652f828cedf13baf98bc329becca6ec38577f3f72d93af53cb207a266895f57d19043ac74b1ce32ad2575e97b17787ac808d9ecc1c1d51a3614285d489a2ad9866343d632daa9bd0e7875d9b711362bad0035639de245e784de6679c14b4e267b54f2a43504be79d7cadf4dd6f14a1e881511bb5e7e83eadd28f960bfb3695d4c0d8246188c5b1c2e043d99645261c236bebeab3428bc5f1bddfd89681ef47a3d8c260119742d5c23582dd6ae1d002ee10531c1371c9f5a608941ed9d7d470d821b9e09dc46e7f41d7375659aaa9cf66548bb40cb9e293d519f0f6f6854e077d83e72dc69892cf38a85300189db7eccee1ec62201284c5bfcc551cffbac31105c357faffe669279048158f9be31254cd5767b05966848cdbaae1e56001d332ca42c0d23558becd914ea5e17360861ca474631c3f0b5c08afb651691856d068b26e538a23615a088d2f72159fb614b5ee9ae6e2d98b1619ebae741be784988715e6422d2aa61f1fb89e02080832fae10a3e4f3b66677e4b600"
+    },
+    "17": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600100"
+    },
+    "18": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600110719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e952608d49a67d5631585619d46eaa8a2c11f46c439b0ddc1385db85d292eb4f3a28abde1f87ea47052ab61aaad66d5997894692107412c2edbc29e2f1d4b49b1544de87dd01cf8d9fae88a92814a881922cb70fbfc8776c102c1a1c9e220fcb810c4e1210cff1643e3d90ca60e4081bb6b26790eb1b85bbb46c4d20065f2a4b440f24132614a16371ce9881b177bf3f185267473f38c595f61aee0a9656b80ba9312650894acdc3e47f9e246a09fee6cd9f9a74e17f4abb34d87f5e28b5ac81798ceb9175920c102c8df47d4daac6d194b48d7c853250bcf72b734feb759ea5b9473124e875119214c4ca4473a0d5fe688cf1bc5c4a436f272913ac1f241eedf33d5cf9f995fa492226975865ef87064fc1da094684b50311e6fd4d583979ce656e02df7c15c09ae94fd058864fd6ea4e02737a6f95a9f6eea879e3a0628bf0de214eaf79bcb1a9baa8312cf649de35f926c307f7c20136a6f8620aa50cdb5a02a4527d2610639944dd9b9ec6ba78b241dd82ce8e515b9e72a1f8c6e617f80a6283cd8761e79a00e51c0445a5daec6c0c1fc930462b2876d37712d548999363f779b34ca554f722e1300accec00e4573f4ca00de9e7ddc2a976f3399328db78279f6238c22ff410ca5a3738ce2f16fad7a0c59a0eb28a3c32c18005675111db4f23fbeaddf7fc866902edf32d03d426b7a9ba3cf2224f9bd393b4d9afb754a71c6c417ae4866e3aa56ac1afc7e18033646e94ebddacc3da221c3dd38292777accda9240717e6ada8861b4cf0bdf078d653703dc3a9c39f36ae182a49719456dfd13da641d7ffed33cd1df41d02009b7111e90e9ea5dc5325b1ca3d2e3517ca54166ffac70a6484b199c28a6eb95c9647cbb9b8f85a0d8be0908c8b405a6aa3241a2ca22809db3042ab10367c0063e2d1526225bf554861f3e4d18d6ed27fb101d36f1bfa66e4e7410b06adb6f5e855bb612e69065bdf17402eca76539d9ed3592fbd10405eead03fec0d94f48305d203124b19da792ad41e04f61523f32d1030624fc236d468c9bc4f80dc031323963e7296f00"
+    },
+    "19": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600100"
+    },
+    "2": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsDL-r13"
+        ],
+        "Payload": "3c251f20536cbbe45033c49e0c00ff4b08e16e"
+    },
+    "20": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600110719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e92e7aa207641832f14271c45423646c64971f7da00a39f179b87a0b71d16f33304cc74302390f419ddd05d4cfafdf548bdb1db508c62f51c1b67b1bbd767d8e30a4f2aea3a03194b126e4a5ac7f9d4bf1c64ded7663ca0ab9795c3c95eef8a9a5a262146e8097a63c385a78554308b891276905f452c3176c5c3dcee15da91d787038faa4d005008476f959a5aa927eb4d17c432d52ab92b274bf8cf6f6d7a211910da2d184cc6c66f40bc034c57b7fa44107b9c3fffdfe6a51fe8f9c90906362b62c89915f43dd8b1a1096db881c3218dbb92c964698b9b709274979776eb0cfcc7511867747b44662d51b927e6eed51c24de8ad709af3c3d58e5a77aba94d8105cfcb9efaf5689f27baf4e6056a4f060b183221a2030491be1dff116317f5caabdbb34d8306cbae50c7b907ed3cebff6faad03faea034547727936aad522df3ea49f943e0166ef5738f22f2999ba71345b0bf0c336c7c2dea982be635f9684bf046cf3cc584f3a0683df1f327cb3dd547e6fc8457b0b77729e53a5030b2d880ff8dcecd3f01931fabdbf743873a293ba6106dfbe4bd05d7efdd630c12d39b870a0463f3eb6a9f376745c423913774dfb792c1b7053e81d720311676f2674742581f509a6582f050f656949162b088e4ce26201c449770d44e6fa0e13e4e931faec7100adc9e7e8ad009e4df8ec145cec2803ea57cd5ac63507afb8282a1f30814719b0c91f6e96273c3d827617a4f6ec1c5b2210e37e1918ff7ee3aae01ac5a95716947c111e84e5b34f5c194a4b52c97cadd790c9a853a26ba0710bbb54ac498fec86efe49d373918e232a28d0a11cc766c78b896eb103fa7c8ea9e083ac3680c86286a7cf5ef9b016bdf9766e61c26da785adef616a14f2744df8917f69267cf7a4de060b32b851c0d27746af43c1c7c1c94c19736943821070a1dfa748a44037b3ab52122af45ab4c3ad061d36a294268b0aee1c2b86716a9bc9ce37d2fcb6078fd7d0910330284c3d3b95d60464e9819d678b1eb0c7935a4efaee16d2449412db8a5437b76be5a653d8facb80"
+    },
+    "21": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600180"
+    },
+    "22": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600190719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e97c1710db46fce1cce4c64d63650863c92ae0d49df4304640dd4a623d1a32ad87e5990d66d1ee163adca52041d51588ef7ab014cbc32c1cf353fa514ee251781ff87d118ae9d5bdc83f8c355e7b107219250ba22187ba7242c902a3877a9800332ad9accbdf9550639ce22e14f3920854db648700ebe7aba817c10e70b856766e76f708b283d449976c49e3227b2f712d38a4a7eadabec64b9a80e39b60e5666d33ee5b7092d3fdca2ea24d52edaf9170098eec973f8a76bc272537fc690d59190601890ecded7e4c1548cbe8ed820295307f6f109ba2de0a1fa820037bcdb1033745e027031fe53f75537b12cfe5f2f6638353ef76949ee2697e256ced6fdcc280d9d88232877aa49cacb57900e557263c024e2f180fb46e0c56646654e64c87fdf61fd1066735a74e86973dd6fa77b089f5b9fc1ada5c649b49b46e464aeca00c46c50d63a9c322b270f3d564d8f5eb98bc8398157262c7d9f1f4902038efd625ba66b709040c92e738789506624d1d84574a813bdd365d4fc06b26bc0f0488a4ba93b222ff72f375a2b2cf1532b74eb6d7d5a35331e9ab814a9c2944241f310567fcf4ceb39dd92c7d1503a460fef01e7224abb51ec335a25747acbc146b7c441a05e6a85adbbc0c30eac835f4ff339869206480cf23d7af538db45dc223b81da78f3d635a2d5e99e354566b4d9350064cafb97dd6e541115be49bc59ac26f24e41655f497d86e4789456273f523806d6739f361c62bf4ef560eb28866398c5273fb8804db36f2d53ba02640eaf8d750239707ae4d37834cdf44162dc218bcdd09773ce08060d6b8985c7e5d454c1b15677e9abaf84fa4b25843e4d1f2026ed245ea77ace656f7c9abac37002e28b332904d250a262ec035c1d1d4faefb14c118e4d238812a00e06df63b45056b0b2f6775fbbbc2682f33bc43a411c77561f90ad1620095472727423438be18fa04227f109f63480213ffcc26f5536a05c022dd0e939400111fece0ae858064d5a780f2c2d3f7819ef67608d7c0d8e6e7c70466cfd04da4d3af3b7edf6ea15689dca3e38de29b9125c955183ef4c0cc7d1a7ac3c1337eef68e955cb66ba31b41e5fe00a266b299eb57bcfc5f4cf2b9f8353953589f46367175e61dcf044513cb57375e669fb41945a6581f37700bb4d9f9aea82c56e4564cf71a451dce43fdb82355205240a1e0ecf14d2b38ce4ae443d25aca5b74a1930d05066a2ce8198eddfdecfbcc1538559452ba3e5b55f6bb94c5a0b8a332b79cecf949df00ce5309d2c2e36c6ba8bcb51291fc4f18e360c44c8f6bcec65c2c683da3ebae0e12c0a6cb55ebba5afadc2088dd82d6647dfca6ae9cf1ccb41236fdf18e318a5a9c01b49fb6f46b64fe53f21f0a0a328f654196e540db0dcfa0d5e3ef601213a4f2c8ce96a579c2fe207acbbcf57479100859348ef715ef5935400e70d9e474df74084d3629389b2699fe9ee5a04a3a1e2a8bbe17b74c947082fa93228680ac02dd2897398006676adc42dc45875141a48135a546f9ad4ee5d8b409dad82119fbaba0149862cc03a9e4239be8c362b30591821b28050a1ed26e14b3e2fe5fc047e3211ef714750c1447a108e6196aa6c8d25492052e142162dce957a7ab05bf00b54dd4c6106022302155915066bfafbe99f52b440a4128b2524609c24a006c400c283e9f50792a218b5586b720e6355bbbcb792ec32eef49cb702709a887f16d028d6c0352774c6e32fbeb198f80c57d0e5723800a879b5d7eb5465af3df03222098453a40a111b0c24d598f11a1c511ba62f900"
+    },
+    "23": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600180"
+    },
+    "24": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600190719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e903bce4e31b27de7d33b2d2429f730402779fa9e7414d94ea850ff6b8268ca474f75f6ff44e62dbd25aff90b78897361f5d29e9f7dea74734fd96d3106a31d4c781455c3f84d52e8b458b808d31be37fd53fb4a05ffa76e8e2104557297d5de8445f404d792584858791288cb0b6e575ff1f3e4f95c115a8a66521978b0df3c796b838332250da91158832ac935d92b0babd173ff7c5d0d5739802f40728efc8cbf8da8b7f070d778f5db7941d38a3a3a5647f7418b1a528f3750ee1fac58a9a647403f7e0eb8096d2a5b8b0141f0355fbbb04d8589efffdb3156df9b23bcea8b313ae97280b985f410fb4a2839eb2783666151ed628efe9ac2b068eb510cdd5a3277457841d14cbff79b75687c254231139322f3a7fd1f9a0275e54d3bb65749cafcf1da2435ba8632fddecbb465d164ae338d6862e33c97199477e8cc0ae6ca6c0c0e27a3e8dbc13eb4c46fbdc245b6b05a067f709cab7d01bb567c5dad05333b9aca2dc89aa6545a569f4fccae77144b1a085b0c7f52d6abf0c4713266c1c07f51a85817bae3437ec9bbfd72d99c518ad79f2d997d9d37aa0d04ef76dd06ff6e5ae46a9da58f5ffdc59192da79de83a9b9d621393a575944d32acb479a2348c3c1120567edd5f9c4ebc747ab25761c8b60c4958731109597af42ac85e523fb56137de25f0a59b4bfc71e0ef90c54a4dc8cd99efa72ed93575a178e504381d63a4a536938de43146890e7f781d8078b6f6cda0111192a91537408cca6ccf89b106dcfdabc20749c2a42fae9980dcb26a903ec30b41fcc68bef8f5d92bcda72de64467d13abef9f29e1c7e881c698514ef116a493719c8dac3200f6da7a2d73fe65a6ce835d81b5b7a801426d0ae0751ccbf705e331cd1c7abd856da9a84f8717c0872ac3b1fbbb7e0d1a55d01a44e473d6554a06d323db8dc2a00caccbd50d00958a4c75e354c694e70456a6736ce03cb7498d91ebb243c38416799095e0f6a9b6d1f98ecd31777a90e21a0c52e81be0d422ba9495a36a461563ddf2d777610004fb15f22e2fad27f64f1f71f60842c808b551acb65ff4c2b22f137c15b698d73124da6afb14d33c8e2f9832d06b4b7884f8e9aec146983e5beca8e9b467f37683fe09b74017544a8e8a39cf2c66c8bbca1e7ba38fb2a615701fa9a630193c2e8fdcf239358b945dd23c8aa74428195b4cc3e0428275b0e7b1e562052ec0d7b2315fd8e565e3192f4badf65094844f0dc73647adbc71387ba7124ab12ea0f01d99ccaab9d84d4802f5a676e8115e9d26a4e0894ec3076d4d30ba5cf5dfe1e75c11d9ba5615d850bc2422ca84cdc7f4e34b6122344b32bdd1d29ce8979b91910e247dc1aa4edf628ebff7b7f4823f475888b3c27172cd77bf85a35b7ca22b9a7609aba4ad48fd65b7adbd9996940bc4c9c14835e4a548a214311924509cd5bbb77f02568e69d257ec4bf3f8c38d91b7129711873d45f3759029afc6a60f2a474fc3f66e4c4f70fabbbb7c9d1485b9698a0f77fe5197d366237c49ae245d77026fd44aed636df49baee6fb9d17b8574879b52c3d8d343ddf2b2f23a131ba97d328eb7fc03484acc25fa011de141ec66b16fff4edae01305e09998f64b6a517861a371107dc8df1e95d3ec98b2d4da064812fe7933abf81ac56ed7bfa08335ca66567a3ff02197656b3b6479d1407da9f5915ffd589acfd46e355f6ba3c5e66e189f1da670cd3f50aa43a344b35b2d7aade9565533107c0a31e6fbbfcabe684f5b243b5710fd665be3983b77f34c569f7d278c7a1a14a71d75c74e66d8450575c1cf339802bbaecac8c0347838edb1a7d7a99cd325ceaa86b552cf0f889173134f89eff6d80bff3b5f875c2d36e2e3b2589db500"
+    },
+    "25": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600180"
+    },
+    "26": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b600190719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e9191d8965e3dc2df7e687c498db4ee9bd90217bfdace2e7ce6bece509f7fda94060a9acde9839c306003042f7c31a75d2de985f13274b974e53c45761111300b7755419c58285291edb335dc5885e4fd719b715dab4bd93f5603d553a5e69b69f349e71190086d121e7acb748f2d99508f0ecc869246652e9fc766dff41739dc3b4c03880ed943aa6fcd17ae69334f8a779055273fc4fcb15623021f89a3ae5b569358c349405749913da6f61bbc434ae61c12b4ca1a375164077bfcabe55292df530563db12499456bf7e9c28d1298e9909b994c7d35103977d17f6c07e5445f2347a1c62937fd4ff422a98a3603ce01ee3b4ad58333c7d2eef91b168c2006c4d242554f1f516aace4aaadec73ff63772a945bb3e5596c8110ea12f8c3bf9281a175312a5250133e9c89b1b8acf13ee6a4f2bd8ae49f3f9aacf69df5407a6741aa00c8b915e4d15713dbfa6216f15d213ecde229622ca7406851ce9b15d0dc43af5207e4f783828c7c90edcf75cb5147a226341fcdf1048c57383868e978902d999092b8f058ecf85284cb9f3e757a5d843ee1c8907f2da3db7d206306b2fbc4ba2defa5e4c1c61201666be82c06a48c6a571d5e3200223eabc8310d234190edfa9fbfda335f54d5be126794b265395fb8d7d7a0e2779b336b26c0e63bd4269ee38868306a0a05004506a510e462c9a1d445aaf4fc6da36b4adaab1acc0157961dfacfc43c3772e58acab9860137d403c39fe8c8d304463352344a27c35a46729698d39c81ef6c0b90163caae2b30f9dbac590a6660fd67be1253be36b2bc137f445a79d4d622465bfbadef3b323327a581861304258e51083654343c3b57c8c0389930982789f04dd276ad9825add39d0bd5dc29988f7bc10a45477ada8cd7d5963a1e72760336647dd463fe713de9ecdc84e5ba875c6fc05f6cbbdfa6325545968a457f75f786c639a4a3171bed2352637561cd909be3ca9ff638a2ffe654fcef556fd0b5af16b256ad64fdac52e559443547396f1dc4e54f4c61fe34cd246562628bdf1450bbfd2b6bb4a400347fe66de73c7da6da6e4b8322568247867bda5b5713b38fe123afbebda28e5d909f127411051096a0c00902b275b05796197a8aa82e4db6acd83517c2445db5c8ef9e2742fd90921b0f6d0e5aa09b906c706431bea858d6d5f6cfbe39a74b27a48efd77be4cd9bcead644cc4b0312d41c8cf1043777b46fbdbe510af37c994c4de146f049db0633ed79f7bbeba87060cced939525fa2620a84a86486694335a1ed3b61d5b655e468b1dd3ac47d7d516dfa0dbf23e3df50d65677f15e4c181029cea428ea506af21958318796d3d703817ea978e10b01ac18ae3d09f308ca050f4546bef6040ce517aa3f2c610c2f43f88eb35aee31ca0aaefce815f9d8880c86787f5c1237d974533a6c1726139f55f77ea2bc3b447a912154500e84d5c9db636d3c95d608c5f96102a9a2cef4c8ce357f9fd22109b756cb143048bfabbfe469b27ab0cab9bbd70e434bd91d85a39d81951a36b4f7f117d8322d1b20fcc6fcb787b1eee8ce6280d1d72682a16ce4cb61f150637a6435f1e516cef9348cc8160a785e211af83c0f1122a92924c7e04562043b959a8635665d3872251cb4f1cd6b8963a22b98d969ba290fac3537e7b65c905afc22c796b8f982275b73d6a219474d1352ab16d4cd0fabdf02b4cd799ecb3c6d90c563dfd92c58a28badbbe1d549d05dcd0a05ff0c140ff3904f6375b163dabc91d9b12d1b55f516cca454edca67ae346bf6b9fcea063ddb369731b2d3181eb6ef043d2bceaa3f2e4481acf33ae41605b88fb5569114d0e45de473729cab4e8996b698844bf234a85db4086373728f699309454a7f86c16728795e46b8565b51bf4cd4255714de0baf6838a1d466281ff7365ef4efd49c2800e2f081cc8af633cca3a358162f856c706f39696e785d4bd781626822f5dbc1f040bdd94deaa5d592d8465c67c2b84e029395dc7f5ed229f3ce89331f3ac7d050c5b50e1bc51d214b2d6ce191027d63188e7e6441ee565d78a25c1dbb89153aef4134e8c0ef27eb448c34ab2f1c76fd19ab057d606f9bd9b90cf8243bffe844619a9482e2df9e4d748268e9ec6816e389b38e6b503a30f4ac1fc400b9dafd5df75374804eea325198df4b739af5c06117b5e9e1bf7bed97fd7c84c883c2e2d7b3485378102bb1c1dedd40a9962baaa8709637b4f3bd66492a9fcf91405b2264fea040061e75168810eee5d53fa4ed5d35b062ee181747947c7b955b0bed0bae2701c9523fa05a668eaff0e0c37c827860fffc6637f055cb963ca057cbcbdf2017ed9be8305cb7096422288188da7709c2a519628bb2d889eb7db1f7e7f13a767acbc5adbf9a6acc885c7767447f48a09a07ab22a4fa20fb339ccbde9d0bd0b04184fa4101cb3a1a261c4d1dea794bebcce042ca9367aedf36daf590f529f3f35bca71f05a391765a0b276ab5949a6d9b910512438c61a8471dc37e63967073fd02423fded9df01111042a1a3219f13500"
+    },
+    "27": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b68ac00"
+    },
+    "28": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b68ac10719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e9253ae6b8d8cfb43ca0a2abcb6a327486641775c7c49185dcb82c6be4a5ed43d240a6109c0db0d908b07b872639c7f982aff028cc9f35aef2d66f302f725097d0d3fa2b34456d17832b324aa7c25a31591f526892bc9818b91035613e99200daa1ab243f44f690624fa26a37442633843c775e18eed0d9223f48332c9fa362e84c4cb776447d9b7abbee450d3d1d6cb559d580045ff9727a550e1de9d152a07e6df9478ed33b0995ba57080b6e86bce452059df75486e53f5d678b01b692bbbcc83c578b0abe9647e947d23a0a9f40bfcbfb09b68387c23223f082d3d95370665451cd82f7812ae89ada4e32e846630295c7eb94505f38a1d9fc1227e71c1b59ce471a164ae9d99ad26d674285a15e09311761f002b1417ba6736d78602a3d5c72d74bde45bc5c1b6a93e3efbdb4a529d79f5ae81cffc2e85db6d87c46cc765d4db2fe9427cc4633c15bb89a5f5de11c0c62f77929fd88538181a5011f605a24695127d1911474885866fa56560b8c8a67e552efa3c93afa6712b52450702e1ac814f50e0e34cf011e8d68d1e0fbb985b9b35c55115f83735d162e4b7db14827a680bbcf37a661e73b9ef609a38cde15b342cb5af2cb20b31e63350bc715dfe40c9cef6743ae00d02684a741e2191c21259642f65197a0f3551ae571836aa866a33aa2b50f934b214644877a1e09bafc6b49a81b9a12f6a2a804837bf191b057a4260c9a1b0d9178d82ffefe2724f89a158a852ae10f1e760f1cca19651b53a215cbfee65c322de298bcc934696cb89210ab9b83296dbd838893fdb10b3d72928d011f024c6a8cf75e76aa49fb89de6839cade33c4507225435064a13a988d97e5caf1d7374cd9e36dbae102db1dab23c677a194fc19200f3a9a025fd71c5f52f7a53dbd249a25b84b16167a65801e4e364956fcbb2f990313806281e9777f1f5122f4030e96c38563ee28b0e8d85de471de00660700692646ada6d9c936f7905d3f0e1c8939273790c4693be9ef3ebee4cde51cc5dfe97e50ca13c7ad5e3aaf62f12c3425986790abd41b9eb153f6dccd818ca3310f69d49d1d196c6f68b8e334272adb050db61dbaaefb7cae4b216e5f062ba487f0165c4b56352d6460bdf63c2b523842d6a3f771f986fbafb76a527a6bcc17006420b1b4a10a9016f7609e4e8f2f6439bb2c1da97192af9ce1e35786d0141621127b59fa5d2d8e825789f589b385d0d853f9222e621b8c874a1702eef2e1b993e60ef1af2d938a044ba52e4ba545462f728d31e8dd1824e140a5bfe4cb02fef09693b26ac65dcc49de812e0bd3d60d0746344999cd6fa3ced0daa45e90aa186da8e2304d164231c9f9e89e37d0ca793210e12768b89e68f8563090ec64f909bbb1a01b6d46372c23b040f9ef57bd2435619b70971ca43b5bcdcc8dc8d837d0bef80440c471515e6a1106d21a0743fd68d9a27d92c70246edaafca5061081c7cac3841c037b56d5bef4ca21621fbb14163c1cbde4c890bcb201d7c21ab3e0ba6c69f8ef2d2c9ec0575a83d0017ba8242f9eebfb309f4d114bd55d1edcdcbdeb3d48e95065a67a8005cf8e03bfe11403829e88a4afd268595d163cd782d54292f61a889e4a302e092d781a30021e04e12f68d34dc4883bac1d5314ca8597bbaf93a9b9d77587b659b235dc4d416092b7712ab3a6e56546f63827e35df45fbc9f5dda2725582b49ed74ff964be996c58cb957805a279276e969c4b4cf6fe8144e07599ac228ca7b0b08512eb243078efe30c2f57333b073b1330d0f9a01ba355050facee0cc6edace993925ed3a241e9b0bac5397670cdc2e7d026cdbf51f6847487d42b1a7fba676f56c7f9f800879611693b0cfb018dd39348430575c77f492a0e89d90f3b36556ca731739123a3c2196938bfa438f239217ea312e666b57cc6d63d2e931b6fff056c2fc10f7d5dfce6be1394fe00f69acfe59c042671d0ee178390dc93ca526f2d83469c2af75a1c3dfad8b957144d1c53a8b9a5bb8ea6d5ba1e63a9bb77659a91cc01b359ab12694492a6b351b8821ecd016da0d8ffb5592d0266eccee1057d07e781bc96c1008987a89399abad4641af2351dd55392c0f293fe143b758a2dfcdf35eff5c1a900214a553a1bdf272cb6b24b7691f31d8ac93471d6993baf180"
+    },
+    "29": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b10719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e9"
+    },
+    "3": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsUL-r13"
+        ],
+        "Payload": "3c251d4c8300"
+    },
+    "4": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsUL-r13"
+        ],
+        "Payload": "3c251d4c87c0"
+    },
+    "5": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsUL-r13"
+        ],
+        "Payload": "3c251d4c87c0"
+    },
+    "6": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedMaxCCsUL-r13"
+        ],
+        "Payload": "3c251d"
+    },
+    "7": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b0000"
+    },
+    "8": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b001000"
+    },
+    "9": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": [
+            "message",
+            "c1",
+            "ueCapabilityEnquiry",
+            "criticalExtensions",
+            "c1",
+            "ueCapabilityEnquiry-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "requestedFreqBandsNR-MRDC-r15"
+        ],
+        "Payload": "3c251d451b3f80"
+    },
+    "Best Candidate": {
+        "Message": "ueCapabilityEnquiry",
+        "Path": "message,c1,ueCapabilityEnquiry,criticalExtensions,c1,ueCapabilityEnquiry-r8,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,requestedFreqBandsNR-MRDC-r15",
+        "Payload": "3c251d451b10719d3b778a0e45216d31dee9d26415b77101c5902ecf65c2e0cd60b4c3f987e9"
+    }
+}

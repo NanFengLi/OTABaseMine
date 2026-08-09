@@ -1,0 +1,605 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedApUpPTsExtList-r14",
+            "setup",
+            "srs-ConfigApDCI-Format4-r13",
+            "freqDomainPositionAp-r13"
+        ],
+        "Payload": "22020180038020060048763559458557e8fd114000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedApUpPTsExtList-r14",
+            "setup",
+            "srs-ConfigApDCI-Format4-r13",
+            "freqDomainPositionAp-r13"
+        ],
+        "Payload": "2202018003802006004876355945855708fd114000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "220a016adbdc00041b0385c81800380200580044e100c07df190494700"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "220a016adbdc00041b0385c81800380200580044e100c07ff190494700"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "220a016adbdc00041b0385c81800380200580044e100c07f8190494700"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "220a016adbdc00041b0385c818003802005800"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "2212100050101413b7b10c16aea88431005407ce1452303000700400c00089c28180c48bd4320928e0"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "2212100050101413b7b10c16aea88431005407ce1452303000700400c00089c28180c48ffc320928e0"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "2212100050101413b7b10c16aea88431005407ce1452303000700400c00089c28180c48fc4320928e0"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "2212100050101413b7b10c16aea88431005407ce1452303000"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "220a416adbdc00041b0385c84203c084040904e70001800380200700044e180c06240500690641251c00"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "220a416adbdc00041b0385c84203c084040904e70001800380200700044e180c062405007f0641251c00"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedApUpPTsExtList-r14",
+            "setup",
+            "srs-ConfigApDCI-Format4-r13",
+            "freqDomainPositionAp-r13"
+        ],
+        "Payload": "22020180038020060048763559458555c8fd"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "220a416adbdc00041b0385c84203c084040904e70001800380200700044e180c06240500750641251c00"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "220a416adbdc00041b0385c84203c084040904e70001800380200700044e180c"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2202018003902003002ab82b96d70700044e180c06240480640641251c00"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2202018003902003002ab82b96d70700044e180c062404806c0641251c00"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2202018003902003002ab82b96d70700044e180c062404806c0641251c00"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2202018003902003002ab82b96d707"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2212100050101413b7b10c16aea884304034051b503000700400400089a800"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2212100050101413b7b10c16aea884304034051b503000700400400089ab00"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2212100050101413b7b10c16aea884304034051b503000700400400089ab00"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2212100050101413b7b10c16ae"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "2202018003842002005736a80580044e100c06241904947000"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "2202018003842002005736a80580044e130c06241904947000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "2202018003842002005736a80580044e130c06241904947000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "subframeConfig-r11"
+        ],
+        "Payload": "220205451440008a502000e00801600113840312890641251c00"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "subframeConfig-r11"
+        ],
+        "Payload": "220205451440008a502000e0080160011384037f890641251c00"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "subframeConfig-r11"
+        ],
+        "Payload": "220205451440008a502000e0080160011384034d890641251c00"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "dummy",
+            "setup",
+            "beamformed-v1430",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "subframeConfig-r11"
+        ],
+        "Payload": "220205451440008a502000"
+    },
+    "Candidate 3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,physicalConfigDedicated,csi-RS-Config-v1430,dummy,setup,beamformed-v1430,nzp-ResourceConfigOriginal-v1430,transmissionComb-r14",
+        "Payload": "2212100050101413b7b10c16aea884304034051b503000700400400089ab00"
+    }
+}

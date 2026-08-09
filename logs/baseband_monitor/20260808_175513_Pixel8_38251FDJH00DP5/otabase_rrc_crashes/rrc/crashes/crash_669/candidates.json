@@ -1,0 +1,612 @@
+{
+    "0": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "18600905f4bb608ad08d438829540daf914d80bb35158234d269ac39a9e712aa20889d92d283"
+    },
+    "1": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc2d0fa173edc738e2af53ac8c3d3962583070cc76fce6c1805f93b3cd148760"
+    },
+    "10": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "1a70110725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bac2b0"
+    },
+    "11": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "1a538973680186d72057723638f0"
+    },
+    "12": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "1a538973684186d72057723638f0"
+    },
+    "13": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "1a538973698186d72057723638f0"
+    },
+    "14": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "1a53897369e186d72057723638f0"
+    },
+    "15": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "1a538973682186d7a0"
+    },
+    "16": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "1a538973682186d70436baf578ec0c168b9b94b3c27b745c614fcf0c380218eb031a0593c81c8441e148bc83a7310611b2caaacde4a9a3575458be338401f57b46b830715b9f1fe45c9558057afc57ff3101f8fd724f3bbf2985c85c5e344f003faddaf598b8740106704222f0"
+    },
+    "17": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "1a538973682186d76c36bfa509bd3758e59d43b3ce2c7128"
+    },
+    "18": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "si",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "1a538973682186d7fc36bc37b53f6b6da3bf07843c2a82949d58e26f0f9d16b0"
+    },
+    "19": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "18438de47e05f918260feb346ed0586d18bf4e841bc402f0cfe280"
+    },
+    "2": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bcad0fa173edc738e2af53ac8c3d3962583070cc76fce6c1805f93b3cd148760"
+    },
+    "20": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "18438de47e45f918260feb346ed0586d18bf4e841bc402f0cfe280"
+    },
+    "21": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "18438de47e85f918260feb346ed0586d18bf4e841bc402f0cfe280"
+    },
+    "22": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "18438de47fe5f918260feb346ed0586d18bf4e841bc402f0cfe280"
+    },
+    "23": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "18438de47e25f918260feb34a0"
+    },
+    "24": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "18438de47e25f918260feb3407c8c1307f59a66566177fab5335d4b77bf1182ec1dd85366d81e4a3104040ea3d956b86cee069bf72953b6b9857ff4e905710e97fb28c2c24dcc0fb6b6e1b3abba0129260ed2802ce64114c6a92a361f24e2788644b51026414128d80668026ac96e82f10"
+    },
+    "25": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "18438de47e25f918260feb340fc8c1307f59a78262a8e8"
+    },
+    "26": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "18438de47e25f918260feb34ffc8c1307f59a3a4f9b6947689720d909915218331fa6178"
+    },
+    "27": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "186385e47d65f0"
+    },
+    "28": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "186385e47d6540"
+    },
+    "29": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-1XRTT-r9",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "1c550000"
+    },
+    "3": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc2d0fa173edc738e2af53ac8c3d3962583070cc76fce6c1805f93b3cd148760"
+    },
+    "4": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bfed0fa173edc738e2af53ac8c3d3962583070cc76fce6c1805f93b3cd148760"
+    },
+    "5": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc6d0fa173edc738e2af53ac8c3d3962583070cc76fce6c18050"
+    },
+    "6": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc6d0fa173edc738e2af53ac8c3d3962583070cc76fce6c180087d0b9f6e39c7157a9d6461e9cb12c1838663b7e7360c01addf526d756d04c3ed88ea560eaf27227799b9de8d43802f33b1062d336d76737dcef17e12e33addd8cf60e8d6ec54b792af9dbde9a3951a3e02eb2cf20d09b3769a1c15470aeee37c574b4590"
+    },
+    "7": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc6d0fa173edc738e2af53ac8c3d3962583070cc76fce6c180787d0b9f6e39c7157a9d6461e0"
+    },
+    "8": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "handover",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "1a50910725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bc6d0fa173edc738e2af53ac8c3d3962583070cc76fce6c181f87d0b9f6e39c7157a9d6461e9cb12c1838663b7e7360c00"
+    },
+    "9": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "1a70110725bb82e27e0331e8edb9a5bd727088d9d32a93f768cfa17858767cc02f1e01bac3b0"
+    },
+    "Best Candidate": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": "message,c1,mobilityFromEUTRACommand,criticalExtensions,c1,mobilityFromEUTRACommand-r9,purpose,e-CSFB-r9,messageContCDMA2000-1XRTT-r9,OCTET STRING,1",
+        "Payload": "1c550000"
+    }
+}

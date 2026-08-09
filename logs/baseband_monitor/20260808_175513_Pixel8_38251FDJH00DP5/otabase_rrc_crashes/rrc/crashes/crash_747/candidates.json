@@ -1,0 +1,612 @@
+{
+    "0": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "18438de47fe5f918260feb346ed0586d18bf4e841bc402f0cfe280"
+    },
+    "1": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "18438de47e25f918260feb34a0"
+    },
+    "10": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-1XRTT-r9",
+            "OCTET STRING",
+            "15"
+        ],
+        "Payload": "1c5518006000"
+    },
+    "11": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-HRPD-r9",
+            "OCTET STRING",
+            "5"
+        ],
+        "Payload": "1c54501000"
+    },
+    "12": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-HRPD-r9",
+            "OCTET STRING",
+            "6"
+        ],
+        "Payload": "1c54501017c5066bcc70aa630d0b04126201699a1994d10a0d498a2b48aa77f7f0b00050d59b58affdfcbc9941cec2001980"
+    },
+    "13": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-HRPD-r9",
+            "OCTET STRING",
+            "7"
+        ],
+        "Payload": "1c5457ffe0"
+    },
+    "14": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-HRPD-r9",
+            "OCTET STRING",
+            "8"
+        ],
+        "Payload": "1c5457fff7c5066bcc70aa630d0b04126201699a1994d10a0d498a2b48aa77f7f0b00050d6b91bfe0ab488b23795707f83051e9ea35c336165fdcc14f3e9901f0135e727f83353c8580ecad2a2121d2ed1f0e2cbfbd0116c58df19253c592eed4212d9acbe1b9354c61567a36d3dde9c699edfef9a5742b20fe47d17d89355ea41b3d845fa35523d63d11a56f49edb66aae6e5520935898a9fe3045e4599bd4e39f2b0935c42b45696ccedc144bfa42eeb9db79c933d1298cc452bb59401032faffefe7309f50858671faeff18e68951d53bcef1a82709e8d1a88636ee59ac0852b0fc9ffc01bfa1cb94c5b9ca911993d4176295085bd109bf1964eb35e1506a0e5bd1afa78a7cb702feb0a1f3293f25f5b50e84a2b2207e297a6c26959cd5c2a1702b7a949d3961de844d560e678a0f691f10dd0e18933811052170ffa22cb7be8132043709240f8f27b4995a8c73d62cfae972e6489d01adb3646c664380794b6b52a39508c0c8f25f3ece5ca402985dd763807bccbb0983264524342334a88dfdbb35b911581152782d6422233e3ae56f72e67289f46fdaff2524e596a09a0fc354517044daea08ab2e94b09bbadd3d62e608383460b7442012d0ba255a88ac7bb5e2b1d6eae604e44b67e5ee4441d2f6215633988f4a3a7ccac9a0ba0bf6232714182461ac36201d144b81a5239d3fa8671b2d3f6a1ab2dc54e9d0dde29412f649472259159114206b80ce6dbf6e1c19c2f322aadc3ced408e7aca4e4bda54b4ad359249a5517dd8e2bf1c63aa603dad4346d7ccc44056275c71937912963d8aacfb17f27940302957c6d1a33b725fa364e58204a877f57add5d6a22485a815be3c43ee5e7fda84024774db198babd9b537006cdb4248c15f395317145b4b9bd163b4c02c2b275259f54a44ba109216072330a2168f28536fa85c926b319dc19057623e76373d8160279503b558b47cd74dbac757878166bf0412b8dc982f0d13826e864cb95e1e41fd0e49edc327224341bb23c9404e45a36c7a0bd7745cba82640a5ca5652773cc72381dbe30c10a88c7f8ccc51cb884fa1bb27b6eab9678334598f44fb8a8459562b3084d18b86881348240838f9d69e3947b807f5e64ddd3d7fe4c5f08fb8b5ed70b6914f0f71fc50a36fa2379a592331ddeceb46cb0bceb32fa4af76dedd725c9949b17998f8d07a989a2a6e3a37ac5bdd370d584d0e0416c40baa08da06ace257da0c374f97102ef1f9a1c89cbd4673e006635b9ce587eeadd30cc62f3ae6fdc628fcbea10c4cffdeabfca31277d567d78a2b24ceb09a03b6583c757a0565894b3d37e692547e886bd1cbc7de7dc976f5ee19aeb744e035edbe0b8402597efd95235abf0a63ff77d07b6fa1eba8b7ff65796fde7fc4c2770c22c174192d299abbf0a02440a1b95b0cc29ba0f44d9973e7029eb9c2990643db23c9cb292c1ca112f19068bff87371d31da44dd27e3a703f4b51c9f1c952e8596238cf859ea5cecf73d330770c3b15e93c00b103a351f1d0d24dc4fa551a036856cad4570b118048b91a9e24eb17e47838fe4931f84f86a14ecc55e700a8b2470bb1e1e8da1650af9708735524059c1984b8bad1510b8fa657ac086e9fc9035d44d3dc671421cb8bcf010a67b9ea432ed9fcbe2fcc78e847fcc90e9e465a38e8c68360336230d48402fa760bab46ecf51693419b4d6eace52e698e0df7e83d978334c44f2598d9e354dabecb507de92e934f63dcbf6e09e8a85a2dd5e7b25562431b7ab9e74dda790dfa85edad86eaebffabdfa73799a18356f17dcd78684203417a343af5259fe5932645b99162f00f7dc75094e9093aa871a3972a0b55fd8c4d6d382e195ae7613deb22f06d5b0278ce00bffee02fb40f18cd8b43dd3f124f6fe2b70f7600658b3d7220c465f127717c4008e5a30ef407288fe76b7757bf9ace24c49a6a93b05108a15230d3d2398f1b4bc443119e237159982d3609763ab166fb040f1a01478c9c550d6e21bf59b2cda5c12ce72c93315500662c84a9ce053e9764eafae8f15c3376c8a3976c1b827882eb03ebd1bf484ff46644c325f6e84c03479f8ed7b64646b26608082820d5831e704a131e8ea87978e8b1edd6d71421a30d624b0a1f03330b07437557ee8fc00ed4c43f02e305c35b85ef42619b637762dab38c13d6c2266b70df0219c6db5c7c4ee919b1944d391efc971a2afea08ae21d13e73acf6fe42d5c8f6e8a144d930a93da28fd487d22fe779b646c590654a7c07d2fb6a6f995e82f1de79d1a250c0749a41ac1534ba80eed7803521145d5b35188d4d1f90ae002c09e8cd498680029ed31e7cb2e5cd95df4c82d7773e15f4d6feb2d194c9b280d62cb2be4180443f246e3180f5d16df4492017256da2a86dd7317fa5308f8d913649dcd461cc1b2aa8aa26f4cbcca52f66f3e46abe6d0ad8732ec9cb50891e8cde912d254440b9567e8b0595f86ffe2668a3b951b5b6a0fbd002224f1bb4363ecf0b8c9fa0cc0"
+    },
+    "15": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "1c740b1f40"
+    },
+    "16": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "1c740b1a40"
+    },
+    "17": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "1c6304097d67f8"
+    },
+    "18": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "1c6304097d6740"
+    },
+    "19": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "1c600105fc462b0c1f03e09b3cef0c165ca4ab6052d6cfe3a80987aa659585200c50f692d7fd80"
+    },
+    "2": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "18438de47e25f918260feb3407c8c1307f59a66566177fab5335d4b77bf1182ec1dd85366d81e4a3104040ea3d956b86cee069bf72953b6b9857ff4e905710e97fb28c2c24dcc0fb6b6e1b3abba0129260ed2802ce64114c6a92a361f24e2788644b51026414128d80668026ac96e82f10"
+    },
+    "20": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "1c600105fc462b0c1f03e09b3cef0c165ca4ab6052d6cfe3a80987aa659585200c50f692d68180"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "0",
+            "measObject",
+            "measObjectCDMA2000",
+            "offsetFreq",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2010100052c802b03fb4df12ff3f866b76c17102134f7263aba061a4026300"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "0",
+            "measObject",
+            "measObjectCDMA2000",
+            "offsetFreq",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2010100052c802b03fb4df12ff3f866b76c17102134f7263aba061a4026300"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "carrierFreqs",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "2010100052c802b017b4df12826300"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "carrierFreqs",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "2010100052c802b017b4df120f3f866b76c17102134f7263aba061a40bd03408167113ca071cd61e5911ab3b2039c31edf2760a086b9266ec136151caae669399cdbc8dda399d6ba9fc4cb5ca9d3c6177496dd0f10e0a3589fddddcb152c1b1918f9dfed9d91830413357266c7720c11126300"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "carrierFreqs",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "2010100052c802b017b4df127f3f866b76c171026300"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "carrierFreqs",
+            "followingARFCNs",
+            "variableBitMapOfARFCNs",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "2010100052c802b017b4df12ff3f866b76c17102134f7263aba061a4026300"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "offsetFreq",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2010100052c802b017b4df12ff3f866b76c17102134f7263aba061a40fe300"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "__elem__",
+            "1",
+            "measObject",
+            "measObjectGERAN",
+            "offsetFreq",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2010100052c802b017b4df12ff3f866b76c17102134f7263aba061a40fe300"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "__elem__",
+            "0",
+            "reportConfig",
+            "reportConfigEUTRA",
+            "triggerType",
+            "event",
+            "eventId",
+            "eventV1-r14",
+            "v1-Threshold-r14",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "201004007620c07f962989310c0472815ac1d0"
+    },
+    "3": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "3"
+        ],
+        "Payload": "18438de47e25f918260feb340fc8c1307f59a78262a8e8"
+    },
+    "4": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "cellChangeOrder",
+            "targetRAT-Type",
+            "geran",
+            "systemInformation",
+            "psi",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "18438de47e25f918260feb34ffc8c1307f59a3a4f9b6947689720d909915218331fa6178"
+    },
+    "5": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "186385e47d65f0"
+    },
+    "6": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "186385e47d6540"
+    },
+    "7": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-1XRTT-r9",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "1c550000"
+    },
+    "8": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-1XRTT-r9",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "1c550fed9ae7d011c68a9d8ad0590c9e9cb2af634434fa0e50df91f71b1ab29670b120f79f9fc9bb716a21ef21b34a66485b4a8e0127f18cc94f923bcb6d83efeb705585fc15d0043b6fcbe92bcb9f8604c025fb74076c9b9115dc9822b7b569cef75c9c1e48df694bbac707f81afa43e8df52408a4f0b896956e0"
+    },
+    "9": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-1XRTT-r9",
+            "OCTET STRING",
+            "14"
+        ],
+        "Payload": "1c551800402d9ae7d011c68a9d8ad0590c9e9cb2af634434fa0e50df91f71b1ab29670b120ec091f98fec37747bcdd27d6ebec25810e12377bc462aad4836f197a86a2442a9f04e2da820e1c97e06304dada6ae5081bd6cc19f7235ecdf39c7ad9278f0d1fbf76f6f1bd8a453789ecf48b81b2ad9782bbb21cee0ae881eef683b0af53c704b261a4526e1e0bcb06ce98b7b32b94832c3af1076b32f3bc0dedf56e6b58e6bfe4753785b5392f6df3b21795a719dacaf3b2c802093b0de806cae68dba0d8ba7269af66ba04e48cdd9de7de3c9d3a21202dcd5e2dfb4dd4bd29483ee775232143d8e1d5227d1802ee5a31cecf6f3b19fd8fe160687aabcac48cd69d49b24905c9ca2460fb5e4bed68044b7f40822cc7bff95c444ab08328ca2ff6990445847e3134bd72973f2f18207aa02d712d57c27e9eda16fbf0fbd5e4e302e47dc76a6e9bd0e97bda4f88b6a0282590ed52d74db321e41949364575fa7a3e54d7a9e639f624c6a9fcc8ffe24caf7e309ef6622ea39dc958b91ea62be1e432a7b238989b9a685158f8546e6acb2029e30ef07be0f5c6982e7a1aaa8fa7514bca612cd6663761f1d188a3b2844fe56c0e770de8965c1d357d1cdcb89514c7e6f4648e5b8a468371053eda427be54b7ee2ab894ffda86be0447c5cdfe32fe5ad8f8d26231179d42c369698e309e64538f98e480507ed12a020d9f2b3c289a7e7a6e6f3fc1eb37da642ed4d16ba81f56a61e1c18451873ab0f26ffe72f4f3cf912aaa7e00c2292862aa353a9febba405920dfe03c7e412b3b8c07656946128603078b38a79f6d05b77ccdf81cf2d91311f5a34f97e7458a18dcfc92e0bbb3f3dc04762a61f22a73256131693502dd478e2e29e5f1a5ee298dbc6165ee04c1285622b3a8990dee34804c2998915a1337849db223b3891957add65fb918e3cf775be1cfb970fd8284fe253ac5992f5d5008d9af98e967fa9c51087c5c2722b99333757c0f562973023ac1a9cd77b20fe08c35946aa8f9366a830c457d1eb444569eca5a534ad52ef984b61115172eb954208c166660779af0f3aa645ee39cbcbf5814551262cf12f1ab59d2d6a98049c15f9c7dcdfc9430409fb1497fe2d6d9770f35c3c349fe9360540204afd45476333b3289122c91a5369ce59bb06b5447a63ba6f2a3b9795b4f9a31296ac84d734d9f1d1ea6485c50b052e9e411ebd8dfa5694a2c2dd5e38873476e9feabe720ab997497430b266ea58ccf5c8976937aae54d14fd78011ec0400"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,measConfig,reportConfigToAddModList,__elem__,0,reportConfig,reportConfigEUTRA,triggerType,event,eventId,eventV1-r14,v1-Threshold-r14,INTEGER,1",
+        "Payload": "201004007620c07f962989310c0472815ac1d0"
+    }
+}

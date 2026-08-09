@@ -1,0 +1,332 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e21040b05dc1caa20"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a23040b4c68ce3fe0"
+    },
+    "10": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "pur-Config-r16",
+            "setup",
+            "pur-StartTimeParameters-r16",
+            "periodicityAndOffset-r16",
+            "periodicity1024",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "280eaa0a904403ffecbb30"
+    },
+    "11": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "2a0ac01161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936552cf04525d8bca00"
+    },
+    "12": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "2a0ac05161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936552cf04525d8bca00"
+    },
+    "13": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "2a0ac35161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936552cf04525d8bca00"
+    },
+    "14": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "2a0ac3f161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936552cf04525d8bca00"
+    },
+    "2": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a23040b4c68ce3a20"
+    },
+    "3": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a25040b9227054fec"
+    },
+    "4": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a25040b9227054a0c"
+    },
+    "5": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2c21040b2568455ff0"
+    },
+    "6": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2c21040b2568455a00"
+    },
+    "7": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "pur-Config-r16",
+            "setup",
+            "pur-StartTimeParameters-r16",
+            "periodicityAndOffset-r16",
+            "periodicity8",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2c08aa0a904400733270"
+    },
+    "8": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "pur-Config-r16",
+            "setup",
+            "pur-StartTimeParameters-r16",
+            "periodicityAndOffset-r16",
+            "periodicity8",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2c08aa0a904400733270"
+    },
+    "9": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "pur-Config-r16",
+            "setup",
+            "pur-StartTimeParameters-r16",
+            "periodicityAndOffset-r16",
+            "periodicity1024",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "280eaa0a904403ffecbb30"
+    },
+    "Candidate 4": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,nonCriticalExtension,nonCriticalExtension,cellInfoList-r9,geran-r9,__elem__,0,systemInformation-r9,SEQUENCE OF,1",
+        "Payload": "2a0ac01161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936552cf04525d8bca00"
+    }
+}

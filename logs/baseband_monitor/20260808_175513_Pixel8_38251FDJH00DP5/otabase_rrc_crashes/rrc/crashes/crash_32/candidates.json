@@ -1,0 +1,98 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectCDMA2000-r13",
+            "offsetFreq"
+        ],
+        "Payload": "20104000690090c1f7d001681a322edcffc1903153a000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectCDMA2000-r13",
+            "offsetFreq"
+        ],
+        "Payload": "20104000690090c1f7d001681a322edcffc1903153a000"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectCDMA2000-r13",
+            "offsetFreq"
+        ],
+        "Payload": "201040"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigPerCC-List-r14",
+            "setup",
+            "measGapConfigToAddModList-r14",
+            "measGapConfigCC-r14",
+            "setup",
+            "gapOffset",
+            "gp3-r14"
+        ],
+        "Payload": "201050006e1120dc58a098b3e05d9083bec24086080d509b02033530"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigPerCC-List-r14",
+            "setup",
+            "measGapConfigToAddModList-r14",
+            "measGapConfigCC-r14",
+            "setup",
+            "gapOffset",
+            "gp3-r14"
+        ],
+        "Payload": "201050006e1120dc58a098b3e05d9083bec24086080d509b0203fd30"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,measConfig,measGapConfigPerCC-List-r14,setup,measGapConfigToAddModList-r14,measGapConfigCC-r14,setup,gapOffset,gp3-r14",
+        "Payload": "201050006e1120dc58a098b3e05d9083bec24086080d509b0203fd30"
+    }
+}

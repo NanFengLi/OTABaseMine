@@ -1,0 +1,45 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e21040b05dc1caa20"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a23040b4c68ce3fe0"
+    },
+    "Candidate 2": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,redirectedCarrierInfo,nr-r17,smtc-r17,periodicityAndOffset-r15,sf20-r15,INTEGER,2",
+        "Payload": "2e21040b05dc1caa20"
+    }
+}

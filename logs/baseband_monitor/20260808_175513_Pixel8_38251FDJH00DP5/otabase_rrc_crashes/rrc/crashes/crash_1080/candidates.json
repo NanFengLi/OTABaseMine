@@ -1,0 +1,66 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "scg-Configuration-r12",
+            "setup",
+            "scg-ConfigPartSCG-r12",
+            "measConfigSN-r15",
+            "measGapConfigDensePRS-r15",
+            "setup",
+            "gapOffsetDensePRS-r15",
+            "rstd16-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2600a4a85802841140006020750a0000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "scg-Configuration-r12",
+            "setup",
+            "scg-ConfigPartSCG-r12",
+            "measConfigSN-r15",
+            "measGapConfigPerCC-List-r14",
+            "setup",
+            "measGapConfigToAddModList-r14",
+            "__elem__",
+            "0",
+            "measGapConfigCC-r14",
+            "setup",
+            "gapOffset",
+            "gp-ncsg1-r14",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2400a4a85802841740006080d50e70603fd000"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,nonCriticalExtension,scg-Configuration-r12,setup,scg-ConfigPartSCG-r12,measConfigSN-r15,measGapConfigPerCC-List-r14,setup,measGapConfigToAddModList-r14,__elem__,0,measGapConfigCC-r14,setup,gapOffset,gp-ncsg1-r14,INTEGER,1",
+        "Payload": "2400a4a85802841740006080d50e70603fd000"
+    }
+}

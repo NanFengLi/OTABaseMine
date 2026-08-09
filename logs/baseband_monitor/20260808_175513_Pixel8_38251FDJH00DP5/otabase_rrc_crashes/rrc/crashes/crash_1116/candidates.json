@@ -1,0 +1,591 @@
+{
+    "0": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToReleaseList-r15",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "7e208020080640215180"
+    },
+    "1": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToReleaseList-r15",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "76208020080640215180"
+    },
+    "10": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "tpc-PDCCH-ConfigPUSCH-SPS-r15",
+            "setup",
+            "tpc-Index",
+            "indexOfFormat3A",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "6620802008164011c0018820946eefc46180"
+    },
+    "11": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "tpc-PDCCH-ConfigPUSCH-SPS-r15",
+            "setup",
+            "tpc-Index",
+            "indexOfFormat3A",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "6620802008164011c0018820946eefc46180"
+    },
+    "12": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "sps-ConfigIndex-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "6620802008124011c00188103c046180"
+    },
+    "13": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "sps-ConfigIndex-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "6620802008124011c001881038046180"
+    },
+    "14": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "66208020080240092180"
+    },
+    "15": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "66208020080a40092180"
+    },
+    "16": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "66208020080a40092180"
+    },
+    "17": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "66208020081e40092180"
+    },
+    "18": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "67e08020080640092180"
+    },
+    "19": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToReleaseList-r15",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "67a08020080640092180"
+    },
+    "2": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "66208020084a4010f0222c1f81627a00f80174a0037ed546eeb3607e06580fc060006c00b99000ff34040180"
+    },
+    "20": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "neighCellsCRS-Info-r15",
+            "setup",
+            "__elem__",
+            "0",
+            "physCellId-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "662080200808112bcbff80"
+    },
+    "21": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "neighCellsCRS-Info-r15",
+            "setup",
+            "__elem__",
+            "0",
+            "physCellId-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "662080200808112bcbf180"
+    },
+    "22": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "SEQUENCE OF",
+            "1"
+        ],
+        "Payload": "66208020090074083f97bcd5683e907ff0180018001d604fdfc0f4004f5d4be4002d10003dfdb8201e03f2f93704f80c000e000e0037eba1e540db800c006fe03c005e2a005f1e8030031fd9a68d35d47c6cc13e0300038003d00be25dfb567c0341403000381fdabfa0ffe0300030003be09e1fc8d4009e3b19bc005bf0007be66e803c019c4ca0ae61209f018001c001e406ffdb5770453001a00dfc07400bef000bfb30060057fbdd0bdec427c06000600075017c2dfc35de8078200600070180"
+    },
+    "23": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "66208020090274083f97bcd5683e907ff0180018001d604fdfc0f4004f5d4be4002d10003dfdb8201e03f2f93704f80c000e000e0037eba1e540db800c006fe03c005e2a005f1e8030031fd9a68d35d47c6cc13e0300038003d00be25dfb567c0341403000381fdabfa0ffe0300030003be09e1fc8d4009e3b19bc005bf0007be66e803c019c4ca0ae61209f018001c001e406ffdb5770453001a00dfc07400bef000bfb30060057fbdd0bdec427c06000600075017c2dfc35de8078200600070180"
+    },
+    "24": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "66208020090174083f97bcd5683e907ff0180018001d604fdfc0f4004f5d4be4002d10003dfdb8201e03f2f93704f80c000e000e0037eba1e540db800c006fe03c005e2a005f1e8030031fd9a68d35d47c6cc13e0300038003d00be25dfb567c0341403000381fdabfa0ffe0300030003be09e1fc8d4009e3b19bc005bf0007be66e803c019c4ca0ae61209f018001c001e406ffdb5770453001a00dfc07400bef000bfb30060057fbdd0bdec427c06000600075017c2dfc35de8078200600070180"
+    },
+    "25": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "66208020090f74083f97bcd5683e907ff0180018001d604fdfc0f4004f5d4be4002d10003dfdb8201e03f2f93704f80c000e000e0037eba1e540db800c006fe03c005e2a005f1e8030031fd9a68d35d47c6cc13e0300038003d00be25dfb567c0341403000381fdabfa0ffe0300030003be09e1fc8d4009e3b19bc005bf0007be66e803c019c4ca0ae61209f018001c001e406ffdb5770453001a00dfc07400bef000bfb30060057fbdd0bdec427c06000600075017c2dfc35de8078200600070180"
+    },
+    "26": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "pdcp-Config",
+            "headerCompression",
+            "rohc",
+            "maxCID",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "6620802008100824782ffffd201580"
+    },
+    "27": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "pdcp-Config",
+            "headerCompression",
+            "rohc",
+            "maxCID",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "6620802008100824782ffffd201580"
+    },
+    "28": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "pdcp-Config",
+            "uplinkOnlyHeaderCompression-r14",
+            "rohc-r14",
+            "maxCID-r14",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "66208020081c08247a2ad07d20e1006dfffc002980"
+    },
+    "29": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "drb-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "pdcp-Config",
+            "uplinkOnlyHeaderCompression-r14",
+            "rohc-r14",
+            "maxCID-r14",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "66208020081c08247a2ad07d20e1006dfffc002980"
+    },
+    "3": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "SEQUENCE OF",
+            "2"
+        ],
+        "Payload": "66208020084a4012f0222c1f81627a00f80174a0037ed546eeb3607e06580fc060006c00b99000ff34040180"
+    },
+    "4": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "SEQUENCE OF",
+            "3"
+        ],
+        "Payload": "66208020084a4013f0222c1f81627a00f80174a0037ed546eeb3607e06580fc060006c00b99000ff34040180"
+    },
+    "5": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "SEQUENCE OF",
+            "4"
+        ],
+        "Payload": "66208020084a4017f0222c1f81627a00f80174a0037ed546eeb3607e06580fc060006c00b99000ff34040180"
+    },
+    "6": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "66208020080e4011a03fee300180"
+    },
+    "7": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "66208020080e4011a025ee300180"
+    },
+    "8": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "6620802008124011c001c017ffa46180"
+    },
+    "9": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "sps-Config-v1530",
+            "sps-ConfigUL-ToAddModList-r15",
+            "__elem__",
+            "0",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "6620802008124011c001c0172fa46180"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": "message,c1,rrcConnectionResume-r13,criticalExtensions,c1,rrcConnectionResume-r13,radioResourceConfigDedicated-r13,drb-ToAddModList-r15,__elem__,0,pdcp-Config,uplinkOnlyHeaderCompression-r14,rohc-r14,maxCID-r14,INTEGER,2",
+        "Payload": "66208020081c08247a2ad07d20e1006dfffc002980"
+    }
+}

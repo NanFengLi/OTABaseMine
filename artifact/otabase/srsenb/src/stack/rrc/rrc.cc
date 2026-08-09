@@ -2203,6 +2203,21 @@ void rrc::toggle_airplane_mode(const std::string& device_name){
   // Check if the device name is valid
   airplanemode_attempt++;
 
+  static std::chrono::steady_clock::time_point last_airplane_mode_toggle;
+  const auto now = std::chrono::steady_clock::now();
+  const auto cooldown_ms =
+      std::chrono::duration_cast<std::chrono::milliseconds>(now - last_airplane_mode_toggle).count();
+  const int64_t airplane_mode_cooldown_ms = 20000;
+  if (last_airplane_mode_toggle.time_since_epoch().count() != 0 && cooldown_ms < airplane_mode_cooldown_ms) {
+    logger.info("Skip airplane mode toggle for %s: cooldown active, %ld ms remaining",
+                device_name.c_str(),
+                airplane_mode_cooldown_ms - cooldown_ms);
+    srsran::console("Skip airplane mode toggle for %s: cooldown active, %ld ms remaining\n",
+                    device_name.c_str(),
+                    airplane_mode_cooldown_ms - cooldown_ms);
+    return;
+  }
+
   // Galaxy S8
   const char* commands_s8[] = {
     "adb shell input keyevent KEYCODE_WAKEUP &",
@@ -2269,6 +2284,12 @@ void rrc::toggle_airplane_mode(const std::string& device_name){
     "adb shell input keyevent KEYCODE_WAKEUP &",
     "adb shell am start -a android.settings.AIRPLANE_MODE_SETTINGS &",
     "adb shell input tap 960 360 &",
+  };
+
+  const char* commands_pixel[] = {
+    "adb -s ${ADB_SERIAL:-38251FDJH00DP5} shell cmd connectivity airplane-mode enable; "
+    "sleep 3; "
+    "adb -s ${ADB_SERIAL:-38251FDJH00DP5} shell cmd connectivity airplane-mode disable"
   };
 
   std::vector<std::future<int>> futures;
@@ -2364,10 +2385,17 @@ void rrc::toggle_airplane_mode(const std::string& device_name){
     for (const char* command : commands_p20){
       futures.push_back(std::async(std::launch::async, executeShellCommand, command));
     }
+  } else if (device_name == "Pixel8" || device_name == "Pixel_8" || device_name == "shiba"){
+    for (const char* command : commands_pixel){
+      futures.push_back(std::async(std::launch::async, executeShellCommand, command));
+    }
   } else {
     logger.error("Invalid device name");
     srsran::console("Invalid device name\n");
+    return;
   }
+
+  last_airplane_mode_toggle = now;
 }
 
 int rrc::executeShellCommand(const char* command){

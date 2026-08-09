@@ -1,0 +1,566 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format0-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "2002018003808206800835e1be860a00de0a24c23805822962d0d3a9e0c0b9d22000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format0-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "2002018003808206800835e1be860a00de0a24c23805822962d0d3a9a0c0b9d22000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-StartPosAdd-r16"
+        ],
+        "Payload": "200201800390020640049011f994e7e0a3181b"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41060023608d3487082d60082449205720006160026f6e4f70c802c8018003800205822962d0d3a980c0b9d20000"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41060023608d3487082d60082449205720006160026f6e4f70c802c8018003800205822962d0d3a980c0b9d3e000"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41060023608d3487082d60082449205720006160026f6e4f70c802c8018003800205822962d0d3a980c0b9d3a000"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41060023608d3487082d60082449205720006160026f6e4f70c8"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-VirtualCellID-r16",
+            "setup",
+            "srs-VirtualCellID-r16"
+        ],
+        "Payload": "200201800380020602b150ddb10a726df557bc6600"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-VirtualCellID-r16",
+            "setup",
+            "srs-VirtualCellID-r16"
+        ],
+        "Payload": "200201800380020602b150ddb10a726df557bffe00"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-VirtualCellID-r16",
+            "setup",
+            "srs-VirtualCellID-r16"
+        ],
+        "Payload": "200201800380020602b150ddb10a726df557bfe200"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-VirtualCellID-r16",
+            "setup",
+            "srs-VirtualCellID-r16"
+        ],
+        "Payload": "2002018003"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "neighCellsCRS-Info-r13",
+            "setup",
+            "physCellId-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420840512a0c432505e3307028d1d215c9a340101004a4a44381"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format0-r16",
+            "srs-DurationAdd-r16"
+        ],
+        "Payload": "2002018003808206800835e1be860a00de0a24c238058229"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "neighCellsCRS-Info-r13",
+            "setup",
+            "physCellId-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420840512a0c432505e3307028d1d215c9a340101004a4ffc381"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "neighCellsCRS-Info-r13",
+            "setup",
+            "physCellId-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420840512a0c432505e3307028d1d215c9a340101004a4fc4381"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "neighCellsCRS-Info-r13",
+            "setup",
+            "physCellId-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420840512a0c432505e330"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f408040348347058450000"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f4080403483477f8450000"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f4080403483474b8450000"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f408"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420bc1040423608d3487082d620000c2c004dedc9ee1900590401008099070e062040b011400"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12"
+        ],
+        "Payload": "2002418003800205822962d0d3a980c0b9d220080404c83076500e00b51d0000"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12"
+        ],
+        "Payload": "2002418003800205822962d0d3a980c0b9d220080404c83076500e00bffd0000"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "2002018003840216010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f405822962d0d3a980c0f9d22000"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "2002018003840216010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f405822962d0d3a980c7f9d22000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "2002018003840216010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f405822962d0d3a980c639d22000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "2002018003840216010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f405822962d0d3a980c0b9d220"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-StartPosAdd-r16"
+        ],
+        "Payload": "200201800390020640049011f994e7e0a3181b2005822962d0d3a980c0b9c02000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-StartPosAdd-r16"
+        ],
+        "Payload": "200201800390020640049011f994e7e0a3181b2005822962d0d3a980c0b9de2000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ActivateAp-r13",
+            "setup",
+            "srs-ConfigApDCI-Format1a2b2c-r16",
+            "srs-StartPosAdd-r16"
+        ],
+        "Payload": "200201800390020640049011f994e7e0a3181b2005822962d0d3a980c0b9da2000"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,sps-Config-v1430,sps-ConfigUL-ToAddModList-r14,setup,p0-PersistentSubframeSet2-r12,setup,p0-NominalPUSCH-PersistentSubframeSet2-r12",
+        "Payload": "2002418003800205822962d0d3a980c0b9d220080404c83076500e00bffd0000"
+    }
+}

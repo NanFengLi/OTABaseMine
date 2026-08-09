@@ -1,0 +1,35 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "sCellToAddModList-r10",
+            "__elem__",
+            "0",
+            "radioResourceConfigDedicatedSCell-r10",
+            "physicalConfigDedicatedSCell-r10",
+            "physicalConfigDedicatedSTTI-r15",
+            "setup",
+            "csi-RS-Config-r15",
+            "setup",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "csi-IM-ConfigIdList-r13",
+            "__elem__",
+            "0",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2000e12258240409801020012c204b534006"
+    }
+}

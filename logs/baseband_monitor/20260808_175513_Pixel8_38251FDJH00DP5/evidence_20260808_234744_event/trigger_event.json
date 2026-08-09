@@ -1,0 +1,28 @@
+{
+  "time": "2026-08-08T23:47:44+08:00",
+  "type": "baseband_crash_suspected",
+  "matched_pattern": "\\bSTATE_CRASH_EXIT\\b",
+  "line": "10-28 19:56:03.421  1209  1372 E RIL     : STATE_CRASH_EXIT",
+  "recent_context": [
+    "10-28 19:55:58.604   997  1028 I SIT-OEM : Type: INDICATION MSG: marginal_coverage_message(17) Token: 0x0002 ",
+    "10-28 19:55:58.604   997  1028 D SIT-OEM : Raw (idx=0~28): 080315110000001d0200000020008a010b0a09080115000000001802",
+    "10-28 19:55:58.604   997  1028 D SIT-OEM : Enqueue:Indication 17 with token 2",
+    "10-28 19:55:58.605   997  1029 D SIT-OEM : Dequeue Ind 17 token 2",
+    "10-28 19:55:58.605   997  1029 I GRIL-OEM: marginalCoverageInfo",
+    "10-28 19:55:58.932  2305  2305 D DNC-0   : onDataNetworkValidationStatusChanged: [DataNetwork: DN-2039-C, srsapn, state=ConnectedState], validation status=INVALID, ",
+    "10-28 19:55:58.936  2305  2305 D DSRM-0  : onInternetValidationStatusChanged: INVALID",
+    "10-28 19:55:58.936  2305  2305 D DSRM-0  : getRecoveryAction: RECOVERY_ACTION_GET_DATA_CALL_LIST",
+    "10-28 19:55:58.936  2305  2305 D DSRM-0  : skip when network still remains invalid and recovery was not started yet",
+    "10-28 19:55:59.097   547 14445 I keystore2: system/security/keystore2/watchdog/src/lib.rs:371 - Watchdog thread idle -> terminating. Have a great day.",
+    "10-28 19:55:59.269  1464  1940 D ActivityManager: freezing 10138 com.google.android.apps.pixel.dcservice",
+    "10-28 19:56:00.037  1464  1940 D ActivityManager: freezing 3653 com.google.android.apps.wallpaper",
+    "10-28 19:56:00.049  1464  1940 D ActivityManager: freezing 6297 com.google.android.videos",
+    "10-28 19:56:02.236  2305  2645 I EuiccSession: endAllSessions",
+    "10-28 19:56:02.900  1464  1940 D ActivityManager: freezing 4332 com.google.android.cellbroadcastreceiver",
+    "10-28 19:56:02.976  2305  2305 D DNC-0   : onDataNetworkValidationStatusChanged: [DataNetwork: DN-2039-C, srsapn, state=ConnectedState], validation status=INVALID, ",
+    "10-28 19:56:02.980  2305  2305 D DSRM-0  : onInternetValidationStatusChanged: INVALID",
+    "10-28 19:56:02.980  2305  2305 D DSRM-0  : getRecoveryAction: RECOVERY_ACTION_GET_DATA_CALL_LIST",
+    "10-28 19:56:02.980  2305  2305 D DSRM-0  : skip when network still remains invalid and recovery was not started yet",
+    "10-28 19:56:03.421  1209  1372 E RIL     : STATE_CRASH_EXIT"
+  ]
+}

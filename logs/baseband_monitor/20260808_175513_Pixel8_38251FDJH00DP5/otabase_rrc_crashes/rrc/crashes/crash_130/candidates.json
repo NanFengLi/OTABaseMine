@@ -1,0 +1,259 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "20020180038020088004694ab02185e1a2e05007f0bdb6e00000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "20020180038020088004694ab02185e1a2e0500750bdb6e00000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "20020180038420062008ec553a4181ef102803300280042b01"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-NZP-Activation-r14",
+            "activatedResources-r14"
+        ],
+        "Payload": "200a024db95de0009e0fb3a8810024104252001800380200280042b00d80"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "2002"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "200201800380200880042b821214c2f0d1702403205edb700000"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "200201800380200880042b821214c2f0d1702403605edb700000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "200201800380200880042b821214c2f0d1702403605edb700000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "csi-RS-ConfigNZP-ApList-r14",
+            "transmissionComb-r14"
+        ],
+        "Payload": "200201800380200880042b821214c2f0d17024"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "20020180038420062008ec553a4181ef102803300280042b015000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "20020180038420062008ec553a4181ef102803300280042b015800"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1430",
+            "eMIMO-Hybrid-r14",
+            "setup",
+            "eMIMO-Type2-r14",
+            "setup",
+            "nzp-ResourceConfigOriginal-v1430",
+            "transmissionComb-r14"
+        ],
+        "Payload": "20020180038420062008ec553a4181ef102803300280042b015800"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,physicalConfigDedicated,csi-RS-Config-v1430,eMIMO-Hybrid-r14,setup,eMIMO-Type2-r14,setup,csi-RS-NZP-Activation-r14,activatedResources-r14",
+        "Payload": "200a024db95de0009e0fb3a8810024104252001800380200280042b00d80"
+    }
+}

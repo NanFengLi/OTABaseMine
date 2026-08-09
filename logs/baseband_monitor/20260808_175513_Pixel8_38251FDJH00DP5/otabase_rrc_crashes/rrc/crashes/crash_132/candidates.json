@@ -1,0 +1,575 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZP-ApList-r14",
+            "setup",
+            "subframeConfig-r11"
+        ],
+        "Payload": "2002018003842016010050e23401ae22"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1530",
+            "ce-PUSCH-FlexibleStartPRB-AllocConfig-r15",
+            "setup",
+            "offsetCE-ModeB-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84204c084239d504f922280018003800801101b00"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d2005207b3fc03f8542deaf8000"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d201759b534cc6e442a9a51886b0ea40f67f807f0a85bd5f000"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d2fea40f67f807f0a85bd5f00"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d2ffbb79197f92ae260acb4a40f67f807f0a85bd5f000"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d2ff84136ea6e48b9452366897f4343438b5f822f4dd2772e7f78f978b721481ecff00fe150b7abe000"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d30100a40f67f807f0a85bd5f00"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d301005a91481ecff00fe150b7abe00"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d3010139e7fd3a5282ea7e76e3c254a01fe8b294f7008c746290f9e5f869720a40f67f807f0a85bd5f000"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d3b854a40f67f807f0a85bd5f00"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d3b854cb416af840820ffeebae504f8065cedbcabb7c1e467df23a2b905cb4878d1d24c83fe45ed3d3fe7172baf27180e6f5fe67edd0b575506bc7aacae446eefbb30bcb08b79c8742151fa9c7ed731ec6a58435f0f72b0700e900434d65078e49d8a40f67f807f0a85bd5f00"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1530",
+            "ce-PUSCH-FlexibleStartPRB-AllocConfig-r15",
+            "setup",
+            "offsetCE-ModeB-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84204c084239d504f922280018003800801101f00"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d3b855c2fb6544c5f38b25bb38621af9cc61b38e4f38a93d65f508ca77d0ec6ea41d7d2dfe568c43b3862def9aa28b8dbc976f94b2cf9e378022980154d4370948eaaaacb613c2a0daddacf24c209c6d018c2893ecd89fc232473623db1b11dcf69d7849722e2eb9a0f1c4e44cab7b2d5cb02d56c6ed52cf23e47126a9264e67ea13ad93ff1f81ccca4bf4675fcf05d5cb672a0b23b7d5e7ab5b8ac6c5f96901decc3373d452dee90b7d864c59ec9b1beaef52cb39e8f15ad9c711266838dc88b0f416c00831849a5067717f338cb4bcca7770583178403dc1e8a051f39a3215bed557481e93c87b3da97d690c550b34cea177666183ec096184900e09f4d8c6c7facaa40f67f807f0a85bd5f00"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "semiStaticCFI-Config-r15",
+            "setup",
+            "cfi-Config-r15",
+            "cfi-SlotSubslotNonMBSFN-r15"
+        ],
+        "Payload": "200201800382080280da1fe0400180a44000"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "semiStaticCFI-Config-r15",
+            "setup",
+            "cfi-Config-r15",
+            "cfi-SlotSubslotNonMBSFN-r15"
+        ],
+        "Payload": "200201800382080280da1fe0400180a4c000"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "semiStaticCFI-Config-r15",
+            "setup",
+            "cfi-Config-r15",
+            "cfi-SlotSubslotNonMBSFN-r15"
+        ],
+        "Payload": "200201800382080280da1fe0400180a4c000"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "semiStaticCFI-Config-r15",
+            "setup",
+            "cfi-Config-r15",
+            "cfi-SlotSubslotNonMBSFN-r15"
+        ],
+        "Payload": "200201800382080280da1fe0"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ConfigApDCI-Format4-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "20021118221820129a00058003800205823150dcf10a726df557b000"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ConfigApDCI-Format4-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "20021118221820129a00058003800205823150dff10a726df557b000"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ConfigApDCI-Format4-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "20021118221820129a00058003800205823150df110a726df557b000"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "soundingRS-UL-ConfigDedicatedAdd-r16",
+            "setup",
+            "srs-ConfigApDCI-Format4-r16",
+            "srs-FreqDomainPosAdd-r16"
+        ],
+        "Payload": "20021118221820129a0005800380020582"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1530",
+            "ce-PUSCH-FlexibleStartPRB-AllocConfig-r15",
+            "setup",
+            "offsetCE-ModeB-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84204c084239d504f922280018003800801101d00"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1530",
+            "ce-PUSCH-FlexibleStartPRB-AllocConfig-r15",
+            "setup",
+            "offsetCE-ModeB-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84204c084239d504f922280"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "p-C-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b70001800380080a823dc807ccfb5c6b4dd62faa40f67f807f0a85bd5f00"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "p-C-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b70001800380080a823fe807ccfb5c6b4dd62faa40f67f807f0a85bd5f00"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "p-C-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b70001800380080a823f0807ccfb5c6b4dd62faa40f67f807f0a85bd5f00"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "p-C-r15"
+        ],
+        "Payload": "200a424db95dc0009e"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1530",
+            "eMIMO-Type-v1530",
+            "setup",
+            "nonPrecoded-v1530",
+            "p-C-AndCBSRList-r15",
+            "codebookSubsetRestriction4-r15"
+        ],
+        "Payload": "2002018003840818810058e23401ae22ef1bc83bd004a0404f7115b3d85211041016120041720677cb2cbb70f58eeb50387233c7cb35d03f400a823d200a40f67f807f0a85bd5f00"
+    }
+}

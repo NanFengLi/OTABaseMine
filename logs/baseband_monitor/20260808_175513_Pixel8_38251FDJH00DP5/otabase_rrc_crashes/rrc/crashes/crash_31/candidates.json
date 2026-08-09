@@ -1,0 +1,522 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "measCSI-RS-ToAddModList-r12",
+            "subframeOffset-r12"
+        ],
+        "Payload": "201010006e3020dc58a0c20150374cbcfbb23077d84810c4038325350264ae1192e876c444f93800"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "measCSI-RS-ToAddModList-r12",
+            "subframeOffset-r12"
+        ],
+        "Payload": "201010006e3020dc58a0c20150374cbcfbb23077d84810c4038325350264"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "measRSSI-ReportConfigNR-r16",
+            "channelOccupancyThreshold-r13"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00cbcd088010136001eb6f80"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "measRSSI-ReportConfigNR-r16",
+            "channelOccupancyThreshold-r13"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00cbcd08801013fe01eb6f80"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "measRSSI-ReportConfigNR-r16",
+            "channelOccupancyThreshold-r13"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00cbcd088010139a01eb6f80"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "measRSSI-ReportConfigNR-r16",
+            "channelOccupancyThreshold-r13"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df6"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "condReconfigurationTriggerNR-r17",
+            "condEventId-r17",
+            "condEventB1-NR-r17",
+            "hysteresis-r17"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df61204310060d14d40ae9e00cbcd0880081d100f81eb6f80"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "condReconfigurationTriggerNR-r17",
+            "condEventId-r17",
+            "condEventB1-NR-r17",
+            "hysteresis-r17"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df61204310060d14d40ae9e00cbcd0880081d10ff81eb6f80"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "condReconfigurationTriggerNR-r17",
+            "condEventId-r17",
+            "condEventB1-NR-r17",
+            "hysteresis-r17"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df61204310060d14d40ae9e00cbcd0880081d10ff81eb6f80"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "condReconfigurationTriggerNR-r17",
+            "condEventId-r17",
+            "condEventB1-NR-r17",
+            "hysteresis-r17"
+        ],
+        "Payload": "201014006e1020dc58ac8c1df61204310060d14d40ae9e00cbcd0880081d10"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "2010044065e68440040e8873c0f5b7f1602f60"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "2010044065e68440040e8873c0f5b7f1603fe0"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "b2-Threshold1-v1250",
+            "setup"
+        ],
+        "Payload": "201014006e3020dc58a0c100d01846321077d84810cbcd088100169001eb6f80"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "2010044065e68440040e8873c0f5b7f1603400"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "2010044065e68440040e"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "s-Measure"
+        ],
+        "Payload": "201010206e1020dc58ac8c1df61204304038058b49e0"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "s-Measure"
+        ],
+        "Payload": "201010206e1020dc58ac8c1df61204304038058b4fe0"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "s-Measure"
+        ],
+        "Payload": "201010206e1020dc58ac8c1df61204304038058b4c40"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "s-Measure"
+        ],
+        "Payload": "201010206e1020dc58ac8c1df6120430"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList-v9e0",
+            "measObjectEUTRA-v9e0",
+            "carrierFreq-v9e0"
+        ],
+        "Payload": "201050006e1020dc58ac8c1df612043100540741a44ea0d00121ae28a000"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList-v9e0",
+            "measObjectEUTRA-v9e0",
+            "carrierFreq-v9e0"
+        ],
+        "Payload": "201050006e1020dc58ac8c1df612043100540741a44ea0d00121ffffe000"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList-v9e0",
+            "measObjectEUTRA-v9e0",
+            "carrierFreq-v9e0"
+        ],
+        "Payload": "201050006e1020dc58ac8c1df612043100540741a44ea0d00121e0000000"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList-v9e0",
+            "measObjectEUTRA-v9e0",
+            "carrierFreq-v9e0"
+        ],
+        "Payload": "201050006e1020dc58ac8c1df612043100540741a44ea0d0"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "b2-Threshold1-v1250",
+            "setup"
+        ],
+        "Payload": "201014006e3020dc58a0c100d01846321077d84810cbcd08810017fc01eb6f80"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "b2-Threshold1-v1250",
+            "setup"
+        ],
+        "Payload": "201014006e3020dc58a0c100d01846321077d84810cbcd088100173401eb6f80"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "b2-Threshold1-v1250",
+            "setup"
+        ],
+        "Payload": "201014006e3020dc58a0c100d01846321077d8"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "maxReportRS-Index-r15"
+        ],
+        "Payload": "201014006e1120dc58a098b3e05d9083bec240865e6844010090980f5b7c"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "maxReportRS-Index-r15"
+        ],
+        "Payload": "201014006e1120dc58a098b3e05d9083bec240865e6844010091f80f5b7c"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "maxReportRS-Index-r15"
+        ],
+        "Payload": "201014006e1120dc58a098b3e05d9083bec240865e6844010091080f5b7c"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "reportConfigToAddModList",
+            "reportConfig",
+            "reportConfigInterRAT",
+            "maxReportRS-Index-r15"
+        ],
+        "Payload": "201014006e1120dc58a098b3e05d9083bec240865e"
+    }
+}

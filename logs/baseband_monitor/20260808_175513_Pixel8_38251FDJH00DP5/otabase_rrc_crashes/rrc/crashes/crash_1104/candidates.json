@@ -1,0 +1,601 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "carrierFreq-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "28230208fffffd00"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "carrierFreq-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "28230208c824f900"
+    },
+    "10": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2825020b9553013e80"
+    },
+    "11": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2825020b9553013480"
+    },
+    "12": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2e25020b9c319c5f60"
+    },
+    "13": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e25020b9c319c5460"
+    },
+    "14": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2c23020b0630b37fa0"
+    },
+    "15": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2c23020b0630b37420"
+    },
+    "16": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2c23020b8deef3bfe4"
+    },
+    "17": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2c23020b8deef3b404"
+    },
+    "18": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "carrierFreq-r17",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2e250408fffffc80"
+    },
+    "19": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "carrierFreq-r17",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e250408c824f880"
+    },
+    "2": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2823020ba4fb399fd8"
+    },
+    "20": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2e25040b7e38089f20"
+    },
+    "21": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf10-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e25040b7e38089a20"
+    },
+    "22": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2c21040b6752288e00"
+    },
+    "23": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2c21040b6752288a00"
+    },
+    "24": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2e21040b05dc1cafa0"
+    },
+    "25": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf20-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2e21040b05dc1caa20"
+    },
+    "26": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a23040b4c68ce3fe0"
+    },
+    "27": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf40-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a23040b4c68ce3a20"
+    },
+    "28": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a25040b9227054fec"
+    },
+    "29": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r17",
+            "smtc-r17",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a25040b9227054a0c"
+    },
+    "3": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2823020ba4fb399418"
+    },
+    "4": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "measIdleConfig-r15",
+            "measIdleCarrierListNR-r16",
+            "__elem__",
+            "0",
+            "ssb-MeasConfig-r16",
+            "measTimingConfig-r16",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "280aaa440042e2142055c841e407eb938800"
+    },
+    "5": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "measIdleConfig-r15",
+            "measIdleCarrierListNR-r16",
+            "__elem__",
+            "0",
+            "ssb-MeasConfig-r16",
+            "measTimingConfig-r16",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "280aaa440042e2142055c8416407eb938800"
+    },
+    "6": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a25020b23b09b1e00"
+    },
+    "7": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "redirectedCarrierInfo",
+            "nr-r15",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf5-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a25020b23b09b1600"
+    },
+    "8": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "measIdleConfig-r15",
+            "measIdleCarrierListNR-r16",
+            "__elem__",
+            "1",
+            "ssb-MeasConfig-r16",
+            "measTimingConfig-r16",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "1"
+        ],
+        "Payload": "2a0caa440042e2010758b2163dda9849fe40"
+    },
+    "9": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "measIdleConfig-r15",
+            "measIdleCarrierListNR-r16",
+            "__elem__",
+            "1",
+            "ssb-MeasConfig-r16",
+            "measTimingConfig-r16",
+            "periodicityAndOffset-r15",
+            "sf80-r15",
+            "INTEGER",
+            "2"
+        ],
+        "Payload": "2a0caa440042e2010758b2163dda98494240"
+    },
+    "Candidate 6": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,redirectedCarrierInfo,nr-r17,smtc-r17,periodicityAndOffset-r15,sf20-r15,INTEGER,1",
+        "Payload": "2e21040b05dc1cafa0"
+    }
+}

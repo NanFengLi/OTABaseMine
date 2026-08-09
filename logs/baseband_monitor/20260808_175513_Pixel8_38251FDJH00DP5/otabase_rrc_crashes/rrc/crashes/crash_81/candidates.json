@@ -1,0 +1,527 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "201210006e3020dc58a0c100d01846321077d848103000708000c4019d8aa7404806000c0f7880"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "201210006e3020dc58a0c100d01846321077d848103000708000c4019d8aa7404806c00c0f7880"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "optionalSetOfFields-r11",
+            "crs-FreqShift-r11"
+        ],
+        "Payload": "200a024db95de0009e0fb3a881005402445eead20d5a5a7340180038400028202a8e0840"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "optionalSetOfFields-r11",
+            "crs-FreqShift-r11"
+        ],
+        "Payload": "200a024db95de0009e0fb3a881005402445eead20d5a5a7340180038"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "qcl-CSI-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "201210006e1020dc58ac851df6120423c61632d18180038400020202990200"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "qcl-CSI-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "201210006e1020dc58ac851df6120423c61632d1818003840002020299c200"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "qcl-CSI-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "201210006e1020dc58ac851df6120423c61632d1818003840002020299c200"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "qcl-CSI-RS-ConfigNZPId-r11"
+        ],
+        "Payload": "201210006e1020dc58ac851df6120423c61632d1"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "codewordOneConfig-v1530",
+            "setup",
+            "crs-FreqShift-v1530"
+        ],
+        "Payload": "2012040065e68440800b4800f5b7c0c001c20002010144c40281609200"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "codewordOneConfig-v1530",
+            "setup",
+            "crs-FreqShift-v1530"
+        ],
+        "Payload": "2012040065e68440800b4800f5b7c0c001c20002010144c4028160f200"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "codewordOneConfig-v1530",
+            "setup",
+            "crs-FreqShift-v1530"
+        ],
+        "Payload": "2012040065e68440800b4800f5b7c0c001c20002010144c4028160d200"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "codewordOneConfig-v1530",
+            "setup",
+            "crs-FreqShift-v1530"
+        ],
+        "Payload": "2012040065e68440800b4800f5b7c0c001c2"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "201210006e3020dc58a0c100d01846321077d848103000708000c4019d8aa7404806c00c0f7880"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "codewordOneConfig-v1530",
+            "setup",
+            "qcl-CSI-RS-ConfigNZPId-v1530"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41040023608d3487082d64006160026f6e4f70c802c8010489650b6e018003840004820289880503c8648000"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToReleaseList-r11"
+        ],
+        "Payload": "201210006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00300070800030213000"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToReleaseList-r11"
+        ],
+        "Payload": "201210006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00300070800030213800"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToReleaseList-r11"
+        ],
+        "Payload": "201210006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e00300070800030213800"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToReleaseList-r11"
+        ],
+        "Payload": "201210006e1020dc58ac"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToAddModList-r11",
+            "cqi-ReportPeriodicProcExtId-r11"
+        ],
+        "Payload": "20021112221537cee00580038400038105104009d6c000"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToAddModList-r11",
+            "cqi-ReportPeriodicProcExtId-r11"
+        ],
+        "Payload": "20021112221537cee00580038400038105184009d6c000"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToAddModList-r11",
+            "cqi-ReportPeriodicProcExtId-r11"
+        ],
+        "Payload": "20021112221537cee00580038400038105184009d6c000"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportPeriodic-v1130",
+            "cqi-ReportPeriodicProcExtToAddModList-r11",
+            "cqi-ReportPeriodicProcExtId-r11"
+        ],
+        "Payload": "20021112221537cee005800384000381050040"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-IM-ConfigToReleaseList-r11"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420b41040023608d3487082d60006160026f6e4f70c802c801800384000181021500"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "2012"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84203c084239d104f800180038400048809bdc6535b1c202000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84203c084239d104f800180038400048809bdc6ff5b1c202000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84203c084239d104f800180038400048809bdc69b5b1c202000"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "200a424db9"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "optionalSetOfFields-r11",
+            "crs-FreqShift-r11"
+        ],
+        "Payload": "200a024db95de0009e0fb3a881005402445eead20d5a5a7340180038400028202a8a0840"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pdsch-ConfigDedicated-v1130",
+            "re-MappingQCLConfigToAddModList-r11",
+            "optionalSetOfFields-r11",
+            "crs-FreqShift-r11"
+        ],
+        "Payload": "200a024db95de0009e0fb3a881005402445eead20d5a5a7340180038400028202a8f0840"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,radioResourceConfigDedicated,physicalConfigDedicated,cqi-ReportConfig-v1130,cqi-ReportBoth-r11,csi-IM-ConfigToReleaseList-r11",
+        "Payload": "200a424db95dc0009e0fb3a8420b41040023608d3487082d60006160026f6e4f70c802c801800384000181021500"
+    }
+}

@@ -1,0 +1,495 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigDensePRS-r15",
+            "setup",
+            "gapOffsetDensePRS-r15",
+            "rstd0-r15"
+        ],
+        "Payload": "201050006e1020dc58ac851df6120423c61632d1860205402c"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigDensePRS-r15",
+            "setup",
+            "gapOffsetDensePRS-r15",
+            "rstd0-r15"
+        ],
+        "Payload": "201050006e1020dc58ac851df6120423c61632d186020540fe"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex"
+        ],
+        "Payload": "201810006e1020dc58ac843df612075c0936e577001a303ecea0"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex"
+        ],
+        "Payload": "201810006e1020dc58ac843df612075c0936e577"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80113e31cc07d9d40"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80113e31ff07d9d40"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80113e31df07d9d40"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "prach-ConfigInfo",
+            "prach-FreqOffset"
+        ],
+        "Payload": "20181000"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower"
+        ],
+        "Payload": "201800216049b72bb90013e5e0fb3a80"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower"
+        ],
+        "Payload": "201800216049b72bb90013ffe0fb3a80"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower"
+        ],
+        "Payload": "201800216049b72bb90013f7e0fb3a80"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pdsch-ConfigCommon",
+            "referenceSignalPower"
+        ],
+        "Payload": "201800216049b72bb9"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigDensePRS-r15",
+            "setup",
+            "gapOffsetDensePRS-r15",
+            "rstd0-r15"
+        ],
+        "Payload": "201050006e1020dc58ac851df6120423c61632d186020540a0"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80013c59675"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80013c7f675"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bb80013c63675"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "pusch-ConfigBasic",
+            "pusch-HoppingOffset"
+        ],
+        "Payload": "201810006e10"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH"
+        ],
+        "Payload": "201810006e10a0dc58a7de420efb09020936e5770002783ec2a0"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH"
+        ],
+        "Payload": "201810006e10a0dc58a7de420efb09020936e5770002783efea0"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH"
+        ],
+        "Payload": "201810006e10a0dc58a7de420efb09020936e5770002783efaa0"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pusch-ConfigCommon",
+            "ul-ReferenceSignalsPUSCH",
+            "groupAssignmentPUSCH"
+        ],
+        "Payload": "201810006e10a0dc58a7de420efb09020936e577000278"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pucch-ConfigCommon",
+            "nRB-CQI"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df6120430403405407049b72bb84013c1f674347866"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "pucch-ConfigCommon",
+            "nRB-CQI"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df6120430403405407049b72bb84013c1f6747f7866"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measGapConfigDensePRS-r15",
+            "setup",
+            "gapOffsetDensePRS-r15",
+            "rstd0-r15"
+        ],
+        "Payload": "201050006e1020dc58ac851df6120423c61632d186020540"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a000d06e5770002783ecea"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a000ffee5770002783ecea"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a000fc6e5770002783ecea"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "targetPhysCellId"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a000936e5770002783"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex"
+        ],
+        "Payload": "201810006e1020dc58ac843df612075c0936e5770006703ecea0"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config",
+            "rootSequenceIndex"
+        ],
+        "Payload": "201810006e1020dc58ac843df612075c0936e577001ff83ecea0"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,mobilityControlInfo,radioResourceConfigCommon,pucch-ConfigCommon,nRB-CQI",
+        "Payload": "201810006e1020dc58ac8c1df6120430403405407049b72bb84013c1f6747f7866"
+    }
+}

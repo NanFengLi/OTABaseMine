@@ -1,0 +1,368 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0a4a018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0bea018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nPUSCH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e100008016f5940"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nPUSCH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e100008017ff940"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nPUSCH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e100008017fd940"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nPUSCH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb0902"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nDMRS-CSH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e10000801422b20"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nDMRS-CSH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e10000801423ff0"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nDMRS-CSH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7de420efb090206000e10000801423fe0"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pusch-ConfigDedicated-v1130",
+            "pusch-DMRS-r11",
+            "setup",
+            "nDMRS-CSH-Identity-r11"
+        ],
+        "Payload": "201210006e10a0dc58a7"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "eimta-MainConfigPCell-r12",
+            "setup",
+            "eimta-UL-DL-ConfigIndex-r12"
+        ],
+        "Payload": "201210006e1020dc58ac8c1df612043080319b21803000704000220800"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83bd004a0404f7115b3d852110421eab2018aa0207499cb2a3bf1112e205c37a0106f417d37207a40d6ff7ffbfe5cc1902ec600a1dd19066f55101cca10ded3650b3790178776dccdf6137cc441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0b0a018633435544024c8a8a0359b8aaa546c65a9c20000"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "p-C-r13"
+        ],
+        "Payload": "200201800384004042810058e23401ae22ef1bc83b"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "beamformedK1a-r13",
+            "codebookSubsetRestriction3-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842028a0449b700018003840023010050e23401ae22ef1bc83bd004a0404f7115b3d85211441720677cb2cbb70f58eeb50387233c7cb35d03f42205cd0928028a0359b8aaa546c65a9c200000"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "cqi-ReportConfig-v1130",
+            "cqi-ReportBoth-r11",
+            "csi-ProcessToAddModList-r11",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "csi-IM-ConfigIdList-r13"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a84204c085239d171a104f80018003840019810050e23401ae22ef1bc83bd004a0404f7115b3d85211441720677cb2cbb70f58eeb50387233c7cb35d03f422010c284c520000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pucch-ConfigDedicated-v1130",
+            "nPUCCH-Param-r11",
+            "setup",
+            "nPUCCH-Identity-r11"
+        ],
+        "Payload": "200211102301430401248003840002808f072ec000"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pucch-ConfigDedicated-v1130",
+            "nPUCCH-Param-r11",
+            "setup",
+            "nPUCCH-Identity-r11"
+        ],
+        "Payload": "200211102301430401248003840002808fff2ec000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pucch-ConfigDedicated-v1130",
+            "nPUCCH-Param-r11",
+            "setup",
+            "nPUCCH-Identity-r11"
+        ],
+        "Payload": "200211102301430401248003840002808ff12ec000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "physicalConfigDedicated",
+            "pucch-ConfigDedicated-v1130",
+            "nPUCCH-Param-r11",
+            "setup",
+            "nPUCCH-Identity-r11"
+        ],
+        "Payload": "200211102301430401248003840002808d492e"
+    }
+}

@@ -1,0 +1,534 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f408040348347058450000"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f4080403483477f8450000"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModListExt-r15",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentityExt-r15"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-Persistent-r15",
+            "p0-NominalSPUSCH-Persistent-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842044084239d304fb8804010040a2020d001930198002860"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-Persistent-r15",
+            "p0-NominalSPUSCH-Persistent-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842044084239d304fb8804010040a2020d00197f998002860"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-Persistent-r15",
+            "p0-NominalSPUSCH-Persistent-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842044084239d304fb8804010040a2020d00194b998002860"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-Persistent-r15",
+            "p0-NominalSPUSCH-Persistent-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a842044084239d304fb8"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "numberOfConfUL-SPS-Processes-STTI-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41040023608d3487082d64006160026f6e4f70c802c8010489650b6e401004092020c2019118002860"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "numberOfConfUL-SPS-Processes-STTI-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41040023608d3487082d64006160026f6e4f70c802c8010489650b6e401004092020c2019798002860"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "numberOfConfUL-SPS-Processes-STTI-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41040023608d3487082d64006160026f6e4f70c802c8010489650b6e401004092020c2019618002860"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "numberOfConfUL-SPS-Processes-STTI-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420e41040023608d3487082d64006160026f6e4f70c802c8010489650b6e40"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sTTI-StartTimeUL-r15"
+        ],
+        "Payload": "200241800380201680042b20199205440e5e6a592a0e10ca07c8f868515562294c5502922dc54e312a07ad150058e0386b6d4f661408020410106000ca40014300"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f4080403483474b8450000"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sTTI-StartTimeUL-r15"
+        ],
+        "Payload": "200241800380201680042b20199205440e5e6a592a0e10ca07c8f868515562294c5502922dc54e312a07ad150058e0386b6d4f661408020410106000cbc0014300"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sTTI-StartTimeUL-r15"
+        ],
+        "Payload": "200241800380201680042b20199205440e5e6a592a0e10ca07c8f868515562294c5502922dc54e312a07ad150058e0386b6d4f661408020410106000cb40014300"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sTTI-StartTimeUL-r15"
+        ],
+        "Payload": "200241800380201680042b20199205440e5e6a592a0e10ca07c8f868515562294c5502922dc54e312a07ad150058e0386b6d4f66140802041010"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "20120400656684fdb7c40040e0ad082008020490106004c8b800286000"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "20120400656684fdb7c40040e0ad082008020490106004c8f800286000"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "20120400656684fdb7c40040e0ad082008020490106004c8e800286000"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "20"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-PersistentSubframeSet2-r15",
+            "setup",
+            "p0-NominalSPUSCH-PersistentSubframeSet2-r15"
+        ],
+        "Payload": "20024010040fa0805008a68083000646200a305ac0"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-PersistentSubframeSet2-r15",
+            "setup",
+            "p0-NominalSPUSCH-PersistentSubframeSet2-r15"
+        ],
+        "Payload": "20024010040fa0805008a68083000646200a3ffac0"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1530",
+            "sps-ConfigUL-STTI-ToAddModList-r15",
+            "setup",
+            "p0-PersistentSubframeSet2-r15",
+            "setup",
+            "p0-NominalSPUSCH-PersistentSubframeSet2-r15"
+        ],
+        "Payload": "20024010040fa0805008a68083000646200a32fac0"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-Persistent",
+            "p0-NominalPUSCH-Persistent"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f408"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "sps-ConfigIndex-r15"
+        ],
+        "Payload": "200a424db95dc0009e0fb3a8420bc1040423608d3487082d620000c2c004dedc9ee1900590401008099070e062040b011400"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12"
+        ],
+        "Payload": "2002418003800205822962d0d3a980c0b9d220080404c83076500e00b51d0000"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "sps-Config-v1430",
+            "sps-ConfigUL-ToAddModList-r14",
+            "setup",
+            "p0-PersistentSubframeSet2-r12",
+            "setup",
+            "p0-NominalPUSCH-PersistentSubframeSet2-r12"
+        ],
+        "Payload": "2002418003800205822962d0d3a980c0b9d220080404c83076500e00bffd0000"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModListExt-r15",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentityExt-r15"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f408020340402804520000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModListExt-r15",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentityExt-r15"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f40802034040280453c000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "radioResourceConfigDedicated",
+            "srb-ToAddModListExt-r15",
+            "rlc-BearerConfigSecondary-r15",
+            "setup",
+            "logicalChannelIdentityConfig-r15",
+            "logicalChannelIdentityExt-r15"
+        ],
+        "Payload": "2002418003840016010050e23401ae22ef1bc83bd004a0404f7115b3d85211041720677cb2cbb70f58eeb50387233c7cb35d03f40802034040280453c000"
+    }
+}

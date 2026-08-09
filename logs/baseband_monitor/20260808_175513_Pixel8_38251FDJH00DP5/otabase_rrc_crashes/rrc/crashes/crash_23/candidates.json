@@ -1,0 +1,554 @@
+{
+    "0": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "purpose",
+            "e-CSFB-r9",
+            "messageContCDMA2000-HRPD-r9"
+        ],
+        "Payload": "1e55440bec2650d29cd47437d4c1874d4e6e076429ca1cd8ad0775e833870a4a3c7364cfe0"
+    },
+    "1": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf20-r15"
+        ],
+        "Payload": "1a644408ab873ec3d594370b280ff0ca77522d952986b4994e98b72c6ca8f5829587a38b2800"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellsToAddModList",
+            "physCellId"
+        ],
+        "Payload": "201010006e1420dc58a0bffe136e9f9083bec24080"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellsToAddModList",
+            "physCellId"
+        ],
+        "Payload": "201010006e1420dc58a0bff0136e9f9083bec24080"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "excludedCellsToAddModList",
+            "physCellIdRange",
+            "start"
+        ],
+        "Payload": "201010006e1520dc58a0bcec136e9e132bdc0bb21077d84810"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "excludedCellsToAddModList",
+            "physCellIdRange",
+            "start"
+        ],
+        "Payload": "201010006e1520dc58a0bcec136e9e133ffc0bb21077d84810"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "excludedCellsToAddModList",
+            "physCellIdRange",
+            "start"
+        ],
+        "Payload": "201010006e1520dc58a0bcec136e9e133f1c0bb21077d84810"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "excludedCellsToAddModList",
+            "physCellIdRange",
+            "start"
+        ],
+        "Payload": "201010006e1520dc58a0bcec136e9e13167c0bb2"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellForWhichToReportCGI"
+        ],
+        "Payload": "201010006e14a0dc58a0bcec136e9e6ec841df612040"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellForWhichToReportCGI"
+        ],
+        "Payload": "201010006e14a0dc58a0bcec136e9fffc841df612040"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellForWhichToReportCGI"
+        ],
+        "Payload": "201010006e14a0dc58a0bcec136e9ff8c841df612040"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "altTTT-CellsToAddModList-r12",
+            "physCellIdRange-r12",
+            "start"
+        ],
+        "Payload": "201010006e3120dc58a098b3e05c18802a022620c8be420efb0902"
+    },
+    "2": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15"
+        ],
+        "Payload": "1e600100d8ce4626cb9bfc001e61f5dcbb7c16bf7ecce24f23c7e61f9d10681d2acba302cce6"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "altTTT-CellsToAddModList-r12",
+            "physCellIdRange-r12",
+            "start"
+        ],
+        "Payload": "201010006e3120dc58a098b3e05c18802a0227fcc8be420efb0902"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "altTTT-CellsToAddModList-r12",
+            "physCellIdRange-r12",
+            "start"
+        ],
+        "Payload": "201010006e3120dc58a098b3e05c18802a0227e0c8be420efb0902"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "allowedCellsToAddModList-r13",
+            "physCellIdRange-r13",
+            "start"
+        ],
+        "Payload": "201010006e30a0dc58a7d86100a81b80fe7dd9083bec2408"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "allowedCellsToAddModList-r13",
+            "physCellIdRange-r13",
+            "start"
+        ],
+        "Payload": "201010006e30a0dc58a7d86100a81bbffe7dd9083bec2408"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "allowedCellsToAddModList-r13",
+            "physCellIdRange-r13",
+            "start"
+        ],
+        "Payload": "201010006e30a0dc58a7d86100a81bbf1e7dd9083bec2408"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "allowedCellsToAddModList-r13",
+            "physCellIdRange-r13",
+            "start"
+        ],
+        "Payload": "201010006e30a0dc58a7d8"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca837c321077d84810"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca8ffc321077d84810"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "rmtc-Config-r13",
+            "setup",
+            "rmtc-SubframeOffset-r13"
+        ],
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca8a00321077d84810"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "carrierFreq-r13"
+        ],
+        "Payload": "201010006e3420dc58a0bcec136e9e184018bbde46420efb0902"
+    },
+    "3": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15"
+        ],
+        "Payload": "1e600100d8ce4626cb9bfc001e61f5dcbb7c16bf7ecce24f23c7e61f9d10681d2acba302cff6"
+    },
+    "4": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15"
+        ],
+        "Payload": "1e600100d8ce4626cb9bfc001e61f5dcbb7c16bf7ecce24f23c7e61f9d10681d2acba302ce86"
+    },
+    "5": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf40-r15"
+        ],
+        "Payload": "1e600100d8ce4626cb9bfc001e61f5dcbb"
+    },
+    "6": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "1860a9012b9b4c72c20869c933be1be65957f4905e1c57933605f1f02d65d64522cc56105ee9778098dafdb4d4209ce07ad68e992ce397ae7abbadb667d97ac0d3f0347cd5a8b2"
+    },
+    "7": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "1860a9012b9b4c72c20869c933be1be65957f4905e1c57933605f1f02d65d64522cc56105ee9778098dafdb4d4209ce07ad68e992ce397ae7abbadb667d97ac0d3f0347cd5affa"
+    },
+    "8": {
+        "Message": "mobilityFromEUTRACommand",
+        "Path": [
+            "message",
+            "c1",
+            "mobilityFromEUTRACommand",
+            "criticalExtensions",
+            "c1",
+            "mobilityFromEUTRACommand-r9",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "smtc-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "1860a9012b9b4c72c20869c933be1be65957f4905e1c57933605f1f02d65d64522cc56105ee9778098dafdb4d4209ce07ad68e992ce397ae7abbadb667d97ac0d3f0347cd5ad02"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "measConfig",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "cellsToAddModList",
+            "physCellId"
+        ],
+        "Payload": "201010006e1420dc58a0bf9a136e9f9083bec24080"
+    },
+    "Candidate 2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,measConfig,measObjectToAddModList,measObject,measObjectEUTRA,rmtc-Config-r13,setup,rmtc-SubframeOffset-r13",
+        "Payload": "201010006e3020dc58a0c60150112f6645c0ca8a00321077d84810"
+    }
+}

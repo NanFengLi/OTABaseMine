@@ -1,0 +1,611 @@
+{
+    "0": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectNR-r15",
+            "rmtc-ConfigNR-r16",
+            "setup",
+            "rmtc-FrequencyNR-r16"
+        ],
+        "Payload": "66300300070800390200b045c80f1afc6722b7cb09c240f4b7cf4829e9f30e0840a56042078f05a2"
+    },
+    "1": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "66300300070400080166527c3b7a2c1c040016c083085e6c1459f74460446e09018801860b7e00"
+    },
+    "10": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "rs-ConfigSSB-r15",
+            "measTimingConfig-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "663003000700100b804008027017c94a4b23361000184082061020e22c5bf65ff9001764157c9c00"
+    },
+    "11": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "rs-ConfigSSB-r15",
+            "measTimingConfig-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "663003000700100b804008027017c94a4b23361000184082061020e22c5bf65a09001764157c9c00"
+    },
+    "12": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "rs-ConfigSSB-r15",
+            "measTimingConfig-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "663003000700100b804008027017c94a4b23361000184082061020e22c5bf6525900176415"
+    },
+    "13": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config",
+            "setup",
+            "longDRX-CycleStartOffset",
+            "sf1280"
+        ],
+        "Payload": "66202820760e860802502ba174bea2"
+    },
+    "14": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config",
+            "setup",
+            "longDRX-CycleStartOffset",
+            "sf1280"
+        ],
+        "Payload": "66202820760e860802502ba177ffa2"
+    },
+    "15": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config",
+            "setup",
+            "longDRX-CycleStartOffset",
+            "sf1280"
+        ],
+        "Payload": "66202820760e860802502ba1768022"
+    },
+    "16": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "mac-MainConfig",
+            "explicitValue",
+            "drx-Config",
+            "setup",
+            "longDRX-CycleStartOffset",
+            "sf1280"
+        ],
+        "Payload": "66202820760e86080250"
+    },
+    "17": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c91620450000403b402a6c965923797008"
+    },
+    "18": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c91620450000201da015364b2c91bcb80400"
+    },
+    "19": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045000021126c1af22d1ec1c02f4469f403b402a6c9659237970080"
+    },
+    "2": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "66300300070400080166527c3b7a2c1c040016c083085e6c1459f74460446e09018801860ffe00"
+    },
+    "20": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045007f403b402a6c965923797008"
+    },
+    "21": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045007f7222de354d403b402a6c965923797008"
+    },
+    "22": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045007f91899276f7715358ef80c91377c50c709b07581cae57ce518fd02516c80768054d92cb246f2e0100"
+    },
+    "23": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045008080403b402a6c965923797008"
+    },
+    "24": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c916204500808004b8d18964202a01da015364b2c91bcb8040"
+    },
+    "25": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c91620450080807fcb200b95a1177f5fd34d7e900ebf95910bff1b0e672986ab51227f1403b402a6c9659237970080"
+    },
+    "26": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c916204500fc53403b402a6c965923797008"
+    },
+    "27": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c916204500fc539ec6c00622b6164793e7a26a181c728eb4bcf3e94ca454463fa8d88cc705fda9e60d029b3dbad8aa1ed4c27c9a8b601f6533ed59c7d18e88ea65884fc0c7023654de7e543a7dba8994f8be7bdf17a2f9e9f90ab45f6d04869bbc5d719191175f0982216335e6388d89a6b6409161eb0b99d6a4316bc63acb62d675b565a32a4bfae5d4a47be174c8556ff01cf742ece1d9d102b50fe14ad0a04e9800b903b476d71a31202bbdd5854204c74c8f8ed96297df80f04072aa37b8467f2f3947d2e35bf4aeedb45392622f0f403b402a6c965923797008"
+    },
+    "28": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c916204500fc53dd1a84df9f9c739e20149976e39289724ffa775551d63ccffbf9a72916d401e06331870574100614e1a7cea28ac5fed292e99ec44ae4ecfafb9def51a34c342563a7e71d1c1bf66e4a9769de248e35cdb7d6d8de23e467f5108b6e0f88b38297b26efab95d9a219b70789c85c6ceb129664b9f698d438dac104d25a41ff950eff5397e4cb5cab354413a0c5bf8f10b692eb911923878b6ee2fcac820e79ffa8fbe376fa65d3c6ad7cf939539c2c1721344613f8cdbff4b1661d67a5fd1aeaa8eb1ece01f6f898637034940a364895dfca5f5bb43cee497e66dfaf17c8a5eebf04e0b81f7daf37203055ddca9df3a781098bdfcac2eca5adf10376524d65253db403b402a6c965923797008"
+    },
+    "29": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-Config-v1310",
+            "eMIMO-Type-r13",
+            "setup",
+            "nonPrecoded-r13",
+            "p-C-AndCBSRList-r13",
+            "cbsr-Selection-r13",
+            "nonPrecoded-r13",
+            "codebookSubsetRestriction1-r13"
+        ],
+        "Payload": "66200a8428200148004001c040084011a1364046a7fda8c9162045004046a871af3a32a08a403b"
+    },
+    "3": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "66300300070400080166527c3b7a2c1c040016c083085e6c1459f74460446e09018801860d0e00"
+    },
+    "4": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModList",
+            "measObject",
+            "measObjectEUTRA",
+            "measDS-Config-r12",
+            "setup",
+            "dmtc-PeriodOffset-r12",
+            "ms80-r12"
+        ],
+        "Payload": "66300300070400080166527c3b7a2c1c040016c083085e6c1459f74460446e0901"
+    },
+    "5": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "663003000708006c0200a045c80f1afc6722b7cb09c240f4b7cf4829e9f30e806d40a6064c434459a320320121db1943b3dbec10421eab2019a20371623121c1d6146a0059edf9c5ea7f0a1282006d2b513f2d01f86201c127ec60a8587dc42503c9dca868b6e3de6145012739ec7a3b05b2b80000118b0178"
+    },
+    "6": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "663003000708006c0200a045c80f1afc6722b7cb09c240f4b7cf4829e9f30e806d40a6064c434459a320320121db1943b3dbec10421eab2019a20371623121c1d6146a0059edf9c5ea7f0a1282006d2b513f2d01f86201c127ec60a8587dc42503c9dca868b6e3de6145012739ec7a3b05b2b80000118b01ff"
+    },
+    "7": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "663003000708006c0200a045c80f1afc6722b7cb09c240f4b7cf4829e9f30e806d40a6064c434459a320320121db1943b3dbec10421eab2019a20371623121c1d6146a0059edf9c5ea7f0a1282006d2b513f2d01f86201c127ec60a8587dc42503c9dca868b6e3de6145012739ec7a3b05b2b80000118b01a0"
+    },
+    "8": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measGapConfig",
+            "setup",
+            "gapOffset",
+            "gp5-r15"
+        ],
+        "Payload": "663003000708006c0200a045c80f1afc6722b7cb09c240f4b7cf4829e9f30e806d40a6064c434459a320320121db1943b3dbec10421eab2019a20371623121c1d6146a0059edf9c5ea7f0a1282006d2b513f2d01f86201c127ec60a8587dc42503"
+    },
+    "9": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "measConfig-r13",
+            "measObjectToAddModListExt-r13",
+            "measObject-r13",
+            "measObjectNR-r15",
+            "rs-ConfigSSB-r15",
+            "measTimingConfig-r15",
+            "periodicityAndOffset-r15",
+            "sf160-r15"
+        ],
+        "Payload": "663003000700100b804008027017c94a4b23361000184082061020e22c5bf659e9001764157c9c00"
+    }
+}

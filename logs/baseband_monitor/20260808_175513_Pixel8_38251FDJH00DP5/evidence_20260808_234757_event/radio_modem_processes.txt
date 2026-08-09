@@ -1,0 +1,11 @@
+radio          997     1   10954744  13828 0                   0 S vendor.google.radioext@1.0-service
+radio         1018     1   11002828  10812 0                   0 S modem_ml_svc_sit
+radio         1197     1   10869556   5144 0                   0 S cbd
+radio         1207     1   10892280   6044 0                   0 S rfsd
+radio         1209     1   11833416  25468 0                   0 S rild_exynos
+radio         2282   928   16910784 116384 0                   0 S com.samsung.slsi.telephony.oem.oemrilhookservice
+radio         2305   928   17929240 180520 0                   0 S com.android.phone
+radio         2331   928   16840580 108668 0                   0 S com.android.telephony.imsmedia
+system        2980   928   16891664 112236 0                   0 S com.google.SSRestartDetector
+radio         4181   928   16909348 108204 0                   0 S com.google.RilConfigService
+radio        14554     1   10990764   9600 0                   0 S shared_modem_platform

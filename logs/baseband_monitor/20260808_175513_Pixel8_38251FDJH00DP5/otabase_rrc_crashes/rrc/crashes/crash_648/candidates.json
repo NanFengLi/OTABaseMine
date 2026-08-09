@@ -1,0 +1,517 @@
+{
+    "0": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "642022303c3040130019000708000940105dff6a2baccdb0e0"
+    },
+    "1": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "642022303c3040130019000708000940105d376a2baccdb0e0"
+    },
+    "10": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "64200a8228"
+    },
+    "11": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "642003000708000dc01161715da81401ac2baccdb0e0"
+    },
+    "12": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "642003000708000dc01161715da81401fc2baccdb0e0"
+    },
+    "13": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "642003000708000dc01161715da81401d42baccdb0e0"
+    },
+    "14": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "csi-RS-ConfigNZPId-v1310"
+        ],
+        "Payload": "642003000708000dc0"
+    },
+    "15": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "64200302152b88791c2000310061715da81201802baccdb380"
+    },
+    "16": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "64200302152b88791c2000310061715da81201b02baccdb380"
+    },
+    "17": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "64200302152b88791c2000310061715da81201b02baccdb380"
+    },
+    "18": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "transmissionComb-r14"
+        ],
+        "Payload": "64200302152b88791c2000310061715da81201"
+    },
+    "19": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "64200a2972800c001c20002440425c3c189864730380"
+    },
+    "2": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "642022303c3040130019000708000940105c576a2baccdb0"
+    },
+    "20": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "64200a2972800c001c20002440425c3ff89864730380"
+    },
+    "21": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "64200a2972800c001c20002440425c3cd89864730380"
+    },
+    "22": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigZPToAddModList-r11",
+            "subframeConfig-r11"
+        ],
+        "Payload": "64"
+    },
+    "23": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "resourceBlockAssignment-r11",
+            "resourceBlockAssignment-r11"
+        ],
+        "Payload": "642003006969418e1000221046340c47f22bda5d399b34f29f00e000"
+    },
+    "24": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "resourceBlockAssignment-r11",
+            "resourceBlockAssignment-r11"
+        ],
+        "Payload": "642003006969418e100022104630156043e39e7587c49b81bb92a5ec47f22bda5d399b34f29f00e000"
+    },
+    "25": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "resourceBlockAssignment-r11",
+            "resourceBlockAssignment-r11"
+        ],
+        "Payload": "642003006969418e10002210463221467f311fc8af6974e66cd3ca7c0380"
+    },
+    "26": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "resourceBlockAssignment-r11",
+            "resourceBlockAssignment-r11"
+        ],
+        "Payload": "642003006969418e100022104637e637020e66b43327f792e85315ac494efec6206fc988fe457b4ba733669e53e01c00"
+    },
+    "27": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "resourceBlockAssignment-r11",
+            "resourceBlockAssignment-r11"
+        ],
+        "Payload": "642003006969418e10002210463175b6188fe457b4ba7336"
+    },
+    "28": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "dmrs-ScramblingSequenceInt-r11"
+        ],
+        "Payload": "642003000708001848105c576a2baccdb8c62eb6c171fc8af6974e66cd3ca7c0e0"
+    },
+    "29": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "epdcch-Config-r11",
+            "config-r11",
+            "setup",
+            "setConfigToAddModList-r11",
+            "dmrs-ScramblingSequenceInt-r11"
+        ],
+        "Payload": "642003000708001848105c576a2baccdb8c62eb6c7fdfc8af6974e66cd3ca7c0e0"
+    },
+    "3": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "642003000708000ac01141715968aeb336c0e0"
+    },
+    "4": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "642003000708000ac01141715ffcaeb336c0e0"
+    },
+    "5": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "642003000708000ac01141715fe0aeb336c0e0"
+    },
+    "6": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "scramblingIdentity-r11"
+        ],
+        "Payload": "642003000708000ac0"
+    },
+    "7": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "64200a8228800144804001c2000290051715da91f8aeb336f8"
+    },
+    "8": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "64200a8228800144804001c2000290051715da9ff8aeb336f8"
+    },
+    "9": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionResume-r13",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionResume-r13",
+            "radioResourceConfigDedicated-r13",
+            "physicalConfigDedicated",
+            "csi-RS-ConfigNZPToAddModList-r11",
+            "qcl-CRS-Info-r11",
+            "qcl-ScramblingIdentity-r11"
+        ],
+        "Payload": "64200a8228800144804001c2000290051715da9f88aeb336f8"
+    },
+    "Candidate 3": {
+        "Message": "rrcConnectionResume-r13",
+        "Path": "message,c1,rrcConnectionResume-r13,criticalExtensions,c1,rrcConnectionResume-r13,radioResourceConfigDedicated-r13,physicalConfigDedicated,epdcch-Config-r11,config-r11,setup,setConfigToAddModList-r11,resourceBlockAssignment-r11,resourceBlockAssignment-r11",
+        "Payload": "642003006969418e10002210463175b6188fe457b4ba7336"
+    }
+}

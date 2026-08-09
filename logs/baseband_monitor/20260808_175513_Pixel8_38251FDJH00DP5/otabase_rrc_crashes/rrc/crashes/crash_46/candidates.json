@@ -1,0 +1,501 @@
+{
+    "0": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config-v1430",
+            "prach-FreqOffsetHighSpeed-r14"
+        ],
+        "Payload": "2008024db95de0009e0fb3a881805402445eead20d5a5a73402210783df0"
+    },
+    "1": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "prach-Config-v1430",
+            "prach-FreqOffsetHighSpeed-r14"
+        ],
+        "Payload": "2008024db95de0009e0fb3a8818054"
+    },
+    "10": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "startRB-Subchannel-r14"
+        ],
+        "Payload": "2008424db95de0009e0fb3a880101251a04206c200031bb3eecbcb341327268000"
+    },
+    "11": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "startRB-PSCCH-Pool-r14"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043020398cf50849b72bb80013c1f6750840e8410063767dd979668264e4d82c00"
+    },
+    "12": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "dataTxParameters-r14",
+            "p0-r12"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a010936e5770002783ecea1081d08080c6ecfbb2f2cd04c9c9b142c0"
+    },
+    "13": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "dataTxParameters-r14",
+            "p0-r12"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a010936e5770002783ecea1081d08080c6ecfbb2f2cd04c9c9b17fc0"
+    },
+    "14": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "dataTxParameters-r14",
+            "p0-r12"
+        ],
+        "Payload": "201840006101681a322edcf5c1903153a010936e5770002783ecea1081d08080c6ecfbb2f2cd04c9c9b16780"
+    },
+    "15": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "dataTxParameters-r14",
+            "p0-r12"
+        ],
+        "Payload": "20"
+    },
+    "16": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "threshS-RSSI-CBR-r14"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840e8401063767dd979668264e4d85c00"
+    },
+    "17": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "threshS-RSSI-CBR-r14"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840e8401063767dd979668264e4d8fc00"
+    },
+    "18": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "threshS-RSSI-CBR-r14"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840e8401063767dd979668264e4d8b800"
+    },
+    "19": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "threshS-RSSI-CBR-r14"
+        ],
+        "Payload": "201810006e1020dc58ac"
+    },
+    "2": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon-v1610",
+            "p0-NominalSRS-Add-r16"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bbc0013c1f6751002024878"
+    },
+    "20": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "poolReportId-r14"
+        ],
+        "Payload": "201810006e1020dc58ac845df61204211f38bbc24db95dc0009e0fb3a842074200431bb3eecbcb34132726c06000"
+    },
+    "21": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "poolReportId-r14"
+        ],
+        "Payload": "201810006e1020dc58ac845df61204211f38bbc24db95dc0009e0fb3a842074200431bb3eecbcb34132726c7f000"
+    },
+    "22": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "poolReportId-r14"
+        ],
+        "Payload": "201810006e1020dc58ac845df61204211f38bbc24db95dc0009e0fb3a842074200431bb3eecbcb34132726c48000"
+    },
+    "23": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "poolReportId-r14"
+        ],
+        "Payload": "20"
+    },
+    "24": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-MinT2ValueList-r15",
+            "minT2Value-r15"
+        ],
+        "Payload": "201810006e3020dc58a0c100d01846321077d8481849b72bb80013c1f675084138440063767dd979668264e4d80104890e0d8e00"
+    },
+    "25": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-MinT2ValueList-r15",
+            "minT2Value-r15"
+        ],
+        "Payload": "201810006e3020dc58a0c100d01846321077d8481849b72bb80013c1f675084138440063767dd979668264e4d80104890fcd8e00"
+    },
+    "26": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-MinT2ValueList-r15",
+            "minT2Value-r15"
+        ],
+        "Payload": "201810006e3020dc58a0c100d01846321077d8481849b72bb80013c1f675084138440063767dd979668264e4d80104890ecd8e00"
+    },
+    "27": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-MinT2ValueList-r15",
+            "minT2Value-r15"
+        ],
+        "Payload": "201810006e3020dc58a0c100d01846321077d8"
+    },
+    "28": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommRxPool-r14",
+            "sl-OffsetIndicator-r14",
+            "small-r12"
+        ],
+        "Payload": "20184000680090c1f7d010936e5770002783ecea108310414000ba3608d3487082d60006160026f6e4f70c802c8000"
+    },
+    "29": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommRxPool-r14",
+            "sl-OffsetIndicator-r14",
+            "small-r12"
+        ],
+        "Payload": "20184000680090c1f7d010936e5770002783ecea108310414007fe3608d3487082d60006160026f6e4f70c802c8000"
+    },
+    "3": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon-v1610",
+            "p0-NominalSRS-Add-r16"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bbc0013c1f6751002024bfc"
+    },
+    "4": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon-v1610",
+            "p0-NominalSRS-Add-r16"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0049b72bbc0013c1f6751002024a5c"
+    },
+    "5": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "radioResourceConfigCommon",
+            "uplinkPowerControlCommon-v1610",
+            "p0-NominalSRS-Add-r16"
+        ],
+        "Payload": "201810006e1020dc58ac8c"
+    },
+    "6": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-OffsetIndicator-r14",
+            "large-r12"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840f842004cdbc6ecfbb2f2cd04c9c9b000"
+    },
+    "7": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-OffsetIndicator-r14",
+            "large-r12"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840f842007fffc6ecfbb2f2cd04c9c9b000"
+    },
+    "8": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-OffsetIndicator-r14",
+            "large-r12"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b84649a1db1113e4e0849b72bb80013c1f6750840f842006800c6ecfbb2f2cd04c9c9b000"
+    },
+    "9": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionReconfiguration",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionReconfiguration-r8",
+            "mobilityControlInfo",
+            "mobilityControlInfoV2X-r14",
+            "v2x-CommTxPoolExceptional-r14",
+            "sl-OffsetIndicator-r14",
+            "large-r12"
+        ],
+        "Payload": "201810006e1020dc58ac8c1df612043100e0c94d40992b8464"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionReconfiguration",
+        "Path": "message,c1,rrcConnectionReconfiguration,criticalExtensions,c1,rrcConnectionReconfiguration-r8,mobilityControlInfo,mobilityControlInfoV2X-r14,v2x-CommRxPool-r14,sl-OffsetIndicator-r14,small-r12",
+        "Payload": "20184000680090c1f7d010936e5770002783ecea108310414007fe3608d3487082d60006160026f6e4f70c802c8000"
+    }
+}

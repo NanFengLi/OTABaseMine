@@ -1,0 +1,53 @@
+{
+    "0": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "1"
+        ],
+        "Payload": "2a0ac03161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d4293655900"
+    },
+    "1": {
+        "Message": "rrcConnectionRelease",
+        "Path": [
+            "message",
+            "c1",
+            "rrcConnectionRelease",
+            "criticalExtensions",
+            "c1",
+            "rrcConnectionRelease-r8",
+            "nonCriticalExtension",
+            "nonCriticalExtension",
+            "cellInfoList-r9",
+            "geran-r9",
+            "__elem__",
+            "0",
+            "systemInformation-r9",
+            "__elem__",
+            "0",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "2a0ac03161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936550049cf74e282760e77d05e43bb87a5224f767823d88a5c1432fe68e19aea7218e77f63c47f943b3af693489e64bec6ade78ff8b4cec2c6522d956babb9c57bd6bf3d35ded81e1fd5bb158ea884ac7328c6e91431f2be13dc3389b86c2b99f7e600b9352ac00"
+    },
+    "Best Candidate": {
+        "Message": "rrcConnectionRelease",
+        "Path": "message,c1,rrcConnectionRelease,criticalExtensions,c1,rrcConnectionRelease-r8,nonCriticalExtension,nonCriticalExtension,cellInfoList-r9,geran-r9,__elem__,0,systemInformation-r9,__elem__,0,OCTET STRING,2",
+        "Payload": "2a0ac03161711049cf749f8aeb34968b7b82447f0eddb6cdceb5571c6d57594359d5fd55e3ef8674b11c98f087105c1577df2d42936550049cf74e282760e77d05e43bb87a5224f767823d88a5c1432fe68e19aea7218e77f63c47f943b3af693489e64bec6ade78ff8b4cec2c6522d956babb9c57bd6bf3d35ded81e1fd5bb158ea884ac7328c6e91431f2be13dc3389b86c2b99f7e600b9352ac00"
+    }
+}

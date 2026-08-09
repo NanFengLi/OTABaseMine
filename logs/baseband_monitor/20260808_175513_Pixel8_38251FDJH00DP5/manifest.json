@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-08-09T16:32:53+08:00",
+  "adb": "/usr/bin/adb",
+  "adb_serial": "38251FDJH00DP5",
+  "profile": "pixel",
+  "device_type": "Pixel8",
+  "buffers": "radio,crash,system,kernel",
+  "format": "threadtime",
+  "event_log": "/home/nanfeng/projects/OTABaseMine/logs/baseband_monitor/20260808_175513_Pixel8_38251FDJH00DP5/baseband_crashes.jsonl",
+  "raw_log": "/home/nanfeng/projects/OTABaseMine/logs/baseband_monitor/20260808_175513_Pixel8_38251FDJH00DP5/logcat_filtered.log",
+  "raw_log_mode": "filtered",
+  "raw_log_filter": "subsystemrestart|crashinfo_modem|crash_exit|crash by cp|cp crash|modem.*(crash|reset|assert|fatal|panic|failure)|(crash|reset|assert|fatal|panic|failure).*modem|STATE_(CRASH_EXIT|BOOTING)|MODEM STATUS|RADIO_NOT_AVAILABLE|AIRPLANE_MODE|Airplane mode|airplaneMode=(true|false)|cpif|\\bSSR\\b"
+}

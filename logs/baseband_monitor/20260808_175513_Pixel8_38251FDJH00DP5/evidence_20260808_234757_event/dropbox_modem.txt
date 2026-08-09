@@ -1,0 +1,4 @@
+ProcessReferences:	Sum: 457us Avg: 228.500us
+2025-10-28 06:09:58 SubsystemRestart (text, 1315 bytes)
+subsystem: modem
+crash reason: modem - Crash by CP : pal_Sanitizer.cpp:-1:Out of bounds access LTEL2LT2

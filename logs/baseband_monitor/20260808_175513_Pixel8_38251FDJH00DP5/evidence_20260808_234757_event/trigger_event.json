@@ -1,0 +1,28 @@
+{
+  "time": "2026-08-08T23:47:57+08:00",
+  "type": "baseband_crash_suspected",
+  "matched_pattern": "\\bMODEM STATUS\\b.*\\bSTATE_(CRASH_EXIT|BOOTING)\\b",
+  "line": "10-28 19:56:16.708   997  1027 D SIT-OEM : MODEM STATUS : STATE_BOOTING",
+  "recent_context": [
+    "10-28 19:56:12.434   997  1028 E SIT-OEM : STATE_CRASH_EXIT",
+    "10-28 19:56:13.052  1209  1395 E RIL     : [PollModemState] oldState=2 newState=2",
+    "10-28 19:56:13.730  1464  1940 D ActivityManager: freezing 5509 com.google.android.apps.privacy.wildlife",
+    "10-28 19:56:13.862  1464  1940 D ActivityManager: freezing 3759 com.google.android.apps.work.oobconfig",
+    "10-28 19:56:13.927  1464  1940 D ActivityManager: freezing 3865 com.google.android.carriersetup",
+    "10-28 19:56:14.001  1464  1940 D ActivityManager: freezing 3531 com.android.sdm.plugins.connmo",
+    "10-28 19:56:14.021  1464  1940 D ActivityManager: freezing 3928 com.google.omadm.trigger",
+    "10-28 19:56:14.099  1464  1940 D ActivityManager: freezing 4138 com.android.imsserviceentitlement",
+    "10-28 19:56:14.113  1464  1940 D ActivityManager: freezing 4181 com.google.RilConfigService",
+    "10-28 19:56:14.195  1464  1940 D ActivityManager: freezing 3979 com.google.android.dialer",
+    "10-28 19:56:14.317  1464  1940 D ActivityManager: freezing 4332 com.google.android.cellbroadcastreceiver",
+    "10-28 19:56:14.320  1464  1940 D ActivityManager: freezing 4389 com.google.android.wfcactivation",
+    "10-28 19:56:14.386  1464  1940 D ActivityManager: freezing 4221 com.google.android.apps.carrier.carrierwifi",
+    "10-28 19:56:14.916  1464  1940 D ActivityManager: freezing 14637 com.google.android.apps.messaging",
+    "10-28 19:56:15.633  1464 10167 I ActivityManager: Process com.google.euiccpixel (pid 2949) has died: cch  +95 CEM ",
+    "10-28 19:56:15.685  1464  1743 I ActivityManager: Process com.google.android.adservices.api (pid 4582) has died: cch  +85 CEM ",
+    "10-28 19:56:15.740  1464  1743 I ActivityManager: Process com.google.android.apps.dreamliner:locked (pid 4530) has died: cch  +85 CEM ",
+    "10-28 19:56:15.746  1464  1940 D ActivityManager: freezing 4425 com.android.carrierdefaultapp",
+    "10-28 19:56:16.707   997  1027 D SIT-OEM : [pollModemState] oldState=2 newState=3",
+    "10-28 19:56:16.708   997  1027 D SIT-OEM : MODEM STATUS : STATE_BOOTING"
+  ]
+}

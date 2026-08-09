@@ -1,0 +1,93 @@
+{
+    "0": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "mobilityParameters",
+            "OCTET STRING",
+            "2"
+        ],
+        "Payload": "0220a61a1e000f00"
+    },
+    "1": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "mobilityParameters",
+            "OCTET STRING",
+            "16"
+        ],
+        "Payload": "0220a61a1e6001800f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d732883ca32d130192a6cf20b98c0c8f64aad7cad4e44f9fe3ff2a80118e2d2991c788191aa40e9ac8dc0f3e06fe26cff080868119c086033017504e0591c6d36970f9972144c30169655746b6c9d0c28d9527ca92cc7d3fabd49e34d1e9717e07a04ed5f8e1b6119f910a47a589becac29d6e7262dc31d9d12eb6aa806b879c81fa2fa209eb9b8274381027269e3c73b0a4a3228fbfa1d9390554b25cf1b0a0c249eb9a0c00bac642315fc5e625dc24ea1d1df5f3ce5fd92c94b5cca61b31d1718cce094c19ecaf71d019128c9a05db766836bbce594735c2d492fbe66128acb52b6e50f4d24ba0de443f4eaa6ebeae61ceb062e6e7c4df309acd731f3ca8eadd2ee8b1ce2fdd1e627d71cf7133cba75b6bdca3211a4dbc0429d948c9656cfb882c6ba2a8db60fc2028072e4af11460ac8a7b4c8cc19809418cce2e9057a57882ca1db544a40b4819d9ec5f90e37094462a3934b44ecb946a80ce6b391750308c512f9e68af0f91d250e0781fb98faeea56d86784022d25a0b16d59553f3eafc99757571233930cea087648efb0b3aaf8c7cdef94cab848353a0592df38dbea38a187e071ae2110c2a79f427ff60ff19706e2d70fe3c0b79950333ef3289ff9aec6965b7710cf1fd384176706e3390465216383bd0bdeba2e802942e693c0d787715a8e1891f3ae15fedee30fc0603059db994cbc103f26b15fa33aef200"
+    },
+    "2": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "mobilityParameters",
+            "OCTET STRING",
+            "19"
+        ],
+        "Payload": "0220a61a1e6001dfff80"
+    },
+    "3": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "mobilityParameters",
+            "OCTET STRING",
+            "22"
+        ],
+        "Payload": "0220a61a1e69750f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d7328839dcf2f661f389e8c3a26873b8219f9302fbf0119eac18cccad41b97576bbb384ca373d2952cbbaaf80c4c664ac75e6457c5d9e3d181b828acec6f3612edcaac50f5515c6a06e890e743c06cefa7f712ebcbf6ae4fbbd0bd97fc4f8b4a92b39b6e93280a21d1cebc253de08ff179168a189deb11828f3a1642a012e0bf2e67b7014f14994b9176caac1b58c7a1da7dd68a1a21520af517d14af52652c0c38b67750a71c23490f9b227484ef6759b6aaf1c6869fe3641825e857a43e7b5420755c094e70e1d0a2701c87786f47194ae5e4c247f932b0c360a0dcae3f5b4f7ac78421da22ed87d0cc4ca0403e72c1603725032e921410d7badc8def833203610ed491ff287cf105c418b564180f905da2a62e94312651222ba30128b72c8b70bc1ba0d6e6cabde32b12dc3cee3ef77e21c456faf5d7ab1c6ddfd636e507c0cc8769c67501457ba228b0db9f662cdf3bccb3f84b42dcfbb8c17d7a80b88ab89e3520dff9c792371616b63c636baece5fe832f9aabff00ab866de88bca5cc62fc65bb49c01e375cc9ae3157dc64c973c69cdf3bc384ac99987a005045032202fb463200078ab7bf22435e2bfa580d18a806fa8bcc37cf7cf6eaf5b945ed981f0de6a571271227035f3617f7b7a480f946a0cdd9d492a17aa5936b8c19f8dd68b230c5a60e3ae6e2d3c9c813133cee19680d9b9d2f22f92dac7873ba4e5d9e934d12a3e3c40858afba401a70290b120a6b8eed8c294a44ac3ee8bafc98f1ae7f9c2143399fde5af8ed1003da513a0073f5d3d51a11bd27bd52170848ecc33ba1e0f3f25812633bfd8b70a5d9ae0bd1450a9b94c500c52c3004dac67b95f1b110467f358f5cc904f4c871bcdd57ab765b965d495ad4368a136609926baba5184954d89684d1b04a0d0686b4d42ef877bf16f4563a19b168f57fb4f533f55711d4ab69eda217e2e22a93012d82f80e7e67007a17052b0091134adaa8c997934b188dc2e8dc237ced71706ba3c45b7f68ae6318e5d4471a27c839ac1e064b22e88fcc33da23dac88bf73d3f54e07b8a4d4922f3debe6118fcc200529ec11e2ce7077d77d7b0fe18e7e90dcfef701f063b030ae3b7507d9244b104506698fc3d2c4d0658b09a31bc5b6ecba783d0b259a01969ea05ea5ff6c6af8f47aa416242bda23c5e0f85431430fc0b4e1fbc448c3a425a56d5e8fbe1c470992e25a0dc5f9940293c5329c25f4779ce65a7937adb608c2a96c6b939d7ebcf276880e3e67a0ee191c82ecaa95804977df85042298009a8f865533a0625459ec057c2874c391b25f2d179e7f84c712041613eec1baafba7fbfd67bb85e217282d843c16f4eb49b095369561b185e4b8090db063f4f0ee2eb9cdf7a412cf038ee8b33686a9e0cbffb2fdda5f0ac2b0be9235bbce626d16437651d4c1ff6bc57cc957a6eb51fea68a3bec97e976274ce3122201aa4ca52af7343f004c622f2cc71598d1f6b8aad09a548414ae557990c103d735b7ed67061d293e3189b764340088b7c360d48503432046ccd459c4baed6ee62f34e6fc9091289b24acd450684e2f7803f8f29623b2f819889ba2c5fefbe2ceea964172807b470245814d6d1af74f22a5c07feb2e1588c54ea79940495be891bc292f868b4fc6fad1438b4d9d163a77649b79b3b09e9398a8a16dde4ea0f30b40c9947754947d63b5f08dfe50bc9348dd4b2a54a549113a33af6e5296921dee4cab02b02677e605e84c5c637470b7ee7b158af784b01d7c4649c2c31fa86bee4199712d709c5b3483609c24863e6913b5140612a4ab22c468abb0771beb99e621c505f828d06f540456a4c360f1ed4823602c2913064faa4ba47a6dc725b974e1bb78d40e4a4fc85db71b77336a830fb09dcc273abf46e4d5fdb5ae5dd8604f60fbd80cb3a74923b52086d66cc2c1be5bed9700a0757e8009f2e6565a3ef4170e44cdbf62f6bbae9c5b660ff44c2caf5dcf584d3d38990562b21ce2583e6a20bd62529ed60d49b5dc0377b277a6342957be789604dd7d3e887ec730afebfdb67513bd8c7048948525a853eb9e0662a8484da5d89d79c4eb7f6fa46ec2c26679853eeefebc37d2e9826b867e7f02c9f2f6fa9125d42040905fc9ffad83a3f0e5ce592b885dd758f5813595a2b6367413bfce7b679de53fa39cfb35474096e6f4d73b617e2c4dc95121754e3d2b373556880a614019e4f643aa00e5145232eda02ab49f4b1f44ae3a9adab31938f047d966c13741a6a859e35fd9cc490d0be033aa59a106cc5163ab4e93324a11c2211e45be46b01ca74391727fc941bcf7636cf633f076f5e05391200e9049a0c826b68cbbf1129dd1c05f93063eb02bb163e579593bef2deb9671980fc364cf8b939ee0d432ac289aa84ee77bc1f3e3808841ffdaaf4b664967bab485fb04b200195f93922065277161be7e4f7eeb32555c990e6b22457a91b5bc9d7f3a2455b802c3c976a42ca7ea5fcc0d72bae555efb2aa64def55e43a969157b00"
+    },
+    "4": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "nonCriticalExtension",
+            "lateNonCriticalExtension",
+            "OCTET STRING",
+            "4"
+        ],
+        "Payload": "02a0a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d732883cfe0a0d4d1405e1c2c35e6ff0d9720f0e7186e1e0fd1a76b0775a7184ebe695da0a9a4b9aa440f1488a9b2528a2a099ed99dc4607a9366acfd79c22c5d2811c500"
+    },
+    "5": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": [
+            "message",
+            "c1",
+            "csfbParametersResponseCDMA2000",
+            "criticalExtensions",
+            "csfbParametersResponseCDMA2000-r8",
+            "nonCriticalExtension",
+            "lateNonCriticalExtension",
+            "OCTET STRING",
+            "5"
+        ],
+        "Payload": "02a0a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d732883d01000"
+    },
+    "Best Candidate": {
+        "Message": "csfbParametersResponseCDMA2000",
+        "Path": "message,c1,csfbParametersResponseCDMA2000,criticalExtensions,csfbParametersResponseCDMA2000-r8,nonCriticalExtension,lateNonCriticalExtension,OCTET STRING,5",
+        "Payload": "02a0a61a1e100f3f6139bc5330e49a8c3e03f26ab1b74de1e2005939225c669d4bf88d732883d01000"
+    }
+}
