@@ -1,0 +1,5 @@
+[init.svc.init-radio-sh]: [stopped]
+[init.svc.init.shared_modem_platform]: [running]
+[init.svc.modem_logging_enabled_change]: [stopped]
+[init.svc.modem_logging_stop]: [stopped]
+[init.svc.ril-daemon]: [running]

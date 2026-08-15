@@ -1,0 +1,28 @@
+{
+  "time": "2026-08-15T18:14:51+08:00",
+  "type": "baseband_crash_suspected",
+  "matched_pattern": "\\b(md1|md3|modem)\\b.*\\b(exception|assert|fatal|crash|reset)\\b",
+  "line": "10-28 06:53:45.279  1235  1453 E RIL     : MODEM STATUS crash handling mode = 2",
+  "recent_context": [
+    "10-28 06:53:45.218  2314  2314 D Phone-0 : getImsRegistrationTechnology =-1",
+    "10-28 06:53:45.218  2314  2314 D GsmCdmaPhone: [0] EVENT_SUBSCRIPTIONS_CHANGED",
+    "10-28 06:53:45.219  2314  2314 I NullCipherNotifier: Ignoring setSubscriptionMapping. Notifier is disabled.",
+    "10-28 06:53:45.220  2314  2314 D RILJ    : [6735]> SET_SIGNAL_STRENGTH_REPORTING_CRITERIA [PHONE0]",
+    "10-28 06:53:45.220  2314  2314 D SSCtr   : setSignalStrengthReportingCriteria consolidatedSignalThresholdInfos=[SignalThresholdInfo{mRan=1 mSignalMeasurementType=1 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[-107, -103, -97, -89] mIsEnabled=true}, SignalThresholdInfo{mRan=2 mSignalMeasurementType=2 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[-115, -105, -95, -85] mIsEnabled=true}, SignalThresholdInfo{mRan=3 mSignalMeasurementType=3 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[-128, -118, -108, -98] mIsEnabled=true}, SignalThresholdInfo{mRan=3 mSignalMeasurementType=4 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[] mIsEnabled=false}, SignalThresholdInfo{mRan=3 mSignalMeasurementType=5 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[] mIsEnabled=false}, SignalThresholdInfo{mRan=6 mSignalMeasurementType=6 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[-110, -90, -80, -65] mIsEnabled=true}, SignalThresholdInfo{mRan=6 mSignalMeasurementType=7 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[] mIsEnabled=false}, SignalThresholdInfo{mRan=6 mSignalMeasurementType=8 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[] mIsEnabled=false}, SignalThresholdInfo{mRan=2 mSignalMeasurementType=9 mHysteresisMs=3000 mHysteresisDb=2 mThresholds=[] mIsEnabled=false}]",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: RadioNetworkProxy::setSignalStrengthReportingCriteria: serial 6735",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand::onRequest: serial 6735",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 1, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [-107, -103, -97, -89], isEnabled: true, ran: GERAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 2, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [-115, -105, -95, -85], isEnabled: true, ran: UTRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 3, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [-128, -118, -108, -98], isEnabled: true, ran: EUTRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 4, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [], isEnabled: false, ran: EUTRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 5, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [], isEnabled: false, ran: EUTRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 6, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [-110, -90, -80, -65], isEnabled: true, ran: NGRAN}",
+    "10-28 06:53:45.221  2314  2314 D DN-128-C: ConnectingState: updateNetworkCapabilities: Capabilities not changed.",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 7, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [], isEnabled: false, ran: NGRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 8, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [], isEnabled: false, ran: NGRAN}",
+    "10-28 06:53:45.221  1235  1235 D RILC-AIDL_SERVICE: SetSignalStrengthReportingCriteriaCommand SignalThresholdInfo{signalMeasurement: 9, hysteresisMs: 3000, hysteresisDb: 2, thresholds: [], isEnabled: false, ran: UTRAN}",
+    "10-28 06:53:45.223  2314  2314 D Phone-0 : getImsRegistrationTechnology =-1",
+    "10-28 06:53:45.279  1235  1453 E RIL     : [PollModemState] oldState=4 newState=2",
+    "10-28 06:53:45.279  1235  1453 E RIL     : MODEM STATUS crash handling mode = 2"
+  ]
+}
