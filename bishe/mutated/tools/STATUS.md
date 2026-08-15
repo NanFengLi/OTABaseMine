@@ -4,13 +4,12 @@
 
 **文件**: `integer_mutation.py`  
 **状态**: 完成 ✅  
-**变异数量**: 3 条
+**变异数量**: 2 条（与 `integer_mutation.py` 中 `_integer_muts` 一致）
 
 | # | 内容 | 意图 |
 |---|---|---|
-| 1 | `randint(lb, ub)` | 合法范围内随机值 |
-| 2 | `lb + 2^lbs - 1` | 比特冗余空间溢出，真实值超出 ub |
-| 3 | `ub + 1` | 上界 +1 边界溢出 |
+| 1 | `lb + 2^lbs - 1`（编码 \(2^{lbs}-1\)） | 比特冗余空间溢出，真实值超出 ub |
+| 2 | `ub + 1`（编码 `ub - lb + 1`） | 上界 +1 边界溢出 |
 
 **测试文件**: `test/test_integer_mutate_new.py`
 
